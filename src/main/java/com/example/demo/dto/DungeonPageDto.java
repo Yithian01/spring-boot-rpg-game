@@ -17,6 +17,9 @@ public class DungeonPageDto {
     private String dungeonId;
     private int progress;
 
+    private int explorationEfficiency; // "탐사 시 진척도 +5%" 식의 표시용
+    private double restSafetyRate;      // "휴식 안전도 85%" 표시용
+
     private boolean isInBattle;
     private DungeonStatus.ActiveMonster activeMonster;
 

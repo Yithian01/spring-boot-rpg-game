@@ -458,13 +458,17 @@ public class GameService {
      */
     public DungeonPageDto getDungeonData() {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        UserStatus user = userFileRepository.findGameUser();
+
+        Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
 
         if (ds == null) return null;
 
         return DungeonPageDto.builder()
                 .currentFloor(ds.getCurrentFloor())
                 .dungeonId(ds.getDungeonId())
-                .progress(ds.getProgress())
+                .explorationEfficiency(statCalculationService.calculateExplorationEfficiency(stats))
+                .restSafetyRate(statCalculationService.calculateRestSafetyRate(stats))
                 .isInBattle(ds.getActiveMonster() != null)
                 .activeMonster(ds.getActiveMonster())
                 .playerRemainingTurns(ds.getPlayerRemainingTurns())

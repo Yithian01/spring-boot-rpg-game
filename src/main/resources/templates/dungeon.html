@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <div th:replace="~{fragments/actions :: dungeonActionPanel(gameData=${game})}"></div>
+  <div th:replace="~{fragments/actions :: dungeonActionPanel(gameData=${game}, dungeon=${dungeon})}"></div>
 </div>
 
 <div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>

@@ -387,4 +387,27 @@ public class StatCalculationService {
 
         return weights;
     }
+
+    /**
+     * [던전 전용] 탐사 진척도 효율 계산
+     * 21: 비복근(기동성), 23: 공간 지각(지형 파악), 24: 직관(길찾기)
+     */
+    public int calculateExplorationEfficiency(Map<?, ?> baseStats) {
+        // 기본 진행도 5% + 스탯 가중치
+        double bonus = (getStat(baseStats, 21) * 0.1) +
+                (getStat(baseStats, 23) * 0.2) +
+                (getStat(baseStats, 24) * 0.2);
+
+        return (int) (5 + bonus); // 탐사 한 번당 증가할 진척도 기본값
+    }
+
+    /**
+     * [던전 전용] 휴식 안전도(확률) 계산
+     * 23: 공간 지각(매복 확인), 24: 직관(위험 감지)
+     */
+    public double calculateRestSafetyRate(Map<?, ?> baseStats) {
+        // 기본 안전도 60% + 스탯 보너스 (최대 95% 제한)
+        double safety = 60.0 + (getStat(baseStats, 23) * 1.5) + (getStat(baseStats, 24) * 1.5);
+        return Math.min(safety, 95.0);
+    }
 }

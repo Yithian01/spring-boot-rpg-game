@@ -25,29 +25,42 @@
 </div>
 
 <div th:fragment="dungeonActionPanel(gameData)" class="action-panel">
-    <form action="/dungeon/explore" method="post" style="display:contents;">
+    <form action="/dungeon/explore" method="post" style="display:block; width:100%; height:100%;">
         <button type="submit" class="action-btn btn-work">
             <span>🔍</span>탐색하기
         </button>
     </form>
 
-    <form action="/dungeon/rest" method="post" style="display:contents;">
+    <form action="/dungeon/rest" method="post" style="display:block; width:100%; height:100%;">
         <button type="submit" class="action-btn btn-rest">
             <span>🛌</span>쉬기
         </button>
     </form>
 
-    <form action="/dungeon/exit" method="post" style="display:contents;"
-          onsubmit="return confirm('던전에서 나가시겠습니까? 획득한 보상을 가지고 마을로 돌아갑니다.')">
-        <button type="submit" class="action-btn btn-tax">
-            <span>🏃</span>돌아가기
+    <th:block th:if="${dungeon?.progress >= 100}">
+        <form action="/dungeon/next-floor" method="post" style="display:block; width:100%; height:100%;">
+            <button type="submit" class="action-btn btn-dungeon">
+                <span>🐲</span>다음 층으로
+            </button>
+        </form>
+    </th:block>
+    <th:block th:unless="${dungeon?.progress >= 100}">
+        <button type="button" class="action-btn btn-empty" style="opacity: 0.5;" onclick="alert('진척도가 부족합니다.')">
+            <span>🔒</span>진척도가 부족합니다.
         </button>
-    </form>
+    </th:block>
 
-    <button type="button" class="action-btn btn-empty"></button>
-    <button type="button" class="action-btn btn-empty"></button>
-    <button type="button" class="action-btn btn-empty"></button>
-    <button type="button" class="action-btn btn-empty"></button>
+    <th:block th:if="${dungeon?.currentFloor > 1}">
+        <form action="/dungeon/prev-floor" method="post" style="display:block; width:100%; height:100%;">
+            <button type="submit" class="action-btn btn-tax">
+                <span>🔙</span>이전 층으로
+            </button>
+        </form>
+    </th:block>
+    <th:block th:unless="${dungeon?.currentFloor > 1}">
+        <button type="button" class="action-btn btn-empty"></button>
+    </th:block>
+
     <button type="button" class="action-btn btn-empty"></button>
     <button type="button" class="action-btn btn-empty"></button>
 </div>

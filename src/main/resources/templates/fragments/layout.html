@@ -579,67 +579,57 @@
 </style>
 
 <style th:fragment="dungeonStyle">
-    /* 1. 컨테이너 확장 및 높이 조절 */
+    /* 1. 전체 컨테이너 및 기본 레이아웃 */
     .container {
         width: 1600px !important;
         max-width: 98vw !important;
-        /* 높이를 92vh에서 85vh 정도로 줄여 상하 여백 확보 */
-        height: 85vh !important;
-        display: flex;
-        flex-direction: column;
-        gap: 15px; /* 간격 살짝 축소 */
+        height: 95vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        background: #121212; /* 기본 배경색 추가 */
+        color: #eee;
     }
 
-    /* 2. 상단 패널 비율 조정 */
+    /* 2. 상단 패널 (스탯, 인벤토리, 장비) */
     .top-panel {
         display: flex !important;
         flex-direction: row !important;
-        gap: 20px !important;
-        flex: 1;
-        min-height: 0;
+        gap: 15px !important;
+        flex: 1 !important;
+        min-height: 0 !important;
+        /* 하단 액션 패널 공간(190px) 확보 */
+        max-height: calc(100% - 190px) !important;
     }
 
-    /* 비율 조정: 스탯(1.0) : 중앙(1.8) : 장비(0.8) */
-    /* 스탯창 너비를 flex 0.7 -> 1.0으로 키워 텍스트가 안 잘리게 함 */
+    /* 컬럼별 너비 설정 */
     .dungeon-col-stats { flex: 1.0; min-width: 350px; display: flex; flex-direction: column; }
     .dungeon-col-inv   { flex: 1.8; min-width: 700px; display: flex; flex-direction: column; }
-    .dungeon-col-equip { flex: 0.8; min-width: 300px;  display: flex; flex-direction: column; }
+    .dungeon-col-equip { flex: 0.8; min-width: 300px; display: flex; flex-direction: column; }
 
-    .box { height: 100% !important; display: flex; flex-direction: column; background-color: #252525; }
-
-    /* 중앙 섹션 가로 여백 최적화 */
-    .dungeon-col-inv .box {
-        padding: 20px !important;
-        gap: 15px !important;
+    .box {
+        height: 100% !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        padding: 15px;
     }
 
-    /* 3. 스탯 스크롤 영역 내부 폰트 최적화 (너비 확보 시 시너지) */
+    /* 3. 스탯 영역 */
     .stat-row {
-        font-size: 1rem !important; /* 글씨를 조금 더 키워 가독성 향상 */
+        font-size: 1rem !important;
         padding: 10px 12px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* 4. 전투 로그 높이 살짝 조정 */
-    #battleLogs {
-        flex: 0.7; /* 가방보다 로그를 조금 더 길게 보고 싶을 경우 조정 */
-        background: #000;
-        border: 1px solid #333;
-        border-radius: 4px;
-        padding: 10px;
-        font-size: 0.85rem;
+    /* 4. 인벤토리 및 전투 로그 */
+    .dungeon-col-inv .box {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
 
-    /* 하단 액션 패널 높이 고정 */
-    .action-panel {
-        flex-shrink: 0;
-        height: 160px !important; /* 전체 높이가 줄었으므로 버튼 영역도 최적화 */
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(2, 75px) !important;
-        gap: 10px;
-    }
-
-    /* [기존 아이템 그리드 및 등급별 컬러 CSS 유지] */
     .inventory-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
@@ -648,37 +638,29 @@
         background: #1a1a1a;
         border: 1px solid #333;
         border-radius: 4px;
-        flex-grow: 1;
+        flex: 1; /* 가용 공간 차지 */
         overflow-y: auto !important;
     }
 
-    .inventory-grid-item {
-        position: relative;
+    .grid-item-icon {
         width: 70px;
         height: 70px;
-        flex-shrink: 0;
-    }
-
-    /* 아이콘 박스 (마을 스타일의 등급 테두리 호환) */
-    .grid-item-icon {
-        width: 100%;
-        height: 100%;
         border: 2px solid #444;
         border-radius: 6px;
         background: #000;
-        overflow: hidden;
         position: relative;
         cursor: pointer;
         transition: transform 0.1s;
+        overflow: hidden;
     }
     .grid-item-icon:hover { transform: scale(1.05); z-index: 10; }
     .grid-item-icon img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* 아이템 퀵 버튼 오버레이 */
+    /* 아이템 호버 오버레이 */
     .item-overlay {
         position: absolute;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.8);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -688,88 +670,73 @@
         transition: opacity 0.2s;
     }
     .grid-item-icon:hover .item-overlay { opacity: 1; }
-
-    /* 오버레이 전용 작은 버튼 */
     .overlay-btn {
         width: 85%;
         padding: 2px 0;
         font-size: 0.75rem;
         font-weight: bold;
-        border: none;
         border-radius: 3px;
+        border: none;
         color: white;
         cursor: pointer;
     }
     .btn-use-small { background: #2a3a5a; }
     .btn-equip-small { background: #2a4a2a; }
 
-    /* 4. 전투 로그 영역 최적화 */
+    /* 전투 로그 */
     #battleLogs {
-        flex: 0.6; /* 인벤토리 그리드와 공간을 나누기 위해 조정 */
+        flex: 0.6;
         min-height: 150px;
         background: #000;
         border: 1px solid #444;
         padding: 10px;
-        font-family: 'Pretendard', sans-serif;
         font-size: 0.85rem;
         line-height: 1.6;
         overflow-y: auto !important;
-        margin-top: 10px;
         border-radius: 4px;
     }
 
-    /* 5. 장비 그리드 중앙 정렬 유지 */
-    /* 장비 컬럼 내부 박스 설정 */
+    /* 5. 장비창 설정 */
     .equipment-box {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start !important; /* 상단부터 채우도록 강제 */
         padding-top: 20px !important;
     }
-
-    /* 제목 스타일 고정 */
-    .equipment-box h2 {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 20px !important; /* 제목과 그리드 사이 간격 */
-        flex-shrink: 0;
-    }
-
-    /* 그리드가 중앙으로 밀려나지 않도록 수정 */
-    .equipment-box .equip-grid {
-        margin-top: 0 !important;   /* 기존 auto를 0으로 덮어씀 */
-        margin-bottom: 0 !important;
+    .equip-grid {
         display: grid;
         grid-template-columns: repeat(3, 80px);
         gap: 15px;
     }
+    .slot.empty { border: none !important; background: transparent !important; box-shadow: none !important; }
 
-    /* 빈 슬롯(empty) 투명화 유지 */
-    .slot.empty {
-        border: none !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-
-    /* 6. 하단 액션 패널 */
+    /* 6. 하단 액션 패널 (고정 영역) */
     .action-panel {
-        flex-shrink: 0;
+        flex-shrink: 0 !important;
         height: 170px !important;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        margin-top: 10px !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
         grid-template-rows: repeat(2, 75px) !important;
-        gap: 10px;
+        gap: 10px !important;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 10px;
+        border-radius: 8px;
+        z-index: 100;
     }
+    .action-btn { height: 100% !important; width: 100%; }
 
-    /* 등급별 테두리 색상 */
+    /* 7. 아이템 등급 시각 효과 (테두리 및 텍스트) */
     .border-COMMON { border-color: #555 !important; }
     .border-UNCOMMON { border-color: #1eff00 !important; box-shadow: inset 0 0 5px rgba(30, 255, 0, 0.2); }
     .border-RARE { border-color: #0070dd !important; box-shadow: inset 0 0 8px rgba(0, 112, 221, 0.3); }
     .border-EPIC { border-color: #a335ee !important; box-shadow: 0 0 10px rgba(163, 53, 238, 0.5); }
-    .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 15px rgba(255, 128, 0, 0.7); animation: legendary-glow 2s infinite; }
+    .border-LEGENDARY {
+        border-color: #ff8000 !important;
+        box-shadow: 0 0 15px rgba(255, 128, 0, 0.7);
+        animation: legendary-glow 2s infinite;
+    }
 
-    /* 등급별 글자 색상 */
     .text-COMMON { color: #eee; }
     .text-UNCOMMON { color: #1eff00; font-weight: bold; }
     .text-RARE { color: #0070dd; font-weight: bold; text-shadow: 0 0 5px rgba(0,112,221,0.5); }
@@ -777,9 +744,8 @@
     .text-LEGENDARY { color: #ff8000; font-weight: bold; text-shadow: 0 0 12px rgba(255,128,0,0.8); }
 
     @keyframes legendary-glow {
-        0% { filter: brightness(1); }
-        50% { filter: brightness(1.3); }
-        100% { filter: brightness(1); }
+        0%, 100% { filter: brightness(1); }
+        50% { filter: brightness(1.4); }
     }
 </style>
 </html>

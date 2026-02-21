@@ -11,6 +11,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -164,5 +165,29 @@ public class GameDataManager  implements ApplicationRunner {
         if (itemId <= 1250) return 21;
 
         return 0; // 혹시 모를 예외
+    }
+
+    /**
+     * 층별 몬스터 조우 시 사용 
+     * @param floor 현재 층
+     * @return 몬스터 정보
+     */
+    public MonsterMeta getRandomMonsterByFloor(int floor) {
+        // 1. 현재 층수에 따른 메인 티어 계산 (역순)
+        // 1~5층은 8티어 위주, 6~10층은 7티어 위주로 설계 예시
+        int primaryTier = (floor <= 5) ? 8 : 7;
+
+        // 2. 후보군 추출
+        List<MonsterMeta> candidates = monsterMetaMap.values().stream()
+                .filter(m -> m.getTier() == primaryTier)
+                .collect(Collectors.toList());
+
+        // 3. 만약 해당 티어 몬스터가 없으면 전체 중 가장 가까운 티어 탐색 (방어 코드)
+        if (candidates.isEmpty()) {
+            candidates = new ArrayList<>(monsterMetaMap.values());
+        }
+
+        // 4. 랜덤 반환
+        return candidates.get(random.nextInt(candidates.size()));
     }
 }

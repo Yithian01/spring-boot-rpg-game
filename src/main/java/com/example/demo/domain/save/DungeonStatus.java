@@ -28,6 +28,7 @@ public class DungeonStatus {
     private int playerRemainingTurns; // 이번 라운드에 유저가 사용할 수 있는 남은 턴(AP)
     private int playerMaxTurns;       // 스탯 기반으로 계산된 라운드당 최대 턴
 
+    @Builder.Default
     private List<String> battleLogs = new ArrayList<>();
 
     private int pendingExp;       // 승리 시 획득할 예정인 경험치
@@ -51,5 +52,29 @@ public class DungeonStatus {
         private int maxMp;
 
         private MonsterStatsDto stats; // 메타데이터에서 복사해온 스탯
+    }
+
+    /**
+     * 로그 추가 편의 메서드 (최대 로그 개수 제한 가능)
+     */
+    public void addLog(String log) {
+        if (this.battleLogs == null) {
+            this.battleLogs = new ArrayList<>();
+        }
+        // 최근 로그가 위로 오게 하고 싶다면 index 0에 추가, 아니면 그냥 add
+        this.battleLogs.add(0, log);
+
+        // 너무 많은 로그가 쌓여 파일이 커지는 것 방지 (예: 최근 20개만 유지)
+        if (this.battleLogs.size() > 20) {
+            this.battleLogs.remove(this.battleLogs.size() - 1);
+        }
+    }
+
+    /**
+     * 전투 중인지 판별
+     * @return true/false
+     */
+    public boolean isInBattle() {
+        return this.activeMonster != null;
     }
 }

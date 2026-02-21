@@ -462,17 +462,20 @@ public class GameService {
 
         Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
 
+        int calculatedMaxTurns = statCalculationService.calculateCombatTurns(user);
+
         if (ds == null) return null;
 
         return DungeonPageDto.builder()
                 .currentFloor(ds.getCurrentFloor())
                 .dungeonId(ds.getDungeonId())
+                .progress(ds.getProgress())
                 .explorationEfficiency(statCalculationService.calculateExplorationEfficiency(stats))
                 .restSafetyRate(statCalculationService.calculateRestSafetyRate(stats))
-                .isInBattle(ds.getActiveMonster() != null)
+                .isInBattle(ds.isInBattle())
                 .activeMonster(ds.getActiveMonster())
                 .playerRemainingTurns(ds.getPlayerRemainingTurns())
-                .playerMaxTurns(ds.getPlayerMaxTurns())
+                .playerMaxTurns(ds.getPlayerMaxTurns() > 0 ? ds.getPlayerMaxTurns() : calculatedMaxTurns)
                 .battleLogs(ds.getBattleLogs())
                 .pendingExp(ds.getPendingExp())
                 .pendingGold(ds.getPendingGold())

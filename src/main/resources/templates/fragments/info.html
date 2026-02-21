@@ -69,58 +69,93 @@
     </div>
 
     <div class="monster-card"
-         th:style="${dungeon.isInBattle ? 'background: linear-gradient(180deg, rgba(60, 0, 0, 0.4) 0%, rgba(20, 20, 20, 0.8) 100%);' : 'background: #111;'} + ' border: 1px solid #444; border-radius: 8px; padding: 15px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;'">
+         th:style="${dungeon.isInBattle ? 'background: linear-gradient(180deg, rgba(40, 0, 0, 0.6) 0%, rgba(10, 10, 10, 0.9) 100%);' : 'background: #111;'} + ' border: 1px solid #444; border-radius: 8px; flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; min-height: 380px;'">
 
-        <div th:if="${dungeon.isInBattle and dungeon.activeMonster != null}" style="z-index: 1;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-                <div>
-                    <span style="background: #c0392b; color: #fff; font-size: 0.7rem; padding: 2px 6px; border-radius: 3px; vertical-align: middle; margin-right: 6px;">ENEMY</span>
-                    <strong style="color: #ff4d4d; font-size: 1.2rem; text-shadow: 0 0 10px rgba(255, 77, 77, 0.3);" th:text="'Lv.' + ${dungeon.activeMonster.tier} + ' ' + ${dungeon.activeMonster.name}"></strong>
+        <div th:if="${dungeon.isInBattle and dungeon.activeMonster != null}" style="display: flex; flex-direction: column; height: 100%; z-index: 1;">
+
+            <div style="position: relative; width: 100%; height: 200px; overflow: hidden; background: #000; border-bottom: 1px solid #444;">
+                <img th:src="@{'/images/monsters/' + ${dungeon.activeMonster.monsterId} + '.png'}"
+                     style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.5s;"
+                     onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"/>
+
+                <div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 5px;">
+                    <span style="background: #c0392b; color: #fff; font-size: 0.7rem; padding: 2px 8px; border-radius: 2px; font-weight: bold; letter-spacing: 1px;">[[${dungeon.activeMonster.tier}]] GRADE</span>
                 </div>
-                <div style="text-align: right;">
-                    <span style="font-size: 0.85rem; color: #ccc;" th:text="${dungeon.activeMonster.currentHp} + ' / ' + ${dungeon.activeMonster.maxHp}"></span>
+
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%); padding: 20px 15px 10px;">
+                    <h2 style="color: #ff4d4d; font-size: 1.4rem; margin: 0; text-shadow: 2px 2px 4px #000;" th:text="${dungeon.activeMonster.name}"></h2>
                 </div>
             </div>
 
-            <div style="width: 100%; height: 18px; background: #000; border: 1px solid #555; border-radius: 4px; position: relative; margin-bottom: 15px; box-shadow: inset 0 0 5px #000;">
-                <div th:style="'width:' + (${dungeon.activeMonster.currentHp} * 100 / ${dungeon.activeMonster.maxHp}) + '%; height:100%; background: linear-gradient(90deg, #820000, #ff0000); transition: width 0.4s ease-out; box-shadow: 0 0 10px rgba(255,0,0,0.4);'"></div>
-                <small style="position: absolute; width: 100%; text-align: center; top: 0; left: 0; font-size: 0.75rem; color: #fff; line-height: 18px; font-weight: bold; text-shadow: 1px 1px 2px #000;">TARGET VITALITY</small>
-            </div>
+            <div style="padding: 15px; display: flex; flex-direction: column; gap: 12px; flex: 1;">
+                <div style="width: 100%;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.8rem; font-family: monospace;">
+                        <span style="color: #ff8787;">VITALITY</span>
+                        <span style="color: #fff;" th:text="${dungeon.activeMonster.currentHp} + ' / ' + ${dungeon.activeMonster.maxHp}"></span>
+                    </div>
+                    <div style="width: 100%; height: 12px; background: #222; border-radius: 2px; border: 1px solid #444; overflow: hidden; box-shadow: inset 0 0 5px #000;">
+                        <div th:style="'width:' + (${dungeon.activeMonster.currentHp} * 100 / ${dungeon.activeMonster.maxHp}) + '%; height:100%; background: linear-gradient(90deg, #5c0000, #ff0000); transition: width 0.4s ease-out;'"></div>
+                    </div>
+                </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; border: 1px solid #333;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                    <span style="color: #888;">공격력</span>
-                    <span style="color: #ff8787; font-weight: bold;" th:text="${dungeon.activeMonster.stats.attack}"></span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 4px; border: 1px solid #333;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                        <span style="color: #888;">물리공격</span>
+                        <span style="color: #ff8787;" th:text="${dungeon.activeMonster.stats.meleeAtk}"></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                        <span style="color: #888;">마법공격</span>
+                        <span style="color: #da77f2;" th:text="${dungeon.activeMonster.stats.magicAtk}"></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                        <span style="color: #888;">물리방어</span>
+                        <span style="color: #74c0fc;" th:text="${dungeon.activeMonster.stats.physDef}"></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                        <span style="color: #888;">마법저항</span>
+                        <span style="color: #91a7ff;" th:text="${dungeon.activeMonster.stats.magRes}"></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                        <span style="color: #888;">회피율</span>
+                        <span style="color: #63e6be;" th:text="${dungeon.activeMonster.stats.dodge} + '%'"></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.75rem;">
+                        <span style="color: #888;">치명타</span>
+                        <span style="color: #ffd43b;" th:text="${dungeon.activeMonster.stats.critRate} + '%'"></span>
+                    </div>
                 </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                    <span style="color: #888;">방어력</span>
-                    <span style="color: #74c0fc; font-weight: bold;" th:text="${dungeon.activeMonster.stats.defense}"></span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                    <span style="color: #888;">민첩성</span>
-                    <span style="color: #63e6be; font-weight: bold;" th:text="${dungeon.activeMonster.stats.agility}"></span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                    <span style="color: #888;">치명타</span>
-                    <span style="color: #ffd43b; font-weight: bold;" th:text="${dungeon.activeMonster.stats.critChance} + '%'"></span>
+
+                <div style="margin-top: auto; padding-top: 10px; border-top: 1px dashed #444;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #ff9f43; font-size: 0.75rem; font-weight: bold; letter-spacing: 1px;">PLAYER ACTION</span>
+                        <div style="display: flex; gap: 4px;">
+                            <th:block th:each="i : ${#numbers.sequence(1, dungeon.playerMaxTurns)}">
+                                <div th:style="'width: 10px; height: 10px; border-radius: 50%; border: 1px solid #ff9f43; ' + (${i <= dungeon.playerRemainingTurns} ? 'background: #ff9f43; box-shadow: 0 0 5px #ff9f43;' : 'background: transparent;')"></div>
+                            </th:block>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div th:unless="${dungeon.isInBattle}" style="text-align: center; padding: 30px 10px;">
-            <div style="font-size: 2rem; margin-bottom: 10px; opacity: 0.5;">🌑</div>
-            <p style="margin: 0; color: #888; font-size: 0.95rem;">어둠 속에서 적을 수색하고 있습니다...</p>
+        <div th:unless="${dungeon.isInBattle}" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px;">
+            <div class="search-pulse" style="width: 80px; height: 80px; border: 2px solid #333; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; color: #444; font-size: 2rem;">
+                <i class="fas fa-eye-slash"></i>
+            </div>
+            <p style="margin: 0; color: #666; font-size: 0.95rem; font-style: italic; letter-spacing: 0.5px;">수색 중... 적의 기운을 감지하고 있습니다.</p>
         </div>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        <div style="background: #111; padding: 10px; border: 1px solid #333; border-radius: 6px; text-align: center; border-bottom: 2px solid #a335ee;">
-            <div style="font-size: 0.7rem; color: #888; margin-bottom: 4px; text-transform: uppercase;">Pending Exp</div>
+        <div style="background: #111; padding: 10px; border: 1px solid #333; border-radius: 6px; text-align: center; position: relative;">
+            <div style="font-size: 0.65rem; color: #888; margin-bottom: 4px;">REWARD EXP</div>
             <div style="color: #d6aaff; font-weight: bold; font-size: 1.1rem;" th:text="'+ ' + ${dungeon.pendingExp}"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #a335ee;"></div>
         </div>
-        <div style="background: #111; padding: 10px; border: 1px solid #333; border-radius: 6px; text-align: center; border-bottom: 2px solid #ffd700;">
-            <div style="font-size: 0.7rem; color: #888; margin-bottom: 4px; text-transform: uppercase;">Pending Gold</div>
+        <div style="background: #111; padding: 10px; border: 1px solid #333; border-radius: 6px; text-align: center; position: relative;">
+            <div style="font-size: 0.65rem; color: #888; margin-bottom: 4px;">REWARD GOLD</div>
             <div style="color: #ffd700; font-weight: bold; font-size: 1.1rem;" th:text="'+ ' + ${dungeon.pendingGold}"></div>
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #ffd700;"></div>
         </div>
     </div>
 </div>

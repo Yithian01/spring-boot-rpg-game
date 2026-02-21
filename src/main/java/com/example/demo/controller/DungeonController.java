@@ -43,6 +43,22 @@ public class DungeonController {
         return "redirect:/game/play";
     }
 
+    /**
+     * [던전] 던전에서 조사 버튼 클릭 시
+     */
+    @PostMapping("/explore")
+    public String exploreDungeon(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        dungeonService.explore();
+        return "redirect:/game/play";
+    }
+
 //    /**
 //     * [스킬 사용] 던전 액션 패널에서 스킬 클릭 시
 //     */

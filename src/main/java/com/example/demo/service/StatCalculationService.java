@@ -410,4 +410,29 @@ public class StatCalculationService {
         double safety = 60.0 + (getStat(baseStats, 23) * 1.5) + (getStat(baseStats, 24) * 1.5);
         return Math.min(safety, 95.0);
     }
+
+    /**
+     * [던전 전용] 전투 시 유저가 사용할 수 있는 행동 횟수(턴) 계산
+     * 24: 비복근(기동성), 22: 순발력(반응), 16: 통찰(예측)
+     */
+    public int calculateCombatTurns(UserStatus user) {
+        Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
+
+        // 1. 기본 행동 횟수 (예: 기본 2회)
+        int baseTurns = 2;
+
+        // 2. 민첩성 점수 계산 (21: 비복근, 22: 순발력)
+        double agilityScore = (getStat(stats, 21) * 0.4) + (getStat(stats, 22) * 0.6);
+
+        // 3. 통찰 보너스 (16: 통찰 - 적의 움직임을 읽어 선제권 확보)
+        double insightBonus = getStat(stats, 16) * 0.2;
+
+        // 4. 최종 계산: 15점당 1턴 추가 (최대 5턴 제한)
+        int bonusTurns = (int) ((agilityScore + insightBonus) / 15);
+
+        int finalTurns = baseTurns + bonusTurns;
+
+        // 게임 밸런스를 위해 최소 2턴, 최대 5턴으로 제한
+        return Math.max(2, Math.min(finalTurns, 5));
+    }
 }

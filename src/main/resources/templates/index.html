@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG Game</title>
+    <style>
+        body { background-color: #222; color: #eee; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
+        .container { width: 800px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        /* 박스 스타일 */
+        .box { background-color: #333; border: 2px solid #555; padding: 15px; border-radius: 8px; display: flex; flex-direction: column;}
+        .box h2 { border-bottom: 1px solid #777; padding-bottom: 10px; margin-top: 0; color: #ffa500; }
+
+        /* [NEW] 인터랙티브 텍스트 (설명 가능한 텍스트 스타일) */
+        .interactive-text {
+            cursor: help; /* 물음표 커서 */
+            border-bottom: 1px dotted #777; /* 점선 밑줄 */
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+        .interactive-text:hover {
+            color: #fff; /* 마우스 올리면 하얗게 */
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* 빛나는 효과 */
+        }
+
+        /* 스탯 리스트 영역 */
+        .stat-scroll {
+            height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* 스크롤바 커스텀 */
+        .stat-scroll::-webkit-scrollbar { width: 8px; }
+        .stat-scroll::-webkit-scrollbar-track { background: #2a2a2a; border-radius: 4px; }
+        .stat-scroll::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+        .stat-scroll::-webkit-scrollbar-thumb:hover { background: #777; }
+
+        /* 스탯 한 줄 */
+        .stat-row {
+            display: flex; justify-content: space-between;
+            border-bottom: 1px solid #444; padding: 8px 5px;
+            font-size: 0.9em; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .stat-row:hover {
+            background-color: #444;
+        }
+
+        .stat-name { color: #ccc; }
+        .stat-val { font-weight: bold; color: #fff; }
+
+        /* 등급 컬러 */
+        .grade-S { color: gold; font-weight: bold; }
+        .grade-A { color: #d8b4fe; }
+        .grade-B { color: #87ceeb; }
+        .grade-C { color: #90ee90; }
+        .grade-F { color: #888; }
+
+        /* 설명창 스타일 */
+        .description-box {
+            background-color: #222;
+            border: 1px solid #666;
+            border-radius: 5px;
+            padding: 10px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #aaa;
+            font-style: italic;
+            font-size: 0.9em;
+            box-shadow: inset 0 0 10px #000;
+        }
+        .desc-highlight {
+            color: #ffd700;
+            font-style: normal;
+        }
+
+        /* 아이템 등 기타 스타일 */
+        .item-list { list-style: none; padding: 0; }
+        .item-row { background: #444; margin-bottom: 5px; padding: 8px; border-radius: 4px; }
+        .adventure-zone { grid-column: span 2; text-align: center; margin-top: 20px; }
+        .btn-adventure {
+            background-color: #8b0000; color: white; border: none;
+            padding: 15px 40px; font-size: 1.5em; font-weight: bold;
+            cursor: pointer; border-radius: 10px; box-shadow: 0 4px #500;
+        }
+        .btn-adventure:active { box-shadow: 0 0 #500; transform: translateY(4px); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="box">
+        <h2 th:text="${gameInfo.userName} + '의 상태'">유저 정보</h2>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <div>
+                <p style="margin: 5px 0; color: #98fb98; font-size: 0.9em;">
+                    종족:
+                    <span class="interactive-text"
+                          th:text="${gameInfo.tribe.name}"
+                          th:data-name="${gameInfo.tribe.name}"
+                          th:data-desc="${gameInfo.tribe.description}"
+                          onmouseover="showDescription(this)">
+                        인간
+                    </span>
+                </p>
+
+                <p style="margin: 5px 0; color: #add8e6; font-size: 0.9em;">
+                    종교:
+                    <span class="interactive-text"
+                          th:text="${gameInfo.religion.name}"
+                          th:data-name="${gameInfo.religion.name}"
+                          th:data-desc="${gameInfo.religion.description}"
+                          onmouseover="showDescription(this)">
+                        무교
+                    </span>
+                </p>
+            </div>
+
+            <div style="text-align: right;">
+                <p style="margin: 5px 0; color: #ff6b6b; font-weight: bold; font-size: 1.1em;">
+                    HP: <span th:text="${gameInfo.currentHp}">100</span> / <span th:text="${gameInfo.maxHp}">100</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="stat-scroll">
+            <div th:each="stat : ${gameInfo.stats}"
+                 class="stat-row"
+                 th:data-desc="${stat.description}"
+                 th:data-name="${stat.name}"
+                 onmouseover="showDescription(this)">
+
+                <span class="stat-name" th:text="${stat.name}">힘</span>
+
+                <div style="display: flex; gap: 10px;">
+                    <span th:class="'grade-' + ${stat.growthGrade}"
+                          th:text="'[' + ${stat.growthGrade} + ']'">[S]</span>
+                    <span class="stat-val" th:text="${stat.value}">15</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="desc-display" class="description-box">
+            항목(종족, 종교, 스탯)에 마우스를 올려보세요.
+        </div>
+    </div>
+
+    <div class="box">
+        <h2>보유 아이템</h2>
+        <ul class="item-list">
+            <li th:if="${#lists.isEmpty(gameInfo.items)}" style="color: #777; text-align: center; margin-top: 20px;">
+                보유한 아이템이 없습니다.
+            </li>
+
+            <li th:each="itemId : ${gameInfo.items}" class="item-row">
+                <span th:text="'아이템 ID: ' + ${itemId}">아이템 1001</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="adventure-zone">
+        <form action="/adventure" method="post">
+            <button type="submit" class="btn-adventure">⚔️ 모험 떠나기 ⚔️</button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    function showDescription(element) {
+        // 1. HTML 태그에 숨겨둔 데이터(data-desc, data-name)를 가져옴
+        const description = element.getAttribute('data-desc');
+        const name = element.getAttribute('data-name');
+
+        // 2. 설명창 박스 찾기
+        const displayBox = document.getElementById('desc-display');
+
+        // 3. 내용 바꿔치기
+        // 값이 없으면 기본 메시지 출력
+        if (!description || description === 'null') {
+            displayBox.innerHTML = `설명 데이터가 없습니다.`;
+            return;
+        }
+
+        displayBox.innerHTML = `
+            <div>
+                <strong style="color: white; display:block; margin-bottom:3px;">${name}</strong>
+                <span class="desc-highlight">${description}</span>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>

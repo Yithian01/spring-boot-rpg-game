@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "name": "무교",
+    "description": "아무 것도 믿지 않는 상태입니다."
+  },
+  {
+    "id": 2,
+    "name": "여명과 질서의 교단 (Order of the Dawn)",
+    "description": "가장 대중적인 빛의 종교입니다. 태양신을 섬기며 치유와 언데드 정화를 교리로 삼습니다."
+  },
+  {
+    "id": 3,
+    "name": "적혈의 결사 (Crimson Covenant)",
+    "description": "피를 생명의 근원으로 숭배합니다. 자신의 피를 바쳐 힘을 얻거나 타인의 피를 갈구하는 흡혈귀 숭배 집단입니다."
+  },
+  {
+    "id": 4,
+    "name": "눈먼 선지자의 추종자 (Followers of the Blind Prophet)",
+    "description": "미래를 본다는 맹인 선지자를 맹목적으로 따릅니다. 운명론을 믿으며 예언 실현을 위해 수단과 방법을 가리지 않습니다."
+  },
+  {
+    "id": 5,
+    "name": "강철 톱니바퀴의 회합 (Assembly of the Iron Cog)",
+    "description": "기계와 기술을 신성시하는 집단입니다. 육체를 나약하다고 여겨 기계 부품으로 교체하는 것을 구원으로 여깁니다."
+  },
+  {
+    "id": 6,
+    "name": "공허의 목소리 (Voice of the Void)",
+    "description": "세상의 멸망과 무(Nothingness)를 바라는 허무주의자들입니다. 차원 밖의 존재(엔티티)와 소통하려 합니다."
+  },
+  {
+    "id": 7,
+    "name": "세계수 수호단 (Guardians of the World Tree)",
+    "description": "자연의 균형을 중시하는 드루이드 연합입니다. 문명을 혐오하며 숲을 파괴하는 자들을 무자비하게 처단합니다."
+  },
+  {
+    "id": 8,
+    "name": "검은 성물함의 사제 (Priests of the Black Reliquary)",
+    "description": "죽음을 끝이 아닌 새로운 시작으로 봅니다. 시체를 되살리는 강령술을 신성한 의식으로 행합니다."
+  },
+  {
+    "id": 9,
+    "name": "고통의 자매회 (Sisters of Agony)",
+    "description": "고통만이 정신을 맑게 한다고 믿는 고행자들입니다. 스스로에게 채찍질을 하거나 적에게 끔찍한 고문을 가합니다."
+  },
+  {
+    "id": 10,
+    "name": "황금 천칭 상인 조합 (Merchant's Guild of the Gilded Scale)",
+    "description": "부를 신으로 모시는 배금주의자들입니다. 공정한 거래보다는 이득을 취하는 것이 신의 뜻이라 믿습니다."
+  },
+  {
+    "id": 11,
+    "name": "은빛 달의 그림자 (Shadows of the Silver Moon)",
+    "description": "암살과 은신을 예술로 승화시킨 집단입니다. 밤의 여신을 섬기며 의뢰받은 살인을 신성한 제물로 바칩니다."
+  },
+  {
+    "id": 12,
+    "name": "폭풍의 약탈자 (Storm Reavers)",
+    "description": "바다와 폭풍을 숭배하는 해적 신앙입니다. 익사한 자는 바다의 신 품으로 돌아간다고 믿으며 약탈을 일삼습니다."
+  },
+  {
+    "id": 13,
+    "name": "지혜의 도서관 사서 (Librarians of the Arcane Truth)",
+    "description": "지식을 유일한 진리로 여깁니다. 마법의 비밀을 파헤치기 위해 금지된 서적이나 위험한 실험도 마다하지 않습니다."
+  },
+  {
+    "id": 14,
+    "name": "부패의 어머니 교단 (Cult of the Rotting Mother)",
+    "description": "질병과 곰팡이를 생명의 순환으로 봅니다. 역병을 퍼뜨려 세상을 정화(?)하고 다시 태어나게 하려 합니다."
+  },
+  {
+    "id": 15,
+    "name": "영원한 불꽃의 기사단 (Knights of the Eternal Flame)",
+    "description": "모든 부정을 불태워 없애야 한다고 믿는 광신적인 기사단입니다. 이단 심문과 화형을 주도합니다."
+  },
+  {
+    "id": 16,
+    "name": "태초의 뱀 (The Primordial Serpent)",
+    "description": "세상이 거대한 뱀의 꿈이라고 믿는 비밀 결사입니다. 쾌락과 타락을 추구하며 사회 뒤편에서 암약합니다."
+  },
+  {
+    "id": 17,
+    "name": "침묵의 수도회 (Order of Silence)",
+    "description": "말을 하지 않는 것을 서약으로 삼는 수도승들입니다. 텔레파시와 정신 수양을 통해 초월적인 경지를 추구합니다."
+  },
+  {
+    "id": 18,
+    "name": "야수의 송곳니 부족 (Tribe of the Feral Fang)",
+    "description": "가장 강한 자가 지배한다는 약육강식의 법칙을 따릅니다. 문명보다는 야생의 본능을 숭배하는 토템 신앙입니다."
+  },
+  {
+    "id": 19,
+    "name": "시간의 감시자 (Watchers of Time)",
+    "description": "역사가 정해진 대로 흘러가야 한다고 믿습니다. 시간 여행이나 역사를 바꾸려는 시도를 막는 중립적인 집단입니다."
+  },
+  {
+    "id": 20,
+    "name": "심해의 부름 (Call of the Deep)",
+    "description": "바다 깊은 곳의 고대 괴수(크툴루 등)를 섬깁니다. 인간을 제물로 바쳐 심해인의 형상으로 변이되기를 원합니다."
+  },
+  {
+    "id": 21,
+    "name": "이름 없는 자들의 연대 (Band of the Nameless)",
+    "description": "신을 부정하고 오로지 인간의 의지만을 믿는 무신론자 혁명군입니다. 신의 개입을 거부하며 종교 시설을 파괴합니다."
+  }
+]

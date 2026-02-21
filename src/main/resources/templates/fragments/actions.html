@@ -1,0 +1,53 @@
+<div th:fragment="actionPanel(gameData)" class="action-panel">
+    <form action="/town/tax" method="post" style="display:contents;"><button class="action-btn btn-tax"><span>📜</span>세금 납부</button></form>
+    <form action="/town/work" method="post" style="display:contents;"><button class="action-btn btn-work"><span>⛏️</span>노동 하기</button></form>
+    <button type="button" class="action-btn btn-gamble" onclick="openGamble()"><span>🎲</span>도박장</button>
+
+    <button type="button" class="action-btn btn-train" onclick="openTrain()"><span>🧘</span>수련 하기</button>
+    <form action="/town/rest" method="post" style="display:contents;"><button class="action-btn btn-rest"><span>🛌</span>휴식 하기</button></form>
+    <form action="/dungeon/enter" method="post" style="display:contents;"><button class="action-btn btn-dungeon"><span>⚔️</span>던전 입장</button></form>
+
+    <form action="/inventory/gamble-item" method="post" style="display:contents;"
+          th:onsubmit="|return confirm('${gameData.boxPrice}골드를 지불하고 비밀 상자를 여시겠습니까?')|">
+
+        <button class="action-btn btn-shop">
+            <span>🎁</span>비밀 상자
+            <div style="font-size: 0.7rem; color: #ffd700; margin-top: 2px;">
+                <span th:text="${gameData.boxPrice} + 'G'"></span>
+                <small th:if="${gameData.boxDiscount > 0}"
+                       th:text="'(-' + ${gameData.boxDiscount} + '%)'"
+                       style="color: #ff4444;"></small>
+            </div>
+        </button>
+    </form>
+    <button type="button" class="action-btn btn-empty"></button>
+    <button type="button" class="action-btn btn-empty"></button>
+</div>
+
+<div th:fragment="dungeonActionPanel(gameData)" class="action-panel">
+    <form action="/dungeon/explore" method="post" style="display:contents;">
+        <button type="submit" class="action-btn btn-work">
+            <span>🔍</span>탐색하기
+        </button>
+    </form>
+
+    <form action="/dungeon/rest" method="post" style="display:contents;">
+        <button type="submit" class="action-btn btn-rest">
+            <span>🛌</span>쉬기
+        </button>
+    </form>
+
+    <form action="/dungeon/exit" method="post" style="display:contents;"
+          onsubmit="return confirm('던전에서 나가시겠습니까? 획득한 보상을 가지고 마을로 돌아갑니다.')">
+        <button type="submit" class="action-btn btn-tax">
+            <span>🏃</span>돌아가기
+        </button>
+    </form>
+
+    <button type="button" class="action-btn btn-empty"></button>
+    <button type="button" class="action-btn btn-empty"></button>
+    <button type="button" class="action-btn btn-empty"></button>
+    <button type="button" class="action-btn btn-empty"></button>
+    <button type="button" class="action-btn btn-empty"></button>
+    <button type="button" class="action-btn btn-empty"></button>
+</div>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG Game - Title</title>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at center, #2a2a2a, #111);
+            color: #eee;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title-container {
+            text-align: center;
+        }
+
+        .game-title {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 50px;
+            letter-spacing: 4px;
+            color: #ffa500;
+            text-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+        }
+
+        .menu-btn {
+            width: 240px;
+            padding: 15px 0;
+            margin: 15px 0;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            background-color: #444;
+            color: #eee;
+            box-shadow: 0 4px #222;
+            transition: all 0.2s;
+        }
+
+        .menu-btn:hover {
+            background-color: #666;
+            transform: translateY(-2px);
+        }
+
+        .menu-btn:active {
+            box-shadow: 0 0 #222;
+            transform: translateY(4px);
+        }
+
+        .btn-new {
+            background-color: #8b0000;
+            box-shadow: 0 4px #500;
+        }
+
+        .btn-new:hover {
+            background-color: #b22222;
+        }
+
+        .btn-continue {
+            background-color: #2f4f4f;
+            box-shadow: 0 4px #1c3333;
+        }
+
+        .btn-continue:disabled {
+            background-color: #333;
+            color: #777;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="title-container">
+    <div class="game-title">
+        RPG GAME
+    </div>
+
+    <form action="/game/character-select" method="get">
+        <button type="submit" class="menu-btn btn-new">
+            새 게임
+        </button>
+    </form>
+
+    <form action="/game/play" method="get">
+        <button type="submit"
+                class="menu-btn btn-continue"
+                th:disabled="${!canContinue}">
+            이어하기
+        </button>
+    </form>
+</div>
+
+</body>
+</html>

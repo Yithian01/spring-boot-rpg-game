@@ -1,0 +1,55 @@
+<div th:fragment="statusPanel(game)" class="box">
+    <div class="profile-header">
+        <img th:src="@{'/tribe_' + ${game.img} + '.png'}" class="profile-img" onerror="this.style.display='none'">
+        <div class="profile-info-text">
+            <div class="profile-name-row">
+                <span style="color:#fff;" th:text="${game.userName}">User</span>
+                <span style="color:#ffd700;" th:text="${game.currentGold} + ' G'"></span>
+            </div>
+            <div class="profile-sub-row">
+                <span>종족: <b th:text="${game.tribe.name}"></b></span>
+                <span>|</span>
+                <span>종교: <b th:text="${game.religion.name}"></b></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bars">
+        <div class="bar-row">
+            <div class="bar-label" style="color:#ff6b6b">HP</div>
+            <div class="bar-container">
+                <div class="bar-fill hp-fill" th:style="'width:' + (${game.currentHp} * 100.0 / ${game.maxHp}) + '%; background-color: #ff6b6b;'"></div>
+            </div>
+            <div class="bar-text" th:text="${game.currentHp} + '/' + ${game.maxHp}"></div>
+        </div>
+
+        <div class="bar-row">
+            <div class="bar-label" style="color:#4dabf7">MP</div>
+            <div class="bar-container">
+                <div class="bar-fill mp-fill" th:style="'width:' + (${game.currentMp} * 100.0 / ${game.maxMp}) + '%; background-color: #4dabf7;'"></div>
+            </div>
+            <div class="bar-text" th:text="${game.currentMp} + '/' + ${game.maxMp}"></div>
+        </div>
+
+        <div class="bar-row">
+            <div class="bar-label" style="color:#51cf66">STA</div>
+            <div class="bar-container">
+                <div class="bar-fill stamina-fill" th:style="'width:' + (${game.currentStamina} * 100.0 / ${game.maxStamina}) + '%; background-color: #51cf66;'"></div>
+            </div>
+            <div class="bar-text" th:text="${game.currentStamina} + '/' + ${game.maxStamina}"></div>
+        </div>
+    </div>
+
+    <div class="stat-scroll">
+        <div th:each="stat : ${game.stats}" class="stat-row"
+             th:data-name="${stat.name}" th:data-desc="${stat.description}"
+             onmouseover="showDescription(this)" onmouseout="clearDescription()">
+            <span style="color:#ddd;" th:text="${stat.name}"></span>
+            <div style="display:flex; gap:8px;">
+                <span th:class="'grade-' + ${stat.growthGrade}" th:text="'[' + ${stat.growthGrade} + ']'"></span>
+                <span style="font-weight:bold; width:25px; text-align:right;" th:text="${stat.value}"></span>
+            </div>
+        </div>
+    </div>
+    <div id="desc-display" class="description-box">스탯에 마우스를 올리면 상세 정보가 표시됩니다.</div>
+</div>

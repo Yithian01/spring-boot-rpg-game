@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>캐릭터 선택</title>
+
+  <style>
+    body {
+      margin: 0;
+      background-color: #0f0f0f;
+      color: #e0e0e0;
+      font-family: "Pretendard", Arial, sans-serif;
+    }
+
+    .page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .panel {
+      width: 900px;
+      height: 600px;
+      display: flex;
+      border: 2px solid #333;
+      background-color: #151515;
+    }
+
+    /* ===== 캐릭터 리스트 ===== */
+    .character-list {
+      width: 35%;
+      border-right: 1px solid #333;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .character-list h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .character-item {
+      padding: 12px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      border: 1px solid #333;
+      border-radius: 4px;
+      text-align: center;
+      transition: background 0.2s, border 0.2s;
+    }
+
+    .character-item:hover {
+      background-color: #222;
+      border-color: #777;
+    }
+
+    .character-item.active {
+      background-color: #591313;
+      border-color: #ff4d4d;
+      color: #fff;
+      box-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+      font-weight: bold;
+    }
+
+    .character-item.active:hover {
+      background-color: #6e1616;
+      border-color: #ff7878;
+    }
+
+    /* ===== 캐릭터 정보 ===== */
+    .character-info {
+      width: 65%;
+      padding: 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .character-info img {
+      width: 240px;
+      height: auto;
+      border: 1px solid #333;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .character-info h2 {
+      margin: 10px 0;
+    }
+
+    .character-info p {
+      text-align: center;
+      line-height: 1.5;
+      color: #bbb;
+    }
+
+    /* 골드 텍스트 스타일 */
+    .gold-text {
+      color: #ffd700; /* 금색 */
+      font-weight: bold;
+      margin-top: 15px; /* 설명과 간격 */
+      font-size: 1.1em;
+      display: none; /* 초기에는 숨김 */
+    }
+
+    /* ===== 게임 시작 버튼 ===== */
+    .start-area {
+      margin-top: 25px;
+    }
+
+    .start-btn {
+      padding: 14px 40px;
+      font-size: 18px;
+      background-color: #3a3a3a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .start-btn:hover {
+      background-color: #555;
+    }
+
+    .start-btn:disabled {
+      background-color: #222;
+      color: #777;
+      cursor: not-allowed;
+    }
+
+    .character-list {
+      overflow-y: auto;
+    }
+
+    .character-list::-webkit-scrollbar { width: 10px; }
+    .character-list::-webkit-scrollbar-track { background: #151515; border-left: 1px solid #333; }
+    .character-list::-webkit-scrollbar-thumb { background-color: #444; border-radius: 10px; border: 2px solid #151515; }
+    .character-list::-webkit-scrollbar-thumb:hover { background-color: #666; }
+    .character-list { scrollbar-width: thin; scrollbar-color: #444 #151515; }
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <div class="panel">
+
+    <div class="character-list">
+      <h3>캐릭터 선택</h3>
+
+      <div th:each="char : ${characters}"
+           class="character-item"
+           th:data-id="${char.tribeId}"
+           th:data-name="${char.characterName}"
+           th:data-gold="${char.initGold}"
+           th:data-image="${char.imageUrl}"
+           th:data-desc="${char.description}"
+           onclick="selectCharacter(this)">
+        <span th:text="${char.characterName}"></span>
+      </div>
+    </div>
+
+    <div class="character-info">
+      <img id="charImage" alt="character">
+      <h2 id="charName">캐릭터를 선택하세요</h2>
+
+      <p id="charDesc">왼쪽 목록에서 플레이할 캐릭터를 선택하세요.</p>
+
+      <p id="charGoldInfo" class="gold-text">
+        💰 초기 자금: <span id="charGold">0</span> G
+      </p>
+    </div>
+
+  </div>
+
+  <div class="start-area">
+    <form action="/game/new" method="post">
+      <input type="hidden" name="tribeId" id="selectedTribeId">
+      <button id="startBtn" class="start-btn" disabled>
+        게임 시작
+      </button>
+    </form>
+  </div>
+
+</div>
+
+<script>
+  function selectCharacter(el) {
+    // 1. 활성화 클래스 처리
+    document.querySelectorAll('.character-item')
+            .forEach(e => e.classList.remove('active'));
+    el.classList.add('active');
+
+    // 2. 기본 텍스트 및 이미지 설정
+    document.getElementById('charName').innerText = el.dataset.name;
+    document.getElementById('charDesc').innerText = el.dataset.desc;
+
+    const img = document.getElementById('charImage');
+    img.src = el.dataset.image;
+    img.style.display = 'block';
+
+    // 3. 골드 정보 설정 (중요: dataset.gold 사용)
+    document.getElementById('charGold').innerText = el.dataset.gold;
+    document.getElementById('charGoldInfo').style.display = 'block'; // 숨겨진 골드 문구 표시
+
+    // 4. 폼 데이터 설정 및 버튼 활성화
+    document.getElementById('selectedTribeId').value = el.dataset.id;
+    document.getElementById('startBtn').disabled = false;
+  }
+</script>
+
+</body>
+</html>

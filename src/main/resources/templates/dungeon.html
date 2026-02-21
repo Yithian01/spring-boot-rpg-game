@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Dark Town - Dungeon</title>
+  <th:block th:replace="~{fragments/layout :: townStyle}"></th:block>
+  <th:block th:replace="~{fragments/layout :: dungeonStyle}"></th:block>
+</head>
+<body>
+
+<div th:if="${message}" class="system-message" th:text="${message}"></div>
+
+<div class="container">
+  <div th:replace="~{fragments/layout :: gameHeader}"></div>
+
+  <div class="top-panel">
+    <div class="dungeon-col-stats">
+      <div class="box">
+        <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
+      </div>
+    </div>
+
+    <div class="dungeon-col-inv">
+      <div class="box" style="display: flex; flex-direction: row; gap: 20px; background: #222; padding: 20px; height: 100%;">
+
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0;">
+
+          <div style="flex-shrink: 0;">
+            <div th:replace="~{fragments/info :: dungeonInventory(${dungeon})}"></div>
+          </div>
+
+          <div style="flex: 1; min-height: 0; display: flex; flex-direction: column;">
+            <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #ff4d4d; padding-left: 10px;">⚔️ 전투 기록</h3>
+            <div id="battleLogs" class="custom-scroll" style="flex: 1; overflow-y: auto; background: #000; border-radius: 4px; border: 1px solid #333; padding: 10px; font-size: 0.85rem; line-height: 1.6;">
+              <div th:each="log : ${dungeon.battleLogs}" th:utext="${log}" style="border-bottom: 1px solid #222; padding: 3px 0;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+          <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #555; padding-left: 10px;">🎒 소지품 가방</h3>
+          <div class="custom-scroll" style="flex: 1; background: #1a1a1a; border-radius: 4px; border: 1px solid #333; overflow: hidden;">
+            <div th:replace="~{fragments/modals :: inventoryList(${game.items})}" style="height: 100%;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="dungeon-col-equip">
+      <div class="box equipment-box">
+        <h2>장착 장비</h2>
+        <div th:replace="~{fragments/modals :: equipmentGrid(${game.equippedItems})}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div th:replace="~{fragments/actions :: dungeonActionPanel(gameData=${game})}"></div>
+</div>
+<div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  // [기존 스크립트 로직 유지]
+  function showDescription(element) {
+      const name = element.getAttribute('data-name');
+      const desc = element.getAttribute('data-desc');
+      const descDisplay = document.getElementById('desc-display');
+      if (descDisplay) {
+          descDisplay.innerHTML = `<strong>${name}</strong>: ${desc}`;
+          descDisplay.style.color = '#fff';
+      }
+  }
+
+  function clearDescription() {
+      const descDisplay = document.getElementById('desc-display');
+      if (descDisplay) {
+          descDisplay.innerHTML = '스탯이나 아이템에 마우스를 올리세요.';
+          descDisplay.style.color = '#888';
+      }
+  }
+
+  function showItemDescription(element) {
+      const name = element.getAttribute('data-name');
+      const grade = element.getAttribute('data-grade');
+      const subType = element.getAttribute('data-subtype');
+      const bonuses = element.getAttribute('data-bonuses');
+      const descDisplay = document.getElementById('desc-display');
+
+      if (descDisplay) {
+          const gradeColors = {
+              'COMMON': '#aaaaaa', 'UNCOMMON': '#1eff00', 'RARE': '#0070dd',
+              'EPIC': '#a335ee', 'LEGENDARY': '#ff8000'
+          };
+          const color = gradeColors[grade] || '#fff';
+          const subTypeKr = translateSubType(subType);
+
+          descDisplay.innerHTML = `
+              <strong style="color:${color};">[${name}]</strong>
+              <span style="color:#ffd700; font-weight:bold; margin: 0 5px;">${subTypeKr}</span>
+              <span style="font-size:0.9em; color:#bbb;">${bonuses}</span>
+          `;
+      }
+  }
+
+  function translateSubType(type) {
+      const map = {
+          'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
+          'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
+          'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
+      };
+      return map[type] || type;
+  }
+
+  window.onload = function() {
+      if ([[${gameOver ?: false}]]) {
+          document.querySelector('.container').style.pointerEvents = 'none';
+      }
+  };
+  /*]]>*/
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dark Town</title>
+    <th:block th:replace="~{fragments/layout :: townStyle}"></th:block>
+</head>
+<body>
+
+<div th:if="${message}" class="system-message" th:text="${message}"></div>
+
+<div class="container">
+    <div th:replace="~{fragments/layout :: gameHeader}"></div>
+
+    <div class="top-panel">
+        <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
+
+        <div th:replace="~{fragments/info :: townInventory(${town}, ${game.items})}"></div>
+
+        <div class="box equipment-box">
+            <h2>장착 장비</h2>
+            <div th:replace="~{fragments/modals :: equipmentGrid(${game.equippedItems})}"></div>
+        </div>
+    </div>
+
+    <div th:replace="~{fragments/actions :: actionPanel(gameData=${game})}"></div>
+</div>
+
+<div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>
+<div th:replace="~{fragments/modals :: gambleModal(${game})}"></div>
+
+<div th:replace="~{fragments/modals :: trainModal}"></div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    function showDescription(element) {
+        const name = element.getAttribute('data-name');
+        const desc = element.getAttribute('data-desc');
+        const descDisplay = document.getElementById('desc-display');
+
+        if (descDisplay) {
+            descDisplay.innerHTML = `<strong>${name}</strong>: ${desc}`;
+            descDisplay.style.color = '#fff'; // 글씨색 밝게
+        }
+    }
+
+    function clearDescription() {
+        const descDisplay = document.getElementById('desc-display');
+        if (descDisplay) {
+            descDisplay.innerHTML = '스탯에 마우스를 올리면 상세 정보가 표시됩니다.';
+            descDisplay.style.color = '#888';
+        }
+    }
+    // (기존 JS 로직 그대로 유지)
+    function openGamble() { document.getElementById('gambleModal').style.display = 'flex'; }
+    function closeGamble() { document.getElementById('gambleModal').style.display = 'none'; }
+    function setBet(amount) { document.getElementById('bettingAmount').value = Math.floor(amount); }
+
+    // 훈련 모달 관련 (아까 추가한 것)
+    function openTrain() { document.getElementById('trainModal').style.display = 'flex'; }
+    function closeTrain() { document.getElementById('trainModal').style.display = 'none'; }
+
+    window.onload = function() {
+        const isGameOver = [[${gameOver ?: false}]];
+        if (isGameOver) {
+            document.querySelector('.container').style.pointerEvents = 'none';
+        }
+
+        // 시스템 메시지가 있을 경우 3초 뒤에 삭제하는 로직
+        const msg = document.querySelector('.system-message');
+        if (msg) {
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 3000);
+        }
+    };
+
+    // 장착/해제 시 로딩 느낌을 주거나 중복 클릭 방지 (선택 사항)
+    function handleEquip() {
+        // 클릭 시 버튼 비활성화 등 추가 가능
+    }
+
+    /* JavaScript 영역에 추가 */
+    function showItemDescription(element) {
+    const name = element.getAttribute('data-name');
+    const grade = element.getAttribute('data-grade');
+    const subType = element.getAttribute('data-subtype');
+    const bonuses = element.getAttribute('data-bonuses');
+    const descDisplay = document.getElementById('desc-display');
+
+    if (descDisplay) {
+        // 등급별 색상 매핑
+        const gradeColors = {
+            'COMMON': '#aaaaaa',
+            'UNCOMMON': '#1eff00',
+            'RARE': '#0070dd',
+            'EPIC': '#a335ee',
+            'LEGENDARY': '#ff8000'
+        };
+        const color = gradeColors[grade] || '#fff';
+
+        // 1. 분류명 한글 변환 (선택 사항)
+        const subTypeKr = translateSubType(subType);
+
+        // 2. 출력 HTML 구성: [아이템이름] | 분류 | 보너스스탯
+        descDisplay.innerHTML = `
+            <strong style="color:${color};">[${name}]</strong>
+            <span style="color:#ffd700; font-weight:bold; margin: 0 5px;">${subTypeKr}</span>
+            <span style="font-size:0.9em; color:#bbb;">${bonuses}</span>
+        `;
+        }
+    }
+
+    // subType을 유저 친화적인 한글로 바꿔주는 헬퍼 함수
+    function translateSubType(type) {
+        const map = {
+            'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
+            'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
+            'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
+        };
+        return map[type] || type; // 매핑 없으면 영어 그대로 노출
+    }
+
+    /*]]>*/
+</script>
+</body>
+</html>

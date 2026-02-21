@@ -1,0 +1,86 @@
+[
+  {
+    "id": 101,
+    "name": "굶주린 동굴 쥐",
+    "tier": 8,
+    "description": "던전 입구의 쓰레기를 먹고 사는 거대 쥐입니다. 찍찍거리는 소리가 거슬립니다.",
+    "stats": {
+      "maxHp": 45,
+      "maxMp": 0,
+      "meleeAtk": 6.0,
+      "magicAtk": 0.0,
+      "physDef": 1.0,
+      "magRes": 1.0,
+      "dodge": 12.0,
+      "accuracy": 10.0,
+      "critRate": 3.0,
+      "moveSpeed": 1.2
+    },
+    "expReward": 8,
+    "goldMin": 2,
+    "goldMax": 5
+  },
+  {
+    "id": 102,
+    "name": "독을 품은 이끼 슬라임",
+    "tier": 8,
+    "description": "습한 바닥에서 자라난 슬라임입니다. 몸에 닿으면 피부가 따끔거립니다.",
+    "stats": {
+      "maxHp": 70,
+      "maxMp": 15,
+      "meleeAtk": 4.0,
+      "magicAtk": 5.0,
+      "physDef": 5.0,
+      "magRes": 10.0,
+      "dodge": 2.0,
+      "accuracy": 8.0,
+      "critRate": 1.0,
+      "moveSpeed": 0.7
+    },
+    "expReward": 12,
+    "goldMin": 4,
+    "goldMax": 7
+  },
+  {
+    "id": 103,
+    "name": "병약한 고블린",
+    "tier": 8,
+    "description": "무리에서 쫓겨나 입구 근처를 배회하는 고블린입니다. 눈이 마주치자 겁을 먹은 듯 보입니다.",
+    "stats": {
+      "maxHp": 65,
+      "maxMp": 5,
+      "meleeAtk": 9.0,
+      "magicAtk": 0.0,
+      "physDef": 3.0,
+      "magRes": 2.0,
+      "dodge": 6.0,
+      "accuracy": 9.0,
+      "critRate": 4.0,
+      "moveSpeed": 1.0
+    },
+    "expReward": 15,
+    "goldMin": 6,
+    "goldMax": 12
+  },
+  {
+    "id": 104,
+    "name": "떠돌이 해골 병사",
+    "tier": 7,
+    "description": "오래전 죽은 모험가의 유골이 마기에 의해 일어났습니다. 1층치고는 꽤 위협적인 칼날을 휘두릅니다.",
+    "stats": {
+      "maxHp": 110,
+      "maxMp": 0,
+      "meleeAtk": 16.0,
+      "magicAtk": 0.0,
+      "physDef": 10.0,
+      "magRes": 5.0,
+      "dodge": 3.0,
+      "accuracy": 12.0,
+      "critRate": 7.0,
+      "moveSpeed": 0.8
+    },
+    "expReward": 30,
+    "goldMin": 15,
+    "goldMax": 25
+  }
+]

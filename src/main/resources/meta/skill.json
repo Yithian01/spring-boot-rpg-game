@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "도망가기",
-    "icon": "/images/skills/escape.png",
+    "icon": "1.png",
     "description": "전투에서 이탈합니다. 성공 시 즉시 전투가 종료되지만 실패 시 턴만 낭비합니다.",
     "type": "UTILITY",
     "turnCost": 1,
@@ -13,9 +13,9 @@
   },
   {
     "id": 2,
-    "name": "배쉬 (Bash)",
-    "icon": "/images/skills/bash.png",
-    "description": "강하게 때려눕혀 피해를 주고 낮은 확률로 기절시킵니다. 묵직한 공격이라 준비 시간이 필요합니다.",
+    "name": "배쉬",
+    "icon": "2.png",
+    "description": "강하게 때려눕혀 피해를 주고 낮은 확률로 기절시킵니다.",
     "type": "PHYSICAL",
     "turnCost": 1,
     "cost": { "stamina": 10, "mp": 0 },
@@ -24,10 +24,10 @@
     "requiredWeapon": "BLUNT"
   },
   {
-    "id": 4,
-    "name": "베기 (Slash)",
-    "icon": "/images/skills/slash.png",
-    "description": "날카로운 날로 적을 빠르게 베어 넘깁니다. 연속해서 사용하기 좋습니다.",
+    "id": 3,
+    "name": "베기",
+    "icon": "3.png",
+    "description": "날카로운 날로 적을 빠르게 베어 넘깁니다.",
     "type": "PHYSICAL",
     "turnCost": 1,
     "cost": { "stamina": 8, "mp": 0 },
@@ -36,10 +36,22 @@
     "requiredWeapon": "SWORD"
   },
   {
-    "id": 7,
-    "name": "암습 (Assassinate)",
-    "icon": "/images/skills/assassinate.png",
-    "description": "적의 허점을 찔러 치명적인 피해를 입힙니다. 매우 신중한 접근이 필요합니다.",
+    "id": 4,
+    "name": "찌르기",
+    "icon": "4.png",
+    "description": "날카로운 날로 적을 찌릅니다.",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "cost": { "stamina": 8, "mp": 0 },
+    "scaling": { "10": 1.8, "15": 1.2 },
+    "effect": { "type": "DAMAGE", "status": "BLEED", "chance": 10 },
+    "requiredWeapon": "SWORD"
+  },
+  {
+    "id": 5,
+    "name": "암습",
+    "icon": "5.png",
+    "description": "적의 허점을 찔러 치명적인 피해를 입힙니다.",
     "type": "PHYSICAL",
     "turnCost": 2,
     "cost": { "stamina": 12, "mp": 0 },
@@ -48,10 +60,10 @@
     "requiredWeapon": "DAGGER"
   },
   {
-    "id": 9,
-    "name": "정밀 사격 (Aimed Shot)",
-    "icon": "/images/skills/bow_shot.png",
-    "description": "멀리서 적의 급소를 정밀하게 조준합니다. 조준하는 데 시간이 소요됩니다.",
+    "id": 6,
+    "name": "정밀 사격",
+    "icon": "6.png",
+    "description": "적의 급소를 정밀하게 조준합니다.",
     "type": "PHYSICAL",
     "turnCost": 2,
     "cost": { "stamina": 15, "mp": 0 },

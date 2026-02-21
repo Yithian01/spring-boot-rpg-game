@@ -23,6 +23,8 @@ public class DungeonPageDto {
     private boolean isInBattle;
     private DungeonStatus.ActiveMonster activeMonster;
 
+    private List<SkillCardDto> skillCards;
+
     private int playerRemainingTurns;
     private int playerMaxTurns;
 

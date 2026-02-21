@@ -24,6 +24,7 @@ public class GameService {
     private final DungeonFileRepository dungeonFileRepository;
     private final GameRepository gameRepository;
     private final StatCalculationService statCalculationService;
+    private final BattleService battleService;
 
     /**
      * 이어하던 게임 존재하는 지 확인
@@ -459,12 +460,14 @@ public class GameService {
     public DungeonPageDto getDungeonData() {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
         UserStatus user = userFileRepository.findGameUser();
+        if (ds == null || user == null) return null;
 
         Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
 
-        int calculatedMaxTurns = statCalculationService.calculateCombatTurns(user);
+        // 1. 전투/비전투 공통으로 현재 사용 가능한 스킬 리스트(패)를 가져옴
+        List<SkillCardDto> skillCards = battleService.getSkillHand(user, ds);
 
-        if (ds == null) return null;
+        int calculatedMaxTurns = statCalculationService.calculateCombatTurns(user);
 
         return DungeonPageDto.builder()
                 .currentFloor(ds.getCurrentFloor())
@@ -474,6 +477,7 @@ public class GameService {
                 .restSafetyRate(statCalculationService.calculateRestSafetyRate(stats))
                 .isInBattle(ds.isInBattle())
                 .activeMonster(ds.getActiveMonster())
+                .skillCards(skillCards)
                 .playerRemainingTurns(ds.getPlayerRemainingTurns())
                 .playerMaxTurns(ds.getPlayerMaxTurns() > 0 ? ds.getPlayerMaxTurns() : calculatedMaxTurns)
                 .battleLogs(ds.getBattleLogs())
@@ -481,5 +485,4 @@ public class GameService {
                 .pendingGold(ds.getPendingGold())
                 .build();
     }
-
 }

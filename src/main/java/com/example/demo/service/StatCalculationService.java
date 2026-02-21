@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.meta.ItemMeta;
+import com.example.demo.domain.meta.SkillMeta;
+import com.example.demo.domain.save.DungeonStatus;
 import com.example.demo.domain.save.UserStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -434,5 +436,51 @@ public class StatCalculationService {
 
         // 게임 밸런스를 위해 최소 2턴, 최대 5턴으로 제한
         return Math.max(2, Math.min(finalTurns, 5));
+    }
+
+    /**
+     * 현재 유저 상태와 던전 상태를 기반으로 스킬 사용 가능 여부를 판단합니다. (HP 소모 추가)
+     */
+    public boolean checkSkillAvailability(UserStatus user, DungeonStatus ds, SkillMeta skill) {
+        // 1. AP(턴) 체크
+        if (ds.getPlayerRemainingTurns() < skill.getTurnCost()) return false;
+
+        // 2. 스테미나 체크
+        if (user.getCurrentStamina() < skill.getCost().getOrDefault("stamina", 0)) return false;
+
+        // 3. 마나 체크
+        if (user.getCurrentMp() < skill.getCost().getOrDefault("mp", 0)) return false;
+
+        // 4. HP 체크 (HP 소모 스킬이 있을 경우)
+        // 현재 HP가 소모량보다 적거나 같으면 시전 불가 (시전 후 최소 1은 남아야 함)
+        int hpCost = skill.getCost().getOrDefault("hp", 0);
+        if (hpCost > 0 && user.getCurrentHp() <= hpCost) return false;
+
+        return true;
+    }
+    /**
+     * 스킬의 스케일링 맵을 기반으로 최종 위력을 계산합니다.
+     * 예: {"10": 2.5} -> 10번 스탯(공격력)의 2.5배
+     */
+    public int calculateSkillDamage(UserStatus user, SkillMeta skill) {
+        double totalDamage = 0;
+
+        // 유저의 최종 스탯 가져오기 (아이템/버프 포함)
+        Map<Integer, Integer> currentStats = (user.getFinalStats() != null)
+                ? user.getFinalStats()
+                : user.getBaseStats();
+
+        // Scaling 계산 로직
+        if (skill.getScaling() != null) {
+            for (Map.Entry<Integer, Double> entry : skill.getScaling().entrySet()) {
+                int statId = entry.getKey();
+                double multiplier = entry.getValue();
+
+                int statValue = currentStats.getOrDefault(statId, 0);
+                totalDamage += (statValue * multiplier);
+            }
+        }
+
+        return (int) Math.round(totalDamage);
     }
 }

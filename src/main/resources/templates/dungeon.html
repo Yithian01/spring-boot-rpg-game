@@ -113,6 +113,14 @@
       return map[type] || type;
   }
 
+  function castSkill(skillId) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/dungeon/skill/' + skillId;
+    document.body.appendChild(form);
+    form.submit();
+  }
+
   window.onload = function() {
       if ([[${gameOver ?: false}]]) {
           document.querySelector('.container').style.pointerEvents = 'none';

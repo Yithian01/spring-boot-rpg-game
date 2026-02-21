@@ -24,51 +24,95 @@
     <button type="button" class="action-btn btn-empty"></button>
 </div>
 
-<div th:fragment="dungeonActionPanel(gameData, dungeon)" class="action-panel">
-    <form action="/dungeon/explore" method="post" style="display:block; width:100%; height:100%;">
-        <button type="submit" class="action-btn btn-work">
-            <span>🔍</span>
-            <div class="btn-text-row">
-                <span>탐색하기</span>
-                <span class="stat-badge-small" style="color: #00ff00;"
-                      th:text="${'+' + dungeon.explorationEfficiency + '%'}"></span>
-            </div>
-        </button>
-    </form>
+<div th:fragment="dungeonActionPanel(gameData, dungeon)" class="action-panel"
+     th:style="${dungeon.isInBattle} ? 'height: auto; min-height: 180px; background: rgba(20,0,0,0.9); border-top: 2px solid #800;' : ''">
 
-    <form action="/dungeon/rest" method="post" style="display:block; width:100%; height:100%;">
-        <button type="submit" class="action-btn btn-rest">
-            <span>🛌</span>
-            <div class="btn-text-row">
-                <span>쉬기</span>
-                <span class="stat-badge-small" style="color: #ffd700;"
-                      th:text="${dungeon.restSafetyRate + '%'}"></span>
-            </div>
-        </button>
-    </form>
+    <th:block th:if="${dungeon.isInBattle}">
+        <div class="skill-hand-container"
+             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; width: 100%; padding: 10px;">
 
-    <th:block th:if="${dungeon?.progress >= 100}">
-        <form action="/dungeon/next-floor" method="post" style="display:block; width:100%; height:100%;">
-            <button type="submit" class="action-btn btn-dungeon">
-                <span>🐲</span>
-                <span>다음 층으로</span>
-            </button>
-        </form>
+            <div th:each="skill : ${dungeon.skillCards}"
+                 class="skill-card-unit"
+                 th:style="${skill.canAct ? '' : 'opacity:0.4; filter:grayscale(1); cursor:not-allowed;'}"
+                 th:onclick="${skill.canAct} ? 'castSkill(' + ${skill.id} + ')' : ''">
+
+                <div class="action-btn"
+                     th:style="'background: linear-gradient(180deg, #2c3e50, #000); border: 1px solid ' + (${skill.canAct} ? '#ff4d4d' : '#444') + '; height: 85px; padding: 5px; position:relative;'">
+
+                    <div style="position:absolute; top:4px; right:6px; color:#ff9f43; font-size:0.7rem; font-weight:bold;">
+                        [[${skill.turnCost}]] AP
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 10px; width: 100%; padding: 0 5px;">
+                        <img th:src="@{/images/skills/{iconName}(iconName=${skill.icon})}"
+                             style="width:35px; height:35px; border:1px solid #555; border-radius:4px; background:#000;">
+                        <div style="text-align: left; overflow: hidden;">
+                            <div style="color:#fff; font-size:0.9rem; font-weight:bold; white-space:nowrap; text-overflow:ellipsis;">[[${skill.name}]]</div>
+                            <div style="display:flex; gap:5px; margin-top:2px;">
+                                <span th:if="${skill.staminaCost > 0}" style="color:#51cf66; font-size:0.65rem;">ST [[${skill.staminaCost}]]</span>
+                                <span th:if="${skill.mpCost > 0}" style="color:#4dabf7; font-size:0.65rem;">MP [[${skill.mpCost}]]</span>
+                                <span th:if="${skill.hpCost > 0}" style="color:#ff4d4d; font-size:0.65rem;">HP [[${skill.hpCost}]]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="color:#999; font-size:0.7rem; margin-top:4px; width:100%; text-align:left; padding-left:5px;
+                                white-space:nowrap; overflow:hidden; text-overflow:ellipsis; border-top:1px solid #333; padding-top:2px;">
+                        [[${skill.description}]]
+                    </div>
+
+                    <div th:if="${!skill.canAct}"
+                         style="position:absolute; bottom:2px; right:6px; color:#ff4d4d; font-size:0.6rem; font-weight:bold;">
+                        [[${skill.message}]]
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${#lists.isEmpty(dungeon.skillCards)}" style="color:#666; grid-column: 1 / -1; text-align: center; padding-top: 20px;">
+                사용 가능한 기술이 없습니다.
+            </div>
+        </div>
     </th:block>
 
-    <th:block th:if="${dungeon?.currentFloor > 1}">
-        <form action="/dungeon/prev-floor" method="post" style="display:block; width:100%; height:100%;">
-            <button type="submit" class="action-btn btn-tax">
-                <span>🔙</span>
-                <span>이전 층으로</span>
+    <th:block th:unless="${dungeon.isInBattle}">
+        <form action="/dungeon/explore" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-work">
+                <span>🔍</span>
+                <div class="btn-text-row">
+                    <span>탐색하기</span>
+                    <span class="stat-badge-small" style="color: #00ff00;" th:text="${'+' + dungeon.explorationEfficiency + '%'}"></span>
+                </div>
             </button>
         </form>
-    </th:block>
 
-    <button th:unless="${dungeon?.progress >= 100}" class="action-btn btn-empty">
-        <span>🔒</span><span>잠김</span>
-    </button>
-    <button th:unless="${dungeon?.currentFloor > 1}" class="action-btn btn-empty"></button>
-    <button class="action-btn btn-empty"></button>
-    <button class="action-btn btn-empty"></button>
+        <form action="/dungeon/rest" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-rest">
+                <span>🛌</span>
+                <div class="btn-text-row">
+                    <span>쉬기</span>
+                    <span class="stat-badge-small" style="color: #ffd700;" th:text="${dungeon.restSafetyRate + '%'}"></span>
+                </div>
+            </button>
+        </form>
+
+        <th:block th:if="${dungeon?.progress >= 100}">
+            <form action="/dungeon/next-floor" method="post" style="display:contents;">
+                <button type="submit" class="action-btn btn-dungeon"><span>🐲</span>다음 층으로</button>
+            </form>
+        </th:block>
+        <button th:unless="${dungeon?.progress >= 100}" class="action-btn btn-empty"><span>🔒</span>잠김</button>
+
+        <th:block th:if="${dungeon?.currentFloor > 1}">
+            <form action="/dungeon/prev-floor" method="post" style="display:contents;">
+                <button type="submit" class="action-btn btn-tax"><span>🔙</span>이전 층</button>
+            </form>
+        </th:block>
+        <button th:unless="${dungeon?.currentFloor > 1}" class="action-btn btn-empty"></button>
+
+        <form action="/dungeon/exit" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-shop"><span>🏃</span>마을로 귀환</button>
+        </form>
+
+        <button class="action-btn btn-empty"></button>
+    </th:block>
 </div>

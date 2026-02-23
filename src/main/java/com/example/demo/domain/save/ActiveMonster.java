@@ -1,6 +1,6 @@
 package com.example.demo.domain.save;
 
-import com.example.demo.domain.meta.MonsterStatsDto;
+import com.example.demo.domain.meta.CombatStats;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,7 +26,7 @@ public class ActiveMonster {
     private int currentMp;
     private int maxMp;
 
-    private MonsterStatsDto stats; // 메타데이터에서 복사해온 스탯
+    private CombatStats stats; // 메타데이터에서 복사해온 스탯
     @Builder.Default
     private List<ActiveStatus> activeStatuses = new ArrayList<>();
 }

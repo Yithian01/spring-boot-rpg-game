@@ -1,17 +1,22 @@
 {
   "items" : [ {
+    "id" : 5,
+    "instanceId" : "96358802-6ae6-4d72-b9da-6c33ef53623b",
+    "quantity" : 1,
+    "enhancementLevel" : 0
+  }, {
+    "id" : 8,
+    "instanceId" : "ddd157ab-9ee5-4270-91c4-993ce75b85ac",
+    "quantity" : 1,
+    "enhancementLevel" : 0
+  }, {
+    "id" : 10,
+    "instanceId" : "500fc0de-ad89-497e-9bd4-566a6234d689",
+    "quantity" : 1,
+    "enhancementLevel" : 0
+  }, {
     "id" : 11,
-    "instanceId" : "c024bdcc-c3c9-4d65-8966-d33a8bf6e54b",
-    "quantity" : 1,
-    "enhancementLevel" : 0
-  }, {
-    "id" : 6,
-    "instanceId" : null,
-    "quantity" : 1,
-    "enhancementLevel" : 0
-  }, {
-    "id" : 9,
-    "instanceId" : null,
+    "instanceId" : "22fb4841-925c-4a37-8b26-d6407169f3ee",
     "quantity" : 1,
     "enhancementLevel" : 0
   }, {
@@ -20,7 +25,12 @@
     "quantity" : 1,
     "enhancementLevel" : 0
   }, {
-    "id" : 10,
+    "id" : 6,
+    "instanceId" : null,
+    "quantity" : 1,
+    "enhancementLevel" : 0
+  }, {
+    "id" : 7,
     "instanceId" : null,
     "quantity" : 1,
     "enhancementLevel" : 0

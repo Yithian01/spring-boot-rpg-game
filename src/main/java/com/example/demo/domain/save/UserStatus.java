@@ -1,5 +1,6 @@
 package com.example.demo.domain.save;
 
+import com.example.demo.domain.meta.CombatStats;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,26 +42,7 @@ public class UserStatus {
     /* =========================
      * 3. 전투 능력치 (현재 적용값)
      * ========================= */
-    private int maxHp;
-    private int maxMp;
-    private int maxStamina;
-
-    private double hpRegen;
-    private double mpRegen;
-
-    private double meleeAtk;
-    private double magicAtk;
-
-    private double critRate;
-    private double critDmg;
-    private double penetration;
-
-    private double physDef;
-    private double magRes;
-
-    private double dodge;
-    private double accuracy;
-    private double moveSpeed;
+    private CombatStats combatStats;
 
     /* =========================
      * 스탯 계층 관리 (Layered Stats)

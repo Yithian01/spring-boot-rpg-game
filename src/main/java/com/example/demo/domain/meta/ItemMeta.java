@@ -52,5 +52,6 @@ public class ItemMeta {
         private double dodge;
         private double accuracy;
         private double moveSpeed;
+        private double statusResist;
     }
 }

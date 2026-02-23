@@ -129,63 +129,69 @@ public class StatCalculationService {
         }
 
         // --- [STEP 6] 자원 상한선 보정 ---
-        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getMaxHp()));
-        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getMaxMp()));
-        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getMaxStamina()));
+        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getCombatStats().getMaxHp()));
+        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getCombatStats().getMaxMp()));
+        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getCombatStats().getMaxStamina()));
     }
 
     /**
      * [헬퍼] 수식을 통한 기본 전투 능력치 세팅
      */
     private void applyBaseFormulas(UserStatus user, Map<Integer, Integer> stats) {
-        user.setMaxHp(calculateMaxHp(stats));
-        user.setMaxMp(calculateMana(stats));
-        user.setMaxStamina(calculateStamina(stats));
-        user.setHpRegen(calculateHpRegen(stats));
-        user.setMpRegen(calculateManaRegen(stats));
-        user.setMeleeAtk(calculateMeleeAtk(stats));
-        user.setMagicAtk(calculateMagicAtk(stats));
-        user.setCritRate(calculateCritRate(stats));
-        user.setCritDmg(calculateCritDmg(stats));
-        user.setPenetration(calculatePenetration(stats));
-        user.setPhysDef(calculatePhysDef(stats));
-        user.setMagRes(calculateMagRes(stats));
-        user.setDodge(calculateDodge(stats));
-        user.setAccuracy(calculateAccuracy(stats));
-        user.setMoveSpeed(calculateMoveSpd(stats));
+        user.getCombatStats().setMaxHp(calculateMaxHp(stats));
+        user.getCombatStats().setMaxMp(calculateMana(stats));
+        user.getCombatStats().setMaxStamina(calculateStamina(stats));
+        user.getCombatStats().setHpRegen(calculateHpRegen(stats));
+        user.getCombatStats().setMpRegen(calculateManaRegen(stats));
+        user.getCombatStats().setMeleeAtk(calculateMeleeAtk(stats));
+        user.getCombatStats().setMagicAtk(calculateMagicAtk(stats));
+        user.getCombatStats().setCritRate(calculateCritRate(stats));
+        user.getCombatStats().setCritDmg(calculateCritDmg(stats));
+        user.getCombatStats().setPenetration(calculatePenetration(stats));
+        user.getCombatStats().setPhysDef(calculatePhysDef(stats));
+        user.getCombatStats().setMagRes(calculateMagRes(stats));
+        user.getCombatStats().setDodge(calculateDodge(stats));
+        user.getCombatStats().setAccuracy(calculateAccuracy(stats));
+        user.getCombatStats().setMoveSpeed(calculateMoveSpd(stats));
+        user.getCombatStats().setStatusResist(calculateStatusResist(stats));
     }
 
     // =========================
     // 전투 능력치 보정 헬퍼 메서드
     // =========================
-
     private void applyCombatStatsBonus(UserStatus user, ItemMeta.CombatStatsBonus cb) {
-        user.setMaxHp(user.getMaxHp() + cb.getMaxHp());
-        user.setMaxMp(user.getMaxMp() + cb.getMaxMp());
-        user.setMaxStamina(user.getMaxStamina() + cb.getMaxStamina());
-        user.setHpRegen(user.getHpRegen() + cb.getHpRegen());
-        user.setMpRegen(user.getMpRegen() + cb.getMpRegen());
-        user.setMeleeAtk(user.getMeleeAtk() + cb.getMeleeAtk());
-        user.setMagicAtk(user.getMagicAtk() + cb.getMagicAtk());
-        user.setCritRate(user.getCritRate() + cb.getCritRate());
-        user.setCritDmg(user.getCritDmg() + cb.getCritDmg());
-        user.setPenetration(user.getPenetration() + cb.getPenetration());
-        user.setPhysDef(user.getPhysDef() + cb.getPhysDef());
-        user.setMagRes(user.getMagRes() + cb.getMagRes());
-        user.setDodge(user.getDodge() + cb.getDodge());
-        user.setAccuracy(user.getAccuracy() + cb.getAccuracy());
-        user.setMoveSpeed(user.getMoveSpeed() + cb.getMoveSpeed());
+        user.getCombatStats().setMaxHp(user.getCombatStats().getMaxHp() + cb.getMaxHp());
+        user.getCombatStats().setMaxMp(user.getCombatStats().getMaxMp() + cb.getMaxMp());
+        user.getCombatStats().setMaxStamina(user.getCombatStats().getMaxStamina() + cb.getMaxStamina());
+        user.getCombatStats().setHpRegen(user.getCombatStats().getHpRegen() + cb.getHpRegen());
+        user.getCombatStats().setMpRegen(user.getCombatStats().getMpRegen() + cb.getMpRegen());
+        user.getCombatStats().setMeleeAtk(user.getCombatStats().getMeleeAtk() + cb.getMeleeAtk());
+        user.getCombatStats().setMagicAtk(user.getCombatStats().getMagicAtk() + cb.getMagicAtk());
+        user.getCombatStats().setCritRate(user.getCombatStats().getCritRate() + cb.getCritRate());
+        user.getCombatStats().setCritDmg(user.getCombatStats().getCritDmg() + cb.getCritDmg());
+        user.getCombatStats().setPenetration(user.getCombatStats().getPenetration() + cb.getPenetration());
+        user.getCombatStats().setPhysDef(user.getCombatStats().getPhysDef() + cb.getPhysDef());
+        user.getCombatStats().setMagRes(user.getCombatStats().getMagRes() + cb.getMagRes());
+        user.getCombatStats().setDodge(user.getCombatStats().getDodge() + cb.getDodge());
+        user.getCombatStats().setAccuracy(user.getCombatStats().getAccuracy() + cb.getAccuracy());
+        user.getCombatStats().setMoveSpeed(user.getCombatStats().getMoveSpeed() + cb.getMoveSpeed());
+        user.getCombatStats().setStatusResist(user.getCombatStats().getStatusResist() + cb.getStatusResist());
     }
 
+    /**
+     * 전투 계산 메소드
+     * @param user 플레이어
+     * @param mods 전투 스탯
+     */
     private void applyCombatModifiers(UserStatus user, Map<String, Double> mods) {
-        if (mods.containsKey("meleeAtk")) user.setMeleeAtk(user.getMeleeAtk() * mods.get("meleeAtk"));
-        if (mods.containsKey("magicAtk")) user.setMagicAtk(user.getMagicAtk() * mods.get("magicAtk"));
-        if (mods.containsKey("physDef")) user.setPhysDef(user.getPhysDef() * mods.get("physDef"));
-        if (mods.containsKey("magRes")) user.setMagRes(user.getMagRes() * mods.get("magRes"));
-        if (mods.containsKey("critRate")) user.setCritRate(user.getCritRate() * mods.get("critRate"));
-        if (mods.containsKey("maxHp")) user.setMaxHp((int)(user.getMaxHp() * mods.get("maxHp")));
-        if (mods.containsKey("maxMp")) user.setMaxMp((int)(user.getMaxMp() * mods.get("maxMp")));
-        if (mods.containsKey("maxStamina")) user.setMaxStamina((int)(user.getMaxStamina() * mods.get("maxStamina")));
+        if (mods.containsKey("meleeAtk")) user.getCombatStats().setMeleeAtk(user.getCombatStats().getMeleeAtk() * mods.get("meleeAtk"));
+        if (mods.containsKey("magicAtk")) user.getCombatStats().setMagicAtk(user.getCombatStats().getMagicAtk() * mods.get("magicAtk"));
+        if (mods.containsKey("physDef")) user.getCombatStats().setPhysDef(user.getCombatStats().getPhysDef() * mods.get("physDef"));
+        if (mods.containsKey("magRes")) user.getCombatStats().setMagRes(user.getCombatStats().getMagRes() * mods.get("magRes"));
+        if (mods.containsKey("critRate")) user.getCombatStats().setCritRate(user.getCombatStats().getCritRate() * mods.get("critRate"));
+        if (mods.containsKey("maxHp")) user.getCombatStats().setMaxHp((int)(user.getCombatStats().getMaxHp() * mods.get("maxHp")));
+        if (mods.containsKey("maxMp")) user.getCombatStats().setMaxMp((int)(user.getCombatStats().getMaxMp() * mods.get("maxMp")));
+        if (mods.containsKey("maxStamina")) user.getCombatStats().setMaxStamina((int)(user.getCombatStats().getMaxStamina() * mods.get("maxStamina")));
     }
 
     /**
@@ -294,6 +300,18 @@ public class StatCalculationService {
     }
 
     /**
+     * [추가] 상태 이상 저항력 계산 함수
+     * 3: 대사 효율 (물리적 저항)
+     * 9: 계율 준수 (정신적 저항)
+     */
+    public double calculateStatusResist(Map<?, ?> baseStats) {
+        // 기본 저항 5.0 + (대사 효율 * 0.8) + (계율 준수 * 0.8)
+        double resistScore = 5.0 + (getStat(baseStats, 3) * 0.8) + (getStat(baseStats, 9) * 0.8);
+        // 최대 80%까지만 저항 가능하도록 캡핑
+        return Math.min(resistScore, 80.0);
+    }
+
+    /**
      * 노동 효율(파워) 계산: 상완/대흉근/전완근 기반
      */
     public int calculateWorkPower(Map<?, ?> baseStats) {
@@ -329,7 +347,7 @@ public class StatCalculationService {
      * 휴식 시 HP 회복량 계산: 기본 20% + (대사 효율 * 5)
      */
     public int calculateHpRestoration(UserStatus user) {
-        int base = (int) (user.getMaxHp() * 0.2);
+        int base = (int) (user.getCombatStats().getMaxHp() * 0.2);
         int bonus = getStat(user.getBaseStats(), 3) * 5;
         return base + bonus;
     }
@@ -338,7 +356,7 @@ public class StatCalculationService {
      * 휴식 시 MP 회복량 계산: 기본 20% + (마나 회로 전도율 * 5)
      */
     public int calculateMpRestoration(UserStatus user) {
-        int base = (int) (user.getMaxMp() * 0.2);
+        int base = (int) (user.getCombatStats().getMaxMp() * 0.2);
         int bonus = getStat(user.getBaseStats(), 8) * 5;
         return base + bonus;
     }
@@ -347,7 +365,7 @@ public class StatCalculationService {
      * 휴식 시 ST 회복량 계산: 기본 30% + (대사 효율 * 5)
      */
     public int calculateStRestoration(UserStatus user) {
-        int base = (int) (user.getMaxStamina() * 0.3);
+        int base = (int) (user.getCombatStats().getMaxStamina() * 0.3);
         int bonus = getStat(user.getBaseStats(), 3) * 5;
         return base + bonus;
     }

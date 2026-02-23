@@ -64,9 +64,9 @@ public class TownService {
         int mpRecovery = statCalculationService.calculateMpRestoration(user);
         int stRecovery = statCalculationService.calculateStRestoration(user);
 
-        user.setCurrentHp(Math.min(user.getMaxHp(), user.getCurrentHp() + hpRecovery));
-        user.setCurrentMp(Math.min(user.getMaxMp(), user.getCurrentMp() + mpRecovery));
-        user.setCurrentStamina(Math.min(user.getMaxStamina(), user.getCurrentStamina() + stRecovery));
+        user.setCurrentHp(Math.min(user.getCombatStats().getMaxHp(), user.getCurrentHp() + hpRecovery));
+        user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + mpRecovery));
+        user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + stRecovery));
         town.setCurrentTurn(town.getCurrentTurn() - 1);
 
         saveAll(user, town);

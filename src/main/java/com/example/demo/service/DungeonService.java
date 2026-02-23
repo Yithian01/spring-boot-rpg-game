@@ -116,7 +116,7 @@ public class DungeonService {
         }
 
         // 2. 피해 계산: 최대 체력의 20%
-        int maxHp = user.getMaxHp();
+        int maxHp = user.getCombatStats().getMaxHp();
         int damage = (int) (maxHp * 0.2); // 20% 계산 (정수로 절삭)
 
         if (damage < 1) damage = 1;

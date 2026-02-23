@@ -138,6 +138,7 @@ public class GameService {
                 .activeStatuses(new ArrayList<>())    // 빈 리스트로 시작
                 .finalStats(new HashMap<>(baseStats)) // 초기값은 baseStats 복사
 
+                .combatStats(new CombatStats())
                 .equippedItems(initialEquippedItems)
                 .usedItemIds(new ArrayList<>())
                 .learnedSkillIds(learnedSkillIds)
@@ -150,11 +151,11 @@ public class GameService {
         statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMap());
 
         // 6. 현재 체력 등을 최대치로 보정
-        newUser.setCurrentHp(newUser.getMaxHp());
-        newUser.setCurrentMp(newUser.getMaxMp());
-        newUser.setCurrentStamina(newUser.getMaxStamina());
+        newUser.setCurrentHp(newUser.getCombatStats().getMaxHp());
+        newUser.setCurrentMp(newUser.getCombatStats().getMaxMp());
+        newUser.setCurrentStamina(newUser.getCombatStats().getMaxStamina());
 
-        // 7. 저장
+        // 7. 저장.getCombatStats()
         userFileRepository.saveUserStatus(newUser);
 
         TownStatus newTown = TownStatus.builder()
@@ -210,11 +211,11 @@ public class GameService {
 
                 // 생존 자원 및 골드 (HTML에서 바로 접근 가능)
                 .currentHp(user.getCurrentHp())
-                .maxHp(user.getMaxHp())
+                .maxHp(user.getCombatStats().getMaxHp())
                 .currentMp(user.getCurrentMp())
-                .maxMp(user.getMaxMp())
+                .maxMp(user.getCombatStats().getMaxMp())
                 .currentStamina(user.getCurrentStamina())
-                .maxStamina(user.getMaxStamina())
+                .maxStamina(user.getCombatStats().getMaxStamina())
                 .currentGold(user.getCurrentGold())
 
                 // 데이터 리스트

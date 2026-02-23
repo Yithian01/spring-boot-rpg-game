@@ -90,6 +90,8 @@ public class MainController {
 
                 log.info(">>> 게임 데이터 로딩 완료: {}", gameData.getUserName());
 
+                log.info("DEBUG - HP: {}/{}", gameData.getCurrentHp(), gameData.getMaxHp());
+                log.info("DEBUG - Tribe: {}", gameData.getTribe().getName());
                 return "town"; // town.html 템플릿 반환
             case DUNGEON:
                 // 1. 공통 유저 데이터 (HP, MP, 스탯, 인벤토리, 장착템 등)

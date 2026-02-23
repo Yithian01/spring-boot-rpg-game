@@ -41,9 +41,9 @@ public class InventoryService {
         if (targetItem == null || targetItem.getQuantity() <= 0) return "보유하지 않은 아이템입니다.";
 
         // [변경 포인트 1] 현재 자원 비율 유지를 위해 이전 Max 값 저장
-        int preMaxHp = user.getMaxHp();
-        int preMaxMp = user.getMaxMp();
-        int preMaxSt = user.getMaxStamina();
+        int preMaxHp = user.getCombatStats().getMaxHp();
+        int preMaxMp = user.getCombatStats().getMaxMp();
+        int preMaxSt = user.getCombatStats().getMaxStamina();
 
         // 2. 장착 슬롯 처리 (양손 무기 등 기존 로직 유지)
         StringBuilder messageBuilder = new StringBuilder();
@@ -104,13 +104,13 @@ public class InventoryService {
      * 최대 생명력이 늘어난 만큼 현재 생명력을 채워주는 편의 로직
      */
     private void adjustCurrentResources(UserStatus user, int oldHp, int oldMp, int oldSt) {
-        if (user.getMaxHp() > oldHp) user.setCurrentHp(user.getCurrentHp() + (user.getMaxHp() - oldHp));
-        if (user.getMaxMp() > oldMp) user.setCurrentMp(user.getCurrentMp() + (user.getMaxMp() - oldMp));
-        if (user.getMaxStamina() > oldSt) user.setCurrentStamina(user.getCurrentStamina() + (user.getMaxStamina() - oldSt));
+        if (user.getCombatStats().getMaxHp() > oldHp) user.setCurrentHp(user.getCurrentHp() + (user.getCombatStats().getMaxHp() - oldHp));
+        if (user.getCombatStats().getMaxMp() > oldMp) user.setCurrentMp(user.getCurrentMp() + (user.getCombatStats().getMaxMp() - oldMp));
+        if (user.getCombatStats().getMaxStamina() > oldSt) user.setCurrentStamina(user.getCurrentStamina() + (user.getCombatStats().getMaxStamina() - oldSt));
 
-        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getMaxHp()));
-        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getMaxMp()));
-        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getMaxStamina()));
+        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getCombatStats().getMaxHp()));
+        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getCombatStats().getMaxMp()));
+        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getCombatStats().getMaxStamina()));
     }
 
     /**
@@ -204,15 +204,15 @@ public class InventoryService {
 
         if (rb != null) {
             if (rb.getHp() > 0) {
-                user.setCurrentHp(Math.min(user.getMaxHp(), user.getCurrentHp() + rb.getHp()));
+                user.setCurrentHp(Math.min(user.getCombatStats().getMaxHp(), user.getCurrentHp() + rb.getHp()));
                 recoveryResults.add("HP +" + rb.getHp());
             }
             if (rb.getMp() > 0) {
-                user.setCurrentMp(Math.min(user.getMaxMp(), user.getCurrentMp() + rb.getMp()));
+                user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + rb.getMp()));
                 recoveryResults.add("MP +" + rb.getMp());
             }
             if (rb.getStamina() > 0) {
-                user.setCurrentStamina(Math.min(user.getMaxStamina(), user.getCurrentStamina() + rb.getStamina()));
+                user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + rb.getStamina()));
                 recoveryResults.add("ST +" + rb.getStamina());
             }
         }

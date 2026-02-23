@@ -21,25 +21,43 @@ public class BattleService {
     private final StatCalculationService statCalculationService;
 
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
-        int weaponId = user.getEquippedItems().getOrDefault("WEAPON", 0);
-        String weaponType = (weaponId != 0)
-                ? gameDataManager.getItemMap().get(weaponId).getSubType()
-                : "NONE";
 
+        // 1. 현재 무기 정보 안전하게 가져오기
+        int weaponId = user.getEquippedItems().getOrDefault("WEAPON", 0);
+        String weaponType = "NONE";
+
+        if (weaponId != 0 && gameDataManager.getItemMap().containsKey(weaponId)) {
+            weaponType = gameDataManager.getItemMap().get(weaponId).getSubType();
+        }
+
+        // 2. 배운 스킬 ID 셋 (Integer 타입)
         Set<Integer> learnedSkills = new HashSet<>(user.getLearnedSkillIds());
 
+        System.out.println("sdssdds" + weaponType);
+
+
+        final String currentWeapon = weaponType; // 람다용 final 변수
 
         return gameDataManager.getSkillMetaMap().values().stream()
                 .filter(meta -> {
-                    // 1. 무기 조건이 NONE이거나 현재 무기와 일치하는 경우 (기본 무기 기술 등)
-                    boolean isWeaponSkill = meta.getRequiredWeapon().equals("NONE") ||
-                            meta.getRequiredWeapon().equals(weaponType);
-
-                    // 2. 무기 상관없이 유저가 명시적으로 습득한 스킬인 경우
+                    // [조건 1] 일단 유저가 배운 스킬 리스트에 있어야 함
                     boolean isLearned = learnedSkills.contains(meta.getId());
 
-                    // 둘 중 하나라도 해당하면 리스트에 포함
-                    return isWeaponSkill || isLearned;
+                    // 2. 현재 무기 타입과 스킬의 요구 무기가 일치하는가? (예: BLUNT == BLUNT)
+                    // (NONE은 제외하고 '전용 무기 스킬'들만 체크)
+                    boolean isWeaponMatch = !meta.getRequiredWeapon().equalsIgnoreCase("NONE") &&
+                            meta.getRequiredWeapon().equalsIgnoreCase(currentWeapon);
+
+                    // [최종 통과 조건]
+                    // - 내가 배운 스킬이면 통과 (단, 배운 스킬이라도 다른 무기 전용이면 안됨)
+                    // - 혹은, 내가 배우지 않았어도 현재 무기에 맞는 전용 스킬이면 통과
+
+                    // 무기 적합성 체크 (공용이거나 현재 무기와 맞거나)
+                    boolean canUseWithWeapon = meta.getRequiredWeapon().equalsIgnoreCase("NONE") ||
+                            meta.getRequiredWeapon().equalsIgnoreCase(currentWeapon);
+
+                    // (습득했거나 OR 무기 타입이 딱 맞거나) AND 현재 낀 무기로 사용 가능해야 함
+                    return (isLearned || isWeaponMatch) && canUseWithWeapon;
                 })
                 .map(meta -> {
                     boolean canAct = statCalculationService.checkSkillAvailability(user, ds, meta);

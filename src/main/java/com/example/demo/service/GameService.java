@@ -121,6 +121,7 @@ public class GameService {
         initialEquippedItems.put("RING", 0);
 
         List<Integer> learnedSkillIds = new ArrayList<>();
+        learnedSkillIds.add(1);
 
         // 4. UserStatus 생성 (새로운 필드 반영)
         UserStatus newUser = UserStatus.builder()
@@ -139,7 +140,7 @@ public class GameService {
 
                 .equippedItems(initialEquippedItems)
                 .usedItemIds(new ArrayList<>())
-                .learnedSkillIds(new ArrayList<>())
+                .learnedSkillIds(learnedSkillIds)
                 .saveVersion(1) // 버전 관리용
                 .build();
 

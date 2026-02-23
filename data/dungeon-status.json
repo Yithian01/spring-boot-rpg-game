@@ -1,39 +1,12 @@
 {
   "currentFloor" : 1,
   "dungeonId" : "GRAY_MINE",
-  "progress" : 16,
-  "activeMonster" : {
-    "monsterId" : 1,
-    "name" : "굶주린 동굴 쥐",
-    "tier" : 8,
-    "currentHp" : 45,
-    "maxHp" : 45,
-    "currentMp" : 0,
-    "maxMp" : 0,
-    "stats" : {
-      "maxHp" : 45,
-      "maxMp" : 0,
-      "maxStamina" : 0,
-      "hpRegen" : 0.0,
-      "mpRegen" : 0.0,
-      "meleeAtk" : 6.0,
-      "magicAtk" : 0.0,
-      "critRate" : 3.0,
-      "critDmg" : 0.0,
-      "penetration" : 0.0,
-      "physDef" : 1.0,
-      "magRes" : 1.0,
-      "dodge" : 12.0,
-      "accuracy" : 10.0,
-      "moveSpeed" : 1.2,
-      "statusResist" : 0.0
-    },
-    "activeStatuses" : [ ]
-  },
+  "progress" : 32,
+  "activeMonster" : null,
   "playerRemainingTurns" : 2,
   "playerMaxTurns" : 2,
-  "battleLogs" : [ "<span style='color:#ff9f43;'>[전투]</span> 굶주린 동굴 쥐이(가) 나타났습니다!", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "어두운 던전에 발을 들였습니다... (1층)" ],
-  "pendingExp" : 8,
-  "pendingGold" : 4,
-  "inBattle" : true
+  "battleLogs" : [ "<span style='color:#ffd700;'>[획득] 4 Gold와 8 Exp를 얻었습니다!</span>", "⚔️ <b style='color:#ffffff;'>배쉬</b>! 굶주린 동굴 쥐에게 <b style='color:#ff4d4d;'>79</b>의 피해!", "<span style='color:#ff9f43;'>[전투]</span> 굶주린 동굴 쥐이(가) 나타났습니다!", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -43)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "어두운 던전에 발을 들였습니다... (1층)" ],
+  "pendingExp" : 0,
+  "pendingGold" : 0,
+  "inBattle" : false
 }

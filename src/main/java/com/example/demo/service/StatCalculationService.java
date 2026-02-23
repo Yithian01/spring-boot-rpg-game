@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.meta.SkillMeta;
+import com.example.demo.domain.save.ActiveMonster;
 import com.example.demo.domain.save.ActiveStatus;
 import com.example.demo.domain.save.DungeonStatus;
 import com.example.demo.domain.save.UserStatus;
@@ -524,29 +526,82 @@ public class StatCalculationService {
 
         return true;
     }
+
     /**
-     * 스킬의 스케일링 맵을 기반으로 최종 위력을 계산합니다.
-     * 예: {"10": 2.5} -> 10번 스탯(공격력)의 2.5배
+     * 1. 기술 고유 위력 계산 (Scaling 기반)
      */
-    public int calculateSkillDamage(UserStatus user, SkillMeta skill) {
-        double totalDamage = 0;
-
-        // 유저의 최종 스탯 가져오기 (아이템/버프 포함)
-        Map<Integer, Integer> currentStats = (user.getFinalStats() != null)
-                ? user.getFinalStats()
-                : user.getBaseStats();
-
-        // Scaling 계산 로직
+    public int calculateSkillPower(SkillMeta skill, Map<Integer, Integer> finalStats) {
+        double power = 0;
         if (skill.getScaling() != null) {
             for (Map.Entry<Integer, Double> entry : skill.getScaling().entrySet()) {
                 int statId = entry.getKey();
                 double multiplier = entry.getValue();
-
-                int statValue = currentStats.getOrDefault(statId, 0);
-                totalDamage += (statValue * multiplier);
+                int statValue = finalStats.getOrDefault(statId, 0);
+                power += (statValue * multiplier);
             }
         }
+        return (int) Math.round(power);
+    }
 
-        return (int) Math.round(totalDamage);
+    /**
+     * 2. 방어력/관통력 감쇄 계산 (점감법)
+     */
+    public int applyDefense(double rawDamage, double penetration, double defense) {
+        double effectiveDefense = defense * (1 - (penetration / 100.0));
+        double damageReduction = 100.0 / (100.0 + Math.max(0, effectiveDefense));
+        return (int) Math.round(rawDamage * damageReduction);
+    }
+
+    /**
+     * 3. 최종 통합 데미지 계산기 (BattleService에서 이걸 호출)
+     */
+    public int calculateFinalDamage(SkillMeta skill, CombatStats attacker, CombatStats defender, Map<Integer, Integer> attackerFinalStats) {
+        // [STEP A] 기술 위력 + 공격자 기본 공격력
+        double skillPower = calculateSkillPower(skill, attackerFinalStats);
+
+        boolean isMagic = "MAGIC".equals(skill.getType());
+        double baseAtk = isMagic ? attacker.getMagicAtk() : attacker.getMeleeAtk();
+
+        double rawTotalDamage = skillPower + baseAtk;
+
+        // [STEP B] 방어력 및 관통 적용
+        double targetDef = isMagic ? defender.getMagRes() : defender.getPhysDef();
+        int damageAfterDef = applyDefense(rawTotalDamage, attacker.getPenetration(), targetDef);
+
+        // [STEP C] 크리티컬 판정 (skill.getEffect().getCritMod()가 있다면 추가 곱연산 가능)
+        if (Math.random() * 100 < attacker.getCritRate()) {
+            double critMultiplier = attacker.getCritDmg() / 100.0;
+
+            // 암습 같은 스킬에 특수 치명타 배율이 있다면 적용
+            if (skill.getEffect() != null && skill.getEffect().getCritMod() > 0) {
+                critMultiplier *= skill.getEffect().getCritMod();
+            }
+
+            damageAfterDef = (int) Math.round(damageAfterDef * critMultiplier);
+        }
+
+        return Math.max(1, damageAfterDef);
+    }
+
+    /**
+     * 1단계: 공격자 명중 판정 (내 명중 + 스킬 기본 명중)
+     */
+    public boolean isAttackerHit(double attackerAcc, int skillHitChance) {
+        // 예: (유저 명중 14 + 스킬 명중 70) = 84% 확률로 '정확한 공격'
+        double hitProb = attackerAcc + skillHitChance;
+        hitProb = Math.max(10, Math.min(100, hitProb)); // 최소 10% 보장
+
+        return Math.random() * 100 <= hitProb;
+    }
+
+    /**
+     * 2단계: 방어자 회피 판정 (상대 회피율)
+     */
+    public boolean isDefenderDodge(double defenderDodge) {
+        // 예: 상대 회피 12 = 12% 확률로 '회피 성공'
+        double dodgeProb = defenderDodge;
+        dodgeProb = Math.max(0, Math.min(95, dodgeProb)); // 최대 95%까지만 회피 가능
+
+        return Math.random() * 100 <= dodgeProb;
     }
 }

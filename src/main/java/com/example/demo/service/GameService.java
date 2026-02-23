@@ -122,6 +122,7 @@ public class GameService {
 
         List<Integer> learnedSkillIds = new ArrayList<>();
         learnedSkillIds.add(1);
+        learnedSkillIds.add(2);
 
         // 4. UserStatus 생성 (새로운 필드 반영)
         UserStatus newUser = UserStatus.builder()

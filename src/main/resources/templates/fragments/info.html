@@ -133,7 +133,8 @@
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span style="color: #ff9f43; font-size: 0.75rem; font-weight: bold; letter-spacing: 1px;">PLAYER ACTION</span>
                         <div style="display: flex; gap: 4px;">
-                            <th:block th:each="i : ${#numbers.sequence(1, dungeon.playerMaxTurns)}">
+                            <th:block th:if="${dungeon.playerMaxTurns > 0}"
+                                      th:each="i : ${#numbers.sequence(1, dungeon.playerMaxTurns)}">
                                 <div th:style="'width: 10px; height: 10px; border-radius: 50%; border: 1px solid #ff9f43; ' + (${i <= dungeon.playerRemainingTurns} ? 'background: #ff9f43; box-shadow: 0 0 5px #ff9f43;' : 'background: transparent;')"></div>
                             </th:block>
                         </div>

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.meta.SkillEffect;
 import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.save.ActiveMonster;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Slf4j
@@ -106,20 +108,47 @@ public class BattleService {
         SkillMeta skill = gameDataManager.getSkillMetaMap().get(skillId);
         ActiveMonster monster = ds.getActiveMonster();
 
+        System.out.println(skill);
+
         // 1. 코스트 체크 및 차감
         if (!statCalculationService.checkSkillAvailability(user, ds, skill)) {
             return "자원이 부족하여 기술을 사용할 수 없습니다.";
         }
         applyCost(user, ds, skill);
 
-        // 2. 효과 타입별 분기 처리
-        String resultMsg;
-        SkillEffect effect = skill.getEffect();
+        // 2. 명중 판정 분기
+        String skillType = skill.getEffect().getType();
+        String resultMsg = null;
 
-        switch (effect.getType()) {
+        // 도망(ESCAPE)의 확률은 scaling stat 기반
+        if ("ESCAPE".equals(skillType) ) {
+            return handleEscape(user, ds, skill);
+        }
+
+        // [1단계] 공격자 명중 판정 (Hit Check)
+        boolean isHit = statCalculationService.isAttackerHit(
+                user.getCombatStats().getAccuracy(),
+                skill.getHitChance()
+        );
+
+        if (!isHit) {
+            return String.format("<span style='color:#aaaaaa;'>[실패] %s 이 빗나갔습니다! (Miss)</span>", skill.getName());
+        }
+
+        // [2단계] 방어자 회피 판정 (Dodge Check)
+        // 버프인 경우 회피 판정을 생략하기 위해 0 전달
+        double dodgeStat = "BUFF".equals(skillType) ? 0 : monster.getStats().getDodge();
+        boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat);
+
+        if (isDodged) {
+            return String.format("<span style='color:#ffcc00;'>[회피] %s이(가) %s의 공격을 회피했습니다! (Dodge)</span>",
+                    monster.getName(), user.getName());
+        }
+
+        switch (skillType) {
+            case "WAIT" -> resultMsg =  handleEscape(user, ds, skill);
             case "DAMAGE" -> resultMsg = handleDamage(user, monster, skill, ds);
             case "BUFF", "DEBUFF" -> resultMsg = handleStatus(user, monster, skill, ds);
-            case "ESCAPE" -> resultMsg = handleEscape(user, ds, skill);
             default -> resultMsg = "정의되지 않은 효과입니다.";
         }
 
@@ -133,70 +162,76 @@ public class BattleService {
         return resultMsg;
     }
 
+    /**
+     * 데미지 스킬 처리 로직 (최종 통합본)
+     */
     private String handleDamage(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds) {
-        // --- [STEP 1] 명중 판정 ---
-        double attackerAccuracy = user.getCombatStats().getAccuracy();
-        if (Math.random() * 100 > attackerAccuracy) {
-            ds.addLog(String.format("<span style='color:#aaaaaa;'>[실패] %s 기술이 헛방을 쳤습니다!</span>", skill.getName()));
-            return "ATTACK_MISS";
-        }
+        // 1. 공격자/방어자 정보 및 기초 스탯(ID 1~24) 추출
+        CombatStats attackerStats = user.getCombatStats();
+        CombatStats defenderStats = monster.getStats();
+        Map<Integer, Integer> attackerFinalStats = user.getFinalStats();
 
-        // --- [STEP 2] 회피 판정 ---
-        double monsterDodge = monster.getStats().getDodge();
-        double finalDodgeChance = Math.max(0, monsterDodge - (attackerAccuracy * 0.2));
-        if (Math.random() * 100 < finalDodgeChance) {
-            ds.addLog(String.format("<span style='color:#ffcc00;'>[회피] %s이(가) %s을(를) 피했습니다!</span>", monster.getName(), skill.getName()));
-            return "ATTACK_DODGED";
-        }
+        // 2. 통합 데미지 계산기 호출
+        // 이제 StatCalculationService에서 Scaling(ID 기반) + Melee/MagicAtk + 방어력 + 크리티컬을 한 번에 계산합니다.
+        int finalDamage = statCalculationService.calculateFinalDamage(
+                skill,
+                attackerStats,
+                defenderStats,
+                attackerFinalStats
+        );
 
-        // --- [STEP 3] 데미지 계산 ---
-        int damage = statCalculationService.calculateSkillDamage(user, skill);
-        boolean isCrit = Math.random() * 100 < user.getCombatStats().getCritRate();
-        if (isCrit) damage = (int) (damage * (user.getCombatStats().getCritDmg() / 100.0));
-
-        int finalDamage = Math.max(1, damage - (int) monster.getStats().getPhysDef());
+        // 3. 실데미지 적용 및 체력 차감
         monster.setCurrentHp(Math.max(0, monster.getCurrentHp() - finalDamage));
 
-        String critTag = isCrit ? "<b style='color:#ff4d4d;'>[크리티컬!]</b> " : "";
-        ds.addLog(String.format("⚔️ %s[%s]! %s에게 %d의 피해!", critTag, skill.getName(), monster.getName(), finalDamage));
+        // 4. 전투 로그 기록 (데미지 강조)
+        ds.addLog(String.format("⚔️ <b style='color:#ffffff;'>%s</b>! %s에게 <b style='color:#ff4d4d;'>%d</b>의 피해!",
+                skill.getName(), monster.getName(), finalDamage));
 
+        // 5. 승리 조건 체크
         if (monster.getCurrentHp() <= 0) {
             finishBattle(user, ds, true);
             return "VICTORY";
         }
 
-        // --- [STEP 4] 공격 스킬의 부가 상태 이상 처리 ---
+        // 6. 부가 효과(상태이상) 판정 (예: 배쉬의 기절, 베기의 출혈)
+        // 데미지 스킬이더라도 effect에 status가 있으면 전이 확률을 계산합니다.
         if (skill.getEffect() != null && skill.getEffect().getStatus() != null) {
-            double baseChance = skill.getEffect().getBaseChance();
-            double targetResist = monster.getStats().getStatusResist();
-
-            if (isStatusApplied(baseChance, targetResist)) {
-                monster.getActiveStatuses().add(createStatus(skill, "DEBUFF"));
-                ds.addLog(String.format("<span style='color:#da70d6;'>[효과] %s에게 %s 부여!</span>", monster.getName(), skill.getName()));
-            } else {
-                ds.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s이(가) %s 효과를 저항했습니다.</span>", monster.getName(), skill.getName()));
-            }
+            applyAdditionalEffect(monster, skill, ds);
         }
+
         return "HIT_SUCCESS";
     }
 
+    /**
+     * 상태이상 스킬 전용 처리 로직 (공격기 외에 디버프/버프 전용 스킬용)
+     */
     private String handleStatus(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds) {
         SkillEffect effect = skill.getEffect();
-        String type = effect.getType();
 
-        if ("BUFF".equals(type)) {
+        if ("BUFF".equals(effect.getType())) {
             user.getActiveStatuses().add(createStatus(skill, "BUFF"));
-            ds.addLog("🛡️ " + user.getName() + "에게 [" + skill.getName() + "] 효과 적용!");
+            ds.addLog(String.format("🛡️ %s에게 [<span style='color:#70db70;'>%s</span>] 효과 적용!", user.getName(), skill.getName()));
         } else {
-            double targetResist = monster.getStats().getStatusResist();
-            if (isStatusApplied(effect.getBaseChance(), targetResist)) {
-                monster.getActiveStatuses().add(createStatus(skill, "DEBUFF"));
-                ds.addLog("💢 " + monster.getName() + "에게 [" + skill.getName() + "] 효과 적용!");
-            } else {
-                ds.addLog("🛡️ " + monster.getName() + "이(가) [" + skill.getName() + "]을(를) 저항했습니다!");
-            }
+            // 공격이 아니더라도 저항력 체크 후 디버프 부여
+            applyAdditionalEffect(monster, skill, ds);
         }
         return "STATUS_APPLIED";
+    }
+
+    /**
+     * [헬퍼] 대상에게 상태이상을 부여할지 판정하고 처리합니다.
+     */
+    private void applyAdditionalEffect(ActiveMonster monster, SkillMeta skill, DungeonStatus ds) {
+        double baseChance = skill.getEffect().getChance();
+        double targetResist = monster.getStats().getStatusResist();
+
+        if (isStatusApplied(baseChance, targetResist)) {
+            monster.getActiveStatuses().add(createStatus(skill, "DEBUFF"));
+            ds.addLog(String.format("<span style='color:#da70d6;'>[효과]</span> %s에게 %s 부여!",
+                    monster.getName(), skill.getEffect().getStatus()));
+        } else {
+            ds.addLog(String.format("<span style='color:#aaaaaa;'>[저항]</span> %s이(가) 효과를 저항했습니다.", monster.getName()));
+        }
     }
 
     /**
@@ -221,6 +256,12 @@ public class BattleService {
                 .build();
     }
 
+    /**
+     * 스킬 코스트 계산 로직
+     * @param user 플레이어
+     * @param ds 몬스터 정보
+     * @param skill 스킬
+     */
     private void applyCost(UserStatus user, DungeonStatus ds, SkillMeta skill) {
         user.setCurrentStamina(user.getCurrentStamina() - skill.getCost().getOrDefault("stamina", 0));
         user.setCurrentMp(user.getCurrentMp() - skill.getCost().getOrDefault("mp", 0));
@@ -232,23 +273,42 @@ public class BattleService {
      * [도망 로직]
      */
     private String handleEscape(UserStatus user, DungeonStatus ds, SkillMeta skill) {
-        SkillEffect effect = skill.getEffect();
+        // 1. 기본 확률 (히트 찬스를 탈출 기본 확률로 활용)
+        double escapeChance = skill.getHitChance();
 
-        double baseChance = effect.getBaseChance();
-        double dodgeBonus = user.getCombatStats().getDodge() * 0.5;
-        double finalChance = Math.min(95.0, baseChance + dodgeBonus);
+        // 2. 스탯 보정치 (Scaling) 합산
+        double statBonus = 0;
+        if (skill.getScaling() != null) {
+            for (var entry : skill.getScaling().entrySet()) {
+                double statValue = user.getFinalStats().getOrDefault(entry.getKey(), 0);
+                statBonus += (statValue * entry.getValue());
+            }
+        }
 
+        // 3. 최종 확률 산출 (보정치 합산)
+        // 예: 40(기본) + 스탯보너스(15) = 55%
+        double finalChance = Math.min(95.0, escapeChance + statBonus);
+
+        // 4. 주사위 굴리기
         if (Math.random() * 100 < finalChance) {
-            ds.addLog("<span style='color:#70db70;'>[도망]</span> 성공! 적을 따돌리고 거리를 벌렸습니다.");
-
-            // 전투 종료 상태 기록
+            ds.addLog(String.format("<span style='color:#70db70;'>[성공]</span> 도망에 성공했습니다! (확률: %.1f%%)", finalChance));
             finishBattle(user, ds, false);
-
             return "ESCAPE_SUCCESS";
         } else {
-            ds.addLog("<span style='color:#ff4d4d;'>[도망]</span> 실패! 적이 앞을 가로막습니다.");
+            ds.addLog(String.format("<span style='color:#ff4d4d;'>[실패]</span> 적이 앞을 가로막아 도망치지 못했습니다! (확률: %.1f%%)", finalChance));
             return "ESCAPE_FAIL";
         }
+    }
+
+    /**
+     * 현재 턴을 넘김니다.
+     * @param user 플레이어
+     * @param ds 몬스터 정보
+     * @return 로그 메시지 추가
+     */
+    private String handleWait(UserStatus user, DungeonStatus ds) {
+        ds.addLog("<b style='color:#888;'>[대기]</b> 턴을 넘김니다.");
+        return "WAIT_SUCCESS";
     }
 
     /**

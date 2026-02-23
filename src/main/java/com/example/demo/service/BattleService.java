@@ -8,7 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -24,9 +26,21 @@ public class BattleService {
                 ? gameDataManager.getItemMap().get(weaponId).getSubType()
                 : "NONE";
 
+        Set<Integer> learnedSkills = new HashSet<>(user.getLearnedSkillIds());
+
+
         return gameDataManager.getSkillMetaMap().values().stream()
-                .filter(meta -> meta.getRequiredWeapon().equals("NONE") ||
-                        meta.getRequiredWeapon().equals(weaponType))
+                .filter(meta -> {
+                    // 1. 무기 조건이 NONE이거나 현재 무기와 일치하는 경우 (기본 무기 기술 등)
+                    boolean isWeaponSkill = meta.getRequiredWeapon().equals("NONE") ||
+                            meta.getRequiredWeapon().equals(weaponType);
+
+                    // 2. 무기 상관없이 유저가 명시적으로 습득한 스킬인 경우
+                    boolean isLearned = learnedSkills.contains(meta.getId());
+
+                    // 둘 중 하나라도 해당하면 리스트에 포함
+                    return isWeaponSkill || isLearned;
+                })
                 .map(meta -> {
                     boolean canAct = statCalculationService.checkSkillAvailability(user, ds, meta);
 

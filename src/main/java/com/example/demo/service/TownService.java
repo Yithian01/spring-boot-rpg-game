@@ -189,7 +189,7 @@ public class TownService {
         town.setCurrentTurn(town.getCurrentTurn() - 1);
 
         // 6. 스탯 변화가 전투 능력치에 영향을 주므로 재계산 필요
-        statCalculationService.refreshUserCombatStats(user);
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
 
         saveAll(user, town);
 

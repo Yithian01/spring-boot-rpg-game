@@ -8,7 +8,11 @@
     "turnCost": 1,
     "cost": { "stamina": 15, "mp": 0 },
     "scaling": { "20": 1.5, "21": 1.0, "23": 0.5 },
-    "effect": { "type": "ESCAPE", "baseChance": 40 },
+    "effect": {
+      "type": "ESCAPE",
+      "element": "NONE",
+      "baseChance": 40
+    },
     "requiredWeapon": "NONE"
   },
   {
@@ -20,7 +24,13 @@
     "turnCost": 1,
     "cost": { "stamina": 10, "mp": 0 },
     "scaling": { "10": 2.5, "11": 1.5 },
-    "effect": { "type": "DAMAGE", "status": "STUN", "chance": 15 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 15
+    },
     "requiredWeapon": "BLUNT"
   },
   {
@@ -32,7 +42,13 @@
     "turnCost": 1,
     "cost": { "stamina": 8, "mp": 0 },
     "scaling": { "10": 1.8, "15": 1.2 },
-    "effect": { "type": "DAMAGE", "status": "BLEED", "chance": 10 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "status": "BLEED",
+      "duration": 3,
+      "chance": 10
+    },
     "requiredWeapon": "SWORD"
   },
   {
@@ -44,7 +60,13 @@
     "turnCost": 1,
     "cost": { "stamina": 8, "mp": 0 },
     "scaling": { "10": 1.8, "15": 1.2 },
-    "effect": { "type": "DAMAGE", "status": "BLEED", "chance": 10 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "status": "BLEED",
+      "duration": 3,
+      "chance": 10
+    },
     "requiredWeapon": "SWORD"
   },
   {
@@ -56,7 +78,11 @@
     "turnCost": 2,
     "cost": { "stamina": 12, "mp": 0 },
     "scaling": { "2": 2.0, "15": 2.5 },
-    "effect": { "type": "DAMAGE", "critMod": 2.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "critMod": 2.0
+    },
     "requiredWeapon": "DAGGER"
   },
   {
@@ -68,7 +94,50 @@
     "turnCost": 2,
     "cost": { "stamina": 15, "mp": 0 },
     "scaling": { "16": 2.5, "23": 1.5 },
-    "effect": { "type": "DAMAGE" },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL"
+    },
     "requiredWeapon": "BOW"
+  },
+  {
+    "id": 7,
+    "name": "화염구",
+    "icon": "7.png",
+    "description": "응축된 화염을 발사하여 적에게 마법 피해를 입히고 화상을 입힙니다.",
+    "type": "MAGIC",
+    "turnCost": 2,
+    "cost": { "stamina": 5, "mp": 25 },
+    "scaling": { "13": 3.5, "14": 1.5, "15": 0.5 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "FIRE",
+      "status": "BURN",
+      "duration": 3,
+      "chance": 30
+    },
+    "requiredWeapon": "NONE"
+  },
+  {
+    "id": 8,
+    "name": "강화 근육",
+    "icon": "8.png",
+    "description": "세포의 대사 효율을 일시적으로 높여 근력을 강화합니다.",
+    "type": "MAGIC",
+    "turnCost": 1,
+    "cost": { "stamina": 10, "mp": 15 },
+    "scaling": { "3": 1.2, "8": 0.5 },
+    "effect": {
+      "type": "BUFF",
+      "element": "NONE",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "statModifiers": {
+        "10": 1.2,
+        "11": 1.2
+      }
+    },
+    "requiredWeapon": "NONE"
   }
 ]

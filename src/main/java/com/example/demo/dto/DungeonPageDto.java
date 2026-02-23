@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.save.DungeonStatus;
+import com.example.demo.domain.save.ActiveMonster;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class DungeonPageDto {
     private double restSafetyRate;      // "휴식 안전도 85%" 표시용
 
     private boolean isInBattle;
-    private DungeonStatus.ActiveMonster activeMonster;
+    private ActiveMonster activeMonster;
 
     private List<SkillCardDto> skillCards;
 

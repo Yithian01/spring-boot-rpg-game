@@ -35,27 +35,8 @@ public class DungeonStatus {
     private int pendingGold;      // 승리 시 획득할 예정인 골드
 
     /**
-     * 전투 중인 실시간 몬스터 스냅샷
-     */
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class ActiveMonster {
-        private int monsterId;
-        private String name;
-        private int tier;
-
-        private int currentHp;
-        private int maxHp;
-        private int currentMp;
-        private int maxMp;
-
-        private MonsterStatsDto stats; // 메타데이터에서 복사해온 스탯
-    }
-
-    /**
-     * 로그 추가 편의 메서드 (최대 로그 개수 제한 가능)
+     * 로그 추가 메소드
+     * @param log 표시할 로그
      */
     public void addLog(String log) {
         if (this.battleLogs == null) {

@@ -120,21 +120,32 @@ public class GameService {
         initialEquippedItems.put("NECKLACE", 0);
         initialEquippedItems.put("RING", 0);
 
-        // 4. UserStatus 생성
+        List<Integer> learnedSkillIds = new ArrayList<>();
+
+        // 4. UserStatus 생성 (새로운 필드 반영)
         UserStatus newUser = UserStatus.builder()
                 .id(1)
                 .name(tribeMeta.getName())
                 .tribeId(tribeId)
                 .religionId(0)
                 .currentGold(initialMeta.getGold())
-                .baseStats(baseStats) // DNA 주입
+                .baseStats(baseStats)
                 .potentials(randomPotentials)
+
+                // --- 계층형 스탯 필드 초기화 ---
+                .equipmentBonusStats(new HashMap<>()) // 빈 맵으로 시작
+                .activeStatuses(new ArrayList<>())    // 빈 리스트로 시작
+                .finalStats(new HashMap<>(baseStats)) // 초기값은 baseStats 복사
+
                 .equippedItems(initialEquippedItems)
                 .usedItemIds(new ArrayList<>())
+                .learnedSkillIds(new ArrayList<>())
+                .saveVersion(1) // 버전 관리용
                 .build();
 
-        // 5. 스탯 계산기 가동 (아이템Map과 함께 호출)
-        // 이 한 줄로 maxHp부터 moveSpeed까지 모든 수식이 "디플로이" 됩니다.
+        // 5. 스탯 계산기 가동
+        // 이제 내부적으로 baseStats + equipment + activeStatuses를 합산하여 finalStats와
+        // maxHp, meleeAtk 등 전투 수치를 모두 갱신합니다.
         statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMap());
 
         // 6. 현재 체력 등을 최대치로 보정
@@ -210,6 +221,9 @@ public class GameService {
                 .items(inventory)
                 .equippedItems(equippedMap) // 장착창 데이터
 
+                //유저 현재 버프/디버프 목록 전달
+                .activeStatuses(user.getActiveStatuses())
+
                 // 랜덤 박스 결제 정보
                 .boxPrice(finalPrice)
                 .boxDiscount(discountPercent)
@@ -276,7 +290,8 @@ public class GameService {
         List<UserStatDto> statList = new ArrayList<>();
         Map<Integer, StatMeta> metaMap = gameDataManager.getStatMap();
 
-        Map<Integer, Integer> statsToDisplay = (user.getFinalStats() != null)
+        // 무조건 finalStats를 보되, 혹시 비어있다면 baseStats를 백업으로 사용
+        Map<Integer, Integer> statsToDisplay = (user.getFinalStats() != null && !user.getFinalStats().isEmpty())
                 ? user.getFinalStats()
                 : user.getBaseStats();
 
@@ -289,7 +304,7 @@ public class GameService {
                     .id(meta.getId())
                     .name(meta.getName())
                     .description(meta.getDescription())
-                    .value(value)
+                    .value(value) // 이 value가 장비+버프가 모두 합쳐진 최종값
                     .growthGrade(calculateGrade(potential))
                     .build();
 

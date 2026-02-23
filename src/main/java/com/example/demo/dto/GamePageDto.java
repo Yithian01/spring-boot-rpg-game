@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.save.InventoryItem;
+import com.example.demo.domain.save.ActiveStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,21 +23,24 @@ public class GamePageDto {
     // 2. 생존 자원 (Health, Mana, Stamina)
     private int currentHp;
     private int maxHp;
-    private int currentMp;          // 추가
-    private int maxMp;              // 추가
-    private int currentStamina;     // 추가
-    private int maxStamina;         // 추가
+    private int currentMp;
+    private int maxMp;
+    private int currentStamina;
+    private int maxStamina;
 
     // 3. 재화
-    private int currentGold;        // 추가
+    private int currentGold;
 
     // 4. 리스트 데이터 (스탯, 인벤토리)
     private List<UserStatDto> stats;
     private List<ItemPageDto> items;
 
     // 5. 장착 장비 (Key: 슬롯명, Value: 아이템DTO)
-    // HTML에서 장착창을 구현할 때 필수로 필요합니다.
     private Map<String, ItemPageDto> equippedItems;
+
+    // 6. [추가] 현재 적용 중인 상태 효과 (버프/디버프)
+    // 유저가 "아, 내가 지금 독에 걸렸구나" 또는 "힘 물약을 먹었구나"를 알게 해줍니다.
+    private List<ActiveStatus> activeStatuses;
 
     private int boxPrice;
     private int boxDiscount;

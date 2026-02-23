@@ -35,27 +35,91 @@ public class InventoryService {
 
         if (meta == null) return "아이템 정보를 찾을 수 없습니다.";
 
-        int oldMaxHp = user.getMaxHp();
-        int oldMaxMp = user.getMaxMp();
-        int oldMaxStamina = user.getMaxStamina();
-
-        // 1. 인벤토리에서 해당 아이템 찾기
+        // 1. 인벤토리 보유 확인
         InventoryItem targetItem = inventory.getItems().stream()
-                .filter(item -> item.getId() == itemId)
-                .findFirst()
-                .orElse(null);
+                .filter(item -> item.getId() == itemId).findFirst().orElse(null);
+        if (targetItem == null || targetItem.getQuantity() <= 0) return "보유하지 않은 아이템입니다.";
 
-        if (targetItem == null || targetItem.getQuantity() <= 0) {
-            return "보유하지 않은 아이템입니다.";
-        }
+        // [변경 포인트 1] 현재 자원 비율 유지를 위해 이전 Max 값 저장
+        int preMaxHp = user.getMaxHp();
+        int preMaxMp = user.getMaxMp();
+        int preMaxSt = user.getMaxStamina();
 
+        // 2. 장착 슬롯 처리 (양손 무기 등 기존 로직 유지)
         StringBuilder messageBuilder = new StringBuilder();
+        handleWeaponSlot(user, inventory, slot, meta, messageBuilder); // 헬퍼 메서드로 분리 추천
 
-        // --- [양손 무기 로직 추가 시작] ---
+        // 기존 장착템 해제 및 새 아이템 등록
+        Integer currentEquippedId = user.getEquippedItems().get(slot);
+        if (currentEquippedId != null && currentEquippedId != 0) {
+            addInventoryItem(inventory, currentEquippedId);
+        }
+        user.getEquippedItems().put(slot, itemId);
+        targetItem.setQuantity(targetItem.getQuantity() - 1);
+        if (targetItem.getQuantity() <= 0) inventory.getItems().remove(targetItem);
 
+        // [변경 포인트 2] 계층형 스탯 업데이트
+        // (중요) StatCalculationService에 새로 만든 장비 레이어 전용 업데이트 호출
+        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMap());
+
+        // [변경 포인트 3] 최종 스탯 리프레시 (Base + Equip + ActiveStatus)
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+
+        // 3. 자원 보정 (최대치가 늘어난 만큼 현재치도 자연스럽게 보정)
+        adjustCurrentResources(user, preMaxHp, preMaxMp, preMaxSt);
+
+        // 4. 저장
+        userFileRepository.saveUserStatus(user);
+        inventoryFileRepository.saveInventoryStatus(inventory);
+
+        messageBuilder.append(meta.getName()).append("을(를) 장착했습니다.");
+        return messageBuilder.toString();
+    }
+
+    /**
+     * 아이템 해제 로직 (개선 버전)
+     */
+    public String unequipItem(String slot) {
+        UserStatus user = userFileRepository.findGameUser();
+        InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
+
+        Integer equippedId = user.getEquippedItems().get(slot);
+        if (equippedId == null || equippedId == 0) return "해당 슬롯에 장착된 아이템이 없습니다.";
+
+        // 1. 장착 해제
+        user.getEquippedItems().put(slot, 0);
+        addInventoryItem(inventory, equippedId);
+
+        // [변경 포인트] 레이어 업데이트 후 리프레시
+        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+
+        userFileRepository.saveUserStatus(user);
+        inventoryFileRepository.saveInventoryStatus(inventory);
+
+        return "장비를 해제했습니다.";
+    }
+
+    /**
+     * 최대 생명력이 늘어난 만큼 현재 생명력을 채워주는 편의 로직
+     */
+    private void adjustCurrentResources(UserStatus user, int oldHp, int oldMp, int oldSt) {
+        if (user.getMaxHp() > oldHp) user.setCurrentHp(user.getCurrentHp() + (user.getMaxHp() - oldHp));
+        if (user.getMaxMp() > oldMp) user.setCurrentMp(user.getCurrentMp() + (user.getMaxMp() - oldMp));
+        if (user.getMaxStamina() > oldSt) user.setCurrentStamina(user.getCurrentStamina() + (user.getMaxStamina() - oldSt));
+
+        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getMaxHp()));
+        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getMaxMp()));
+        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getMaxStamina()));
+    }
+
+    /**
+     * 주무기/보조무기 장착 시 양손 무기 규칙을 처리하는 헬퍼 메서드
+     */
+    private void handleWeaponSlot(UserStatus user, InventoryStatus inventory, String slot, ItemMeta meta, StringBuilder messageBuilder) {
         // A. 주무기(WEAPON) 슬롯에 장착하려는 경우
         if ("WEAPON".equals(slot)) {
-            // 만약 지금 끼려는게 양손 무기라면 보조무기를 강제 해제
+            // 지금 끼려는 무기가 양손 무기라면 보조무기를 강제 해제
             if (meta.isTwoHanded()) {
                 Integer subId = user.getEquippedItems().get("SUB_WEAPON");
                 if (subId != null && subId != 0) {
@@ -70,7 +134,7 @@ public class InventoryService {
             Integer mainId = user.getEquippedItems().get("WEAPON");
             if (mainId != null && mainId != 0) {
                 ItemMeta mainMeta = gameDataManager.getItemMap().get(mainId);
-                // 현재 끼고 있는 주무기가 양손 무기라면 주무기를 강제 해제
+                // 현재 끼고 있는 주무기가 양손 무기라면 보조무기를 낄 수 없으므로 주무기를 해제
                 if (mainMeta != null && mainMeta.isTwoHanded()) {
                     addInventoryItem(inventory, mainId);
                     user.getEquippedItems().put("WEAPON", 0);
@@ -78,77 +142,18 @@ public class InventoryService {
                 }
             }
         }
-
-        // --- [양손 무기 로직 추가 끝] ---
-
-        // 2. 이미 해당 슬롯에 장착 중인 아이템이 있는지 확인 (기존 로직)
-        Integer currentEquippedId = user.getEquippedItems().get(slot);
-        if (currentEquippedId != null && currentEquippedId != 0) {
-            addInventoryItem(inventory, currentEquippedId);
-        }
-
-        // 3. 새 아이템 장착 및 인벤토리 수량 차감
-        user.getEquippedItems().put(slot, itemId);
-        targetItem.setQuantity(targetItem.getQuantity() - 1);
-
-        if (targetItem.getQuantity() <= 0) {
-            inventory.getItems().remove(targetItem);
-        }
-
-        // 4. 스탯 리프레시
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
-
-        if (user.getMaxHp() > oldMaxHp) {
-            user.setCurrentHp(user.getCurrentHp() + (user.getMaxHp() - oldMaxHp));
-        }
-        if (user.getMaxMp() > oldMaxMp) {
-            user.setCurrentMp(user.getCurrentMp() + (user.getMaxMp() - oldMaxMp));
-        }
-        if (user.getMaxStamina() > oldMaxStamina) {
-            user.setCurrentStamina(user.getCurrentStamina() + (user.getMaxStamina() - oldMaxStamina));
-        }
-
-        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getMaxHp()));
-        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getMaxMp()));
-        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getMaxStamina()));
-
-        // 5. 저장
-        userFileRepository.saveUserStatus(user);
-        inventoryFileRepository.saveInventoryStatus(inventory);
-
-        messageBuilder.append(meta.getName()).append("을(를) 장착했습니다.");
-        return messageBuilder.toString();
     }
 
     /**
-     * 아이템 해제 로직
+     * 장비 변경 시 스탯 레이어를 갱신하고 최종 수치를 리프레시하는 공통 로직
      */
-    public String unequipItem(String slot) {
-        UserStatus user = userFileRepository.findGameUser();
-        InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
+    private void refreshUserStatsAfterEquipmentChange(UserStatus user) {
+        // 1. 장비 스탯 레이어(equipmentBonusStats)만 따로 계산해서 유저 객체에 저장
+        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMap());
 
-        Integer equippedId = user.getEquippedItems().get(slot);
-        if (equippedId == null || equippedId == 0) {
-            return "해당 슬롯에 장착된 아이템이 없습니다.";
-        }
-
-        // 1. 슬롯 비우기
-        user.getEquippedItems().put(slot, 0);
-
-        // 2. 인벤토리로 돌려보내기
-        addInventoryItem(inventory, equippedId);
-
-        // 3. 스탯 리프레시
+        // 2. 최종 스탯(finalStats) 및 전투 능력치(MaxHp, Atk 등) 계산
+        // 이 메서드 내부에서 baseStats + equipmentBonusStats + activeStatuses가 합산됨
         statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
-
-        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getMaxHp()));
-        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getMaxMp()));
-        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getMaxStamina()));
-
-        userFileRepository.saveUserStatus(user);
-        inventoryFileRepository.saveInventoryStatus(inventory);
-
-        return "장비를 해제했습니다.";
     }
 
     /**

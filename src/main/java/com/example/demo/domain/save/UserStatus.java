@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,14 +63,19 @@ public class UserStatus {
     private double moveSpeed;
 
     /* =========================
-     * 4. Base Stats (B1~B24)
+     * 스탯 계층 관리 (Layered Stats)
      * ========================= */
+    // 1. 순수 태생 스탯
     private Map<Integer, Integer> baseStats;
 
-    /* =========================
-     * 4-1. Final Stats (아이템/버프가 적용된 최종값)
-     * ========================= */
-    // 이 필드를 추가해서 refresh 할 때마다 여기에 계산 결과(순수+보너스)를 써줍니다.
+    // 2. 장비로 인한 추가 수치 (고정치 합산)
+    private Map<Integer, Integer> equipmentBonusStats;
+
+    // 3. 현재 적용 중인 버프/디버프 목록 (동적 계산용)
+    private List<ActiveStatus> activeStatuses = new ArrayList<>();
+
+    // 4. 최종 결과물 (Base + Equip) * Buff 가 적용된 결과
+    // UI에서는 오직 이 finalStats만 봅니다.
     private Map<Integer, Integer> finalStats;
 
     /* =========================
@@ -94,4 +100,9 @@ public class UserStatus {
         put("NECKLACE", 0);
         put("RING", 0);
     }};
+
+    /* =========================
+     * 8. 스킬 정보
+     * ========================= */
+    private List<Integer> learnedSkillIds = new ArrayList<>(); // 배운 마법/스킬 ID 리스트
 }

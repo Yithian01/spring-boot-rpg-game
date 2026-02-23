@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.meta.SkillMeta;
+import com.example.demo.domain.save.ActiveStatus;
 import com.example.demo.domain.save.DungeonStatus;
 import com.example.demo.domain.save.UserStatus;
 import lombok.RequiredArgsConstructor;
@@ -31,67 +32,134 @@ public class StatCalculationService {
     }
 
     /**
-     * 유저의 모든 전투 스탯을 아이템 보너스를 포함하여 완전히 새로고침합니다.
+     * [추가] 장착된 아이템들의 기초 스탯 보너스를 합산하여 UserStatus의 전용 레이어에 저장합니다.
+     * 장비 장착/해제 시에만 호출하면 됩니다.
+     */
+    public void updateEquipmentLayer(UserStatus user, Map<Integer, ItemMeta> itemMap) {
+        Map<Integer, Integer> equipBonus = new HashMap<>();
+
+        if (user.getEquippedItems() != null) {
+            for (Integer itemId : user.getEquippedItems().values()) {
+                // 아이템 ID가 0이 아니고 메타 데이터가 존재하는 경우만 합산
+                if (itemId != null && itemId != 0 && itemMap.containsKey(itemId)) {
+                    ItemMeta item = itemMap.get(itemId);
+                    if (item.getBaseStatsBonus() != null) {
+                        item.getBaseStatsBonus().forEach((statId, bonus) ->
+                                equipBonus.merge(statId, bonus, Integer::sum));
+                    }
+                }
+            }
+        }
+
+        // 유저 객체의 장비 보너스 레이어 갱신
+        user.setEquipmentBonusStats(equipBonus);
+        log.debug("장비 스탯 레이어 업데이트 완료: {}", equipBonus);
+    }
+
+    /**
+     * 유저의 모든 전투 스탯을 [아이템 + 버프/디버프]를 포함하여 완전히 새로고침합니다.
+     * 매번 아이템을 전수 조사하지 않고, 저장된 equipmentBonusStats 레이어를 활용합니다.
      * @param user 현재 유저 상태 (참조를 통해 직접 수정)
      * @param itemMap GameDataManager에서 관리하는 전체 아이템 메타 맵
      */
     public void refreshUserCombatStats(UserStatus user, Map<Integer, ItemMeta> itemMap) {
-        // --- [STEP 1] 기초 스탯(BaseStats) 합산 ---
-        // 유저 순수 스탯(B1~B24) 복사
-        Map<Integer, Integer> combinedStats = new HashMap<>(user.getBaseStats());
+        // --- [STEP 1] 기초 스탯 레이어 통합 (Base + Equipment) ---
+        Map<Integer, Double> calculationMap = new HashMap<>();
 
-        // 2. [아이템 보너스 합산] 장착 장비의 기초 스탯 보너스 누적
-        for (Integer itemId : user.getEquippedItems().values()) {
-            if (itemId != 0 && itemMap.containsKey(itemId)) {
-                ItemMeta item = itemMap.get(itemId);
-                if (item.getBaseStatsBonus() != null) {
-                    item.getBaseStatsBonus().forEach((statId, bonus) -> {
-                        combinedStats.merge(statId, bonus, Integer::sum);
+        // 1-1. 순수 태생 스탯 (BaseStats)
+        user.getBaseStats().forEach((id, val) -> calculationMap.put(id, val.doubleValue()));
+
+        // 1-2. 장비 보너스 합산 (미리 계산된 equipmentBonusStats 활용)
+        if (user.getEquipmentBonusStats() != null) {
+            user.getEquipmentBonusStats().forEach((id, val) ->
+                    calculationMap.merge(id, val.doubleValue(), Double::sum));
+        }
+
+        // --- [STEP 2] 상태 효과 레이어 (ActiveStatus - Stat Layer) ---
+        if (user.getActiveStatuses() != null && !user.getActiveStatuses().isEmpty()) {
+            // 2-1. Stat Offsets (고정치 합산: 예: 힘 +10)
+            for (ActiveStatus status : user.getActiveStatuses()) {
+                if (status.getStatOffsets() != null) {
+                    status.getStatOffsets().forEach((statId, offset) ->
+                            calculationMap.merge(statId, offset.doubleValue(), Double::sum));
+                }
+            }
+
+            // 2-2. Stat Modifiers (비율 보정: 예: 지능 * 1.2)
+            // 곱연산이므로 합연산이 모두 끝난 후 마지막에 적용
+            for (ActiveStatus status : user.getActiveStatuses()) {
+                if (status.getStatModifiers() != null) {
+                    status.getStatModifiers().forEach((statId, modifier) -> {
+                        if (calculationMap.containsKey(statId)) {
+                            double currentVal = calculationMap.get(statId);
+                            calculationMap.put(statId, currentVal * modifier);
+                        }
                     });
                 }
             }
         }
-        // 3. [최종 스탯 확정] 계산된 값을 user.finalStats에 저장 (UI용/세이브용)
-        user.setFinalStats(combinedStats);
 
+        // --- [STEP 3] 최종 스탯(finalStats) 확정 ---
+        Map<Integer, Integer> finalStats = new HashMap<>();
+        calculationMap.forEach((id, val) -> finalStats.put(id, (int) Math.round(val)));
+        user.setFinalStats(finalStats);
 
-        // 4. [전투 능력치 계산] 확정된 finalStats(아이템 포함)를 기반으로 수식 적용
-        user.setMaxHp(calculateMaxHp(combinedStats));
-        user.setMaxMp(calculateMana(combinedStats));
-        user.setMaxStamina(calculateStamina(combinedStats));
-        user.setHpRegen(calculateHpRegen(combinedStats));
-        user.setMpRegen(calculateManaRegen(combinedStats));
-        user.setMeleeAtk(calculateMeleeAtk(combinedStats));
-        user.setMagicAtk(calculateMagicAtk(combinedStats));
-        user.setCritRate(calculateCritRate(combinedStats));
-        user.setCritDmg(calculateCritDmg(combinedStats));
-        user.setPenetration(calculatePenetration(combinedStats));
-        user.setPhysDef(calculatePhysDef(combinedStats));
-        user.setMagRes(calculateMagRes(combinedStats));
-        user.setDodge(calculateDodge(combinedStats));
-        user.setAccuracy(calculateAccuracy(combinedStats));
-        user.setMoveSpeed(calculateMoveSpd(combinedStats));
+        // --- [STEP 4] 전투 능력치 수식 레이어 (Formulas) ---
+        applyBaseFormulas(user, finalStats);
 
-        // 5. [최종 고정 보너스 합산] CombatStatsBonus(깡공, 깡체 등) 추가 적
+        // --- [STEP 5] 최종 보정 레이어 (Combat Stats Bonuses & Modifiers) ---
+        // 5-1. 아이템 깡스탯 (CombatStatsBonus: 예: 물리공격력 +50)
+        // 이 부분은 최종 수치에 더해지는 것이므로 장비 맵 순회가 필요합니다.
         for (Integer itemId : user.getEquippedItems().values()) {
-            if (itemId != 0 && itemMap.containsKey(itemId)) {
+            if (itemId != null && itemId != 0 && itemMap.containsKey(itemId)) {
                 ItemMeta item = itemMap.get(itemId);
                 if (item.getCombatStatsBonus() != null) {
-                    applyFinalCombatBonus(user, item.getCombatStatsBonus());
+                    applyCombatStatsBonus(user, item.getCombatStatsBonus());
                 }
             }
         }
 
-        // 6. [안전 장치] 최대치 초과 보정
-        if (user.getCurrentHp() > user.getMaxHp()) user.setCurrentHp(user.getMaxHp());
-        if (user.getCurrentMp() > user.getMaxMp()) user.setCurrentMp(user.getMaxMp());
-        if (user.getCurrentStamina() > user.getMaxStamina()) user.setCurrentStamina(user.getMaxStamina());
+        // 5-2. ActiveStatus 전투 비율 보정 (CombatModifiers: 예: 최종 데미지 1.5배)
+        if (user.getActiveStatuses() != null) {
+            for (ActiveStatus status : user.getActiveStatuses()) {
+                if (status.getCombatModifiers() != null) {
+                    applyCombatModifiers(user, status.getCombatModifiers());
+                }
+            }
+        }
+
+        // --- [STEP 6] 자원 상한선 보정 ---
+        user.setCurrentHp(Math.min(user.getCurrentHp(), user.getMaxHp()));
+        user.setCurrentMp(Math.min(user.getCurrentMp(), user.getMaxMp()));
+        user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getMaxStamina()));
     }
 
     /**
-     * 아이템의 최종 고정 보너스를 유저 객체에 더함
+     * [헬퍼] 수식을 통한 기본 전투 능력치 세팅
      */
-    private void applyFinalCombatBonus(UserStatus user, ItemMeta.CombatStatsBonus cb) {
+    private void applyBaseFormulas(UserStatus user, Map<Integer, Integer> stats) {
+        user.setMaxHp(calculateMaxHp(stats));
+        user.setMaxMp(calculateMana(stats));
+        user.setMaxStamina(calculateStamina(stats));
+        user.setHpRegen(calculateHpRegen(stats));
+        user.setMpRegen(calculateManaRegen(stats));
+        user.setMeleeAtk(calculateMeleeAtk(stats));
+        user.setMagicAtk(calculateMagicAtk(stats));
+        user.setCritRate(calculateCritRate(stats));
+        user.setCritDmg(calculateCritDmg(stats));
+        user.setPenetration(calculatePenetration(stats));
+        user.setPhysDef(calculatePhysDef(stats));
+        user.setMagRes(calculateMagRes(stats));
+        user.setDodge(calculateDodge(stats));
+        user.setAccuracy(calculateAccuracy(stats));
+        user.setMoveSpeed(calculateMoveSpd(stats));
+    }
+
+    // =========================
+    // 전투 능력치 보정 헬퍼 메서드
+    // =========================
+
+    private void applyCombatStatsBonus(UserStatus user, ItemMeta.CombatStatsBonus cb) {
         user.setMaxHp(user.getMaxHp() + cb.getMaxHp());
         user.setMaxMp(user.getMaxMp() + cb.getMaxMp());
         user.setMaxStamina(user.getMaxStamina() + cb.getMaxStamina());
@@ -109,35 +177,15 @@ public class StatCalculationService {
         user.setMoveSpeed(user.getMoveSpeed() + cb.getMoveSpeed());
     }
 
-    /**
-     * baseStats(B1~B24)를 기반으로 UserStatus의 모든 전투 능력치를 일괄 갱신합니다.
-     */
-    public void refreshUserCombatStats(UserStatus user) {
-        Map<Integer, Integer> stats = user.getBaseStats();
-
-        // 1. 생존 자원 최대치
-        user.setMaxHp(calculateMaxHp(stats));
-        user.setMaxMp(calculateMana(stats));
-        user.setMaxStamina(calculateStamina(stats));
-
-        // 2. 재생 관련
-        user.setHpRegen(calculateHpRegen(stats));
-        user.setMpRegen(calculateManaRegen(stats));
-
-        // 3. 공격 관련
-        user.setMeleeAtk(calculateMeleeAtk(stats));
-        user.setMagicAtk(calculateMagicAtk(stats));
-        user.setCritRate(calculateCritRate(stats));
-        user.setCritDmg(calculateCritDmg(stats));
-        user.setPenetration(calculatePenetration(stats));
-
-        // 4. 방어 및 유틸리티
-        user.setPhysDef(calculatePhysDef(stats));
-        user.setMagRes(calculateMagRes(stats));
-        user.setDodge(calculateDodge(stats));
-        user.setAccuracy(calculateAccuracy(stats));
-        user.setMoveSpeed(calculateMoveSpd(stats));
-
+    private void applyCombatModifiers(UserStatus user, Map<String, Double> mods) {
+        if (mods.containsKey("meleeAtk")) user.setMeleeAtk(user.getMeleeAtk() * mods.get("meleeAtk"));
+        if (mods.containsKey("magicAtk")) user.setMagicAtk(user.getMagicAtk() * mods.get("magicAtk"));
+        if (mods.containsKey("physDef")) user.setPhysDef(user.getPhysDef() * mods.get("physDef"));
+        if (mods.containsKey("magRes")) user.setMagRes(user.getMagRes() * mods.get("magRes"));
+        if (mods.containsKey("critRate")) user.setCritRate(user.getCritRate() * mods.get("critRate"));
+        if (mods.containsKey("maxHp")) user.setMaxHp((int)(user.getMaxHp() * mods.get("maxHp")));
+        if (mods.containsKey("maxMp")) user.setMaxMp((int)(user.getMaxMp() * mods.get("maxMp")));
+        if (mods.containsKey("maxStamina")) user.setMaxStamina((int)(user.getMaxStamina() * mods.get("maxStamina")));
     }
 
     /**

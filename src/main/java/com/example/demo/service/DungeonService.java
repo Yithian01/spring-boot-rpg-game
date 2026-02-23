@@ -2,10 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.enums.LocationType;
 import com.example.demo.domain.meta.MonsterMeta;
-import com.example.demo.domain.save.DungeonStatus;
-import com.example.demo.domain.save.GameStatus;
-import com.example.demo.domain.save.TownStatus;
-import com.example.demo.domain.save.UserStatus;
+import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.DungeonFileRepository;
 import com.example.demo.repository.GameRepository;
@@ -145,7 +142,7 @@ public class DungeonService {
                 (int)(Math.random() * (monsterMeta.getGoldMax() - monsterMeta.getGoldMin() + 1));
 
         // 3. ActiveMonster 빌드 (실시간 전투용 스냅샷)
-        DungeonStatus.ActiveMonster activeMonster = DungeonStatus.ActiveMonster.builder()
+        ActiveMonster activeMonster = ActiveMonster.builder()
                 .monsterId(monsterMeta.getId())
                 .name(monsterMeta.getName())
                 .tier(monsterMeta.getTier())
@@ -154,8 +151,8 @@ public class DungeonService {
                 .currentMp((int) monsterMeta.getStats().getMaxMp())
                 .maxMp((int) monsterMeta.getStats().getMaxMp())
                 .stats(monsterMeta.getStats()) // 복사본 전달
+                .activeStatuses(new ArrayList<>())
                 .build();
-
         ds.setActiveMonster(activeMonster);
 
         // 4. 유저 전투 턴 계산 (민첩 스탯 기반)

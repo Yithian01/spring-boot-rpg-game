@@ -6,8 +6,8 @@
   "religionId" : 0,
   "currentHp" : 176,
   "currentMp" : 192,
-  "currentStamina" : 120,
-  "currentGold" : 96,
+  "currentStamina" : 15,
+  "currentGold" : 101,
   "combatStats" : {
     "maxHp" : 219,
     "maxMp" : 192,

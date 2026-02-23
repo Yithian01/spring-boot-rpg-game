@@ -116,6 +116,9 @@ public class BattleService {
         }
         applyCost(user, ds, skill);
 
+        userFileRepository.saveUserStatus(user);
+        dungeonFileRepository.saveDungeonStatus(ds);
+
         // 2. 명중 판정 분기
         String skillType = skill.getEffect().getType();
         String resultMsg = null;
@@ -296,6 +299,7 @@ public class BattleService {
             return "ESCAPE_SUCCESS";
         } else {
             ds.addLog(String.format("<span style='color:#ff4d4d;'>[실패]</span> 적이 앞을 가로막아 도망치지 못했습니다! (확률: %.1f%%)", finalChance));
+            dungeonFileRepository.saveDungeonStatus(ds);
             return "ESCAPE_FAIL";
         }
     }

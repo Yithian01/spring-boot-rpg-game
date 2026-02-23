@@ -1,11 +1,11 @@
 {
   "currentFloor" : 1,
   "dungeonId" : "GRAY_MINE",
-  "progress" : 32,
+  "progress" : 100,
   "activeMonster" : null,
   "playerRemainingTurns" : 2,
   "playerMaxTurns" : 2,
-  "battleLogs" : [ "<span style='color:#ffd700;'>[획득] 4 Gold와 8 Exp를 얻었습니다!</span>", "⚔️ <b style='color:#ffffff;'>배쉬</b>! 굶주린 동굴 쥐에게 <b style='color:#ff4d4d;'>79</b>의 피해!", "<span style='color:#ff9f43;'>[전투]</span> 굶주린 동굴 쥐이(가) 나타났습니다!", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -43)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "어두운 던전에 발을 들였습니다... (1층)" ],
+  "battleLogs" : [ "<span style='color:#70db70;'>[성공]</span> 도망에 성공했습니다! (확률: 95.0%)", "<span style='color:#ff9f43;'>[전투]</span> 병약한 고블린이(가) 나타났습니다!", "<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "<span style='color:#70db70;'>[성공]</span> 도망에 성공했습니다! (확률: 56.0%)", "<span style='color:#ff9f43;'>[전투]</span> 독을 품은 이끼 슬라임이(가) 나타났습니다!", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "<span style='color:#ffd700;'>[획득] 5 Gold와 8 Exp를 얻었습니다!</span>", "⚔️ <b style='color:#ffffff;'>배쉬</b>! 굶주린 동굴 쥐에게 <b style='color:#ff4d4d;'>79</b>의 피해!", "<span style='color:#ff9f43;'>[전투]</span> 굶주린 동굴 쥐이(가) 나타났습니다!", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +8%)", "<span style='color:#70db70;'>[성공]</span> 도망에 성공했습니다! (확률: 56.0%)" ],
   "pendingExp" : 0,
   "pendingGold" : 0,
   "inBattle" : false

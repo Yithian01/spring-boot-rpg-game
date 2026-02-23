@@ -11,7 +11,8 @@
     "price": 350,
     "icon": "/images/items/1.png",
     "baseStatsBonus": { "10": 4, "11": 2, "12": 1 },
-    "combatStatsBonus": { "meleeAtk": 12.0, "critDmg": 5.0, "penetration": 2.0, "moveSpeed": -0.05 }
+    "combatStatsBonus": { "meleeAtk": 12.0, "critDmg": 5.0, "penetration": 2.0, "moveSpeed": -0.05 },
+    "grantedSkillIds": [2]
   },
   {
     "id": 2,
@@ -25,7 +26,8 @@
     "price": 200,
     "icon": "/images/items/2.png",
     "baseStatsBonus": { "4": 2, "8": 3, "13": 2 },
-    "combatStatsBonus": { "maxMp": 30, "mpRegen": 1.2, "magicAtk": 8.0, "magRes": 10.0 }
+    "combatStatsBonus": { "maxMp": 30, "mpRegen": 1.2, "magicAtk": 8.0, "magRes": 10.0 },
+    "grantedSkillIds": [8]
   },
   {
     "id": 3,
@@ -53,7 +55,8 @@
     "price": 300,
     "icon": "/images/items/4.png",
     "baseStatsBonus": { "2": 4, "3": 2 },
-    "combatStatsBonus": { "dodge": 5.0, "moveSpeed": 0.15 }
+    "combatStatsBonus": { "dodge": 5.0, "moveSpeed": 0.15 },
+    "grantedSkillIds": [101]
   },
   {
     "id": 5,
@@ -95,7 +98,8 @@
     "price": 600,
     "icon": "/images/items/7.png",
     "baseStatsBonus": { "2": 6, "15": 3 },
-    "combatStatsBonus": { "meleeAtk": 7.0, "critRate": 10.0, "critDmg": 15.0, "accuracy": 5.0 }
+    "combatStatsBonus": { "meleeAtk": 7.0, "critRate": 10.0, "critDmg": 15.0, "accuracy": 5.0 },
+    "grantedSkillIds": [5]
   },
   {
     "id": 8,
@@ -109,7 +113,8 @@
     "price": 500,
     "icon": "/images/items/8.png",
     "baseStatsBonus": { "1": 5 },
-    "combatStatsBonus": { "maxHp": 50, "hpRegen": 2.5, "physDef": 3.0, "magRes": 3.0 }
+    "combatStatsBonus": { "maxHp": 50, "hpRegen": 2.5, "physDef": 3.0, "magRes": 3.0 },
+    "grantedSkillIds": [102]
   },
   {
     "id": 9,
@@ -123,7 +128,8 @@
     "price": 550,
     "icon": "/images/items/9.png",
     "baseStatsBonus": { "2": 3, "15": 5 },
-    "combatStatsBonus": { "meleeAtk": 10.0, "accuracy": 12.0, "critRate": 3.0 }
+    "combatStatsBonus": { "meleeAtk": 10.0, "accuracy": 12.0, "critRate": 3.0 },
+    "grantedSkillIds": [6]
   },
   {
     "id": 10,
@@ -170,6 +176,7 @@
     "price": 400,
     "icon": "/images/items/12.png",
     "baseStatsBonus": { "10": 2, "15": 2 },
-    "combatStatsBonus": { "meleeAtk": 10.0, "accuracy": 5.0, "critRate": 2.0 }
+    "combatStatsBonus": { "meleeAtk": 10.0, "accuracy": 5.0, "critRate": 2.0 },
+    "grantedSkillIds": [3, 4]
   }
 ]

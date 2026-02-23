@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -23,9 +24,9 @@ public class ItemMeta {
 
     private Map<Integer, Integer> baseStatsBonus;
     private CombatStatsBonus combatStatsBonus;
-
-    // [소모품용] 회복 수치 추가
     private RecoveryBonus recoveryBonus;
+
+    private List<Integer> grantedSkillIds;
 
     @Data
     public static class RecoveryBonus {

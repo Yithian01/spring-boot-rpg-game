@@ -573,7 +573,7 @@ public class StatCalculationService {
             double critMultiplier = attacker.getCritDmg() / 100.0;
 
             // 암습 같은 스킬에 특수 치명타 배율이 있다면 적용
-            if (skill.getEffect() != null && skill.getEffect().getCritMod() > 0) {
+            if (skill.getEffect() != null && skill.getEffect().getCritMod() != null && skill.getEffect().getCritMod() > 0) {
                 critMultiplier *= skill.getEffect().getCritMod();
             }
 

@@ -327,12 +327,16 @@ public class BattleService {
 
             ds.addLog(String.format("<span style='color:#ffd700;'>[획득] %d Gold와 %d Exp를 얻었습니다!</span>",
                     ds.getPendingGold(), ds.getPendingExp()));
-        }
 
-        // 2. 몬스터 제거 및 데이터 초기화
-        ds.setActiveMonster(null);
-        ds.setPendingGold(0);
-        ds.setPendingExp(0);
+            ActiveMonster monster = ds.getActiveMonster();
+            monster.setCurrentHp(0);
+            ds.setActiveMonster(monster);
+
+        }else{
+            ds.setActiveMonster(null);
+            ds.setPendingExp(0);
+            ds.setPendingGold(0);
+        }
 
         // 3. 전투 턴 리필 (말씀하신 대로 전투 종료 즉시 풀 충전)
         int maxTurns = statCalculationService.calculateCombatTurns(user);

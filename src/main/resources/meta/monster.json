@@ -5,7 +5,7 @@
     "tier": 8,
     "description": "던전 입구의 쓰레기를 먹고 사는 거대 쥐입니다. 찍찍거리는 소리가 거슬립니다.",
     "stats": {
-      "maxHp": 45,
+      "maxHp": 220,
       "maxMp": 0,
       "meleeAtk": 6.0,
       "magicAtk": 0.0,
@@ -27,8 +27,8 @@
     "tier": 8,
     "description": "습한 바닥에서 자라난 슬라임입니다. 몸에 닿으면 피부가 따끔거립니다.",
     "stats": {
-      "maxHp": 70,
-      "maxMp": 15,
+      "maxHp": 300,
+      "maxMp": 0,
       "meleeAtk": 4.0,
       "magicAtk": 5.0,
       "physDef": 5.0,
@@ -49,8 +49,8 @@
     "tier": 8,
     "description": "무리에서 쫓겨나 입구 근처를 배회하는 고블린입니다. 눈이 마주치자 겁을 먹은 듯 보입니다.",
     "stats": {
-      "maxHp": 65,
-      "maxMp": 5,
+      "maxHp": 220,
+      "maxMp": 0,
       "meleeAtk": 9.0,
       "magicAtk": 0.0,
       "physDef": 3.0,
@@ -71,7 +71,7 @@
     "tier": 7,
     "description": "오래전 죽은 모험가의 유골이 마기에 의해 일어났습니다. 1층치고는 꽤 위협적인 칼날을 휘두릅니다.",
     "stats": {
-      "maxHp": 110,
+      "maxHp": 450,
       "maxMp": 0,
       "meleeAtk": 16.0,
       "magicAtk": 0.0,

@@ -54,6 +54,7 @@ public class DungeonController {
             redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
             return "redirect:/game/play";
         }
+        validationService.checkEndBattle();
 
         dungeonService.explore();
         return "redirect:/game/play";

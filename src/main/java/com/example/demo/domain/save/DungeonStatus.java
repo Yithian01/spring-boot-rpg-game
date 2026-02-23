@@ -55,6 +55,6 @@ public class DungeonStatus {
      * @return true/false
      */
     public boolean isInBattle() {
-        return this.activeMonster != null;
+        return (this.activeMonster != null && this.activeMonster.getCurrentHp() > 0);
     }
 }

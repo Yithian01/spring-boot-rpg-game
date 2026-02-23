@@ -21,6 +21,7 @@ public class ActiveStatus {
 
     private String category;    // BUFF, DEBUFF, CROWD_CONTROL(CC) 등
     private String effectCode;  // STUN, BURN, SILENCE 등 로직 식별용
+    private int tickDamage; // 턴당 데미지
 
     private Map<Integer, Double> statModifiers; // 스탯 보정 퍼센트
     private Map<Integer, Integer> statOffsets; // 스탯 보정 고정치

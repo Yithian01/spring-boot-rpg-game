@@ -35,6 +35,7 @@ public class GameDataManager  implements ApplicationRunner {
     @Getter private Map<Integer, TribeInitialMeta> tribeInitialMetaMap;
     @Getter private Map<Integer, MonsterMeta> monsterMetaMap;
     @Getter private Map<Integer, SkillMeta> skillMetaMap;
+    @Getter private Map<Integer, MonsterSkillMeta> monsterSkillMetaMap;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -68,6 +69,9 @@ public class GameDataManager  implements ApplicationRunner {
 
         // 8. 플레이어 스킬 정보 로딩 추가
         this.skillMetaMap = loadMapData("skill.json", SkillMeta.class, SkillMeta::getId);
+
+        // 9. 몬스터 스킬 정보 로딩 추가
+        this.monsterSkillMetaMap = loadMapData("monster-skill.json", MonsterSkillMeta.class, MonsterSkillMeta::getId);
 
         long end = System.currentTimeMillis();
         log.info("========== [GameData] 초기화 완료 (소요시간: {}ms) ==========", end - start);

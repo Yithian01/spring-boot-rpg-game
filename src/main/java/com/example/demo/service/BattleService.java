@@ -29,6 +29,7 @@ public class BattleService {
     private final StatCalculationService statCalculationService;
     private final UserFileRepository userFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
+    private final MonsterBattleService monsterBattleService;
 
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
         // 1. 현재 무기 타입 파악 및 모든 장착 아이템으로부터 추가 스킬 수집
@@ -149,7 +150,7 @@ public class BattleService {
         }
 
         switch (skillType) {
-            case "WAIT" -> resultMsg =  handleEscape(user, ds, skill);
+            case "WAIT" -> resultMsg =  handleWait(user, ds);
             case "DAMAGE" -> resultMsg = handleDamage(user, monster, skill, ds);
             case "BUFF", "DEBUFF" -> resultMsg = handleStatus(user, monster, skill, ds);
             default -> resultMsg = "정의되지 않은 효과입니다.";
@@ -196,10 +197,9 @@ public class BattleService {
             return "VICTORY";
         }
 
-        // 6. 부가 효과(상태이상) 판정 (예: 배쉬의 기절, 베기의 출혈)
-        // 데미지 스킬이더라도 effect에 status가 있으면 전이 확률을 계산합니다.
+        // 6. 부가 효과 판정 (1/3 규칙 적용)
         if (skill.getEffect() != null && skill.getEffect().getStatus() != null) {
-            applyAdditionalEffect(monster, skill, ds);
+            applyAdditionalEffect(monster, skill, ds, finalDamage); // 데미지 전달
         }
 
         return "HIT_SUCCESS";
@@ -212,11 +212,12 @@ public class BattleService {
         SkillEffect effect = skill.getEffect();
 
         if ("BUFF".equals(effect.getType())) {
-            user.getActiveStatuses().add(createStatus(skill, "BUFF"));
+            // BUFF는 플레이어 본인에게 적용
+            user.getActiveStatuses().add(createStatus(skill, "BUFF", 0));
             ds.addLog(String.format("🛡️ %s에게 [<span style='color:#70db70;'>%s</span>] 효과 적용!", user.getName(), skill.getName()));
         } else {
-            // 공격이 아니더라도 저항력 체크 후 디버프 부여
-            applyAdditionalEffect(monster, skill, ds);
+            // DEBUFF는 몬스터에게 적용 (데미지가 없으므로 baseDamage에 0 전달)
+            applyAdditionalEffect(monster, skill, ds, 0);
         }
         return "STATUS_APPLIED";
     }
@@ -224,16 +225,44 @@ public class BattleService {
     /**
      * [헬퍼] 대상에게 상태이상을 부여할지 판정하고 처리합니다.
      */
-    private void applyAdditionalEffect(ActiveMonster monster, SkillMeta skill, DungeonStatus ds) {
-        double baseChance = skill.getEffect().getChance();
-        double targetResist = monster.getStats().getStatusResist();
-
-        if (isStatusApplied(baseChance, targetResist)) {
-            monster.getActiveStatuses().add(createStatus(skill, "DEBUFF"));
-            ds.addLog(String.format("<span style='color:#da70d6;'>[효과]</span> %s에게 %s 부여!",
-                    monster.getName(), skill.getEffect().getStatus()));
-        } else {
+    private void applyAdditionalEffect(ActiveMonster monster, SkillMeta skill, DungeonStatus ds, int baseDamage) {
+        if (!isStatusApplied(skill.getEffect().getChance(), monster.getStats().getStatusResist())) {
             ds.addLog(String.format("<span style='color:#aaaaaa;'>[저항]</span> %s이(가) 효과를 저항했습니다.", monster.getName()));
+            return;
+        }
+
+        String status = skill.getEffect().getStatus();
+        int newTickDamage = 0;
+        int newDuration = skill.getEffect().getDuration();
+
+        // 1. 도트 데미지 계산 (BLEED, POISON, BURN 등)
+        if (List.of("BLEED", "POISON", "BURN").contains(status)) {
+            newTickDamage = Math.max(1, baseDamage / 3);
+        }
+
+        // 2. 기존 동일 상태이상 찾기
+        ActiveStatus existingStatus = monster.getActiveStatuses().stream()
+                .filter(s -> s.getEffectCode().equals(status))
+                .findFirst()
+                .orElse(null);
+
+        if (existingStatus != null) {
+            // [합산 및 갱신 로직]
+            // 시간은 기존 남은 시간과 새 시간 중 큰 값으로 (Max)
+            existingStatus.setRemainingTurns(Math.max(existingStatus.getRemainingTurns(), newDuration));
+
+            // 데미지는 기존 값에 추가 (+)
+            existingStatus.setTickDamage(existingStatus.getTickDamage() + newTickDamage);
+
+            ds.addLog(String.format("<span style='color:#da70d6;'>[중첩]</span> %s의 <b>%s</b> 강화! (남은 %d턴 / 틱당 %d 피해)",
+                    monster.getName(), status, existingStatus.getRemainingTurns(), existingStatus.getTickDamage()));
+        } else {
+            // [신규 부여]
+            monster.getActiveStatuses().add(createStatus(skill, "DEBUFF", newTickDamage));
+
+            String color = "FREEZE".equals(status) ? "#87ceeb" : "#da70d6";
+            ds.addLog(String.format("<span style='color:%s;'>[효과]</span> %s에게 %s 부여! (%d턴)",
+                    color, monster.getName(), status, newDuration));
         }
     }
 
@@ -247,15 +276,23 @@ public class BattleService {
         return Math.random() <= finalChance;
     }
 
-    private ActiveStatus createStatus(SkillMeta skill, String category) {
+    /**
+     * 스킬의 추가 효과 상태이상
+     * @param skill 스킬 정보
+     * @param category 어떤 상태이상 인지
+     * @param tickDamage 틱 데미지
+     * @return 디버프 상태이상 객체 반환
+     */
+    private ActiveStatus createStatus(SkillMeta skill, String category, int tickDamage) {
         return ActiveStatus.builder()
                 .skillId(skill.getId())
                 .name(skill.getName())
                 .remainingTurns(skill.getEffect().getDuration())
                 .category(category)
                 .effectCode(skill.getEffect().getStatus())
-                .statModifiers(skill.getEffect().getStatModifiers()) // 비율 추가
-                .statOffsets(skill.getEffect().getStatOffsets()) // 만약 데미지라면 여기에 추가
+                .tickDamage(tickDamage) // 1/3 데미지 저장
+                .statModifiers(skill.getEffect().getStatModifiers())
+                .statOffsets(skill.getEffect().getStatOffsets())
                 .build();
     }
 
@@ -311,8 +348,32 @@ public class BattleService {
      * @return 로그 메시지 추가
      */
     private String handleWait(UserStatus user, DungeonStatus ds) {
-        ds.addLog("<b style='color:#888;'>[대기]</b> 턴을 넘김니다.");
-        return "WAIT_SUCCESS";
+        ds.addLog("<b style='color:#888;'>[대기]</b> 턴을 종료합니다.");
+
+        // 1. 몬스터 행동 처리 (도트딜, 공격, 상태이상 부여 등)
+        monsterBattleService.processMonsterPhase(user, ds.getActiveMonster(), ds);
+
+        // 2. 몬스터 사망 체크 (도트딜로 죽었을 경우)
+        if (ds.getActiveMonster().getCurrentHp() <= 0) {
+            finishBattle(user, ds, true);
+            return "VICTORY";
+        }
+
+        // 3. 몬스터에게 디버프를 받았을 수 있으므로 플레이어 스탯 갱신
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+
+        // 4. 플레이어 턴(AP) 리필
+        int maxTurns = statCalculationService.calculateCombatTurns(user);
+        ds.setPlayerMaxTurns(maxTurns);
+        ds.setPlayerRemainingTurns(maxTurns);
+
+        ds.addLog("<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.");
+
+        // 파일 저장
+        userFileRepository.saveUserStatus(user);
+        dungeonFileRepository.saveDungeonStatus(ds);
+
+        return "MONSTER_TURN_END";
     }
 
     /**

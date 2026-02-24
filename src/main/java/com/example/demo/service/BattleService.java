@@ -31,6 +31,57 @@ public class BattleService {
     private final DungeonFileRepository dungeonFileRepository;
     private final MonsterBattleService monsterBattleService;
 
+    private void saveAll(UserStatus user, DungeonStatus ds) {
+        userFileRepository.saveUserStatus(user);
+        dungeonFileRepository.saveDungeonStatus(ds);
+    }
+
+    private void updatePlayerStatusTick(UserStatus user, DungeonStatus ds) {
+        if (user.getActiveStatuses() == null || user.getActiveStatuses().isEmpty()) return;
+
+        user.getActiveStatuses().removeIf(status -> {
+            String code = status.getEffectCode();
+            boolean isExpired = false;
+
+            // 1. 도트 데미지 처리 (BURN, POISON, BLEED)
+            if (status.getTickDamage() > 0) {
+                user.setCurrentHp(Math.max(0, user.getCurrentHp() - status.getTickDamage()));
+                ds.addLog(String.format("%s <b style='color:#ff4d4d;'>%s</b> 피해! (-%d HP)",
+                        gameDataManager.getIcon(code), status.getName(), status.getTickDamage()));
+            }
+
+            // 2. 특수 CC 효과 처리 (행동력 제어)
+            switch (code) {
+                case "STUN" -> {
+                    ds.setPlayerRemainingTurns(0);
+                    ds.addLog("💫 <b>기절</b> 상태입니다! 이번 턴을 상실합니다.");
+                }
+                case "FROZEN" -> {
+                    // 빙결은 offsets나 특정 수치만큼 AP 차감 (예: 1턴 차감)
+                    int freezePenalty = 1;
+                    ds.setPlayerRemainingTurns(Math.max(1, ds.getPlayerRemainingTurns() - freezePenalty));
+                    ds.addLog(String.format("❄️ <b>빙결</b> 효과로 행동력이 %d 감소했습니다.", freezePenalty));
+                }
+            }
+
+            // 3. 지속시간 감소
+            status.setRemainingTurns(status.getRemainingTurns() - 1);
+            if (status.getRemainingTurns() <= 0) {
+                ds.addLog(String.format("<span style='color:#aaaaaa;'>[해제] %s %s 효과 종료</span>",
+                        gameDataManager.getIcon(code), status.getName()));
+                isExpired = true;
+                userFileRepository.saveUserStatus(user);
+                statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+            }
+            return isExpired;
+        });
+
+        userFileRepository.saveUserStatus(user);
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+    }
+
+
+
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
         // 1. 현재 무기 타입 파악 및 모든 장착 아이템으로부터 추가 스킬 수집
         String weaponType = "NONE";
@@ -136,17 +187,20 @@ public class BattleService {
         );
 
         if (!isHit) {
-            return String.format("<span style='color:#aaaaaa;'>[실패] %s 이 빗나갔습니다! (Miss)</span>", skill.getName());
+            ds.addLog(String.format("<span style='color:#aaaaaa;'>[실패] %s 이 빗나갔습니다! (Miss)</span>", skill.getName()));
+            saveAll(user, ds);
+            return "MISS";
         }
 
         // [2단계] 방어자 회피 판정 (Dodge Check)
         // 버프인 경우 회피 판정을 생략하기 위해 0 전달
         double dodgeStat = "BUFF".equals(skillType) ? 0 : monster.getStats().getDodge();
         boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat);
-
         if (isDodged) {
-            return String.format("<span style='color:#ffcc00;'>[회피] %s이(가) %s의 공격을 회피했습니다! (Dodge)</span>",
-                    monster.getName(), user.getName());
+            ds.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 공격을 회피했습니다! (Dodge)</span>",
+                monster.getName(), user.getName()));
+            saveAll(user, ds);
+            return "Dodge";
         }
 
         switch (skillType) {
@@ -359,6 +413,8 @@ public class BattleService {
             return "VICTORY";
         }
 
+        updatePlayerStatusTick(user, ds);
+
         // 3. 몬스터에게 디버프를 받았을 수 있으므로 플레이어 스탯 갱신
         statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
 
@@ -421,26 +477,48 @@ public class BattleService {
 //    }
 
     /**
-     * 상태이상 처리
-     * @param user 플레이어
-     * @param monster 몬스터 메타
-     * @param ds 몬스터 정보
+     * [던전 + 마을] 자연 재생 처리
      */
-    public void processTurnEffects(UserStatus user, ActiveMonster monster, DungeonStatus ds) {
-        // 1. 몬스터의 상태 이상 처리
-        if (monster != null && monster.getActiveStatuses() != null) {
-            monster.getActiveStatuses().removeIf(status -> {
-                // [출혈/독 로직] effectCode가 BLEED나 POISON이면 체력 차감
-                if ("BLEED".equals(status.getEffectCode())) {
-                    int tickDamage = status.getStatOffsets().getOrDefault(999, 10); // 999를 도트딜 전용 키로 약속
-                    monster.setCurrentHp(Math.max(0, monster.getCurrentHp() - tickDamage));
-                    ds.addLog(String.format("🩸 출혈! %s이(가) %d의 피해를 입었습니다.", monster.getName(), tickDamage));
-                }
+    public void applyPlayerRegeneration() {
+        UserStatus user = userFileRepository.findGameUser();
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
 
-                // 턴 감소
-                status.setRemainingTurns(status.getRemainingTurns() - 1);
-                return status.getRemainingTurns() <= 0; // 0턴이면 리스트에서 제거
-            });
+
+        if (user == null || user.getCurrentHp() <= 0) return;
+
+        StringBuilder regenLog = new StringBuilder();
+        boolean recovered = false;
+
+        // HP 재생 (최대치 초과 방지)
+        double hpRegen = user.getCombatStats().getHpRegen();
+        if (hpRegen > 0 && user.getCurrentHp() < user.getCombatStats().getMaxHp()) {
+            int oldHp = user.getCurrentHp();
+            int newHp = Math.min(user.getCombatStats().getMaxHp(), oldHp + (int)hpRegen);
+            int actualHp = newHp - oldHp;
+            if (actualHp > 0) {
+                user.setCurrentHp(newHp);
+                regenLog.append(String.format("💚 HP +%d ", actualHp));
+                recovered = true;
+            }
         }
+
+        // MP 재생 (최대치 초과 방지)
+        double mpRegen = user.getCombatStats().getMpRegen();
+        if (mpRegen > 0 && user.getCurrentMp() < user.getCombatStats().getMaxMp()) {
+            int oldMp = user.getCurrentMp();
+            int newMp = Math.min(user.getCombatStats().getMaxMp(), oldMp + (int)mpRegen);
+            int actualMp = newMp - oldMp;
+            if (actualMp > 0) {
+                user.setCurrentMp(newMp);
+                regenLog.append(String.format("💙 MP +%d ", actualMp));
+                recovered = true;
+            }
+        }
+
+        if (recovered) {
+            ds.addLog(String.format("<span style='color:#70db70;'>[자연 재생] %s</span>", regenLog.toString()));
+        }
+
+        saveAll(user, ds);
     }
 }

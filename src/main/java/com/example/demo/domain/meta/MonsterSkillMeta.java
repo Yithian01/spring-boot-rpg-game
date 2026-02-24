@@ -16,6 +16,7 @@ public class MonsterSkillMeta {
     private String name;
     private String description;
     private String type;        // PHYSICAL, MAGIC, DEBUFF 등
+    private int turnCost;      // 사용 턴
     private int hitChance;      // 기본 명중률
 
     private Map<String, Integer> cost;            // { "mp": 10 }

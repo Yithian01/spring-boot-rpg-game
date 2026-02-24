@@ -21,6 +21,7 @@ public class MonsterMeta {
     private CombatStats stats; // 전투 수치 결과값들
     private List<Integer> skillIds; // 사용 스킬들
 
+    private int baseActionPoints; // 행동 포인트
     private int expReward;      // 처치 시 경험치
     private int goldMin;        // 최소 드랍 골드
     private int goldMax;        // 최대 드랍 골드

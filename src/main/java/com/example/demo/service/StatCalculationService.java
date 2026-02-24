@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.meta.ItemMeta;
+import com.example.demo.domain.meta.MonsterSkillMeta;
 import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.save.ActiveMonster;
 import com.example.demo.domain.save.ActiveStatus;
@@ -603,5 +604,36 @@ public class StatCalculationService {
         dodgeProb = Math.max(0, Math.min(95, dodgeProb)); // 최대 95%까지만 회피 가능
 
         return Math.random() * 100 <= dodgeProb;
+    }
+
+    /**
+     * 몬스터 데미지 계산기 (MonsterBattleService에서 호출)
+     * 몬스터의 스케일링 공격력과 유저의 방어력을 대조하여 최종 데미지 산출
+     */
+    public int calculateMonsterDamage(UserStatus user, ActiveMonster monster, MonsterSkillMeta skill) {
+        double rawDamage = 0.0;
+        double defenseValue = 0.0;
+
+        // 1. 스킬 타입에 따른 공격력 및 방어 스탯 결정
+        // PHYSICAL이면 meleeAtk 사용, 그 외(MAGIC 등)는 magicAtk 사용
+        if ("PHYSICAL".equals(skill.getType())) {
+            double scaling = skill.getMonsterScaling().getOrDefault("meleeAtk", 1.0);
+            rawDamage = monster.getStats().getMeleeAtk() * scaling;
+            defenseValue = user.getCombatStats().getPhysDef(); // 유저의 물리 방어력
+        } else {
+            // MAGIC 또는 MONSTER_MAGIC 등 마법 계열 처리
+            double scaling = skill.getMonsterScaling().getOrDefault("magicAtk", 1.0);
+            rawDamage = monster.getStats().getMagicAtk() * scaling;
+            defenseValue = user.getCombatStats().getMagRes(); // 유저의 마법 저항력
+        }
+
+        // 2. 방어력 적용 (기존에 작성된 applyDefense 메서드 활용)
+        // 몬스터에게 관통(Penetration) 스탯이 있다면 monster.getStats().getPenetration() 전달
+        double penetration = monster.getStats().getPenetration();
+
+        int finalDamage = applyDefense(rawDamage, penetration, defenseValue);
+
+        // 3. 최소 데미지 보정 (아무리 방어력이 높아도 최소 1의 피해는 입힘)
+        return Math.max(1, finalDamage);
     }
 }

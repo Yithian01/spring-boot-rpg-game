@@ -6,6 +6,7 @@ import com.example.demo.dto.CharacterSelectPageDto;
 import com.example.demo.dto.DungeonPageDto;
 import com.example.demo.dto.GamePageDto;
 import com.example.demo.dto.TownPageDto;
+import com.example.demo.service.BattleService;
 import com.example.demo.service.GameService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +25,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
     private final GameService gameService;
+    private final BattleService battleService;
 
     /**
      * 메인 페이지 반환
@@ -75,6 +77,7 @@ public class MainController {
         }
 
         GameStatus status = gameService.getGameStatus();
+        battleService.applyPlayerRegeneration();
 
         switch (status.getLocation()) {
             case TOWN:

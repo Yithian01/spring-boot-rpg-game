@@ -17,6 +17,7 @@
       "moveSpeed": 1.2,
       "statusResist": 0.0
     },
+    "baseActionPoints": 2,
     "skillIds" : [1, 2, 3],
     "expReward": 8,
     "goldMin": 2,
@@ -40,6 +41,7 @@
       "moveSpeed": 0.7,
       "statusResist": 0.0
     },
+    "baseActionPoints": 2,
     "skillIds" : [2, 4, 5],
     "expReward": 12,
     "goldMin": 4,
@@ -63,6 +65,7 @@
       "moveSpeed": 1.0,
       "statusResist": 0.0
     },
+    "baseActionPoints": 2,
     "skillIds" : [6, 7],
     "expReward": 15,
     "goldMin": 6,
@@ -86,6 +89,7 @@
       "moveSpeed": 0.8,
       "statusResist": 30.0
     },
+    "baseActionPoints": 2,
     "skillIds" : [8],
     "expReward": 30,
     "goldMin": 15,

@@ -109,10 +109,7 @@
         </th:block>
         <button th:unless="${dungeon?.currentFloor > 1}" class="action-btn btn-empty"></button>
 
-        <form action="/dungeon/exit" method="post" style="display:contents;">
-            <button type="submit" class="action-btn btn-shop"><span>🏃</span>마을로 귀환</button>
-        </form>
-
+        <button class="action-btn btn-empty"></button>
         <button class="action-btn btn-empty"></button>
     </th:block>
 </div>

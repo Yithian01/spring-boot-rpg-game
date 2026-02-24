@@ -28,6 +28,14 @@ public class DungeonService {
     private final GameDataManager gameDataManager;
 
     /**
+     * 저장 함수
+     */
+    private void saveAll(UserStatus user, DungeonStatus ds) {
+        userFileRepository.saveUserStatus(user);
+        dungeonFileRepository.saveDungeonStatus(ds);
+    }
+
+    /**
      * 던전 진입 시 초기 설정 및 세이브 파일 생성
      */
     public void initDungeon() {
@@ -96,8 +104,7 @@ public class DungeonService {
         }
 
         // 4. 상태 저장
-        userFileRepository.saveUserStatus(user);
-        dungeonFileRepository.saveDungeonStatus(ds);
+        saveAll(user, ds);
     }
 
     /**

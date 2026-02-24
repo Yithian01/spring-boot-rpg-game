@@ -194,4 +194,24 @@ public class GameDataManager  implements ApplicationRunner {
         // 4. 랜덤 반환
         return candidates.get(random.nextInt(candidates.size()));
     }
+
+    /**
+     * 이모티콘 헬퍼 메서드
+     * @param code 상태이상 String
+     * @return 표현하는 아이콘 반환
+     */
+    public String getIcon(String code) {
+        return switch (code) {
+            case "STUN" -> "💫";
+            case "BURN" -> "🔥";
+            case "POISON" -> "🧪";
+            case "BLEED" -> "🩸";
+            case "FROZEN" -> "❄️";
+            case "SHOCK" -> "⚡";
+            case "PARALYSIS" -> "🗲";
+            case "BUFF" -> "🔼";
+            case "DEBUFF" -> "🔽";
+            default -> "💢";
+        };
+    }
 }

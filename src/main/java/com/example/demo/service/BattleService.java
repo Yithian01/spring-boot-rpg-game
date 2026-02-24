@@ -208,8 +208,8 @@ public class BattleService {
         double dodgeStat = ("BUFF".equals(skillType) || "HEAL".equals(skillType)) ? 0 : monster.getStats().getDodge();
         boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat);
         if (isDodged) {
-            ds.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 공격을 회피했습니다! (Dodge)</span>",
-                monster.getName(), user.getName()));
+            ds.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) 당신의 <b>%s</b> 공격을 회피했습니다!</span>",
+                    monster.getName(), skill.getName()));
             saveAll(user, ds);
             return "Dodge";
         }

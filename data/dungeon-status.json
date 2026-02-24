@@ -6,7 +6,7 @@
     "monsterId" : 2,
     "name" : "독을 품은 이끼 슬라임",
     "tier" : 8,
-    "currentHp" : 248,
+    "currentHp" : 92,
     "maxHp" : 300,
     "currentMp" : 0,
     "maxMp" : 0,
@@ -35,7 +35,7 @@
       "remainingTurns" : 3,
       "category" : "DEBUFF",
       "effectCode" : "PAIN",
-      "tickDamage" : 52,
+      "tickDamage" : 156,
       "statModifiers" : null,
       "statOffsets" : null,
       "combatModifiers" : null
@@ -43,7 +43,7 @@
   },
   "playerRemainingTurns" : 2,
   "playerMaxTurns" : 2,
-  "battleLogs" : [ "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDDEA 다크 엘프 (Drow)이(가) 효과를 저항했습니다.</span>", "\uD83D\uDDA4 <b style='color:#ff4d4d;'>고통의 낙인</b> 피해! (독을 품은 이끼 슬라임 -52 HP)", "<b style='color:#ff9f43;'>▶ 독을 품은 이끼 슬라임의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#da70d6;'>[효과]</span> 독을 품은 이끼 슬라임에게 \uD83D\uDDA4 <b>PAIN</b> 부여! (4턴 (틱당 52))", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#ff9f43;'>[전투]</span> 독을 품은 이끼 슬라임이(가) 나타났습니다!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +7%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#ffd700;'>[획득] 5 Gold와 8 Exp를 얻었습니다!</span>", "<b style='color:#ffd700;'>굶주린 동굴 쥐이(가) 상태 이상으로 쓰러졌습니다!</b>", "\uD83D\uDDA4 <b style='color:#ff4d4d;'>고통의 낙인</b> 피해! (굶주린 동굴 쥐 -108 HP)", "<b style='color:#ff9f43;'>▶ 굶주린 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 \uD83D\uDC99 MP +5 </span>", "\uD83D\uDCA8 <span style='color:#ffcc00;'>[회피] 굶주린 동굴 쥐이(가) 다크 엘프 (Drow)의 공격을 회피했습니다! (Dodge)</span>" ],
+  "battleLogs" : [ "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#ffcc00;'>[회피] 다크 엘프 (Drow)이(가) 독을 품은 이끼 슬라임의 공격을 피했습니다!</span>", "\uD83D\uDDA4 <b style='color:#ff4d4d;'>고통의 낙인</b> 피해! (독을 품은 이끼 슬라임 -156 HP)", "<b style='color:#ff9f43;'>▶ 독을 품은 이끼 슬라임의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#da70d6;'>[중첩]</span> 독을 품은 이끼 슬라임의 \uD83D\uDDA4 <b>PAIN</b> 강화! (남은 4턴 / 틱당 156 피해)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#da70d6;'>[중첩]</span> 독을 품은 이끼 슬라임의 \uD83D\uDDA4 <b>PAIN</b> 강화! (남은 4턴 / 틱당 104 피해)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDDEA 다크 엘프 (Drow)이(가) 효과를 저항했습니다.</span>", "\uD83D\uDDA4 <b style='color:#ff4d4d;'>고통의 낙인</b> 피해! (독을 품은 이끼 슬라임 -52 HP)", "<b style='color:#ff9f43;'>▶ 독을 품은 이끼 슬라임의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#da70d6;'>[효과]</span> 독을 품은 이끼 슬라임에게 \uD83D\uDDA4 <b>PAIN</b> 부여! (4턴 (틱당 52))", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>" ],
   "pendingExp" : 12,
   "pendingGold" : 7,
   "inBattle" : true

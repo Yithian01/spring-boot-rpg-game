@@ -106,6 +106,7 @@ public class MonsterBattleService {
      * 몬스터 개별 액션 실행 (BattleService와 동일한 구조)
      */
     private void executeMonsterAction(UserStatus user, ActiveMonster monster, MonsterSkillMeta skill, DungeonStatus ds) {
+        String skillName = skill.getName();
         // [1단계] 명중 판정
         boolean isHit = statCalculationService.isAttackerHit(
                 monster.getStats().getAccuracy(),
@@ -113,7 +114,8 @@ public class MonsterBattleService {
         );
 
         if (!isHit) {
-            ds.addLog(String.format("<span style='color:#aaaaaa;'>[실패] %s의 %s! 빗나갔습니다.</span>", monster.getName(), skill.getName()));
+            ds.addLog(String.format("<span style='color:#aaaaaa;'>[실패] %s의 <b>%s</b>! 허공을 가르고 빗나갔습니다.</span>",
+                    monster.getName(), skillName));
             return;
         }
 
@@ -123,7 +125,8 @@ public class MonsterBattleService {
         boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat);
 
         if (isDodged) {
-            ds.addLog(String.format("<span style='color:#ffcc00;'>[회피] %s이(가) %s의 공격을 피했습니다!</span>", user.getName(), monster.getName()));
+            ds.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 <b>%s</b> 공격을 가볍게 피했습니다!</span>",
+                    user.getName(), monster.getName(), skillName));
             return;
         }
 

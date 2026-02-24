@@ -8,9 +8,10 @@
     "turnCost": 0,
     "hitChance": 999,
     "cost": { "stamina": 0, "mp": 0 },
-    "scaling": {},
+    "playerScaling": {},
+    "statScaling": {},
     "effect": {
-      "type": "WAIT",
+      "type": "PASS",
       "element": "NONE",
       "bonus": "NONE"
     },
@@ -21,11 +22,12 @@
     "name": "도망가기",
     "icon": "2.png",
     "description": "전투에서 이탈합니다.",
-    "type": "UTILITY",
+    "type": "ESCAPE",
     "turnCost": 1,
     "hitChance": 40,
     "cost": { "stamina": 15, "mp": 0 },
-    "scaling": { "20": 1.5, "21": 1.0, "23": 0.5 },
+    "playerScaling": {},
+    "statScaling":  { "20": 1.5, "21": 1.0, "23": 0.5 },
     "effect": {
       "type": "ESCAPE",
       "element": "NONE"
@@ -41,7 +43,8 @@
     "turnCost": 1,
     "hitChance": 70,
     "cost": { "stamina": 10, "mp": 0 },
-    "scaling": { "10": 2.5, "11": 1.5 },
+    "playerScaling": { "meleeAtk": 1.3},
+    "statScaling":  { "10": 2.5, "11": 1.5},
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -60,7 +63,8 @@
     "turnCost": 1,
     "hitChance": 70,
     "cost": { "stamina": 8, "mp": 0 },
-    "scaling": { "10": 1.8, "15": 1.2 },
+    "playerScaling": { "meleeAtk": 1.3},
+    "statScaling":   { "10": 1.8, "15": 1.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -79,7 +83,8 @@
     "turnCost": 1,
     "hitChance": 70,
     "cost": { "stamina": 8, "mp": 0 },
-    "scaling": { "10": 1.8, "15": 1.2 },
+    "playerScaling": { "meleeAtk": 1.3},
+    "statScaling":   { "10": 1.8, "15": 1.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -98,7 +103,8 @@
     "turnCost": 2,
     "hitChance": 60,
     "cost": { "stamina": 12, "mp": 0 },
-    "scaling": { "2": 2.0, "15": 2.5 },
+    "playerScaling": { "meleeAtk": 1.5},
+    "statScaling": { "2": 2.0, "15": 2.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -115,7 +121,8 @@
     "turnCost": 2,
     "hitChance": 70,
     "cost": { "stamina": 15, "mp": 0 },
-    "scaling": { "16": 2.5, "23": 1.5 },
+    "playerScaling": { "meleeAtk": 1.5},
+    "statScaling": { "16": 2.5, "23": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL"
@@ -131,7 +138,8 @@
     "turnCost": 2,
     "hitChance": 70,
     "cost": { "stamina": 5, "mp": 25 },
-    "scaling": { "13": 3.5, "14": 1.5, "15": 0.5 },
+    "playerScaling": { "magicAtk": 1.4},
+    "statScaling": { "13": 3.5, "14": 1.5, "15": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
@@ -150,7 +158,8 @@
     "turnCost": 1,
     "hitChance": 100,
     "cost": { "stamina": 10, "mp": 15 },
-    "scaling": { "3": 1.2, "8": 0.5 },
+    "playerScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "NONE",
@@ -158,8 +167,8 @@
       "duration": 5,
       "chance": 100,
       "statModifiers": {
-        "10": 1.2,
-        "11": 1.2
+        "10": 1.5,
+        "11": 1.5
       }
     },
     "requiredWeapon": "NONE"
@@ -173,7 +182,8 @@
     "turnCost": 1,
     "hitChance": 100,
     "cost": { "stamina": 10, "mp": 15 },
-    "scaling": {},
+    "playerScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "NONE",
@@ -184,6 +194,69 @@
         "accuracy": 1.2,
         "critRate": 1.3
       }
+    },
+    "requiredWeapon": "NONE"
+  },
+  {
+    "id": 11,
+    "name": "쇠약의 저주",
+    "icon": "11.png",
+    "description": "대상에게 어둠의 굴레를 씌워 명중률과 회피율을 저하시킵니다.",
+    "type": "DEBUFF",
+    "turnCost": 1,
+    "hitChance": 90,
+    "cost": { "stamina": 5, "mp": 20 },
+    "playerScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "DEBUFF",
+      "element": "DARK",
+      "status": "WEAKNESS",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "accuracy": 0.7,
+        "dodge": 0.7
+      }
+    },
+    "requiredWeapon": "NONE"
+  },
+  {
+    "id": 12,
+    "name": "고통의 낙인",
+    "icon": "12.png",
+    "description": "적의 영혼에 고통스러운 낙인을 새깁니다. 지속적인 피해를 입힙니다.",
+    "type": "DEBUFF",
+    "turnCost": 1,
+    "hitChance": 85,
+    "cost": { "stamina": 5, "mp": 25 },
+    "playerScaling": { "magicAtk":  2.0},
+    "statScaling": {"13": 1.5},
+    "effect": {
+      "type": "DOT",
+      "element": "DARK",
+      "status": "PAIN",
+      "duration": 4,
+      "chance": 100
+    },
+    "requiredWeapon": "NONE"
+  },
+  {
+    "id": 13,
+    "name": "재생의 빛",
+    "icon": "13.png",
+    "description": "성스러운 빛으로 상처를 치유합니다.",
+    "type": "HEAL",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 5, "mp": 30 },
+    "playerScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0 },
+    "effect": {
+      "type": "HEAL",
+      "element": "HOLY",
+      "status": "REGEN",
+      "chance": 100
     },
     "requiredWeapon": "NONE"
   }

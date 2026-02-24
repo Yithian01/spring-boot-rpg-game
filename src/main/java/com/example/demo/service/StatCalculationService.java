@@ -516,8 +516,8 @@ public class StatCalculationService {
      */
     public int calculateSkillPower(SkillMeta skill, Map<Integer, Integer> finalStats) {
         double power = 0;
-        if (skill.getScaling() != null) {
-            for (Map.Entry<Integer, Double> entry : skill.getScaling().entrySet()) {
+        if (skill.getStatScaling() != null) {
+            for (Map.Entry<Integer, Double> entry : skill.getStatScaling().entrySet()) {
                 int statId = entry.getKey();
                 double multiplier = entry.getValue();
                 int statValue = finalStats.getOrDefault(statId, 0);
@@ -541,12 +541,15 @@ public class StatCalculationService {
      */
     public int calculateFinalDamage(SkillMeta skill, CombatStats attacker, CombatStats defender, Map<Integer, Integer> attackerFinalStats) {
         // [STEP A] 기술 위력 + 공격자 기본 공격력
-        double skillPower = calculateSkillPower(skill, attackerFinalStats);
+        double skillPower = calculateSkillPower(skill, attackerFinalStats); // 추가 공격력(스탯기반)
 
         boolean isMagic = "MAGIC".equals(skill.getType());
         double baseAtk = isMagic ? attacker.getMagicAtk() : attacker.getMeleeAtk();
 
-        double rawTotalDamage = skillPower + baseAtk;
+        String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
+        double scaling = skill.getPlayerScaling().getOrDefault(scalingKey, 1.0);
+
+        double rawTotalDamage = (baseAtk * scaling) + skillPower;
 
         // [STEP B] 방어력 및 관통 적용
         double targetDef = isMagic ? defender.getMagRes() : defender.getPhysDef();
@@ -618,5 +621,20 @@ public class StatCalculationService {
 
         // 3. 최소 데미지 보정 (아무리 방어력이 높아도 최소 1의 피해는 입힘)
         return Math.max(1, finalDamage);
+    }
+
+    public int calculateHeal(UserStatus user, SkillMeta skill) {
+        // 1. 기술 위력 (statScaling 기반 추가 힐량) 계산
+        double skillPower = calculateSkillPower(skill, user.getBaseStats());
+
+        // 2. 마법 여부에 따른 베이스 스탯 및 계수 결정
+        boolean isMagic = "MAGIC".equals(skill.getType()) || "HEAL".equals(skill.getType());
+        double baseStatValue = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();
+
+        String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
+        double scaling = skill.getPlayerScaling().getOrDefault(scalingKey, 1.0);
+        double rawTotalHeal = (baseStatValue * scaling) + skillPower;
+
+        return (int) Math.ceil(rawTotalHeal);
     }
 }

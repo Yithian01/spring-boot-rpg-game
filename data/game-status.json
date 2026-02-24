@@ -1,4 +1,4 @@
 {
-  "location" : "TOWN",
-  "dungeonId" : null
+  "location" : "DUNGEON",
+  "dungeonId" : 1
 }

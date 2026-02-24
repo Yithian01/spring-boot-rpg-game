@@ -16,6 +16,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class ActiveStatus {
     private int skillId;
+    private String ownerType; // "PLAYER" 또는 "MONSTER"
     private String name;
     private int remainingTurns;
 

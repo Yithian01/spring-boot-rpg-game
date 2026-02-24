@@ -81,7 +81,7 @@
     "cost": { "mp": 0 },
     "monsterScaling": { "meleeAtk": 1.3 },
     "effect": {
-      "type": "DAMAGE",
+      "type": "DEBUFF",
       "element": "POISON",
       "status": "POISON",
       "duration": 4,

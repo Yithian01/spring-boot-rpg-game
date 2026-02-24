@@ -206,11 +206,14 @@ public class GameDataManager  implements ApplicationRunner {
             case "BURN" -> "🔥";
             case "POISON" -> "🧪";
             case "BLEED" -> "🩸";
-            case "FROZEN" -> "❄️";
+            case "FROZEN", "FREEZE" -> "❄️";
             case "SHOCK" -> "⚡";
             case "PARALYSIS" -> "🗲";
+            case "CURSE", "WEAKNESS" -> "💀";
+            case "PAIN" -> "🖤";
             case "BUFF" -> "🔼";
             case "DEBUFF" -> "🔽";
+            case "REGEN", "HEAL" -> "💚";
             default -> "💢";
         };
     }

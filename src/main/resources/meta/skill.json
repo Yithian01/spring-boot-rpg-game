@@ -146,7 +146,7 @@
     "name": "강화 근육",
     "icon": "9.png",
     "description": "세포의 대사 효율을 일시적으로 높여 근력을 강화합니다.",
-    "type": "MAGIC",
+    "type": "BUFF",
     "turnCost": 1,
     "hitChance": 100,
     "cost": { "stamina": 10, "mp": 15 },
@@ -160,6 +160,29 @@
       "statModifiers": {
         "10": 1.2,
         "11": 1.2
+      }
+    },
+    "requiredWeapon": "NONE"
+  },
+  {
+    "id": 10,
+    "name": "매의 눈",
+    "icon": "10.png",
+    "description": "집중력을 높여 공격의 정확도와 치명타 확률을 대폭 강화합니다.",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 10, "mp": 15 },
+    "scaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "NONE",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": {
+        "accuracy": 1.2,
+        "critRate": 1.3
       }
     },
     "requiredWeapon": "NONE"

@@ -80,8 +80,12 @@ public class BattleService {
         statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
     }
 
-
-
+    /**
+     * UI로 사용 가능한 스킬을 반환
+     * @param user 플레이어
+     * @param ds 몬스터 정보
+     * @return 스킬 카드 정보
+     */
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
         // 1. 현재 무기 타입 파악 및 모든 장착 아이템으로부터 추가 스킬 수집
         String weaponType = "NONE";
@@ -160,16 +164,12 @@ public class BattleService {
         SkillMeta skill = gameDataManager.getSkillMetaMap().get(skillId);
         ActiveMonster monster = ds.getActiveMonster();
 
-        System.out.println(skill);
-
         // 1. 코스트 체크 및 차감
         if (!statCalculationService.checkSkillAvailability(user, ds, skill)) {
             return "자원이 부족하여 기술을 사용할 수 없습니다.";
         }
         applyCost(user, ds, skill);
-
-        userFileRepository.saveUserStatus(user);
-        dungeonFileRepository.saveDungeonStatus(ds);
+        saveAll(user, ds);
 
         // 2. 명중 판정 분기
         String skillType = skill.getEffect().getType();
@@ -346,6 +346,7 @@ public class BattleService {
                 .effectCode(skill.getEffect().getStatus())
                 .tickDamage(tickDamage) // 1/3 데미지 저장
                 .statModifiers(skill.getEffect().getStatModifiers())
+                .combatModifiers(skill.getEffect().getCombatStatModifiers())
                 .statOffsets(skill.getEffect().getStatOffsets())
                 .build();
     }

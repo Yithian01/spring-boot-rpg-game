@@ -26,4 +26,5 @@ public class SkillEffect {
     // Key: StatId(1~24), Value: 보정치 (1.2는 20% 상승, 0.8은 20% 감소)
     private Map<Integer, Double> statModifiers;
     private Map<Integer, Integer> statOffsets;
+    private Map<String, Double> combatStatModifiers;
 }

@@ -19,5 +19,10 @@
     "instanceId" : "b29c99cd-2d6a-4d0b-bb76-ad5efdaab815",
     "quantity" : 1,
     "enhancementLevel" : 0
+  }, {
+    "id" : 2,
+    "instanceId" : null,
+    "quantity" : 1,
+    "enhancementLevel" : 0
   } ]
 }

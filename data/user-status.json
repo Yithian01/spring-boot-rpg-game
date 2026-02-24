@@ -5,22 +5,22 @@
   "tribeId" : 6,
   "religionId" : 0,
   "currentHp" : 275,
-  "currentMp" : 213,
-  "currentStamina" : 152,
+  "currentMp" : 116,
+  "currentStamina" : 92,
   "currentGold" : 1942,
   "combatStats" : {
     "maxHp" : 275,
-    "maxMp" : 213,
+    "maxMp" : 163,
     "maxStamina" : 169,
     "hpRegen" : 5.0,
-    "mpRegen" : 7.6000000000000005,
+    "mpRegen" : 4.9,
     "meleeAtk" : 53.5,
-    "magicAtk" : 38.5,
-    "critRate" : 9.0,
+    "magicAtk" : 25.5,
+    "critRate" : 33.41637000000001,
     "critDmg" : 173.0,
-    "penetration" : 11.0,
+    "penetration" : 10.0,
     "physDef" : 25.5,
-    "magRes" : 24.5,
+    "magRes" : 14.5,
     "dodge" : 15.3,
     "accuracy" : 12.2,
     "moveSpeed" : 1.05,
@@ -56,29 +56,92 @@
     "1" : 5,
     "2" : 4,
     "3" : 2,
-    "4" : 2,
-    "8" : 3,
     "10" : 4,
     "11" : 2,
     "12" : 4,
-    "13" : 3,
+    "13" : 1,
     "14" : 1
   },
-  "activeStatuses" : [ ],
+  "activeStatuses" : [ {
+    "skillId" : 10,
+    "name" : "매의 눈",
+    "remainingTurns" : 3,
+    "category" : "BUFF",
+    "effectCode" : "STRENGTHEN",
+    "tickDamage" : 0,
+    "statModifiers" : null,
+    "statOffsets" : null,
+    "combatModifiers" : {
+      "accuracy" : 1.2,
+      "critRate" : 1.3
+    }
+  }, {
+    "skillId" : 10,
+    "name" : "매의 눈",
+    "remainingTurns" : 4,
+    "category" : "BUFF",
+    "effectCode" : "STRENGTHEN",
+    "tickDamage" : 0,
+    "statModifiers" : null,
+    "statOffsets" : null,
+    "combatModifiers" : {
+      "accuracy" : 1.2,
+      "critRate" : 1.3
+    }
+  }, {
+    "skillId" : 10,
+    "name" : "매의 눈",
+    "remainingTurns" : 4,
+    "category" : "BUFF",
+    "effectCode" : "STRENGTHEN",
+    "tickDamage" : 0,
+    "statModifiers" : null,
+    "statOffsets" : null,
+    "combatModifiers" : {
+      "accuracy" : 1.2,
+      "critRate" : 1.3
+    }
+  }, {
+    "skillId" : 10,
+    "name" : "매의 눈",
+    "remainingTurns" : 5,
+    "category" : "BUFF",
+    "effectCode" : "STRENGTHEN",
+    "tickDamage" : 0,
+    "statModifiers" : null,
+    "statOffsets" : null,
+    "combatModifiers" : {
+      "accuracy" : 1.2,
+      "critRate" : 1.3
+    }
+  }, {
+    "skillId" : 10,
+    "name" : "매의 눈",
+    "remainingTurns" : 5,
+    "category" : "BUFF",
+    "effectCode" : "STRENGTHEN",
+    "tickDamage" : 0,
+    "statModifiers" : null,
+    "statOffsets" : null,
+    "combatModifiers" : {
+      "accuracy" : 1.2,
+      "critRate" : 1.3
+    }
+  } ],
   "finalStats" : {
     "1" : 8,
     "2" : 7,
     "3" : 5,
-    "4" : 10,
+    "4" : 8,
     "5" : 9,
     "6" : 6,
     "7" : 3,
-    "8" : 10,
+    "8" : 7,
     "9" : 7,
     "10" : 11,
     "11" : 9,
     "12" : 12,
-    "13" : 9,
+    "13" : 7,
     "14" : 6,
     "15" : 5,
     "16" : 8,
@@ -124,8 +187,8 @@
     "BOOTS" : 4,
     "RING" : 5,
     "WEAPON" : 1,
-    "BODY" : 2,
+    "BODY" : 0,
     "SUB_WEAPON" : 6
   },
-  "learnedSkillIds" : [ 1, 2 ]
+  "learnedSkillIds" : [ 1, 2, 10 ]
 }

@@ -44,7 +44,10 @@
       "status": "WEAKNESS",
       "duration": 3,
       "chance": 50,
-      "statModifiers": { "16": 0.8 }
+      "statModifiers": {},
+      "combatStatModifiers": {
+        "accuracy": 0.7
+      }
     }
   },
   {

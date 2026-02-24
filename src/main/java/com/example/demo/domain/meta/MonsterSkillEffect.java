@@ -18,4 +18,5 @@ public class MonsterSkillEffect {
     private int duration;
     private int chance;     // 상태이상 부여 확률
     private Map<Integer, Double> statModifiers; // 플레이어에게 줄 디버프 (스탯ID, 비율)
+    private Map<String, Double> combatStatModifiers; // 플레이어에게 줄 디버프 (스탯ID, 비율)
 }

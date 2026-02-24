@@ -712,18 +712,31 @@
 
     /* 6. 하단 액션 패널 (고정 영역) */
     .action-panel {
-        flex-shrink: 0 !important;
-        height: 170px !important;
-        margin-top: 10px !important;
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        grid-template-rows: repeat(2, 75px) !important;
-        gap: 10px !important;
-        background: rgba(0, 0, 0, 0.4);
-        padding: 10px;
-        border-radius: 8px;
-        z-index: 100;
+    flex-shrink: 0 !important;
+    height: 190px !important; /* 높이를 약간 여유 있게 조정 */
+    margin-top: 10px !important;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 8px;
+    z-index: 100;
+    /* 그리드 행 설정을 '고정'에서 '자동'으로 변경 */
+    display: block !important; /* 내부에서 다시 그리드를 잡기 위해 블록으로 변경 */
+    overflow-y: auto !important; /* 스킬이 많으면 내부 스크롤 발생 */
     }
+
+    /* 스킬 컨테이너 (fragments/actions.html에 있는 클래스 대응) */
+    .skill-hand-container {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important; /* 가로 너비에 맞춰 자동 배치 */
+        gap: 10px !important;
+        width: 100%;
+    }
+
+    /* 커스텀 스크롤바 (스킬창용) */
+    .action-panel::-webkit-scrollbar { width: 8px; }
+    .action-panel::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
+    .action-panel::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+
     /* 하단 액션 패널 버튼 스타일 (마을 스타일 계승 및 최적화) */
     .action-btn {
         width: 100%;

@@ -31,7 +31,7 @@ public class InventoryService {
     public String equipItem(int itemId, String slot) {
         UserStatus user = userFileRepository.findGameUser();
         InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
-        ItemMeta meta = gameDataManager.getItemMap().get(itemId);
+        ItemMeta meta = gameDataManager.getItemMetaMap().get(itemId);
 
         if (meta == null) return "아이템 정보를 찾을 수 없습니다.";
 
@@ -60,10 +60,10 @@ public class InventoryService {
 
         // [변경 포인트 2] 계층형 스탯 업데이트
         // (중요) StatCalculationService에 새로 만든 장비 레이어 전용 업데이트 호출
-        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMap());
+        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMetaMap());
 
         // [변경 포인트 3] 최종 스탯 리프레시 (Base + Equip + ActiveStatus)
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
 
         // 3. 자원 보정 (최대치가 늘어난 만큼 현재치도 자연스럽게 보정)
         adjustCurrentResources(user, preMaxHp, preMaxMp, preMaxSt);
@@ -91,8 +91,8 @@ public class InventoryService {
         addInventoryItem(inventory, equippedId);
 
         // [변경 포인트] 레이어 업데이트 후 리프레시
-        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMap());
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMetaMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
 
         userFileRepository.saveUserStatus(user);
         inventoryFileRepository.saveInventoryStatus(inventory);
@@ -133,7 +133,7 @@ public class InventoryService {
         else if ("SUB_WEAPON".equals(slot)) {
             Integer mainId = user.getEquippedItems().get("WEAPON");
             if (mainId != null && mainId != 0) {
-                ItemMeta mainMeta = gameDataManager.getItemMap().get(mainId);
+                ItemMeta mainMeta = gameDataManager.getItemMetaMap().get(mainId);
                 // 현재 끼고 있는 주무기가 양손 무기라면 보조무기를 낄 수 없으므로 주무기를 해제
                 if (mainMeta != null && mainMeta.isTwoHanded()) {
                     addInventoryItem(inventory, mainId);
@@ -166,7 +166,7 @@ public class InventoryService {
     public String consumeItem(int itemId) {
         UserStatus user = userFileRepository.findGameUser();
         InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
-        ItemMeta item = gameDataManager.getItemMap().get(itemId);
+        ItemMeta item = gameDataManager.getItemMetaMap().get(itemId);
 
         if (item == null) return "아이템 정보를 찾을 수 없습니다.";
 
@@ -226,7 +226,7 @@ public class InventoryService {
     public String sellItem(int itemId) {
         UserStatus user = userFileRepository.findGameUser();
         InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
-        ItemMeta meta = gameDataManager.getItemMap().get(itemId);
+        ItemMeta meta = gameDataManager.getItemMetaMap().get(itemId);
 
         if (meta == null) return "아이템 정보를 찾을 수 없습니다.";
 
@@ -273,13 +273,13 @@ public class InventoryService {
         String selectedGrade = rollGrade(weights);
 
         // 3. 해당 등급의 아이템 리스트 필터링
-        List<ItemMeta> candidateItems = gameDataManager.getItemMap().values().stream()
+        List<ItemMeta> candidateItems = gameDataManager.getItemMetaMap().values().stream()
                 .filter(item -> item.getGrade().equals(selectedGrade))
                 .toList();
 
         // (안전장치) 만약 해당 등급 아이템이 없으면 Common으로 강제 전환
         if (candidateItems.isEmpty()) {
-            candidateItems = gameDataManager.getItemMap().values().stream()
+            candidateItems = gameDataManager.getItemMetaMap().values().stream()
                     .filter(item -> item.getGrade().equals("COMMON"))
                     .toList();
         }

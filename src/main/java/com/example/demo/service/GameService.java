@@ -43,7 +43,7 @@ public class GameService {
      */
     public List<CharacterSelectPageDto> getPlayableCharacterList() {
         Map<Integer, TribeInitialMeta> initialMetaMap = gameDataManager.getTribeInitialMetaMap();
-        Map<Integer, TribeMeta> tribeMetaMap = gameDataManager.getTribeMap();
+        Map<Integer, TribeMeta> tribeMetaMap = gameDataManager.getTribeMetaMap();
 
         return initialMetaMap.values().stream()
                 .map(meta -> {
@@ -75,7 +75,7 @@ public class GameService {
 
         // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
-        TribeMeta tribeMeta = gameDataManager.getTribeMap().get(tribeId);
+        TribeMeta tribeMeta = gameDataManager.getTribeMetaMap().get(tribeId);
 
         if (initialMeta == null || tribeMeta == null) {
             throw new RuntimeException("잘못된 종족 ID입니다: " + tribeId);
@@ -101,7 +101,7 @@ public class GameService {
 
         // 3. [랜덤 잠재력 생성]
         Map<Integer, Integer> randomPotentials = new HashMap<>();
-        for (Integer statId : gameDataManager.getStatMap().keySet()) {
+        for (Integer statId : gameDataManager.getStatMetaMap().keySet()) {
             int growthId = gameDataManager.getRandomGrowthId();
             randomPotentials.put(statId, growthId);
         }
@@ -132,8 +132,8 @@ public class GameService {
 
         // 6. 스탯 계산기 가동 및 장비 레이어 갱신
         // 장착된 초기 장비의 스탯 보너스를 먼저 계산 레이어에 반영합니다.
-        statCalculationService.updateEquipmentLayer(newUser, gameDataManager.getItemMap());
-        statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMap());
+        statCalculationService.updateEquipmentLayer(newUser, gameDataManager.getItemMetaMap());
+        statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMetaMap());
 
         // 7. 자원 수치 보정
         newUser.setCurrentHp(newUser.getCombatStats().getMaxHp());
@@ -180,7 +180,7 @@ public class GameService {
         Map<String, ItemPageDto> equippedMap = new HashMap<>();
         user.getEquippedItems().forEach((slot, itemId) -> {
             if (itemId != 0) {
-                ItemMeta meta = gameDataManager.getItemMap().get(itemId);
+                ItemMeta meta = gameDataManager.getItemMetaMap().get(itemId);
                 if (meta != null) {
                     equippedMap.put(slot, convertToItemPageDto(meta, 1));
                 }
@@ -222,7 +222,7 @@ public class GameService {
      * @return 결과 반환
      */
     private UserTribeDto mapUserTribe(UserStatus user) {
-        TribeMeta meta = gameDataManager.getTribeMap().get(user.getTribeId());
+        TribeMeta meta = gameDataManager.getTribeMetaMap().get(user.getTribeId());
 
         if (meta != null) {
             return UserTribeDto.builder()
@@ -250,7 +250,7 @@ public class GameService {
                     .build();
         }
 
-        ReligionMeta meta = gameDataManager.getReligionMap().get(userReligionId);
+        ReligionMeta meta = gameDataManager.getReligionMetaMap().get(userReligionId);
 
         if (meta != null) {
             return UserReligionDto.builder()
@@ -274,7 +274,7 @@ public class GameService {
      */
     private List<UserStatDto> mapUserStats(UserStatus user) {
         List<UserStatDto> statList = new ArrayList<>();
-        Map<Integer, StatMeta> metaMap = gameDataManager.getStatMap();
+        Map<Integer, StatMeta> metaMap = gameDataManager.getStatMetaMap();
 
         // 무조건 finalStats를 보되, 혹시 비어있다면 baseStats를 백업으로 사용
         Map<Integer, Integer> statsToDisplay = (user.getFinalStats() != null && !user.getFinalStats().isEmpty())
@@ -322,7 +322,7 @@ public class GameService {
         List<ItemPageDto> inventoryDtoList = new ArrayList<>();
 
         for (InventoryItem invItem : inventoryItems) {
-            ItemMeta meta = gameDataManager.getItemMap().get(invItem.getId());
+            ItemMeta meta = gameDataManager.getItemMetaMap().get(invItem.getId());
             if (meta == null) continue;
 
             // 장비 아이템(장착 슬롯이 NONE이 아닌 것)은 개별적으로 리스트에 추가
@@ -384,7 +384,7 @@ public class GameService {
         List<String> result = new ArrayList<>();
         for (Integer i : StatIds) {
             // 메모리에서 스탯 정보 조회
-            result.add(gameDataManager.getStatMap().get(i).getName());
+            result.add(gameDataManager.getStatMetaMap().get(i).getName());
         }
         return result;
     }
@@ -402,7 +402,7 @@ public class GameService {
         // 1. 기초 스탯 보너스 가공
         if (meta.getBaseStatsBonus() != null) {
             meta.getBaseStatsBonus().forEach((statId, value) -> {
-                String statName = gameDataManager.getStatMap().get(statId).getName();
+                String statName = gameDataManager.getStatMetaMap().get(statId).getName();
                 statBonuses.add(statName + " +" + value);
             });
         }

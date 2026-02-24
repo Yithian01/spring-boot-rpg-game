@@ -163,12 +163,12 @@ public class TownService {
 
         // 3. 대상 스탯 중 랜덤하게 하나 선택
         int randomStatId = targetIds.get(new Random().nextInt(targetIds.size()));
-        String statName = gameDataManager.getStatMap().get(randomStatId).getName();
+        String statName = gameDataManager.getStatMetaMap().get(randomStatId).getName();
 
         // 4. 잠재력(Potential)에 따른 성장치 계산
         // potentials 맵에서 해당 스탯의 성장 등급 ID를 가져옴 (기본값 7: F등급)
         int growthId = user.getPotentials().getOrDefault(randomStatId, 7);
-        GrowthMeta growthMeta = gameDataManager.getGrowthMap().get(growthId);
+        GrowthMeta growthMeta = gameDataManager.getGrowthMetaMap().get(growthId);
 
         // 성장 등급이 높을수록(S=1, A=2...) 더 많이 오를 확률 부여
         // 예: S등급은 3~5, F등급은 1~2 상승
@@ -189,7 +189,7 @@ public class TownService {
         town.setCurrentTurn(town.getCurrentTurn() - 1);
 
         // 6. 스탯 변화가 전투 능력치에 영향을 주므로 재계산 필요
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
 
         saveAll(user, town);
 

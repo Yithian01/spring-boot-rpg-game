@@ -241,7 +241,7 @@ public class MonsterBattleService {
         }
 
         // 상태 이상 변화 후 플레이어 스탯 리프레시
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
     }
 
     /**

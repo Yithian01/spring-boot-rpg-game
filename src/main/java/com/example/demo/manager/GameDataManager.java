@@ -27,11 +27,11 @@ public class GameDataManager  implements ApplicationRunner {
     private final ObjectMapper objectMapper;
     private final Random random = new Random();
 
-    @Getter private Map<Integer, GrowthMeta> growthMap;
-    @Getter private Map<Integer, TribeMeta> tribeMap;
-    @Getter private Map<Integer, ReligionMeta> religionMap;
-    @Getter private Map<Integer, StatMeta> statMap;
-    @Getter private Map<Integer, ItemMeta> itemMap;
+    @Getter private Map<Integer, GrowthMeta> growthMetaMap;
+    @Getter private Map<Integer, TribeMeta> tribeMetaMap;
+    @Getter private Map<Integer, ReligionMeta> religionMetaMap;
+    @Getter private Map<Integer, StatMeta> statMetaMap;
+    @Getter private Map<Integer, ItemMeta> itemMetaMap;
     @Getter private Map<Integer, TribeInitialMeta> tribeInitialMetaMap;
     @Getter private Map<Integer, MonsterMeta> monsterMetaMap;
     @Getter private Map<Integer, SkillMeta> skillMetaMap;
@@ -47,19 +47,19 @@ public class GameDataManager  implements ApplicationRunner {
         long start = System.currentTimeMillis();
 
         // 1. 성장 정보 로딩 (일급 컬렉션)
-        this.growthMap = loadMapData("growth.json", GrowthMeta.class, GrowthMeta::getId);
+        this.growthMetaMap = loadMapData("growth.json", GrowthMeta.class, GrowthMeta::getId);
 
         // 2. 종족 정보 로딩 (ID로 빠르게 찾기 위해 Map으로 변환)
-        this.tribeMap = loadMapData("tribe.json", TribeMeta.class, TribeMeta::getId);
+        this.tribeMetaMap = loadMapData("tribe.json", TribeMeta.class, TribeMeta::getId);
 
         // 3. 종교 정보 로딩
-        this.religionMap = loadMapData("religion.json", ReligionMeta.class, ReligionMeta::getId);
+        this.religionMetaMap = loadMapData("religion.json", ReligionMeta.class, ReligionMeta::getId);
 
         // 4. 스탯 정보 로딩
-        this.statMap = loadMapData("stat.json", StatMeta.class, StatMeta::getId);
+        this.statMetaMap = loadMapData("stat.json", StatMeta.class, StatMeta::getId);
 
         // 5. 아이템 정보 로딩
-        this.itemMap = loadMapData("item.json", ItemMeta.class, ItemMeta::getId);
+        this.itemMetaMap = loadMapData("item.json", ItemMeta.class, ItemMeta::getId);
 
         //6. 플레이어블 캐릭터 정보 로딩
         this.tribeInitialMetaMap = loadMapData("tribe-initial-meta.json", TribeInitialMeta.class, TribeInitialMeta::getTribeId);
@@ -111,7 +111,7 @@ public class GameDataManager  implements ApplicationRunner {
     public int getRandomGrowthId() {
         // 1. 전체 가중치(Rate)의 합을 구합니다. (예: 1+3+10+21+30+30+20 = 115)
         // (데이터가 적으므로 매번 계산해도 성능 문제 없음)
-        int totalRate = growthMap.values().stream()
+        int totalRate = growthMetaMap.values().stream()
                 .mapToInt(GrowthMeta::getRate)
                 .sum();
 
@@ -120,7 +120,7 @@ public class GameDataManager  implements ApplicationRunner {
 
         // 3. 루프를 돌며 구간을 확인합니다.
         int currentSum = 0;
-        for (GrowthMeta meta : growthMap.values()) {
+        for (GrowthMeta meta : growthMetaMap.values()) {
             currentSum += meta.getRate();
             if (randomVal < currentSum) {
                 return meta.getId(); // 당첨된 ID 반환
@@ -218,6 +218,27 @@ public class GameDataManager  implements ApplicationRunner {
         };
     }
 
+    /**
+     * 상태이상 코드를 한글 명칭으로 변환 (UI 표시용)
+     */
+    public String getStatusName(String code) {
+        if (code == null) return null;
+        return switch (code) {
+            case "STUN" -> "기절";
+            case "BLEED" -> "출혈";
+            case "BURN" -> "화상";
+            case "POISON" -> "중독";
+            case "PAIN" -> "고통";
+            case "STRENGTHEN" -> "강화";
+            case "WEAKNESS" -> "약화";
+            case "REGEN" -> "재생";
+            default -> code;
+        };
+    }
+
+    /**
+     * 아이템 추가 효과 UI 변환용
+     */
     public Map<String, String> STAT_NAME_MAP = Map.ofEntries(
             Map.entry("maxHp", "최대 체력"),
             Map.entry("maxMp", "최대 마나"),

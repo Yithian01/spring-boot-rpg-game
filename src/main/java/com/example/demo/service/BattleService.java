@@ -15,10 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -81,13 +78,13 @@ public class BattleService {
                         gameDataManager.getIcon(code), status.getName()));
                 isExpired = true;
                 userFileRepository.saveUserStatus(user);
-                statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+                statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
             }
             return isExpired;
         });
 
         userFileRepository.saveUserStatus(user);
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
     }
 
     /**
@@ -97,23 +94,19 @@ public class BattleService {
      * @return 스킬 카드 정보
      */
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
-        // 1. 현재 무기 타입 파악 및 모든 장착 아이템으로부터 추가 스킬 수집
+        // 1. 현재 무기 타입 파악 및 아이템 부여 스킬 수집
         String weaponType = "NONE";
-        Set<Integer> availableSkillIds = new HashSet<>(user.getLearnedSkillIds()); // 영구 습득 스킬 먼저 담기
+        Set<Integer> availableSkillIds = new HashSet<>(user.getLearnedSkillIds());
 
         for (var entry : user.getEquippedItems().entrySet()) {
             int itemId = entry.getValue();
             if (itemId == 0) continue;
-
-            var itemMeta = gameDataManager.getItemMap().get(itemId);
+            var itemMeta = gameDataManager.getItemMetaMap().get(itemId);
             if (itemMeta == null) continue;
 
-            // 무기 타입 저장
             if ("WEAPON".equals(entry.getKey())) {
                 weaponType = itemMeta.getSubType();
             }
-
-            // 아이템에 붙은 스킬 ID 리스트가 있다면 합치기 (Set이라 중복은 자동 제거됨)
             if (itemMeta.getGrantedSkillIds() != null) {
                 availableSkillIds.addAll(itemMeta.getGrantedSkillIds());
             }
@@ -123,24 +116,16 @@ public class BattleService {
 
         return gameDataManager.getSkillMetaMap().values().stream()
                 .filter(meta -> {
-                    // [조건 1] 내가 보유한 스킬인가? (습득했거나, 장비가 부여했거나)
                     boolean hasSkill = availableSkillIds.contains(meta.getId());
-
-                    // [조건 2] 무기 적합성 체크 (공용이거나 현재 무기와 맞거나)
                     boolean canUseWithWeapon = meta.getRequiredWeapon().equalsIgnoreCase("NONE") ||
                             meta.getRequiredWeapon().equalsIgnoreCase(currentWeapon);
-
-                    // [조건 3] 무기 전용 기본기 예외 처리
-                    // (보유하지 않았더라도, 현재 무기 타입과 정확히 일치하는 전용 스킬은 보여줌)
                     boolean isWeaponIntrinsic = !meta.getRequiredWeapon().equalsIgnoreCase("NONE") &&
                             meta.getRequiredWeapon().equalsIgnoreCase(currentWeapon);
-
                     return (hasSkill || isWeaponIntrinsic) && canUseWithWeapon;
                 })
                 .map(meta -> {
+                    // 사용 가능 여부 체크
                     boolean canAct = statCalculationService.checkSkillAvailability(user, ds, meta);
-
-                    // 불가 사유 구체화
                     String msg = "";
                     if (!canAct) {
                         if (ds.getPlayerRemainingTurns() < meta.getTurnCost()) msg = "AP 부족";
@@ -149,6 +134,48 @@ public class BattleService {
                         else if (user.getCurrentHp() <= meta.getCost().getOrDefault("hp", 0)) msg = "생명력 위험";
                     }
 
+                    // --- 데이터 가공 영역 ---
+                    SkillEffect effect = meta.getEffect();
+
+                    // [4] 스케일링 정보 가공 ("meleeAtk 1.3" -> "근거리 공격력 130%")
+                    List<String> scalingInfo = new ArrayList<>();
+                    if (meta.getPlayerScaling() != null) {
+                        meta.getPlayerScaling().forEach((k, v) -> {
+                            String statLabel = k.equals("meleeAtk") ? "물리 공격력" : (k.equals("magicAtk") ? "마법 공격력" : k);
+                            scalingInfo.add(statLabel + " " + (int)(v * 100) + "%");
+                        });
+                    }
+                    if (meta.getStatScaling() != null) {
+                        meta.getStatScaling().forEach((statId, val) -> {
+                            // Manager에서 스탯 메타 정보 참조 (예: 10 -> "근력")
+                            var statMeta = gameDataManager.getStatMetaMap().get(statId);
+                            String statName = (statMeta != null) ? statMeta.getName() : "Stat " + statId;
+                            scalingInfo.add(statName + " 계수 " + val);
+                        });
+                    }
+
+                    // [5] 수치 보정 정보 가공 (버프/디버프 상세)
+                    List<String> modifierDetails = new ArrayList<>();
+                    if (effect != null) {
+                        if (effect.getCombatStatModifiers() != null) {
+                            effect.getCombatStatModifiers().forEach((k, v) -> {
+                                String trend = v >= 1.0 ? "증가" : "감소";
+                                int percent = (int) (Math.abs(1.0 - v) * 100);
+                                modifierDetails.add(k + " " + percent + "% " + trend);
+                            });
+                        }
+                        if (effect.getStatModifiers() != null) {
+                            effect.getStatModifiers().forEach((statId, v) -> {
+                                var statMeta = gameDataManager.getStatMetaMap().get(statId);
+                                String statName = (statMeta != null) ? statMeta.getName() : "Stat " + statId;
+                                String trend = v >= 1.0 ? "증가" : "감소";
+                                int percent = (int) (Math.abs(1.0 - v) * 100);
+                                modifierDetails.add(statName + " " + percent + "% " + trend);
+                            });
+                        }
+                    }
+
+                    // DTO 빌드
                     return SkillCardDto.builder()
                             .id(meta.getId())
                             .name(meta.getName())
@@ -157,9 +184,21 @@ public class BattleService {
                             .turnCost(meta.getTurnCost())
                             .staminaCost(meta.getCost().getOrDefault("stamina", 0))
                             .mpCost(meta.getCost().getOrDefault("mp", 0))
-                            .hpCost(meta.getCost().getOrDefault("hp", 0)) // HP 비용 매핑
+                            .hpCost(meta.getCost().getOrDefault("hp", 0))
                             .canAct(canAct)
                             .message(msg)
+                            // 신규 필드 매핑
+                            .type(meta.getType())
+                            .element(effect != null ? effect.getElement() : "NONE")
+                            .requiredWeapon(meta.getRequiredWeapon())
+                            .baseHitChance(meta.getHitChance())
+                            .effectType(effect != null ? effect.getType() : "NONE")
+                            .status(effect != null ? effect.getStatus() : null)
+                            .statusName(effect != null ? gameDataManager.getStatusName(effect.getStatus()) : null)
+                            .duration(effect != null ? effect.getDuration() : null)
+                            .effectChance(effect != null ? effect.getChance() : null)
+                            .scalingInfo(scalingInfo)
+                            .modifierDetails(modifierDetails)
                             .build();
                 })
                 .toList();
@@ -224,7 +263,7 @@ public class BattleService {
         }
 
         // [중요] 상태 이상이 추가되었을 수 있으므로 실시간 스탯 재계산
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
 
         // 3. 데이터 저장
         userFileRepository.saveUserStatus(user);
@@ -452,7 +491,7 @@ public class BattleService {
         updatePlayerStatusTick(user, ds);
 
         // 3. 몬스터에게 디버프를 받았을 수 있으므로 플레이어 스탯 갱신
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
 
         // 4. 플레이어 턴(AP) 리필
         int maxTurns = statCalculationService.calculateCombatTurns(user);

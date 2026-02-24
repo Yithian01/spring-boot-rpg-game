@@ -187,37 +187,37 @@ public class InventoryService {
         }
 
         // 3. 효과 적용 및 메시지 생성
-        ItemMeta.RecoveryBonus rb = item.getRecoveryBonus();
+        Map<String, Integer> rb = item.getRecoveryBonus();
         List<String> recoveryResults = new ArrayList<>();
 
+        // 3. 소모품 회복 효과 가공
+        String recoveryEffect = "";
         if (rb != null) {
-            if (rb.getHp() > 0) {
-                user.setCurrentHp(Math.min(user.getCombatStats().getMaxHp(), user.getCurrentHp() + rb.getHp()));
-                recoveryResults.add("HP +" + rb.getHp());
+            List<String> recoveries = new ArrayList<>();
+            rb.forEach((key, value) -> {
+                if (value > 0) {
+                    recoveries.add(key.toUpperCase() + " " + value);
+                }
+            });
+            recoveryEffect = String.join(", ", recoveries);
+
+
+            // 4. 수량 차감 및 리스트 정리
+            invItem.setQuantity(invItem.getQuantity() - 1);
+            if (invItem.getQuantity() <= 0) {
+                inventory.getItems().remove(invItem);
             }
-            if (rb.getMp() > 0) {
-                user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + rb.getMp()));
-                recoveryResults.add("MP +" + rb.getMp());
-            }
-            if (rb.getStamina() > 0) {
-                user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + rb.getStamina()));
-                recoveryResults.add("ST +" + rb.getStamina());
-            }
+
+            // 5. 변경사항 저장
+            userFileRepository.saveUserStatus(user);
+            inventoryFileRepository.saveInventoryStatus(inventory);
+
+            // 결과 피드백: "빨간 포션을 사용했습니다. (HP +30)"
+            String effectMsg = recoveryResults.isEmpty() ? "" : " (" + String.join(", ", recoveryResults) + ")";
+            return item.getName() + "을(를) 사용했습니다." + effectMsg;
         }
 
-        // 4. 수량 차감 및 리스트 정리
-        invItem.setQuantity(invItem.getQuantity() - 1);
-        if (invItem.getQuantity() <= 0) {
-            inventory.getItems().remove(invItem);
-        }
-
-        // 5. 변경사항 저장
-        userFileRepository.saveUserStatus(user);
-        inventoryFileRepository.saveInventoryStatus(inventory);
-
-        // 결과 피드백: "빨간 포션을 사용했습니다. (HP +30)"
-        String effectMsg = recoveryResults.isEmpty() ? "" : " (" + String.join(", ", recoveryResults) + ")";
-        return item.getName() + "을(를) 사용했습니다." + effectMsg;
+        return null;
     }
 
     /**

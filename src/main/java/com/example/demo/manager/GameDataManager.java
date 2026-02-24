@@ -214,4 +214,22 @@ public class GameDataManager  implements ApplicationRunner {
             default -> "💢";
         };
     }
+
+    public Map<String, String> STAT_NAME_MAP = Map.ofEntries(
+            Map.entry("maxHp", "최대 체력"),
+            Map.entry("maxMp", "최대 마나"),
+            Map.entry("maxStamina", "최대 스태미나"),
+            Map.entry("hpRegen", "체력 재생"),
+            Map.entry("mpRegen", "마나 재생"),
+            Map.entry("meleeAtk", "물리 공격력"),
+            Map.entry("magicAtk", "마법 공격력"),
+            Map.entry("critRate", "치명타 확률"),
+            Map.entry("critDmg", "치명타 피해"),
+            Map.entry("penetration", "관통력"),
+            Map.entry("physDef", "물리 방어"),
+            Map.entry("magRes", "마법 저항"),
+            Map.entry("dodge", "회피율"),
+            Map.entry("accuracy", "명중률"),
+            Map.entry("moveSpeed", "이동 속도")
+    );
 }

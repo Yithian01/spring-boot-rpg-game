@@ -23,35 +23,8 @@ public class ItemMeta {
     private String icon;
 
     private Map<Integer, Integer> baseStatsBonus;
-    private CombatStatsBonus combatStatsBonus;
-    private RecoveryBonus recoveryBonus;
+    private Map<String, Double> combatStatsBonus;
+    private Map<String, Integer> recoveryBonus;
 
     private List<Integer> grantedSkillIds;
-
-    @Data
-    public static class RecoveryBonus {
-        private int hp;      // 즉시 회복 HP
-        private int mp;      // 즉시 회복 MP
-        private int stamina; // 즉시 회복 스테미나
-    }
-
-    @Data
-    public static class CombatStatsBonus {
-        private int maxHp;
-        private int maxMp;
-        private int maxStamina;
-        private double hpRegen;
-        private double mpRegen;
-        private double meleeAtk;
-        private double magicAtk;
-        private double critRate;
-        private double critDmg;
-        private double penetration;
-        private double physDef;
-        private double magRes;
-        private double dodge;
-        private double accuracy;
-        private double moveSpeed;
-        private double statusResist;
-    }
 }

@@ -112,7 +112,6 @@ public class StatCalculationService {
 
         // --- [STEP 5] 최종 보정 레이어 (Combat Stats Bonuses & Modifiers) ---
         // 5-1. 아이템 깡스탯 (CombatStatsBonus: 예: 물리공격력 +50)
-        // 이 부분은 최종 수치에 더해지는 것이므로 장비 맵 순회가 필요합니다.
         for (Integer itemId : user.getEquippedItems().values()) {
             if (itemId != null && itemId != 0 && itemMap.containsKey(itemId)) {
                 ItemMeta item = itemMap.get(itemId);
@@ -159,55 +158,26 @@ public class StatCalculationService {
         user.getCombatStats().setStatusResist(calculateStatusResist(stats));
     }
 
-    // =========================
-    // 전투 능력치 보정 헬퍼 메서드
-    // =========================
-    private void applyCombatStatsBonus(UserStatus user, ItemMeta.CombatStatsBonus cb) {
-        user.getCombatStats().setMaxHp(user.getCombatStats().getMaxHp() + cb.getMaxHp());
-        user.getCombatStats().setMaxMp(user.getCombatStats().getMaxMp() + cb.getMaxMp());
-        user.getCombatStats().setMaxStamina(user.getCombatStats().getMaxStamina() + cb.getMaxStamina());
-        user.getCombatStats().setHpRegen(user.getCombatStats().getHpRegen() + cb.getHpRegen());
-        user.getCombatStats().setMpRegen(user.getCombatStats().getMpRegen() + cb.getMpRegen());
-        user.getCombatStats().setMeleeAtk(user.getCombatStats().getMeleeAtk() + cb.getMeleeAtk());
-        user.getCombatStats().setMagicAtk(user.getCombatStats().getMagicAtk() + cb.getMagicAtk());
-        user.getCombatStats().setCritRate(user.getCombatStats().getCritRate() + cb.getCritRate());
-        user.getCombatStats().setCritDmg(user.getCombatStats().getCritDmg() + cb.getCritDmg());
-        user.getCombatStats().setPenetration(user.getCombatStats().getPenetration() + cb.getPenetration());
-        user.getCombatStats().setPhysDef(user.getCombatStats().getPhysDef() + cb.getPhysDef());
-        user.getCombatStats().setMagRes(user.getCombatStats().getMagRes() + cb.getMagRes());
-        user.getCombatStats().setDodge(user.getCombatStats().getDodge() + cb.getDodge());
-        user.getCombatStats().setAccuracy(user.getCombatStats().getAccuracy() + cb.getAccuracy());
-        user.getCombatStats().setMoveSpeed(user.getCombatStats().getMoveSpeed() + cb.getMoveSpeed());
-        user.getCombatStats().setStatusResist(user.getCombatStats().getStatusResist() + cb.getStatusResist());
+    /**
+     * 전투 스탯 계산 메소드 (합연산: item + potion)
+     * @param user
+     * @param mods
+     */
+    private void applyCombatStatsBonus(UserStatus user, Map<String, Double> mods) {
+        if (mods == null || mods.isEmpty()) return;
+
+        mods.forEach((name, value) -> user.getCombatStats().applyCombatStatsBonus(name, value));
     }
 
     /**
-     * 전투 계산 메소드
+     * 전투 계산 메소드 (곱연산: BUFF + potion)
      * @param user 플레이어
      * @param mods 전투 스탯
      */
     private void applyCombatModifiers(UserStatus user, Map<String, Double> mods) {
-        if (mods.containsKey("maxHp")) user.getCombatStats().setMaxHp((int)(user.getCombatStats().getMaxHp() * mods.get("maxHp")));
-        if (mods.containsKey("maxMp")) user.getCombatStats().setMaxMp((int)(user.getCombatStats().getMaxMp() * mods.get("maxMp")));
-        if (mods.containsKey("maxStamina")) user.getCombatStats().setMaxStamina((int)(user.getCombatStats().getMaxStamina() * mods.get("maxStamina")));
+        if (mods == null || mods.isEmpty()) return;
 
-        if (mods.containsKey("hpRegen")) user.getCombatStats().setHpRegen(user.getCombatStats().getHpRegen() * mods.get("hpRegen"));
-        if (mods.containsKey("mpRegen")) user.getCombatStats().setMpRegen(user.getCombatStats().getMpRegen() * mods.get("mpRegen"));
-
-        if (mods.containsKey("meleeAtk")) user.getCombatStats().setMeleeAtk(user.getCombatStats().getMeleeAtk() * mods.get("meleeAtk"));
-        if (mods.containsKey("magicAtk")) user.getCombatStats().setMagicAtk(user.getCombatStats().getMagicAtk() * mods.get("magicAtk"));
-
-        if (mods.containsKey("critRate")) user.getCombatStats().setCritRate(user.getCombatStats().getCritRate() * mods.get("critRate"));
-        if (mods.containsKey("critDmg")) user.getCombatStats().setCritDmg(user.getCombatStats().getCritDmg() * mods.get("critDmg"));
-        if (mods.containsKey("penetration")) user.getCombatStats().setPenetration(user.getCombatStats().getPenetration() * mods.get("penetration"));
-
-        if (mods.containsKey("physDef")) user.getCombatStats().setPhysDef(user.getCombatStats().getPhysDef() * mods.get("physDef"));
-        if (mods.containsKey("magRes")) user.getCombatStats().setMagRes(user.getCombatStats().getMagRes() * mods.get("magRes"));
-
-        if (mods.containsKey("dodge")) user.getCombatStats().setDodge(user.getCombatStats().getDodge() * mods.get("dodge"));
-        if (mods.containsKey("accuracy")) user.getCombatStats().setAccuracy(user.getCombatStats().getAccuracy() * mods.get("accuracy"));
-        if (mods.containsKey("moveSpeed")) user.getCombatStats().setMoveSpeed(user.getCombatStats().getMoveSpeed() * mods.get("moveSpeed"));
-        if (mods.containsKey("statusResist")) user.getCombatStats().setStatusResist(user.getCombatStats().getStatusResist() * mods.get("statusResist"));
+        mods.forEach((name, value) -> user.getCombatStats().applyModifier(name, value));
     }
 
     /**

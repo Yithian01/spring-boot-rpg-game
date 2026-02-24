@@ -425,33 +425,27 @@ public class GameService {
         }
 
         // 2. 전투 능력치 보너스 가공
-        ItemMeta.CombatStatsBonus cb = meta.getCombatStatsBonus();
+        Map<String, Double> cb = meta.getCombatStatsBonus();
         if (cb != null) {
-            if (cb.getMaxHp() != 0) statBonuses.add("최대 체력 +" + cb.getMaxHp());
-            if (cb.getMaxMp() != 0) statBonuses.add("최대 마나 +" + cb.getMaxMp());
-            if (cb.getMaxStamina() != 0) statBonuses.add("최대 스태미나 +" + cb.getMaxStamina());
-            if (cb.getHpRegen() != 0) statBonuses.add("체력 재생 +" + cb.getHpRegen());
-            if (cb.getMpRegen() != 0) statBonuses.add("마나 재생 +" + cb.getMpRegen());
-            if (cb.getMeleeAtk() != 0) statBonuses.add("물리 공격력 +" + cb.getMeleeAtk());
-            if (cb.getMagicAtk() != 0) statBonuses.add("마법 공격력 +" + cb.getMagicAtk());
-            if (cb.getCritRate() != 0) statBonuses.add("치명타 확률 +" + cb.getCritRate() + "%");
-            if (cb.getCritDmg() != 0) statBonuses.add("치명타 피해 +" + cb.getCritDmg() + "%");
-            if (cb.getPenetration() != 0) statBonuses.add("관통력 +" + cb.getPenetration());
-            if (cb.getPhysDef() != 0) statBonuses.add("물리 방어 +" + cb.getPhysDef());
-            if (cb.getMagRes() != 0) statBonuses.add("마법 저항 +" + cb.getMagRes());
-            if (cb.getDodge() != 0) statBonuses.add("회피율 +" + cb.getDodge() + "%");
-            if (cb.getAccuracy() != 0) statBonuses.add("명중률 +" + cb.getAccuracy() + "%");
-            if (cb.getMoveSpeed() != 0) statBonuses.add("이동 속도 +" + cb.getMoveSpeed());
+            cb.forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    String suffix = (key.contains("Rate") || key.contains("Dmg") || key.contains("Dodge") || key.contains("accuracy")) ? "%" : "";
+                    statBonuses.add(displayName + " +" + value + suffix);
+                }
+            });
         }
 
         // 3. 소모품 회복 효과 가공
         String recoveryEffect = "";
-        if (meta.getRecoveryBonus() != null) {
+        Map<String, Integer> rb = meta.getRecoveryBonus();
+        if (rb != null) {
             List<String> recoveries = new ArrayList<>();
-            ItemMeta.RecoveryBonus rb = meta.getRecoveryBonus();
-            if (rb.getHp() > 0) recoveries.add("HP " + rb.getHp() + " 회복");
-            if (rb.getMp() > 0) recoveries.add("MP " + rb.getMp() + " 회복");
-            if (rb.getStamina() > 0) recoveries.add("ST " + rb.getStamina() + " 회복");
+            rb.forEach((key, value) -> {
+                if (value > 0) {
+                    recoveries.add(key.toUpperCase() + " " + value + " 회복");
+                }
+            });
             recoveryEffect = String.join(", ", recoveries);
         }
 

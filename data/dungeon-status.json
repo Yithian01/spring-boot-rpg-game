@@ -6,7 +6,7 @@
     "monsterId" : 1,
     "name" : "굶주린 동굴 쥐",
     "tier" : 8,
-    "currentHp" : 220,
+    "currentHp" : 32,
     "maxHp" : 220,
     "currentMp" : 0,
     "maxMp" : 0,
@@ -30,9 +30,9 @@
     },
     "activeStatuses" : [ ]
   },
-  "playerRemainingTurns" : 0,
+  "playerRemainingTurns" : 2,
   "playerMaxTurns" : 2,
-  "battleLogs" : [ "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "\uD83D\uDEE1️ 하이 엘프 (High Elf)에게 [<span style='color:#70db70;'>매의 눈</span>] 효과 적용!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 \uD83D\uDC99 MP +4 </span>", "\uD83D\uDEE1️ 하이 엘프 (High Elf)에게 [<span style='color:#70db70;'>매의 눈</span>] 효과 적용!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +5 \uD83D\uDC99 MP +4 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#ff4d4d;'>[피격]</span> 굶주린 동굴 쥐의 몸통 박치기! <b>7</b>의 피해!", "<b style='color:#ff9f43;'>▶ 굶주린 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "\uD83D\uDEE1️ 하이 엘프 (High Elf)에게 [<span style='color:#70db70;'>매의 눈</span>] 효과 적용!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "\uD83D\uDEE1️ 하이 엘프 (High Elf)에게 [<span style='color:#70db70;'>매의 눈</span>] 효과 적용!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#ffcc00;'>[회피] 하이 엘프 (High Elf)이(가) 공격을 피했습니다!</span>", "<b style='color:#ff9f43;'>▶ 굶주린 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "\uD83D\uDEE1️ 하이 엘프 (High Elf)에게 [<span style='color:#70db70;'>매의 눈</span>] 효과 적용!" ],
+  "battleLogs" : [ "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDCA2 매의 눈 효과 종료</span>", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDCA2 매의 눈 효과 종료</span>", "<span style='color:#da70d6;'>[효과]</span> 하이 엘프 (High Elf)에게 <b>WEAKNESS</b> 부여!", "<b style='color:#ff9f43;'>▶ 굶주린 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "\uD83D\uDEE1️ 하이 엘프 (High Elf)에게 [<span style='color:#70db70;'>매의 눈</span>] 효과 적용!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "\uD83D\uDEE1️ 하이 엘프 (High Elf)에게 [<span style='color:#70db70;'>매의 눈</span>] 효과 적용!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDCA2 WEAKNESS 효과 종료</span>", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDCA2 매의 눈 효과 종료</span>", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDCA2 매의 눈 효과 종료</span>", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDCAB 기절 종료</span>", "\uD83D\uDCAB <b>기절</b> 상태인 굶주린 동굴 쥐이(가) 몸을 가누지 못해 턴을 넘깁니다.", "<b style='color:#ff9f43;'>▶ 굶주린 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다." ],
   "pendingExp" : 8,
   "pendingGold" : 5,
   "inBattle" : true

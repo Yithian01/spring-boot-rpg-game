@@ -195,4 +195,45 @@ public class DungeonService {
             ds.addLog("<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>");
         }
     }
+
+    public void rest() {
+        UserStatus user = userFileRepository.findGameUser();
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+
+        if (user == null || user.getCurrentHp() <= 0) return;
+
+        // 1. 자원 회복 처리 (기존 로직 유지)
+        double restoreRate = 0.3;
+        int hpGain = (int) (user.getCombatStats().getMaxHp() * restoreRate);
+        int mpGain = (int) (user.getCombatStats().getMaxMp() * restoreRate);
+        int stmGain = (int) (user.getCombatStats().getMaxStamina() * restoreRate);
+
+        user.setCurrentHp(Math.min(user.getCombatStats().getMaxHp(), user.getCurrentHp() + hpGain));
+        user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + mpGain));
+        user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + stmGain));
+
+        ds.addLog(String.format("🛌 <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA +30%%)"));
+
+        // 2. 기습 판정 (Safety Rate 체크)
+        Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
+        double safetyRate = statCalculationService.calculateRestSafetyRate(stats);
+
+        // 주사위 굴리기 (0~100)
+        double roll = Math.random() * 100;
+
+        if (roll > safetyRate) {
+            // [판정 실패] 기습 발생!
+            ds.addLog("<span style='color:#ff4d4d; font-weight:bold;'>⚠️ 잠결에 기분 나쁜 소름이 돋습니다... 기습입니다!</span>");
+
+            // 기존에 만들어둔 몬스터 조우 로직 재활용
+            handleMonsterEncounter(ds);
+        } else {
+            // [판정 성공] 평온한 휴식
+            ds.addLog("<span style='color:#aaaaaa;'>주변이 고요합니다. 충분히 기력을 회복했습니다.</span>");
+        }
+
+        // 3. 상태 저장
+        saveAll(user, ds);
+        log.info(">>> 던전 휴식 완료. 기습 여부: {}", (roll > safetyRate));
+    }
 }

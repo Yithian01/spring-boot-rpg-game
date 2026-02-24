@@ -1,7 +1,7 @@
 {
   "currentFloor" : 1,
   "dungeonId" : "GRAY_MINE",
-  "progress" : 21,
+  "progress" : 0,
   "activeMonster" : {
     "monsterId" : 3,
     "name" : "병약한 고블린",
@@ -28,12 +28,22 @@
       "moveSpeed" : 1.0,
       "statusResist" : 0.0
     },
-    "activeStatuses" : [ ]
+    "activeStatuses" : [ {
+      "skillId" : 8,
+      "name" : "화염구",
+      "remainingTurns" : 1,
+      "category" : "DEBUFF",
+      "effectCode" : "BURN",
+      "tickDamage" : 26,
+      "statModifiers" : null,
+      "statOffsets" : null,
+      "combatModifiers" : null
+    } ]
   },
   "playerRemainingTurns" : 2,
   "playerMaxTurns" : 2,
-  "battleLogs" : [ "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +4 </span>", "<span style='color:#ffd700;'>[획득] 8 Gold와 15 Exp를 얻었습니다!</span>", "⚔️ <b style='color:#ffffff;'>배쉬</b>! 병약한 고블린에게 <b style='color:#ff4d4d;'>160</b>의 피해!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +4 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDCAB 기절 종료</span>", "\uD83D\uDCAB <b>기절</b> 상태인 병약한 고블린이(가) 몸을 가누지 못해 턴을 넘깁니다.", "<b style='color:#ff9f43;'>▶ 병약한 고블린의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#da70d6;'>[효과]</span> 병약한 고블린에게 STUN 부여! (1턴)", "⚔️ <b style='color:#ffffff;'>배쉬</b>! 병약한 고블린에게 <b style='color:#ff4d4d;'>160</b>의 피해!", "<span style='color:#ff9f43;'>[전투]</span> 병약한 고블린이(가) 나타났습니다!", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -53)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +7%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +7%)", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -53)", "<span style='color:#ffd700;'>[획득] 2 Gold와 8 Exp를 얻었습니다!</span>", "⚔️ <b style='color:#ffffff;'>배쉬</b>! 굶주린 동굴 쥐에게 <b style='color:#ff4d4d;'>98</b>의 피해!", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "\uD83D\uDCAB <b>기절</b> 상태인 굶주린 동굴 쥐이(가) 몸을 가누지 못해 턴을 넘깁니다." ],
+  "battleLogs" : [ "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +5 \uD83D\uDC99 MP +7 </span>", "<span style='color:#ffd700;'>[획득] 6 Gold와 15 Exp를 얻었습니다!</span>", "<b style='color:#ffd700;'>병약한 고블린이(가) 상태 이상으로 쓰러졌습니다!</b>", "\uD83D\uDD25 <span style='color:#ff4d4d;'>26</span> 대미지! (병약한 고블린 화염구)", "<b style='color:#ff9f43;'>▶ 병약한 고블린의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +5 \uD83D\uDC99 MP +7 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#ff4d4d;'>[피격]</span> 병약한 고블린의 비겁한 기습! <b>10</b>의 피해!", "\uD83D\uDD25 <span style='color:#ff4d4d;'>26</span> 대미지! (병약한 고블린 화염구)", "<b style='color:#ff9f43;'>▶ 병약한 고블린의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +7 </span>", "<span style='color:#da70d6;'>[효과]</span> 병약한 고블린에게 BURN 부여! (3턴)", "⚔️ <b style='color:#ffffff;'>화염구</b>! 병약한 고블린에게 <b style='color:#ff4d4d;'>80</b>의 피해!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +7 </span>", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +5 \uD83D\uDC99 MP +7 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#ff4d4d;'>[피격]</span> 병약한 고블린의 비겁한 기습! <b>10</b>의 피해!", "<b style='color:#ff9f43;'>▶ 병약한 고블린의 차례 (행동력: 2)</b>" ],
   "pendingExp" : 15,
-  "pendingGold" : 8,
+  "pendingGold" : 6,
   "inBattle" : false
 }

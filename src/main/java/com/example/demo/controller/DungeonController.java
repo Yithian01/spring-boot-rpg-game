@@ -60,31 +60,19 @@ public class DungeonController {
         return "redirect:/game/play";
     }
 
-//    /**
-//     * [스킬 사용] 던전 액션 패널에서 스킬 클릭 시
-//     */
-//    @PostMapping("/skill")
-//    public String useSkill(@RequestParam int skillId, RedirectAttributes redirectAttributes) {
-//        // 전투 결과 메시지 처리 (예: "슬라임에게 15의 데미지!")
-//        String resultMessage = dungeonService.processSkill(skillId);
-//
-//        redirectAttributes.addFlashAttribute("message", resultMessage);
-//        return "redirect:/game/play";
-//    }
+    /**
+     * [던전] 쉬기 버튼 클릭 시 (HP/MP/STA 30% 회복)
+     */
+    @PostMapping("/rest")
+    public String rest(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
 
-//    /**
-//     * [도망치기] 전투 이탈
-//     */
-//    @PostMapping("/escape")
-//    public String escape(RedirectAttributes redirectAttributes) {
-//        boolean success = dungeonService.processEscape();
-//
-//        if (success) {
-//            redirectAttributes.addFlashAttribute("message", "전투에서 무사히 도망쳤습니다!");
-//            return "redirect:/game/play"; // 마을로 돌아감
-//        } else {
-//            redirectAttributes.addFlashAttribute("message", "도망에 실패했습니다! 적의 공격이 이어집니다.");
-//            return "redirect:/game/play"; // 여전히 던전
-//        }
-//    }
+        // 3. 휴식 실행
+        dungeonService.rest();
+        return "redirect:/game/play";
+    }
 }

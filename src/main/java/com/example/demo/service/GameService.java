@@ -73,23 +73,7 @@ public class GameService {
         townFileRepository.deleteFile();
         inventoryFileRepository.deleteFile();
 
-        // 1. 초기 아이템 1~10번 설정
-        List<InventoryItem> initialItems = new ArrayList<>();
-        for (int i = 1; i <= 11; i++) {
-            initialItems.add(InventoryItem.builder()
-                    .id(i)                             // 메타 데이터 ID (1~10)
-                    .instanceId(UUID.randomUUID().toString()) // 고유 식별자 생성
-                    .quantity(1)                       // 수량 1개
-                    .enhancementLevel(0)               // 강화 수치 0
-                    .build());
-        }
-        InventoryStatus initialInventory = InventoryStatus.builder()
-                .items(initialItems)
-                .build();
-        inventoryFileRepository.saveInventoryStatus(initialInventory);
-
-
-        // 2. 메모리에서 종족 초기 정보 조회 (Stats, Gold)
+        // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
         TribeMeta tribeMeta = gameDataManager.getTribeMap().get(tribeId);
 
@@ -97,74 +81,75 @@ public class GameService {
             throw new RuntimeException("잘못된 종족 ID입니다: " + tribeId);
         }
 
+        // 2. [인벤토리 초기화]
+        // 종족 데이터에 정의된 initialItem(회복 아이템 등)을 인벤토리에 추가
+        List<InventoryItem> initialInventoryItems = new ArrayList<>();
+        if (initialMeta.getInitialItem() != null) {
+            for (Integer itemId : initialMeta.getInitialItem()) {
+                initialInventoryItems.add(InventoryItem.builder()
+                        .id(itemId)
+                        .instanceId(UUID.randomUUID().toString())
+                        .quantity(1) // 기본 1개, 필요시 메타에 수량 필드 추가 가능
+                        .enhancementLevel(0)
+                        .build());
+            }
+        }
+        InventoryStatus initialInventory = InventoryStatus.builder()
+                .items(initialInventoryItems)
+                .build();
+        inventoryFileRepository.saveInventoryStatus(initialInventory);
+
         // 3. [랜덤 잠재력 생성]
-        // 모든 스탯 ID(1~24)에 대해 S~F 등급을 랜덤으로 뽑습니다.
         Map<Integer, Integer> randomPotentials = new HashMap<>();
-
         for (Integer statId : gameDataManager.getStatMap().keySet()) {
-            // A. 잠재력(등급) 뽑기 (GameDataManager의 확률 로직 사용)
             int growthId = gameDataManager.getRandomGrowthId();
-
-            // B. 잠재력 맵에 저장 (예: 1번스탯 -> 1(S급))
             randomPotentials.put(statId, growthId);
         }
 
-        Map<Integer, Integer> baseStats = initialMeta.getInitialStats();
+        // 4. [장비 및 스킬 설정]
+        // 하드코딩을 제거하고 initialMeta(종족 데이터)에서 직접 가져옵니다.
+        Map<String, Integer> initialEquippedItems = new HashMap<>(initialMeta.getInitialEquipment());
+        List<Integer> learnedSkillIds = new ArrayList<>(initialMeta.getInitialSkill());
 
-        Map<String, Integer> initialEquippedItems = new HashMap<>();
-        initialEquippedItems.put("HEAD", 0);
-        initialEquippedItems.put("BODY", 0);
-        initialEquippedItems.put("BOOTS", 0);
-        initialEquippedItems.put("WEAPON", 0);
-        initialEquippedItems.put("SUB_WEAPON", 0);
-        initialEquippedItems.put("NECKLACE", 0);
-        initialEquippedItems.put("RING", 0);
-
-        List<Integer> learnedSkillIds = new ArrayList<>();
-        learnedSkillIds.add(1);
-        learnedSkillIds.add(2);
-
-        // 4. UserStatus 생성 (새로운 필드 반영)
+        // 5. UserStatus 생성
         UserStatus newUser = UserStatus.builder()
                 .id(1)
                 .name(tribeMeta.getName())
                 .tribeId(tribeId)
                 .religionId(0)
                 .currentGold(initialMeta.getGold())
-                .baseStats(baseStats)
+                .baseStats(new HashMap<>(initialMeta.getInitialStats()))
                 .potentials(randomPotentials)
-
-                // --- 계층형 스탯 필드 초기화 ---
-                .equipmentBonusStats(new HashMap<>()) // 빈 맵으로 시작
-                .activeStatuses(new ArrayList<>())    // 빈 리스트로 시작
-                .finalStats(new HashMap<>(baseStats)) // 초기값은 baseStats 복사
-
+                .equipmentBonusStats(new HashMap<>())
+                .activeStatuses(new ArrayList<>())
+                .finalStats(new HashMap<>(initialMeta.getInitialStats()))
                 .combatStats(new CombatStats())
                 .equippedItems(initialEquippedItems)
                 .usedItemIds(new ArrayList<>())
                 .learnedSkillIds(learnedSkillIds)
-                .saveVersion(1) // 버전 관리용
+                .saveVersion(1)
                 .build();
 
-        // 5. 스탯 계산기 가동
-        // 이제 내부적으로 baseStats + equipment + activeStatuses를 합산하여 finalStats와
-        // maxHp, meleeAtk 등 전투 수치를 모두 갱신합니다.
+        // 6. 스탯 계산기 가동 및 장비 레이어 갱신
+        // 장착된 초기 장비의 스탯 보너스를 먼저 계산 레이어에 반영합니다.
+        statCalculationService.updateEquipmentLayer(newUser, gameDataManager.getItemMap());
         statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMap());
 
-        // 6. 현재 체력 등을 최대치로 보정
+        // 7. 자원 수치 보정
         newUser.setCurrentHp(newUser.getCombatStats().getMaxHp());
         newUser.setCurrentMp(newUser.getCombatStats().getMaxMp());
         newUser.setCurrentStamina(newUser.getCombatStats().getMaxStamina());
 
-        // 7. 저장.getCombatStats()
+        // 8. 데이터 저장
         userFileRepository.saveUserStatus(newUser);
 
         TownStatus newTown = TownStatus.builder()
                 .currentTurn(30)
                 .maxTurn(30)
-                .day(1).
-                currentTax(100)
-                .isTaxPaid(false).build();
+                .day(1)
+                .currentTax(100)
+                .isTaxPaid(false)
+                .build();
         townFileRepository.saveTownStatus(newTown);
 
         GameStatus gameStatus = GameStatus.builder()
@@ -173,9 +158,7 @@ public class GameService {
                 .build();
         gameRepository.saveGameStatus(gameStatus);
 
-        // TO-DO 초기 아이템도 설정??
-
-        log.info(">>> 새 게임 생성 완료! (종족: {}, 잠재력 랜덤 생성됨)", tribeMeta.getName());
+        log.info(">>> 새 게임 생성 완료! (종족: {}, 초기 장비 및 스킬 장착됨)", tribeMeta.getName());
     }
 
     /**

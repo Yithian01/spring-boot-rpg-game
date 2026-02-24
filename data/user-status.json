@@ -5,8 +5,8 @@
   "tribeId" : 6,
   "religionId" : 0,
   "currentHp" : 275,
-  "currentMp" : 205,
-  "currentStamina" : 164,
+  "currentMp" : 213,
+  "currentStamina" : 152,
   "currentGold" : 1942,
   "combatStats" : {
     "maxHp" : 275,

@@ -145,18 +145,6 @@ public class InventoryService {
     }
 
     /**
-     * 장비 변경 시 스탯 레이어를 갱신하고 최종 수치를 리프레시하는 공통 로직
-     */
-    private void refreshUserStatsAfterEquipmentChange(UserStatus user) {
-        // 1. 장비 스탯 레이어(equipmentBonusStats)만 따로 계산해서 유저 객체에 저장
-        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMap());
-
-        // 2. 최종 스탯(finalStats) 및 전투 능력치(MaxHp, Atk 등) 계산
-        // 이 메서드 내부에서 baseStats + equipmentBonusStats + activeStatuses가 합산됨
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMap());
-    }
-
-    /**
      * 인벤토리에 아이템을 안전하게 추가하는 공통 메서드
      */
     private void addInventoryItem(InventoryStatus inventory, int itemId) {

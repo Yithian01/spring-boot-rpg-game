@@ -166,24 +166,37 @@
         </div>
     </div>
 
-    <div style="background: #1a1510; padding: 10px; border: 1px solid #4d3319; border-radius: 6px; margin-top: 4px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <div style="display: flex; align-items: center; gap: 5px;">
-                <span style="font-size: 0.65rem; color: #ff9f43; font-weight: bold;">⚠️ 던전 유지력</span>
-                <span style="font-size: 0.55rem; color: #888;">(초과 시 강제 귀환)</span>
+    <div style="background: #111; padding: 15px; border: 2px solid #5d4037; border-radius: 8px; margin-top: 10px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 0.85rem; color: #ff9f43; font-weight: bold; text-shadow: 1px 1px 2px #000;">
+                ⏳ 탐험 유지력
+            </span>
+                <span style="font-size: 0.7rem; color: #777;">Dungeon Sustainability</span>
             </div>
-            <div style="font-family: monospace; font-size: 0.8rem;">
-                <span style="color: #fff;" th:text="${dungeon.actionCount}"></span>
-                <span style="color: #555;"> / </span>
-                <span style="color: #aaa;" th:text="${dungeon.maxActionCount}"></span>
+            <div style="text-align: right;">
+            <span style="font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: bold; color: #fff;"
+                  th:text="${dungeon.actionCount}">0</span>
+                <span style="color: #666; font-size: 0.9rem;"> / </span>
+                <span style="color: #aaa; font-size: 0.9rem;"
+                      th:text="${dungeon.maxActionCount}">100</span>
             </div>
         </div>
 
-        <div style="width: 100%; height: 4px; background: #000; border-radius: 2px; overflow: hidden; border: 1px solid #333;">
+        <div style="width: 100%; height: 12px; background: #222; border-radius: 6px; overflow: hidden; border: 1px solid #444; position: relative;">
+            <div style="position: absolute; width: 100%; height: 100%; background-image: linear-gradient(90deg, transparent 19%, rgba(255,255,255,0.05) 20%); background-size: 20% 100%;"></div>
+
             <div th:style="'width:' + (${dungeon.maxActionCount > 0 ? (dungeon.actionCount * 100 / dungeon.maxActionCount) : 0}) + '%;
-                          height:100%;
-                          background: linear-gradient(90deg, #b33939, #ff5252);
-                          transition: width 0.5s;'"></div>
+                      height:100%;
+                      background: linear-gradient(90deg, #d63031, #ff7675);
+                      box-shadow: 0 0 10px rgba(214, 48, 49, 0.6);
+                      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);'">
+            </div>
+        </div>
+
+        <div th:if="${dungeon.actionCount >= dungeon.maxActionCount * 0.8}"
+             style="margin-top: 8px; text-align: center; font-size: 0.75rem; color: #ff5252; font-weight: bold; animation: blink 1.5s infinite;">
+            ⚠️ 유지력 한계 도달! 귀환이 시급합니다.
         </div>
     </div>
 </div>

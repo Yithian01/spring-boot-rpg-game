@@ -216,4 +216,23 @@
             </ul>
         </div>
     </div>
+
+    <div th:fragment="battleLogPanel(logs)" class="gamble-content"
+         style="display: flex; flex-direction: column; border-color: #ff4d4d; width: 100%; height: 100%; margin: 0; padding: 15px; box-sizing: border-box;">
+
+        <h2 style="color: #ff4d4d; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #333; padding-bottom: 10px;">
+            📜 전투 상세 기록
+        </h2>
+
+        <div id="battleLogs" class="custom-scroll"
+             style="flex: 1; background: #000; border: 1px solid #222; padding: 10px; overflow-y: auto; text-align: left; font-size: 0.85rem; line-height: 1.6; border-radius: 4px;">
+            <div th:each="log : ${logs}" th:utext="${log}"
+                 style="margin-bottom: 6px; border-bottom: 1px solid #1a1a1a; padding-bottom: 4px; color: #ccc;">
+            </div>
+            <div th:if="${#lists.isEmpty(logs)}" style="color: #444; text-align: center; padding-top: 30px; font-style: italic;">
+                전투의 흔적이 없습니다...
+            </div>
+        </div>
+    </div>
+
 </div>

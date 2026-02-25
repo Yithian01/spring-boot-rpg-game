@@ -4,5 +4,10 @@
     "instanceId" : "7b690b71-9a56-4df1-bb9f-6a1f3534095a",
     "quantity" : 1,
     "enhancementLevel" : 0
+  }, {
+    "id" : 6,
+    "instanceId" : null,
+    "quantity" : 1,
+    "enhancementLevel" : 0
   } ]
 }

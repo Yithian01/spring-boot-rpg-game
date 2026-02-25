@@ -165,4 +165,25 @@
             <div style="color: #ffd700; font-weight: bold;" th:text="'+ ' + ${dungeon.pendingGold}"></div>
         </div>
     </div>
+
+    <div style="background: #1a1510; padding: 10px; border: 1px solid #4d3319; border-radius: 6px; margin-top: 4px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <span style="font-size: 0.65rem; color: #ff9f43; font-weight: bold;">⚠️ 던전 유지력</span>
+                <span style="font-size: 0.55rem; color: #888;">(초과 시 강제 귀환)</span>
+            </div>
+            <div style="font-family: monospace; font-size: 0.8rem;">
+                <span style="color: #fff;" th:text="${dungeon.actionCount}"></span>
+                <span style="color: #555;"> / </span>
+                <span style="color: #aaa;" th:text="${dungeon.maxActionCount}"></span>
+            </div>
+        </div>
+
+        <div style="width: 100%; height: 4px; background: #000; border-radius: 2px; overflow: hidden; border: 1px solid #333;">
+            <div th:style="'width:' + (${dungeon.maxActionCount > 0 ? (dungeon.actionCount * 100 / dungeon.maxActionCount) : 0}) + '%;
+                          height:100%;
+                          background: linear-gradient(90deg, #b33939, #ff5252);
+                          transition: width 0.5s;'"></div>
+        </div>
+    </div>
 </div>

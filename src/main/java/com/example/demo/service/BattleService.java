@@ -94,6 +94,8 @@ public class BattleService {
      * @return 스킬 카드 정보
      */
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
+        ActiveMonster monster = ds.getActiveMonster();
+
         // 1. 현재 무기 타입 파악 및 아이템 부여 스킬 수집
         String weaponType = "NONE";
         Set<Integer> availableSkillIds = new HashSet<>(user.getLearnedSkillIds());
@@ -175,6 +177,34 @@ public class BattleService {
                         }
                     }
 
+                    // 1. 최종 명중률 계산 (상대 회피 고려)
+                    // 공식: (내 명중 + 스킬 명중) - 상대 회피
+                    int realHitChance = 0;
+                    if (monster != null) {
+                        double attackerAcc = user.getCombatStats().getAccuracy();
+                        int skillHit = meta.getHitChance();
+                        double defenderDodge = meta.getType().equals("BUFF") || meta.getType().equals("HEAL")
+                                ? 0 : monster.getActiveStats().getDodge();
+
+                        // (공격자 명중 + 스킬 기본 명중) * (1 - 상대 회피율/100) 형태로 가거나 단순 차감
+                        // 여기서는 직관적으로 (명중확률 - 회피확률)로 계산
+                        realHitChance = (int) Math.max(5, Math.min(100, (attackerAcc + skillHit) - defenderDodge));
+                    }
+
+                    // 2. 예상 위력 계산
+                    int expectedPower = 0;
+                    if ("HEAL".equals(meta.getEffect().getType())) {
+                        expectedPower = statCalculationService.calculateHeal(user, meta);
+                    } else if ("DAMAGE".equals(meta.getEffect().getType()) || "DOT".equals(meta.getEffect().getType())) {
+                        // 방어력을 제외한 순수 위력 혹은 평균 데미지 계산
+                        expectedPower = statCalculationService.calculateSkillPower(meta, user.getFinalStats());
+                        // 기본 공격력 합산 (calculateFinalDamage의 로직 일부 차용)
+                        boolean isMagic = "MAGIC".equals(meta.getType());
+                        double baseAtk = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();
+                        double scaling = meta.getPlayerScaling().getOrDefault(isMagic ? "magicAtk" : "meleeAtk", 1.0);
+                        expectedPower += (int)(baseAtk * scaling);
+                    }
+
                     // DTO 빌드
                     return SkillCardDto.builder()
                             .id(meta.getId())
@@ -187,7 +217,6 @@ public class BattleService {
                             .hpCost(meta.getCost().getOrDefault("hp", 0))
                             .canAct(canAct)
                             .message(msg)
-                            // 신규 필드 매핑
                             .type(meta.getType())
                             .element(effect != null ? effect.getElement() : "NONE")
                             .requiredWeapon(meta.getRequiredWeapon())
@@ -199,6 +228,8 @@ public class BattleService {
                             .effectChance(effect != null ? effect.getChance() : null)
                             .scalingInfo(scalingInfo)
                             .modifierDetails(modifierDetails)
+                            .realHitChance(realHitChance) // 신규: 실시간 명중률
+                            .expectedPower(expectedPower) // 신규: 실시간 예상 위력
                             .build();
                 })
                 .toList();

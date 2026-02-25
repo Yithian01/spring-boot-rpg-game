@@ -43,4 +43,7 @@ public class SkillCardDto {
     // [5] 수치 보정 정보 (버프/디버프 상세 내용)
     // 예: "공격력 1.5배 증가", "명중률 30% 감소" 등의 문자열 리스트
     private List<String> modifierDetails;
+
+    private int realHitChance;   // 최종 계산된 명중률 (%)
+    private int expectedPower;   // 현재 스탯 기준 예상 위력 (데미지/힐량)
 }

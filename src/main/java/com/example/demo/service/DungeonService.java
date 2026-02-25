@@ -47,10 +47,15 @@ public class DungeonService {
         UserStatus user = userFileRepository.findGameUser();
         int maxTurns = statCalculationService.calculateCombatTurns(user);
 
+        DungeonMeta prevMeta = gameDataManager.getDungeonMetaMap().get(meta.getPrevDungeonId());
+        String prevName = (prevMeta != null) ? prevMeta.getName() : null;
+
         DungeonStatus ds;
         if (isFirstEntry) {
             ds = DungeonStatus.builder()
                     .dungeonId(dungeonId)
+                    .parentDungeonId(meta.getPrevDungeonId())
+                    .parentDungeonName(prevName)
                     .dungeonName(meta.getName())
                     .currentFloor(meta.getFloor())
                     .actionCount(0)
@@ -68,13 +73,15 @@ public class DungeonService {
             // 이동이면 기존 데이터를 가져와서 갱신
             ds = dungeonFileRepository.findDungeonStatus();
             ds.setDungeonId(dungeonId);
+            ds.setParentDungeonId(meta.getPrevDungeonId());
+            ds.setParentDungeonName(prevName);
             ds.setDungeonName(meta.getName());
             ds.setCurrentFloor(meta.getFloor());
             ds.setMaxActionCount(meta.getMaxActionCount());
-
-            int lastProgress = ds.getFloorProgressMap().getOrDefault(dungeonId, 0);
-            ds.setProgress(lastProgress);
-
+            // 이전 층으로 돌아올 때 기존 진행도를 기억하고 싶다면 아래 주석 해제
+            // int lastProgress = ds.getFloorProgressMap().getOrDefault(dungeonId, 0);
+            // ds.setProgress(lastProgress);
+            ds.setProgress(0);
             ds.setActiveMonster(null);
             ds.setPlayerMaxTurns(maxTurns);
             ds.addLog("<b style='color:#ffd700;'>" + meta.getName() + "</b>(으)로 이동했습니다.");
@@ -86,6 +93,7 @@ public class DungeonService {
         }
 
         dungeonFileRepository.saveDungeonStatus(ds);
+        gameRepository.updateLocation(LocationType.DUNGEON, ds.getDungeonId());
     }
 
     /**
@@ -108,13 +116,34 @@ public class DungeonService {
     }
 
     /**
-     * [층 이동] 이미 던전 안에서 다른 층(혹은 다른 던전ID)으로 이동할 때 호출
+     * [다음 층 이동]
      */
-    public void moveToFloor(int nextDungeonId) {
-        // 층 이동은 마을 상태를 건드리지 않고 enterFloor만 수행 (false: 기존 파일 수정)
-        enterFloor(nextDungeonId, false);
+    public void goToNextFloor() {
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        DungeonMeta currentMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
 
-        log.info(">>> 던전 층 이동 완료: NextDungeonID {}", nextDungeonId);
+        int nextId = currentMeta.pickNextDungeonId();
+
+        if (nextId != 0) {
+            // 이전에 수동으로 parentId 세팅하던 로직들 전부 삭제 가능
+            enterFloor(nextId, true);
+        }
+    }
+
+    /**
+     * [이전 층 이동]
+     */
+    public void goToPrevFloor() {
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        DungeonMeta currentMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
+
+        int prevId = currentMeta.getPrevDungeonId();
+
+        if (prevId != 0) {
+            // 메타데이터에 정의된 '부모'로 돌아감 (이동이므로 false)
+            enterFloor(prevId, false);
+            log.info(">>> 이전 층으로 이동: {}", prevId);
+        }
     }
 
     /**

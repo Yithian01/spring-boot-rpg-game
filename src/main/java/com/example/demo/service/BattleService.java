@@ -287,7 +287,7 @@ public class BattleService {
         // [2단계] 방어자 회피 판정 (Dodge Check)
         // 버프인 경우 회피 판정을 생략하기 위해 0 전달
         double dodgeStat = ("BUFF".equals(skillType) || "HEAL".equals(skillType)) ? 0 : monster.getActiveStats().getDodge();
-        boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat);
+        boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat, skillType);
         if (isDodged) {
             ds.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) 당신의 <b>%s</b> 공격을 회피했습니다!</span>",
                     monster.getName(), skill.getName()));

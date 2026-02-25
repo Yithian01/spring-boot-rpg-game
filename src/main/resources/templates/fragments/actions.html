@@ -138,7 +138,12 @@
             <button th:unless="${dungeon?.progress >= 100}" class="action-btn btn-empty"><span>🔒</span>잠김</button>
             <th:block th:if="${dungeon?.currentFloor > 1}">
                 <form action="/dungeon/prev-floor" method="post" style="display:contents;">
-                    <button type="submit" class="action-btn btn-tax"><span>🔙</span>이전 층</button>
+                    <button type="submit" class="action-btn btn-tax" style="flex-direction: column; padding: 5px;">
+                        <span>🔙 이전 층</span>
+                        <div style="font-size: 0.65rem; color: #ffd700; font-weight: normal; margin-top: 2px; opacity: 0.9;">
+                            [[${dungeon.parentDungeonName}]]
+                        </div>
+                    </button>
                 </form>
             </th:block>
             <button th:unless="${dungeon?.currentFloor > 1}" class="action-btn btn-empty"></button>

@@ -21,6 +21,8 @@ import java.util.Map;
 public class DungeonStatus {
 
     private int dungeonId;      // 층수랑 다름
+    private int parentDungeonId; // 이전층수 ID 층수가 X
+    private String parentDungeonName; // 이전층수 ID 층수가 X
     private String dungeonName; // 지역 명칭
     private int currentFloor;   // 현재 층
     private int progress;      // 던전 진행도

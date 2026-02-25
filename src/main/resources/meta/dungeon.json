@@ -5,7 +5,14 @@
     "name": "수정 동굴",
     "maxActionCount": 100,
     "monsterTableId": 10,
-    "effects": { }
+    "effects": { },
+    "nextFloorWeights": {
+      "201": 40,
+      "202": 40,
+      "203": 15,
+      "204": 5
+    },
+    "prevDungeonId" : 0
   },
   {
     "id": 201,
@@ -13,7 +20,11 @@
     "name": "고블린의 숲",
     "maxActionCount": 300,
     "monsterTableId": 21,
-    "effects": { }
+    "effects": { },
+    "nextFloorWeights": {
+      "301": 100
+    },
+    "prevDungeonId" : 101
   },
   {
     "id": 202,
@@ -23,7 +34,11 @@
     "monsterTableId": 22,
     "effects": {
       "encounterMod": 1.2
-    }
+    },
+    "nextFloorWeights": {
+      "301": 100
+    },
+    "prevDungeonId" : 101
   },
   {
     "id": 203,
@@ -34,7 +49,11 @@
     "effects": {
       "accuracy": 0.7,
       "dodge": 0.7
-    }
+    },
+    "nextFloorWeights": {
+      "301": 100
+    },
+    "prevDungeonId" : 101
   },
   {
     "id": 204,
@@ -45,6 +64,10 @@
     "effects": {
       "hpRegen": 0.5,
       "meleeAtk": 0.8
-    }
+    },
+    "nextFloorWeights": {
+      "301": 100
+    },
+    "prevDungeonId" : 101
   }
 ]

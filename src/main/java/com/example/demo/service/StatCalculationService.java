@@ -8,6 +8,7 @@ import com.example.demo.domain.save.ActiveMonster;
 import com.example.demo.domain.save.ActiveStatus;
 import com.example.demo.domain.save.DungeonStatus;
 import com.example.demo.domain.save.UserStatus;
+import com.fasterxml.jackson.databind.JsonSerializer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -596,7 +597,10 @@ public class StatCalculationService {
     /**
      * 2단계: 방어자 회피 판정 (상대 회피율)
      */
-    public boolean isDefenderDodge(double defenderDodge) {
+    public boolean isDefenderDodge(double defenderDodge, String skillType) {
+        if (("BUFF".equals(skillType) || "HEAL".equals(skillType) || "PASS".equals(skillType))){
+            return false;
+        }
         // 예: 상대 회피 12 = 12% 확률로 '회피 성공'
         double dodgeProb = defenderDodge;
         dodgeProb = Math.max(0, Math.min(95, dodgeProb)); // 최대 95%까지만 회피 가능

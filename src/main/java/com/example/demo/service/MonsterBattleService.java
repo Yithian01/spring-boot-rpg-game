@@ -122,7 +122,7 @@ public class MonsterBattleService {
         // [2단계] 플레이어 회피 판정 (버프/회복은 회피 불가)
         String skillType = skill.getType();
         double dodgeStat = ("BUFF".equals(skillType) || "HEAL".equals(skillType)) ? 0 : user.getCombatStats().getDodge();
-        boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat);
+        boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat, skillType);
 
         if (isDodged) {
             ds.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 <b>%s</b> 공격을 가볍게 피했습니다!</span>",

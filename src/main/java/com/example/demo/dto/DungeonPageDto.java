@@ -16,6 +16,8 @@ public class DungeonPageDto {
     private int dungeonId;
     private String dungeonName;
     private int currentFloor;
+    private int parentDungeonId;
+    private String parentDungeonName;
     private int progress;
     private int actionCount;
     private int maxActionCount;

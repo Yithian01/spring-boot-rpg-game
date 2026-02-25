@@ -458,8 +458,6 @@ public class GameService {
         if (ds == null || user == null) return null;
 
         Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
-
-        // 1. 전투/비전투 공통으로 현재 사용 가능한 스킬 리스트(패)를 가져옴
         List<SkillCardDto> skillCards = battleService.getSkillHand(user, ds);
 
         int calculatedMaxTurns = statCalculationService.calculateCombatTurns(user);
@@ -470,6 +468,8 @@ public class GameService {
                 .dungeonId(ds.getDungeonId())
                 .dungeonName(ds.getDungeonName())
                 .currentFloor(ds.getCurrentFloor())
+                .parentDungeonId(ds.getParentDungeonId())
+                .parentDungeonName(ds.getParentDungeonName())
                 .progress(ds.getProgress())
                 .actionCount(ds.getActionCount())
                 .maxActionCount(ds.getMaxActionCount())

@@ -75,4 +75,35 @@ public class DungeonController {
         dungeonService.rest();
         return "redirect:/game/play";
     }
+
+    /**
+     * [던전] 다음 층 이동
+     */
+    @PostMapping("/next-floor")
+    public String nextFloor(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        // 2. 서비스에 모든 로직 위임
+        dungeonService.goToNextFloor();
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [던전] 이전 층 이동
+     */
+    @PostMapping("/prev-floor")
+    public String prevFloor(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        dungeonService.goToPrevFloor();
+        return "redirect:/game/play";
+    }
 }

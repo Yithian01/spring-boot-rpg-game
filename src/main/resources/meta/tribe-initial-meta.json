@@ -4,13 +4,13 @@
     "image": "/tribe_1.png",
     "gold": 70,
     "initialEquipment": {
-      "WEAPON": 1,
+      "WEAPON": 9,
       "BODY": 10,
-      "HEAD": 3,
-      "NECKLACE": 8,
-      "BOOTS": 4,
-      "RING": 5,
-      "SUB_WEAPON": 6
+      "HEAD": 0,
+      "NECKLACE": 0,
+      "BOOTS": 11,
+      "RING": 0,
+      "SUB_WEAPON": 0
     },
     "combatBaseStats": {
       "1": 18, "2": 10, "3": 12, "4": 2, "5": 2, "6": 15,
@@ -181,12 +181,12 @@
     "gold": 100,
     "initialEquipment": {
       "WEAPON": 9,
-      "BODY": 2,
-      "HEAD": 3,
-      "NECKLACE": 8,
-      "BOOTS": 4,
-      "RING": 5,
-      "SUB_WEAPON": 6
+      "BODY": 10,
+      "HEAD": 0,
+      "NECKLACE": 0,
+      "BOOTS": 11,
+      "RING": 0,
+      "SUB_WEAPON": 0
     },
     "combatBaseStats": {
       "1": 9, "2": 9, "3": 9, "4": 9, "5": 9, "6": 9,

@@ -36,6 +36,9 @@ public class GameDataManager  implements ApplicationRunner {
     @Getter private Map<Integer, MonsterMeta> monsterMetaMap;
     @Getter private Map<Integer, SkillMeta> skillMetaMap;
     @Getter private Map<Integer, MonsterSkillMeta> monsterSkillMetaMap;
+    @Getter private Map<Integer, DungeonMeta> dungeonMetaMap;
+    @Getter private Map<Integer, MonsterSpawnTableMeta> monsterSpawnTableMetaMap;
+
 
     @Override
     public void run(ApplicationArguments args) {
@@ -67,11 +70,17 @@ public class GameDataManager  implements ApplicationRunner {
         // 7. 몬스터 정보 로딩 추가
         this.monsterMetaMap = loadMapData("monster.json", MonsterMeta.class, MonsterMeta::getId);
 
-        // 8. 플레이어 스킬 정보 로딩 추가
+        // 8. 플레이어 스킬 정보 로딩
         this.skillMetaMap = loadMapData("skill.json", SkillMeta.class, SkillMeta::getId);
 
-        // 9. 몬스터 스킬 정보 로딩 추가
+        // 9. 몬스터 스킬 정보 로딩
         this.monsterSkillMetaMap = loadMapData("monster-skill.json", MonsterSkillMeta.class, MonsterSkillMeta::getId);
+
+        // 10. 던전 정보 로딩
+        this.dungeonMetaMap = loadMapData("dungeon.json", DungeonMeta.class, DungeonMeta::getId);
+
+        // 11. 몬스터 테이블 정보 로딩
+        this.monsterSpawnTableMetaMap = loadMapData("monster-spawn-table.json", MonsterSpawnTableMeta.class, MonsterSpawnTableMeta::getTableId);
 
         long end = System.currentTimeMillis();
         log.info("========== [GameData] 초기화 완료 (소요시간: {}ms) ==========", end - start);
@@ -172,30 +181,6 @@ public class GameDataManager  implements ApplicationRunner {
     }
 
     /**
-     * 층별 몬스터 조우 시 사용 
-     * @param floor 현재 층
-     * @return 몬스터 정보
-     */
-    public MonsterMeta getRandomMonsterByFloor(int floor) {
-        // 1. 현재 층수에 따른 메인 티어 계산 (역순)
-        // 1~5층은 8티어 위주, 6~10층은 7티어 위주로 설계 예시
-        int primaryTier = (floor <= 5) ? 8 : 7;
-
-        // 2. 후보군 추출
-        List<MonsterMeta> candidates = monsterMetaMap.values().stream()
-                .filter(m -> m.getTier() == primaryTier)
-                .collect(Collectors.toList());
-
-        // 3. 만약 해당 티어 몬스터가 없으면 전체 중 가장 가까운 티어 탐색 (방어 코드)
-        if (candidates.isEmpty()) {
-            candidates = new ArrayList<>(monsterMetaMap.values());
-        }
-
-        // 4. 랜덤 반환
-        return candidates.get(random.nextInt(candidates.size()));
-    }
-
-    /**
      * 이모티콘 헬퍼 메서드
      * @param code 상태이상 String
      * @return 표현하는 아이콘 반환
@@ -256,4 +241,23 @@ public class GameDataManager  implements ApplicationRunner {
             Map.entry("accuracy", "명중률"),
             Map.entry("moveSpeed", "이동 속도")
     );
+
+    /**
+     * 던전 ID를 받아 해당 던전의 스폰 테이블에 정의된 확률대로 몬스터를 반환합니다.
+     */
+    public MonsterMeta getRandomMonsterByDungeon(int dungeonId) {
+        // 1. 던전 메타 확인
+        DungeonMeta dungeon = dungeonMetaMap.get(dungeonId);
+        if (dungeon == null) return null;
+
+        // 2. 해당 던전의 스폰 테이블 확인
+        MonsterSpawnTableMeta table = monsterSpawnTableMetaMap.get(dungeon.getMonsterTableId());
+        if (table == null) return null;
+
+        // 3. 테이블 내부에 만들어둔 랜덤 로직 호출 (이전에 만든 pickRandomMonsterId 사용)
+        int monsterId = table.pickRandomMonsterId(this.random);
+
+        // 4. 최종 몬스터 메타 반환
+        return monsterMetaMap.get(monsterId);
+    }
 }

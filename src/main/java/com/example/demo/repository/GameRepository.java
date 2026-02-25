@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 
+import com.example.demo.domain.enums.LocationType;
 import com.example.demo.domain.save.GameStatus;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -96,5 +97,24 @@ public class GameRepository {
             log.error("게임 데이터 삭제 중 오류 발생", e);
             throw new RuntimeException("게임 초기화(파일 삭제) 실패", e);
         }
+    }
+
+    /**
+     * [위치 변경] 현재 위치(LocationType)만 빠르게 업데이트
+     * @param newLocation 변경할 장소 (TOWN, DUNGEON 등)
+     * @param dungeonId 던전일 경우 ID (마을일 경우 보통 0)
+     */
+    public void updateLocation(LocationType newLocation, int dungeonId) {
+        // 1. 기존 데이터를 먼저 읽어옴
+        GameStatus status = findGameStatus();
+
+        // 2. 위치 및 관련 ID 정보 수정
+        status.setLocation(newLocation);
+        status.setDungeonId(dungeonId);
+
+        // 3. 다시 저장
+        saveGameStatus(status);
+
+        log.info(">>> 위치 변경 완료: {} (DungeonID: {})", newLocation, dungeonId);
     }
 }

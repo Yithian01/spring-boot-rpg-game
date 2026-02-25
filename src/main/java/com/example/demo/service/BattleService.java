@@ -29,11 +29,22 @@ public class BattleService {
     private final MonsterBattleService monsterBattleService;
 
     /**
-     * 저장 담당 메소드
+     * 저장 담당 메소드 + 행동 포인트 올림
      * @param user 플레이어 정보
      * @param ds 던전 + 몬스터 정보
      */
     private void saveAll(UserStatus user, DungeonStatus ds) {
+        ds.setActionCount(ds.getActionCount() + 1);
+        userFileRepository.saveUserStatus(user);
+        dungeonFileRepository.saveDungeonStatus(ds);
+    }
+
+    /**
+     * 저장 담당 메소드
+     * @param user 플레이어 정보
+     * @param ds 던전 + 몬스터 정보
+     */
+    private void saveAllNotCount(UserStatus user, DungeonStatus ds) {
         userFileRepository.saveUserStatus(user);
         dungeonFileRepository.saveDungeonStatus(ds);
     }
@@ -547,9 +558,7 @@ public class BattleService {
         ds.addLog("<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.");
 
         // 파일 저장
-        userFileRepository.saveUserStatus(user);
-        dungeonFileRepository.saveDungeonStatus(ds);
-
+        saveAll(user, ds);
         return "MONSTER_TURN_END";
     }
 
@@ -642,6 +651,6 @@ public class BattleService {
             ds.addLog(String.format("<span style='color:#70db70;'>[자연 재생] %s</span>", regenLog.toString()));
         }
 
-        saveAll(user, ds);
+        saveAllNotCount(user, ds);
     }
 }

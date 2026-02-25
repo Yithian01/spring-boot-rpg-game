@@ -1,0 +1,50 @@
+[
+  {
+    "id": 101,
+    "floor": 1,
+    "name": "수정 동굴",
+    "maxActionCount": 100,
+    "monsterTableId": 10,
+    "effects": { }
+  },
+  {
+    "id": 201,
+    "floor": 2,
+    "name": "고블린의 숲",
+    "maxActionCount": 300,
+    "monsterTableId": 21,
+    "effects": { }
+  },
+  {
+    "id": 202,
+    "floor": 2,
+    "name": "짐승의 소굴",
+    "maxActionCount": 300,
+    "monsterTableId": 22,
+    "effects": {
+      "encounterMod": 1.2
+    }
+  },
+  {
+    "id": 203,
+    "floor": 2,
+    "name": "망자의 늪",
+    "maxActionCount": 300,
+    "monsterTableId": 23,
+    "effects": {
+      "accuracy": 0.7,
+      "dodge": 0.7
+    }
+  },
+  {
+    "id": 204,
+    "floor": 2,
+    "name": "얼어붙은 들판",
+    "maxActionCount": 300,
+    "monsterTableId": 24,
+    "effects": {
+      "hpRegen": 0.5,
+      "meleeAtk": 0.8
+    }
+  }
+]

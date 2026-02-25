@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.enums.LocationType;
+import com.example.demo.domain.meta.DungeonMeta;
 import com.example.demo.domain.meta.MonsterMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
@@ -31,47 +33,88 @@ public class DungeonService {
      * 저장 함수
      */
     private void saveAll(UserStatus user, DungeonStatus ds) {
+        ds.setActionCount(ds.getActionCount() + 1);
         userFileRepository.saveUserStatus(user);
+        dungeonFileRepository.saveDungeonStatus(ds);
+    }
+
+    /**
+     * [공통 로직] 던전 상태 정보를 세팅하고 저장함
+     */
+    private void enterFloor(int dungeonId, boolean isFirstEntry) {
+        // 1. 메타 데이터 로드
+        DungeonMeta meta = gameDataManager.getDungeonMetaMap().get(dungeonId);
+        UserStatus user = userFileRepository.findGameUser();
+        int maxTurns = statCalculationService.calculateCombatTurns(user);
+
+        DungeonStatus ds;
+        if (isFirstEntry) {
+            ds = DungeonStatus.builder()
+                    .dungeonId(dungeonId)
+                    .dungeonName(meta.getName())
+                    .currentFloor(meta.getFloor())
+                    .actionCount(0)
+                    .maxActionCount(meta.getMaxActionCount())
+                    .progress(0)
+                    .actionCount(0)
+                    .floorProgressMap(new HashMap<>())
+                    .activeMonster(null)
+                    .playerMaxTurns(maxTurns)
+                    .battleLogs(new ArrayList<>())
+                    .build();
+            ds.getFloorProgressMap().put(dungeonId, 0);
+            ds.addLog("⚔️ <b style='color:#ffd700;'>" + meta.getName() + "</b>에 입장했습니다.");
+        } else {
+            // 이동이면 기존 데이터를 가져와서 갱신
+            ds = dungeonFileRepository.findDungeonStatus();
+            ds.setDungeonId(dungeonId);
+            ds.setDungeonName(meta.getName());
+            ds.setCurrentFloor(meta.getFloor());
+            ds.setMaxActionCount(meta.getMaxActionCount());
+
+            int lastProgress = ds.getFloorProgressMap().getOrDefault(dungeonId, 0);
+            ds.setProgress(lastProgress);
+
+            ds.setActiveMonster(null);
+            ds.setPlayerMaxTurns(maxTurns);
+            ds.addLog("<b style='color:#ffd700;'>" + meta.getName() + "</b>(으)로 이동했습니다.");
+        }
+
+        // 3. 던전 효과(디버프/버프)가 있다면 로그에 표시
+        if (meta.getEffects() != null && !meta.getEffects().isEmpty()) {
+            ds.addLog("<span style='color:#aaaaaa;'>[환경] 이 장소의 특수한 기운이 몸을 감쌉니다...</span>");
+        }
+
         dungeonFileRepository.saveDungeonStatus(ds);
     }
 
     /**
      * 던전 진입 시 초기 설정 및 세이브 파일 생성
      */
-    public void initDungeon() {
-        // 1. 전체 게임 상태 변경 (마을 -> 던전)
-        GameStatus gameStatus = gameRepository.findGameStatus();
-        gameStatus.setLocation(LocationType.DUNGEON);
-        gameStatus.setDungeonId(1); // 기본 던전 ID
-        gameRepository.saveGameStatus(gameStatus);
+    public void initDungeon(int dungeonId) {
+        // 1. 전체 게임 상태를 던전으로 변경
+        gameRepository.updateLocation(LocationType.DUNGEON, dungeonId);
 
-        // 2. 마을 상태 업데이트 (날짜 경과 및 턴 회복)
+        // 2. 마을 상태 업데이트 (날짜 경과, 턴 회복 등)
         TownStatus townStatus = townFileRepository.findTownStatus();
         townStatus.setDay(townStatus.getDay() + 1);
         townStatus.setCurrentTurn(townStatus.getMaxTurn());
-        townStatus.setTaxPaid(false);
         townFileRepository.saveTownStatus(townStatus);
 
-        UserStatus user = userFileRepository.findGameUser();
-        int initialMaxTurns = statCalculationService.calculateCombatTurns(user);
+        // 3. 던전 초기화 로직 실행 (true: 처음 생성)
+        enterFloor(dungeonId, true);
 
-        // 3. ★ 던전 상태 파일 초기 생성 ★
-        // 처음 진입 시에는 1층, 몬스터는 없는(null) 상태로 시작
-        DungeonStatus newDungeonStatus = DungeonStatus.builder()
-                .currentFloor(1)
-                .dungeonId("GRAY_MINE") // 혹은 gameStatus에서 가져온 ID
-                .progress(0) // 혹은 gameStatus에서 가져온 ID
-                .activeMonster(null)    // 아직 조우 전
-                .playerMaxTurns(initialMaxTurns)      // 전투 돌입 시 계산
-                .playerRemainingTurns(0)
-                .battleLogs(new ArrayList<>())
-                .build();
+        log.info(">>> 던전 최초 진입 완료: DungeonID {}, Day {}", dungeonId, townStatus.getDay());
+    }
 
-        newDungeonStatus.getBattleLogs().add("어두운 던전에 발을 들였습니다... (1층)");
+    /**
+     * [층 이동] 이미 던전 안에서 다른 층(혹은 다른 던전ID)으로 이동할 때 호출
+     */
+    public void moveToFloor(int nextDungeonId) {
+        // 층 이동은 마을 상태를 건드리지 않고 enterFloor만 수행 (false: 기존 파일 수정)
+        enterFloor(nextDungeonId, false);
 
-        dungeonFileRepository.saveDungeonStatus(newDungeonStatus);
-
-        log.info(">>> 던전 파일 생성 완료 및 진입: Day {}, Floor 1", townStatus.getDay());
+        log.info(">>> 던전 층 이동 완료: NextDungeonID {}", nextDungeonId);
     }
 
     /**
@@ -142,7 +185,8 @@ public class DungeonService {
      */
     private void handleMonsterEncounter(DungeonStatus ds) {
         // 1. 메타 데이터에서 몬스터 추첨
-        MonsterMeta monsterMeta = gameDataManager.getRandomMonsterByFloor(ds.getCurrentFloor());
+        int currentDungeonId = ds.getDungeonId();
+        MonsterMeta monsterMeta = gameDataManager.getRandomMonsterByDungeon(currentDungeonId);
 
         // 2. 골드 랜덤 결정 (goldMin ~ goldMax)
         int rewardGold = monsterMeta.getGoldMin() +
@@ -185,10 +229,9 @@ public class DungeonService {
         int currentProgress = ds.getProgress();
         int nextProgress = Math.min(100, currentProgress + efficiency);
         ds.setProgress(nextProgress);
-
+        ds.getFloorProgressMap().put(ds.getDungeonId(), nextProgress);
         // 3. 로그 남기기
         ds.addLog("주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +" + efficiency + "%)");
-
         // 4. 100% 달성 시 안내
         if (nextProgress >= 100) {
             ds.addLog("<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>");

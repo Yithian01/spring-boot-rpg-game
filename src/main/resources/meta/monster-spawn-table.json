@@ -1,0 +1,112 @@
+[
+  {
+    "tableId": 10,
+    "name": "수정 동굴 (1층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 1,
+        "weight": 70,
+        "comment": "굶주린 동굴 쥐"
+      },
+      {
+        "monsterId": 3,
+        "weight": 30,
+        "comment": "병약한 고블린"
+      }
+    ]
+  },
+  {
+    "tableId": 21,
+    "name": "고블린의 숲 (2층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 10,
+        "weight": 50,
+        "comment": "고블린 검사"
+      },
+      {
+        "monsterId": 11,
+        "weight": 35,
+        "comment": "고블린 궁수"
+      },
+      {
+        "monsterId": 3,
+        "weight": 15,
+        "comment": "병약한 고블린"
+      }
+    ]
+  },
+  {
+    "tableId": 22,
+    "name": "짐승의 소굴 (2층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 7,
+        "weight": 50,
+        "comment": "굶주린 늑대"
+      },
+      {
+        "monsterId": 8,
+        "weight": 35,
+        "comment": "바위 등껍질 곰"
+      },
+      {
+        "monsterId": 9,
+        "weight": 15,
+        "comment": "그림자 비늘 살무사"
+      }
+    ]
+  },
+  {
+    "tableId": 23,
+    "name": "망자의 늪 (2층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 4,
+        "weight": 30,
+        "comment": "떠돌이 해골 병사"
+      },
+      {
+        "monsterId": 11,
+        "weight": 30,
+        "comment": "스켈레톤 궁수"
+      },
+      {
+        "monsterId": 12,
+        "weight": 20,
+        "comment": "부패한 늪 좀비"
+      },
+      {
+        "monsterId": 10,
+        "weight": 15,
+        "comment": "흐느끼는 벤시"
+      }
+    ]
+  },
+  {
+    "tableId": 24,
+    "name": "얼어붙은 들판 (2층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 13,
+        "weight": 40,
+        "comment": "서리발 늑대"
+      },
+      {
+        "monsterId": 15,
+        "weight": 30,
+        "comment": "굶주린 설인"
+      },
+      {
+        "monsterId": 14,
+        "weight": 20,
+        "comment": "눈보라 라이칸스로프 "
+      },
+      {
+        "monsterId": 16,
+        "weight": 10,
+        "comment": "고대 얼음 골렘"
+      }
+    ]
+  }
+]

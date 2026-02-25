@@ -467,9 +467,12 @@ public class GameService {
         dungeonFileRepository.saveDungeonStatus(ds);
 
         return DungeonPageDto.builder()
-                .currentFloor(ds.getCurrentFloor())
                 .dungeonId(ds.getDungeonId())
+                .dungeonName(ds.getDungeonName())
+                .currentFloor(ds.getCurrentFloor())
                 .progress(ds.getProgress())
+                .actionCount(ds.getActionCount())
+                .maxActionCount(ds.getMaxActionCount())
                 .explorationEfficiency(statCalculationService.calculateExplorationEfficiency(stats))
                 .restSafetyRate(statCalculationService.calculateRestSafetyRate(stats))
                 .isInBattle(ds.isInBattle())

@@ -37,7 +37,7 @@ public class DungeonController {
             return "redirect:/game/play";
         }
 
-        dungeonService.initDungeon();
+        dungeonService.initDungeon(101);
 
         log.info(">>> 던전 입장 완료. 위치 전환: TOWN -> DUNGEON");
         return "redirect:/game/play";

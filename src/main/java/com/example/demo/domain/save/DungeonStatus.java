@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 던전의 '현재 상태'만 기록하는 데이터 모델
@@ -18,9 +20,12 @@ import java.util.List;
 @AllArgsConstructor
 public class DungeonStatus {
 
-    private int currentFloor;      // 현재 층
-    private String dungeonId;      // 던전 식별자
+    private int dungeonId;      // 층수랑 다름
+    private String dungeonName; // 지역 명칭
+    private int currentFloor;   // 현재 층
     private int progress;      // 던전 진행도
+    private int actionCount;   // 행동 횟수
+    private int maxActionCount;   // 행동 횟수
 
     // 전투 관련 상태
     private ActiveMonster activeMonster;
@@ -32,6 +37,9 @@ public class DungeonStatus {
 
     private int pendingExp;       // 승리 시 획득할 예정인 경험치
     private int pendingGold;      // 승리 시 획득할 예정인 골드
+
+    @Builder.Default
+    private Map<Integer, Integer> floorProgressMap = new HashMap<>(); // 각 맵의 진척도를 저장
 
     /**
      * 로그 추가 메소드

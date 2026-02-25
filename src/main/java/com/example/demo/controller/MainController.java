@@ -8,6 +8,8 @@ import com.example.demo.dto.GamePageDto;
 import com.example.demo.dto.TownPageDto;
 import com.example.demo.service.BattleService;
 import com.example.demo.service.GameService;
+import com.example.demo.service.ValidationService;
+import jdk.javadoc.doclet.Taglet;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,7 @@ import java.util.List;
 public class MainController {
     private final GameService gameService;
     private final BattleService battleService;
+    private final ValidationService validationService;
 
     /**
      * 메인 페이지 반환
@@ -102,6 +105,11 @@ public class MainController {
 
                 // 2. 던전 전용 데이터 (현재 층, 몬스터 정보, 로그 등)
                 DungeonPageDto dungeonData = gameService.getDungeonData();
+
+
+                if (validationService.checkForceReturn()) {
+                    return "redirect:/game/play";
+                }
 
                 // 3. 모델에 각각 담기
                 model.addAttribute("game", gameDataForDungeon); // 상단바, 사이드바용

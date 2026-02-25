@@ -463,6 +463,8 @@ public class GameService {
         List<SkillCardDto> skillCards = battleService.getSkillHand(user, ds);
 
         int calculatedMaxTurns = statCalculationService.calculateCombatTurns(user);
+        ds.setActiveMonster(statCalculationService.statCalculationMonster(ds.getActiveMonster()));
+        dungeonFileRepository.saveDungeonStatus(ds);
 
         return DungeonPageDto.builder()
                 .currentFloor(ds.getCurrentFloor())

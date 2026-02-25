@@ -259,5 +259,26 @@
       "chance": 100
     },
     "requiredWeapon": "NONE"
+  },
+  {
+    "id": 14,
+    "name": "허약의 손길",
+    "icon": "14.png",
+    "description": "대상에게 어물리 공격력을 감소시킵니다.",
+    "type": "DEBUFF",
+    "turnCost": 1,
+    "hitChance": 90,
+    "cost": { "stamina": 8, "mp": 15 },
+    "playerScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "DEBUFF",
+      "element": "DARK",
+      "status": "WEAKNESS",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {"meleeAtk": 0.7}
+    },
+    "requiredWeapon": "NONE"
   }
 ]

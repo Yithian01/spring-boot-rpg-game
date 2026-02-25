@@ -93,30 +93,30 @@
                 <div style="width: 100%;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; font-family: monospace;">
                         <span style="color: #ff8787;">VITALITY</span>
-                        <span style="color: #fff;" th:text="${dungeon.activeMonster.currentHp} + ' / ' + ${dungeon.activeMonster.maxHp}"></span>
+                        <span style="color: #fff;" th:text="${dungeon.activeMonster.currentHp} + ' / ' + ${dungeon.activeMonster.activeStats.maxHp}"></span>
                     </div>
                     <div style="width: 100%; height: 10px; background: #222; border-radius: 2px; border: 1px solid #444; overflow: hidden;">
-                        <div th:style="'width:' + (${dungeon.activeMonster.maxHp > 0 ? (dungeon.activeMonster.currentHp * 100 / dungeon.activeMonster.maxHp) : 0}) + '%; height:100%; background: ' + (${dungeon.activeMonster.currentHp <= 0} ? '#444' : 'linear-gradient(90deg, #820000, #ff4d4d)') + '; transition: width 0.4s;'"></div>
+                        <div th:style="'width:' + (${dungeon.activeMonster.activeStats.maxHp > 0 ? (dungeon.activeMonster.currentHp * 100 / dungeon.activeMonster.activeStats.maxHp) : 0}) + '%; height:100%; background: ' + (${dungeon.activeMonster.currentHp <= 0} ? '#444' : 'linear-gradient(90deg, #820000, #ff4d4d)') + '; transition: width 0.4s;'"></div>
                     </div>
                 </div>
 
                 <div style="width: 100%;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; font-family: monospace;">
                         <span style="color: #4dabf7;">MANA</span>
-                        <span style="color: #fff;" th:text="${dungeon.activeMonster.currentMp} + ' / ' + ${dungeon.activeMonster.maxMp}"></span>
+                        <span style="color: #fff;" th:text="${dungeon.activeMonster.currentMp} + ' / ' + ${dungeon.activeMonster.activeStats.maxMp}"></span>
                     </div>
                     <div style="width: 100%; height: 10px; background: #222; border-radius: 2px; border: 1px solid #444; overflow: hidden;">
-                        <div th:style="'width:' + (${dungeon.activeMonster.maxMp > 0 ? (dungeon.activeMonster.currentMp * 100 / dungeon.activeMonster.maxMp) : 0}) + '%; height:100%; background: ' + (${dungeon.activeMonster.currentHp <= 0} ? '#444' : 'linear-gradient(90deg, #003366, #3399ff)') + '; transition: width 0.4s;'"></div>
+                        <div th:style="'width:' + (${dungeon.activeMonster.activeStats.maxMp > 0 ? (dungeon.activeMonster.currentMp * 100 / dungeon.activeMonster.activeStats.maxMp) : 0}) + '%; height:100%; background: ' + (${dungeon.activeMonster.currentHp <= 0} ? '#444' : 'linear-gradient(90deg, #003366, #3399ff)') + '; transition: width 0.4s;'"></div>
                     </div>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px; border: 1px solid #333;">
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">물리공격</span><span style="color: #ff8787;" th:text="${dungeon.activeMonster.stats.meleeAtk}"></span></div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">마법공격</span><span style="color: #da77f2;" th:text="${dungeon.activeMonster.stats.magicAtk}"></span></div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">물리방어</span><span style="color: #74c0fc;" th:text="${dungeon.activeMonster.stats.physDef}"></span></div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">마법저항</span><span style="color: #91a7ff;" th:text="${dungeon.activeMonster.stats.magRes}"></span></div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">회피율</span><span style="color: #63e6be;" th:text="${dungeon.activeMonster.stats.dodge} + '%'"></span></div>
-                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">치명타</span><span style="color: #ffd43b;" th:text="${dungeon.activeMonster.stats.critRate} + '%'"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">물리공격</span><span style="color: #ff8787;" th:text="${dungeon.activeMonster.activeStats.meleeAtk}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">마법공격</span><span style="color: #da77f2;" th:text="${dungeon.activeMonster.activeStats.magicAtk}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">물리방어</span><span style="color: #74c0fc;" th:text="${dungeon.activeMonster.activeStats.physDef}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">마법저항</span><span style="color: #91a7ff;" th:text="${dungeon.activeMonster.activeStats.magRes}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">회피율</span><span style="color: #63e6be;" th:text="${dungeon.activeMonster.activeStats.dodge} + '%'"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">치명타</span><span style="color: #ffd43b;" th:text="${dungeon.activeMonster.activeStats.critRate} + '%'"></span></div>
                 </div>
 
                 <div style="margin-top: auto; padding-top: 8px; border-top: 1px dashed #444;">

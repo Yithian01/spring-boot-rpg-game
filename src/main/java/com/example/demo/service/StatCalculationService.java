@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -170,7 +171,7 @@ public class StatCalculationService {
     }
 
     /**
-     * 전투 계산 메소드 (곱연산: BUFF + potion)
+     * 전투 계산 메소드 (곱연산: BUFF + DEBUFF + potion)
      * @param user 플레이어
      * @param mods 전투 스탯
      */
@@ -178,6 +179,17 @@ public class StatCalculationService {
         if (mods == null || mods.isEmpty()) return;
 
         mods.forEach((name, value) -> user.getCombatStats().applyModifier(name, value));
+    }
+
+    /**
+     * 전투 계산 메소드 (곱연산: BUFF + DEBUFF)
+     * @param mstActiveStats 몬스터 적용할 스탯
+     * @param mods 전투 스탯
+     */
+    private void applyCombatModifiers(CombatStats mstActiveStats, Map<String, Double> mods) {
+        if (mods == null || mods.isEmpty()) return;
+
+        mods.forEach((name, value) -> mstActiveStats.applyModifier(name, value));
     }
 
     /**
@@ -604,18 +616,18 @@ public class StatCalculationService {
         // PHYSICAL이면 meleeAtk 사용, 그 외(MAGIC 등)는 magicAtk 사용
         if ("PHYSICAL".equals(skill.getType())) {
             double scaling = skill.getMonsterScaling().getOrDefault("meleeAtk", 1.0);
-            rawDamage = monster.getStats().getMeleeAtk() * scaling;
+            rawDamage = monster.getActiveStats().getMeleeAtk() * scaling;
             defenseValue = user.getCombatStats().getPhysDef(); // 유저의 물리 방어력
         } else {
             // MAGIC 또는 MONSTER_MAGIC 등 마법 계열 처리
             double scaling = skill.getMonsterScaling().getOrDefault("magicAtk", 1.0);
-            rawDamage = monster.getStats().getMagicAtk() * scaling;
+            rawDamage = monster.getActiveStats().getMagicAtk() * scaling;
             defenseValue = user.getCombatStats().getMagRes(); // 유저의 마법 저항력
         }
 
         // 2. 방어력 적용 (기존에 작성된 applyDefense 메서드 활용)
         // 몬스터에게 관통(Penetration) 스탯이 있다면 monster.getStats().getPenetration() 전달
-        double penetration = monster.getStats().getPenetration();
+        double penetration = monster.getActiveStats().getPenetration();
 
         int finalDamage = applyDefense(rawDamage, penetration, defenseValue);
 
@@ -636,5 +648,30 @@ public class StatCalculationService {
         double rawTotalHeal = (baseStatValue * scaling) + skillPower;
 
         return (int) Math.ceil(rawTotalHeal);
+    }
+
+    /**
+     * 몬스터 [BUFF/DEBUFF] 반영 스탯 처리
+     * @param monster 몬스터 정보
+     * @return 몬스터 정보 처리해서 반환
+     */
+    public ActiveMonster statCalculationMonster(ActiveMonster monster) {
+        if(monster == null) return null;
+
+        CombatStats calculatedStats = monster.getBaseStats().toBuilder().build();
+
+        // 5-2. ActiveStatus 전투 비율 보정 (CombatModifiers: 예: 최종 데미지 1.5배)
+        if (monster.getActiveStatuses() != null) {
+            for (ActiveStatus status : monster.getActiveStatuses()) {
+                if (status.getCombatModifiers() != null) {
+                    applyCombatModifiers(calculatedStats, status.getCombatModifiers());
+                }
+            }
+        }
+        monster.setActiveStats(calculatedStats);
+        monster.setCurrentHp(Math.min(monster.getCurrentHp(), monster.getActiveStats().getMaxHp()));
+        monster.setCurrentMp(Math.min(monster.getCurrentMp(), monster.getActiveStats().getMaxMp()));
+
+        return monster;
     }
 }

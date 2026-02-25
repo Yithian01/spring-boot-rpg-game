@@ -22,11 +22,10 @@ public class ActiveMonster {
     private int tier;
 
     private int currentHp;
-    private int maxHp;
     private int currentMp;
-    private int maxMp;
 
-    private CombatStats stats; // 메타데이터에서 복사해온 스탯
+    private CombatStats baseStats;
+    private CombatStats activeStats;
     @Builder.Default
     private List<ActiveStatus> activeStatuses = new ArrayList<>();
 }

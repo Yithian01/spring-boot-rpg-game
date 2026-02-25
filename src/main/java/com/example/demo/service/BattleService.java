@@ -244,7 +244,7 @@ public class BattleService {
 
         // [2단계] 방어자 회피 판정 (Dodge Check)
         // 버프인 경우 회피 판정을 생략하기 위해 0 전달
-        double dodgeStat = ("BUFF".equals(skillType) || "HEAL".equals(skillType)) ? 0 : monster.getStats().getDodge();
+        double dodgeStat = ("BUFF".equals(skillType) || "HEAL".equals(skillType)) ? 0 : monster.getActiveStats().getDodge();
         boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat);
         if (isDodged) {
             ds.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) 당신의 <b>%s</b> 공격을 회피했습니다!</span>",
@@ -277,7 +277,7 @@ public class BattleService {
      */
     private String handleDamage(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, boolean isDotDmg) {
         CombatStats attackerStats = user.getCombatStats();
-        CombatStats defenderStats = monster.getStats();
+        CombatStats defenderStats = monster.getActiveStats();
         Map<Integer, Integer> attackerFinalStats = user.getFinalStats();
 
         // 통합 데미지 계산기 (도트기여도 스케일링을 통해 계산된 수치가 나옴)
@@ -345,32 +345,38 @@ public class BattleService {
         String status = skill.getEffect().getStatus();
         String icon = gameDataManager.getIcon(status);
 
-        if (!isDotDmg && !isStatusApplied(skill.getEffect().getChance(), monster.getStats().getStatusResist())) {
-            ds.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) 효과를 저항했습니다.</span>",
-                    icon, monster.getName()));
+        // [저항 판정] 도트 데미지 계산이 아닐 때(즉, 최초 부여 시)만 저항 확률 체크
+        if (!isDotDmg && !isStatusApplied(skill.getEffect().getChance(), monster.getActiveStats().getStatusResist())) {
+            ds.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) 효과를 저항했습니다.</span>", icon, monster.getName()));
             return;
         }
 
         int newTickDamage = 0;
-        int newDuration = skill.getEffect().getDuration();
+        boolean isStatDebuff = (skill.getEffect().getCombatStatModifiers() != null && !skill.getEffect().getCombatStatModifiers().isEmpty())
+                || (skill.getEffect().getStatModifiers() != null && !skill.getEffect().getStatModifiers().isEmpty());
 
-        // 1. 도트 데미지 계산 (BLEED, POISON, BURN 등)
+        // 1. 도트 데미지 수치 계산
         if (isDotDmg) {
-            // 1. 순수 도트 스킬: 계산된 데미지 100%를 틱뎀으로 사용
-            newTickDamage = baseDamage;
-        } else {
-            // 2. 공격기 부가 효과 (출혈, 화상 등): 준 데미지의 1/3 적용
-            if (List.of("BLEED", "POISON", "BURN", "PAIN").contains(status)) {
-                newTickDamage = Math.max(1, (int) Math.ceil(baseDamage / 3.0));
-            }
+            newTickDamage = baseDamage; // 순수 도트 스킬
+        } else if (List.of("BLEED", "POISON", "BURN", "PAIN").contains(status)) {
+            newTickDamage = Math.max(1, (int) Math.ceil(baseDamage / 3.0)); // 부가 효과 도트
         }
 
-        // 2. 기존 동일 상태이상 찾기
-        ActiveStatus existingStatus = monster.getActiveStatuses().stream()
-                .filter(s -> s.getEffectCode().equals(status))
-                .findFirst()
-                .orElse(null);
+        // 2. 기존 상태이상 찾기 (분기 처리)
+        ActiveStatus existingStatus;
+        if (isStatDebuff) {
+            // [디버프류] 스킬 ID로 찾아서 개별 인스턴스 유지 (다양성 확보)
+            existingStatus = monster.getActiveStatuses().stream()
+                    .filter(s -> s.getSkillId() == skill.getId())
+                    .findFirst().orElse(null);
+        } else {
+            // [도트류] 기존처럼 상태 코드(status)로 찾아서 데미지 합산
+            existingStatus = monster.getActiveStatuses().stream()
+                    .filter(s -> s.getEffectCode().equals(status))
+                    .findFirst().orElse(null);
+        }
 
+        // 3. 로그 컬러 설정
         String color = switch(status) {
             case "BURN" -> "#ff4500";
             case "FROZEN", "FREEZE" -> "#87ceeb";
@@ -381,16 +387,25 @@ public class BattleService {
 
         if (existingStatus != null) {
             existingStatus.setRemainingTurns(Math.max(existingStatus.getRemainingTurns(), skill.getEffect().getDuration()));
-            existingStatus.setTickDamage(existingStatus.getTickDamage() + newTickDamage);
 
-            String damageInfo = existingStatus.getTickDamage() > 0 ? String.format(" / 틱당 %d 피해", existingStatus.getTickDamage()) : "";
-            ds.addLog(String.format("<span style='color:%s;'>[중첩]</span> %s의 %s <b>%s</b> 강화! (남은 %d턴%s)",
-                    color, monster.getName(), icon, status, existingStatus.getRemainingTurns(), damageInfo));
+            if (!isStatDebuff) {
+                existingStatus.setTickDamage(existingStatus.getTickDamage() + newTickDamage);
+                String damageInfo = String.format(" / 틱당 %d 피해", existingStatus.getTickDamage());
+                ds.addLog(String.format("<span style='color:%s;'>[중첩]</span> %s의 %s <b>%s</b> 강화! (남은 %d턴%s)",
+                        color, monster.getName(), icon, status, existingStatus.getRemainingTurns(), damageInfo));
+            } else {
+                ds.addLog(String.format("<span style='color:%s;'>[유지]</span> %s의 <b>%s</b> 효과가 갱신되었습니다. (%d턴)",
+                        color, monster.getName(), skill.getName(), existingStatus.getRemainingTurns()));
+            }
         } else {
-            monster.getActiveStatuses().add(createStatus(skill, "DEBUFF", newTickDamage));
+            ActiveStatus newStatus = createStatus(skill, isStatDebuff ? "DEBUFF" : "DOT", newTickDamage);
+            newStatus.setSkillId(skill.getId());
+            monster.getActiveStatuses().add(newStatus);
+
             String damageInfo = newTickDamage > 0 ? String.format(" (틱당 %d)", newTickDamage) : "";
+            String effectName = isStatDebuff ? skill.getName() : status;
             ds.addLog(String.format("<span style='color:%s;'>[효과]</span> %s에게 %s <b>%s</b> 부여! (%d턴%s)",
-                    color, monster.getName(), icon, status, skill.getEffect().getDuration(), damageInfo));
+                    color, monster.getName(), icon, effectName, skill.getEffect().getDuration(), damageInfo));
         }
     }
 

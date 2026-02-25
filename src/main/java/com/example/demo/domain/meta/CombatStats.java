@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class CombatStats {
@@ -33,7 +33,6 @@ public class CombatStats {
     private double moveSpeed;
     private double statusResist;
 
-
     /**
      * 보너스 스탯 증가 +
      * @param statName 스탯 명칭 (JSON의 키값과 일치)
@@ -45,21 +44,20 @@ public class CombatStats {
             case "maxMp" -> this.maxMp += (int)multiplier;
             case "maxStamina" -> this.maxStamina += (int)multiplier;
 
-            case "meleeAtk" -> this.meleeAtk += multiplier;
-            case "magicAtk" -> this.magicAtk += multiplier;
+            case "meleeAtk" -> this.meleeAtk = roundOne(this.meleeAtk + multiplier);
+            case "magicAtk" -> this.magicAtk = roundOne(this.magicAtk + multiplier);
 
-            case "critRate" -> this.critRate += multiplier;
-            case "critDmg" -> this.critDmg += multiplier;
-            case "penetration" -> this.penetration += multiplier;
+            case "critRate" -> this.critRate = roundOne(this.critRate + multiplier);
+            case "critDmg" -> this.critDmg = roundOne(this.critDmg + multiplier);
+            case "penetration" -> this.penetration = roundOne(this.penetration + multiplier);
 
-            case "physDef" -> this.physDef += multiplier;
-            case "magRes" -> this.magRes += multiplier;
+            case "physDef" -> this.physDef = roundOne(this.physDef + multiplier);
+            case "magRes" -> this.magRes = roundOne(this.magRes + multiplier);
 
-            case "dodge" -> this.dodge += multiplier;
-            case "accuracy" -> this.accuracy += multiplier;
-            case "moveSpeed" -> this.moveSpeed += multiplier;
-            case "statusResist" -> this.statusResist += multiplier;
-            default -> { /* 로그를 남기거나 무시 */ }
+            case "dodge" -> this.dodge = roundOne(this.dodge + multiplier);
+            case "accuracy" -> this.accuracy = roundOne(this.accuracy + multiplier);
+            case "moveSpeed" -> this.moveSpeed = roundOne(this.moveSpeed + multiplier);
+            case "statusResist" -> this.statusResist = roundOne(this.statusResist + multiplier);
         }
     }
 
@@ -74,21 +72,27 @@ public class CombatStats {
             case "maxMp" -> this.maxMp *= multiplier;
             case "maxStamina" -> this.maxStamina *= multiplier;
 
-            case "meleeAtk" -> this.meleeAtk *= multiplier;
-            case "magicAtk" -> this.magicAtk *= multiplier;
+            case "meleeAtk" -> this.meleeAtk = roundOne(this.meleeAtk * multiplier);
+            case "magicAtk" -> this.magicAtk = roundOne(this.magicAtk * multiplier);
 
-            case "critRate" -> this.critRate *= multiplier;
-            case "critDmg" -> this.critDmg *= multiplier;
-            case "penetration" -> this.penetration *= multiplier;
+            case "critRate" -> this.critRate = roundOne(this.critRate * multiplier);
+            case "critDmg" -> this.critDmg = roundOne(this.critDmg * multiplier);
+            case "penetration" -> this.penetration = roundOne(this.penetration * multiplier);
 
-            case "physDef" -> this.physDef *= multiplier;
-            case "magRes" -> this.magRes *= multiplier;
+            case "physDef" -> this.physDef = roundOne(this.physDef * multiplier);
+            case "magRes" -> this.magRes = roundOne(this.magRes * multiplier);
 
-            case "dodge" -> this.dodge *= multiplier;
-            case "accuracy" -> this.accuracy *= multiplier;
-            case "moveSpeed" -> this.moveSpeed *= multiplier;
-            case "statusResist" -> this.statusResist *= multiplier;
-            default -> { /* 로그를 남기거나 무시 */ }
+            case "dodge" -> this.dodge = roundOne(this.dodge * multiplier);
+            case "accuracy" -> this.accuracy = roundOne(this.accuracy * multiplier);
+            case "moveSpeed" -> this.moveSpeed = roundOne(this.moveSpeed * multiplier);
+            case "statusResist" -> this.statusResist = roundOne(this.statusResist * multiplier);
         }
+    }
+
+    /**
+     * 소수점 첫째 자리 반올림 헬퍼
+     */
+    private double roundOne(double value) {
+        return Math.round(value * 10.0) / 10.0;
     }
 }

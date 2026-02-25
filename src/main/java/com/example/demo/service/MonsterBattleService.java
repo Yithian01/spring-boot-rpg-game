@@ -109,7 +109,7 @@ public class MonsterBattleService {
         String skillName = skill.getName();
         // [1단계] 명중 판정
         boolean isHit = statCalculationService.isAttackerHit(
-                monster.getStats().getAccuracy(),
+                monster.getActiveStats().getAccuracy(),
                 skill.getHitChance()
         );
 
@@ -202,11 +202,26 @@ public class MonsterBattleService {
             }
         }
 
+        final int nowTickDmg = tickDamage;
         // 3. 중첩 및 갱신 처리
         ActiveStatus existing = targetStatuses.stream()
-                .filter(s -> isBuff
-                        ? (s.getSkillId() == skill.getId() && "BUFF".equals(s.getCategory()))
-                        : s.getEffectCode().equals(status))
+                .filter(s -> {
+                    if (isBuff) {
+                        // 자가 버프는 스킬 ID로 개별 관리 (이미 잘 되어 있음)
+                        return s.getSkillId() == skill.getId() && "BUFF".equals(s.getCategory());
+                    } else {
+                        // 플레이어에게 거는 디버프 처리
+                        boolean isDotValue = (nowTickDmg > 0);
+                        if (isDotValue) {
+                            // 1. 도트류 (중첩 합산): BURN, BLEED 등은 상태 코드로 찾음
+                            return s.getEffectCode().equals(status);
+                        } else {
+                            // 2. 순수 디버프 (개별 유지): WEAKNESS 등은 스킬 ID로 찾음
+                            // 이렇게 해야 '쇠약(명중)'과 '쇠약(공격력)'이 공존 가능
+                            return s.getSkillId() == skill.getId();
+                        }
+                    }
+                })
                 .findFirst().orElse(null);
 
         String color = isBuff ? "#70db70" : switch(status) {
@@ -218,10 +233,20 @@ public class MonsterBattleService {
         };
 
         if (existing != null) {
+            // 지속 시간은 더 긴 것으로 갱신
             existing.setRemainingTurns(Math.max(existing.getRemainingTurns(), effect.getDuration()));
-            existing.setTickDamage(existing.getTickDamage() + tickDamage);
-            ds.addLog(String.format("<span style='color:%s;'>[%s]</span> %s %s %s",
-                    color, isBuff ? "강화" : "중첩", icon, targetName, isBuff ? "지속시간 갱신!" : "효과 강화!"));
+
+            if (!isBuff && tickDamage > 0) {
+                // 도트 데미지가 있는 경우만 수치 합산
+                existing.setTickDamage(existing.getTickDamage() + tickDamage);
+                String damageInfo = String.format(" / 틱당 %d 피해", existing.getTickDamage());
+                ds.addLog(String.format("<span style='color:%s;'>[중첩]</span> %s %s %s 강화! (남은 %d턴%s)",
+                        color, icon, targetName, status, existing.getRemainingTurns(), damageInfo));
+            } else {
+                // 버프나 순수 디버프는 시간만 갱신
+                ds.addLog(String.format("<span style='color:%s;'>[%s]</span> %s %s %s 지속시간 갱신!",
+                        color, isBuff ? "강화" : "유지", icon, targetName, isBuff ? "버프" : "디버프"));
+            }
         } else {
             ActiveStatus newStatus = ActiveStatus.builder()
                     .skillId(skill.getId())
@@ -297,10 +322,10 @@ public class MonsterBattleService {
         boolean recovered = false;
 
         // HP 회복
-        double hpRegen = monster.getStats().getHpRegen();
-        if (hpRegen > 0 && monster.getCurrentHp() < monster.getMaxHp()) {
+        double hpRegen = monster.getActiveStats().getHpRegen();
+        if (hpRegen > 0 && monster.getCurrentHp() < monster.getActiveStats().getMaxHp()) {
             int oldHp = monster.getCurrentHp();
-            int newHp = Math.min(monster.getMaxHp(), oldHp + (int)hpRegen);
+            int newHp = Math.min(monster.getActiveStats().getMaxHp(), oldHp + (int)hpRegen);
             int actualHp = newHp - oldHp;
 
             if (actualHp > 0) {
@@ -311,10 +336,10 @@ public class MonsterBattleService {
         }
 
         // MP 회복
-        double mpRegen = monster.getStats().getMpRegen();
-        if (mpRegen > 0 && monster.getCurrentMp() < monster.getMaxMp()) {
+        double mpRegen = monster.getActiveStats().getMpRegen();
+        if (mpRegen > 0 && monster.getCurrentMp() < monster.getActiveStats().getMaxMp()) {
             int oldMp = monster.getCurrentMp();
-            int newMp = Math.min(monster.getMaxMp(), oldMp + (int)mpRegen);
+            int newMp = Math.min(monster.getActiveStats().getMaxMp(), oldMp + (int)mpRegen);
             int actualMp = newMp - oldMp;
 
             if (actualMp > 0) {

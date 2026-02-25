@@ -154,10 +154,9 @@ public class DungeonService {
                 .name(monsterMeta.getName())
                 .tier(monsterMeta.getTier())
                 .currentHp((int) monsterMeta.getStats().getMaxHp())
-                .maxHp((int) monsterMeta.getStats().getMaxHp())
                 .currentMp((int) monsterMeta.getStats().getMaxMp())
-                .maxMp((int) monsterMeta.getStats().getMaxMp())
-                .stats(monsterMeta.getStats()) // 복사본 전달
+                .baseStats(monsterMeta.getStats())
+                .activeStats(monsterMeta.getStats())
                 .activeStatuses(new ArrayList<>())
                 .build();
         ds.setActiveMonster(activeMonster);
@@ -200,19 +199,17 @@ public class DungeonService {
         UserStatus user = userFileRepository.findGameUser();
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
 
-        if (user == null || user.getCurrentHp() <= 0) return;
+        int hpRecovery = statCalculationService.calculateHpRestoration(user);
+        int mpRecovery = statCalculationService.calculateMpRestoration(user);
+        int stRecovery = statCalculationService.calculateStRestoration(user);
 
-        // 1. 자원 회복 처리 (기존 로직 유지)
-        double restoreRate = 0.3;
-        int hpGain = (int) (user.getCombatStats().getMaxHp() * restoreRate);
-        int mpGain = (int) (user.getCombatStats().getMaxMp() * restoreRate);
-        int stmGain = (int) (user.getCombatStats().getMaxStamina() * restoreRate);
+        user.setCurrentHp(Math.min(user.getCombatStats().getMaxHp(), user.getCurrentHp() + hpRecovery));
+        user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + mpRecovery));
+        user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + stRecovery));
 
-        user.setCurrentHp(Math.min(user.getCombatStats().getMaxHp(), user.getCurrentHp() + hpGain));
-        user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + mpGain));
-        user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + stmGain));
+        saveAll(user, ds);
 
-        ds.addLog(String.format("🛌 <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA +30%%)"));
+        ds.addLog(String.format("🛌 <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)"));
 
         // 2. 기습 판정 (Safety Rate 체크)
         Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();

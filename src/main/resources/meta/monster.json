@@ -90,7 +90,7 @@
       "statusResist": 30.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [8],
+    "skillIds" : [8, 9],
     "expReward": 30,
     "goldMin": 15,
     "goldMax": 25
@@ -114,7 +114,7 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [10, 11],
+    "skillIds" : [6, 8],
     "expReward": 45,
     "goldMin": 20,
     "goldMax": 35
@@ -138,7 +138,7 @@
       "statusResist": 5.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [12, 13],
+    "skillIds" : [10, 11],
     "expReward": 40,
     "goldMin": 18,
     "goldMax": 30
@@ -162,7 +162,7 @@
       "statusResist": 5.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [20, 21],
+    "skillIds" : [1, 12, 13],
     "expReward": 55,
     "goldMin": 15,
     "goldMax": 25
@@ -186,7 +186,7 @@
       "statusResist": 40.0
     },
     "baseActionPoints": 3,
-    "skillIds" : [22, 23, 24],
+    "skillIds" : [13, 14, 15],
     "expReward": 85,
     "goldMin": 40,
     "goldMax": 65
@@ -210,7 +210,7 @@
       "statusResist": 15.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [25, 26],
+    "skillIds" : [11, 25],
     "expReward": 50,
     "goldMin": 25,
     "goldMax": 40
@@ -234,7 +234,7 @@
       "statusResist": 50.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [30, 31],
+    "skillIds" : [26, 27],
     "expReward": 65,
     "goldMin": 30,
     "goldMax": 45
@@ -258,7 +258,7 @@
       "statusResist": 20.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [32, 33],
+    "skillIds" : [10, 28],
     "expReward": 55,
     "goldMin": 25,
     "goldMax": 40
@@ -282,7 +282,7 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [34],
+    "skillIds" : [29, 30],
     "expReward": 60,
     "goldMin": 20,
     "goldMax": 35
@@ -296,7 +296,7 @@
       "maxHp": 450,
       "maxMp": 0,
       "meleeAtk": 18.0,
-      "magicAtk": 5.0,
+      "magicAtk": 10.0,
       "physDef": 10.0,
       "magRes": 15.0,
       "dodge": 15.0,
@@ -306,7 +306,7 @@
       "statusResist": 20.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [40, 41],
+    "skillIds" : [1, 12, 31],
     "expReward": 55,
     "goldMin": 20,
     "goldMax": 35
@@ -320,7 +320,7 @@
       "maxHp": 720,
       "maxMp": 40,
       "meleeAtk": 26.0,
-      "magicAtk": 0.0,
+      "magicAtk": 26.0,
       "physDef": 18.0,
       "magRes": 12.0,
       "dodge": 12.0,
@@ -330,7 +330,7 @@
       "statusResist": 30.0
     },
     "baseActionPoints": 2,
-    "skillIds" : [42, 43],
+    "skillIds" : [13, 31, 32],
     "expReward": 90,
     "goldMin": 50,
     "goldMax": 80
@@ -354,7 +354,7 @@
       "statusResist": 25.0
     },
     "baseActionPoints": 3,
-    "skillIds" : [44, 45],
+    "skillIds" : [15, 31, 32],
     "expReward": 80,
     "goldMin": 40,
     "goldMax": 70
@@ -378,7 +378,7 @@
       "statusResist": 80.0
     },
     "baseActionPoints": 3,
-    "skillIds" : [46],
+    "skillIds" : [15, 32, 33],
     "expReward": 120,
     "goldMin": 100,
     "goldMax": 150

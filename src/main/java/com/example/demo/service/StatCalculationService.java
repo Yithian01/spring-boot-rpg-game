@@ -224,6 +224,7 @@ public class StatCalculationService {
     /**
      * 마나 재생 계산 함수
      */
+
     public double calculateManaRegen(Map<?, ?> baseStats) {
         return (getStat(baseStats, 8) * 0.5) + (getStat(baseStats, 9) * 0.2);
     }
@@ -295,7 +296,8 @@ public class StatCalculationService {
      * 이동속도 계산 함수
      */
     public double calculateMoveSpd(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 21) * 0.1) + (getStat(baseStats, 7) * 0.05);
+        double rawSpd = (getStat(baseStats, 21) * 0.1) + (getStat(baseStats, 7) * 0.05);
+        return Math.round(rawSpd * 10.0) / 10.0;
     }
 
     /**
@@ -322,7 +324,7 @@ public class StatCalculationService {
      */
     public int calculateEarnedGold(Map<?, ?> baseStats) {
         int power = calculateWorkPower(baseStats);
-        return 30 + (power * 2); // 기본 30G + 파워당 2G
+        return 10 + (power * 1);
     }
 
     /**
@@ -457,11 +459,11 @@ public class StatCalculationService {
 
     /**
      * [던전 전용] 탐사 진척도 효율 계산
-     * 21: 비복근(기동성), 23: 공간 지각(지형 파악), 24: 직관(길찾기)
+     * 이동속도 23: 공간 지각(지형 파악), 24: 직관(길찾기)
      */
     public int calculateExplorationEfficiency(Map<?, ?> baseStats) {
         // 기본 진행도 5% + 스탯 가중치
-        double bonus = (getStat(baseStats, 21) * 0.1) +
+        double bonus = calculateMoveSpd(baseStats) +
                 (getStat(baseStats, 23) * 0.2) +
                 (getStat(baseStats, 24) * 0.2);
 

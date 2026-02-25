@@ -72,6 +72,7 @@ public class GameService {
         userFileRepository.deleteFile();
         townFileRepository.deleteFile();
         inventoryFileRepository.deleteFile();
+        dungeonFileRepository.deleteFile();
 
         // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
@@ -147,8 +148,8 @@ public class GameService {
                 .currentTurn(30)
                 .maxTurn(30)
                 .day(1)
-                .currentTax(100)
-                .isTaxPaid(false)
+                .currentTax(1500)
+                .isTaxPaid(true)
                 .build();
         townFileRepository.saveTownStatus(newTown);
 

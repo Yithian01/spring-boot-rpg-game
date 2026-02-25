@@ -74,7 +74,7 @@ public class TownService {
     }
 
     /**
-     * 현재 세금 납부 후 40% 인상
+     * 현재 세금 납부 후 10% 인상
      * @return 납부 결과 반환
      */
     public String payTax() {
@@ -209,6 +209,8 @@ public class TownService {
 
     /**
      * 공통 턴 종료 및 세금 체크 로직
+     * 1.1 -> 10% 복리 적용
+     * 10,000G 상한선
      */
     private String checkTurnAndTax(String actionMessage) {
         TownStatus town = townFileRepository.findTownStatus();
@@ -225,7 +227,9 @@ public class TownService {
                 user.setCurrentGold(user.getCurrentGold() - town.getCurrentTax());
                 town.setTaxPaid(true);
                 // 자동 납부 시에도 세금은 인상됨
-                town.setCurrentTax((int) (town.getCurrentTax() * 1.4));
+                // 세금 인상 로직 수정 (10% 복리 및 10,000G 상한선)
+                int nextTax = (int) (town.getCurrentTax() * 1.1);
+                town.setCurrentTax(Math.min(nextTax, 10000));
                 actionMessage += " \n📢 [강제 집행] 턴이 종료되어 세금이 자동 납부되었습니다.";
             } else {
                 // 🛑 게임 오버: 돈도 없고 턴도 없음
@@ -245,7 +249,7 @@ public class TownService {
         // nextDay(town);
         saveAll(user, town);
 
-        return actionMessage + " \n✅ 무사히 하루가 지나 " + town.getDay() + "일차가 되었습니다!";
+        return actionMessage + " \n✅ 한달이 지났습니다. " + town.getDay() + "달 차!";
     }
 
     /**

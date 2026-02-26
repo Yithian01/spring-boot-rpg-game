@@ -3,7 +3,11 @@
 
 <th:block th:fragment="statusPanelStyle">
     <style>
-        /* [1] 프로필 헤더 & 정보 */
+        /* [1] 프로필 및 레이아웃 */
+        .box {
+            display: flex; flex-direction: column; height: 100%;
+            padding: 15px; box-sizing: border-box; position: relative;
+        }
         .profile-header {
             display: flex; gap: 15px; margin-bottom: 15px;
             border-bottom: 2px solid #444; padding-bottom: 10px;
@@ -16,73 +20,66 @@
         .profile-info-text { flex-grow: 1; display: flex; flex-direction: column; gap: 5px; }
         .profile-name-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: bold; }
 
-        /* [2] 골드 텍스트 */
+        /* [2] 골드 및 상태바 */
         .gold-display {
-            color: #fff200 !important;
-            font-weight: 900 !important;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0px 0px 5px rgba(255, 242, 0, 0.3) !important;
+            color: #fff200 !important; font-weight: 900 !important;
+            text-shadow: 0px 0px 5px rgba(255, 242, 0, 0.3) !important;
         }
-
-        /* [3] 상태바 (HP/MP/STA) */
         .status-bars { background: #1e1e1e; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
         .bar-row { display: flex; align-items: center; margin-bottom: 5px; font-size: 0.85em; }
         .bar-label { width: 35px; font-weight: 900; text-align: center; margin-right: 5px; }
         .bar-container { flex-grow: 1; height: 12px; background-color: #333; border-radius: 6px; overflow: hidden; border: 1px solid #000; }
-        .bar-fill { height: 100%; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .bar-text { font-size: 0.75rem; color: #eee; width: 70px; text-align: right; font-weight: bold; text-shadow: 1px 1px 1px #000; }
+        .bar-fill { height: 100%; transition: width 0.4s ease; }
+        .bar-text { font-size: 0.75rem; color: #eee; width: 70px; text-align: right; font-weight: bold; }
 
-        /* [4] 스탯 리스트 영역 & 커스텀 스크롤바 통합 */
+        /* [3] 스탯 리스트 영역 */
         .stat-scroll {
-            flex-grow: 1;
-            overflow-y: auto;
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 4px;
-            padding: 5px;
-            margin-bottom: 5px;
+            flex-grow: 1; overflow-y: auto; background: #111;
+            border: 1px solid #333; border-radius: 4px; padding: 5px;
         }
+        .stat-scroll::-webkit-scrollbar { width: 6px; }
+        .stat-scroll::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
 
-        /* --- 던전 액션 패널과 동일한 스크롤바 디자인 --- */
-        .stat-scroll::-webkit-scrollbar {
-            width: 8px;
-        }
-        .stat-scroll::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
-        }
-        .stat-scroll::-webkit-scrollbar-thumb {
-            background: #444;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 0, 0, 0.3);
-        }
-        .stat-scroll::-webkit-scrollbar-thumb:hover {
-            background: #555;
+        .divider {
+            padding: 10px 5px 5px 5px; font-size: 0.75rem; color: #666;
+            text-transform: uppercase; letter-spacing: 1px;
+            border-bottom: 1px solid #333; margin-bottom: 5px;
         }
 
         .stat-row {
             display: flex; justify-content: space-between; padding: 8px 10px;
-            border-bottom: 1px solid #222; cursor: help;
+            border-bottom: 1px solid #222; transition: background 0.2s;
         }
-        .stat-row:hover { background-color: #252525; }
+        .stat-value-text { color: #ffffff !important; font-weight: 800; }
 
-        .stat-value-text {
-            color: #ffffff !important;
-            font-weight: 800 !important;
-            text-shadow: 1px 1px 2px #000 !important;
-        }
+        /* 계통 헤더 호버 전용 */
+        .category-header { cursor: help; border-left: 3px solid #d4af37; background: #1a1a1a; margin-bottom: 2px; }
+        .category-header:hover { background-color: #252525; border-left-color: #ffd700; }
+        .total-val { color: #ffd700; font-weight: bold; }
 
-        /* 등급별 색상 */
-        .grade-S { color: #ffd700 !important; font-weight: 900; text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
-        .grade-A { color: #d6aaff !important; font-weight: bold; }
+        /* 등급 색상 */
+        .grade-S { color: #ffd700 !important; font-weight: 900; text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+        .grade-A { color: #d6aaff !important; }
         .grade-B { color: #8ecae6 !important; }
         .grade-C { color: #99e2b4 !important; }
         .grade-F { color: #777 !important; }
 
-        /* [5] 설명창 */
-        .description-box {
-            background-color: #0a0a0a; border: 1px solid #d4af37;
-            padding: 10px; min-height: 50px; color: #ffd700;
-            font-size: 0.85em; text-align: center; border-radius: 4px;
+        /* [4] 부유형 호버 툴팁 (Floating Tooltip) */
+        .stat-hover-tooltip {
+            display: none; position: fixed; z-index: 9999;
+            width: 200px; background: rgba(15, 15, 15, 0.98);
+            border: 1px solid #d4af37; border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+            padding: 10px; pointer-events: none;
+        }
+        .hover-title {
+            color: #ffd700; font-weight: bold; font-size: 0.9em;
+            text-align: center; border-bottom: 1px solid #444;
+            margin-bottom: 8px; padding-bottom: 4px;
+        }
+        .hover-item {
+            display: flex; justify-content: space-between;
+            font-size: 0.85em; padding: 3px 0; border-bottom: 1px solid #222;
         }
     </style>
 </th:block>
@@ -96,9 +93,7 @@
                 <span class="gold-display" th:text="${game.currentGold} + ' G'"></span>
             </div>
             <div class="profile-sub-row">
-                <span>종족: <b style="color:#ccc" th:text="${game.tribe.name}"></b></span>
-                <span>|</span>
-                <span>종교: <b style="color:#ccc" th:text="${game.religion.name}"></b></span>
+                <span style="font-size: 0.85em; color: #888;">종족: <b style="color:#ccc" th:text="${game.tribe.name}"></b> | 종교: <b style="color:#ccc" th:text="${game.religion.name}"></b></span>
             </div>
         </div>
     </div>
@@ -106,39 +101,76 @@
     <div class="status-bars">
         <div class="bar-row">
             <div class="bar-label" style="color:#ff6b6b">HP</div>
-            <div class="bar-container">
-                <div class="bar-fill hp-fill" th:style="'width:' + (${game.currentHp} * 100.0 / ${game.maxHp}) + '%; background: linear-gradient(90deg, #800, #ff6b6b);'"></div>
-            </div>
+            <div class="bar-container"><div class="bar-fill" th:style="'width:' + (${game.currentHp} * 100.0 / ${game.maxHp}) + '%; background: linear-gradient(90deg, #800, #ff6b6b);'"></div></div>
             <div class="bar-text" th:text="${game.currentHp} + ' / ' + ${game.maxHp}"></div>
         </div>
         <div class="bar-row">
             <div class="bar-label" style="color:#4dabf7">MP</div>
-            <div class="bar-container">
-                <div class="bar-fill mp-fill" th:style="'width:' + (${game.currentMp} * 100.0 / ${game.maxMp}) + '%; background: linear-gradient(90deg, #004080, #4dabf7);'"></div>
-            </div>
+            <div class="bar-container"><div class="bar-fill" th:style="'width:' + (${game.currentMp} * 100.0 / ${game.maxMp}) + '%; background: linear-gradient(90deg, #004080, #4dabf7);'"></div></div>
             <div class="bar-text" th:text="${game.currentMp} + ' / ' + ${game.maxMp}"></div>
         </div>
         <div class="bar-row">
             <div class="bar-label" style="color:#51cf66">STA</div>
-            <div class="bar-container">
-                <div class="bar-fill stamina-fill" th:style="'width:' + (${game.currentStamina} * 100.0 / ${game.maxStamina}) + '%; background: linear-gradient(90deg, #206020, #51cf66);'"></div>
-            </div>
+            <div class="bar-container"><div class="bar-fill" th:style="'width:' + (${game.currentStamina} * 100.0 / ${game.maxStamina}) + '%; background: linear-gradient(90deg, #206020, #51cf66);'"></div></div>
             <div class="bar-text" th:text="${game.currentStamina} + ' / ' + ${game.maxStamina}"></div>
         </div>
     </div>
 
     <div class="stat-scroll">
-        <div th:each="stat : ${game.stats}" class="stat-row"
-             th:data-name="${stat.name}" th:data-desc="${stat.description}"
-             onmouseover="showDescription(this)" onmouseout="clearDescription()">
-            <span style="color:#bbb; font-size: 0.9rem;" th:text="${stat.name}"></span>
-            <div style="display:flex; gap:8px; align-items: center;">
-                <span th:class="'grade-' + ${stat.growthGrade}" th:text="'[' + ${stat.growthGrade} + ']'"></span>
-                <span class="stat-value-text" style="width:30px; text-align:right;" th:text="${stat.value}"></span>
-            </div>
+        <div class="divider">전투 능력치</div>
+        <div class="stat-row"><span>물리 공격력</span> <b class="stat-value-text" th:text="${game.combatStats.meleeAtk}"></b></div>
+        <div class="stat-row"><span>마법 공격력</span> <b class="stat-value-text" th:text="${game.combatStats.magicAtk}"></b></div>
+        <div class="stat-row"><span>물리 방어력</span> <b class="stat-value-text" th:text="${game.combatStats.physDef}"></b></div>
+        <div class="stat-row"><span>마법 저항력</span> <b class="stat-value-text" th:text="${game.combatStats.magRes}"></b></div>
+        <div class="stat-row"><span>치명타 확률</span> <b class="stat-value-text" th:text="${game.combatStats.critRate} + '%'"></b></div>
+        <div class="stat-row"><span>회피율</span> <b class="stat-value-text" th:text="${game.combatStats.dodge} + '%'"></b></div>
+
+        <div class="divider">기본 잠재력 계통</div>
+        <div th:each="group : ${game.statGroups}"
+             class="stat-row category-header"
+             th:onmouseover="showStatTooltip(event, [[${group.categoryName}]], [[${group.details}]])"
+             onmousemove="moveStatTooltip(event)"
+             onmouseout="hideStatTooltip()">
+            <span th:text="${group.categoryName}"></span>
+            <span class="total-val" th:text="${group.totalValue}"></span>
         </div>
     </div>
 
-    <div id="desc-display" class="description-box">스탯에 마우스를 올리면 상세 정보가 표시됩니다.</div>
+    <div id="statTooltip" class="stat-hover-tooltip">
+        <div id="tooltipTitle" class="hover-title"></div>
+        <div id="tooltipBody"></div>
+    </div>
+
+    <script>
+        const tooltip = document.getElementById('statTooltip');
+        const tooltipTitle = document.getElementById('tooltipTitle');
+        const tooltipBody = document.getElementById('tooltipBody');
+
+        function showStatTooltip(event, name, details) {
+            tooltipTitle.innerText = name + " 계통 상세";
+            tooltipBody.innerHTML = details.map(s => `
+                <div class="hover-item">
+                    <span style="color:#aaa;">${s.name}</span>
+                    <div>
+                        <span class="grade-${s.growthGrade}">[${s.growthGrade}]</span>
+                        <b style="color:#fff; margin-left:5px;">${s.value}</b>
+                    </div>
+                </div>
+            `).join('');
+
+            tooltip.style.display = 'block';
+            moveStatTooltip(event);
+        }
+
+        function moveStatTooltip(event) {
+            // 마우스 위치에서 약간 옆으로 띄움
+            tooltip.style.left = (event.clientX + 15) + 'px';
+            tooltip.style.top = (event.clientY - 20) + 'px';
+        }
+
+        function hideStatTooltip() {
+            tooltip.style.display = 'none';
+        }
+    </script>
 </div>
 </html>

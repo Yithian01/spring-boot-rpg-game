@@ -182,6 +182,8 @@ public class GameService {
         // 인벤토리 아이템 리스트 (장착된 것 제외)
         List<ItemPageDto> inventory = getInventoryPageData();
 
+        List<StatCategoryGroupDto> statGroups = buildStatGroups(us);
+
         // 장착 중인 아이템 맵 생성
         Map<String, ItemPageDto> equippedMap = new HashMap<>();
         us.getEquippedItems().forEach((slot, itemId) -> {
@@ -209,7 +211,9 @@ public class GameService {
                 .currentGold(us.getCurrentGold())
 
                 // 데이터 리스트
-                .stats(mapUserStats(us))
+                .statGroups(statGroups)
+                .combatStats(us.getCombatStats())
+
                 .items(inventory)
                 .equippedItems(equippedMap) // 장착창 데이터
 
@@ -299,10 +303,9 @@ public class GameService {
                     .id(meta.getId())
                     .name(meta.getName())
                     .description(meta.getDescription())
-                    .value(value) // 이 value가 장비+버프가 모두 합쳐진 최종값
-                    .growthGrade(calculateGrade(potential))
+                    .value(value) // 장비+버프가 모두 합쳐진 최종값
+                    .growthGrade(gameDataManager.getPotentialGrade(potential))
                     .build();
-
             statList.add(dto);
         }
 
@@ -310,17 +313,7 @@ public class GameService {
         return statList;
     }
 
-    private String calculateGrade(int potential) {
-        switch (potential) {
-            case 1: return "S";
-            case 2: return "A";
-            case 3: return "B";
-            case 4: return "C";
-            case 5: return "D";
-            case 6: return "E";
-            default: return "F";
-        }
-    }
+
 
     /**
      * 화면에 보여질 인벤토리 정보
@@ -483,5 +476,49 @@ public class GameService {
                 .pendingExp(ds.getPendingExp())
                 .pendingGold(ds.getPendingGold())
                 .build();
+    }
+
+    /**
+     * 기본 스탯을 4가지의 것으로 분리
+     * @param us 플레이어 정보
+     * @return UI로 전달할 스탯 분류 데이터
+     */
+    private List<StatCategoryGroupDto> buildStatGroups(UserStatus us) {
+        Map<Integer, StatMeta> metaMap = gameDataManager.getStatMetaMap();
+        Map<Integer, Integer> finalStats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
+        Map<Integer, Integer> potentials = us.getPotentials();
+
+        Map<String, StatCategoryGroupDto> groups = new LinkedHashMap<>();
+        // StatCategoryGroupDto 생성자 파라미터에 맞춰 4개(Name, Key, TotalValue, Details) 전달
+        groups.put("PHYSIQUE", new StatCategoryGroupDto("육신", "PHYSIQUE", 0, new ArrayList<>()));
+        groups.put("AGILITY", new StatCategoryGroupDto("기민", "AGILITY", 0, new ArrayList<>()));
+        groups.put("SPIRIT", new StatCategoryGroupDto("정신", "SPIRIT", 0, new ArrayList<>()));
+        groups.put("PERCEPTION", new StatCategoryGroupDto("감각", "PERCEPTION", 0, new ArrayList<>()));
+
+        finalStats.forEach((id, value) -> {
+            StatMeta meta = metaMap.get(id);
+            if (meta != null && groups.containsKey(meta.getCategory())) {
+                StatCategoryGroupDto group = groups.get(meta.getCategory());
+
+                // 1. 그룹 총합 수치 갱신
+                group.setTotalValue(group.getTotalValue() + value);
+
+                // 2. 잠재력 ID를 등급(S, A, F...)으로 변환
+                int potId = potentials.getOrDefault(id, 7); // 기본값 F(7)
+                String grade = gameDataManager.getPotentialGrade(potId);
+
+                // 3. 개별 스탯 상세 정보 구성 (UserStatDto 필드에 맞춤)
+                group.getDetails().add(UserStatDto.builder()
+                        .id(id)
+                        .category(meta.getCategory())
+                        .name(meta.getName())
+                        .description(meta.getDescription())
+                        .value(value)
+                        .growthGrade(grade) // 변환된 등급 문자열 저장
+                        .build());
+            }
+        });
+
+        return new ArrayList<>(groups.values());
     }
 }

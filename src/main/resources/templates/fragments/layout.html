@@ -141,11 +141,11 @@
     /* ===== 2. 게임 메인 컨테이너 ===== */
     .container {
          /* 1. 고정 너비보다 유연한 너비 사용 (중요) */
-        width: 98% !important;
-        max-width: 1400px !important; /* 기존 1150px에서 대폭 확장 */
+        width: 1600px !important;
+        max-width: 98vw !important;
 
         /* 2. 높이 설정 */
-        height: 90vh !important; /* 900px 고정보다 화면 높이에 맞춤 */
+        height: 92vh !important; /* 900px 고정보다 화면 높이에 맞춤 */
         min-height: 800px;
 
         /* 3. 레이아웃 안정화 */
@@ -165,9 +165,11 @@
     /* ===== 3. 상단 패널 비율 조정 (4컬럼 체제) ===== */
     .top-panel {
         display: grid !important;
-        /* 비율: 스탯(300px) : 정보(1fr) : 인벤토리(1.1fr) : 장비창(350px) */
-        grid-template-columns: 300px 1fr 1.1fr 350px !important;
-        gap: 15px !important;
+        /* 기존: 300px 1fr 1.1fr 350px
+           변경: 스탯창을 400px 이상으로 늘리고 나머지도 조절
+        */
+        grid-template-columns: 420px 1.2fr 1.5fr 400px !important;
+        gap: 20px !important;
         flex-grow: 1;
         min-height: 0;
         width: 100% !important;

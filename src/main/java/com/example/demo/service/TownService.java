@@ -95,32 +95,26 @@ public class TownService {
      * @return 납부 결과 반환
      */
     public String payTax() {
-        GameStatus gs = gameFileRepository.findGameStatus();
         UserStatus us = userFileRepository.findGameUser();
         TownStatus ts = townFileRepository.findTownStatus();
-
-        // 숫자에 콤마를 찍기 위한 포맷터 선언
+        GameStatus gs = gameFileRepository.findGameStatus();
         DecimalFormat df = new DecimalFormat("#,###");
 
-        if (ts.isTaxPaid()) return "이미 세금을 납부했습니다.";
+        if (ts.isTaxPaid()) return "이미 이번 주기의 세금을 납부했습니다.";
 
-        int currentTax = ts.getCurrentTax();
-        int currentGold = us.getCurrentGold();
-
-        if (currentGold < currentTax) {
-            int leftTax = currentTax - currentGold;
-            // 부족한 금액에도 콤마 적용
-            return "골드가 부족합니다! (부족: " + df.format(leftTax) + " G)";
+        if (us.getCurrentGold() < ts.getCurrentTax()) {
+            return "골드가 부족합니다! (부족: " + df.format(ts.getCurrentTax() - us.getCurrentGold()) + " G)";
         }
 
-        int amountToPay = currentTax;
-        us.setCurrentGold(currentGold - amountToPay);
-        ts.setTaxPaid(true);
+        int amount = ts.getCurrentTax(); // 메시지용 기록
+
+        // 공통 로직 호출
+        processTaxPayment(us, ts);
 
         saveAll(us, ts, gs);
 
-        // 납부 금액에 콤마 적용하여 리턴
-        return checkTurnAndTax(df.format(amountToPay) + " G를 세금으로 납부했습니다.");
+        String message = df.format(amount) + " G를 세금으로 납부했습니다. (다음 예정: " + df.format(ts.getCurrentTax()) + " G)";
+        return checkTurnAndTax(message);
     }
 
     /**
@@ -168,8 +162,6 @@ public class TownService {
      * 특정 타입(근력/민첩/지능)에 따른 스탯 수련
      * @param type 훈련 종류 (STRENGTH, AGILITY, INTELLIGENCE)
      * @return 수련 결과 메시지
-     */
-    /**
      * 스탯 수련 (Potentials 등급 기반 성장)
      */
     public String performTrain(String type) {
@@ -237,6 +229,25 @@ public class TownService {
     }
 
     /**
+     * 실제 세금 차감 및 다음 세율 계산 (공통 로직)
+     */
+    private void processTaxPayment(UserStatus us, TownStatus ts) {
+        int paidTax = ts.getCurrentTax();
+
+        // 1. 골드 차감
+        us.setCurrentGold(us.getCurrentGold() - paidTax);
+
+        // 2. 납부 상태 업데이트
+        ts.setTaxPaid(true);
+
+        // 3. 다음 세금 계산: 10% 복리 적용 (상한선 1,000,000G)
+        int nextTax = (int) (paidTax * 1.1);
+        ts.setCurrentTax(Math.min(nextTax, 1000000));
+
+        log.info(">>> 납세 완료: 납부액 {}, 다음 세금 {}", paidTax, ts.getCurrentTax());
+    }
+
+    /**
      * 공통 턴 종료 및 세금 체크 로직
      * 초기 세금 900,000G
      * 1.1 -> 10% 복리 적용
@@ -250,56 +261,42 @@ public class TownService {
         UserStatus us = userFileRepository.findGameUser();
         GameStatus gs = gameFileRepository.findGameStatus();
 
-        // 1. 로그 기록
         gs.addLog(actionMessage);
-
-        // 2. 날짜 경과 (마을 행동 1번 = 1일 경과)
         ts.setDay(ts.getDay() + 1);
 
         // 3. 세금 징수 체크 (1년 = 360일 주기)
         if (ts.getDay() % 360 == 0) {
-            if (us.getCurrentGold() >= ts.getCurrentTax()) {
-                // [세금 납부 성공]
+            if (ts.isTaxPaid()) {
+                // [추가] 이미 수동으로 납부했다면 메시지만 출력하고 통과
+                String taxMsg = "\n✅ 올해 세금은 이미 납부되었습니다.";
+                gs.addLog(taxMsg);
+                actionMessage += taxMsg;
+            } else if (us.getCurrentGold() >= ts.getCurrentTax()) {
+                // [수정] 자동 징수 시에도 공통 로직 사용
                 int paidTax = ts.getCurrentTax();
-                us.setCurrentGold(us.getCurrentGold() - paidTax);
-
-                // 납부 상태 업데이트 (UI 표시용)
-                ts.setTaxPaid(true);
-
-                // 다음 해 세금 계산: 10% 복리 적용 (상한선 1,000,000G)
-                int nextTax = (int) (paidTax * 1.1);
-                ts.setCurrentTax(Math.min(nextTax, 1000000));
+                processTaxPayment(us, ts);
 
                 String taxMsg = String.format("\n💰 [연말 세금 징수] %d년차 세금 %d G를 납부했습니다. (다음 세율 반영: %d G)",
                         (ts.getDay() / 360), paidTax, ts.getCurrentTax());
                 gs.addLog(taxMsg);
                 actionMessage += taxMsg;
             } else {
-                // [세금 미납 - 처형 엔딩]
-                String deathMsg = String.format("\n🚨 [처형] %d년차 세금 %d G를 내지 못했습니다. 국왕의 기사단이 들이닥쳐 당신을 처형했습니다...",
-                        (ts.getDay() / 360), ts.getCurrentTax());
-
-                // 시스템적으로 완전히 사망 처리
+                String deathMsg = String.format("\n🚨 [처형] %d년차 세금 %d G를 내지 못했습니다...", (ts.getDay() / 360), ts.getCurrentTax());
                 us.setCurrentHp(0);
                 us.setCurrentMp(0);
                 us.setCurrentStamina(0);
-                // 필요 시 보유 골드도 몰수
                 us.setCurrentGold(0);
-
                 gs.addLog(deathMsg);
                 saveAll(us, ts, gs);
-
-                // 프론트엔드에서 GameOver 화면으로 튕기기 위한 키워드 반환
                 return "GameOver:EXECUTED";
-            }
-        } else {
-            // 세금 납부일이 아닌 평소에는 납부 상태를 false로 유지 (신규 연도 시작 시 초기화 개념)
-            if (ts.getDay() % 360 == 1) {
-                ts.setTaxPaid(false);
             }
         }
 
-        // 4. 던전 개방 알림 (30일 주기)
+        if (ts.getDay() % 360 == 1) {
+            ts.setTaxPaid(false);
+        }
+
+        // 4. 던전 개방 알림 유지...
         if (ts.getDay() % 30 == 0) {
             String dungeonMsg = "\n🌌 [차원문] 마력이 소용돌이칩니다. 던전 입장이 가능해졌습니다!";
             gs.addLog(dungeonMsg);
@@ -309,6 +306,7 @@ public class TownService {
         saveAll(us, ts, gs);
         return actionMessage;
     }
+
     /**
      * 다음 날로 진행 (턴 회복 및 납부 상태 초기화)
      */

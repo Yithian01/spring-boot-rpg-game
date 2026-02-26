@@ -140,6 +140,22 @@ public class GameDataManager  implements ApplicationRunner {
     }
 
     /**
+     * 잠재력 ID를 받아 해당 등급(S, A, B...)을 반환
+     */
+    public String getPotentialGrade(int potentialId) {
+        GrowthMeta meta = growthMetaMap.get(potentialId);
+        return (meta != null) ? meta.getGrade() : "F";
+    }
+
+    /**
+     * 잠재력 ID를 받아 실제 성장 배율(weight)을 반환 (나중에 수련 로직에서 사용)
+     */
+    public double getPotentialWeight(int potentialId) {
+        GrowthMeta meta = growthMetaMap.get(potentialId);
+        return (meta != null) ? meta.getWeight() : 0.2;
+    }
+
+    /**
      * 아이템 ID를 입력받아, 해당 아이템이 속한 종교(또는 그룹) ID를 반환합니다.
      * @param itemId 아이템 고유 번호
      * @return 1=무교(공용), 2~21=특정종교, 0=오류/범위밖

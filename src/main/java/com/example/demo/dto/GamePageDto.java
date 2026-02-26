@@ -1,11 +1,14 @@
 package com.example.demo.dto;
 
+import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.save.ActiveStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.context.annotation.Primary;
 
+import java.security.PrivateKey;
 import java.util.List;
 import java.util.Map;
 
@@ -31,14 +34,17 @@ public class GamePageDto {
     // 3. 재화
     private int currentGold;
 
-    // 4. 리스트 데이터 (스탯, 인벤토리)
-    private List<UserStatDto> stats;
+    // 4. 리스트 데이터 (스탯, 전투 스탯)
+    private List<StatCategoryGroupDto> statGroups;
+    private CombatStats combatStats;
+    
+    // 5. 인벤토리 정보
     private List<ItemPageDto> items;
 
-    // 5. 장착 장비 (Key: 슬롯명, Value: 아이템DTO)
+    // 6. 장착 장비 (Key: 슬롯명, Value: 아이템DTO)
     private Map<String, ItemPageDto> equippedItems;
 
-    // 6. [추가] 현재 적용 중인 상태 효과 (버프/디버프)
+    // 7. [추가] 현재 적용 중인 상태 효과 (버프/디버프)
     // 유저가 "아, 내가 지금 독에 걸렸구나" 또는 "힘 물약을 먹었구나"를 알게 해줍니다.
     private List<ActiveStatus> activeStatuses;
 

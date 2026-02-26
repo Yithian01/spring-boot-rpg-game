@@ -87,44 +87,89 @@
         }
 
         .btn-empty { background: #1e1e1e; border: 1px dashed #444; opacity: 0.5; pointer-events: none; }
+
+        /* [추가] 던전 버튼 활성화/비활성화 상태 */
+        .btn-dungeon:disabled {
+            background: #2a2a2a !important;
+            border: 1px solid #444 !important;
+            border-bottom: 4px solid #1a1a1a !important;
+            filter: grayscale(1);
+            opacity: 0.6;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none !important;
+        }
+
+        /* [추가] 던전 개방 시 번쩍이는 강조 효과 */
+        .btn-dungeon-open {
+            animation: portal-glow 1.5s infinite alternate;
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+            z-index: 1;
+        }
+
+        @keyframes portal-glow {
+            from { filter: brightness(1); box-shadow: 0 0 5px rgba(231, 76, 60, 0.5); }
+            to { filter: brightness(1.3); box-shadow: 0 0 20px rgba(142, 68, 173, 0.8); }
+        }
+
+        .dungeon-remain {
+            font-size: 0.7rem;
+            color: #ff7675;
+            font-weight: normal;
+        }
     </style>
 </th:block>
 
 <div th:fragment="actionPanel(gameData)" class="town-action-grid">
-    <form action="/town/tax" method="post" style="display:contents;">
-        <button type="submit" class="action-btn btn-tax"><span>📜</span>세금 납부</button>
-    </form>
-    <form action="/town/work" method="post" style="display:contents;">
-        <button type="submit" class="action-btn btn-work"><span>⛏️</span>노동 하기</button>
-    </form>
-    <button type="button" class="action-btn btn-gamble" onclick="openGamble()"><span>🎲</span>도박장</button>
-    <button type="button" class="action-btn btn-train" onclick="openTrain()"><span>🧘</span>수련 하기</button>
-    <form action="/town/rest" method="post" style="display:contents;">
-        <button type="submit" class="action-btn btn-rest"><span>🛌</span>휴식 하기</button>
-    </form>
-    <form action="/dungeon/enter" method="post" style="display:contents;">
-        <button type="submit" class="action-btn btn-dungeon"><span>⚔️</span>던전 입장</button>
-    </form>
+    <th:block th:with="isDungeonOpen=${town.portalOpen}">
 
-    <form action="/inventory/gamble-item" method="post" style="display:contents;"
-          th:onsubmit="|return confirm('${gameData.boxPrice}골드를 지불하고 비밀 상자를 여시겠습니까?')|">
-        <button type="submit" class="action-btn btn-shop">
-            <span>🎁</span>
-            <div class="shop-content-row">
-                <span style="font-size: 0.9rem;">비밀 상자</span>
-                <div class="price-tag">
-                    <span class="gold-text" th:text="${gameData.boxPrice} + 'G'"></span>
-                    <small th:if="${gameData.boxDiscount > 0}"
-                           class="discount-text"
-                           th:text="'-' + ${gameData.boxDiscount} + '%'">
-                    </small>
+        <form action="/town/tax" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-tax"><span>📜</span>세금 납부</button>
+        </form>
+        <form action="/town/work" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-work"><span>⛏️</span>노동 하기</button>
+        </form>
+        <button type="button" class="action-btn btn-gamble" onclick="openGamble()"><span>🎲</span>도박장</button>
+        <button type="button" class="action-btn btn-train" onclick="openTrain()"><span>🧘</span>수련 하기</button>
+        <form action="/town/rest" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-rest"><span>🛌</span>휴식 하기</button>
+        </form>
+
+        <form action="/dungeon/enter" method="post" style="display:contents;">
+            <button type="submit"
+                    class="action-btn btn-dungeon"
+                    th:classappend="${isDungeonOpen} ? 'btn-dungeon-open' : ''"
+                    th:disabled="${!isDungeonOpen}">
+                <span>⚔️</span>
+                <th:block th:if="${isDungeonOpen}">
+                    던전 입장
+                </th:block>
+                <th:block th:unless="${isDungeonOpen}">
+                    <span class="dungeon-remain">[[${30 - (town.day % 30)}]]일 후 개방</span>
+                </th:block>
+            </button>
+        </form>
+
+        <form action="/inventory/gamble-item" method="post" style="display:contents;"
+              th:onsubmit="|return confirm('${gameData.boxPrice}골드를 지불하고 비밀 상자를 여시겠습니까?')|">
+            <button type="submit" class="action-btn btn-shop">
+                <span>🎁</span>
+                <div class="shop-content-row">
+                    <span style="font-size: 0.9rem;">비밀 상자</span>
+                    <div class="price-tag">
+                        <span class="gold-text" th:text="${#numbers.formatInteger(gameData.boxPrice, 3, 'COMMA')} + 'G'"></span>
+                        <small th:if="${gameData.boxDiscount > 0}"
+                               class="discount-text"
+                               th:text="'-' + ${gameData.boxDiscount} + '%'">
+                        </small>
+                    </div>
                 </div>
-            </div>
-        </button>
-    </form>
+            </button>
+        </form>
 
-    <button type="button" class="action-btn btn-empty"></button>
-    <button type="button" class="action-btn btn-empty"></button>
+        <button type="button" class="action-btn btn-empty"></button>
+        <button type="button" class="action-btn btn-empty"></button>
+    </th:block>
 </div>
 
 </html>

@@ -147,8 +147,8 @@ public class GameService {
                 .currentTurn(30)
                 .maxTurn(30)
                 .day(1)
-                .currentTax(1500)
-                .isTaxPaid(true)
+                .currentTax(900000)
+                .isTaxPaid(false)
                 .build();
         townFileRepository.saveTownStatus(newTown);
 
@@ -350,12 +350,15 @@ public class GameService {
 
     public TownPageDto getTownData() {
         TownStatus town = townFileRepository.findTownStatus();
+        boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
+
         return TownPageDto.builder()
                 .day(town.getDay())
                 .currentTurn(town.getCurrentTurn())
                 .maxTurn(town.getMaxTurn())
                 .currentTax(town.getCurrentTax())
                 .isTaxPaid(town.isTaxPaid())
+                .portalOpen(isFirstDayOfMonth)
                 .build();
     }
 

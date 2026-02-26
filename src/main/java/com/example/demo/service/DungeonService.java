@@ -103,10 +103,22 @@ public class DungeonService {
      */
     public void initDungeon(int dungeonId) {
         // 1. 전체 게임 상태를 던전으로 변경
+        TownStatus townStatus = townFileRepository.findTownStatus();
+        int currentDay = townStatus.getDay();
+
+        // [핵심 로직] 1일차(새게임 직후)이거나 30, 60, 90...일차일 때만 입장 허용
+        int dayInMonth = ((currentDay - 1) % 30) + 1;
+        boolean isPortalOpen = (dayInMonth == 1);
+
+        if (!isPortalOpen) {
+            // 남은 일수 계산: 31일(다음 1일)에서 현재 한 달 내 날짜를 뺌
+            int daysLeft = 31 - dayInMonth;
+            throw new IllegalStateException("현재는 차원문이 닫혀 있습니다. (다음 개방까지 " + daysLeft + "일 남음)");
+        }
+
         gameFileRepository.updateLocation(LocationType.DUNGEON, dungeonId);
 
         // 2. 마을 상태 업데이트 (날짜 경과, 턴 회복 등)
-        TownStatus townStatus = townFileRepository.findTownStatus();
         townStatus.setDay(townStatus.getDay() + 1);
         townStatus.setCurrentTurn(townStatus.getMaxTurn());
         townFileRepository.saveTownStatus(townStatus);

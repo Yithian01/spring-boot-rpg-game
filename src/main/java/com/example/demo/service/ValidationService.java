@@ -35,10 +35,12 @@ public class ValidationService {
 
     /**
      * 입구 컷 검증 로직
+     * 매달 1일에만 입장 가능
      */
     public boolean canEnterDungeon() {
         TownStatus townStatus = townFileRepository.findTownStatus();
-        return townStatus.getCurrentTurn() <= 0; // 0이하일 때만 true
+        boolean isFirstDay = ((townStatus.getDay() - 1) % 30 + 1) == 1;
+        return isFirstDay;
     }
 
     /**

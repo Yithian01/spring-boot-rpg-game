@@ -4,11 +4,11 @@
     "image": "/tribe_1.png",
     "gold": 70,
     "initialEquipment": {
-      "WEAPON": 9,
-      "BODY": 10,
+      "WEAPON": 10,
+      "BODY": 11,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -18,7 +18,7 @@
       "13": 1, "14": 1, "15": 5, "16": 6, "17": 5, "18": 6,
       "19": 4, "20": 4, "21": 5, "22": 4, "23": 8, "24": 6
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2, 9]
   },
   {
@@ -26,13 +26,13 @@
     "image": "/tribe_2.png",
     "gold": 150,
     "initialEquipment": {
-      "WEAPON": 12,
-      "BODY": 14,
+      "WEAPON": 13,
+      "BODY": 15,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
-      "SUB_WEAPON": 13
+      "SUB_WEAPON": 14
     },
     "combatBaseStats": {
       "1": 12, "2": 12, "3": 10, "4": 8, "5": 8, "6": 10,
@@ -40,7 +40,7 @@
       "13": 6, "14": 8, "15": 8, "16": 10, "17": 8, "18": 10,
       "19": 8, "20": 6, "21": 6, "22": 8, "23": 10, "24": 8
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2, 10]
   },
   {
@@ -48,11 +48,11 @@
     "image": "/tribe_3.png",
     "gold": 90,
     "initialEquipment": {
-      "WEAPON": 15,
-      "BODY": 16,
+      "WEAPON": 16,
+      "BODY": 17,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -62,7 +62,7 @@
       "13": 10, "14": 10, "15": 10, "16": 12, "17": 8, "18": 8,
       "19": 6, "20": 12, "21": 10, "22": 10, "23": 12, "24": 12
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2]
   },
   {
@@ -70,11 +70,11 @@
     "image": "/tribe_4.png",
     "gold": 130,
     "initialEquipment": {
-      "WEAPON": 17,
-      "BODY": 18,
+      "WEAPON": 18,
+      "BODY": 19,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -84,7 +84,7 @@
       "13": 2, "14": 4, "15": 4, "16": 6, "17": 8, "18": 15,
       "19": 10, "20": 2, "21": 3, "22": 2, "23": 10, "24": 10
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2]
   },
   {
@@ -92,11 +92,11 @@
     "image": "/tribe_5.png",
     "gold": 110,
     "initialEquipment": {
-      "WEAPON": 19,
-      "BODY": 20,
+      "WEAPON": 20,
+      "BODY": 21,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -106,7 +106,7 @@
       "13": 12, "14": 10, "15": 8, "16": 8, "17": 10, "18": 12,
       "19": 10, "20": 5, "21": 6, "22": 5, "23": 10, "24": 10
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2, 11, 12]
   },
   {
@@ -114,11 +114,11 @@
     "image": "/tribe_6.png",
     "gold": 200,
     "initialEquipment": {
-      "WEAPON": 21,
-      "BODY": 22,
+      "WEAPON": 22,
+      "BODY": 23,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -128,7 +128,7 @@
       "13": 25, "14": 15, "15": 12, "16": 12, "17": 15, "18": 12,
       "19": 18, "20": 12, "21": 12, "22": 10, "23": 15, "24": 18
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2, 8, 13]
   },
   {
@@ -136,11 +136,11 @@
     "image": "/tribe_7.png",
     "gold": 80,
     "initialEquipment": {
-      "WEAPON": 23,
-      "BODY": 24,
+      "WEAPON": 24,
+      "BODY": 25,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -150,7 +150,7 @@
       "13": 8, "14": 10, "15": 18, "16": 20, "17": 15, "18": 8,
       "19": 10, "20": 20, "21": 18, "22": 15, "23": 20, "24": 15
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2]
   },
   {
@@ -158,11 +158,11 @@
     "image": "/tribe_8.png",
     "gold": 120,
     "initialEquipment": {
-      "WEAPON": 25,
-      "BODY": 26,
+      "WEAPON": 26,
+      "BODY": 27,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -172,7 +172,7 @@
       "13": 18, "14": 12, "15": 20, "16": 15, "17": 20, "18": 12,
       "19": 8, "20": 22, "21": 20, "22": 18, "23": 15, "24": 15
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2, 11, 12]
   },
   {
@@ -180,11 +180,11 @@
     "image": "/tribe_9.png",
     "gold": 100,
     "initialEquipment": {
-      "WEAPON": 27,
-      "BODY": 28,
+      "WEAPON": 28,
+      "BODY": 29,
       "HEAD": 0,
       "NECKLACE": 0,
-      "BOOTS": 11,
+      "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0
     },
@@ -194,7 +194,7 @@
       "13": 9, "14": 9, "15": 9, "16": 9, "17": 9, "18": 9,
       "19": 9, "20": 9, "21": 9, "22": 9, "23": 9, "24": 9
     },
-    "initialItem" : [36],
+    "initialItem" : [37],
     "initialSkill" : [1, 2]
   }
 ]

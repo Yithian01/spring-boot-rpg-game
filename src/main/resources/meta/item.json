@@ -8,7 +8,7 @@
     "subType": "MAGIC_STONE",
     "description": "가장 흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
     "price": 120,
-    "icon": "1.png",
+    "icon": "/images/items/1.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -21,7 +21,7 @@
     "subType": "MAGIC_STONE",
     "description": "8등급보다 조금 더 순도가 높은 마석입니다. ",
     "price": 250,
-    "icon": "2.png",
+    "icon": "/images/items/2.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -34,7 +34,7 @@
     "subType": "MAGIC_STONE",
     "description": "깊은 곳에서 가끔 발견되는아이템입니다",
     "price": 500,
-    "icon": "3.png",
+    "icon": "/images/items/3.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -47,7 +47,7 @@
     "subType": "MAGIC_STONE",
     "description": "안정적인 마력을 품고 있습니다.",
     "price": 1000,
-    "icon": "4.png",
+    "icon": "/images/items/4.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -60,7 +60,7 @@
     "subType": "MAGIC_STONE",
     "description": "상당히 희귀한 마석입니다. ",
     "price": 1000,
-    "icon": "5.png",
+    "icon": "/images/items/5.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -73,7 +73,7 @@
     "subType": "MAGIC_STONE",
     "description": "던전 심층부에서나 볼 수 있는 고가치 마석입니다.",
     "price": 2200,
-    "icon": "6.png",
+    "icon": "/images/items/6.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -86,7 +86,7 @@
     "subType": "MAGIC_STONE",
     "description": "진귀한 보물입니다. 파괴적인 가치를 지녔습니다.",
     "price": 10000,
-    "icon": "7.png",
+    "icon": "/images/items/7.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -99,7 +99,7 @@
     "subType": "MAGIC_STONE",
     "description": "던전의 정수이자 절대적인 가치입니다.",
     "price": 25000,
-    "icon": "8.png",
+    "icon": "/images/items/8.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {}
   },
@@ -113,11 +113,12 @@
     "twoHanded": true,
     "description": "관리가 되지 않아 날이 여기저기 빠졌지만, 무게만으로도 적의 뼈를 부수기에 충분합니다.",
     "price": 300,
-    "icon": "9.png",
+    "icon": "/images/items/9.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 12.0,
       "penetration": 2.0,
+      "critDmg": 10.0,
       "accuracy": -3.0
     },
     "grantedSkillIds": []
@@ -132,7 +133,7 @@
     "twoHanded": false,
     "description": "땀 냄새가 배어있고 여기저기 찢어진 가죽 옷입니다. 최소한의 급소만 가려줍니다.",
     "price": 150,
-    "icon": "10.png",
+    "icon": "/images/items/10.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 6.0,
@@ -149,9 +150,9 @@
     "slot": "BOOTS",
     "subType": "LEATHER",
     "twoHanded": false,
-    "description": "밑창이 너덜너덜해서 발바닥이 아픕니다. 거친 북부의 지형을 견뎌온 흔적이 보입니다.",
+    "description": "밑창이 너덜너덜해서 발바닥이 아픕니다.",
     "price": 100,
-    "icon": "11.png",
+    "icon": "/images/items/11.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "moveSpeed": 2,
@@ -160,22 +161,195 @@
     "grantedSkillIds": []
   },
   {
-    "id": 1,
-    "name": "낡은 철퇴",
+    "id": 12,
+    "name": "훈련용 롱소드",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "기사단에서 훈련용으로 쓰던 평범한 철검입니다. 날이 무뎌져 있습니다.",
+    "price": 200,
+    "icon": "/images/items/12.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 8.0,
+      "accuracy": 3.0,
+      "critRate": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 13,
+    "name": "나무 방패",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "SHIELD",
+    "twoHanded": false,
+    "description": "화살이나 가벼운 타격을 막기에 적합합니다.",
+    "price": 100,
+    "icon": "/images/items/13.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 10.0,
+      "dodge": -1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 14,
+    "name": "수습 기사의 갑옷",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "HEAVY",
+    "twoHanded": false,
+    "description": "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
+    "price": 350,
+    "icon": "14.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 12.0,
+      "moveSpeed": -0.5,
+      "maxHp": 25.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 15,
+    "name": "낡은 시미터",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "사막의 모래바람에 마모된 곡선형 칼입니다. 가볍고 휘두르기 좋습니다.",
+    "price": 350,
+    "icon": "/images/items/15.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 9.0,
+      "critRate": 2.5,
+      "accuracy": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 16,
+    "name": "먼지 묻은 유목민 외투",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "CLOTH",
+    "twoHanded": false,
+    "description": "햇빛과 모래를 막기 위해 겹겹이 두른 천 옷입니다. 방어력은 낮지만 매우 가볍습니다.",
+    "price": 200,
+    "icon": "/images/items/16.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 3.0,
+      "dodge": 3.5,
+      "maxStamina": 25.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 17,
+    "name": "낡은 채광용 망치",
     "grade": "COMMON",
     "type": "EQUIPMENT",
     "slot": "WEAPON",
     "subType": "BLUNT",
     "twoHanded": false,
-    "description": "묵직한 무게감이 느껴지는 철퇴입니다. 근력이 필요합니다.",
+    "description": "광석을 캘 때 쓰던 망치입니다. 투박하지만 머리를 가격하면 치명적입니다.",
     "price": 350,
-    "icon": "/images/items/1.png",
-    "baseStatsBonus": { "10": 4, "11": 2, "12": 1 },
-    "combatStatsBonus": { "meleeAtk": 12.0, "critDmg": 5.0, "penetration": 2.0, "moveSpeed": -0.05 },
-    "grantedSkillIds": [2]
+    "icon": "/images/items/17.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 10.0,
+      "penetration": 5.0,
+      "accuracy": 1.0
+    },
+    "grantedSkillIds": []
   },
   {
-    "id": 2,
+    "id": 18,
+    "name": "두꺼운 가죽 앞치마",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
+    "price": 250,
+    "icon": "/images/items/18.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 5.0,
+      "statusResist": 5.0,
+      "moveSpeed": -0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 19,
+    "name": "무뎌진 이끼낫",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SICKLE",
+    "twoHanded": false,
+    "description": "지하 벽면의 이끼를 긁어낼 때 쓰던 날이 무딘 낫입니다.",
+    "price": 250,
+    "icon": "/images/items/19.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 6.0,
+      "magicAtk": 3.0,
+      "critRate": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 20,
+    "name": "곰팡이 핀 누더기",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "CLOTH",
+    "twoHanded": false,
+    "description": "축축한 지하에서 오래 방치되어 곰팡이가 피어오른 넝마입니다. 냄새가 고약합니다.",
+    "price": 120,
+    "icon": "/images/items/20.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 2.0,
+      "magRes": 4.0,
+      "statusResist": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 21,
+    "name": "금이 간 연습용 지팡이",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "아카데미 시절 쓰던 지팡이입니다.",
+    "price": 300,
+    "icon": "/images/items/21.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "magicAtk": 12.0,
+      "maxMp": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 22,
     "name": "수습 마법사의 로브",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -183,14 +357,148 @@
     "subType": "CLOTH",
     "twoHanded": false,
     "description": "마나 흐름을 돕는 얇은 천 옷입니다.",
-    "price": 200,
-    "icon": "/images/items/2.png",
-    "baseStatsBonus": { "4": 2, "8": 3, "13": 2 },
-    "combatStatsBonus": { "maxMp": 30, "mpRegen": 1.2, "magicAtk": 8.0, "magRes": 10.0 },
-    "grantedSkillIds": [8]
+    "price": 180,
+    "icon": "/images/items/22.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 1.0,
+      "magRes": 10.0,
+      "mpRegen": 10.0
+    },
+    "grantedSkillIds": []
   },
   {
-    "id": 3,
+    "id": 23,
+    "name": "뒤틀린 짧은 활",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "관리가 안 되어 나무가 뒤틀린 활입니다. 사거리는 짧지만 없는 것보단 낫습니다.",
+    "price": 320,
+    "icon": "/images/items/23.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 10.0,
+      "accuracy": 5.0,
+      "critRate": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 24,
+    "name": "낡은 나뭇잎 가슴받이",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "질긴 잎사귀와 가죽 끈을 엮어 만든 보호구입니다.",
+    "price": 160,
+    "icon": "/images/items/24.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 4.0,
+      "dodge": 4.0,
+      "moveSpeed": 1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 25,
+    "name": "녹슨 손 쇠뇌",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "소형 태엽 장치가 녹슬어 장전이 뻑뻑합니다. 하지만 소리 없이 죽음을 배달하기엔 충분합니다.",
+    "price": 380,
+    "icon": "/images/items/25.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 9.0,
+      "critDmg": 15.0,
+      "penetration": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 26,
+    "name": "변색된 가시 가죽 옷",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다. 가시 장식이 많이 떨어져 나갔습니다.",
+    "price": 220,
+    "icon": "/images/items/26.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 5.0,
+      "dodge": 3.0,
+      "critRate": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 27,
+    "name": "낡은 세이버",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "다양한 상황에 대처하기 위해 만들어진 실용적인 칼입니다. 날이 많이 상했습니다.",
+    "price": 320,
+    "icon": "/images/items/27.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 7.0,
+      "accuracy": 3.0,
+      "critRate": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 28,
+    "name": "닳아버린 여행용 코트",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "이곳저곳 덧댄 흔적이 가득한 가죽 코트입니다. 활동성이 좋습니다.",
+    "price": 200,
+    "icon": "/images/items/28.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 5.0,
+      "magRes": 5.0,
+      "maxStamina": 10.0,
+      "maxMp": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 29,
+    "name": "신속의 장화",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "가볍고 질긴 가죽으로 만들어 발걸음이 가벼워집니다.",
+    "price": 300,
+    "icon": "/images/items/29.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": { "dodge": 5.0, "moveSpeed": 2 },
+    "grantedSkillIds": [101]
+  },
+  {
+    "id": 30,
     "name": "강철 투구",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -201,25 +509,13 @@
     "price": 450,
     "icon": "/images/items/3.png",
     "baseStatsBonus": { "11": 3, "12": 5 },
-    "combatStatsBonus": { "physDef": 15.0, "accuracy": -2.0, "moveSpeed": -0.02 }
+    "combatStatsBonus": {
+      "physDef": 15.0,
+      "accuracy": -2.0,
+      "moveSpeed": -0.5 }
   },
   {
-    "id": 4,
-    "name": "신속의 장화",
-    "grade": "UNCOMMON",
-    "type": "EQUIPMENT",
-    "slot": "BOOTS",
-    "subType": "LEATHER",
-    "twoHanded": false,
-    "description": "가볍고 질긴 가죽으로 만들어 발걸음이 가벼워집니다.",
-    "price": 300,
-    "icon": "/images/items/4.png",
-    "baseStatsBonus": { "2": 4, "3": 2 },
-    "combatStatsBonus": { "dodge": 5.0, "moveSpeed": 0.15 },
-    "grantedSkillIds": [101]
-  },
-  {
-    "id": 5,
+    "id": 31,
     "name": "청동 반지",
     "grade": "UNCOMMON",
     "type": "EQUIPMENT",
@@ -228,26 +524,16 @@
     "twoHanded": false,
     "description": "작은 마력이 깃든 평범한 반지입니다.",
     "price": 150,
-    "icon": "/images/items/5.png",
-    "baseStatsBonus": { "13": 1, "14": 1 },
-    "combatStatsBonus": { "maxMp": 15, "magicAtk": 2.0 }
+    "icon": "/images/items/31.png",
+    "baseStatsBonus": {
+      "13": 4,
+      "14": 4 },
+    "combatStatsBonus": {
+      "maxMp": 15,
+      "magicAtk": 5.0 }
   },
   {
-    "id": 6,
-    "name": "나무 방패",
-    "grade": "UNCOMMON",
-    "type": "EQUIPMENT",
-    "slot": "SUB_WEAPON",
-    "subType": "SHIELD",
-    "twoHanded": false,
-    "description": "화살이나 가벼운 타격을 막기에 적합합니다.",
-    "price": 180,
-    "icon": "/images/items/6.png",
-    "baseStatsBonus": { "12": 3 },
-    "combatStatsBonus": { "physDef": 8.0, "dodge": -1.0 }
-  },
-  {
-    "id": 7,
+    "id": 32,
     "name": "암살자의 단검",
     "grade": "RARE",
     "type": "EQUIPMENT",
@@ -256,13 +542,21 @@
     "twoHanded": false,
     "description": "급소를 노리기 좋게 날카롭게 갈린 단검입니다.",
     "price": 600,
-    "icon": "/images/items/7.png",
-    "baseStatsBonus": { "2": 6, "15": 3 },
-    "combatStatsBonus": { "meleeAtk": 7.0, "critRate": 10.0, "critDmg": 15.0, "accuracy": 5.0 },
+    "icon": "/images/items/32.png",
+    "baseStatsBonus": {
+      "2": 6,
+      "15": 3
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 45.0,
+      "critRate": 10.0,
+      "critDmg": 20.0,
+      "accuracy": 5.0
+    },
     "grantedSkillIds": [5]
   },
   {
-    "id": 8,
+    "id": 33,
     "name": "수호의 목걸이",
     "grade": "RARE",
     "type": "EQUIPMENT",
@@ -271,13 +565,18 @@
     "twoHanded": false,
     "description": "착용자의 생명력을 미세하게 증폭시킵니다.",
     "price": 500,
-    "icon": "/images/items/8.png",
+    "icon": "/images/items/33.png",
     "baseStatsBonus": { "1": 5 },
-    "combatStatsBonus": { "maxHp": 50, "hpRegen": 2.5, "physDef": 3.0, "magRes": 3.0 },
+    "combatStatsBonus": {
+      "maxHp": 50,
+      "hpRegen": 10,
+      "physDef": 10.0,
+      "magRes": 10.0
+    },
     "grantedSkillIds": [102]
   },
   {
-    "id": 9,
+    "id": 34,
     "name": "수렵용 장궁",
     "grade": "RARE",
     "type": "EQUIPMENT",
@@ -286,13 +585,19 @@
     "twoHanded": true,
     "description": "먼 거리의 적을 제압할 수 있는 탄탄한 활입니다.",
     "price": 550,
-    "icon": "/images/items/9.png",
-    "baseStatsBonus": { "2": 3, "15": 5 },
-    "combatStatsBonus": { "meleeAtk": 10.0, "accuracy": 12.0, "critRate": 3.0 },
+    "icon": "/images/items/34.png",
+    "baseStatsBonus": {
+      "2": 3,
+      "15": 5 },
+    "combatStatsBonus": {
+      "meleeAtk": 20.0,
+      "accuracy": 12.0,
+      "critRate": 10.0
+    },
     "grantedSkillIds": [6]
   },
   {
-    "id": 10,
+    "id": 35,
     "name": "플레이트 메일",
     "grade": "EPIC",
     "type": "EQUIPMENT",
@@ -301,12 +606,21 @@
     "twoHanded": false,
     "description": "전신을 감싸는 무거운 판금 갑옷입니다.",
     "price": 1200,
-    "icon": "/images/items/10.png",
-    "baseStatsBonus": { "11": 10, "12": 15 },
-    "combatStatsBonus": { "physDef": 40.0, "magRes": 5.0, "moveSpeed": -0.15, "dodge": -5.0 }
+    "icon": "/images/items/35.png",
+    "baseStatsBonus": {
+      "11": 10,
+      "12": 15
+    },
+    "combatStatsBonus": {
+      "physDef": 40.0,
+      "magRes": 10.0,
+      "moveSpeed": -1.0,
+      "dodge": -10.0
+    },
+    "grantedSkillIds": []
   },
   {
-    "id": 11,
+    "id": 36,
     "name": "빵 한 조각",
     "grade": "COMMON",
     "type": "CONSUMABLE",
@@ -315,7 +629,7 @@
     "twoHanded": false,
     "description": "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
     "price": 30,
-    "icon": "/images/items/11.png",
+    "icon": "/images/items/36.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -325,18 +639,20 @@
     }
   },
   {
-    "id": 12,
-    "name": "훈련용 롱소드",
+    "id": 37,
+    "name": "낡은 철퇴",
     "grade": "COMMON",
     "type": "EQUIPMENT",
     "slot": "WEAPON",
-    "subType": "SWORD",
+    "subType": "BLUNT",
     "twoHanded": false,
-    "description": "균형 잡힌 강철 검입니다. 가장 표준적인 무기입니다.",
-    "price": 400,
-    "icon": "/images/items/12.png",
-    "baseStatsBonus": { "10": 2, "15": 2 },
-    "combatStatsBonus": { "meleeAtk": 10.0, "accuracy": 5.0, "critRate": 2.0 },
-    "grantedSkillIds": [3, 4]
+    "description": "묵직한 무게감이 느껴지는 철퇴입니다.",
+    "price": 350,
+    "icon": "/images/items/37.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 10.0
+    },
+    "grantedSkillIds": [2]
   }
 ]

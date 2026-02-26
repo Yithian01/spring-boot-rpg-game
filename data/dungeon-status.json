@@ -4,8 +4,8 @@
   "parentDungeonName" : null,
   "dungeonName" : "수정 동굴",
   "currentFloor" : 1,
-  "progress" : 13,
-  "actionCount" : 101,
+  "progress" : 100,
+  "actionCount" : 19,
   "maxActionCount" : 100,
   "activeMonster" : {
     "monsterId" : 3,
@@ -54,9 +54,9 @@
   "playerRemainingTurns" : 2,
   "playerMaxTurns" : 2,
   "pendingExp" : 15,
-  "pendingGold" : 7,
+  "pendingGold" : 6,
   "floorProgressMap" : {
-    "101" : 13
+    "101" : 100
   },
   "inBattle" : true
 }

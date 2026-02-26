@@ -3,16 +3,26 @@
 
 <th:block th:fragment="dungeonActionStyle">
     <style>
-        /* [1] 던전 패널 기본 베이스 */
-        .dungeon-action-container {
-            flex-shrink: 0;
-            min-height: 200px;
-            padding: 15px;
-            background: rgba(20, 20, 20, 0.85);
-            border-radius: 12px;
-            border: 1px solid #444;
-            transition: all 0.3s ease;
-            overflow-y: auto;
+            /* [1] 던전 패널 기본 베이스 */
+            .skill-hand-container {
+            display: grid !important;
+            /* 한 줄에 2개씩 배치 (기존 500px은 너무 커서 한 줄에 하나만 나올 수 있음) */
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 14px !important;
+            width: 100%;
+
+            /* [핵심] 최대 높이를 지정하여 2줄까지만 노출 */
+            /* 스킬 카드 높이가 약 90px + gap 14px 이므로 대략 200px~210px로 제한 */
+            max-height: 210px;
+            overflow-y: auto; /* 2줄 넘어가면 내부 스크롤 발생 */
+            padding-right: 5px; /* 스크롤바 공간 확보 */
+        }
+
+        /* 내부 스크롤바 디자인 (부모와 통일감) */
+        .skill-hand-container::-webkit-scrollbar { width: 6px; }
+        .skill-hand-container::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
         }
 
         /* 전투 중 배경 강조 (Red Alert 효과) */

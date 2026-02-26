@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="trainStyle">
+    <style>
+        .train-content {
+            background: #1e1e1e; border: 2px solid #3498db; border-radius: 12px;
+            padding: 25px; width: 380px; text-align: center;
+        }
+        .train-btn-group { display: grid; gap: 10px; margin-top: 15px; }
+    </style>
+
+
+
+</th:block>
+
+<div th:fragment="trainModal" id="trainModal" class="gamble-modal-overlay">
+    <div class="train-content">
+        <h2 style="color: #3498db;">🧘 심신 수련</h2>
+        <p style="font-size: 0.85em; color: #888;">단련할 분야를 선택하세요.</p>
+        <form action="/town/train" method="post">
+            <div class="train-btn-group">
+                <button type="submit" name="type" value="STRENGTH" class="btn-modal" style="background: #c0392b;">💪 근력 (HP/ATK)</button>
+                <button type="submit" name="type" value="AGILITY" class="btn-modal" style="background: #27ae60;">🏃 민첩 (SPD/CRI)</button>
+                <button type="submit" name="type" value="INTELLIGENCE" class="btn-modal" style="background: #2980b9;">🔮 지능 (MP/MATK)</button>
+            </div>
+            <button type="button" class="btn-modal btn-menu" onclick="closeTrain()" style="margin-top: 15px; width: 100%;">취소</button>
+        </form>
+    </div>
+</div>
+</html>

@@ -1,0 +1,74 @@
+<div th:fragment="townInfo(town)" class="box col-info">
+    <style>
+        /* ===== 마을 정보 전용 스타일 병합 ===== */
+        .town-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .town-info p {
+            margin: 8px 0;
+            color: #aaa;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 12px;
+            border-radius: 6px;
+            border-left: 3px solid #444; /* 좌측에 포인트를 주어 리스트 느낌 강조 */
+            transition: background 0.2s;
+        }
+
+        .town-info p:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .town-info span:first-child {
+            color: #888;
+            font-weight: bold;
+        }
+
+        /* 세금 상태에 따른 색상 강조 */
+        .tax-paid {
+            color: #2ecc71;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.3);
+        }
+
+        .tax-unpaid {
+            color: #e74c3c;
+            font-weight: bold;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.6; }
+        }
+    </style>
+
+    <h2>🏘️ 마을 현황</h2>
+    <div class="town-section">
+        <div class="town-info">
+            <p>
+                <span>📅 현재 일차</span>
+                <span style="color:#fff;" th:text="${town.day} + '일차'"></span>
+            </p>
+            <p>
+                <span>⏳ 잔여 행동</span>
+                <span style="color:#fff;" th:text="${town.currentTurn} + ' / ' + ${town.maxTurn}"></span>
+            </p>
+            <p>
+                <span>💰 징수 세금</span>
+                <span style="color:#ffd700; font-weight: bold;" th:text="${town.currentTax} + ' G'"></span>
+            </p>
+            <p>
+                <span>📜 납부 상태</span>
+                <span th:if="${town.isTaxPaid}" class="tax-paid">✅ 납부 완료</span>
+                <span th:unless="${town.isTaxPaid}" class="tax-unpaid">🚨 미납</span>
+            </p>
+        </div>
+    </div>
+</div>

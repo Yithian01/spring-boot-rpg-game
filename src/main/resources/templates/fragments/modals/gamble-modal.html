@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="gambleStyle">
+    <style>
+        /* ===== 도박 전용 모달 통합 스타일 ===== */
+        .gamble-modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none; /* 기본 숨김 */
+            justify-content: center;
+            align-items: center;
+            z-index: 9000;
+        }
+
+        .gamble-content {
+            background: #1e1e1e;
+            border: 2px solid #9b59b6; /* 도박 시스템 포인트 컬러 */
+            border-radius: 12px;
+            padding: 25px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(155, 89, 182, 0.4);
+            animation: modalPop 0.3s ease-out;
+        }
+
+        .gamble-content h2 {
+            color: #9b59b6;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .bet-input-group {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .bet-input-group input {
+            background: #111;
+            border: 1px solid #444;
+            color: #ffd700;
+            padding: 12px;
+            text-align: center;
+            font-size: 1.4rem;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .bet-input-group input:focus {
+            border-color: #9b59b6;
+        }
+
+        .quick-bet-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .btn-quick {
+            background: #333;
+            border: 1px solid #555;
+            color: #ccc;
+            padding: 8px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn-quick:hover {
+            background: #444;
+            color: #fff;
+            border-color: #9b59b6;
+        }
+
+        .gamble-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-confirm-gamble {
+            background: #9b59b6;
+            color: white;
+            flex: 2;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-confirm-gamble:hover { filter: brightness(1.1); }
+
+        .btn-cancel-gamble {
+            background: #444;
+            color: #ccc;
+            flex: 1;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn-cancel-gamble:hover { background: #555; }
+
+        @keyframes modalPop {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</th:block>
+
+<div th:fragment="gambleModal(game)" id="gambleModal" class="gamble-modal-overlay">
+    <div class="gamble-content">
+        <h2>🎲 지하 도박장</h2>
+        <p style="color: #888; font-size: 0.9rem;">
+            보유 골드: <span th:text="${game.currentGold}" style="color: #ffd700; font-weight: bold;"></span> G
+        </p>
+
+        <form action="/town/gamble" method="post" onsubmit="handleGambleSubmit()">
+            <div class="bet-input-group">
+                <input type="number" id="bettingAmount" name="amount"
+                       th:min="10" th:max="${game.currentGold}" value="100">
+
+                <div class="quick-bet-btns">
+                    <button type="button" class="btn-quick" onclick="setBet(100)">100 G</button>
+                    <button type="button" class="btn-quick" onclick="setBet(500)">500 G</button>
+                    <button type="button" class="btn-quick" th:onclick="|setBet(${game.currentGold} / 2)|">HALF</button>
+                    <button type="button" class="btn-quick" th:onclick="|setBet(${game.currentGold})|">ALL-IN</button>
+                </div>
+            </div>
+
+            <div class="gamble-actions">
+                <button type="button" class="btn-cancel-gamble" onclick="closeGamble()">취소</button>
+                <button type="submit" class="btn-confirm-gamble">배팅하기</button>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

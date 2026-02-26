@@ -8,7 +8,7 @@
   <th:block th:replace="~{fragments/equipment :: equipmentStyle}"></th:block>
   <th:block th:replace="~{fragments/status :: statusPanelStyle}"></th:block>
   <th:block th:replace="~{fragments/inventory :: inventoryStyle}"></th:block>
-  <th:block th:replace="~{fragments/dungeon-action :: dungeonActionStyle}"></th:block>
+  <th:block th:replace="~{fragments/actions/dungeon-action :: dungeonActionStyle}"></th:block>
   <th:block th:replace="~{fragments/battle :: battleLogStyle}"></th:block>
 </head>
 <body>
@@ -57,10 +57,10 @@
       </div>
     </div>
   </div>
-  <div th:replace="~{fragments/dungeon-action :: dungeonActionPanel(gameData=${game}, dungeon=${dungeon})}"></div>
+  <div th:replace="~{fragments/actions/dungeon-action :: dungeonActionPanel(gameData=${game}, dungeon=${dungeon})}"></div>
 </div>
 
-<div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>
+<div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
 
 <script th:inline="javascript">
   /*<![CDATA[*/

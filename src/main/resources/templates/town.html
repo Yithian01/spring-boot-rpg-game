@@ -8,7 +8,9 @@
     <th:block th:replace="~{fragments/inventory :: inventoryStyle}"></th:block>
     <th:block th:replace="~{fragments/status :: statusPanelStyle}"></th:block>
     <th:block th:replace="~{fragments/equipment :: equipmentStyle}"></th:block>
-    <th:block th:replace="~{fragments/town-action :: townActionStyle}"></th:block>
+    <th:block th:replace="~{fragments/actions/town-action :: townActionStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/gamble-modal :: gambleStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/train-modal :: trainStyle}"></th:block>
 </head>
 <body>
 
@@ -21,7 +23,7 @@
         <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
 
         <div class="box col-info">
-            <div th:replace="~{fragments/info :: townInventory(${town})}"></div>
+            <div th:replace="~{fragments/infos/town-info :: townInfo(${town})}"></div>
         </div>
 
         <div class="box col-inv">
@@ -44,13 +46,12 @@
         </div>
     </div>
 
-    <div th:replace="~{fragments/town-action :: actionPanel(gameData=${game})}"></div>
+    <div th:replace="~{fragments/actions/town-action :: actionPanel(gameData=${game})}"></div>
 </div>
 
-<div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>
-<div th:replace="~{fragments/modals :: gambleModal(${game})}"></div>
-
-<div th:replace="~{fragments/modals :: trainModal}"></div>
+<div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
+<div th:replace="~{fragments/modals/gamble-modal :: gambleModal(${game})}"></div>
+<div th:replace="~{fragments/modals/train-modal :: trainModal}"></div>
 
 <script th:inline="javascript">
     /*<![CDATA[*/

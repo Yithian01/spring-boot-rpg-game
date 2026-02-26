@@ -11,6 +11,7 @@
     <th:block th:replace="~{fragments/actions/town-action :: townActionStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/gamble-modal :: gambleStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/train-modal :: trainStyle}"></th:block>
+    <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
 </head>
 <body>
 
@@ -37,11 +38,8 @@
             <h2>⚔️ 장착 장비</h2>
             <div th:replace="~{fragments/equipment :: equipmentGrid(${game.equippedItems})}"></div>
 
-            <div style="width: 100%; flex: 1; margin-top: 15px; background: #111; border: 1px solid #444; padding: 15px; border-radius: 8px; display: flex; flex-direction: column;">
-                <h4 style="margin: 0 0 8px 0; font-size: 0.7rem; color: #555; text-transform: uppercase; letter-spacing: 1px;">Information</h4>
-                <div id="desc-display" style="color: #aaa; font-size: 0.85rem; line-height: 1.6;">
-                    스탯이나 아이템에 마우스를 올리세요.
-                </div>
+            <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 15px;">
+                <div th:replace="~{fragments/gameLog :: gameLogPanel(logs=${game.gameLogs})}"></div>
             </div>
         </div>
     </div>

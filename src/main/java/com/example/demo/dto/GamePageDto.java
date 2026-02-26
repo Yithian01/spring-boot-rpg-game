@@ -44,4 +44,6 @@ public class GamePageDto {
 
     private int boxPrice;
     private int boxDiscount;
+
+    private List<String> gameLogs;
 }

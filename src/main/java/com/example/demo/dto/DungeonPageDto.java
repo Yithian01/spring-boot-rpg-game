@@ -33,7 +33,6 @@ public class DungeonPageDto {
     private int playerRemainingTurns;
     private int playerMaxTurns;
 
-    private List<String> battleLogs;
     private int pendingExp;
     private int pendingGold;
 }

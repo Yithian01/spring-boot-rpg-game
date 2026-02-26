@@ -1,4 +1,5 @@
 {
   "location" : "TOWN",
-  "dungeonId" : null
+  "dungeonId" : 0,
+  "gameLogs" : [ ">>> [강제귀환] 던전 체류 한계 도달! 마을로 돌아갑니다.", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[저항] \uD83D\uDCAB 하이 엘프 (High Elf)이(가) STUN 효과를 저항했습니다.</span>", "<span style='color:#ff4d4d;'>[피격]</span> 병약한 고블린의 돌팔매질! <b>8</b>의 피해!", "\uD83D\uDCA8 <span style='color:#ffcc00;'>[회피] 하이 엘프 (High Elf)이(가) 병약한 고블린의 <b>돌팔매질</b> 공격을 가볍게 피했습니다!</span>", "<b style='color:#ff9f43;'>▶ 병약한 고블린의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[저항] \uD83D\uDCAB 하이 엘프 (High Elf)이(가) STUN 효과를 저항했습니다.</span>", "<span style='color:#ff4d4d;'>[피격]</span> 병약한 고블린의 돌팔매질! <b>8</b>의 피해!", "\uD83D\uDCA8 <span style='color:#ffcc00;'>[회피] 하이 엘프 (High Elf)이(가) 병약한 고블린의 <b>돌팔매질</b> 공격을 가볍게 피했습니다!</span>", "<b style='color:#ff9f43;'>▶ 병약한 고블린의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#ff9f43;'>[전투]</span> 병약한 고블린이(가) 나타났습니다!", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "⚔️ <b style='color:#ffd700;'>수정 동굴</b>에 입장했습니다.", "⛏️ 일당으로 22 G를 벌었습니다! (남은 턴: 0)", ">>> [강제귀환] 던전 체류 한계 도달! 마을로 돌아갑니다.", "<span style='color:#aaaaaa;'>주변이 고요합니다. 충분히 기력을 회복했습니다.</span>", "\uD83D\uDECC <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)" ]
 }

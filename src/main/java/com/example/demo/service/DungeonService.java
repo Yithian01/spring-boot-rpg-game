@@ -6,7 +6,7 @@ import com.example.demo.domain.meta.MonsterMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.DungeonFileRepository;
-import com.example.demo.repository.GameRepository;
+import com.example.demo.repository.GameFileRepository;
 import com.example.demo.repository.TownFileRepository;
 import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class DungeonService {
 
-    private final GameRepository gameRepository;
+    private final GameFileRepository gameFileRepository;
     private final TownFileRepository townFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
     private final UserFileRepository userFileRepository;
@@ -32,16 +32,18 @@ public class DungeonService {
     /**
      * 저장 함수
      */
-    private void saveAll(UserStatus user, DungeonStatus ds) {
+    private void saveAll(UserStatus user, DungeonStatus ds, GameStatus gs) {
         ds.setActionCount(ds.getActionCount() + 1);
         userFileRepository.saveUserStatus(user);
         dungeonFileRepository.saveDungeonStatus(ds);
+        gameFileRepository.saveGameStatus(gs);
     }
 
     /**
      * [공통 로직] 던전 상태 정보를 세팅하고 저장함
      */
     private void enterFloor(int dungeonId, boolean isFirstEntry) {
+        GameStatus gs = gameFileRepository.findGameStatus();
         // 1. 메타 데이터 로드
         DungeonMeta meta = gameDataManager.getDungeonMetaMap().get(dungeonId);
         UserStatus user = userFileRepository.findGameUser();
@@ -65,10 +67,9 @@ public class DungeonService {
                     .floorProgressMap(new HashMap<>())
                     .activeMonster(null)
                     .playerMaxTurns(maxTurns)
-                    .battleLogs(new ArrayList<>())
                     .build();
             ds.getFloorProgressMap().put(dungeonId, 0);
-            ds.addLog("⚔️ <b style='color:#ffd700;'>" + meta.getName() + "</b>에 입장했습니다.");
+            gs.addLog("⚔️ <b style='color:#ffd700;'>" + meta.getName() + "</b>에 입장했습니다.");
         } else {
             // 이동이면 기존 데이터를 가져와서 갱신
             ds = dungeonFileRepository.findDungeonStatus();
@@ -84,16 +85,17 @@ public class DungeonService {
             ds.setProgress(0);
             ds.setActiveMonster(null);
             ds.setPlayerMaxTurns(maxTurns);
-            ds.addLog("<b style='color:#ffd700;'>" + meta.getName() + "</b>(으)로 이동했습니다.");
+            gs.addLog("<b style='color:#ffd700;'>" + meta.getName() + "</b>(으)로 이동했습니다.");
         }
 
         // 3. 던전 효과(디버프/버프)가 있다면 로그에 표시
         if (meta.getEffects() != null && !meta.getEffects().isEmpty()) {
-            ds.addLog("<span style='color:#aaaaaa;'>[환경] 이 장소의 특수한 기운이 몸을 감쌉니다...</span>");
+            gs.addLog("<span style='color:#aaaaaa;'>[환경] 이 장소의 특수한 기운이 몸을 감쌉니다...</span>");
         }
 
+        gameFileRepository.saveGameStatus(gs);
         dungeonFileRepository.saveDungeonStatus(ds);
-        gameRepository.updateLocation(LocationType.DUNGEON, ds.getDungeonId());
+        gameFileRepository.updateLocation(LocationType.DUNGEON, ds.getDungeonId());
     }
 
     /**
@@ -101,7 +103,7 @@ public class DungeonService {
      */
     public void initDungeon(int dungeonId) {
         // 1. 전체 게임 상태를 던전으로 변경
-        gameRepository.updateLocation(LocationType.DUNGEON, dungeonId);
+        gameFileRepository.updateLocation(LocationType.DUNGEON, dungeonId);
 
         // 2. 마을 상태 업데이트 (날짜 경과, 턴 회복 등)
         TownStatus townStatus = townFileRepository.findTownStatus();
@@ -153,6 +155,7 @@ public class DungeonService {
     public void explore() {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
         UserStatus user = userFileRepository.findGameUser();
+        GameStatus gs = gameFileRepository.findGameStatus();
 
         // 1. 기본 비용 소모 (스태미나 감소 등)
         user.setCurrentStamina(Math.max(0, user.getCurrentStamina() - 3));
@@ -164,33 +167,32 @@ public class DungeonService {
         // 3. 사건 판정 분기
         if (roll < 0.15) {
             // Case A: 함정 조우 (15% 확률)
-            handleTrap(user, ds, stats);
+            handleTrap(user, stats, gs);
         }
         else if (roll < 0.45) {
             // Case B: 몬스터 조우 (30% 확률)
-            handleMonsterEncounter(ds);
+            handleMonsterEncounter(ds, gs);
         }
         else {
             // Case C: 무탈하게 탐사 성공 (55% 확률)
-            handlePureExploration(ds, stats);
+            handlePureExploration(ds, stats, gs);
         }
 
         // 4. 상태 저장
-        saveAll(user, ds);
+        saveAll(user, ds, gs);
     }
 
     /**
      * 함정 발동 시 이벤트
      * @param user
-     * @param ds
      * @param stats
      */
-    private void handleTrap(UserStatus user, DungeonStatus ds, Map<Integer, Integer> stats) {
+    private void handleTrap(UserStatus user, Map<Integer, Integer> stats, GameStatus gs) {
         int intuition = stats.getOrDefault(24, 0); // 직관
 
         // 1. 회피 판정 (직관 스탯 기반)
         if (Math.random() < (intuition * 0.005)) {
-            ds.addLog("<span style='color:#70db70;'>[함정]</span> 감각적으로 함정을 눈치채고 피해갔습니다.");
+            gs.addLog("<span style='color:#70db70;'>[함정]</span> 감각적으로 함정을 눈치채고 피해갔습니다.");
             return;
         }
 
@@ -202,17 +204,17 @@ public class DungeonService {
 
         user.setCurrentHp(Math.max(0, user.getCurrentHp() - damage));
 
-        ds.addLog("<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -" + damage + ")");
+        gs.addLog("<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -" + damage + ")");
 
         if (user.getCurrentHp() <= 0) {
-            ds.addLog("<span style='color:#ff0000; font-weight:bold;'>정신이 아득해집니다... 더 이상 움직일 수 없습니다.</span>");
+            gs.addLog("<span style='color:#ff0000; font-weight:bold;'>정신이 아득해집니다... 더 이상 움직일 수 없습니다.</span>");
         }
     }
 
     /**
      * 몬스터 조우 (전투 발생)
      */
-    private void handleMonsterEncounter(DungeonStatus ds) {
+    private void handleMonsterEncounter(DungeonStatus ds, GameStatus gs) {
         // 1. 메타 데이터에서 몬스터 추첨
         int currentDungeonId = ds.getDungeonId();
         MonsterMeta monsterMeta = gameDataManager.getRandomMonsterByDungeon(currentDungeonId);
@@ -244,13 +246,13 @@ public class DungeonService {
         ds.setPendingExp(monsterMeta.getExpReward());
         ds.setPendingGold(rewardGold);
 
-        ds.addLog("<span style='color:#ff9f43;'>[전투]</span> " + activeMonster.getName() + "이(가) 나타났습니다!");
+        gs.addLog("<span style='color:#ff9f43;'>[전투]</span> " + activeMonster.getName() + "이(가) 나타났습니다!");
     }
 
     /**
      * 무탈하게 탐사 진행 (진척도 상승)
      */
-    private void handlePureExploration(DungeonStatus ds, Map<Integer, Integer> stats) {
+    private void handlePureExploration(DungeonStatus ds, Map<Integer, Integer> stats, GameStatus gs) {
         // 1. 스탯 기반 탐사 효율 계산 (기본 5% ~ 최대 20% 등)
         int efficiency = statCalculationService.calculateExplorationEfficiency(stats);
 
@@ -260,16 +262,17 @@ public class DungeonService {
         ds.setProgress(nextProgress);
         ds.getFloorProgressMap().put(ds.getDungeonId(), nextProgress);
         // 3. 로그 남기기
-        ds.addLog("주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +" + efficiency + "%)");
+        gs.addLog("주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +" + efficiency + "%)");
         // 4. 100% 달성 시 안내
         if (nextProgress >= 100) {
-            ds.addLog("<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>");
+            gs.addLog("<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>");
         }
     }
 
     public void rest() {
         UserStatus user = userFileRepository.findGameUser();
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        GameStatus gs = gameFileRepository.findGameStatus();
 
         int hpRecovery = statCalculationService.calculateHpRestoration(user);
         int mpRecovery = statCalculationService.calculateMpRestoration(user);
@@ -279,9 +282,9 @@ public class DungeonService {
         user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + mpRecovery));
         user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + stRecovery));
 
-        saveAll(user, ds);
+        saveAll(user, ds, gs);
 
-        ds.addLog(String.format("🛌 <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)"));
+        gs.addLog(String.format("🛌 <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)"));
 
         // 2. 기습 판정 (Safety Rate 체크)
         Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
@@ -292,17 +295,17 @@ public class DungeonService {
 
         if (roll > safetyRate) {
             // [판정 실패] 기습 발생!
-            ds.addLog("<span style='color:#ff4d4d; font-weight:bold;'>⚠️ 잠결에 기분 나쁜 소름이 돋습니다... 기습입니다!</span>");
+            gs.addLog("<span style='color:#ff4d4d; font-weight:bold;'>⚠️ 잠결에 기분 나쁜 소름이 돋습니다... 기습입니다!</span>");
 
             // 기존에 만들어둔 몬스터 조우 로직 재활용
-            handleMonsterEncounter(ds);
+            handleMonsterEncounter(ds, gs);
         } else {
             // [판정 성공] 평온한 휴식
-            ds.addLog("<span style='color:#aaaaaa;'>주변이 고요합니다. 충분히 기력을 회복했습니다.</span>");
+            gs.addLog("<span style='color:#aaaaaa;'>주변이 고요합니다. 충분히 기력을 회복했습니다.</span>");
         }
 
         // 3. 상태 저장
-        saveAll(user, ds);
+        saveAll(user, ds, gs);
         log.info(">>> 던전 휴식 완료. 기습 여부: {}", (roll > safetyRate));
     }
 }

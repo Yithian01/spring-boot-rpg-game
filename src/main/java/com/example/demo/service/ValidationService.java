@@ -7,7 +7,7 @@ import com.example.demo.domain.save.GameStatus;
 import com.example.demo.domain.save.TownStatus;
 import com.example.demo.domain.save.UserStatus;
 import com.example.demo.repository.DungeonFileRepository;
-import com.example.demo.repository.GameRepository;
+import com.example.demo.repository.GameFileRepository;
 import com.example.demo.repository.TownFileRepository;
 import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ValidationService {
-    private final GameRepository gameRepository;
+    private final GameFileRepository gameFileRepository;
     private final UserFileRepository userFileRepository;
     private final TownFileRepository townFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
@@ -56,6 +56,7 @@ public class ValidationService {
      * @return true: 마을로 강제 귀환해야 함, false: 계속 탐험 가능
      */
     public boolean checkForceReturn() {
+        GameStatus gs = gameFileRepository.findGameStatus();
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
 
         // 1. 하드코딩된 배열 대신 ds에 저장된 maxActionCount 사용
@@ -71,7 +72,9 @@ public class ValidationService {
         boolean isOverLimit = current >= limit;
 
         if (isOverLimit) {
-            gameRepository.updateLocation(LocationType.TOWN, 0);
+            gs.addLog(">>> [강제귀환] 던전 체류 한계 도달! 마을로 돌아갑니다.");
+            gameFileRepository.saveGameStatus(gs);
+            gameFileRepository.updateLocation(LocationType.TOWN, 0);
             log.warn(">>> [강제귀환] 던전 체류 한계 도달! (현재 행동치: {} / 최대 제한: {})", current, limit);
         }
 

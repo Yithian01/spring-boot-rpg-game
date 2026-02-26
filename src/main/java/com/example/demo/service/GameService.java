@@ -22,7 +22,7 @@ public class GameService {
     private final TownFileRepository townFileRepository;
     private final InventoryFileRepository inventoryFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
-    private final GameRepository gameRepository;
+    private final GameFileRepository gameFileRepository;
     private final StatCalculationService statCalculationService;
     private final BattleService battleService;
 
@@ -31,7 +31,7 @@ public class GameService {
      * @return 아직까지는 단순히 파일 존재하는 지 확인
      */
     public boolean canContinueGame() {
-        return (gameRepository.existsFile()
+        return (gameFileRepository.existsFile()
                 && userFileRepository.existsFile()
                 && townFileRepository.existsFile()
                 && inventoryFileRepository.existsFile());
@@ -68,7 +68,7 @@ public class GameService {
     public void createNewGame(int tribeId) {
 
         log.info(">>> 새 게임 시작: 기존 데이터 초기화 중...");
-        gameRepository.deleteFile();
+        gameFileRepository.deleteFile();
         userFileRepository.deleteFile();
         townFileRepository.deleteFile();
         inventoryFileRepository.deleteFile();
@@ -108,7 +108,6 @@ public class GameService {
         }
 
         // 4. [장비 및 스킬 설정]
-        // 하드코딩을 제거하고 initialMeta(종족 데이터)에서 직접 가져옵니다.
         Map<String, Integer> initialEquippedItems = new HashMap<>(initialMeta.getInitialEquipment());
         List<Integer> learnedSkillIds = new ArrayList<>(initialMeta.getInitialSkill());
 
@@ -153,11 +152,16 @@ public class GameService {
                 .build();
         townFileRepository.saveTownStatus(newTown);
 
-        GameStatus gameStatus = GameStatus.builder()
+
+        List<String> gameLog = new ArrayList<>();
+        GameStatus gs = GameStatus.builder()
                 .location(LocationType.valueOf("TOWN"))
                 .dungeonId(null)
+                .gameLogs(gameLog)
                 .build();
-        gameRepository.saveGameStatus(gameStatus);
+
+        gs.addLog("🏰 마을에 도착했습니다.");
+        gameFileRepository.saveGameStatus(gs);
 
         log.info(">>> 새 게임 생성 완료! (종족: {}, 초기 장비 및 스킬 장착됨)", tribeMeta.getName());
     }
@@ -166,11 +170,12 @@ public class GameService {
      * 메인 화면에 뿌려줄 모든 게임 데이터를 조립해서 반환
      */
     public GamePageDto getGamePageData() {
-        UserStatus user = userFileRepository.findGameUser();
-        if (user == null) return null;
+        GameStatus gs = gameFileRepository.findGameStatus();
+        UserStatus us = userFileRepository.findGameUser();
+        if (us == null) return null;
 
         // 랜덤박스 할인률
-        Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
+        Map<Integer, Integer> stats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
         int finalPrice = statCalculationService.calculateGambleItemCost(stats, InventoryService.BOX_BASE_PRICE);
         int discountPercent = statCalculationService.calculateGambleItemDiscountPercent(stats);
 
@@ -179,7 +184,7 @@ public class GameService {
 
         // 장착 중인 아이템 맵 생성
         Map<String, ItemPageDto> equippedMap = new HashMap<>();
-        user.getEquippedItems().forEach((slot, itemId) -> {
+        us.getEquippedItems().forEach((slot, itemId) -> {
             if (itemId != 0) {
                 ItemMeta meta = gameDataManager.getItemMetaMap().get(itemId);
                 if (meta != null) {
@@ -189,31 +194,34 @@ public class GameService {
         });
 
         return GamePageDto.builder()
-                .img(String.valueOf(user.getTribeId()))
-                .userName(user.getName())
-                .tribe(mapUserTribe(user))
-                .religion(mapUserReligion(user))
+                .img(String.valueOf(us.getTribeId()))
+                .userName(us.getName())
+                .tribe(mapUserTribe(us))
+                .religion(mapUserReligion(us))
 
                 // 생존 자원 및 골드 (HTML에서 바로 접근 가능)
-                .currentHp(user.getCurrentHp())
-                .maxHp(user.getCombatStats().getMaxHp())
-                .currentMp(user.getCurrentMp())
-                .maxMp(user.getCombatStats().getMaxMp())
-                .currentStamina(user.getCurrentStamina())
-                .maxStamina(user.getCombatStats().getMaxStamina())
-                .currentGold(user.getCurrentGold())
+                .currentHp(us.getCurrentHp())
+                .maxHp(us.getCombatStats().getMaxHp())
+                .currentMp(us.getCurrentMp())
+                .maxMp(us.getCombatStats().getMaxMp())
+                .currentStamina(us.getCurrentStamina())
+                .maxStamina(us.getCombatStats().getMaxStamina())
+                .currentGold(us.getCurrentGold())
 
                 // 데이터 리스트
-                .stats(mapUserStats(user))
+                .stats(mapUserStats(us))
                 .items(inventory)
                 .equippedItems(equippedMap) // 장착창 데이터
 
                 //유저 현재 버프/디버프 목록 전달
-                .activeStatuses(user.getActiveStatuses())
+                .activeStatuses(us.getActiveStatuses())
 
                 // 랜덤 박스 결제 정보
                 .boxPrice(finalPrice)
                 .boxDiscount(discountPercent)
+
+                // 게임로그
+                .gameLogs(gs.getGameLogs())
                 .build();
     }
 
@@ -352,7 +360,7 @@ public class GameService {
     }
 
     public GameStatus getGameStatus() {
-        return gameRepository.findGameStatus();
+        return gameFileRepository.findGameStatus();
     }
 
     /**
@@ -374,18 +382,6 @@ public class GameService {
                 default:
                     result.add("UNKNOWN");
             }
-        }
-        return result;
-    }
-
-    /**
-     * StatId -> String 변환
-     */
-    public List<String> convertStatId(List<Integer> StatIds){
-        List<String> result = new ArrayList<>();
-        for (Integer i : StatIds) {
-            // 메모리에서 스탯 정보 조회
-            result.add(gameDataManager.getStatMetaMap().get(i).getName());
         }
         return result;
     }
@@ -481,7 +477,6 @@ public class GameService {
                 .skillCards(skillCards)
                 .playerRemainingTurns(ds.getPlayerRemainingTurns())
                 .playerMaxTurns(ds.getPlayerMaxTurns() > 0 ? ds.getPlayerMaxTurns() : calculatedMaxTurns)
-                .battleLogs(ds.getBattleLogs())
                 .pendingExp(ds.getPendingExp())
                 .pendingGold(ds.getPendingGold())
                 .build();

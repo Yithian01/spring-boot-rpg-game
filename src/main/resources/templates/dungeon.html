@@ -9,7 +9,7 @@
   <th:block th:replace="~{fragments/status :: statusPanelStyle}"></th:block>
   <th:block th:replace="~{fragments/inventory :: inventoryStyle}"></th:block>
   <th:block th:replace="~{fragments/actions/dungeon-action :: dungeonActionStyle}"></th:block>
-  <th:block th:replace="~{fragments/battle :: battleLogStyle}"></th:block>
+  <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
 </head>
 <body>
 
@@ -31,7 +31,7 @@
         <div style="flex: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0;">
 
           <div style="flex-shrink: 0;">
-            <div th:replace="~{fragments/dungeon-info :: dungeonInventory(${dungeon})}"></div>
+            <div th:replace="~{fragments/infos/dungeon-info :: dungeonInventory(${dungeon})}"></div>
           </div>
         </div>
 
@@ -51,7 +51,7 @@
         <div th:replace="~{fragments/equipment :: equipmentGrid(${game.equippedItems})}"></div>
         <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 15px;">
 
-          <div th:replace="~{fragments/battle :: battleLogPanel(${dungeon.battleLogs})}"></div>
+          <div th:replace="~{fragments/gameLog :: gameLogPanel(${game.gameLogs})}"></div>
         </div>
 
       </div>

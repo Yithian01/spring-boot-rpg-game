@@ -21,7 +21,7 @@ import java.nio.file.Paths;
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public class GameRepository {
+public class GameFileRepository {
     private final ObjectMapper objectMapper;
 
     // 데이터 저장 경로

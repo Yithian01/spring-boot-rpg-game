@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "굶주린 동굴 쥐",
-    "tier": 8,
+    "tier": 9,
     "description": "쓰레기를 먹고 사는 거대 쥐입니다.",
     "stats": {
       "maxHp": 220,
@@ -26,7 +26,7 @@
   {
     "id": 2,
     "name": "독을 품은 이끼 슬라임",
-    "tier": 8,
+    "tier": 9,
     "description": "습한 바닥에서 자라난 슬라임입니다.",
     "stats": {
       "maxHp": 300,
@@ -50,7 +50,7 @@
   {
     "id": 3,
     "name": "병약한 고블린",
-    "tier": 8,
+    "tier": 9,
     "description": "무리에서 쫓겨나 입구 근처를 배회하는 고블린입니다.",
     "stats": {
       "maxHp": 220,
@@ -74,7 +74,7 @@
   {
     "id": 4,
     "name": "떠돌이 해골 병사",
-    "tier": 7,
+    "tier": 9,
     "description": "오래전 죽은 모험가의 유골이 마기에 의해 일어났습니다.",
     "stats": {
       "maxHp": 450,
@@ -98,7 +98,7 @@
   {
     "id": 5,
     "name": "고블린 검사",
-    "tier": 7,
+    "tier": 9,
     "description": "조잡하지만 날카로운 철검을 휘두르는 고블린입니다.",
     "stats": {
       "maxHp": 550,
@@ -122,7 +122,7 @@
   {
     "id": 6,
     "name": "고블린 궁수",
-    "tier": 7,
+    "tier": 9,
     "description": "풀숲에 숨어 독화살을 쏘는 고블린입니다.",
     "stats": {
       "maxHp": 420,
@@ -146,7 +146,7 @@
   {
     "id": 7,
     "name": "굶주린 늑대",
-    "tier": 7,
+    "tier": 9,
     "description": "오랜 시간 굶주려 눈이 뒤집힌 늑대입니다.",
     "stats": {
       "maxHp": 520,
@@ -170,7 +170,7 @@
   {
     "id": 8,
     "name": "바위 등껍질 곰",
-    "tier": 6,
+    "tier": 8,
     "description": "등에 단단한 바위가 돋아난 거대 곰입니다.",
     "stats": {
       "maxHp": 850,
@@ -194,7 +194,7 @@
   {
     "id": 9,
     "name": "그림자 비늘 살무사",
-    "tier": 7,
+    "tier": 9,
     "description": "어두운 덤불 속에 몸을 숨긴 커다란 뱀입니다.",
     "stats": {
       "maxHp": 380,
@@ -218,7 +218,7 @@
   {
     "id": 10,
     "name": "흐느끼는 벤시",
-    "tier": 7,
+    "tier": 9,
     "description": "늪의 안개 속에서 나타나는 원혼입니다.",
     "stats": {
       "maxHp": 350,
@@ -242,7 +242,7 @@
   {
     "id": 11,
     "name": "스켈레톤 궁수",
-    "tier": 7,
+    "tier": 9,
     "description": "늪바닥에 매몰되어 있던 옛 궁수의 유골입니다.",
     "stats": {
       "maxHp": 480,
@@ -266,7 +266,7 @@
   {
     "id": 12,
     "name": "부패한 늪 좀비",
-    "tier": 7,
+    "tier": 9,
     "description": "늪의 독기에 중독되어 썩어가는 시체입니다.",
     "stats": {
       "maxHp": 750,
@@ -290,7 +290,7 @@
   {
     "id": 13,
     "name": "서리발 늑대",
-    "tier": 7,
+    "tier": 9,
     "description": "털 끝마다 고드름이 맺힌 늑대입니다.",
     "stats": {
       "maxHp": 450,
@@ -314,7 +314,7 @@
   {
     "id": 14,
     "name": "눈보라 라이칸스로프",
-    "tier": 6,
+    "tier": 8,
     "description": "설원의 포식자입니다.",
     "stats": {
       "maxHp": 720,
@@ -338,7 +338,7 @@
   {
     "id": 15,
     "name": "굶주린 설인",
-    "tier": 7,
+    "tier": 9,
     "description": "거구의 설인입니다.",
     "stats": {
       "maxHp": 950,
@@ -362,7 +362,7 @@
   {
     "id": 16,
     "name": "고대 얼음 골렘",
-    "tier": 6,
+    "tier": 8,
     "description": "마력으로 응축된 빙하 단단한 덩어리입니다.",
     "stats": {
       "maxHp": 1200,

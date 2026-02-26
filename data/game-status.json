@@ -1,5 +1,5 @@
 {
-  "location" : "DUNGEON",
-  "dungeonId" : 202,
-  "gameLogs" : [ "<span style='color:#ff9f43;'>[전투]</span> 바위 등껍질 곰이(가) 나타났습니다!", "<span style='color:#ffd700;'>[획득] 22 Gold와 55 Exp를 얻었습니다!</span>", "⚔️ <b style='color:#ffffff;'>화염구</b>! 굶주린 늑대에게 <b style='color:#ff4d4d;'>443</b>의 피해!", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[해제] \uD83E\uDE78 BLEED 효과 종료</span>", "\uD83E\uDE78 <b style='color:#ff4d4d;'>BLEED</b> 피해! (-16 HP)", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDE78 하이 엘프 (High Elf)이(가) BLEED 효과를 저항했습니다.</span>", "<span style='color:#ff4d4d;'>[피격]</span> 굶주린 늑대의 광폭한 난도질! <b>46</b>의 피해!", "\uD83D\uDD25 <b style='color:#ff4d4d;'>화염구</b> 피해! (굶주린 늑대 -82 HP)", "<b style='color:#ff9f43;'>▶ 굶주린 늑대의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "\uD83D\uDCA8 <span style='color:#ffcc00;'>[회피] 굶주린 늑대이(가) 당신의 <b>화염구</b> 공격을 회피했습니다!</span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "\uD83E\uDE78 <b style='color:#ff4d4d;'>BLEED</b> 피해! (-16 HP)", "<span style='color:#ffffff;'>[효과]</span> 하이 엘프 (High Elf)에게 \uD83E\uDE78 <b>BLEED</b> 부여! (2턴 (틱당 16))", "<span style='color:#ff4d4d;'>[피격]</span> 굶주린 늑대의 광폭한 난도질! <b>46</b>의 피해!", "\uD83D\uDD25 <b style='color:#ff4d4d;'>화염구</b> 피해! (굶주린 늑대 -82 HP)", "<b style='color:#ff9f43;'>▶ 굶주린 늑대의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#ff4500;'>[효과]</span> 굶주린 늑대에게 \uD83D\uDD25 <b>BURN</b> 부여! (3턴 (틱당 82))" ]
+  "location" : "TOWN",
+  "dungeonId" : null,
+  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ]
 }

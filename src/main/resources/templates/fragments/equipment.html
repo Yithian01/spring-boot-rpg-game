@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="equipmentStyle">
+    <style>
+        /* 장비창 컨테이너 */
+        .equip-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, 80px) !important; /* 3열 고정 */
+            grid-template-rows: repeat(3, 80px) !important;    /* 3행 고정 */
+            gap: 12px !important;
+            background: #111;
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 15px;
+            width: fit-content;
+            margin: 10px auto;
+        }
+
+        /* 개별 슬롯 */
+        .slot {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid #333;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .slot:hover { border-color: #ffd700; background: #222; }
+        .slot.empty { border: none !important; background: transparent !important; }
+
+        /* 아이템 이미지 */
+        .item-icon-img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+
+        /* 빈 슬롯 이모지 */
+        .slot > span { font-size: 1.8rem; opacity: 0.3; pointer-events: none; }
+
+        /* 해제 버튼 */
+        .unequip-btn {
+            background: none; border: none; padding: 0;
+            width: 100%; height: 100%; cursor: pointer;
+        }
+
+        /* 등급별 테두리 (쨍하게) */
+        .border-COMMON { border-color: #555 !important; }
+        .border-UNCOMMON { border-color: #1eff00 !important; }
+        .border-RARE { border-color: #0070dd !important; }
+        .border-EPIC { border-color: #a335ee !important; }
+        .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 10px #ff8000; }
+    </style>
+</th:block>
+
+<div th:fragment="equipmentGrid(equippedItems)" class="equip-grid">
+    <th:block th:with="slotMap=${ {
+        '0':'NECKLACE', '1':'HEAD', '2':'RING',
+        '3':'WEAPON',   '4':'BODY', '5':'SUB_WEAPON',
+        '6':'EMPTY',    '7':'BOOTS','8':'EMPTY'
+    } },
+    icons=${ {
+        'NECKLACE':'📿', 'HEAD':'👑', 'RING':'💍',
+        'WEAPON':'⚔️',   'BODY':'👕', 'SUB_WEAPON':'🛡️',
+        'BOOTS':'👞'
+    } }">
+
+        <div th:each="i : ${#numbers.sequence(0, 8)}"
+             class="slot"
+             th:classappend="${slotMap['' + i] != 'EMPTY' && equippedItems[slotMap['' + i]] != null ? 'border-' + equippedItems[slotMap['' + i]].grade : (slotMap['' + i] == 'EMPTY' ? 'empty' : '')}">
+
+            <div th:if="${slotMap['' + i] != 'EMPTY' && equippedItems[slotMap['' + i]] != null}" class="full-size">
+                <form action="/inventory/unequip" method="post" style="width:100%; height:100%;">
+                    <input type="hidden" name="slot" th:value="${slotMap['' + i]}">
+                    <button type="submit" class="unequip-btn"
+                            th:data-name="${equippedItems[slotMap['' + i]].name}"
+                            th:data-grade="${equippedItems[slotMap['' + i]].grade}"
+                            th:data-subtype="${equippedItems[slotMap['' + i]].subType}"
+                            th:data-bonuses="${#strings.listJoin(equippedItems[slotMap['' + i]].statBonuses, ' / ')}"
+                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
+                        <img th:src="${equippedItems[slotMap['' + i]].icon}" class="item-icon-img">
+                    </button>
+                </form>
+            </div>
+
+            <span th:if="${slotMap['' + i] != 'EMPTY' && equippedItems[slotMap['' + i]] == null}"
+                  th:text="${icons[slotMap['' + i]]}"></span>
+        </div>
+    </th:block>
+</div>
+</html>

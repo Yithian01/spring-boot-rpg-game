@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:fragment="dungeonInventory(dungeon)" class="dungeon-info-wrapper">
+    <style>
+        .dungeon-info-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            height: 100%;
+            color: #eee;
+        }
+
+        /* 몬스터 카드 및 보상 박스 공통 */
+        .box-sub, .monster-card, .reward-box, .sustainability-box {
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #111;
+        }
+
+        /* 몬스터 카드 애니메이션 및 특수 효과 */
+        .monster-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            min-height: 480px;
+            transition: border-color 0.3s;
+        }
+
+        /* 체력/마나 바 공통 스타일 */
+        .status-bar-bg {
+            width: 100%;
+            height: 10px;
+            background: #222;
+            border-radius: 2px;
+            border: 1px solid #444;
+            overflow: hidden;
+        }
+
+        /* 등급별 텍스트 색상 */
+        .grade-badge {
+            background: #c0392b;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        /* 플레이어 액션 포인트(구슬) */
+        .action-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid #ff9f43;
+            transition: background 0.3s;
+        }
+
+        /* 유지력 게이지 경고 애니메이션 */
+        @keyframes sustainability-blink {
+            0%, 100% { opacity: 1; color: #ff5252; }
+            50% { opacity: 0.5; color: #fff; }
+        }
+
+        .warning-text {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #ff5252;
+            font-weight: bold;
+            animation: sustainability-blink 1.5s infinite;
+        }
+
+        /* 전리품 수거 버튼 */
+        .btn-collect {
+            width: 100%;
+            background: #2b8a3e;
+            color: #fff;
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: filter 0.2s;
+        }
+        .btn-collect:hover {
+            filter: brightness(1.2);
+        }
+    </style>
+
+    <div class="box-sub progress-section" style="background: #1a1a1a; padding: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 6px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="color: #ffd700; font-size: 0.75rem; font-weight: bold;" th:text="${dungeon.dungeonName}"></span>
+                <span style="color: #fff; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 5px;">
+                    <i style="color: #ff4d4d; font-style: normal;">🍃</i>
+                    <span>[[${dungeon.currentFloor}]] 층</span>
+                </span>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.6rem; color: #666;">EXPLORATION</div>
+                <span style="color: #51cf66; font-family: monospace; font-weight: bold; font-size: 1rem;" th:text="${dungeon.progress} + '%'"></span>
+            </div>
+        </div>
+        <div style="width: 100%; height: 6px; background: #000; border-radius: 3px; overflow: hidden; border: 1px solid #444;">
+            <div th:style="'width:' + ${dungeon.progress} + '%; height:100%; background: linear-gradient(90deg, #2b8a3e, #51cf66); transition: width 0.3s;'"></div>
+        </div>
+    </div>
+
+    <div class="monster-card"
+         th:style="${dungeon.activeMonster != null and dungeon.activeMonster.currentHp > 0 ? 'background: linear-gradient(180deg, rgba(40, 0, 0, 0.6) 0%, rgba(10, 10, 10, 0.9) 100%);' : 'background: #111;'}">
+
+        <div th:if="${dungeon.activeMonster != null}" style="display: flex; flex-direction: column; height: 100%; z-index: 1;">
+            <div style="position: relative; width: 100%; height: 180px; overflow: hidden; background: #000; border-bottom: 1px solid #444;">
+                <img th:src="@{'/images/monsters/' + ${dungeon.activeMonster.monsterId} + '.png'}"
+                     th:style="${dungeon.activeMonster.currentHp <= 0} ? 'filter: grayscale(100%) brightness(40%); width: 100%; height: 100%; object-fit: cover;' : 'width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.5s;'" />
+
+                <div th:if="${dungeon.activeMonster.currentHp <= 0}"
+                     style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); color: #ff4d4d; font-size: 2.2rem; font-weight: bold; text-shadow: 0 0 10px #000; border: 4px solid #ff4d4d; padding: 5px 15px; border-radius: 10px; z-index: 2;">
+                    DEFEATED
+                </div>
+
+                <div style="position: absolute; top: 10px; left: 10px;">
+                    <span class="grade-badge">[[${dungeon.activeMonster.tier}]] GRADE</span>
+                </div>
+                <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%); padding: 15px;">
+                    <h2 th:style="${dungeon.activeMonster.currentHp <= 0} ? 'color: #777;' : 'color: #ff4d4d;'" style="font-size: 1.2rem; margin: 0; text-shadow: 2px 2px 4px #000;" th:text="${dungeon.activeMonster.name}"></h2>
+                </div>
+            </div>
+
+            <div style="padding: 12px; display: flex; flex-direction: column; gap: 10px; flex: 1; overflow-y: auto;">
+                <div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; font-family: monospace;">
+                        <span style="color: #ff8787;">VITALITY</span>
+                        <span style="color: #fff;" th:text="${dungeon.activeMonster.currentHp} + ' / ' + ${dungeon.activeMonster.activeStats.maxHp}"></span>
+                    </div>
+                    <div class="status-bar-bg">
+                        <div th:style="'width:' + (${dungeon.activeMonster.activeStats.maxHp > 0 ? (dungeon.activeMonster.currentHp * 100 / dungeon.activeMonster.activeStats.maxHp) : 0}) + '%; height:100%; background: ' + (${dungeon.activeMonster.currentHp <= 0} ? '#444' : 'linear-gradient(90deg, #820000, #ff4d4d)') + '; transition: width 0.4s;'"></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.75rem; font-family: monospace;">
+                        <span style="color: #4dabf7;">MANA</span>
+                        <span style="color: #fff;" th:text="${dungeon.activeMonster.currentMp} + ' / ' + ${dungeon.activeMonster.activeStats.maxMp}"></span>
+                    </div>
+                    <div class="status-bar-bg">
+                        <div th:style="'width:' + (${dungeon.activeMonster.activeStats.maxMp > 0 ? (dungeon.activeMonster.currentMp * 100 / dungeon.activeMonster.activeStats.maxMp) : 0}) + '%; height:100%; background: ' + (${dungeon.activeMonster.currentHp <= 0} ? '#444' : 'linear-gradient(90deg, #003366, #3399ff)') + '; transition: width 0.4s;'"></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 4px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">물리공격</span><span style="color: #ff8787;" th:text="${dungeon.activeMonster.activeStats.meleeAtk}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">마법공격</span><span style="color: #da77f2;" th:text="${dungeon.activeMonster.activeStats.magicAtk}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">물리방어</span><span style="color: #74c0fc;" th:text="${dungeon.activeMonster.activeStats.physDef}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">마법저항</span><span style="color: #91a7ff;" th:text="${dungeon.activeMonster.activeStats.magRes}"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">회피율</span><span style="color: #63e6be;" th:text="${dungeon.activeMonster.activeStats.dodge} + '%'"></span></div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.7rem;"><span style="color: #888;">치명타</span><span style="color: #ffd43b;" th:text="${dungeon.activeMonster.activeStats.critRate} + '%'"></span></div>
+                </div>
+
+                <div style="margin-top: auto; padding-top: 8px; border-top: 1px dashed #444;">
+                    <div th:if="${dungeon.activeMonster.currentHp > 0}" style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #ff9f43; font-size: 0.7rem; font-weight: bold;">PLAYER ACTION</span>
+                        <div style="display: flex; gap: 4px;">
+                            <th:block th:if="${dungeon.playerMaxTurns > 0}" th:each="i : ${#numbers.sequence(1, dungeon.playerMaxTurns)}">
+                                <div class="action-dot" th:style="${i <= dungeon.playerRemainingTurns} ? 'background: #ff9f43;' : 'background: transparent;'"></div>
+                            </th:block>
+                        </div>
+                    </div>
+                    <div th:if="${dungeon.activeMonster.currentHp <= 0}">
+                        <form action="/dungeon/collect" method="post" style="margin: 0;">
+                            <button type="submit" class="btn-collect">전리품 수거 및 이동</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${dungeon.activeMonster == null}" style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 20px;">
+            <div style="color: #444; font-size: 2rem; margin-bottom: 20px;"><i class="fas fa-eye-slash"></i></div>
+            <p style="margin: 0; color: #666; font-size: 0.9rem; font-style: italic;">수색 중... 적의 기운을 감지하고 있습니다.</p>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="reward-box" style="padding: 8px; text-align: center;">
+            <div style="font-size: 0.6rem; color: #888;">REWARD EXP</div>
+            <div style="color: #d6aaff; font-weight: bold;" th:text="'+ ' + ${dungeon.pendingExp}"></div>
+        </div>
+        <div class="reward-box" style="padding: 8px; text-align: center;">
+            <div style="font-size: 0.6rem; color: #888;">REWARD GOLD</div>
+            <div style="color: #ffd700; font-weight: bold;" th:text="'+ ' + ${dungeon.pendingGold}"></div>
+        </div>
+    </div>
+
+    <div class="sustainability-box" style="padding: 15px; border-color: #5d4037; box-shadow: inset 0 0 15px rgba(0,0,0,0.5);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 0.85rem; color: #ff9f43; font-weight: bold;">⏳ 탐험 유지력</span>
+                <span style="font-size: 0.7rem; color: #777;">Sustainability</span>
+            </div>
+            <div style="text-align: right;">
+                <span style="font-family: monospace; font-size: 1.1rem; font-weight: bold; color: #fff;" th:text="${dungeon.actionCount}"></span>
+                <span style="color: #666;"> / </span>
+                <span style="color: #aaa;" th:text="${dungeon.maxActionCount}"></span>
+            </div>
+        </div>
+        <div style="width: 100%; height: 12px; background: #222; border-radius: 6px; overflow: hidden; border: 1px solid #444; position: relative;">
+            <div style="position: absolute; width: 100%; height: 100%; background-image: linear-gradient(90deg, transparent 19%, rgba(255,255,255,0.05) 20%); background-size: 20% 100%;"></div>
+            <div th:style="'width:' + (${dungeon.maxActionCount > 0 ? (dungeon.actionCount * 100 / dungeon.maxActionCount) : 0}) + '%;
+                      height:100%;
+                      background: linear-gradient(90deg, #d63031, #ff7675);
+                      box-shadow: 0 0 10px rgba(214, 48, 49, 0.6);
+                      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);'">
+            </div>
+        </div>
+        <div th:if="${dungeon.actionCount >= dungeon.maxActionCount * 0.8}" class="warning-text">
+            ⚠️ 던전 유지력 한계 도달! 곧 귀환이 시작됩니다.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

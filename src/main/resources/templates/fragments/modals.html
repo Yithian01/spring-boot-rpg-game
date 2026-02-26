@@ -29,210 +29,24 @@
         </div>
     </div>
 
-    <div th:fragment="trainModal" id="trainModal" class="gamble-modal-overlay"> <div class="gamble-content" style="border-color: #3498db;">
-        <h2 style="color: #3498db;">🧘 심신 수련</h2>
-        <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">단련할 분야를 선택하세요. (턴과 스태미나가 소모됩니다)</p>
-
-        <form action="/town/train" method="post">
-            <div class="modal-actions" style="display: grid; gap: 10px;">
-                <button type="submit" name="type" value="STRENGTH" class="btn-modal" style="background: #c0392b;">
-                    💪 근력 훈련 (체력/공격력)
-                </button>
-                <button type="submit" name="type" value="AGILITY" class="btn-modal" style="background: #27ae60;">
-                    🏃 민첩 훈련 (회피/치명타)
-                </button>
-                <button type="submit" name="type" value="INTELLIGENCE" class="btn-modal" style="background: #2980b9;">
-                    🔮 지능 훈련 (마나/마법력)
-                </button>
-            </div>
-            <button type="button" class="btn-modal btn-menu" onclick="closeTrain()" style="margin-top: 15px; width: 100%;">취소</button>
-        </form>
-    </div>
-    </div>
-
-    <div th:fragment="equipmentGrid(equippedItems)" class="equip-grid">
-        <div class="slot" title="목걸이" th:classappend="${equippedItems['NECKLACE'] != null ? 'border-' + equippedItems['NECKLACE'].grade : ''}">
-            <div th:unless="${equippedItems['NECKLACE'] == null}" class="full-size">
-                <form action="/inventory/unequip" method="post" class="full-size">
-                    <input type="hidden" name="slot" value="NECKLACE">
-                    <button type="submit" class="unequip-btn"
-                            th:data-name="${equippedItems['NECKLACE'].name}"
-                            th:data-grade="${equippedItems['NECKLACE'].grade}"
-                            th:data-subtype="${equippedItems['NECKLACE'].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems['NECKLACE'].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
-                        <img th:src="${equippedItems['NECKLACE'].icon}" class="item-icon-img">
-                    </button>
-                </form>
-            </div>
-            <span th:if="${equippedItems['NECKLACE'] == null}">📿</span>
-        </div>
-
-        <div class="slot" title="머리" th:classappend="${equippedItems['HEAD'] != null ? 'border-' + equippedItems['HEAD'].grade : ''}">
-            <div th:unless="${equippedItems['HEAD'] == null}" class="full-size">
-                <form action="/inventory/unequip" method="post" class="full-size">
-                    <input type="hidden" name="slot" value="HEAD">
-                    <button type="submit" class="unequip-btn"
-                            th:data-name="${equippedItems['HEAD'].name}"
-                            th:data-grade="${equippedItems['HEAD'].grade}"
-                            th:data-subtype="${equippedItems['HEAD'].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems['HEAD'].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
-                        <img th:src="${equippedItems['HEAD'].icon}" class="item-icon-img">
-                    </button>
-                </form>
-            </div>
-            <span th:if="${equippedItems['HEAD'] == null}">👑</span>
-        </div>
-
-        <div class="slot" title="반지" th:classappend="${equippedItems['RING'] != null ? 'border-' + equippedItems['RING'].grade : ''}">
-            <div th:unless="${equippedItems['RING'] == null}" class="full-size">
-                <form action="/inventory/unequip" method="post" class="full-size">
-                    <input type="hidden" name="slot" value="RING">
-                    <button type="submit" class="unequip-btn"
-                            th:data-name="${equippedItems['RING'].name}"
-                            th:data-grade="${equippedItems['RING'].grade}"
-                            th:data-subtype="${equippedItems['RING'].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems['RING'].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
-                        <img th:src="${equippedItems['RING'].icon}" class="item-icon-img">
-                    </button>
-                </form>
-            </div>
-            <span th:if="${equippedItems['RING'] == null}">💍</span>
-        </div>
-
-        <div class="slot" title="주무기" th:classappend="${equippedItems['WEAPON'] != null ? 'border-' + equippedItems['WEAPON'].grade : ''}">
-            <div th:unless="${equippedItems['WEAPON'] == null}" class="full-size">
-                <form action="/inventory/unequip" method="post" class="full-size">
-                    <input type="hidden" name="slot" value="WEAPON">
-                    <button type="submit" class="unequip-btn"
-                            th:data-name="${equippedItems['WEAPON'].name}"
-                            th:data-grade="${equippedItems['WEAPON'].grade}"
-                            th:data-subtype="${equippedItems['WEAPON'].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems['WEAPON'].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
-                        <img th:src="${equippedItems['WEAPON'].icon}" class="item-icon-img">
-                    </button>
-                </form>
-            </div>
-            <span th:if="${equippedItems['WEAPON'] == null}">⚔️</span>
-        </div>
-
-        <div class="slot" title="갑옷" th:classappend="${equippedItems['BODY'] != null ? 'border-' + equippedItems['BODY'].grade : ''}">
-            <div th:unless="${equippedItems['BODY'] == null}" class="full-size">
-                <form action="/inventory/unequip" method="post" class="full-size">
-                    <input type="hidden" name="slot" value="BODY">
-                    <button type="submit" class="unequip-btn"
-                            th:data-name="${equippedItems['BODY'].name}"
-                            th:data-grade="${equippedItems['BODY'].grade}"
-                            th:data-subtype="${equippedItems['BODY'].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems['BODY'].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
-                        <img th:src="${equippedItems['BODY'].icon}" class="item-icon-img">
-                    </button>
-                </form>
-            </div>
-            <span th:if="${equippedItems['BODY'] == null}">👕</span>
-        </div>
-
-        <div class="slot" title="보조무기" th:classappend="${equippedItems['SUB_WEAPON'] != null ? 'border-' + equippedItems['SUB_WEAPON'].grade : ''}">
-            <div th:unless="${equippedItems['SUB_WEAPON'] == null}" class="full-size">
-                <form action="/inventory/unequip" method="post" class="full-size">
-                    <input type="hidden" name="slot" value="SUB_WEAPON">
-                    <button type="submit" class="unequip-btn"
-                            th:data-name="${equippedItems['SUB_WEAPON'].name}"
-                            th:data-grade="${equippedItems['SUB_WEAPON'].grade}"
-                            th:data-subtype="${equippedItems['SUB_WEAPON'].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems['SUB_WEAPON'].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
-                        <img th:src="${equippedItems['SUB_WEAPON'].icon}" class="item-icon-img">
-                    </button>
-                </form>
-            </div>
-            <span th:if="${equippedItems['SUB_WEAPON'] == null}">🛡️</span>
-        </div>
-
-        <div class="slot empty"></div>
-
-        <div class="slot" title="신발" th:classappend="${equippedItems['BOOTS'] != null ? 'border-' + equippedItems['BOOTS'].grade : ''}">
-            <div th:unless="${equippedItems['BOOTS'] == null}" class="full-size">
-                <form action="/inventory/unequip" method="post" class="full-size">
-                    <input type="hidden" name="slot" value="BOOTS">
-                    <button type="submit" class="unequip-btn"
-                            th:data-name="${equippedItems['BOOTS'].name}"
-                            th:data-grade="${equippedItems['BOOTS'].grade}"
-                            th:data-subtype="${equippedItems['BOOTS'].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems['BOOTS'].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
-                        <img th:src="${equippedItems['BOOTS'].icon}" class="item-icon-img">
-                    </button>
-                </form>
-            </div>
-            <span th:if="${equippedItems['BOOTS'] == null}">👞</span>
-        </div>
-
-        <div class="slot empty"></div>
-    </div>
-
-    <div th:fragment="inventoryList(items)" style="height: 100%; display: flex; flex-direction: column; min-height: 0;">
-        <div style="flex: 1; overflow-y: auto; min-height: 0; padding-right: 5px;">
-            <ul class="inventory-list" style="list-style: none; padding: 0; margin: 0;">
-                <li th:if="${#lists.isEmpty(items)}" style="padding:20px; text-align:center; color:#555;">가방이 비어있습니다.</li>
-                <li th:each="item : ${items}" class="inventory-item" style="display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #333;">
-                    <div class="item-icon-wrapper" th:classappend="${item.grade != null ? 'border-' + item.grade : ''}"
-                         style="width: 45px; height: 45px; margin-right: 12px; background: #1a1a1a; border: 2px solid #444; border-radius: 4px; overflow: hidden; flex-shrink: 0;">
-                        <img th:src="${item.icon}" style="width: 100%; height: 100%; object-fit: cover;"
-                             onmouseover="showItemDescription(this)" onmouseout="clearDescription()"
-                             th:data-name="${item.name}" th:data-grade="${item.grade}" th:data-subtype="${item.subType}"
-                             th:data-bonuses="${#strings.listJoin(item.statBonuses, ', ')}">
+    <div th:fragment="trainModal" id="trainModal" class="gamble-modal-overlay">
+        <div class="gamble-content" style="border-color: #3498db;">
+            <h2 style="color: #3498db;">🧘 심신 수련</h2>
+                <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">단련할 분야를 선택하세요. (턴과 스태미나가 소모됩니다)</p>
+                <form action="/town/train" method="post">
+                    <div class="modal-actions" style="display: grid; gap: 10px;">
+                        <button type="submit" name="type" value="STRENGTH" class="btn-modal" style="background: #c0392b;">
+                            💪 근력 훈련 (체력/공격력)
+                        </button>
+                        <button type="submit" name="type" value="AGILITY" class="btn-modal" style="background: #27ae60;">
+                            🏃 민첩 훈련 (회피/치명타)
+                        </button>
+                        <button type="submit" name="type" value="INTELLIGENCE" class="btn-modal" style="background: #2980b9;">
+                            🔮 지능 훈련 (마나/마법력)
+                        </button>
                     </div>
-                    <div class="item-info" style="flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; text-align: left;">
-                    <span class="item-name" th:classappend="${item.grade != null ? 'text-' + item.grade : ''}" style="font-weight: bold; white-space: nowrap; text-overflow: ellipsis; font-size: 0.95rem;">
-                        <span th:text="${item.name}"></span>
-                        <span th:if="${item.quantity > 1}" style="color: #00ff00; font-size: 0.9em;" th:text="' x' + ${item.quantity}"></span>
-
-                    </span>
-                        <small style="color: #ffd700; font-size: 0.8rem;" th:text="${#strings.listJoin(item.statBonuses, ', ')}"></small>
-                    </div>
-                    <div class="item-btns" style="display: flex; gap: 4px; flex-shrink: 0;">
-                        <form th:if="${item.slot != null and item.slot != 'NONE'}" action="/inventory/equip" method="post" style="margin: 0;">
-                            <input type="hidden" name="itemId" th:value="${item.id}">
-                            <input type="hidden" name="slot" th:value="${item.slot}">
-                            <button type="submit" class="btn-quick" style="background: #2a4a2a; border: 1px solid #4a6a4a; color: #fff;">장착</button>
-                        </form>
-
-                        <form th:if="${item.type == 'CONSUMABLE'}" action="/inventory/consume" method="post" style="margin: 0;">
-                            <input type="hidden" name="itemId" th:value="${item.id}">
-                            <button type="submit" class="btn-quick" style="background: #2a3a5a; border: 1px solid #4a5a7a; color: #fff;">사용</button>
-                        </form>
-
-                        <form action="/inventory/sell" method="post" style="margin: 0;" onsubmit="return confirm('정말로 판매하시겠습니까?');">
-                            <input type="hidden" name="itemId" th:value="${item.id}">
-                            <button type="submit" class="btn-quick" style="background: #5a2a2a; border: 1px solid #7a3a3a; color: #fff;">판매</button>
-                        </form>
-                    </div>
-                </li>
-            </ul>
+                        <button type="button" class="btn-modal btn-menu" onclick="closeTrain()" style="margin-top: 15px; width: 100%;">취소</button>
+                </form>
         </div>
     </div>
-
-    <div th:fragment="battleLogPanel(logs)" class="gamble-content"
-         style="display: flex; flex-direction: column; border-color: #ff4d4d; width: 100%; height: 100%; margin: 0; padding: 15px; box-sizing: border-box;">
-
-        <h2 style="color: #ff4d4d; margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #333; padding-bottom: 10px;">
-            📜 전투 상세 기록
-        </h2>
-
-        <div id="battleLogs" class="custom-scroll"
-             style="flex: 1; background: #000; border: 1px solid #222; padding: 10px; overflow-y: auto; text-align: left; font-size: 0.85rem; line-height: 1.6; border-radius: 4px;">
-            <div th:each="log : ${logs}" th:utext="${log}"
-                 style="margin-bottom: 6px; border-bottom: 1px solid #1a1a1a; padding-bottom: 4px; color: #ccc;">
-            </div>
-            <div th:if="${#lists.isEmpty(logs)}" style="color: #444; text-align: center; padding-top: 30px; font-style: italic;">
-                전투의 흔적이 없습니다...
-            </div>
-        </div>
-    </div>
-
 </div>

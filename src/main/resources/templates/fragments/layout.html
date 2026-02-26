@@ -1,9 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="gameHeader" class="game-header">
-    <h1 class="game-logo">DARK TOWN</h1>
-    <a href="/game/" class="btn-home"><span>🏠</span> 메인으로</a>
-</div>
+
+<style th:fragment="commonStyle">
+    /* ===== 1. 기초 초기화 ===== */
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        background-color: #121212;
+        color: #e0e0e0;
+        font-family: "Pretendard", "Malgun Gothic", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* ===== 2. 공통 헤더 및 시스템 UI ===== */
+    .game-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #333;
+        flex-shrink: 0;
+    }
+    .game-logo { font-size: 1.2rem; font-weight: bold; color: #666; margin: 0; letter-spacing: 1px; }
+    .btn-home {
+        text-decoration: none; background-color: #252525; color: #aaa;
+        padding: 6px 12px; border: 1px solid #444; border-radius: 6px;
+        font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: all 0.2s;
+    }
+    .btn-home:hover { background-color: #333; color: #fff; border-color: #666; }
+
+    .system-message {
+        position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.9); color: #ffd700; padding: 12px 35px;
+        border: 1px solid #ffd700; border-radius: 30px; z-index: 9999;
+        font-weight: bold; box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        animation: slideDownFade 3s forwards; pointer-events: none;
+    }
+
+    /* ===== 3. 공통 모달 (게임오버 등) ===== */
+    .modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 10000;
+    }
+    .modal-content {
+        background: #1a1a1a; border: 3px solid #ff4d4d; border-radius: 12px;
+        padding: 30px; width: 400px; text-align: center; box-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
+        animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    /* ===== 4. 공통 애니메이션 ===== */
+    @keyframes slideDownFade { 0% { opacity: 0; top: 10px; } 15% { opacity: 1; top: 30px; } 85% { opacity: 1; top: 30px; } 100% { opacity: 0; top: 20px; } }
+    @keyframes modalPop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @keyframes blink { 50% { opacity: 0.6; } }
+</style>
 
 <style th:fragment="townStyle">
     * { box-sizing: border-box; }
@@ -60,44 +113,6 @@
         min-width: 320px !important;
     }
 
-    /* 헤더 스타일 */
-    .game-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #333;
-        flex-shrink: 0;
-    }
-
-    .game-logo {
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #666;
-        margin: 0;
-        letter-spacing: 1px;
-    }
-
-    .btn-home {
-        text-decoration: none;
-        background-color: #252525;
-        color: #aaa;
-        padding: 6px 12px;
-        border: 1px solid #444;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: all 0.2s;
-    }
-
-    .btn-home:hover {
-        background-color: #333;
-        color: #fff;
-        border-color: #666;
-    }
-
     /* ===== 3. 상단 패널 ===== */
     .top-panel {
         display: grid;
@@ -118,123 +133,6 @@
         overflow: hidden;
     }
 
-    /* 프로필 영역 */
-    .profile-header {
-        display: flex;
-        gap: 15px;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #444;
-        padding-bottom: 10px;
-        align-items: center;
-        flex-shrink: 0;
-    }
-
-    .profile-img {
-        width: 70px;
-        height: 70px;
-        border: 2px solid #555;
-        border-radius: 6px;
-        background-color: #000;
-        object-fit: cover;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    .profile-info-text {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-    }
-
-    .profile-name-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1.2em;
-        font-weight: bold;
-    }
-
-    .profile-sub-row {
-        font-size: 0.85em;
-        color: #888;
-        display: flex;
-        gap: 10px;
-    }
-
-    /* 상태바 */
-    .status-bars {
-        background: #1e1e1e;
-        padding: 10px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        flex-shrink: 0;
-    }
-    .bar-row { display: flex; align-items: center; margin-bottom: 5px; font-size: 0.85em; }
-    .bar-row:last-child { margin-bottom: 0; }
-    .bar-label { width: 30px; font-weight: bold; text-align: center; margin-right: 5px;}
-    .bar-container {
-        flex-grow: 1; height: 10px; background-color: #444;
-        border-radius: 5px; overflow: hidden; position: relative;
-    }
-    .bar-fill { height: 100%; transition: width 0.3s ease-in-out; }
-    .hp-fill { background-color: #ff4d4d; }
-    .mp-fill { background-color: #4da6ff; }
-    .st-fill { background-color: #70db70; }
-    .bar-text { font-size: 0.75em; color: #aaa; width: 60px; text-align: right; margin-left: 5px;}
-
-    /* 스탯 */
-    .stat-scroll {
-        flex-grow: 1;
-        overflow-y: auto;
-        background: #1e1e1e;
-        border: 1px solid #333;
-        border-radius: 4px;
-        padding: 5px;
-        margin-bottom: 5px;
-    }
-    .stat-scroll::-webkit-scrollbar, .inventory-list::-webkit-scrollbar { width: 8px; }
-    .stat-scroll::-webkit-scrollbar-track, .inventory-list::-webkit-scrollbar-track { background: #2a2a2a; }
-    .stat-scroll::-webkit-scrollbar-thumb, .inventory-list::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
-
-    .stat-row {
-        display: flex; justify-content: space-between;
-        padding: 8px 10px; border-bottom: 1px solid #2a2a2a;
-        cursor: help; transition: background 0.1s; font-size: 0.95em;
-    }
-    .stat-row:hover { background-color: #333; }
-    .grade-S { color: #ffd700; font-weight: bold; text-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
-    .grade-A { color: #d6aaff; }
-    .grade-B { color: #8ecae6; }
-    .grade-C { color: #99e2b4; }
-    .grade-F { color: #777; }
-
-    .description-box {
-        flex-shrink: 0;
-        background-color: #111;
-        border: 1px solid #d4af37;
-        border-radius: 4px;
-        padding: 8px;
-
-        height: auto;
-        min-height: 45px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        color: #ffd700;
-        font-size: 0.85em;
-        line-height: 1.3;
-        word-break: keep-all;
-        text-align: center;
-        transition: all 0.2s;
-    }
-
-    .desc-highlight {
-        color: #fff;
-        font-weight: bold;
-        margin-right: 3px;
-    }
 
     /* 마을 정보 및 인벤토리 */
     .town-section {
@@ -270,64 +168,6 @@
     .tax-unpaid { color: #ff4d4d; font-weight: bold; animation: blink 2s infinite; }
     @keyframes blink { 50% { opacity: 0.6; } }
 
-    /* 액션 패널 */
-    .action-panel {
-        flex-shrink: 0;
-        height: 240px; /* 160px에서 240px로 높이 증가 */
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 80px); /* 행 높이를 75px로 고정 */
-        gap: 8px;
-    }
-
-    /* 상점 버튼 전용 색상 추가 (예: 갈색/골드 계열) */
-    .btn-shop { background: #d35400; }
-    /* 빈 버튼 스타일 (선택사항) */
-    .btn-empty { background: #222; border: 1px dashed #444; cursor: default; pointer-events: none; }
-
-    /* 수정된 버튼 스타일 */
-    .action-btn {
-        width: 100%;        /* 부모 그리드 너비에 맞춤 */
-        height: 80px;       /* 고정 높이 부여 (콘텐츠가 많아도 동일하게) */
-        border: none;
-        border-radius: 8px;
-        font-size: 0.95rem; /* 글자 크기 살짝 조정 */
-        font-weight: bold;
-        color: #fff;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center; /* 중앙 정렬 */
-        padding: 5px;            /* 내부 패딩 축소 */
-        gap: 2px;               /* 요소 간 간격 축소 */
-        box-shadow: 0 4px 0 rgba(0,0,0,0.3);
-        font-family: inherit;
-        overflow: hidden;       /* 넘치는 콘텐츠 숨김 */
-    }
-
-    /* 아이콘 크기 고정 */
-    .action-btn span {
-        font-size: 1.4rem;  /* 기존 1.8rem에서 약간 축소하여 공간 확보 */
-        margin-bottom: 0;
-    }
-
-    /* 비밀 상자 버튼 하단의 텍스트 div 스타일 정밀 조정 */
-    .btn-shop div {
-        margin-top: 0 !important;
-        line-height: 1.1;
-    }
-    .action-btn:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 6px 0 rgba(0,0,0,0.3); }
-    .action-btn:active { transform: translateY(2px); box-shadow: 0 0 0 rgba(0,0,0,0.3); }
-    .action-btn span { font-size: 1.8em; margin-bottom: -5px; }
-
-    .btn-tax { background: #57606f; }
-    .btn-work { background: #e67e22; }
-    .btn-gamble { background: #9b59b6; }
-    .btn-train { background: #3498db; }
-    .btn-rest { background: #2ecc71; }
-    .btn-dungeon { background: linear-gradient(135deg, #c0392b, #8e44ad); border: 1px solid #e74c3c; font-size: 1.2em; }
 
     /* ===== 4. 시스템 메시지 (Toast) ===== */
     .system-message {
@@ -614,273 +454,29 @@
     }
 </style>
 
+
 <style th:fragment="dungeonStyle">
-    /* 1. 전체 컨테이너 및 기본 레이아웃 */
     .container {
-        width: 1600px !important;
-        max-width: 98vw !important;
-        height: 95vh !important;
-        display: flex !important;
-        flex-direction: column !important;
-        overflow: hidden !important;
-        background: #121212; /* 기본 배경색 추가 */
-        color: #eee;
+        width: 1600px !important; max-width: 98vw !important;
+        height: 95vh !important; display: flex !important;
+        flex-direction: column !important; overflow: hidden !important;
+        background: #121212; margin: 0 auto;
+        border: 1px solid #333; border-radius: 12px; padding: 15px; gap: 10px;
     }
-
-    /* 2. 상단 패널 (스탯, 인벤토리, 장비) */
     .top-panel {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 15px !important;
-        flex: 1 !important;
-        min-height: 0 !important;
-        /* 하단 액션 패널 공간(190px) 확보 */
-        max-height: calc(100% - 190px) !important;
+        display: flex !important; gap: 15px !important;
+        flex: 1 !important; min-height: 0 !important;
+        max-height: calc(100% - 210px) !important; /* 액션 패널 확보 */
     }
-
-    /* 컬럼별 너비 설정 */
+    /* 던전 전용 컬럼 비율 */
     .dungeon-col-stats { flex: 1.0; min-width: 350px; display: flex; flex-direction: column; }
     .dungeon-col-inv   { flex: 1.8; min-width: 700px; display: flex; flex-direction: column; }
     .dungeon-col-equip { flex: 0.8; min-width: 300px; display: flex; flex-direction: column; }
 
     .box {
-        height: 100% !important;
-        min-height: 0 !important;
-        overflow: hidden !important;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
-        padding: 15px;
+        height: 100% !important; background: rgba(255, 255, 255, 0.05);
+        border: 1px solid #444; border-radius: 8px; padding: 15px;
+        display: flex; flex-direction: column; overflow: hidden;
     }
-
-    /* 3. 스탯 영역 */
-    .stat-row {
-        font-size: 1rem !important;
-        padding: 10px 12px !important;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* 4. 인벤토리 및 전투 로그 */
-    .dungeon-col-inv .box {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .inventory-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-        gap: 10px;
-        padding: 10px;
-        background: #1a1a1a;
-        border: 1px solid #333;
-        border-radius: 4px;
-        flex: 1; /* 가용 공간 차지 */
-        overflow-y: auto !important;
-    }
-
-    .grid-item-icon {
-        width: 70px;
-        height: 70px;
-        border: 2px solid #444;
-        border-radius: 6px;
-        background: #000;
-        position: relative;
-        cursor: pointer;
-        transition: transform 0.1s;
-        overflow: hidden;
-    }
-    .grid-item-icon:hover { transform: scale(1.05); z-index: 10; }
-    .grid-item-icon img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* 아이템 호버 오버레이 */
-    .item-overlay {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 4px;
-        opacity: 0;
-        transition: opacity 0.2s;
-    }
-    .grid-item-icon:hover .item-overlay { opacity: 1; }
-    .overlay-btn {
-        width: 85%;
-        padding: 2px 0;
-        font-size: 0.75rem;
-        font-weight: bold;
-        border-radius: 3px;
-        border: none;
-        color: white;
-        cursor: pointer;
-    }
-    .btn-use-small { background: #2a3a5a; }
-    .btn-equip-small { background: #2a4a2a; }
-
-    /* 전투 로그 */
-    #battleLogs {
-        flex: 0.6;
-        min-height: 150px;
-        background: #000;
-        border: 1px solid #444;
-        padding: 10px;
-        font-size: 0.85rem;
-        line-height: 1.6;
-        overflow-y: auto !important;
-        border-radius: 4px;
-    }
-
-    /* 5. 장비창 설정 */
-    .equipment-box {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 20px !important;
-    }
-    .equip-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 80px);
-        gap: 15px;
-    }
-    .slot.empty { border: none !important; background: transparent !important; box-shadow: none !important; }
-
-    /* 6. 하단 액션 패널 (고정 영역) */
-    .action-panel {
-    flex-shrink: 0 !important;
-    height: 220px !important; /* 높이를 스킬 카드에 맞춰 조금 더 확보 */
-    margin-top: 10px !important;
-    background: rgba(0, 0, 0, 0.6); /* 가독성을 위해 배경 불투명도 조절 */
-    padding: 15px;
-    border-radius: 8px;
-    z-index: 100;
-    display: block !important;
-    overflow-y: auto !important;
-    }
-
-    /* 스킬 컨테이너: HTML에서 설정한 값을 존중하도록 !important 제거 및 수치 조정 */
-    .skill-hand-container {
-        display: grid !important;
-        /* HTML에서 준 550px이 작동하도록 여기의 minmax를 제거하거나 HTML과 맞춤 */
-        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)) !important;
-        gap: 14px !important;
-        width: 100%;
-    }
-
-    /* 추가: 스킬 카드 유닛이 찌그러지지 않도록 최소 높이 보장 */
-    .skill-card-unit {
-        min-height: 90px;
-    }
-
-    /* 커스텀 스크롤바 (스킬창용) */
-    .action-panel::-webkit-scrollbar { width: 8px; }
-    .action-panel::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
-    .action-panel::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-
-    /* [통합] 다크 테마 커스텀 스크롤바 설정 (액션패널, 전투로그, 가방 공통) */
-    .custom-scroll::-webkit-scrollbar,
-    .action-panel::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .custom-scroll::-webkit-scrollbar-track,
-    .action-panel::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-    }
-
-    .custom-scroll::-webkit-scrollbar-thumb,
-    .action-panel::-webkit-scrollbar-thumb {
-        background: #444; /* 핸들 색상 */
-        border-radius: 4px;
-        border: 1px solid rgba(0, 0, 0, 0.3); /* 약간의 입체감 */
-    }
-
-    .custom-scroll::-webkit-scrollbar-thumb:hover,
-    .action-panel::-webkit-scrollbar-thumb:hover {
-        background: #555; /* 마우스 올렸을 때 */
-    }
-
-    /* 추가: 소지품 가방 내부의 실제 리스트 영역에도 스크롤 허용 */
-    .custom-scroll {
-        overflow-y: auto !important;
-    }
-
-    /* 하단 액션 패널 버튼 스타일 (마을 스타일 계승 및 최적화) */
-    .action-btn {
-        width: 100%;
-        height: 75px; /* 고정 높이 */
-        border: none;
-        border-radius: 8px;
-        font-weight: bold;
-        color: #fff;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        flex-direction: column; /* 마을처럼 세로 배치 유지 */
-        align-items: center;
-        justify-content: center;
-        gap: 2px;
-        box-shadow: 0 4px 0 rgba(0,0,0,0.3);
-        position: relative;
-    }
-
-    /* 아이콘 크기 */
-    .action-btn span:first-child {
-        font-size: 1.5rem;
-        margin-bottom: 0;
-    }
-
-    /* 버튼 텍스트와 수치를 한 줄에 배치 */
-    .btn-text-row {
-        display: flex;
-        align-items: center;
-        gap: 6px; /* 텍스트와 수치 사이 간격 */
-        font-size: 0.95rem;
-    }
-
-    /* 수치 배지 스타일 (텍스트 옆에 작게) */
-    .stat-badge-small {
-        font-size: 0.7rem;
-        background: rgba(0, 0, 0, 0.3);
-        padding: 1px 5px;
-        border-radius: 4px;
-        font-family: monospace;
-        font-weight: normal;
-    }
-
-    /* 호버 효과 (마을 동일) */
-    .action-btn:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 6px 0 rgba(0,0,0,0.3); }
-    .action-btn:active { transform: translateY(2px); box-shadow: 0 0 0 rgba(0,0,0,0.3); }
-
-    /* 7. 아이템 등급 시각 효과 (테두리 및 텍스트) */
-    .border-COMMON { border-color: #555 !important; }
-    .border-UNCOMMON { border-color: #1eff00 !important; box-shadow: inset 0 0 5px rgba(30, 255, 0, 0.2); }
-    .border-RARE { border-color: #0070dd !important; box-shadow: inset 0 0 8px rgba(0, 112, 221, 0.3); }
-    .border-EPIC { border-color: #a335ee !important; box-shadow: 0 0 10px rgba(163, 53, 238, 0.5); }
-    .border-LEGENDARY {
-        border-color: #ff8000 !important;
-        box-shadow: 0 0 15px rgba(255, 128, 0, 0.7);
-        animation: legendary-glow 2s infinite;
-    }
-
-    .text-COMMON { color: #eee; }
-    .text-UNCOMMON { color: #1eff00; font-weight: bold; }
-    .text-RARE { color: #0070dd; font-weight: bold; text-shadow: 0 0 5px rgba(0,112,221,0.5); }
-    .text-EPIC { color: #a335ee; font-weight: bold; text-shadow: 0 0 8px rgba(163,53,238,0.6); }
-    .text-LEGENDARY { color: #ff8000; font-weight: bold; text-shadow: 0 0 12px rgba(255,128,0,0.8); }
-
-    @keyframes legendary-glow {
-        0%, 100% { filter: brightness(1); }
-        50% { filter: brightness(1.4); }
-    }
-
-    @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0.4; }
-        100% { opacity: 1; }
-    }
-
 </style>
 </html>

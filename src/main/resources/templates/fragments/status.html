@@ -1,15 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="statusPanelStyle">
+    <style>
+        /* [1] 프로필 헤더 & 정보 */
+        .profile-header {
+            display: flex; gap: 15px; margin-bottom: 15px;
+            border-bottom: 2px solid #444; padding-bottom: 10px;
+            align-items: center; flex-shrink: 0;
+        }
+        .profile-img {
+            width: 70px; height: 70px; border: 2px solid #555;
+            border-radius: 6px; background-color: #000; object-fit: cover;
+        }
+        .profile-info-text { flex-grow: 1; display: flex; flex-direction: column; gap: 5px; }
+        .profile-name-row { display: flex; justify-content: space-between; align-items: center; font-size: 1.1em; font-weight: bold; }
+
+        /* [2] 골드 텍스트 */
+        .gold-display {
+            color: #fff200 !important;
+            font-weight: 900 !important;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0px 0px 5px rgba(255, 242, 0, 0.3) !important;
+        }
+
+        /* [3] 상태바 (HP/MP/STA) */
+        .status-bars { background: #1e1e1e; padding: 10px; border-radius: 5px; margin-bottom: 10px; }
+        .bar-row { display: flex; align-items: center; margin-bottom: 5px; font-size: 0.85em; }
+        .bar-label { width: 35px; font-weight: 900; text-align: center; margin-right: 5px; }
+        .bar-container { flex-grow: 1; height: 12px; background-color: #333; border-radius: 6px; overflow: hidden; border: 1px solid #000; }
+        .bar-fill { height: 100%; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .bar-text { font-size: 0.75rem; color: #eee; width: 70px; text-align: right; font-weight: bold; text-shadow: 1px 1px 1px #000; }
+
+        /* [4] 스탯 리스트 영역 & 커스텀 스크롤바 통합 */
+        .stat-scroll {
+            flex-grow: 1;
+            overflow-y: auto;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* --- 던전 액션 패널과 동일한 스크롤바 디자인 --- */
+        .stat-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .stat-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+        .stat-scroll::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+        .stat-scroll::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .stat-row {
+            display: flex; justify-content: space-between; padding: 8px 10px;
+            border-bottom: 1px solid #222; cursor: help;
+        }
+        .stat-row:hover { background-color: #252525; }
+
+        .stat-value-text {
+            color: #ffffff !important;
+            font-weight: 800 !important;
+            text-shadow: 1px 1px 2px #000 !important;
+        }
+
+        /* 등급별 색상 */
+        .grade-S { color: #ffd700 !important; font-weight: 900; text-shadow: 0 0 8px rgba(255, 215, 0, 0.6); }
+        .grade-A { color: #d6aaff !important; font-weight: bold; }
+        .grade-B { color: #8ecae6 !important; }
+        .grade-C { color: #99e2b4 !important; }
+        .grade-F { color: #777 !important; }
+
+        /* [5] 설명창 */
+        .description-box {
+            background-color: #0a0a0a; border: 1px solid #d4af37;
+            padding: 10px; min-height: 50px; color: #ffd700;
+            font-size: 0.85em; text-align: center; border-radius: 4px;
+        }
+    </style>
+</th:block>
+
 <div th:fragment="statusPanel(game)" class="box">
     <div class="profile-header">
-        <img th:src="@{'/tribe_' + ${game.img} + '.png'}" class="profile-img" onerror="this.style.display='none'">
+        <img th:src="@{'/tribe_' + ${game.img} + '.png'}" class="profile-img" onerror="this.onerror=null; this.src='/images/default_profile.png';">
         <div class="profile-info-text">
             <div class="profile-name-row">
                 <span style="color:#fff;" th:text="${game.userName}">User</span>
-                <span style="color:#ffd700;" th:text="${game.currentGold} + ' G'"></span>
+                <span class="gold-display" th:text="${game.currentGold} + ' G'"></span>
             </div>
             <div class="profile-sub-row">
-                <span>종족: <b th:text="${game.tribe.name}"></b></span>
+                <span>종족: <b style="color:#ccc" th:text="${game.tribe.name}"></b></span>
                 <span>|</span>
-                <span>종교: <b th:text="${game.religion.name}"></b></span>
+                <span>종교: <b style="color:#ccc" th:text="${game.religion.name}"></b></span>
             </div>
         </div>
     </div>
@@ -18,25 +107,23 @@
         <div class="bar-row">
             <div class="bar-label" style="color:#ff6b6b">HP</div>
             <div class="bar-container">
-                <div class="bar-fill hp-fill" th:style="'width:' + (${game.currentHp} * 100.0 / ${game.maxHp}) + '%; background-color: #ff6b6b;'"></div>
+                <div class="bar-fill hp-fill" th:style="'width:' + (${game.currentHp} * 100.0 / ${game.maxHp}) + '%; background: linear-gradient(90deg, #800, #ff6b6b);'"></div>
             </div>
-            <div class="bar-text" th:text="${game.currentHp} + '/' + ${game.maxHp}"></div>
+            <div class="bar-text" th:text="${game.currentHp} + ' / ' + ${game.maxHp}"></div>
         </div>
-
         <div class="bar-row">
             <div class="bar-label" style="color:#4dabf7">MP</div>
             <div class="bar-container">
-                <div class="bar-fill mp-fill" th:style="'width:' + (${game.currentMp} * 100.0 / ${game.maxMp}) + '%; background-color: #4dabf7;'"></div>
+                <div class="bar-fill mp-fill" th:style="'width:' + (${game.currentMp} * 100.0 / ${game.maxMp}) + '%; background: linear-gradient(90deg, #004080, #4dabf7);'"></div>
             </div>
-            <div class="bar-text" th:text="${game.currentMp} + '/' + ${game.maxMp}"></div>
+            <div class="bar-text" th:text="${game.currentMp} + ' / ' + ${game.maxMp}"></div>
         </div>
-
         <div class="bar-row">
             <div class="bar-label" style="color:#51cf66">STA</div>
             <div class="bar-container">
-                <div class="bar-fill stamina-fill" th:style="'width:' + (${game.currentStamina} * 100.0 / ${game.maxStamina}) + '%; background-color: #51cf66;'"></div>
+                <div class="bar-fill stamina-fill" th:style="'width:' + (${game.currentStamina} * 100.0 / ${game.maxStamina}) + '%; background: linear-gradient(90deg, #206020, #51cf66);'"></div>
             </div>
-            <div class="bar-text" th:text="${game.currentStamina} + '/' + ${game.maxStamina}"></div>
+            <div class="bar-text" th:text="${game.currentStamina} + ' / ' + ${game.maxStamina}"></div>
         </div>
     </div>
 
@@ -44,12 +131,14 @@
         <div th:each="stat : ${game.stats}" class="stat-row"
              th:data-name="${stat.name}" th:data-desc="${stat.description}"
              onmouseover="showDescription(this)" onmouseout="clearDescription()">
-            <span style="color:#ddd;" th:text="${stat.name}"></span>
-            <div style="display:flex; gap:8px;">
+            <span style="color:#bbb; font-size: 0.9rem;" th:text="${stat.name}"></span>
+            <div style="display:flex; gap:8px; align-items: center;">
                 <span th:class="'grade-' + ${stat.growthGrade}" th:text="'[' + ${stat.growthGrade} + ']'"></span>
-                <span style="font-weight:bold; width:25px; text-align:right;" th:text="${stat.value}"></span>
+                <span class="stat-value-text" style="width:30px; text-align:right;" th:text="${stat.value}"></span>
             </div>
         </div>
     </div>
+
     <div id="desc-display" class="description-box">스탯에 마우스를 올리면 상세 정보가 표시됩니다.</div>
 </div>
+</html>

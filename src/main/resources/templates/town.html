@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Dark Town</title>
+    <th:block th:replace="~{fragments/layout :: commonStyle}"></th:block>
     <th:block th:replace="~{fragments/layout :: townStyle}"></th:block>
+    <th:block th:replace="~{fragments/status :: statusPanelStyle}"></th:block>
+    <th:block th:replace="~{fragments/equipment :: equipmentStyle}"></th:block>
+    <th:block th:replace="~{fragments/town-action :: townActionStyle}"></th:block>
 </head>
 <body>
 
 <div th:if="${message}" class="system-message" th:text="${message}"></div>
 
 <div class="container">
-    <div th:replace="~{fragments/layout :: gameHeader}"></div>
+    <div th:replace="~{fragments/header :: gameHeader}"></div>
 
     <div class="top-panel">
         <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
@@ -19,11 +23,11 @@
 
         <div class="box equipment-box">
             <h2>장착 장비</h2>
-            <div th:replace="~{fragments/modals :: equipmentGrid(${game.equippedItems})}"></div>
+            <div th:replace="~{fragments/equipment :: equipmentGrid(${game.equippedItems})}"></div>
         </div>
     </div>
 
-    <div th:replace="~{fragments/actions :: actionPanel(gameData=${game})}"></div>
+    <div th:replace="~{fragments/town-action :: actionPanel(gameData=${game})}"></div>
 </div>
 
 <div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>

@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.text.DecimalFormat;
 import com.example.demo.domain.meta.GrowthMeta;
+import com.example.demo.domain.meta.StatMeta;
 import com.example.demo.domain.save.GameStatus;
 import com.example.demo.domain.save.TownStatus;
 import com.example.demo.domain.save.UserStatus;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -159,73 +161,71 @@ public class TownService {
     }
 
     /**
-     * 특정 타입(근력/민첩/지능)에 따른 스탯 수련
-     * @param type 훈련 종류 (STRENGTH, AGILITY, INTELLIGENCE)
-     * @return 수련 결과 메시지
-     * 스탯 수련 (Potentials 등급 기반 성장)
+     * 사용자의 선택에 따른 계통별 스탯 수련을 수행합니다.
+     * @param type UI 버튼에서 전달된 훈련 종류 (육신, 기민, 정신, 감각)
+     * @return 수련 결과 및 스탯 상승치 메시지
      */
     public String performTrain(String type) {
         GameStatus gs = gameFileRepository.findGameStatus();
         UserStatus us = userFileRepository.findGameUser();
         TownStatus ts = townFileRepository.findTownStatus();
 
-        // 1. 기본 검증
-        if (ts.getCurrentTurn() <= 0) return "남은 턴이 없습니다.";
-
-        int trainCost = 25; // 수련은 노동보다 힘듭니다.
+        int trainCost = 25;
         if (us.getCurrentStamina() < trainCost) return "스태미나가 부족합니다! (필요: " + trainCost + ")";
 
-        // 2. 훈련 타입별 스탯 ID 리스트 (주신 24개 스탯 분류)
-        List<Integer> targetIds = switch (type) {
-            case "STRENGTH" -> List.of(1, 2, 3, 10, 11, 12); // 체력/근력 관련
-            case "AGILITY" -> List.of(6, 7, 15, 16, 17, 20, 21, 22, 23, 24); // 민첩/치명/회피 관련
-            case "INTELLIGENCE" -> List.of(4, 5, 8, 9, 13, 14, 18, 19); // 마나/마법 관련
-            default -> List.of();
+        // 2. UI 한글 타입을 데이터의 영문 카테고리로 변환
+        // 로그에 찍힌 [PHYSIQUE, SPIRIT, AGILITY, PERCEPTION]와 매핑합니다.
+        String categoryKey = switch (type) {
+            case "육신" -> "PHYSIQUE";
+            case "기민" -> "AGILITY";
+            case "정신" -> "SPIRIT";
+            case "감각" -> "PERCEPTION";
+            default -> type; // 이미 영문이거나 잘못된 값일 경우 그대로 전달
         };
 
-        // 3. 대상 스탯 중 랜덤하게 하나 선택
+        // 3. Meta 데이터 필터링 (가져온 categoryKey와 비교)
+        List<Integer> targetIds = gameDataManager.getStatMetaMap().values().stream()
+                .filter(meta -> categoryKey.equals(meta.getCategory()))
+                .map(StatMeta::getId)
+                .collect(Collectors.toList());
+
+        // [중요] 리스트가 비어있으면 뒤에서 랜덤 에러가 발생하므로 여기서 차단
+        if (targetIds.isEmpty()) {
+            System.out.println("매칭 실패: UI입력[" + type + "] -> 변환키[" + categoryKey + "]");
+            return "수련 가능한 스탯을 찾을 수 없습니다. (계통: " + type + ")";
+        }
+
+        // 4. 대상 스탯 중 랜덤하게 하나 선택 (이제 안전함)
         int randomStatId = targetIds.get(new Random().nextInt(targetIds.size()));
         String statName = gameDataManager.getStatMetaMap().get(randomStatId).getName();
 
-        // 4. 잠재력(Potential)에 따른 성장치 계산
-        // potentials 맵에서 해당 스탯의 성장 등급 ID를 가져옴 (기본값 7: F등급)
+        // 5. 잠재력(Potential) 가중치 기반 성장치 계산
         int growthId = us.getPotentials().getOrDefault(randomStatId, 7);
         GrowthMeta growthMeta = gameDataManager.getGrowthMetaMap().get(growthId);
 
-        // 성장 등급이 높을수록(S=1, A=2...) 더 많이 오를 확률 부여
-        // 예: S등급은 3~5, F등급은 1~2 상승
-        int baseGain = switch (growthId) {
-            case 1 -> 3 + new Random().nextInt(3); // S: 3~5
-            case 2 -> 2 + new Random().nextInt(3); // A: 2~4
-            case 3, 4 -> 1 + new Random().nextInt(3); // B, C: 1~3
-            default -> 1 + new Random().nextInt(2); // D, E, F: 1~2
-        };
+        // 가중치 곱 적용 후 반올림 (최소값 1)
+        double weight = growthMeta.getWeight();
+        double baseValue = 1.2;
+        int finalGain = (int) Math.max(1, Math.round(baseValue * weight));
 
-        // 5. 실제 데이터 반영
+        // 6. 실제 데이터 반영
         Map<Integer, Integer> baseStats = us.getBaseStats();
         int currentVal = baseStats.getOrDefault(randomStatId, 0);
-        baseStats.put(randomStatId, currentVal + baseGain);
+        baseStats.put(randomStatId, currentVal + finalGain);
 
         // 자원 소모
         us.setCurrentStamina(us.getCurrentStamina() - trainCost);
         ts.setCurrentTurn(ts.getCurrentTurn() - 1);
 
-        // 6. 스탯 변화가 전투 능력치에 영향을 주므로 재계산 필요
+        // 7. 스탯 재계산 및 저장
         statCalculationService.refreshUserCombatStats(us, gameDataManager.getItemMetaMap());
-
         saveAll(us, ts, gs);
 
-        String message = String.format("🧘 [%s] 수련 완료!\n[%s] 스탯이 %d 상승했습니다. (성장등급: %s)",
-                translateType(type), statName, baseGain, growthMeta.getGrade());
-        return checkTurnAndTax(message);
-    }
+        // UI 컨셉에 맞춘 결과 메시지
+        String message = String.format("🌌 [%s] 계통 수련 완료!\n [%s] 스탯이 %d 상승했습니다.",
+                type, statName, finalGain, weight);
 
-    private String translateType(String type) {
-        return Map.of(
-                "STRENGTH", "근력",
-                "AGILITY", "민첩",
-                "INTELLIGENCE", "지능")
-                .getOrDefault(type, type);
+        return checkTurnAndTax(message);
     }
 
     /**

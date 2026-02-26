@@ -97,10 +97,10 @@ public class TownController {
     }
 
     /**
-     * 3중1택 --> 수련
-     * @param type 힘/민/지
-     * @param redirectAttributes town.html 상태
-     * @return 결과 반환
+     * 4대 계통(육신, 기민, 정신, 감각) 중 하나를 선택하여 영혼 단련 수행
+     * * @param type 수련 종류 (전달되는 값: "육신", "기민", "정신", "감각")
+     * @param redirectAttributes 결과 메시지 및 게임 오버 상태 전달
+     * @return 마을 화면으로 리다이렉트
      */
     @PostMapping("/train")
     public String train(@RequestParam String type, RedirectAttributes redirectAttributes) {
@@ -110,7 +110,8 @@ public class TownController {
             redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
             return "redirect:/game/play";
         }
-        // type: STRENGTH, AGILITY, INTELLIGENCE 중 하나가 넘어옴
+
+
         String resultMessage = townService.performTrain(type);
         redirectAttributes.addFlashAttribute("message", resultMessage);
         return "redirect:/game/play";

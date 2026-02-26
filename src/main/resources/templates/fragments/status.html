@@ -117,15 +117,26 @@
     </div>
 
     <div class="stat-scroll">
-        <div class="divider">전투 능력치</div>
+        <div class="divider">⚔️ 공격 능력</div>
         <div class="stat-row"><span>물리 공격력</span> <b class="stat-value-text" th:text="${game.combatStats.meleeAtk}"></b></div>
         <div class="stat-row"><span>마법 공격력</span> <b class="stat-value-text" th:text="${game.combatStats.magicAtk}"></b></div>
+        <div class="stat-row"><span>방어 관통력</span> <b class="stat-value-text" th:text="${game.combatStats.penetration}"></b></div>
+        <div class="stat-row"><span>치명타 확률</span> <b class="stat-value-text" th:text="${game.combatStats.critRate} + '%'"></b></div>
+        <div class="stat-row"><span>치명타 피해</span> <b class="stat-value-text" th:text="${game.combatStats.critDmg} + '%'"></b></div>
+        <div class="stat-row"><span>명중률</span> <b class="stat-value-text" th:text="${game.combatStats.accuracy} + '%'"></b></div>
+
+        <div class="divider">🛡️ 방어 및 생존</div>
         <div class="stat-row"><span>물리 방어력</span> <b class="stat-value-text" th:text="${game.combatStats.physDef}"></b></div>
         <div class="stat-row"><span>마법 저항력</span> <b class="stat-value-text" th:text="${game.combatStats.magRes}"></b></div>
-        <div class="stat-row"><span>치명타 확률</span> <b class="stat-value-text" th:text="${game.combatStats.critRate} + '%'"></b></div>
         <div class="stat-row"><span>회피율</span> <b class="stat-value-text" th:text="${game.combatStats.dodge} + '%'"></b></div>
+        <div class="stat-row"><span>상태이상 저항</span> <b class="stat-value-text" th:text="${game.combatStats.statusResist} + '%'"></b></div>
 
-        <div class="divider">기본 잠재력 계통</div>
+        <div class="divider">⚡ 유틸리티</div>
+        <div class="stat-row"><span>이동 속도</span> <b class="stat-value-text" th:text="${game.combatStats.moveSpeed}"></b></div>
+        <div class="stat-row"><span>HP 재생 (초당)</span> <b class="stat-value-text" th:text="${game.combatStats.hpRegen}"></b></div>
+        <div class="stat-row"><span>MP 재생 (초당)</span> <b class="stat-value-text" th:text="${game.combatStats.mpRegen}"></b></div>
+
+        <div class="divider">🧬 잠재력 계통</div>
         <div th:each="group : ${game.statGroups}"
              class="stat-row category-header"
              th:onmouseover="showStatTooltip(event, [[${group.categoryName}]], [[${group.details}]])"

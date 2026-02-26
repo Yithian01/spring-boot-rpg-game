@@ -26,13 +26,14 @@ public class MonsterBattleService {
     private final StatCalculationService statCalculationService;
     private final Random random = new Random();
 
-    private void saveAll(UserStatus user, DungeonStatus ds, GameStatus gs) {
-        userFileRepository.saveUserStatus(user);
+    private void saveAll(UserStatus us, DungeonStatus ds, GameStatus gs) {
+        userFileRepository.saveUserStatus(us);
         dungeonFileRepository.saveDungeonStatus(ds);
+        gameFileRepository.saveGameStatus(gs);
 
     }
 
-    public void processMonsterPhase(UserStatus user, ActiveMonster monster, DungeonStatus ds, GameStatus gs) {
+    public void processMonsterPhase(UserStatus us, ActiveMonster monster, DungeonStatus ds, GameStatus gs) {
         if (monster == null || monster.getCurrentHp() <= 0) return;
 
         var monsterMeta = gameDataManager.getMonsterMetaMap().get(monster.getMonsterId());
@@ -50,7 +51,7 @@ public class MonsterBattleService {
         // 정산 중 사망 시 종료
         if (monster.getCurrentHp() <= 0) {
             gs.addLog(String.format("<b style='color:#ffd700;'>%s이(가) 상태 이상으로 쓰러졌습니다!</b>", monster.getName()));
-            saveAll(user, ds, gs);
+            saveAll(us, ds, gs);
             return;
         }
 
@@ -64,13 +65,14 @@ public class MonsterBattleService {
                     status.setRemainingTurns(status.getRemainingTurns() - 1);
                     if (status.getRemainingTurns() <= 0) {
                         gs.addLog("<span style='color:#aaaaaa;'>[해제] 💫 기절 종료</span>");
+                        saveAll(us, ds, gs);
                         return true; // 리스트에서 제거
                     }
                 }
                 return false; // 아직 기절이 남았으면 유지
             });
 
-            saveAll(user, ds, gs);
+            saveAll(us, ds, gs);
             return; // 이번 턴의 공격 로직(while문)을 건너뛰고 종료
         }
 
@@ -90,16 +92,18 @@ public class MonsterBattleService {
             if (affordableSkills.isEmpty()) break;
 
             MonsterSkillMeta selectedSkill = affordableSkills.get(random.nextInt(affordableSkills.size()));
-            executeMonsterAction(user, monster, selectedSkill, ds, gs);
+            executeMonsterAction(us, monster, selectedSkill, ds, gs);
 
             currentAp -= selectedSkill.getTurnCost();
 
-            if (user.getCurrentHp() <= 0) {
+            saveAll(us, ds, gs);
+
+            if (us.getCurrentHp() <= 0) {
                 gs.addLog("<b style='color:#ff4d4d;'>[치명상] 더 이상 버틸 수 없습니다...</b>");
                 break;
             }
         }
-        saveAll(user, ds, gs);
+        saveAll(us, ds, gs);
     }
 
     /**

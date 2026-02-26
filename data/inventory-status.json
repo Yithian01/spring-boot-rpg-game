@@ -1,10 +1,5 @@
 {
   "items" : [ {
-    "id" : 36,
-    "instanceId" : "362e2c93-8141-4e4d-99f5-85411b5726b7",
-    "quantity" : 1,
-    "enhancementLevel" : 0
-  }, {
     "id" : 21,
     "instanceId" : null,
     "quantity" : 1,

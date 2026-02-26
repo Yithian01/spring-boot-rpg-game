@@ -4,10 +4,10 @@
   "name" : "하이 엘프 (High Elf)",
   "tribeId" : 6,
   "religionId" : 0,
-  "currentHp" : 158,
+  "currentHp" : 26,
   "currentMp" : 310,
-  "currentStamina" : 76,
-  "currentGold" : 856,
+  "currentStamina" : 0,
+  "currentGold" : 867,
   "combatStats" : {
     "maxHp" : 158,
     "maxMp" : 310,

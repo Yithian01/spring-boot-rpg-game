@@ -9,7 +9,7 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 
-		//SpringApplication.run(DemoApplication.class, args); # 헤드리스 모드
+		//SpringApplication.run(DemoApplication.class, args); # 헤드리스 모드s
 
 		new SpringApplicationBuilder(DemoApplication.class)
 				.headless(false)

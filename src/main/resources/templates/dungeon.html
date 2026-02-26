@@ -38,7 +38,7 @@
         <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
           <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #555; padding-left: 10px;">🎒 소지품 가방</h3>
           <div style="flex: 1; min-height: 0; border: 1px solid #333; border-radius: 4px; overflow: hidden;">
-            <div th:replace="~{fragments/inventory :: inventoryList(${game.items})}"></div>
+            <div th:replace="~{fragments/inventory :: inventoryList(${game.items}, 1)}"></div>
           </div>
         </div>
 

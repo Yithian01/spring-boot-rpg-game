@@ -3,75 +3,65 @@
 
 <th:block th:fragment="inventoryStyle">
     <style>
-        /* 가방 리스트 최상위 컨테이너 */
+        /* [가방 리스트 레이아웃] */
         .inv-list-container {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            min-height: 0;
-            background: #1a1a1a;
+            height: 100%; display: flex; flex-direction: column;
+            min-height: 0; background: #1a1a1a;
         }
-
-        .inv-scroll-area {
-            flex: 1;
-            overflow-y: auto;
-            min-height: 0;
-            padding-right: 5px;
-        }
-
+        .inv-scroll-area { flex: 1; overflow-y: auto; min-height: 0; padding: 0 10px 0 0; }
         .inv-ul { list-style: none; padding: 0; margin: 0; }
 
+        /* 아이템 줄 정렬: 좌(아이콘)-중(정보)-우(버튼그룹) */
         .inv-item-row {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #333;
-            gap: 12px;
-            transition: background 0.2s;
+            display: flex; align-items: center; padding: 12px 10px;
+            border-bottom: 1px solid #333; gap: 12px; transition: background 0.2s;
         }
         .inv-item-row:hover { background: rgba(255, 255, 255, 0.03); }
 
         .inv-icon-box {
-            width: 45px;
-            height: 45px;
-            background: #000;
-            border: 2px solid #444;
-            border-radius: 4px;
-            overflow: hidden;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+            width: 48px; height: 48px; background: #000; border: 2px solid #444;
+            border-radius: 4px; overflow: hidden; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; position: relative;
         }
         .inv-icon-box img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
 
-        .inv-item-info { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
-        .inv-item-name { font-weight: bold; white-space: nowrap; text-overflow: ellipsis; font-size: 0.95rem; }
-
-        /* 퀵 버튼 스타일 */
-        .btn-quick {
-            padding: 4px 8px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            border-radius: 3px;
-            cursor: pointer;
-            transition: filter 0.2s;
-            border: none;
-            color: #fff;
+        .inv-item-info {
+            flex-grow: 1; min-width: 0; display: flex; flex-direction: column;
         }
-        .btn-quick:hover { filter: brightness(1.2); }
+        .inv-item-name { font-weight: bold; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
 
-        /* 아이템 등급 시각 효과 (인벤토리 종속) */
+        /* [버튼 그룹 레이아웃: 오른쪽 정렬 및 수직 간격] */
+        .inv-btn-group {
+            display: flex; flex-direction: column; gap: 4px; /* 버튼 사이 간격 */
+            margin-left: auto; /* ★ 이 코드가 버튼을 오른쪽 끝으로 밀어줍니다 */
+            min-width: 60px; flex-shrink: 0;
+        }
+        .inv-btn-group form { margin: 0; width: 100%; }
+
+        /* [퀵 버튼 스타일] */
+        .btn-quick {
+            width: 100%; padding: 5px 0; font-size: 0.75rem; font-weight: 800;
+            border-radius: 4px; cursor: pointer; transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1); color: #fff;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+        }
+
+        /* 장착 버튼 */
+        form[action*="equip"] .btn-quick { background: linear-gradient(180deg, #3d6a3d 0%, #2a4a2a 100%); border-color: #4e824e; }
+        /* 사용 버튼 */
+        form[action*="consume"] .btn-quick { background: linear-gradient(180deg, #3a5a8a 0%, #2a3a5a 100%); border-color: #4a6a9a; }
+        /* 판매 버튼 */
+        form[action*="sell"] .btn-quick { background: linear-gradient(180deg, #8a3a3a 0%, #5a2a2a 100%); border-color: #9a4a4a; }
+
+        .btn-quick:hover { filter: brightness(1.25); transform: translateY(-1px); }
+        .btn-quick:active { transform: translateY(1px); filter: brightness(0.8); }
+
+        /* [아이템 등급 공통 효과] */
         .border-COMMON { border-color: #555 !important; }
         .border-UNCOMMON { border-color: #1eff00 !important; box-shadow: inset 0 0 5px rgba(30, 255, 0, 0.2); }
         .border-RARE { border-color: #0070dd !important; box-shadow: inset 0 0 8px rgba(0, 112, 221, 0.3); }
         .border-EPIC { border-color: #a335ee !important; box-shadow: 0 0 10px rgba(163, 53, 238, 0.5); }
-        .border-LEGENDARY {
-            border-color: #ff8000 !important;
-            box-shadow: 0 0 15px rgba(255, 128, 0, 0.7);
-            animation: legendary-glow 2s infinite;
-        }
+        .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 15px rgba(255, 128, 0, 0.7); animation: legendary-glow 2s infinite; }
 
         .text-COMMON { color: #eee; }
         .text-UNCOMMON { color: #1eff00; font-weight: bold; }
@@ -79,24 +69,46 @@
         .text-EPIC { color: #a335ee; font-weight: bold; }
         .text-LEGENDARY { color: #ff8000; font-weight: bold; text-shadow: 0 0 12px rgba(255,128,0,0.8); }
 
-        @keyframes legendary-glow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.4); }
+        @keyframes legendary-glow { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.4); } }
+
+        /* [장비창 전용] */
+        .equipment-box { display: flex; flex-direction: column; align-items: center; }
+        .equip-grid {
+            display: grid; grid-template-columns: repeat(3, 80px); gap: 15px;
+            background: #111; border: 1px solid #444; border-radius: 8px;
+            padding: 20px; margin-top: 20px; width: fit-content;
         }
+        .slot {
+            width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
+            position: relative; border: 2px solid #555; background: rgba(0, 0, 0, 0.6);
+            border-radius: 6px; overflow: hidden; transition: all 0.2s ease-in-out;
+        }
+        .slot:hover { border-color: #ffd700; background: rgba(50, 50, 50, 0.8); transform: scale(1.05); }
+        .slot:hover::after {
+            content: attr(title); position: absolute; top: -35px; background: #000;
+            color: #fff; font-size: 0.85rem; padding: 4px 10px; border-radius: 4px; border: 1px solid #ffd700;
+            white-space: nowrap; z-index: 10;
+        }
+        .item-icon-img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+        .unequip-btn { background: none; border: none; width: 100%; height: 100%; cursor: pointer; }
     </style>
 </th:block>
 
-<div th:fragment="inventoryList(items)" class="inv-list-container">
+<div th:fragment="inventoryList(items, mode)" class="inv-list-container">
     <div class="inv-scroll-area custom-scroll">
         <ul class="inv-ul">
             <li th:if="${#lists.isEmpty(items)}" style="padding:20px; text-align:center; color:#555;">가방이 비어있습니다.</li>
             <li th:each="item : ${items}" class="inv-item-row">
                 <div class="inv-icon-box" th:classappend="${item.grade != null ? 'border-' + item.grade : ''}">
                     <img th:src="${item.icon}"
-                         onmouseover="showItemDescription(this)" onmouseout="clearDescription()"
-                         th:data-name="${item.name}" th:data-grade="${item.grade}" th:data-subtype="${item.subType}"
+                         onmouseover="showItemDescription(this)"
+                         onmouseout="clearDescription()"
+                         th:data-name="${item.name}"
+                         th:data-grade="${item.grade}"
+                         th:data-subtype="${item.subType}"
                          th:data-bonuses="${#strings.listJoin(item.statBonuses, ', ')}">
                 </div>
+
                 <div class="inv-item-info">
                     <span class="inv-item-name" th:classappend="${item.grade != null ? 'text-' + item.grade : ''}">
                         <span th:text="${item.name}"></span>
@@ -104,22 +116,23 @@
                     </span>
                     <small style="color: #ffd700; font-size: 0.8rem;" th:text="${#strings.listJoin(item.statBonuses, ', ')}"></small>
                 </div>
+
                 <div class="inv-btn-group">
-                    <form th:if="${item.slot != null and item.slot != 'NONE'}" action="/inventory/equip" method="post" style="margin:0;">
-                        <input type="hidden" name="itemId" th:value="${item.id}"><input type="hidden" name="slot" th:value="${item.slot}">
-                        <button type="submit" class="btn-quick" style="background: #2a4a2a; border: 1px solid #4a6a4a; color: #fff;">장착</button>
-                    </form>
-                    <form th:if="${item.type == 'CONSUMABLE'}" action="/inventory/consume" method="post" style="margin:0;">
+                    <form th:if="${item.slot != null and item.slot != 'NONE'}" action="/inventory/equip" method="post">
                         <input type="hidden" name="itemId" th:value="${item.id}">
-                        <button type="submit" class="btn-quick" style="background: #2a3a5a; border: 1px solid #4a5a7a; color: #fff;">사용</button>
+                        <input type="hidden" name="slot" th:value="${item.slot}">
+                        <button type="submit" class="btn-quick">장착</button>
                     </form>
-                    <form action="/inventory/sell" method="post" onsubmit="return confirm('판매하시겠습니까?');" style="margin:0;">
+                    <form th:if="${item.type == 'CONSUMABLE'}" action="/inventory/consume" method="post">
                         <input type="hidden" name="itemId" th:value="${item.id}">
-                        <button type="submit" class="btn-quick" style="background: #5a2a2a; border: 1px solid #7a3a3a; color: #fff;">판매</button>
+                        <button type="submit" class="btn-quick">사용</button>
+                    </form>
+                    <form th:if="${mode != 1}" action="/inventory/sell" method="post" onsubmit="return confirm('판매하시겠습니까?');">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <button type="submit" class="btn-quick">판매</button>
                     </form>
                 </div>
             </li>
         </ul>
     </div>
 </div>
-</html>

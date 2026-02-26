@@ -1,6 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<th:block th:fragment="headerStyle">
+    <style>
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+            flex-shrink: 0;
+            margin-bottom: 10px; /* 헤더와 본문 사이 간격 추가 */
+        }
+
+        .game-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #666;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .btn-home {
+            text-decoration: none;
+            background-color: #252525;
+            color: #aaa;
+            padding: 6px 12px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .btn-home:hover {
+            background-color: #333;
+            color: #fff;
+            border-color: #666;
+        }
+    </style>
+</th:block>
+
 <div th:fragment="gameHeader" class="game-header">
     <h1 class="game-logo">DARK TOWN</h1>
     <a href="/game/" class="btn-home"><span>🏠</span> 메인으로</a>

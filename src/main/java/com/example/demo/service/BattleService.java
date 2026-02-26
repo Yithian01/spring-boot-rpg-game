@@ -129,12 +129,25 @@ public class BattleService {
 
         return gameDataManager.getSkillMetaMap().values().stream()
                 .filter(meta -> {
+                    // 1. 스킬 소유 여부 (학습했거나 아이템 부여 스킬인가?)
                     boolean hasSkill = availableSkillIds.contains(meta.getId());
-                    boolean canUseWithWeapon = meta.getRequiredWeapon().equalsIgnoreCase("NONE") ||
-                            meta.getRequiredWeapon().equalsIgnoreCase(currentWeapon);
-                    boolean isWeaponIntrinsic = !meta.getRequiredWeapon().equalsIgnoreCase("NONE") &&
-                            meta.getRequiredWeapon().equalsIgnoreCase(currentWeapon);
-                    return (hasSkill || isWeaponIntrinsic) && canUseWithWeapon;
+
+                    // 2. 무기 조건 리스트 가져오기 (List<String>이라고 가정)
+                    List<String> requiredWeapons = meta.getRequiredWeapons();
+
+                    // 3. 무기 조건 없이 사용 가능한가? (NONE 포함 여부)
+                    boolean isGenericSkill = requiredWeapons.stream()
+                            .anyMatch(w -> w.equalsIgnoreCase("NONE"));
+
+                    // 4. 현재 무기로 사용 가능한가?
+                    boolean canUseWithCurrentWeapon = requiredWeapons.stream()
+                            .anyMatch(w -> w.equalsIgnoreCase(currentWeapon));
+
+                    // 5. 무기 고유 스킬인가? (학습하지 않았어도 무기 타입이 맞으면 노출)
+                    boolean isWeaponIntrinsic = !isGenericSkill && canUseWithCurrentWeapon;
+
+                    // 최종 조건: (배운 스킬이면서 현재 무기로 쓸 수 있거나) OR (현재 무기의 고유 스킬이거나)
+                    return (hasSkill && (isGenericSkill || canUseWithCurrentWeapon)) || isWeaponIntrinsic;
                 })
                 .map(meta -> {
                     // 사용 가능 여부 체크
@@ -230,7 +243,7 @@ public class BattleService {
                             .message(msg)
                             .type(meta.getType())
                             .element(effect != null ? effect.getElement() : "NONE")
-                            .requiredWeapon(meta.getRequiredWeapon())
+                            .requiredWeapons(meta.getRequiredWeapons())
                             .baseHitChance(meta.getHitChance())
                             .effectType(effect != null ? effect.getType() : "NONE")
                             .status(effect != null ? effect.getStatus() : null)

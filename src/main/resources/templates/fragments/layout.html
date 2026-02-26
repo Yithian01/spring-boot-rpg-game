@@ -22,8 +22,16 @@
 
     /* ===== 2. 게임 메인 컨테이너 ===== */
     .container {
-        width: 1150px;
-        height: 900px;
+         /* 1. 고정 너비보다 유연한 너비 사용 (중요) */
+        width: 98% !important;
+        max-width: 1400px !important; /* 기존 1150px에서 대폭 확장 */
+
+        /* 2. 높이 설정 */
+        height: 90vh !important; /* 900px 고정보다 화면 높이에 맞춤 */
+        min-height: 800px;
+
+        /* 3. 레이아웃 안정화 */
+        margin: 0 auto !important;
         background-color: #1a1a1a;
         border: 1px solid #333;
         box-shadow: 0 0 50px rgba(0,0,0,0.8);
@@ -32,7 +40,24 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        position: relative; /* 시스템 메시지 위치 기준 */
+        position: relative;
+        overflow: visible !important; /* 내부 요소가 잘리지 않게 함 */
+    }
+
+    /* ===== 3. 상단 패널 비율 조정 ===== */
+    .top-panel {
+        display: grid !important;
+        /* 장비창(오른쪽)의 공간을 확실히 확보하기 위해 비율 조정 */
+        grid-template-columns: 350px 1fr 380px !important;
+        gap: 20px !important;
+        flex-grow: 1;
+        min-height: 0;
+        width: 100% !important;
+    }
+
+    /* 장비창 박스가 찌그러지지 않게 최소 너비 보장 */
+    .equipment-box {
+        min-width: 320px !important;
     }
 
     /* 헤더 스타일 */

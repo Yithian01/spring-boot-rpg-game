@@ -15,7 +15,7 @@
       "element": "NONE",
       "bonus": "NONE"
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 2,
@@ -32,7 +32,7 @@
       "type": "ESCAPE",
       "element": "NONE"
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 3,
@@ -52,7 +52,7 @@
       "duration": 1,
       "chance": 15
     },
-    "requiredWeapon": "BLUNT"
+    "requiredWeapons": ["BLUNT"]
   },
   {
     "id": 4,
@@ -72,7 +72,7 @@
       "duration": 3,
       "chance": 10
     },
-    "requiredWeapon": "SWORD"
+    "requiredWeapons": ["SWORD", "DAGGER"]
   },
   {
     "id": 5,
@@ -92,7 +92,7 @@
       "duration": 3,
       "chance": 10
     },
-    "requiredWeapon": "SWORD"
+    "requiredWeapons": ["SWORD", "DAGGER"]
   },
   {
     "id": 6,
@@ -110,7 +110,7 @@
       "element": "PHYSICAL",
       "critMod": 2.0
     },
-    "requiredWeapon": "DAGGER"
+    "requiredWeapons": ["DAGGER"]
   },
   {
     "id": 7,
@@ -127,7 +127,7 @@
       "type": "DAMAGE",
       "element": "PHYSICAL"
     },
-    "requiredWeapon": "BOW"
+    "requiredWeapons": ["BOW"]
   },
   {
     "id": 8,
@@ -147,7 +147,7 @@
       "duration": 3,
       "chance": 30
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 9,
@@ -171,7 +171,7 @@
         "11": 1.5
       }
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 10,
@@ -195,7 +195,7 @@
         "critRate": 1.3
       }
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 11,
@@ -219,7 +219,7 @@
         "dodge": 0.7
       }
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 12,
@@ -239,7 +239,7 @@
       "duration": 4,
       "chance": 100
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 13,
@@ -258,7 +258,7 @@
       "status": "REGEN",
       "chance": 100
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 14,
@@ -279,6 +279,6 @@
       "chance": 100,
       "combatStatModifiers": {"meleeAtk": 0.7}
     },
-    "requiredWeapon": "NONE"
+    "requiredWeapons": ["NONE"]
   }
 ]

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -25,5 +26,5 @@ public class SkillMeta {
     private Map<Integer, Double> statScaling;    // 스탯 인덱스 : 스탯 계수
 
     private SkillEffect effect;
-    private String requiredWeapon; // SWORD, BOW, BLUNT, NONE 등
+    private List<String> requiredWeapons; // SWORD, BOW, BLUNT, NONE 등
 }

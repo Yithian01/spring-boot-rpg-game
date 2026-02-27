@@ -1,5 +1,5 @@
 {
-  "location" : "TOWN",
-  "dungeonId" : null,
-  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ]
+  "location" : "DUNGEON",
+  "dungeonId" : 101,
+  "gameLogs" : [ "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<b style='color:#ff4d4d;'>[치명상] 더 이상 버틸 수 없습니다...</b>", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDE78 제국 기사 (Imperial Knight)이(가) BLEED의 효과를 견뎌냈습니다! (확률: 5%)</span>", "<span style='color:#ff4d4d;'>[피격]</span> 동굴 쥐의 날카로운 이빨! <b>36</b>의 피해!", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDE78 제국 기사 (Imperial Knight)이(가) BLEED의 효과를 견뎌냈습니다! (확률: 5%)</span>", "<span style='color:#ff4d4d;'>[피격]</span> 동굴 쥐의 날카로운 이빨! <b>36</b>의 피해!", "<b style='color:#ff9f43;'>▶ 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[해제] \uD83E\uDE78 BLEED 효과 종료</span>", "\uD83E\uDE78 <b style='color:#ff4d4d;'>BLEED</b> 피해! (-12 HP)", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDE78 제국 기사 (Imperial Knight)이(가) BLEED의 효과를 견뎌냈습니다! (확률: 5%)</span>", "<span style='color:#ff4d4d;'>[피격]</span> 동굴 쥐의 날카로운 이빨! <b>36</b>의 피해!", "<span style='color:#aaaaaa;'>[저항] \uD83D\uDC80 제국 기사 (Imperial Knight)이(가) WEAKNESS의 효과를 견뎌냈습니다! (확률: 30%)</span>", "✨ 동굴 쥐이(가) 제국 기사 (Imperial Knight)에게 <b>찍찍거리기</b> 시전!", "<b style='color:#ff9f43;'>▶ 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "\uD83E\uDE78 <b style='color:#ff4d4d;'>BLEED</b> 피해! (-12 HP)", "<span style='color:#ffffff;'>[효과]</span> 제국 기사 (Imperial Knight)에게 \uD83E\uDE78 <b>BLEED</b> 부여! (2턴 (틱당 12))" ]
 }

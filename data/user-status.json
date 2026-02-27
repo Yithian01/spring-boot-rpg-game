@@ -5,13 +5,13 @@
   "tribeId" : 9,
   "religionId" : 0,
   "currentHp" : 253,
-  "currentMp" : 158,
-  "currentStamina" : 214,
-  "currentGold" : 100,
+  "currentMp" : 168,
+  "currentStamina" : 223,
+  "currentGold" : 102,
   "combatStats" : {
     "maxHp" : 253,
-    "maxMp" : 158,
-    "maxStamina" : 217,
+    "maxMp" : 168,
+    "maxStamina" : 242,
     "hpRegen" : 4.5,
     "mpRegen" : 6.3,
     "meleeAtk" : 43.0,
@@ -19,11 +19,11 @@
     "critRate" : 15.5,
     "critDmg" : 168.0,
     "penetration" : 9.0,
-    "physDef" : 18.0,
-    "magRes" : 13.5,
+    "physDef" : 23.0,
+    "magRes" : 18.5,
     "dodge" : 14.399999999999999,
     "accuracy" : 18.3,
-    "moveSpeed" : 1.4,
+    "moveSpeed" : 3.4,
     "statusResist" : 19.4
   },
   "baseStats" : {
@@ -110,11 +110,11 @@
   "equippedItems" : {
     "HEAD" : "0",
     "NECKLACE" : "0",
-    "BOOTS" : "0",
+    "BOOTS" : "dd8a6334-052e-4e05-b8f3-a5954edd171e",
     "RING" : "0",
     "WEAPON" : "fcf5afdd-5124-462a-8633-47d274ebdd19",
     "SUB_WEAPON" : "0",
-    "BODY" : "0"
+    "BODY" : "da5cbbff-ad35-4805-b67b-5cfa37a287f4"
   },
   "learnedSkillIds" : [ 1, 2 ]
 }

@@ -90,7 +90,7 @@
         <div class="profile-info-text">
             <div class="profile-name-row">
                 <span style="color:#fff;" th:text="${game.userName}">User</span>
-                <span class="gold-display" th:text="${game.currentGold} + ' G'"></span>
+                <span class="gold-display" th:text="${#numbers.formatInteger(game.currentGold, 0)} + ' G'"></span>
             </div>
             <div class="profile-sub-row">
                 <span style="font-size: 0.85em; color: #888;">종족: <b style="color:#ccc" th:text="${game.tribe.name}"></b> | 종교: <b style="color:#ccc" th:text="${game.religion.name}"></b></span>
@@ -101,40 +101,40 @@
     <div class="status-bars">
         <div class="bar-row">
             <div class="bar-label" style="color:#ff6b6b">HP</div>
-            <div class="bar-container"><div class="bar-fill" th:style="'width:' + (${game.currentHp} * 100.0 / ${game.maxHp}) + '%; background: linear-gradient(90deg, #800, #ff6b6b);'"></div></div>
-            <div class="bar-text" th:text="${game.currentHp} + ' / ' + ${game.maxHp}"></div>
+            <div class="bar-container"><div class="bar-fill" th:style="'width:' + ${#numbers.formatInteger(game.currentHp * 100 / game.maxHp, 0)} + '%; background: linear-gradient(90deg, #800, #ff6b6b);'"></div></div>
+            <div class="bar-text" th:text="${#numbers.formatInteger(game.currentHp, 0)} + ' / ' + ${#numbers.formatInteger(game.maxHp, 0)}"></div>
         </div>
         <div class="bar-row">
             <div class="bar-label" style="color:#4dabf7">MP</div>
-            <div class="bar-container"><div class="bar-fill" th:style="'width:' + (${game.currentMp} * 100.0 / ${game.maxMp}) + '%; background: linear-gradient(90deg, #004080, #4dabf7);'"></div></div>
-            <div class="bar-text" th:text="${game.currentMp} + ' / ' + ${game.maxMp}"></div>
+            <div class="bar-container"><div class="bar-fill" th:style="'width:' + ${#numbers.formatInteger(game.currentMp * 100 / game.maxMp, 0)} + '%; background: linear-gradient(90deg, #004080, #4dabf7);'"></div></div>
+            <div class="bar-text" th:text="${#numbers.formatInteger(game.currentMp, 0)} + ' / ' + ${#numbers.formatInteger(game.maxMp, 0)}"></div>
         </div>
         <div class="bar-row">
             <div class="bar-label" style="color:#51cf66">STA</div>
-            <div class="bar-container"><div class="bar-fill" th:style="'width:' + (${game.currentStamina} * 100.0 / ${game.maxStamina}) + '%; background: linear-gradient(90deg, #206020, #51cf66);'"></div></div>
-            <div class="bar-text" th:text="${game.currentStamina} + ' / ' + ${game.maxStamina}"></div>
+            <div class="bar-container"><div class="bar-fill" th:style="'width:' + ${#numbers.formatInteger(game.currentStamina * 100 / game.maxStamina, 0)} + '%; background: linear-gradient(90deg, #206020, #51cf66);'"></div></div>
+            <div class="bar-text" th:text="${#numbers.formatInteger(game.currentStamina, 0)} + ' / ' + ${#numbers.formatInteger(game.maxStamina, 0)}"></div>
         </div>
     </div>
 
     <div class="stat-scroll">
         <div class="divider">⚔️ 공격 능력</div>
-        <div class="stat-row"><span>물리 공격력</span> <b class="stat-value-text" th:text="${game.combatStats.meleeAtk}"></b></div>
-        <div class="stat-row"><span>마법 공격력</span> <b class="stat-value-text" th:text="${game.combatStats.magicAtk}"></b></div>
-        <div class="stat-row"><span>방어 관통력</span> <b class="stat-value-text" th:text="${game.combatStats.penetration}"></b></div>
-        <div class="stat-row"><span>치명타 확률</span> <b class="stat-value-text" th:text="${game.combatStats.critRate} + '%'"></b></div>
-        <div class="stat-row"><span>치명타 피해</span> <b class="stat-value-text" th:text="${game.combatStats.critDmg} + '%'"></b></div>
-        <div class="stat-row"><span>명중률</span> <b class="stat-value-text" th:text="${game.combatStats.accuracy} + '%'"></b></div>
+        <div class="stat-row"><span>물리 공격력</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.meleeAtk, 0)}"></b></div>
+        <div class="stat-row"><span>마법 공격력</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.magicAtk, 0)}"></b></div>
+        <div class="stat-row"><span>방어 관통력</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.penetration, 0)}"></b></div>
+        <div class="stat-row"><span>치명타 확률</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.critRate, 0)} + '%'"></b></div>
+        <div class="stat-row"><span>치명타 피해</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.critDmg, 0)} + '%'"></b></div>
+        <div class="stat-row"><span>명중률</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.accuracy, 0)} + '%'"></b></div>
 
         <div class="divider">🛡️ 방어 및 생존</div>
-        <div class="stat-row"><span>물리 방어력</span> <b class="stat-value-text" th:text="${game.combatStats.physDef}"></b></div>
-        <div class="stat-row"><span>마법 저항력</span> <b class="stat-value-text" th:text="${game.combatStats.magRes}"></b></div>
-        <div class="stat-row"><span>회피율</span> <b class="stat-value-text" th:text="${game.combatStats.dodge} + '%'"></b></div>
-        <div class="stat-row"><span>상태이상 저항</span> <b class="stat-value-text" th:text="${game.combatStats.statusResist} + '%'"></b></div>
+        <div class="stat-row"><span>물리 방어력</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.physDef, 0)}"></b></div>
+        <div class="stat-row"><span>마법 저항력</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.magRes, 0)}"></b></div>
+        <div class="stat-row"><span>회피율</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.dodge, 0)} + '%'"></b></div>
+        <div class="stat-row"><span>상태이상 저항</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.statusResist, 0)} + '%'"></b></div>
 
         <div class="divider">⚡ 유틸리티</div>
-        <div class="stat-row"><span>이동 속도</span> <b class="stat-value-text" th:text="${game.combatStats.moveSpeed}"></b></div>
-        <div class="stat-row"><span>HP 재생 (초당)</span> <b class="stat-value-text" th:text="${game.combatStats.hpRegen}"></b></div>
-        <div class="stat-row"><span>MP 재생 (초당)</span> <b class="stat-value-text" th:text="${game.combatStats.mpRegen}"></b></div>
+        <div class="stat-row"><span>이동 속도</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.moveSpeed, 0)}"></b></div>
+        <div class="stat-row"><span>HP 재생 (초당)</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.hpRegen, 0)}"></b></div>
+        <div class="stat-row"><span>MP 재생 (초당)</span> <b class="stat-value-text" th:text="${#numbers.formatInteger(game.combatStats.mpRegen, 0)}"></b></div>
 
         <div class="divider">🧬 잠재력 계통</div>
         <div th:each="group : ${game.statGroups}"
@@ -143,7 +143,7 @@
              onmousemove="moveStatTooltip(event)"
              onmouseout="hideStatTooltip()">
             <span th:text="${group.categoryName}"></span>
-            <span class="total-val" th:text="${group.totalValue}"></span>
+            <span class="total-val" th:text="${#numbers.formatInteger(group.totalValue, 0)}"></span>
         </div>
     </div>
 
@@ -164,7 +164,7 @@
                     <span style="color:#aaa;">${s.name}</span>
                     <div>
                         <span class="grade-${s.growthGrade}">[${s.growthGrade}]</span>
-                        <b style="color:#fff; margin-left:5px;">${s.value}</b>
+                        <b style="color:#fff; margin-left:5px;">${Math.floor(s.value)}</b>
                     </div>
                 </div>
             `).join('');
@@ -174,7 +174,6 @@
         }
 
         function moveStatTooltip(event) {
-            // 마우스 위치에서 약간 옆으로 띄움
             tooltip.style.left = (event.clientX + 15) + 'px';
             tooltip.style.top = (event.clientY - 20) + 'px';
         }

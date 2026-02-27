@@ -117,7 +117,7 @@ public class MainController {
 
                 // 4. (선택) 현재 무기에 따른 사용 가능 스킬
                 //model.addAttribute("skills", gameService.getAvailableSkills());
-
+                System.out.println("gameData = " + gameDataForDungeon );
                 System.out.println("dungeonData = " + dungeonData );
 
                 log.info(">>> 던전 화면 진입: {}층", dungeonData.getCurrentFloor());

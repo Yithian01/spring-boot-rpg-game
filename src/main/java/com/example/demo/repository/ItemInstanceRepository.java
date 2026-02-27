@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import com.example.demo.domain.save.ItemInstance;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -29,24 +29,36 @@ public class ItemInstanceRepository {
     private final String ITEM_FILE = "item-instance.json";
 
     /**
-     * 아이템 인스턴스를 추가하거나 업데이트합니다.
-     * (기존에 UUID가 있으면 덮어쓰고, 없으면 새로 생성됩니다.)
+     * [로드] 전체 아이템 Map 가져오기
      */
-    public void save(ItemInstance itemInstance) {
-        Map<String, ItemInstance> allItems = findAll();
-        allItems.put(itemInstance.getInstanceId(), itemInstance);
-        saveMap(allItems);
+    public Map<String, ItemInstance> findAll() {
+        try {
+            File file = new File(DATA_DIR, ITEM_FILE);
+            if (!file.exists() || file.length() == 0) {
+                return new HashMap<>();
+            }
+            // JSON 객체를 Map<String, ItemInstance>으로 바로 변환
+            return objectMapper.readValue(file, new TypeReference<Map<String, ItemInstance>>() {});
+        } catch (IOException e) {
+            log.error("아이템 인스턴스 로드 실패", e);
+            return new HashMap<>();
+        }
     }
 
     /**
-     * 여러 개의 아이템을 한 번에 추가/수정합니다. (드랍 시 유용)
+     * [추가/수정] 단일 아이템 저장
      */
-    public void saveAll(List<ItemInstance> itemInstances) {
-        Map<String, ItemInstance> allItems = findAll();
-        for (ItemInstance item : itemInstances) {
-            allItems.put(item.getInstanceId(), item);
-        }
-        saveMap(allItems);
+    public void save(ItemInstance instance) {
+        Map<String, ItemInstance> all = findAll();
+        all.put(instance.getInstanceId(), instance);
+        saveAll(all);
+    }
+
+    /**
+     * [저장] Map 전체를 파일에 쓰기
+     */
+    public void saveAll(Map<String, ItemInstance> instances) {
+        saveMap(instances);
     }
 
     /**
@@ -66,27 +78,10 @@ public class ItemInstanceRepository {
 
     /**
      * --- [UUID 기반 조회] ---
-     * UUID로 특정 아이템 하나만 조회합니다.
+     * [조회] UUID로 하나만 가져오기
      */
-    public Optional<ItemInstance> findByInstanceId(String instanceId) {
-        return Optional.ofNullable(findAll().get(instanceId));
-    }
-
-    /**
-     * 모든 아이템 인스턴스 맵을 로드합니다.
-     */
-    public Map<String, ItemInstance> findAll() {
-        try {
-            File file = new File(DATA_DIR, ITEM_FILE);
-            if (!file.exists() || file.length() == 0) {
-                return new HashMap<>();
-            }
-            // Jackson의 TypeReference를 사용하여 Map<String, ItemInstance> 구조로 읽기
-            return objectMapper.readValue(file, new com.fasterxml.jackson.core.type.TypeReference<Map<String, ItemInstance>>() {});
-        } catch (IOException e) {
-            log.error("아이템 데이터 로드 실패", e);
-            return new HashMap<>();
-        }
+    public Optional<ItemInstance> findById(String uuid) {
+        return Optional.ofNullable(findAll().get(uuid));
     }
 
     /**

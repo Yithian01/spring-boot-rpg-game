@@ -640,24 +640,42 @@ public class StatCalculationService {
     }
 
     /**
-     * 몬스터 [BUFF/DEBUFF] 반영 스탯 처리
+     * 몬스터 [BUFF/DEBUFF] 반영 스탯 처리 (플레이어와 동일한 합연산 로직 적용)
      * @param monster 몬스터 정보
      * @return 몬스터 정보 처리해서 반환
      */
     public ActiveMonster statCalculationMonster(ActiveMonster monster) {
-        if(monster == null) return null;
+        if (monster == null) return null;
 
-        CombatStats calculatedStats = monster.getBaseStats().toBuilder().build();
+        // 1. 순수 베이스 스탯 복사
+        CombatStats base = monster.getBaseStats();
+        CombatStats result = base.toBuilder().build();
 
-        // 5-2. ActiveStatus 전투 비율 보정 (CombatModifiers: 예: 최종 데미지 1.5배)
+        // 2. 배율 합산을 위한 바구니
+        Map<String, Double> modifierSumMap = new HashMap<>();
+
+        // 3. 모든 액티브 상태에서 배율(Modifiers) 수집 및 합산
         if (monster.getActiveStatuses() != null) {
             for (ActiveStatus status : monster.getActiveStatuses()) {
                 if (status.getCombatModifiers() != null) {
-                    applyCombatModifiers(calculatedStats, status.getCombatModifiers());
+                    status.getCombatModifiers().forEach((name, val) ->
+                            // 1.2가 들어오면 0.2를 더하고, 0.7이 들어오면 -0.3을 더함
+                            modifierSumMap.merge(name, val - 1.0, Double::sum)
+                    );
                 }
             }
         }
-        monster.setActiveStats(calculatedStats);
+
+        // 4. 최종 합산된 배율을 베이스 스탯에 한 번만 적용
+        // modifier가 0.1(10%) 이라면 1.1을 곱해주는 방식
+        modifierSumMap.forEach((name, totalMod) -> {
+            double finalMultiplier = 1.0 + totalMod;
+            result.applyModifier(name, finalMultiplier);
+        });
+
+        monster.setActiveStats(result);
+
+        // 5. HP/MP가 최대치를 넘지 않도록 보정
         monster.setCurrentHp(Math.min(monster.getCurrentHp(), monster.getActiveStats().getMaxHp()));
         monster.setCurrentMp(Math.min(monster.getCurrentMp(), monster.getActiveStats().getMaxMp()));
 

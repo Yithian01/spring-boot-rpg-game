@@ -14,5 +14,5 @@ import java.util.List;
 @NoArgsConstructor
 public class InventoryStatus {
     @Builder.Default
-    private List<InventoryItem> items = new ArrayList<>();
+    private List<String> instanceIds = new ArrayList<>();
 }

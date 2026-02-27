@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ItemPageDto {
-    private int id;
+    private String id;
     private String name;
     private String grade;
     private String icon;

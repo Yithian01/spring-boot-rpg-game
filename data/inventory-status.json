@@ -1,13 +1,3 @@
 {
-  "items" : [ {
-    "id" : 37,
-    "instanceId" : "7532c1bc-05cc-4c01-ad9b-cac8bb0542b5",
-    "quantity" : 1,
-    "enhancementLevel" : 0
-  }, {
-    "id" : 25,
-    "instanceId" : null,
-    "quantity" : 1,
-    "enhancementLevel" : 0
-  } ]
+  "instanceIds" : [ "e91a8606-5d24-4bee-9211-ffc41ed8a51d" ]
 }

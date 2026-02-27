@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -23,8 +24,10 @@ public class GameService {
     private final InventoryFileRepository inventoryFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
     private final GameFileRepository gameFileRepository;
+    private final ItemInstanceRepository itemInstanceRepository;
     private final StatCalculationService statCalculationService;
     private final BattleService battleService;
+    private final InventoryService inventoryService;
 
     /**
      * 이어하던 게임 존재하는 지 확인
@@ -66,13 +69,13 @@ public class GameService {
      * - 잠재력(Potentials): 완전 랜덤 생성 (바바리안도 마법 S급 가능)
      */
     public void createNewGame(int tribeId) {
-
         log.info(">>> 새 게임 시작: 기존 데이터 초기화 중...");
         gameFileRepository.deleteFile();
         userFileRepository.deleteFile();
         townFileRepository.deleteFile();
         inventoryFileRepository.deleteFile();
         dungeonFileRepository.deleteFile();
+        itemInstanceRepository.deleteFile();
 
         // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
@@ -84,20 +87,19 @@ public class GameService {
 
         // 2. [인벤토리 초기화]
         // 종족 데이터에 정의된 initialItem(회복 아이템 등)을 인벤토리에 추가
-        List<InventoryItem> initialInventoryItems = new ArrayList<>();
+        InventoryStatus initialInventory = InventoryStatus.builder()
+                .instanceIds(new ArrayList<>())
+                .build();
+
         if (initialMeta.getInitialItem() != null) {
-            for (Integer itemId : initialMeta.getInitialItem()) {
-                initialInventoryItems.add(InventoryItem.builder()
-                        .id(itemId)
-                        .instanceId(UUID.randomUUID().toString())
-                        .quantity(1) // 기본 1개, 필요시 메타에 수량 필드 추가 가능
-                        .enhancementLevel(0)
-                        .build());
+            for (Integer metaId : initialMeta.getInitialItem()) {
+                ItemMeta meta = gameDataManager.getItemMetaMap().get(metaId);
+                if (meta != null) {
+                    ItemInstance newItem = ItemInstance.createConsumable(meta, 3);
+                    inventoryService.processAddItem(initialInventory, newItem, true);
+                }
             }
         }
-        InventoryStatus initialInventory = InventoryStatus.builder()
-                .items(initialInventoryItems)
-                .build();
         inventoryFileRepository.saveInventoryStatus(initialInventory);
 
         // 3. [랜덤 잠재력 생성]
@@ -107,8 +109,28 @@ public class GameService {
             randomPotentials.put(statId, growthId);
         }
 
-        // 4. [장비 및 스킬 설정]
-        Map<String, Integer> initialEquippedItems = new HashMap<>(initialMeta.getInitialEquipment());
+        // 4. [장비 설정]
+        Map<String, String> equippedUUIDs = new HashMap<>();
+        initializeEquippedSlots(equippedUUIDs); // 모든 슬롯 "0"으로 초기화 헬퍼
+
+        if (initialMeta.getInitialEquipment() != null) {
+            for (Map.Entry<String, Integer> entry : initialMeta.getInitialEquipment().entrySet()) {
+                String slotName = entry.getKey();
+                Integer metaId = entry.getValue();
+
+                if (metaId != null && metaId != 0) {
+                    ItemMeta meta = gameDataManager.getItemMetaMap().get(metaId);
+                    if (meta != null) {
+                        // [기존 메서드 활용] 장비로 생성
+                        ItemInstance equipment = ItemInstance.createEquipment(meta, null);
+                        itemInstanceRepository.save(equipment);
+                        equippedUUIDs.put(slotName, equipment.getInstanceId());
+                    }
+                }
+            }
+        }
+
+        // 4-2. 스킬 설정
         List<Integer> learnedSkillIds = new ArrayList<>(initialMeta.getInitialSkill());
 
         // 5. UserStatus 생성
@@ -124,7 +146,7 @@ public class GameService {
                 .activeStatuses(new ArrayList<>())
                 .finalStats(new HashMap<>(initialMeta.getInitialStats()))
                 .combatStats(new CombatStats())
-                .equippedItems(initialEquippedItems)
+                .equippedItems(equippedUUIDs)
                 .usedItemIds(new ArrayList<>())
                 .learnedSkillIds(learnedSkillIds)
                 .saveVersion(1)
@@ -132,7 +154,6 @@ public class GameService {
 
         // 6. 스탯 계산기 가동 및 장비 레이어 갱신
         // 장착된 초기 장비의 스탯 보너스를 먼저 계산 레이어에 반영합니다.
-        statCalculationService.updateEquipmentLayer(newUser, gameDataManager.getItemMetaMap());
         statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMetaMap());
 
         // 7. 자원 수치 보정
@@ -167,6 +188,14 @@ public class GameService {
     }
 
     /**
+     * 슬롯 초기화 헬퍼
+     */
+    private void initializeEquippedSlots(Map<String, String> map) {
+        String[] slots = {"WEAPON", "SUB_WEAPON", "BODY", "HEAD", "NECKLACE", "BOOTS", "RING"};
+        for (String s : slots) map.put(s, "0");
+    }
+
+    /**
      * 메인 화면에 뿌려줄 모든 게임 데이터를 조립해서 반환
      */
     public GamePageDto getGamePageData() {
@@ -174,34 +203,44 @@ public class GameService {
         UserStatus us = userFileRepository.findGameUser();
         if (us == null) return null;
 
-        // 랜덤박스 할인률
+        // 1. 인벤토리 로드 및 방어적 처리 (비어있을 수 있음)
+        InventoryStatus inv = inventoryFileRepository.findInventoryStatus();
+        List<ItemPageDto> inventory = new ArrayList<>();
+
+        // 인벤토리가 존재하고, 아이디 리스트가 비어있지 않을 때만 변환
+        if (inv != null && inv.getInstanceIds() != null && !inv.getInstanceIds().isEmpty()) {
+            inventory = inv.getInstanceIds().stream()
+                    .map(uuid -> itemInstanceRepository.findById(uuid).orElse(null))
+                    .filter(Objects::nonNull)
+                    .map(this::convertToItemPageDto)
+                    .collect(Collectors.toList());
+        }
+
+        // 2. 할인율 계산
         Map<Integer, Integer> stats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
         int finalPrice = statCalculationService.calculateGambleItemCost(stats, InventoryService.BOX_BASE_PRICE);
         int discountPercent = statCalculationService.calculateGambleItemDiscountPercent(stats);
 
-        // 인벤토리 아이템 리스트 (장착된 것 제외)
-        List<ItemPageDto> inventory = getInventoryPageData();
+        // 3. 장착 중인 아이템 맵 조립 (UUID 기반으로 변경!)
+        Map<String, ItemPageDto> equippedMap = new HashMap<>();
+        if (us.getEquippedItems() != null) {
+            us.getEquippedItems().forEach((slot, instanceId) -> {
+                // "0"이나 null이 아닐 때만 실제 인스턴스를 찾음
+                if (instanceId != null && !instanceId.equals("0") && !instanceId.equals("")) {
+                    itemInstanceRepository.findById(instanceId).ifPresent(ii -> {
+                        equippedMap.put(slot, convertToItemPageDto(ii));
+                    });
+                }
+            });
+        }
 
         List<StatCategoryGroupDto> statGroups = buildStatGroups(us);
-
-        // 장착 중인 아이템 맵 생성
-        Map<String, ItemPageDto> equippedMap = new HashMap<>();
-        us.getEquippedItems().forEach((slot, itemId) -> {
-            if (itemId != 0) {
-                ItemMeta meta = gameDataManager.getItemMetaMap().get(itemId);
-                if (meta != null) {
-                    equippedMap.put(slot, convertToItemPageDto(meta, 1));
-                }
-            }
-        });
 
         return GamePageDto.builder()
                 .img(String.valueOf(us.getTribeId()))
                 .userName(us.getName())
                 .tribe(mapUserTribe(us))
                 .religion(mapUserReligion(us))
-
-                // 생존 자원 및 골드 (HTML에서 바로 접근 가능)
                 .currentHp(us.getCurrentHp())
                 .maxHp(us.getCombatStats().getMaxHp())
                 .currentMp(us.getCurrentMp())
@@ -209,23 +248,14 @@ public class GameService {
                 .currentStamina(us.getCurrentStamina())
                 .maxStamina(us.getCombatStats().getMaxStamina())
                 .currentGold(us.getCurrentGold())
-
-                // 데이터 리스트
                 .statGroups(statGroups)
                 .combatStats(us.getCombatStats())
-
-                .items(inventory)
-                .equippedItems(equippedMap) // 장착창 데이터
-
-                //유저 현재 버프/디버프 목록 전달
+                .items(inventory) // 비어있으면 빈 리스트 전달
+                .equippedItems(equippedMap)
                 .activeStatuses(us.getActiveStatuses())
-
-                // 랜덤 박스 결제 정보
                 .boxPrice(finalPrice)
                 .boxDiscount(discountPercent)
-
-                // 게임로그
-                .gameLogs(gs.getGameLogs())
+                .gameLogs(gs != null ? gs.getGameLogs() : new ArrayList<>())
                 .build();
     }
 
@@ -319,25 +349,28 @@ public class GameService {
      * 화면에 보여질 인벤토리 정보
      * @return 인벤토리 정보 반환
      */
+    /**
+     * 화면에 보여질 인벤토리 정보 (UUID 인스턴스 기반)
+     */
     private List<ItemPageDto> getInventoryPageData() {
-        List<InventoryItem> inventoryItems = inventoryFileRepository.findInventoryStatus().getItems();
+        InventoryStatus invStatus = inventoryFileRepository.findInventoryStatus();
         List<ItemPageDto> inventoryDtoList = new ArrayList<>();
 
-        for (InventoryItem invItem : inventoryItems) {
-            ItemMeta meta = gameDataManager.getItemMetaMap().get(invItem.getId());
-            if (meta == null) continue;
-
-            // 장비 아이템(장착 슬롯이 NONE이 아닌 것)은 개별적으로 리스트에 추가
-            if (!meta.getSlot().equals("NONE")) {
-                for (int i = 0; i < invItem.getQuantity(); i++) {
-                    // 수량을 1로 고정하여 각각의 객체로 추가
-                    inventoryDtoList.add(convertToItemPageDto(meta, 1));
-                }
-            } else {
-                // 소모품(포션 등)은 기존처럼 겹쳐서 보여주고 싶다면 그대로 유지
-                inventoryDtoList.add(convertToItemPageDto(meta, invItem.getQuantity()));
-            }
+        if (invStatus == null || invStatus.getInstanceIds() == null) {
+            return inventoryDtoList;
         }
+
+        // 1. 인벤토리에 등록된 모든 UUID를 순회
+        for (String uuid : invStatus.getInstanceIds()) {
+            // 2. UUID로 실제 아이템 인스턴스(상태 정보)를 가져옴
+            ItemInstance instance = itemInstanceRepository.findById(uuid).orElse(null);
+            if (instance == null) continue;
+
+            // 3. 인스턴스를 DTO로 변환하여 추가
+            // 장비는 애초에 각각의 인스턴스로 존재하므로 별도의 루프가 필요 없음
+            inventoryDtoList.add(convertToItemPageDto(instance));
+        }
+
         return inventoryDtoList;
     }
 
@@ -385,60 +418,91 @@ public class GameService {
     /**
      * ItemMeta 데이터를 UI용 ItemPageDto로 변환하는 공통 메서드
      */
-    private ItemPageDto convertToItemPageDto(ItemMeta meta, int quantity) {
+    /**
+     * ItemInstance 데이터를 UI용 ItemPageDto로 변환 (UUID 및 강화수치 반영)
+     */
+    private ItemPageDto convertToItemPageDto(ItemInstance ii) {
+        // 0. 기본 메타 데이터 참조 (설명, 아이콘 등 불변 데이터용)
+        ItemMeta meta = gameDataManager.getItemMetaMap().get(ii.getItemMetaId());
         List<String> statBonuses = new ArrayList<>();
 
-        if (meta.isTwoHanded()) {
+        if (ii.isTwoHanded()) {
             statBonuses.add("● 양손 무기 (보조장비 착용 불가)");
         }
 
-        // 1. 기초 스탯 보너스 가공
-        if (meta.getBaseStatsBonus() != null) {
-            meta.getBaseStatsBonus().forEach((statId, value) -> {
-                String statName = gameDataManager.getStatMetaMap().get(statId).getName();
-                statBonuses.add(statName + " +" + value);
+        // 1. 기초 스탯 보너스 (고정치: +5)
+        if (ii.getBaseStatsBonus() != null) {
+            ii.getBaseStatsBonus().forEach((statId, value) -> {
+                if (value != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    statBonuses.add(statName + " +" + value);
+                }
             });
         }
 
-        // 2. 전투 능력치 보너스 가공
-        Map<String, Double> cb = meta.getCombatStatsBonus();
-        if (cb != null) {
-            cb.forEach((key, value) -> {
+        // 2. 기초 스탯 배율 (퍼센트: +10%) -> 유저님이 원하신 합연산 배율 표시
+        if (ii.getBaseStatsBonusModifiers() != null) {
+            ii.getBaseStatsBonusModifiers().forEach((statId, modifier) -> {
+                if (modifier != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    // 0.1 -> 10% 로 변환
+                    statBonuses.add(statName + " +" + (int)(modifier * 100) + "%");
+                }
+            });
+        }
+
+        // 3. 전투 능력치 보너스 (깡스탯 및 배율합)
+        if (ii.getCombatStatsBonus() != null) {
+            ii.getCombatStatsBonus().forEach((key, value) -> {
                 if (value != 0) {
                     String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
-                    String suffix = (key.contains("Rate") || key.contains("Dmg") || key.contains("Dodge") || key.contains("accuracy")) ? "%" : "";
+                    // 기존 수식 유지하되 % 판단 로직 적용
+                    String suffix = (key.toLowerCase().contains("rate") ||
+                            key.toLowerCase().contains("dmg") ||
+                            key.toLowerCase().contains("dodge") ||
+                            key.toLowerCase().contains("accuracy")) ? "%" : "";
                     statBonuses.add(displayName + " +" + value + suffix);
                 }
             });
         }
 
-        // 3. 소모품 회복 효과 가공
-        String recoveryEffect = "";
-        Map<String, Integer> rb = meta.getRecoveryBonus();
-        if (rb != null) {
-            List<String> recoveries = new ArrayList<>();
-            rb.forEach((key, value) -> {
-                if (value > 0) {
-                    recoveries.add(key.toUpperCase() + " " + value + " 회복");
+        // 전투 능력치 배율(Modifiers)이 있다면 여기서 추가로 처리 가능
+        if (ii.getCombatStatsBonusModifiers() != null) {
+            ii.getCombatStatsBonusModifiers().forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    statBonuses.add(displayName + " 최종 보정 +" + (int)(value * 100) + "%");
                 }
+            });
+        }
+
+        // 4. 소모품 효과 (메타 데이터 참조)
+        String recoveryEffect = "";
+        if (meta != null && meta.getRecoveryBonus() != null) {
+            List<String> recoveries = new ArrayList<>();
+            meta.getRecoveryBonus().forEach((key, value) -> {
+                if (value > 0) recoveries.add(key.toUpperCase() + " " + value + " 회복");
             });
             recoveryEffect = String.join(", ", recoveries);
         }
 
+        // 5. DTO 조립 (id 대신 instanceId를 넣어 프론트가 UUID를 쓰게 함)
         return ItemPageDto.builder()
-                .id(meta.getId())
-                .name(meta.getName())
-                .grade(meta.getGrade())
-                .icon(meta.getIcon())
-                .description(meta.getDescription())
-                .gold(meta.getPrice())
-                .type(meta.getType())
-                .slot(meta.getSlot())
-                .subType(meta.getSubType())
-                .quantity(quantity)
+                .id(ii.getInstanceId()) // 이제 이게 식별자가 됨
+                .name(ii.getEnhancementLevel() > 0 ?
+                        ii.getCustomName() + " (+" + ii.getEnhancementLevel() + ")" :
+                        ii.getCustomName())
+                .grade(ii.getGrade())
+                .icon(meta != null ? meta.getIcon() : "default_icon")
+                .description(ii.getDescription())
+                .gold(ii.getPrice())
+                .type(ii.getType())
+                .slot(ii.getSlot())
+                .subType(ii.getSubType())
+                .quantity(ii.getQuantity())
                 .statBonuses(statBonuses)
-                .recoveryEffect(recoveryEffect != null ? recoveryEffect : "")
-                .twoHanded(meta.isTwoHanded())
+                .recoveryEffect(recoveryEffect)
+                .twoHanded(ii.isTwoHanded())
                 .build();
     }
 

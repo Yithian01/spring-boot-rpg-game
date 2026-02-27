@@ -4,10 +4,8 @@ import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.meta.MonsterSkillMeta;
 import com.example.demo.domain.meta.SkillMeta;
-import com.example.demo.domain.save.ActiveMonster;
-import com.example.demo.domain.save.ActiveStatus;
-import com.example.demo.domain.save.DungeonStatus;
-import com.example.demo.domain.save.UserStatus;
+import com.example.demo.domain.save.*;
+import com.example.demo.repository.ItemInstanceRepository;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +19,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class StatCalculationService {
+    private final ItemInstanceRepository itemInstanceRepository;
 
     /**
      * 공통 조회 메서드: 키가 String일 경우를 대비해 조회
@@ -37,102 +36,86 @@ public class StatCalculationService {
     }
 
     /**
-     * [추가] 장착된 아이템들의 기초 스탯 보너스를 합산하여 UserStatus의 전용 레이어에 저장합니다.
-     * 장비 장착/해제 시에만 호출하면 됩니다.
-     */
-    public void updateEquipmentLayer(UserStatus user, Map<Integer, ItemMeta> itemMap) {
-        Map<Integer, Integer> equipBonus = new HashMap<>();
-
-        if (user.getEquippedItems() != null) {
-            for (Integer itemId : user.getEquippedItems().values()) {
-                // 아이템 ID가 0이 아니고 메타 데이터가 존재하는 경우만 합산
-                if (itemId != null && itemId != 0 && itemMap.containsKey(itemId)) {
-                    ItemMeta item = itemMap.get(itemId);
-                    if (item.getBaseStatsBonus() != null) {
-                        item.getBaseStatsBonus().forEach((statId, bonus) ->
-                                equipBonus.merge(statId, bonus, Integer::sum));
-                    }
-                }
-            }
-        }
-
-        // 유저 객체의 장비 보너스 레이어 갱신
-        user.setEquipmentBonusStats(equipBonus);
-        log.debug("장비 스탯 레이어 업데이트 완료: {}", equipBonus);
-    }
-
-    /**
      * 유저의 모든 전투 스탯을 [아이템 + 버프/디버프]를 포함하여 완전히 새로고침합니다.
      * 매번 아이템을 전수 조사하지 않고, 저장된 equipmentBonusStats 레이어를 활용합니다.
      * @param user 현재 유저 상태 (참조를 통해 직접 수정)
      * @param itemMap GameDataManager에서 관리하는 전체 아이템 메타 맵
      */
     public void refreshUserCombatStats(UserStatus user, Map<Integer, ItemMeta> itemMap) {
-        // --- [STEP 1] 기초 스탯 레이어 통합 (Base + Equipment) ---
-        Map<Integer, Double> calculationMap = new HashMap<>();
+        Map<Integer, Integer> baseStatOffsets = new HashMap<>();     // 고정치 (+)
+        Map<Integer, Double> baseStatModifiers = new HashMap<>();    // 배율합 (%)
 
-        // 1-1. 순수 태생 스탯 (BaseStats)
-        user.getBaseStats().forEach((id, val) -> calculationMap.put(id, val.doubleValue()));
+        Map<String, Integer> combatStatOffsets = new HashMap<>();    // 전투스탯 고정치
+        Map<String, Double> combatStatModifiers = new HashMap<>();   // 전투스탯 배율합
 
-        // 1-2. 장비 보너스 합산 (미리 계산된 equipmentBonusStats 활용)
-        if (user.getEquipmentBonusStats() != null) {
-            user.getEquipmentBonusStats().forEach((id, val) ->
-                    calculationMap.merge(id, val.doubleValue(), Double::sum));
-        }
+        // 2. [장착 아이템] 보너스 수집
+        if (user.getEquippedItems() != null) {
+            for (String instanceId : user.getEquippedItems().values()) {
+                if (instanceId == null || "0".equals(instanceId)) continue;
 
-        // --- [STEP 2] 상태 효과 레이어 (ActiveStatus - Stat Layer) ---
-        if (user.getActiveStatuses() != null && !user.getActiveStatuses().isEmpty()) {
-            // 2-1. Stat Offsets (고정치 합산: 예: 힘 +10)
-            for (ActiveStatus status : user.getActiveStatuses()) {
-                if (status.getStatOffsets() != null) {
-                    status.getStatOffsets().forEach((statId, offset) ->
-                            calculationMap.merge(statId, offset.doubleValue(), Double::sum));
+                ItemInstance ii = itemInstanceRepository.findById(instanceId).orElse(null);
+                if (ii == null) continue;
+
+                // 기초 스탯 보너스 수집
+                if (ii.getBaseStatsBonus() != null) {
+                    ii.getBaseStatsBonus().forEach((id, val) -> baseStatOffsets.merge(id, val, Integer::sum));
                 }
-            }
-
-            // 2-2. Stat Modifiers (비율 보정: 예: 지능 * 1.2)
-            // 곱연산이므로 합연산이 모두 끝난 후 마지막에 적용
-            for (ActiveStatus status : user.getActiveStatuses()) {
-                if (status.getStatModifiers() != null) {
-                    status.getStatModifiers().forEach((statId, modifier) -> {
-                        if (calculationMap.containsKey(statId)) {
-                            double currentVal = calculationMap.get(statId);
-                            calculationMap.put(statId, currentVal * modifier);
-                        }
-                    });
+                // 기초 스탯 배율 수집 (0.1 + 0.1 = 0.2 로직)
+                if (ii.getBaseStatsBonusModifiers() != null) {
+                    ii.getBaseStatsBonusModifiers().forEach((id, val) -> baseStatModifiers.merge(id, val, Double::sum));
+                }
+                // 전투 스탯 보너스 수집
+                if (ii.getCombatStatsBonus() != null) {
+                    ii.getCombatStatsBonus().forEach((name, val) -> combatStatOffsets.merge(name, val, Integer::sum));
+                }
+                // 전투 스탯 배율 수집
+                if (ii.getCombatStatsBonusModifiers() != null) {
+                    ii.getCombatStatsBonusModifiers().forEach((name, val) -> combatStatModifiers.merge(name, val, Double::sum));
                 }
             }
         }
 
-        // --- [STEP 3] 최종 스탯(finalStats) 확정 ---
-        Map<Integer, Integer> finalStats = new HashMap<>();
-        calculationMap.forEach((id, val) -> finalStats.put(id, (int) Math.round(val)));
-        user.setFinalStats(finalStats);
-
-        // --- [STEP 4] 전투 능력치 수식 레이어 (Formulas) ---
-        applyBaseFormulas(user, finalStats);
-
-        // --- [STEP 5] 최종 보정 레이어 (Combat Stats Bonuses & Modifiers) ---
-        // 5-1. 아이템 깡스탯 (CombatStatsBonus: 예: 물리공격력 +50)
-        for (Integer itemId : user.getEquippedItems().values()) {
-            if (itemId != null && itemId != 0 && itemMap.containsKey(itemId)) {
-                ItemMeta item = itemMap.get(itemId);
-                if (item.getCombatStatsBonus() != null) {
-                    applyCombatStatsBonus(user, item.getCombatStatsBonus());
-                }
-            }
-        }
-
-        // 5-2. ActiveStatus 전투 비율 보정 (CombatModifiers: 예: 최종 데미지 1.5배)
+        // 3. [액티브 상태(버프)] 보너스 수집
         if (user.getActiveStatuses() != null) {
             for (ActiveStatus status : user.getActiveStatuses()) {
+                if (status.getStatOffsets() != null) {
+                    status.getStatOffsets().forEach((id, val) -> baseStatOffsets.merge(id, val, Integer::sum));
+                }
+                if (status.getStatModifiers() != null) {
+                    status.getStatModifiers().forEach((id, val) -> baseStatModifiers.merge(id, val, Double::sum));
+                }
                 if (status.getCombatModifiers() != null) {
-                    applyCombatModifiers(user, status.getCombatModifiers());
+                    status.getCombatModifiers().forEach((name, val) -> combatStatModifiers.merge(name, val, Double::sum));
                 }
             }
         }
 
-        // --- [STEP 6] 자원 상한선 보정 ---
+        // 4. [최종 기초 스탯(finalStats) 계산]
+        // 공식: (기본 스탯 + 고정치 합) * (1.0 + 배율 합)
+        Map<Integer, Integer> finalStats = new HashMap<>();
+        user.getBaseStats().forEach((id, baseVal) -> {
+            int offset = baseStatOffsets.getOrDefault(id, 0);
+            double modifierSum = baseStatModifiers.getOrDefault(id, 0.0);
+
+            int finalVal = (int) Math.round((baseVal + offset) * (1.0 + modifierSum));
+            finalStats.put(id, finalVal);
+        });
+        user.setFinalStats(finalStats);
+
+        // 5. [전투 능력치 수식 레이어 적용]
+        CombatStats combat = new CombatStats();
+        applyBaseFormulas(combat, finalStats); // calculateMaxHp 등 기존 수식 함수들 호출
+
+        // 6. [전투 스탯 최종 보정]
+        // (A) 고정치 보정: 예) 공격력 +50
+        combatStatOffsets.forEach((name, val) -> combat.applyCombatStatsBonus(name, val.doubleValue()));
+
+        // (B) 배율 보정: 예) 공격력 +20% (합연산된 배율 적용)
+        combatStatModifiers.forEach((name, val) -> combat.applyModifier(name, val));
+
+        user.setCombatStats(combat);
+
+        // 7. 자원 상한선 보정
         user.setCurrentHp(Math.min(user.getCurrentHp(), user.getCombatStats().getMaxHp()));
         user.setCurrentMp(Math.min(user.getCurrentMp(), user.getCombatStats().getMaxMp()));
         user.setCurrentStamina(Math.min(user.getCurrentStamina(), user.getCombatStats().getMaxStamina()));
@@ -141,23 +124,23 @@ public class StatCalculationService {
     /**
      * [헬퍼] 수식을 통한 기본 전투 능력치 세팅
      */
-    private void applyBaseFormulas(UserStatus user, Map<Integer, Integer> stats) {
-        user.getCombatStats().setMaxHp(calculateMaxHp(stats));
-        user.getCombatStats().setMaxMp(calculateMana(stats));
-        user.getCombatStats().setMaxStamina(calculateStamina(stats));
-        user.getCombatStats().setHpRegen(calculateHpRegen(stats));
-        user.getCombatStats().setMpRegen(calculateManaRegen(stats));
-        user.getCombatStats().setMeleeAtk(calculateMeleeAtk(stats));
-        user.getCombatStats().setMagicAtk(calculateMagicAtk(stats));
-        user.getCombatStats().setCritRate(calculateCritRate(stats));
-        user.getCombatStats().setCritDmg(calculateCritDmg(stats));
-        user.getCombatStats().setPenetration(calculatePenetration(stats));
-        user.getCombatStats().setPhysDef(calculatePhysDef(stats));
-        user.getCombatStats().setMagRes(calculateMagRes(stats));
-        user.getCombatStats().setDodge(calculateDodge(stats));
-        user.getCombatStats().setAccuracy(calculateAccuracy(stats));
-        user.getCombatStats().setMoveSpeed(calculateMoveSpd(stats));
-        user.getCombatStats().setStatusResist(calculateStatusResist(stats));
+    private void applyBaseFormulas(CombatStats combat, Map<Integer, Integer> stats) {
+        combat.setMaxHp(calculateMaxHp(stats));
+        combat.setMaxMp(calculateMana(stats));
+        combat.setMaxStamina(calculateStamina(stats));
+        combat.setHpRegen(calculateHpRegen(stats));
+        combat.setMpRegen(calculateManaRegen(stats));
+        combat.setMeleeAtk(calculateMeleeAtk(stats));
+        combat.setMagicAtk(calculateMagicAtk(stats));
+        combat.setCritRate(calculateCritRate(stats));
+        combat.setCritDmg(calculateCritDmg(stats));
+        combat.setPenetration(calculatePenetration(stats));
+        combat.setPhysDef(calculatePhysDef(stats));
+        combat.setMagRes(calculateMagRes(stats));
+        combat.setDodge(calculateDodge(stats));
+        combat.setAccuracy(calculateAccuracy(stats));
+        combat.setMoveSpeed(calculateMoveSpd(stats));
+        combat.setStatusResist(calculateStatusResist(stats));
     }
 
     /**

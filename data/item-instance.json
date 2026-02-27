@@ -1,0 +1,97 @@
+{
+  "e91a8606-5d24-4bee-9211-ffc41ed8a51d" : {
+    "instanceId" : "e91a8606-5d24-4bee-9211-ffc41ed8a51d",
+    "itemMetaId" : 37,
+    "customName" : "빵 한 조각",
+    "grade" : "COMMON",
+    "type" : "CONSUMABLE",
+    "slot" : "NONE",
+    "subType" : "FOOD",
+    "twoHanded" : false,
+    "description" : "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
+    "quantity" : 2,
+    "enhancementLevel" : 0,
+    "price" : 30,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : { },
+    "recoveryBonus" : {
+      "hp" : 20,
+      "mp" : 0,
+      "stamina" : 30
+    },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "be76aa2b-69ba-422f-8c74-95b6c0fbc358" : {
+    "instanceId" : "be76aa2b-69ba-422f-8c74-95b6c0fbc358",
+    "itemMetaId" : 24,
+    "customName" : "뒤틀린 짧은 활",
+    "grade" : "COMMON",
+    "type" : "EQUIPMENT",
+    "slot" : "WEAPON",
+    "subType" : "BOW",
+    "twoHanded" : true,
+    "description" : "관리가 안 되어 나무가 뒤틀린 활입니다. 사거리는 짧지만 없는 것보단 낫습니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 320,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "accuracy" : 5,
+      "critRate" : 5,
+      "meleeAtk" : 10
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "1ab3caa7-e370-44c6-85c4-93105340cb33" : {
+    "instanceId" : "1ab3caa7-e370-44c6-85c4-93105340cb33",
+    "itemMetaId" : 25,
+    "customName" : "낡은 나뭇잎 가슴받이",
+    "grade" : "COMMON",
+    "type" : "EQUIPMENT",
+    "slot" : "BODY",
+    "subType" : "LEATHER",
+    "twoHanded" : false,
+    "description" : "질긴 잎사귀와 가죽 끈을 엮어 만든 보호구입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 160,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "dodge" : 4,
+      "moveSpeed" : 1,
+      "physDef" : 4
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "b174c1c0-2da2-4598-bf84-3e2ec6f9095c" : {
+    "instanceId" : "b174c1c0-2da2-4598-bf84-3e2ec6f9095c",
+    "itemMetaId" : 12,
+    "customName" : "낡은 가죽 신발",
+    "grade" : "COMMON",
+    "type" : "EQUIPMENT",
+    "slot" : "BOOTS",
+    "subType" : "LEATHER",
+    "twoHanded" : false,
+    "description" : "밑창이 너덜너덜해서 발바닥이 아픕니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 100,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "moveSpeed" : 2,
+      "maxStamina" : 15
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  }
+}

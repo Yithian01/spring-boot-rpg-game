@@ -1,20 +1,22 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.meta.ItemMeta;
-import com.example.demo.domain.save.InventoryItem;
 import com.example.demo.domain.save.InventoryStatus;
+import com.example.demo.domain.save.ItemInstance;
 import com.example.demo.domain.save.UserStatus;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.InventoryFileRepository;
+import com.example.demo.repository.ItemInstanceRepository;
 import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class InventoryService {
@@ -22,80 +24,72 @@ public class InventoryService {
 
     private final UserFileRepository userFileRepository;
     private final InventoryFileRepository inventoryFileRepository;
+    private final ItemInstanceRepository itemInstanceRepository;
     private final StatCalculationService statCalculationService;
     private final GameDataManager gameDataManager;
 
     /**
      * 아이템 장착 로직
      */
-    public String equipItem(int itemId, String slot) {
+    public String equipItem(String instanceId, String slot) {
         UserStatus user = userFileRepository.findGameUser();
         InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
-        ItemMeta meta = gameDataManager.getItemMetaMap().get(itemId);
+        ItemInstance itemInstance = itemInstanceRepository.findById(instanceId).orElse(null);
 
-        if (meta == null) return "아이템 정보를 찾을 수 없습니다.";
+        if (itemInstance == null) return "아이템 정보를 찾을 수 없습니다.";
 
-        // 1. 인벤토리 보유 확인
-        InventoryItem targetItem = inventory.getItems().stream()
-                .filter(item -> item.getId() == itemId).findFirst().orElse(null);
-        if (targetItem == null || targetItem.getQuantity() <= 0) return "보유하지 않은 아이템입니다.";
+        // [Step 1] 인벤토리에서 제거
+        if (!inventory.getInstanceIds().remove(instanceId)) {
+            return "보유하지 않은 아이템입니다.";
+        }
 
-        // [변경 포인트 1] 현재 자원 비율 유지를 위해 이전 Max 값 저장
+        StringBuilder messageBuilder = new StringBuilder();
+
+        // [Step 2] 스탯 비교를 위한 이전 값 저장
         int preMaxHp = user.getCombatStats().getMaxHp();
         int preMaxMp = user.getCombatStats().getMaxMp();
         int preMaxSt = user.getCombatStats().getMaxStamina();
 
-        // 2. 장착 슬롯 처리 (양손 무기 등 기존 로직 유지)
-        StringBuilder messageBuilder = new StringBuilder();
-        handleWeaponSlot(user, inventory, slot, meta, messageBuilder); // 헬퍼 메서드로 분리 추천
+        // [Step 3] 양손 무기 및 슬롯 전처리 (핵심!)
+        handleEquipSlotConflict(user, inventory, slot, itemInstance, messageBuilder);
 
-        // 기존 장착템 해제 및 새 아이템 등록
-        Integer currentEquippedId = user.getEquippedItems().get(slot);
-        if (currentEquippedId != null && currentEquippedId != 0) {
-            addInventoryItem(inventory, currentEquippedId);
-        }
-        user.getEquippedItems().put(slot, itemId);
-        targetItem.setQuantity(targetItem.getQuantity() - 1);
-        if (targetItem.getQuantity() <= 0) inventory.getItems().remove(targetItem);
+        // [Step 4] 대상 슬롯에 새 아이템 장착
+        user.getEquippedItems().put(slot, instanceId);
 
-        // [변경 포인트 2] 계층형 스탯 업데이트
-        // (중요) StatCalculationService에 새로 만든 장비 레이어 전용 업데이트 호출
-        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMetaMap());
-
-        // [변경 포인트 3] 최종 스탯 리프레시 (Base + Equip + ActiveStatus)
+        // [Step 5] 스탯 갱신 및 자원 보정
         statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
-
-        // 3. 자원 보정 (최대치가 늘어난 만큼 현재치도 자연스럽게 보정)
         adjustCurrentResources(user, preMaxHp, preMaxMp, preMaxSt);
 
-        // 4. 저장
+        // [Step 6] 저장
         userFileRepository.saveUserStatus(user);
         inventoryFileRepository.saveInventoryStatus(inventory);
 
-        messageBuilder.append(meta.getName()).append("을(를) 장착했습니다.");
-        return messageBuilder.toString();
+        return messageBuilder.append(itemInstance.getCustomName()).append("을(를) 장착했습니다.").toString();
     }
 
     /**
-     * 아이템 해제 로직 (개선 버전)
+     * 아이템 해제 로직
      */
     public String unequipItem(String slot) {
         UserStatus user = userFileRepository.findGameUser();
         InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
 
-        Integer equippedId = user.getEquippedItems().get(slot);
-        if (equippedId == null || equippedId == 0) return "해당 슬롯에 장착된 아이템이 없습니다.";
+        String equippedId = user.getEquippedItems().get(slot);
+        if (equippedId == null || equippedId.equals("0")) return "장착된 아이템이 없습니다.";
 
         // 1. 장착 해제
-        user.getEquippedItems().put(slot, 0);
-        addInventoryItem(inventory, equippedId);
+        user.getEquippedItems().put(slot, "0");
 
-        // [변경 포인트] 레이어 업데이트 후 리프레시
-        statCalculationService.updateEquipmentLayer(user, gameDataManager.getItemMetaMap());
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
+        // 2. 가방으로 돌려보내기
+        ItemInstance oldItem = itemInstanceRepository.findById(equippedId).orElse(null);
+        if (oldItem != null) {
+            processAddItem(inventory, oldItem, false);
+        }
 
+        // 3. 리프레시 및 저장
         userFileRepository.saveUserStatus(user);
         inventoryFileRepository.saveInventoryStatus(inventory);
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
 
         return "장비를 해제했습니다.";
     }
@@ -114,146 +108,235 @@ public class InventoryService {
     }
 
     /**
-     * 주무기/보조무기 장착 시 양손 무기 규칙을 처리하는 헬퍼 메서드
+     * 슬롯 충돌 해결 (양손 무기 규칙 적용)
      */
-    private void handleWeaponSlot(UserStatus user, InventoryStatus inventory, String slot, ItemMeta meta, StringBuilder messageBuilder) {
-        // A. 주무기(WEAPON) 슬롯에 장착하려는 경우
+    private void handleEquipSlotConflict(UserStatus user, InventoryStatus inventory, String slot, ItemInstance newItem, StringBuilder msg) {
+
+        // 1. 공통: 해당 슬롯에 이미 아이템이 있다면 해제
+        String oldId = user.getEquippedItems().get(slot);
+        if (oldId != null && !"0".equals(oldId) && !oldId.isEmpty()) {
+            unequipToInventory(inventory, oldId);
+        }
+
+        // 2. 무기 특수 규칙
         if ("WEAPON".equals(slot)) {
-            // 지금 끼려는 무기가 양손 무기라면 보조무기를 강제 해제
-            if (meta.isTwoHanded()) {
-                Integer subId = user.getEquippedItems().get("SUB_WEAPON");
-                if (subId != null && subId != 0) {
-                    addInventoryItem(inventory, subId);
-                    user.getEquippedItems().put("SUB_WEAPON", 0);
-                    messageBuilder.append("(양손 무기로 인해 보조장비 해제) ");
+            // 내가 양손 무기를 장착하려는데 보조무기에 뭐가 있다면? 해제!
+            if (newItem.isTwoHanded()) {
+                String subId = user.getEquippedItems().get("SUB_WEAPON");
+                if (subId != null && !subId.equals("0")) {
+                    unequipToInventory(inventory, subId);
+                    user.getEquippedItems().put("SUB_WEAPON", "0");
+                    msg.append("(양손 무기 장착으로 보조장비 해제) ");
                 }
             }
         }
-        // B. 보조무기(SUB_WEAPON) 슬롯에 장착하려는 경우
         else if ("SUB_WEAPON".equals(slot)) {
-            Integer mainId = user.getEquippedItems().get("WEAPON");
-            if (mainId != null && mainId != 0) {
-                ItemMeta mainMeta = gameDataManager.getItemMetaMap().get(mainId);
-                // 현재 끼고 있는 주무기가 양손 무기라면 보조무기를 낄 수 없으므로 주무기를 해제
-                if (mainMeta != null && mainMeta.isTwoHanded()) {
-                    addInventoryItem(inventory, mainId);
-                    user.getEquippedItems().put("WEAPON", 0);
-                    messageBuilder.append("(양손 무기를 사용 중이라 주무기 해제) ");
+            // 보조무기를 장착하려는데 주무기가 양손 무기라면? 주무기 해제!
+            String mainId = user.getEquippedItems().get("WEAPON");
+            if (mainId != null && !mainId.equals("0")) {
+                ItemInstance mainItem = itemInstanceRepository.findById(mainId).orElse(null);
+                if (mainItem != null && mainItem.isTwoHanded()) {
+                    unequipToInventory(inventory, mainId);
+                    user.getEquippedItems().put("WEAPON", "0");
+                    msg.append("(양손 무기 해제 후 보조장비 장착) ");
                 }
             }
         }
     }
 
     /**
-     * 인벤토리에 아이템을 안전하게 추가하는 공통 메서드
+     * 장착 해제된 아이템을 인벤토리로 안전하게 돌려보내는 헬퍼
      */
-    private void addInventoryItem(InventoryStatus inventory, int itemId) {
-        inventory.getItems().stream()
-                .filter(i -> i.getId() == itemId)
-                .findFirst()
-                .ifPresentOrElse(
-                        item -> item.setQuantity(item.getQuantity() + 1),
-                        () -> inventory.getItems().add(InventoryItem.builder()
-                                .id(itemId)
-                                .quantity(1)
-                                .build())
-                );
+    private void unequipToInventory(InventoryStatus inventory, String instanceId) {
+        ItemInstance item = itemInstanceRepository.findById(instanceId).orElse(null);
+        if (item != null) {
+            processAddItem(inventory, item, false); // 기존 존재하던 템이므로 false
+        }
     }
 
     /**
-     * 아이템 소모 로직 (포션, 음식 등)
+     * 인벤토리에 아이템을 추가하는 통합 게이트웨이
+     * @param isNewInstance : 완전히 새로 생성된 템이면 true, 기존에 존재하던 템의 이동이면 false
      */
-    public String consumeItem(int itemId) {
+    public void processAddItem(InventoryStatus inventory, ItemInstance item, boolean isNewInstance) {
+        if (isNewInstance) {
+            // [2번 로직] 신규 획득: 중첩 확인 후 수량 합치기 혹은 신규 등록
+            acquireItem(inventory, item);
+        } else {
+            // [1번 로직] 단순 이동: 이미 존재하는 UUID를 가방 명단에 추가
+            registerInstanceToInventory(inventory, item.getInstanceId());
+        }
+    }
+
+    /**
+     * [1] 기존 인스턴스 등록 (장착 해제 등)
+     * 이미 존재하는 UUID를 인벤토리 리스트에 추가만 합니다.
+     */
+    private void registerInstanceToInventory(InventoryStatus inventory, String instanceId) {
+        if (!inventory.getInstanceIds().contains(instanceId)) {
+            inventory.getInstanceIds().add(instanceId);
+        }
+    }
+
+    /**
+     * [2] 새로운 아이템 획득 (드랍, 보상 등)
+     * 소모품/재료라면 중첩 처리하고, 아니면 새로 생성합니다.
+     * 소모품/재료/마석 중첩 처리 로직
+     */
+    private void acquireItem(InventoryStatus inventory, ItemInstance newItem) {
+        // 1. 중첩 대상 확인 (소모품, 재료, 그리고 마석(ID 1~9))
+        boolean isStackableType = "CONSUMABLE".equals(newItem.getType()) || "MATERIAL".equals(newItem.getType());
+        boolean isMagicStone = newItem.getItemMetaId() >= 1 && newItem.getItemMetaId() <= 9;
+
+        if (isStackableType || isMagicStone) {
+            for (String id : inventory.getInstanceIds()) {
+                ItemInstance existing = itemInstanceRepository.findById(id).orElse(null);
+
+                if (existing != null && existing.getItemMetaId() == newItem.getItemMetaId()) {
+
+                    // [핵심 추가] 마석인 경우 이름(customName)까지 같아야 수량 증가
+                    if (isMagicStone) {
+                        if (existing.getCustomName().equals(newItem.getCustomName())) {
+                            existing.setQuantity(existing.getQuantity() + newItem.getQuantity());
+                            itemInstanceRepository.save(existing);
+                            return;
+                        }
+                        continue;
+                    }
+
+                    // 일반 소모품/재료는 MetaId만 같으면 바로 수량 증가
+                    existing.setQuantity(existing.getQuantity() + newItem.getQuantity());
+                    itemInstanceRepository.save(existing);
+                    return;
+                }
+            }
+        }
+
+        // 2. 중첩 대상이 없거나 장비인 경우: 신규 등록
+        itemInstanceRepository.save(newItem);
+        inventory.getInstanceIds().add(newItem.getInstanceId());
+    }
+
+    /**
+     * 아이템 소모 로직 (UUID 기반)
+     */
+    public String consumeItem(String instanceId) {
         UserStatus user = userFileRepository.findGameUser();
         InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
-        ItemMeta item = gameDataManager.getItemMetaMap().get(itemId);
 
-        if (item == null) return "아이템 정보를 찾을 수 없습니다.";
+        // 1. 인벤토리 명단에 있는지 확인 (1차 검증)
+        if (!inventory.getInstanceIds().contains(instanceId)) {
+            return "인벤토리에 해당 아이템이 없습니다.";
+        }
 
-        // 1. 소모품 타입 검증
-        if (!"CONSUMABLE".equals(item.getType())) {
+        // 2. 실체(Instance) 조회 (2차 검증)
+        ItemInstance ii = itemInstanceRepository.findById(instanceId).orElse(null);
+        if (ii == null) {
+            inventory.getInstanceIds().remove(instanceId); // 유령 아이템 청소
+            inventoryFileRepository.saveInventoryStatus(inventory);
+            return "아이템 정보를 찾을 수 없습니다.";
+        }
+
+        // 3. 소모 가능 타입 검증
+        if (!"CONSUMABLE".equals(ii.getType())) {
             return "소모할 수 없는 아이템입니다.";
         }
 
-        // 2. 인벤토리에서 해당 아이템 찾기
-        // 장비와 달리 소모품은 itemId로 묶여있으므로 findFirst로 충분합니다.
-        InventoryItem invItem = inventory.getItems().stream()
-                .filter(i -> i.getId() == itemId)
-                .findFirst()
-                .orElse(null);
-
-        if (invItem == null || invItem.getQuantity() <= 0) {
-            return "아이템이 부족합니다.";
-        }
-
-        // 3. 효과 적용 및 메시지 생성
-        Map<String, Integer> rb = item.getRecoveryBonus();
-        List<String> recoveryResults = new ArrayList<>();
-
-        // 3. 소모품 회복 효과 가공
-        String recoveryEffect = "";
-        if (rb != null) {
-            List<String> recoveries = new ArrayList<>();
+        // 4. 효과 적용 (기존 로직 유지)
+        Map<String, Integer> rb = ii.getRecoveryBonus();
+        StringBuilder effectMsg = new StringBuilder();
+        if (rb != null && !rb.isEmpty()) {
             rb.forEach((key, value) -> {
                 if (value > 0) {
-                    recoveries.add(key.toUpperCase() + " " + value);
+                    applyRecovery(user, key, value);
+                    effectMsg.append(key.toUpperCase()).append(" +").append(value).append(" ");
                 }
             });
-            recoveryEffect = String.join(", ", recoveries);
-
-
-            // 4. 수량 차감 및 리스트 정리
-            invItem.setQuantity(invItem.getQuantity() - 1);
-            if (invItem.getQuantity() <= 0) {
-                inventory.getItems().remove(invItem);
-            }
-
-            // 5. 변경사항 저장
-            userFileRepository.saveUserStatus(user);
-            inventoryFileRepository.saveInventoryStatus(inventory);
-
-            // 결과 피드백: "빨간 포션을 사용했습니다. (HP +30)"
-            String effectMsg = recoveryResults.isEmpty() ? "" : " (" + String.join(", ", recoveryResults) + ")";
-            return item.getName() + "을(를) 사용했습니다." + effectMsg;
         }
 
-        return null;
-    }
+        // 5. [중요] 수량 차감 및 데이터 동기화
+        ii.setQuantity(ii.getQuantity() - 1);
 
-    /**
-     * 아이템 판매 로직
-     */
-    public String sellItem(int itemId) {
-        UserStatus user = userFileRepository.findGameUser();
-        InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
-        ItemMeta meta = gameDataManager.getItemMetaMap().get(itemId);
-
-        if (meta == null) return "아이템 정보를 찾을 수 없습니다.";
-
-        // 1. 인벤토리에서 아이템 찾기
-        InventoryItem targetItem = inventory.getItems().stream()
-                .filter(item -> item.getId() == itemId)
-                .findFirst()
-                .orElse(null);
-
-        if (targetItem == null || targetItem.getQuantity() <= 0) {
-            return "판매할 아이템이 없습니다.";
+        if (ii.getQuantity() <= 0) {
+            // 수량이 다 되면 인벤토리 명단에서 제거 및 인스턴스 파일 삭제
+            inventory.getInstanceIds().remove(instanceId);
+            itemInstanceRepository.deleteByInstanceId(instanceId);
+        } else {
+            // 수량이 남았다면 인스턴스 정보만 업데이트
+            itemInstanceRepository.save(ii);
         }
 
-        // 2. 골드 추가 및 수량 차감
-        int sellPrice = meta.getPrice();
-        user.setCurrentGold(user.getCurrentGold() + sellPrice);
-
-        targetItem.setQuantity(targetItem.getQuantity() - 1);
-        if (targetItem.getQuantity() <= 0) {
-            inventory.getItems().remove(targetItem);
-        }
-
-        // 3. 저장
+        // 6. 결과 저장
         userFileRepository.saveUserStatus(user);
         inventoryFileRepository.saveInventoryStatus(inventory);
 
-        return meta.getName() + "을(를) " + sellPrice + "G에 판매했습니다.";
+        return ii.getCustomName() + "을(를) 사용했습니다. (" + effectMsg.toString().trim() + ")";
+    }
+
+    /**
+     * 실제로 UserStatus의 현재 자원(HP, MP 등)을 올려주는 로직
+     */
+    private void applyRecovery(UserStatus user, String statType, int amount) {
+        switch (statType.toUpperCase()) {
+            case "HP":
+                int newHp = user.getCurrentHp() + amount;
+                // 최대 체력을 넘지 않도록 보정
+                user.setCurrentHp(Math.min(newHp, user.getCombatStats().getMaxHp()));
+                break;
+
+            case "MP":
+                int newMp = user.getCurrentMp() + amount;
+                user.setCurrentMp(Math.min(newMp, user.getCombatStats().getMaxMp()));
+                break;
+
+            case "STAMINA":
+            case "ST":
+                int newSt = user.getCurrentStamina() + amount;
+                user.setCurrentStamina(Math.min(newSt, user.getCombatStats().getMaxStamina()));
+                break;
+
+            default:
+                log.warn("알 수 없는 회복 스탯 타입입니다: {}", statType);
+                break;
+        }
+    }
+
+    /**
+     * 아이템 판매 로직 (UUID 기반)
+     */
+    public String sellItem(String instanceId) {
+        UserStatus user = userFileRepository.findGameUser();
+        InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
+
+        // 1. 보유 확인
+        if (!inventory.getInstanceIds().contains(instanceId)) {
+            return "판매할 아이템이 인벤토리에 없습니다.";
+        }
+
+        ItemInstance ii = itemInstanceRepository.findById(instanceId).orElse(null);
+        if (ii == null) {
+            inventory.getInstanceIds().remove(instanceId);
+            return "아이템 정보를 찾을 수 없습니다.";
+        }
+
+        // 2. 골드 추가 (가격 정보는 Meta에서 가져오거나 Instance에 저장된 값 활용)
+        int sellPrice = ii.getPrice(); // ItemInstance에 가격 정보가 있다고 가정
+        user.setCurrentGold(user.getCurrentGold() + sellPrice);
+
+        // 3. 수량 차감 로직 (소모 로직과 동일)
+        ii.setQuantity(ii.getQuantity() - 1);
+        if (ii.getQuantity() <= 0) {
+            inventory.getInstanceIds().remove(instanceId);
+            itemInstanceRepository.deleteByInstanceId(instanceId);
+        } else {
+            itemInstanceRepository.save(ii);
+        }
+
+        // 4. 저장
+        userFileRepository.saveUserStatus(user);
+        inventoryFileRepository.saveInventoryStatus(inventory);
+
+        return ii.getCustomName() + "을(를) " + sellPrice + "G에 판매했습니다.";
     }
 
     /**
@@ -268,33 +351,49 @@ public class InventoryService {
         int finalPrice = statCalculationService.calculateGambleItemCost(stats, BOX_BASE_PRICE);
         if (user.getCurrentGold() < finalPrice) return "골드가 부족합니다!";
 
-        // 2. 등급 가중치 가져오기 및 등급 결정
+        // 2. 등급 결정
         Map<String, Double> weights = statCalculationService.calculateGambleGradeWeights(stats);
         String selectedGrade = rollGrade(weights);
 
-        // 3. 해당 등급의 아이템 리스트 필터링
+        // 3. 아이템 필터링 (마석 ID 1~9 제외 조건 추가)
         List<ItemMeta> candidateItems = gameDataManager.getItemMetaMap().values().stream()
                 .filter(item -> item.getGrade().equals(selectedGrade))
+                .filter(item -> item.getId() < 1 || item.getId() > 9) // [추가] 1~9번 마석 제외
                 .toList();
 
-        // (안전장치) 만약 해당 등급 아이템이 없으면 Common으로 강제 전환
+        // 안전장치: 해당 등급에 뽑을 아이템이 없으면 COMMON에서 다시 찾음 (역시 마석 제외)
         if (candidateItems.isEmpty()) {
             candidateItems = gameDataManager.getItemMetaMap().values().stream()
                     .filter(item -> item.getGrade().equals("COMMON"))
+                    .filter(item -> item.getId() < 1 || item.getId() > 9)
                     .toList();
         }
 
-        // 4. 최종 아이템 선택 및 저장
-        ItemMeta pulledItem = candidateItems.get(new java.util.Random().nextInt(candidateItems.size()));
+        ItemMeta pulledMeta = candidateItems.get(new java.util.Random().nextInt(candidateItems.size()));
 
+        // 4. 아이템 객체 생성 (일단 정보만 담은 객체)
+        ItemInstance newItem = ItemInstance.builder()
+                .instanceId(java.util.UUID.randomUUID().toString())
+                .itemMetaId(pulledMeta.getId())
+                .type(pulledMeta.getType())
+                .customName(pulledMeta.getName())
+                .quantity(1)
+                .grade(pulledMeta.getGrade())
+                .slot(pulledMeta.getSlot())
+                .twoHanded(pulledMeta.isTwoHanded())
+                .recoveryBonus(pulledMeta.getRecoveryBonus())
+                .build();
+
+        // 5. 통합 게이트웨이 호출 (여기서 유저님이 말씀하신 '깊은 확인'이 일어납니다)
+        processAddItem(inventory, newItem, true);
+
+        // 6. 상태 업데이트 및 저장
         user.setCurrentGold(user.getCurrentGold() - finalPrice);
-        addInventoryItem(inventory, pulledItem.getId());
-
         userFileRepository.saveUserStatus(user);
         inventoryFileRepository.saveInventoryStatus(inventory);
 
         return String.format("[%s] 등급! [%s]을(를) 획득했습니다. (%dG 소모)",
-                pulledItem.getGrade(), pulledItem.getName(), finalPrice);
+                pulledMeta.getGrade(), pulledMeta.getName(), finalPrice);
     }
 
     /**

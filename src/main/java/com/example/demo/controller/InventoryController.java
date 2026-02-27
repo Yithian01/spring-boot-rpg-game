@@ -24,7 +24,7 @@ public class InventoryController {
      * 장비 장착
      */
     @PostMapping("/equip")
-    public String equip(@RequestParam String slot, @RequestParam int itemId, RedirectAttributes redirectAttributes) {
+    public String equip(@RequestParam String slot, @RequestParam String itemId, RedirectAttributes redirectAttributes) {
         String checkMessage = validationService.checkHp();
         if (checkMessage != null && checkMessage.startsWith("GameOver")) {
             redirectAttributes.addFlashAttribute("gameOver", true);
@@ -32,7 +32,7 @@ public class InventoryController {
             return "redirect:/game/play";
         }
         // slot: HEAD, WEAPON, BODY 등
-        // itemId: 메타데이터 상의 아이템 ID
+        // itemId: 메타데이터 상의 아이템 ID --> UUID
         String message = inventoryService.equipItem(itemId, slot);
 
         redirectAttributes.addFlashAttribute("message", message);
@@ -60,7 +60,7 @@ public class InventoryController {
      * 아이템 소모 (포션, 음식 등)
      */
     @PostMapping("/consume")
-    public String consume(@RequestParam int itemId, RedirectAttributes redirectAttributes) {
+    public String consume(@RequestParam String itemId, RedirectAttributes redirectAttributes) {
         String checkMessage = validationService.checkHp();
         if (checkMessage != null && checkMessage.startsWith("GameOver")) {
             redirectAttributes.addFlashAttribute("gameOver", true);
@@ -77,7 +77,7 @@ public class InventoryController {
      * 아이템 판매
      */
     @PostMapping("/sell")
-    public String sell(@RequestParam int itemId, RedirectAttributes redirectAttributes) {
+    public String sell(@RequestParam String itemId, RedirectAttributes redirectAttributes) {
         String checkMessage = validationService.checkHp();
         if (checkMessage != null && checkMessage.startsWith("GameOver")) {
             redirectAttributes.addFlashAttribute("gameOver", true);

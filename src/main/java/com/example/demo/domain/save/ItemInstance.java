@@ -1,10 +1,14 @@
 package com.example.demo.domain.save;
 
+import com.example.demo.domain.meta.ItemMeta;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Data
@@ -13,32 +17,114 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ItemInstance {
 
-    // 1. 고유 식별자 (UUID 기반)
     private String instanceId;
-
-    // 2. 메타 데이터 참조 (ItemMeta의 id)
     private int itemMetaId;
 
-    // 3. 인스턴스 전용 커스텀 정보 (몬스터 이름 접두사 등)
-    // 예: "슬라임" + "의 마석"
+    // UI 및 로직 편의를 위해 Meta에서 복사해오는 기본 정보
     private String customName;
+    private String grade;
+    private String type;
+    private String slot;
+    private String subType;
+    private boolean twoHanded;
+    private String description;
 
-    // 4. 수량 및 상태 (마석은 수량, 장비는 강화도 등)
     private int quantity;
     private int enhancementLevel;
+    private Integer price;
 
-    // 5. 가격 정보 (몬스터 등급에 따른 가격 보정치 저장 가능)
-    // 기본값은 0이며, 0일 경우 ItemMeta의 price를 사용하도록 로직 구성 가능
-    private Integer priceOverride;
+    // 능력치 및 회복 정보 (Meta에서 복사)
+    private Map<Integer, Integer> baseStatsBonus;
+    private Map<String, Integer> combatStatsBonus;
+    private Map<String, Integer> recoveryBonus;
+
+    private Map<Integer, Double> baseStatsBonusModifiers;
+    private Map<String, Double> combatStatsBonusModifiers;
+
+    private List<Integer> grantedSkillIds;
 
     /**
-     * 새로운 아이템 인스턴스를 생성할 때 사용하는 정적 팩토리 메서드
+     * [소모품 생성]
      */
-    public static ItemInstance create(int itemMetaId, String customName, int quantity) {
+    public static ItemInstance createConsumable(ItemMeta meta, int quantity) {
         return ItemInstance.builder()
                 .instanceId(UUID.randomUUID().toString())
-                .itemMetaId(itemMetaId)
-                .customName(customName)
+                .itemMetaId(meta.getId())
+                .customName(meta.getName())
+                .grade(meta.getGrade())
+                .type(meta.getType())
+                .slot(meta.getSlot())
+                .subType(meta.getSubType())
+                .description(meta.getDescription())
+                .price(meta.getPrice())
+                .quantity(quantity)
+                .enhancementLevel(0)
+                // 스탯 및 스킬 복사
+                .baseStatsBonus(meta.getBaseStatsBonus() != null ? new HashMap<>(meta.getBaseStatsBonus()) : new HashMap<>())
+                .combatStatsBonus(meta.getCombatStatsBonus() != null ? new HashMap<>(meta.getCombatStatsBonus()) : new HashMap<>())
+                .recoveryBonus(meta.getRecoveryBonus() != null ? new HashMap<>(meta.getRecoveryBonus()) : new HashMap<>())
+                .baseStatsBonusModifiers(meta.getBaseStatsBonusModifiers() != null ? new HashMap<>(meta.getBaseStatsBonusModifiers()) : new HashMap<>())
+                .combatStatsBonusModifiers(meta.getCombatStatsBonusModifiers() != null ? new HashMap<>(meta.getCombatStatsBonusModifiers()) : new HashMap<>())
+                .grantedSkillIds(meta.getGrantedSkillIds() != null ? List.copyOf(meta.getGrantedSkillIds()) : List.of())
+                .build();
+    }
+
+    /**
+     * [장비 생성]
+     */
+    public static ItemInstance createEquipment(ItemMeta meta, Integer priceOverride) {
+        return ItemInstance.builder()
+                .instanceId(UUID.randomUUID().toString())
+                .itemMetaId(meta.getId())
+                .customName(meta.getName())
+                .grade(meta.getGrade())
+                .type(meta.getType())
+                .slot(meta.getSlot())
+                .subType(meta.getSubType())
+                .twoHanded(meta.isTwoHanded())
+                .description(meta.getDescription())
+                .price(priceOverride != null ? priceOverride : meta.getPrice())
+                .quantity(1)
+                .enhancementLevel(0)
+                // 장비 핵심 정보 복사
+                .baseStatsBonus(meta.getBaseStatsBonus() != null ? new HashMap<>(meta.getBaseStatsBonus()) : new HashMap<>())
+                .combatStatsBonus(meta.getCombatStatsBonus() != null ? new HashMap<>(meta.getCombatStatsBonus()) : new HashMap<>())
+                .recoveryBonus(meta.getRecoveryBonus() != null ? new HashMap<>(meta.getRecoveryBonus()) : new HashMap<>())
+                .baseStatsBonusModifiers(meta.getBaseStatsBonusModifiers() != null ? new HashMap<>(meta.getBaseStatsBonusModifiers()) : new HashMap<>())
+                .combatStatsBonusModifiers(meta.getCombatStatsBonusModifiers() != null ? new HashMap<>(meta.getCombatStatsBonusModifiers()) : new HashMap<>())
+                .grantedSkillIds(meta.getGrantedSkillIds() != null ? List.copyOf(meta.getGrantedSkillIds()) : List.of())
+                .build();
+    }
+
+    /**
+     * [마석 생성]
+     */
+    public static ItemInstance createStone(ItemMeta meta, String monsterName, int quantity, Integer priceOverride) {
+        return ItemInstance.builder()
+                .instanceId(UUID.randomUUID().toString())
+                .itemMetaId(meta.getId())
+                .customName(monsterName + "의 " + meta.getName())
+                .grade(meta.getGrade())
+                .type(meta.getType())
+                .description(meta.getDescription())
+                .price(priceOverride != null ? priceOverride : meta.getPrice())
+                .quantity(quantity)
+                .enhancementLevel(0)
+                .build();
+    }
+
+    /**
+     * [재료 생성]
+     */
+    public static ItemInstance createMaterial(ItemMeta meta, int quantity, Integer priceOverride) {
+        return ItemInstance.builder()
+                .instanceId(UUID.randomUUID().toString())
+                .itemMetaId(meta.getId())
+                .customName(meta.getName())
+                .grade(meta.getGrade())
+                .type(meta.getType())
+                .description(meta.getDescription())
+                .price(priceOverride != null ? priceOverride : meta.getPrice())
                 .quantity(quantity)
                 .enhancementLevel(0)
                 .build();

@@ -8,6 +8,7 @@ import com.example.demo.dto.SkillCardDto;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.DungeonFileRepository;
 import com.example.demo.repository.GameFileRepository;
+import com.example.demo.repository.ItemInstanceRepository;
 import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +26,7 @@ public class BattleService {
     private final UserFileRepository userFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
     private final GameFileRepository gameFileRepository;
+    private final ItemInstanceRepository itemInstanceRepository;
     private final MonsterBattleService monsterBattleService;
 
     /**
@@ -121,16 +123,22 @@ public class BattleService {
         Set<Integer> availableSkillIds = new HashSet<>(user.getLearnedSkillIds());
 
         for (var entry : user.getEquippedItems().entrySet()) {
-            int itemId = entry.getValue();
-            if (itemId == 0) continue;
-            var itemMeta = gameDataManager.getItemMetaMap().get(itemId);
-            if (itemMeta == null) continue;
+            String slotName = entry.getKey();
+            String instanceId = entry.getValue();
 
-            if ("WEAPON".equals(entry.getKey())) {
-                weaponType = itemMeta.getSubType();
+            if (instanceId == null || "0".equals(instanceId)) continue;
+
+            ItemInstance ii = itemInstanceRepository.findById(instanceId).orElse(null);
+            if (ii == null) continue;
+
+            // (A) 무기 타입 파악 (WEAPON 슬롯인 경우)
+            if ("WEAPON".equals(slotName)) {
+                weaponType = ii.getSubType();
             }
-            if (itemMeta.getGrantedSkillIds() != null) {
-                availableSkillIds.addAll(itemMeta.getGrantedSkillIds());
+
+            // (B) 아이템이 부여하는 스킬 수집 (Meta 정보 + 인스턴스 추가 스킬 모두 포함)
+            if (ii.getGrantedSkillIds() != null) {
+                availableSkillIds.addAll(ii.getGrantedSkillIds());
             }
         }
 

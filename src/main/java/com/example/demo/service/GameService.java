@@ -122,7 +122,7 @@ public class GameService {
                     ItemMeta meta = gameDataManager.getItemMetaMap().get(metaId);
                     if (meta != null) {
                         // [기존 메서드 활용] 장비로 생성
-                        ItemInstance equipment = ItemInstance.createEquipment(meta, null);
+                        ItemInstance equipment = ItemInstance.createEquipment(meta);
                         itemInstanceRepository.save(equipment);
                         equippedUUIDs.put(slotName, equipment.getInstanceId());
                     }
@@ -495,7 +495,7 @@ public class GameService {
                 .grade(ii.getGrade())
                 .icon(meta != null ? meta.getIcon() : "default_icon")
                 .description(ii.getDescription())
-                .gold(ii.getPrice())
+                .gold(ii.getPrice() != null ? ii.getPrice() : (meta != null ? meta.getPrice() : 0))
                 .type(ii.getType())
                 .slot(ii.getSlot())
                 .subType(ii.getSubType())

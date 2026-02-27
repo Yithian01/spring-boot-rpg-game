@@ -72,7 +72,7 @@ public class ItemInstance {
     /**
      * [장비 생성]
      */
-    public static ItemInstance createEquipment(ItemMeta meta, Integer priceOverride) {
+    public static ItemInstance createEquipment(ItemMeta meta) {
         return ItemInstance.builder()
                 .instanceId(UUID.randomUUID().toString())
                 .itemMetaId(meta.getId())
@@ -83,10 +83,9 @@ public class ItemInstance {
                 .subType(meta.getSubType())
                 .twoHanded(meta.isTwoHanded())
                 .description(meta.getDescription())
-                .price(priceOverride != null ? priceOverride : meta.getPrice())
+                .price(meta.getPrice())
                 .quantity(1)
                 .enhancementLevel(0)
-                // 장비 핵심 정보 복사
                 .baseStatsBonus(meta.getBaseStatsBonus() != null ? new HashMap<>(meta.getBaseStatsBonus()) : new HashMap<>())
                 .combatStatsBonus(meta.getCombatStatsBonus() != null ? new HashMap<>(meta.getCombatStatsBonus()) : new HashMap<>())
                 .recoveryBonus(meta.getRecoveryBonus() != null ? new HashMap<>(meta.getRecoveryBonus()) : new HashMap<>())

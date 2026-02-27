@@ -1,5 +1,5 @@
 {
-  "location" : "TOWN",
-  "dungeonId" : null,
-  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ]
+  "location" : "DUNGEON",
+  "dungeonId" : 101,
+  "gameLogs" : [ "<span style='color:#ff9f43;'>[전투]</span> 동굴 쥐이(가) 나타났습니다!", "⚔️ <b style='color:#ffd700;'>수정 동굴</b>에 입장했습니다.", "\uD83C\uDFF0 마을에 도착했습니다." ]
 }

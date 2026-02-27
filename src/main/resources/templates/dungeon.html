@@ -65,47 +65,6 @@
 <script th:inline="javascript">
   /*<![CDATA[*/
   // [기존 스크립트 로직 유지]
-  function showDescription(element) {
-      const name = element.getAttribute('data-name');
-      const desc = element.getAttribute('data-desc');
-      const descDisplay = document.getElementById('desc-display');
-      if (descDisplay) {
-          descDisplay.innerHTML = `<strong>${name}</strong>: ${desc}`;
-          descDisplay.style.color = '#fff';
-      }
-  }
-
-  function clearDescription() {
-      const descDisplay = document.getElementById('desc-display');
-      if (descDisplay) {
-          descDisplay.innerHTML = '스탯이나 아이템에 마우스를 올리세요.';
-          descDisplay.style.color = '#888';
-      }
-  }
-
-  function showItemDescription(element) {
-      const name = element.getAttribute('data-name');
-      const grade = element.getAttribute('data-grade');
-      const subType = element.getAttribute('data-subtype');
-      const bonuses = element.getAttribute('data-bonuses');
-      const descDisplay = document.getElementById('desc-display');
-
-      if (descDisplay) {
-          const gradeColors = {
-              'COMMON': '#aaaaaa', 'UNCOMMON': '#1eff00', 'RARE': '#0070dd',
-              'EPIC': '#a335ee', 'LEGENDARY': '#ff8000'
-          };
-          const color = gradeColors[grade] || '#fff';
-          const subTypeKr = translateSubType(subType);
-
-          descDisplay.innerHTML = `
-              <strong style="color:${color};">[${name}]</strong>
-              <span style="color:#ffd700; font-weight:bold; margin: 0 5px;">${subTypeKr}</span>
-              <span style="font-size:0.9em; color:#bbb;">${bonuses}</span>
-          `;
-      }
-  }
-
   function translateSubType(type) {
       const map = {
           'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',

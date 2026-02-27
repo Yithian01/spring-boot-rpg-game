@@ -3,118 +3,109 @@
 
 <th:block th:fragment="inventoryStyle">
     <style>
-        /* [가방 리스트 레이아웃] */
+        /* 가방 컨테이너 */
         .inv-list-container {
             height: 100%; display: flex; flex-direction: column;
-            min-height: 0; background: #1a1a1a;
+            min-height: 0; background: #1a1a1a; position: relative;
         }
-        .inv-scroll-area { flex: 1; overflow-y: auto; min-height: 0; padding: 0 10px 0 0; }
+        .inv-scroll-area { flex: 1; overflow-y: auto; min-height: 0; padding-right: 8px; }
         .inv-ul { list-style: none; padding: 0; margin: 0; }
 
-        /* 아이템 줄 정렬: 좌(아이콘)-중(정보)-우(버튼그룹) */
+        /* 아이템 줄 */
         .inv-item-row {
             display: flex; align-items: center; padding: 12px 10px;
             border-bottom: 1px solid #333; gap: 12px; transition: background 0.2s;
         }
-        .inv-item-row:hover { background: rgba(255, 255, 255, 0.03); }
+        .inv-item-row:hover { background: rgba(255, 255, 255, 0.05); }
 
+        /* 아이콘 박스 */
         .inv-icon-box {
-            width: 48px; height: 48px; background: #000; border: 2px solid #444;
+            width: 52px; height: 52px; background: #000; border: 2px solid #444;
             border-radius: 4px; overflow: hidden; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center; position: relative;
+            display: flex; align-items: center; justify-content: center;
         }
-        .inv-icon-box img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+        .inv-icon-box img { width: 100%; height: 100%; object-fit: cover; cursor: help; }
 
-        .inv-item-info {
-            flex-grow: 1; min-width: 0; display: flex; flex-direction: column;
-        }
-        .inv-item-name { font-weight: bold; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+        /* 아이템 정보 */
+        .inv-item-info { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+        .inv-item-name { font-weight: bold; font-size: 0.95rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
 
-        /* [버튼 그룹 레이아웃: 오른쪽 정렬 및 수직 간격] */
-        .inv-btn-group {
-            display: flex; flex-direction: column; gap: 4px; /* 버튼 사이 간격 */
-            margin-left: auto; /* ★ 이 코드가 버튼을 오른쪽 끝으로 밀어줍니다 */
-            min-width: 60px; flex-shrink: 0;
-        }
-        .inv-btn-group form { margin: 0; width: 100%; }
-
-        /* [퀵 버튼 스타일] */
+        /* 버튼 그룹 */
+        .inv-btn-group { display: flex; flex-direction: column; gap: 4px; margin-left: auto; min-width: 65px; }
         .btn-quick {
-            width: 100%; padding: 5px 0; font-size: 0.75rem; font-weight: 800;
-            border-radius: 4px; cursor: pointer; transition: all 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.1); color: #fff;
-            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+            width: 100%; padding: 6px 0; font-size: 0.75rem; font-weight: bold;
+            border-radius: 4px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); color: #fff;
         }
+        form[action*="equip"] .btn-quick { background: linear-gradient(180deg, #3d6a3d 0%, #2a4a2a 100%); }
+        form[action*="consume"] .btn-quick { background: linear-gradient(180deg, #3a5a8a 0%, #2a3a5a 100%); }
+        form[action*="sell"] .btn-quick { background: linear-gradient(180deg, #8a3a3a 0%, #5a2a2a 100%); }
 
-        /* 장착 버튼 */
-        form[action*="equip"] .btn-quick { background: linear-gradient(180deg, #3d6a3d 0%, #2a4a2a 100%); border-color: #4e824e; }
-        /* 사용 버튼 */
-        form[action*="consume"] .btn-quick { background: linear-gradient(180deg, #3a5a8a 0%, #2a3a5a 100%); border-color: #4a6a9a; }
-        /* 판매 버튼 */
-        form[action*="sell"] .btn-quick { background: linear-gradient(180deg, #8a3a3a 0%, #5a2a2a 100%); border-color: #9a4a4a; }
-
-        .btn-quick:hover { filter: brightness(1.25); transform: translateY(-1px); }
-        .btn-quick:active { transform: translateY(1px); filter: brightness(0.8); }
-
-        /* [아이템 등급 공통 효과] */
-        .border-COMMON { border-color: #555 !important; }
-        .border-UNCOMMON { border-color: #1eff00 !important; box-shadow: inset 0 0 5px rgba(30, 255, 0, 0.2); }
-        .border-RARE { border-color: #0070dd !important; box-shadow: inset 0 0 8px rgba(0, 112, 221, 0.3); }
-        .border-EPIC { border-color: #a335ee !important; box-shadow: 0 0 10px rgba(163, 53, 238, 0.5); }
-        .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 15px rgba(255, 128, 0, 0.7); animation: legendary-glow 2s infinite; }
-
+        /* 등급별 색상 (Text & Border) */
         .text-COMMON { color: #eee; }
-        .text-UNCOMMON { color: #1eff00; font-weight: bold; }
-        .text-RARE { color: #0070dd; font-weight: bold; }
-        .text-EPIC { color: #a335ee; font-weight: bold; }
-        .text-LEGENDARY { color: #ff8000; font-weight: bold; text-shadow: 0 0 12px rgba(255,128,0,0.8); }
+        .text-UNCOMMON { color: #1eff00; }
+        .text-RARE { color: #0070dd; }
+        .text-EPIC { color: #a335ee; }
+        .text-LEGENDARY { color: #ff8000; text-shadow: 0 0 8px rgba(255,128,0,0.5); }
 
-        @keyframes legendary-glow { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.4); } }
+        .border-COMMON { border-color: #555 !important; }
+        .border-UNCOMMON { border-color: #1eff00 !important; }
+        .border-RARE { border-color: #0070dd !important; }
+        .border-EPIC { border-color: #a335ee !important; }
+        .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 10px rgba(255,128,0,0.3); }
 
-        /* [장비창 전용] */
-        .equipment-box { display: flex; flex-direction: column; align-items: center; }
-        .equip-grid {
-            display: grid; grid-template-columns: repeat(3, 80px); gap: 15px;
-            background: #111; border: 1px solid #444; border-radius: 8px;
-            padding: 20px; margin-top: 20px; width: fit-content;
+        /* 고사양 툴팁 스타일 */
+        #item-tooltip {
+            position: fixed; display: none; z-index: 10000;
+            width: 280px; background: rgba(15, 15, 15, 0.98);
+            border: 2px solid #444; border-radius: 8px; padding: 15px;
+            pointer-events: none; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            font-family: 'Pretendard', sans-serif;
         }
-        .slot {
-            width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;
-            position: relative; border: 2px solid #555; background: rgba(0, 0, 0, 0.6);
-            border-radius: 6px; overflow: hidden; transition: all 0.2s ease-in-out;
-        }
-        .slot:hover { border-color: #ffd700; background: rgba(50, 50, 50, 0.8); transform: scale(1.05); }
-        .slot:hover::after {
-            content: attr(title); position: absolute; top: -35px; background: #000;
-            color: #fff; font-size: 0.85rem; padding: 4px 10px; border-radius: 4px; border: 1px solid #ffd700;
-            white-space: nowrap; z-index: 10;
-        }
-        .item-icon-img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
-        .unequip-btn { background: none; border: none; width: 100%; height: 100%; cursor: pointer; }
+        .tt-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #444; padding-bottom: 8px; margin-bottom: 10px; }
+        .tt-name { font-size: 1.15rem; font-weight: bold; }
+        .tt-type { font-size: 0.8rem; color: #888; }
+        .tt-desc { color: #bbb; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; white-space: pre-wrap; font-style: italic; }
+        .tt-stats { color: #ffd700; font-size: 0.9rem; padding-top: 8px; border-top: 1px dashed #333; }
+        .tt-stat-row { margin-bottom: 3px; }
     </style>
 </th:block>
 
 <div th:fragment="inventoryList(items, mode)" class="inv-list-container">
+
+    <div id="item-tooltip">
+        <div class="tt-header">
+            <div id="tt-name" class="tt-name">아이템 이름</div>
+            <div id="tt-type" class="tt-type">부위</div>
+        </div>
+        <div id="tt-desc" class="tt-desc">설명이 여기에 표시됩니다.</div>
+        <div id="tt-stats" class="tt-stats"></div>
+    </div>
+
     <div class="inv-scroll-area custom-scroll">
         <ul class="inv-ul">
-            <li th:if="${#lists.isEmpty(items)}" style="padding:20px; text-align:center; color:#555;">가방이 비어있습니다.</li>
+            <li th:if="${#lists.isEmpty(items)}" style="padding:40px; text-align:center; color:#555;">가방이 비어있습니다.</li>
             <li th:each="item : ${items}" class="inv-item-row">
-                <div class="inv-icon-box" th:classappend="${item.grade != null ? 'border-' + item.grade : ''}">
+
+                <div class="inv-icon-box" th:classappend="${'border-' + item.grade}">
                     <img th:src="${item.icon}"
-                         onmouseover="showItemDescription(this)"
-                         onmouseout="clearDescription()"
+                         onmouseover="showTooltip(this)"
+                         onmousemove="moveTooltip(event)"
+                         onmouseout="hideTooltip()"
                          th:data-name="${item.name}"
                          th:data-grade="${item.grade}"
-                         th:data-subtype="${item.subType}"
-                         th:data-bonuses="${#strings.listJoin(item.statBonuses, ', ')}">
+                         th:data-type="${item.subType != null ? item.subType : item.type}"
+                         th:data-desc="${item.description}"
+                         th:data-bonuses="${#strings.listJoin(item.statBonuses, '|')}"
+                         th:data-recovery="${item.recoveryEffect}">
                 </div>
 
                 <div class="inv-item-info">
-                    <span class="inv-item-name" th:classappend="${item.grade != null ? 'text-' + item.grade : ''}">
+                    <span class="inv-item-name" th:classappend="${'text-' + item.grade}">
                         <span th:text="${item.name}"></span>
-                        <span th:if="${item.quantity > 1}" style="color: #00ff00; font-size: 0.9em;" th:text="' x' + ${item.quantity}"></span>
+                        <span th:if="${item.quantity > 1}" style="color: #00ff00; font-size: 0.85em;" th:text="' x' + ${item.quantity}"></span>
                     </span>
-                    <small style="color: #ffd700; font-size: 0.8rem;" th:text="${#strings.listJoin(item.statBonuses, ', ')}"></small>
+                    <small style="color: #ffd700; font-size: 0.75rem;"
+                           th:text="${#strings.listJoin(item.statBonuses, ', ')}"></small>
                 </div>
 
                 <div class="inv-btn-group">
@@ -135,4 +126,66 @@
             </li>
         </ul>
     </div>
+
+    <script th:inline="javascript">
+        function showTooltip(el) {
+            const tooltip = document.getElementById('item-tooltip');
+            const data = {
+                name: el.getAttribute('data-name'),
+                grade: el.getAttribute('data-grade'),
+                type: el.getAttribute('data-type'),
+                desc: el.getAttribute('data-desc'),
+                bonuses: el.getAttribute('data-bonuses'),
+                recovery: el.getAttribute('data-recovery')
+            };
+
+            // 타이틀 및 색상
+            const nameEl = document.getElementById('tt-name');
+            nameEl.innerText = data.name;
+            nameEl.className = 'tt-name text-' + data.grade;
+
+            document.getElementById('tt-type').innerText = data.type;
+            document.getElementById('tt-desc').innerText = data.desc || "특별한 설명이 없는 아이템입니다.";
+
+            // 스탯 목록 생성
+            let statsHtml = "";
+            if (data.bonuses) {
+                data.bonuses.split('|').forEach(s => {
+                    if(s.trim()) statsHtml += `<div class="tt-stat-row">• ${s.trim()}</div>`;
+                });
+            }
+            if (data.recovery && data.recovery !== 'null') {
+                statsHtml += `<div class="tt-stat-row" style="color:#00ff00;">• ${data.recovery}</div>`;
+            }
+            document.getElementById('tt-stats').innerHTML = statsHtml;
+
+            tooltip.style.display = 'block';
+            tooltip.style.borderColor = getGradeColor(data.grade);
+        }
+
+        function moveTooltip(e) {
+            const tooltip = document.getElementById('item-tooltip');
+            const padding = 20;
+
+            let x = e.clientX + padding;
+            let y = e.clientY + padding;
+
+            // 화면 밖으로 나가지 않게 보정
+            if (x + 300 > window.innerWidth) x = e.clientX - 300;
+            if (y + tooltip.offsetHeight > window.innerHeight) y = window.innerHeight - tooltip.offsetHeight - 10;
+
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        }
+
+        function hideTooltip() {
+            document.getElementById('item-tooltip').style.display = 'none';
+        }
+
+        function getGradeColor(grade) {
+            const colors = { 'COMMON': '#555', 'UNCOMMON': '#1eff00', 'RARE': '#0070dd', 'EPIC': '#a335ee', 'LEGENDARY': '#ff8000' };
+            return colors[grade] || '#444';
+        }
+    </script>
 </div>
+</html>

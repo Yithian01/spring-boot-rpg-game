@@ -1,6 +1,6 @@
 {
-  "9f083125-395e-4666-9b78-27d9e33425f6" : {
-    "instanceId" : "9f083125-395e-4666-9b78-27d9e33425f6",
+  "6fb279dd-f8d8-4244-8c92-ee41cb973543" : {
+    "instanceId" : "6fb279dd-f8d8-4244-8c92-ee41cb973543",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,47 +23,48 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "99a046f6-0a70-42aa-986b-0d7a8f4a0e89" : {
-    "instanceId" : "99a046f6-0a70-42aa-986b-0d7a8f4a0e89",
-    "itemMetaId" : 18,
-    "customName" : "낡은 채광용 망치",
+  "fcf5afdd-5124-462a-8633-47d274ebdd19" : {
+    "instanceId" : "fcf5afdd-5124-462a-8633-47d274ebdd19",
+    "itemMetaId" : 28,
+    "customName" : "낡은 세이버",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "BLUNT",
+    "subType" : "SWORD",
     "twoHanded" : false,
-    "description" : "광석을 캘 때 쓰던 망치입니다. 투박하지만 머리를 가격하면 치명적입니다.",
+    "description" : "다양한 상황에 대처하기 위해 만들어진 실용적인 칼입니다. 날이 많이 상했습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 350,
+    "price" : 320,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "penetration" : 5,
-      "accuracy" : 1,
-      "meleeAtk" : 10
+      "accuracy" : 3,
+      "critRate" : 2,
+      "meleeAtk" : 7
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "7ed07eff-cee3-4aaa-8e10-84b92b5f7906" : {
-    "instanceId" : "7ed07eff-cee3-4aaa-8e10-84b92b5f7906",
-    "itemMetaId" : 19,
-    "customName" : "두꺼운 가죽 앞치마",
+  "da5cbbff-ad35-4805-b67b-5cfa37a287f4" : {
+    "instanceId" : "da5cbbff-ad35-4805-b67b-5cfa37a287f4",
+    "itemMetaId" : 29,
+    "customName" : "닳아버린 여행용 코트",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
     "subType" : "LEATHER",
     "twoHanded" : false,
-    "description" : "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
+    "description" : "이곳저곳 덧댄 흔적이 가득한 가죽 코트입니다. 활동성이 좋습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 250,
+    "price" : 200,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "statusResist" : 5,
-      "moveSpeed" : 0,
+      "magRes" : 5,
+      "maxStamina" : 10,
+      "maxMp" : 10,
       "physDef" : 5
     },
     "recoveryBonus" : { },
@@ -71,8 +72,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "9cc757a4-0f00-4cb4-ae96-faaee12b7666" : {
-    "instanceId" : "9cc757a4-0f00-4cb4-ae96-faaee12b7666",
+  "dd8a6334-052e-4e05-b8f3-a5954edd171e" : {
+    "instanceId" : "dd8a6334-052e-4e05-b8f3-a5954edd171e",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",

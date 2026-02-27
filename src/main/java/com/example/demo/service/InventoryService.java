@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -370,18 +371,28 @@ public class InventoryService {
         }
 
         ItemMeta pulledMeta = candidateItems.get(new java.util.Random().nextInt(candidateItems.size()));
+        System.out.println("pulledMeta = " + pulledMeta );
 
         // 4. 아이템 객체 생성 (일단 정보만 담은 객체)
         ItemInstance newItem = ItemInstance.builder()
                 .instanceId(java.util.UUID.randomUUID().toString())
                 .itemMetaId(pulledMeta.getId())
-                .type(pulledMeta.getType())
                 .customName(pulledMeta.getName())
-                .quantity(1)
                 .grade(pulledMeta.getGrade())
+                .type(pulledMeta.getType())
                 .slot(pulledMeta.getSlot())
+                .subType(pulledMeta.getSubType())
                 .twoHanded(pulledMeta.isTwoHanded())
+                .description(pulledMeta.getDescription())
+                .quantity(1)
+                .enhancementLevel(0)
+                .price(pulledMeta.getPrice())
+                .baseStatsBonus(pulledMeta.getBaseStatsBonus())
+                .combatStatsBonus(pulledMeta.getCombatStatsBonus())
+                .baseStatsBonusModifiers(pulledMeta.getBaseStatsBonusModifiers())
+                .combatStatsBonusModifiers(pulledMeta.getCombatStatsBonusModifiers())
                 .recoveryBonus(pulledMeta.getRecoveryBonus())
+                .grantedSkillIds(pulledMeta.getGrantedSkillIds())
                 .build();
 
         // 5. 통합 게이트웨이 호출 (여기서 유저님이 말씀하신 '깊은 확인'이 일어납니다)

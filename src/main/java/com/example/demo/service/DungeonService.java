@@ -242,8 +242,9 @@ public class DungeonService {
                 .tier(monsterMeta.getTier())
                 .currentHp((int) monsterMeta.getStats().getMaxHp())
                 .currentMp((int) monsterMeta.getStats().getMaxMp())
-                .baseStats(monsterMeta.getStats())
-                .activeStats(monsterMeta.getStats())
+                .baseStats(monsterMeta.getStats().toBuilder().build())
+                .activeStats(monsterMeta.getStats().toBuilder().build())
+                .activeStatuses(new ArrayList<>())
                 .activeStatuses(new ArrayList<>())
                 .build();
         ds.setActiveMonster(activeMonster);

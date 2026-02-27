@@ -1,6 +1,6 @@
 {
-  "6fb279dd-f8d8-4244-8c92-ee41cb973543" : {
-    "instanceId" : "6fb279dd-f8d8-4244-8c92-ee41cb973543",
+  "be3ace2a-2d4f-4879-b9b5-4a43522527f6" : {
+    "instanceId" : "be3ace2a-2d4f-4879-b9b5-4a43522527f6",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,57 +23,56 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "fcf5afdd-5124-462a-8633-47d274ebdd19" : {
-    "instanceId" : "fcf5afdd-5124-462a-8633-47d274ebdd19",
-    "itemMetaId" : 28,
-    "customName" : "낡은 세이버",
+  "967feb2b-7c6a-4a1e-a5ce-121c206566ee" : {
+    "instanceId" : "967feb2b-7c6a-4a1e-a5ce-121c206566ee",
+    "itemMetaId" : 13,
+    "customName" : "훈련용 롱소드",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
     "subType" : "SWORD",
     "twoHanded" : false,
-    "description" : "다양한 상황에 대처하기 위해 만들어진 실용적인 칼입니다. 날이 많이 상했습니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 320,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "accuracy" : 3,
-      "critRate" : 2,
-      "meleeAtk" : 7
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "da5cbbff-ad35-4805-b67b-5cfa37a287f4" : {
-    "instanceId" : "da5cbbff-ad35-4805-b67b-5cfa37a287f4",
-    "itemMetaId" : 29,
-    "customName" : "닳아버린 여행용 코트",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "BODY",
-    "subType" : "LEATHER",
-    "twoHanded" : false,
-    "description" : "이곳저곳 덧댄 흔적이 가득한 가죽 코트입니다. 활동성이 좋습니다.",
+    "description" : "기사단에서 훈련용으로 쓰던 평범한 철검입니다. 날이 무뎌져 있습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
     "price" : 200,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "magRes" : 5,
-      "maxStamina" : 10,
-      "maxMp" : 10,
-      "physDef" : 5
+      "accuracy" : 3,
+      "critRate" : 1,
+      "meleeAtk" : 8
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "dd8a6334-052e-4e05-b8f3-a5954edd171e" : {
-    "instanceId" : "dd8a6334-052e-4e05-b8f3-a5954edd171e",
+  "6cb95c4f-8879-4fbc-8767-2a063a990621" : {
+    "instanceId" : "6cb95c4f-8879-4fbc-8767-2a063a990621",
+    "itemMetaId" : 15,
+    "customName" : "수습 기사의 갑옷",
+    "grade" : "COMMON",
+    "type" : "EQUIPMENT",
+    "slot" : "BODY",
+    "subType" : "HEAVY",
+    "twoHanded" : false,
+    "description" : "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 350,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "maxHp" : 25,
+      "moveSpeed" : 0,
+      "physDef" : 12
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "7a729de3-5972-47bd-a557-2e23e3fea20b" : {
+    "instanceId" : "7a729de3-5972-47bd-a557-2e23e3fea20b",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -89,6 +88,29 @@
     "combatStatsBonus" : {
       "moveSpeed" : 2,
       "maxStamina" : 15
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "a5ee2926-6fc7-4f0f-b484-092e9506c357" : {
+    "instanceId" : "a5ee2926-6fc7-4f0f-b484-092e9506c357",
+    "itemMetaId" : 14,
+    "customName" : "나무 방패",
+    "grade" : "COMMON",
+    "type" : "EQUIPMENT",
+    "slot" : "SUB_WEAPON",
+    "subType" : "SHIELD",
+    "twoHanded" : false,
+    "description" : "화살이나 가벼운 타격을 막기에 적합합니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 100,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "dodge" : -1,
+      "physDef" : 10
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },

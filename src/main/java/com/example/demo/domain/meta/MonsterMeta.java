@@ -14,7 +14,7 @@ import java.util.List;
 public class MonsterMeta {
     private int id;
     private String name;
-    private int tier;           // 8(약함) ~ 1(강함)
+    private int tier;           // 9(약함) ~ 1(강함)
     private String description;
     private String img;          // 이미지 경로 추가 대비
 

@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.meta.MonsterSkillMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
@@ -111,36 +110,38 @@ public class MonsterBattleService {
      */
     private void executeMonsterAction(UserStatus user, ActiveMonster monster, MonsterSkillMeta skill, DungeonStatus ds, GameStatus gs) {
         String skillName = skill.getName();
-        // [1단계] 명중 판정
-        boolean isHit = statCalculationService.isAttackerHit(
-                monster.getActiveStats().getAccuracy(),
-                skill.getHitChance()
-        );
-
-        if (!isHit) {
-            gs.addLog(String.format("<span style='color:#aaaaaa;'>[실패] %s의 <b>%s</b>! 허공을 가르고 빗나갔습니다.</span>",
-                    monster.getName(), skillName));
-            return;
-        }
-
-        // [2단계] 플레이어 회피 판정 (버프/회복은 회피 불가)
         String skillType = skill.getType();
-        double dodgeStat = ("BUFF".equals(skillType) || "HEAL".equals(skillType)) ? 0 : user.getCombatStats().getDodge();
-        boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat, skillType);
 
-        if (isDodged) {
-            gs.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 <b>%s</b> 공격을 가볍게 피했습니다!</span>",
-                    user.getName(), monster.getName(), skillName));
-            return;
+        // 버프나 회복이 아닌 '공격성' 스킬인 경우에만 명중/회피 판정
+        boolean isAlwaysHit = "BUFF".equals(skillType) || "HEAL".equals(skillType);
+
+        if (!isAlwaysHit) {
+            // [공식 적용] (몬스터 기본 명중 + 스킬 보너스) - 유저 회피
+            double monsterAcc = monster.getActiveStats().getAccuracy();
+            int skillHitBonus = skill.getHitChance();
+            double userDodge = user.getCombatStats().getDodge();
+
+            int finalHitChance = (int) Math.max(5, Math.min(100, (monsterAcc + skillHitBonus) - userDodge));
+
+            if (random.nextInt(100) >= finalHitChance) {
+                // 회피/빗나감 로그
+                if (random.nextBoolean()) {
+                    gs.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 <b>%s</b> 공격을 유연하게 피했습니다!</span>",
+                            user.getName(), monster.getName(), skillName));
+                } else {
+                    gs.addLog(String.format("<span style='color:#aaaaaa;'>[빗나감] %s의 <b>%s</b> 공격이 빗나갔습니다.</span> <small>(확률: %d%%)</small>",
+                            monster.getName(), skillName, finalHitChance));
+                }
+                return;
+            }
         }
 
-        // [3단계] 효과별 처리
+        // [효과 처리]
         String effectType = skill.getEffect().getType();
         switch (effectType) {
             case "DAMAGE" -> handleMonsterDamage(user, monster, skill, ds, gs, false);
             case "DOT" -> handleMonsterDamage(user, monster, skill, ds, gs, true);
             case "BUFF", "DEBUFF" -> applyStatusEffect(user, monster, skill, ds, gs, 0);
-            // 필요 시 HEAL 추가 가능
             default -> log.warn("정의되지 않은 몬스터 스킬 효과: {}", effectType);
         }
     }
@@ -185,13 +186,19 @@ public class MonsterBattleService {
         }
 
         if (!isBuff) {
-            double resist = user.getCombatStats().getStatusResist();
-            double finalChance = effect.getChance() * (1.0 - (resist / 100.0));
+            // 1. 스킬 기본 확률
+            double baseChance = effect.getChance();
+            // 2. 몬스터의 상태이상 부여 보너스 (필요 시 monster.getActiveStats()에서 가져옴)
+            double monsterStatusAtk = 0;
+            // 3. 유저의 상태이상 저항력
+            double userResist = user.getCombatStats().getStatusResist();
 
-            if (random.nextDouble() * 100 > finalChance) {
-                // [수정] 어떤 효과(상태이상 이름)에 저항했는지 명시
-                gs.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) %s 효과를 저항했습니다.</span>",
-                        icon, targetName, status));
+            // 최종 확률: (스킬 확률 + 몬스터 보너스) - 유저 저항
+            int finalApplyChance = (int) Math.max(5, Math.min(100, (baseChance + monsterStatusAtk) - userResist));
+
+            if (random.nextInt(100) >= finalApplyChance) {
+                gs.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) %s의 효과를 견뎌냈습니다! (확률: %d%%)</span>",
+                        icon, user.getName(), status, finalApplyChance));
                 return;
             }
         }

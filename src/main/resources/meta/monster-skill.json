@@ -51,27 +51,6 @@
     }
   },
   {
-    "id": 4,
-    "name": "끈적한 점액 발사",
-    "description": "적에게 끈적이는 액체를 뱉어 속도를 늦추고 피해를 입힙니다.",
-    "type": "MAGIC",
-    "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "mp": 0 },
-    "monsterScaling": { "magicAtk": 1.1 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "WATER",
-      "status": "SLOW",
-      "duration": 4,
-      "chance": 30,
-      "statModifiers": {
-        "21": 0.7,
-        "22": 0.7
-      }
-    }
-  },
-  {
     "id": 5,
     "name": "독성 몸통 박치기",
     "description": "독기를 머금은 몸으로 들이받습니다. 낮은 확률로 중독시킵니다.",

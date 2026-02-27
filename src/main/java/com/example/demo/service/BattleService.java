@@ -304,27 +304,35 @@ public class BattleService {
             return handleEscape(us, ds, gs, skill);
         }
 
-        // [1단계] 공격자 명중 판정 (Hit Check)
-        boolean isHit = statCalculationService.isAttackerHit(
-                us.getCombatStats().getAccuracy(),
-                skill.getHitChance()
-        );
+        boolean isAlwaysHit = "BUFF".equals(skillType) || "HEAL".equals(skillType) || "PASS".equals(skillEffectType);
 
-        if (!isHit) {
-            gs.addLog(String.format("<span style='color:#aaaaaa;'>[실패] %s 이 빗나갔습니다! (Miss)</span>", skill.getName()));
-            saveAll(us, ds, gs);
-            return "MISS";
-        }
+        if (!isAlwaysHit) {
+            // 공격 스킬인 경우에만 명중/회피 계산
+            double attackerAcc = us.getCombatStats().getAccuracy();
+            int skillHitBonus = skill.getHitChance();
+            double defenderDodge = monster.getActiveStats().getDodge();
 
-        // [2단계] 방어자 회피 판정 (Dodge Check)
-        // 버프인 경우 회피 판정을 생략하기 위해 0 전달
-        double dodgeStat = ("BUFF".equals(skillType) || "HEAL".equals(skillType)) ? 0 : monster.getActiveStats().getDodge();
-        boolean isDodged = statCalculationService.isDefenderDodge(dodgeStat, skillType);
-        if (isDodged) {
-            gs.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) 당신의 <b>%s</b> 공격을 회피했습니다!</span>",
-                    monster.getName(), skill.getName()));
-            saveAll(us, ds, gs);
-            return "Dodge";
+            // 최종 확률 계산
+            int finalHitChance = (int) Math.max(0, Math.min(100, (attackerAcc + skillHitBonus) - defenderDodge));
+
+            if (Math.random() * 100 > finalHitChance) {
+                String failType = (Math.random() < 0.5) ? "회피" : "실패";
+                String logMsg;
+
+                if ("회피".equals(failType)) {
+                    // 방어자가 주인공인 로그
+                    logMsg = String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) 당신의 <b>%s</b> 공격을 유연하게 피했습니다!</span>",
+                            monster.getName(), skill.getName());
+                } else {
+                    // 공격자가 주인공인 로그
+                    logMsg = String.format("<span style='color:#aaaaaa;'>[빗나감] 당신의 <b>%s</b> 공격이 허공을 갈랐습니다!</span>",
+                            skill.getName());
+                }
+                logMsg += String.format(" <small style='color:#888;'>(확률: %d%%)</small>", finalHitChance);
+                gs.addLog(logMsg);
+                saveAll(us, ds, gs);
+                return "MISS";
+            }
         }
 
         switch (skillEffectType) {
@@ -353,28 +361,55 @@ public class BattleService {
         CombatStats defenderStats = monster.getActiveStats();
         Map<Integer, Integer> attackerFinalStats = us.getFinalStats();
 
-        // 통합 데미지 계산기 (도트기여도 스케일링을 통해 계산된 수치가 나옴)
-        int finalDamage = statCalculationService.calculateFinalDamage(
+        // 1. 기본 데미지 계산 (StatCalculationService에서는 이제 순수 데미지만 반환)
+        int baseDamage = statCalculationService.calculateFinalDamage(
                 skill, attackerStats, defenderStats, attackerFinalStats
         );
 
-        String battleLog = "";
-        if (!isDotDmg) {
-            // [일반 공격] 몬스터 체력 즉시 차감
-            monster.setCurrentHp(Math.max(0, monster.getCurrentHp() - finalDamage));
-            battleLog = String.format("⚔️ <b style='color:#ffffff;'>%s</b>! %s에게 <b style='color:#ff4d4d;'>%d</b>의 피해!",
-                    skill.getName(), monster.getName(), finalDamage);
-            gs.addLog(battleLog);
-            saveCurrentState(us, ds, gs);
+        // 2. 치명타 판정 (도트 스킬 포함 모든 데미지 스킬 적용)
+        boolean isCrit = false;
+        int finalDamage = baseDamage;
+
+        if (Math.random() * 100 < attackerStats.getCritRate()) {
+            isCrit = true;
+            double critMultiplier = attackerStats.getCritDmg() / 100.0;
+
+            // 스킬 고유의 치명타 배율 보정이 있다면 추가 곱산
+            if (skill.getEffect() != null && skill.getEffect().getCritMod() != null) {
+                critMultiplier *= skill.getEffect().getCritMod();
+            }
+            finalDamage = (int) Math.round(baseDamage * critMultiplier);
         }
 
-        // 몬스터 사망 체크
+        String battleLog = "";
+
+        // 3. 데미지 적용 분기
+        if (!isDotDmg) {
+            // [즉발 공격]
+            monster.setCurrentHp(Math.max(0, monster.getCurrentHp() - finalDamage));
+
+            String critPrefix = isCrit ? "<b style='color:#ffcc00;'>[치명타!] 💥 </b>" : "⚔️ ";
+            battleLog = String.format("%s<b style='color:#ffffff;'>%s</b>! %s에게 <b style='color:#ff4d4d;'>%d</b>의 피해!",
+                    critPrefix, skill.getName(), monster.getName(), finalDamage);
+
+            gs.addLog(battleLog);
+            saveCurrentState(us, ds, gs);
+        } else {
+            // [도트 스킬 (최초 부여 시점)]
+            // 도트 스킬 자체가 '데미지' 타입을 가지고 있다면,
+            // 여기서 결정된 finalDamage가 applyAdditionalEffect로 넘어가 틱 데미지의 기준이 됨
+            String critText = isCrit ? "<small style='color:#ffcc00;'>(치명타 적용됨)</small>" : "";
+            gs.addLog(String.format("✨ <b>%s</b> 시전! %s", skill.getName(), critText));
+        }
+
+        // 4. 몬스터 사망 체크
         if (monster.getCurrentHp() <= 0) {
-            finishBattle(us, ds, gs,true);
+            finishBattle(us, ds, gs, true);
             return "VICTORY";
         }
 
-        // 부가 효과 판정 (isDotDmg 여부를 함께 전달)
+        // 5. 부가 효과 및 도트 데미지 부여
+        // 여기서 finalDamage를 넘겨주므로, 치명타가 터진 도트 데미지는 틱당 위력도 강해짐
         if (skill.getEffect() != null && skill.getEffect().getStatus() != null) {
             applyAdditionalEffect(monster, skill, gs, finalDamage, isDotDmg);
         }
@@ -421,9 +456,26 @@ public class BattleService {
         String icon = gameDataManager.getIcon(status);
 
         // [저항 판정] 도트 데미지 계산이 아닐 때(즉, 최초 부여 시)만 저항 확률 체크
-        if (!isDotDmg && !isStatusApplied(skill.getEffect().getChance(), monster.getActiveStats().getStatusResist())) {
-            gs.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) 효과를 저항했습니다.</span>", icon, monster.getName()));
-            return;
+        if (!isDotDmg) {
+            // 1. 스킬 기본 확률 (예: 70%)
+            double baseChance = skill.getEffect().getChance();
+
+            // 2. 공격자(유저)의 추가 부여 확률 (CombatStats에 부여 보너스가 있다고 가정, 없으면 0)
+            // 예: 특정 장비나 특성으로 인한 "상태이상 부여 확률 +10%"
+            double attackerBonus = 0; // 필요 시 us.getCombatStats().getStatusPen() 등으로 확장 가능
+
+            // 3. 방어자(몬스터)의 저항력 (예: 30)
+            double defenderResist = monster.getActiveStats().getStatusResist();
+
+            // 4. 최종 확률 계산: (스킬 확률 + 내 보너스) - 상대 저항
+            int finalApplyChance = (int) Math.max(5, Math.min(100, (baseChance + attackerBonus) - defenderResist));
+
+            // 5. 판정
+            if (Math.random() * 100 > finalApplyChance) {
+                gs.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) 효과를 저항했습니다! (확률: %d%%)</span>",
+                        icon, monster.getName(), finalApplyChance));
+                return;
+            }
         }
 
         int newTickDamage = 0;
@@ -482,16 +534,6 @@ public class BattleService {
             gs.addLog(String.format("<span style='color:%s;'>[효과]</span> %s에게 %s <b>%s</b> 부여! (%d턴%s)",
                     color, monster.getName(), icon, effectName, skill.getEffect().getDuration(), damageInfo));
         }
-    }
-
-    /**
-     * 상태 이상 저항력 판정 핵심 수식
-     */
-    public boolean isStatusApplied(double baseChance, double targetResist) {
-        // 저항 1당 확률 1% 감소 (선형 방식)
-        double resistanceFactor = targetResist / 100.0;
-        double finalChance = baseChance * (1.0 - resistanceFactor);
-        return Math.random() <= finalChance;
     }
 
     /**

@@ -1,5 +1,5 @@
 {
-  "location" : "DUNGEON",
-  "dungeonId" : 101,
-  "gameLogs" : [ "<span style='color:#ffd700;'>[획득] 2 Gold와 8 Exp를 얻었습니다!</span>", "<b style='color:#ffd700;'>동굴 쥐이(가) 상태 이상으로 쓰러졌습니다!</b>", "\uD83E\uDE78 <b style='color:#ff4d4d;'>찌르기</b> 피해! (동굴 쥐 -56 HP)", "<b style='color:#ff9f43;'>▶ 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#ffffff;'>[중첩]</span> 동굴 쥐의 \uD83E\uDE78 <b>BLEED</b> 강화! (남은 3턴 / 틱당 56 피해)", "⚔️ <b style='color:#ffffff;'>베기</b>! 동굴 쥐에게 <b style='color:#ff4d4d;'>82</b>의 피해!", "<span style='color:#ffffff;'>[효과]</span> 동굴 쥐에게 \uD83E\uDE78 <b>BLEED</b> 부여! (3턴 (틱당 28))", "⚔️ <b style='color:#ffffff;'>찌르기</b>! 동굴 쥐에게 <b style='color:#ff4d4d;'>82</b>의 피해!", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "\uD83D\uDCA8 <span style='color:#ffcc00;'>[회피] 하프 엘프 (Half-Elf)이(가) 동굴 쥐의 <b>몸통 박치기</b> 공격을 가볍게 피했습니다!</span>", "<b style='color:#ff9f43;'>▶ 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#ff9f43;'>[전투]</span> 동굴 쥐이(가) 나타났습니다!", "⚔️ <b style='color:#ffd700;'>수정 동굴</b>에 입장했습니다.", "\uD83C\uDFF0 마을에 도착했습니다." ]
+  "location" : "TOWN",
+  "dungeonId" : null,
+  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ]
 }

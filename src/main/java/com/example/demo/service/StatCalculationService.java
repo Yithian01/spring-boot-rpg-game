@@ -589,7 +589,10 @@ public class StatCalculationService {
     }
 
     /**
-     * 1. 기술 고유 위력 계산 (Scaling 기반)
+     * 기술 고유 추가 위력 계산 (stat scaling)
+     * @param skill 스킬 정보
+     * @param finalStats 플레이어 최종 스탯
+     * @return [int] 수치 반환
      */
     public int calculateSkillPower(SkillMeta skill, Map<Integer, Integer> finalStats) {
         double power = 0;
@@ -614,7 +617,8 @@ public class StatCalculationService {
     }
 
     /**
-     * 3. 최종 통합 데미지 계산기 (BattleService에서 이걸 호출)
+     * [PLAYER] 스킬 데미지 계산기
+     * 최종 통합 데미지 계산기 (BattleService에서 이걸 호출)
      */
     public int calculateFinalDamage(SkillMeta skill, CombatStats attacker, CombatStats defender, Map<Integer, Integer> attackerFinalStats) {
         // [STEP A] 기술 위력 + 공격자 기본 공격력

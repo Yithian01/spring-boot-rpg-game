@@ -537,6 +537,11 @@ public class GameService {
         ds.setActiveMonster(statCalculationService.statCalculationMonster(ds.getActiveMonster()));
         dungeonFileRepository.saveDungeonStatus(ds);
 
+        EssencePageDto pendingEssenceDto = null;
+        if (ds.getPendingEssence() != null) {
+            pendingEssenceDto = convertToEssencePageDto(ds.getPendingEssence());
+        }
+
         return DungeonPageDto.builder()
                 .dungeonId(ds.getDungeonId())
                 .dungeonName(ds.getDungeonName())
@@ -554,7 +559,7 @@ public class GameService {
                 .playerRemainingTurns(ds.getPlayerRemainingTurns())
                 .playerMaxTurns(ds.getPlayerMaxTurns() > 0 ? ds.getPlayerMaxTurns() : calculatedMaxTurns)
                 .pendingExp(ds.getPendingExp())
-                .pendingEssence(ds.getPendingEssence())
+                .pendingEssence(pendingEssenceDto)
                 .build();
     }
 

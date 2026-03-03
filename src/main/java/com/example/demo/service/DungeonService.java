@@ -32,6 +32,8 @@ public class DungeonService {
     private final GameDataManager gameDataManager;
     private final EssenceService essenceService;
     private final BattleService battleService;
+    private final ValidationService validationService;
+
 
     /**
      * 저장 함수
@@ -182,8 +184,8 @@ public class DungeonService {
         UserStatus us = userFileRepository.findGameUser();
         GameStatus gs = gameFileRepository.findGameStatus();
 
+        validationService.checkEndBattle();
         battleService.applyPlayerRegeneration(us, gs);
-
 
         // 1. 기본 비용 소모 (스태미나 감소 등)
         us.setCurrentStamina(Math.max(0, us.getCurrentStamina() - 3));
@@ -295,6 +297,7 @@ public class DungeonService {
     }
 
     public void rest() {
+        validationService.checkEndBattle();
         UserStatus user = userFileRepository.findGameUser();
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
         GameStatus gs = gameFileRepository.findGameStatus();
@@ -306,8 +309,6 @@ public class DungeonService {
         user.setCurrentHp(Math.min(user.getCombatStats().getMaxHp(), user.getCurrentHp() + hpRecovery));
         user.setCurrentMp(Math.min(user.getCombatStats().getMaxMp(), user.getCurrentMp() + mpRecovery));
         user.setCurrentStamina(Math.min(user.getCombatStats().getMaxStamina(), user.getCurrentStamina() + stRecovery));
-
-        saveAll(user, ds, gs);
 
         gs.addLog(String.format("🛌 <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)"));
 

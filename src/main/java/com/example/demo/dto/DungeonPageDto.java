@@ -35,5 +35,5 @@ public class DungeonPageDto {
     private int playerMaxTurns;
 
     private int pendingExp;
-    private EssenceInstance pendingEssence;
+    private EssencePageDto pendingEssence;
 }

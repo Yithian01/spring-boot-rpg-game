@@ -293,7 +293,7 @@ public class BattleService {
                             monster.getName(), skill.getName());
                 } else {
                     // 공격자가 주인공인 로그
-                    logMsg = String.format("<span style='color:#aaaaaa;'>[빗나감] 당신의 <b>%s</b> 공격이 허공을 갈랐습니다!</span>",
+                    logMsg = String.format("<span style='color:#aaaaaa;'>[빗나감] 당신의 <b>%s</b> 공격이 빗나갔습니다!</span>",
                             skill.getName());
                 }
                 logMsg += String.format(" <small style='color:#888;'>(확률: %d%%)</small>", finalHitChance);

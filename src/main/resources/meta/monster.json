@@ -462,7 +462,7 @@
   },
   {
     "id": 14,
-    "name": "눈보라 라이칸스로프",
+    "name": "라이칸스로프",
     "tier": 8,
     "type": 0,
     "description": "설원의 포식자입니다. 강인한 육체와 혹한의 마력을 동시에 다룹니다.",
@@ -577,6 +577,44 @@
     "essenceBonus": {
       "baseStats": { "1": 2, "2": 2 },
       "combatStats": { "physDef": 15.0, "magRes": 10.0, "statusResist": 10.0 }
+    }
+  },
+  {
+    "id": 17,
+    "name": "혹한의 폭군: 브루탈 팽",
+    "tier": 7,
+    "type": 2,
+    "description": "서리 늑대 무리를 이끄는 우두머리입니다. 마력이 깃든 거대한 얼음 몽둥이를 휘둘러 침입자의 뼈를 얼리고 부숩니다.",
+    "stats": {
+      "maxHp": 2500,
+      "maxMp": 150,
+      "moveSpeed": 1.1,
+      "hpRegen": 10.0,
+      "meleeAtk": 135.0,
+      "magicAtk": 95.0,
+      "iceAtk": 40.0,
+      "accuracy": 25.0,
+      "critRate": 15.0,
+      "critDmg": 200.0,
+      "dodge": 5.0,
+      "physDef": 35.0,
+      "magRes": 25.0,
+      "statusResist": 50.0,
+      "frozenRes": 1.5,
+      "burnRes": -0.5,
+      "physRes": 0.3,
+      "iceRes": 1.0,
+      "frozenPen": 45.0,
+      "stunPen": 30.0
+    },
+    "baseActionPoints": 4,
+    "activeSkillIds" : [34, 32, 31],
+    "passiveSkillIds" : [],
+    "expReward": 15,
+    "dropTableId": "DT_BOSS_BRUTAL_FANG",
+    "essenceBonus": {
+      "baseStats": { "10": 5, "11": 3 },
+      "combatStats": { "meleeAtk": 15.0, "iceAtk": 30.0, "stunPen": 5.0, "iceRes": 0.1 }
     }
   }
 ]

@@ -448,5 +448,30 @@
       }
     },
     "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 34,
+    "name": "얼음 강타",
+    "description": "거대한 얼음 몽둥이로 대상을 내려찍습니다. 강력한 물리 피해와 냉기 피해를 동시에 입히며, 높은 확률로 대상을 [빙결] 상태로 만듭니다.",
+    "type": "PHYSICAL",
+    "turnCost": 2,
+    "hitChance": 85,
+    "cost": { "mp": 15, "stamina": 30 },
+    "monsterScaling": {
+      "meleeAtk": 1.8
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 5,
+      "chance": 45,
+      "statModifiers": {},
+      "combatStatModifiers": {
+        "iceAtk": 25.0,
+        "stunPen": 20.0
+      }
+    },
+    "requiredWeapons": ["BLUNT"]
   }
 ]

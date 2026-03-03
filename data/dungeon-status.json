@@ -4,16 +4,16 @@
   "parentDungeonName" : null,
   "dungeonName" : "수정 동굴",
   "currentFloor" : 1,
-  "progress" : 90,
-  "actionCount" : 36,
+  "progress" : 0,
+  "actionCount" : 0,
   "maxActionCount" : 100,
   "activeMonster" : null,
   "playerRemainingTurns" : 0,
-  "playerMaxTurns" : 0,
+  "playerMaxTurns" : 2,
   "pendingExp" : 0,
   "pendingEssence" : null,
   "floorProgressMap" : {
-    "101" : 90
+    "101" : 0
   },
   "inBattle" : false
 }

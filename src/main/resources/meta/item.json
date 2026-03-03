@@ -116,8 +116,8 @@
     "subType": "AXE",
     "twoHanded": true,
     "description": "관리가 되지 않아 날이 여기저기 빠졌지만, 무게만으로도 적의 뼈를 부수기에 충분합니다.",
-    "price": 300,
-    "icon": "/images/items/9.png",
+    "price": 220000,
+    "icon": "/images/items/10.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 12.0,
@@ -136,8 +136,8 @@
     "subType": "LEATHER",
     "twoHanded": false,
     "description": "땀 냄새가 배어있고 여기저기 찢어진 가죽 옷입니다. 최소한의 급소만 가려줍니다.",
-    "price": 150,
-    "icon": "/images/items/10.png",
+    "price": 34000,
+    "icon": "/images/items/11.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 6.0,
@@ -155,8 +155,8 @@
     "subType": "LEATHER",
     "twoHanded": false,
     "description": "밑창이 너덜너덜해서 발바닥이 아픕니다.",
-    "price": 100,
-    "icon": "/images/items/11.png",
+    "price": 55000,
+    "icon": "/images/items/12.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "moveSpeed": 2,
@@ -173,8 +173,8 @@
     "subType": "SWORD",
     "twoHanded": false,
     "description": "기사단에서 훈련용으로 쓰던 평범한 철검입니다. 날이 무뎌져 있습니다.",
-    "price": 200,
-    "icon": "/images/items/12.png",
+    "price": 110000,
+    "icon": "/images/items/13.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 8.0,
@@ -192,8 +192,8 @@
     "subType": "SHIELD",
     "twoHanded": false,
     "description": "화살이나 가벼운 타격을 막기에 적합합니다.",
-    "price": 100,
-    "icon": "/images/items/13.png",
+    "price": 35000,
+    "icon": "/images/items/14.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 10.0,
@@ -210,8 +210,8 @@
     "subType": "HEAVY",
     "twoHanded": false,
     "description": "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
-    "price": 350,
-    "icon": "14.png",
+    "price": 220000,
+    "icon": "/images/items/15.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 12.0,
@@ -229,8 +229,8 @@
     "subType": "SWORD",
     "twoHanded": false,
     "description": "사막의 모래바람에 마모된 곡선형 칼입니다. 가볍고 휘두르기 좋습니다.",
-    "price": 350,
-    "icon": "/images/items/15.png",
+    "price": 170000,
+    "icon": "/images/items/16.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 9.0,
@@ -248,8 +248,8 @@
     "subType": "CLOTH",
     "twoHanded": false,
     "description": "햇빛과 모래를 막기 위해 겹겹이 두른 천 옷입니다. 방어력은 낮지만 매우 가볍습니다.",
-    "price": 200,
-    "icon": "/images/items/16.png",
+    "price": 33000,
+    "icon": "/images/items/17.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 3.0,
@@ -267,8 +267,8 @@
     "subType": "BLUNT",
     "twoHanded": false,
     "description": "광석을 캘 때 쓰던 망치입니다. 투박하지만 머리를 가격하면 치명적입니다.",
-    "price": 350,
-    "icon": "/images/items/17.png",
+    "price": 87000,
+    "icon": "/images/items/18.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 10.0,
@@ -286,8 +286,8 @@
     "subType": "LEATHER",
     "twoHanded": false,
     "description": "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
-    "price": 250,
-    "icon": "/images/items/18.png",
+    "price": 56000,
+    "icon": "/images/items/19.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 5.0,
@@ -305,8 +305,8 @@
     "subType": "DAGGER",
     "twoHanded": false,
     "description": "지하 벽면의 이끼를 긁어낼 때 쓰던 날이 무딘 낫입니다.",
-    "price": 250,
-    "icon": "/images/items/19.png",
+    "price": 120000,
+    "icon": "/images/items/20.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 6.0,
@@ -324,8 +324,8 @@
     "subType": "CLOTH",
     "twoHanded": false,
     "description": "축축한 지하에서 오래 방치되어 곰팡이가 피어오른 넝마입니다. 냄새가 고약합니다.",
-    "price": 120,
-    "icon": "/images/items/20.png",
+    "price": 45000,
+    "icon": "/images/items/21.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 2.0,
@@ -343,8 +343,8 @@
     "subType": "STAFF",
     "twoHanded": true,
     "description": "아카데미 시절 쓰던 지팡이입니다.",
-    "price": 300,
-    "icon": "/images/items/21.png",
+    "price": 300000,
+    "icon": "/images/items/22.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 12.0,
@@ -361,8 +361,8 @@
     "subType": "CLOTH",
     "twoHanded": false,
     "description": "마나 흐름을 돕는 얇은 천 옷입니다.",
-    "price": 180,
-    "icon": "/images/items/22.png",
+    "price": 180000,
+    "icon": "/images/items/23.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 1.0,
@@ -380,8 +380,8 @@
     "subType": "BOW",
     "twoHanded": true,
     "description": "관리가 안 되어 나무가 뒤틀린 활입니다. 사거리는 짧지만 없는 것보단 낫습니다.",
-    "price": 320,
-    "icon": "/images/items/23.png",
+    "price": 120000,
+    "icon": "/images/items/24.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 10.0,
@@ -399,8 +399,8 @@
     "subType": "LEATHER",
     "twoHanded": false,
     "description": "질긴 잎사귀와 가죽 끈을 엮어 만든 보호구입니다.",
-    "price": 160,
-    "icon": "/images/items/24.png",
+    "price": 65000,
+    "icon": "/images/items/25.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 4.0,
@@ -418,8 +418,8 @@
     "subType": "CROSSBOW",
     "twoHanded": true,
     "description": "소형 태엽 장치가 녹슬어 장전이 뻑뻑합니다. 하지만 소리 없이 죽음을 배달하기엔 충분합니다.",
-    "price": 380,
-    "icon": "/images/items/25.png",
+    "price": 170000,
+    "icon": "/images/items/26.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 9.0,
@@ -437,8 +437,8 @@
     "subType": "LEATHER",
     "twoHanded": false,
     "description": "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다. 가시 장식이 많이 떨어져 나갔습니다.",
-    "price": 220,
-    "icon": "/images/items/26.png",
+    "price": 76000,
+    "icon": "/images/items/27.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 5.0,
@@ -456,8 +456,8 @@
     "subType": "SWORD",
     "twoHanded": false,
     "description": "다양한 상황에 대처하기 위해 만들어진 실용적인 칼입니다. 날이 많이 상했습니다.",
-    "price": 320,
-    "icon": "/images/items/27.png",
+    "price": 110000,
+    "icon": "/images/items/28.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 7.0,
@@ -475,8 +475,8 @@
     "subType": "LEATHER",
     "twoHanded": false,
     "description": "이곳저곳 덧댄 흔적이 가득한 가죽 코트입니다. 활동성이 좋습니다.",
-    "price": 200,
-    "icon": "/images/items/28.png",
+    "price": 65000,
+    "icon": "/images/items/29.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 5.0,
@@ -495,8 +495,8 @@
     "subType": "LEATHER",
     "twoHanded": false,
     "description": "가볍고 질긴 가죽으로 만들어 발걸음이 가벼워집니다.",
-    "price": 300,
-    "icon": "/images/items/29.png",
+    "price": 150000,
+    "icon": "/images/items/30.png",
     "baseStatsBonus": {},
     "combatStatsBonus": { "dodge": 5.0, "moveSpeed": 2 },
     "grantedSkillIds": [101]
@@ -510,8 +510,8 @@
     "subType": "HEAVY",
     "twoHanded": false,
     "description": "시야는 좁아지지만 머리를 확실히 보호합니다.",
-    "price": 450,
-    "icon": "/images/items/3.png",
+    "price": 260000,
+    "icon": "/images/items/31.png",
     "baseStatsBonus": { "11": 3, "12": 5 },
     "combatStatsBonus": {
       "physDef": 15.0,
@@ -527,8 +527,8 @@
     "subType": "ACCESSORY",
     "twoHanded": false,
     "description": "작은 마력이 깃든 평범한 반지입니다.",
-    "price": 150,
-    "icon": "/images/items/31.png",
+    "price": 350000,
+    "icon": "/images/items/32.png",
     "baseStatsBonus": {
       "13": 4,
       "14": 4 },
@@ -545,8 +545,8 @@
     "subType": "DAGGER",
     "twoHanded": false,
     "description": "급소를 노리기 좋게 날카롭게 갈린 단검입니다.",
-    "price": 600,
-    "icon": "/images/items/32.png",
+    "price": 260000,
+    "icon": "/images/items/33.png",
     "baseStatsBonus": {
       "2": 6,
       "15": 3
@@ -568,8 +568,8 @@
     "subType": "ACCESSORY",
     "twoHanded": false,
     "description": "착용자의 생명력을 미세하게 증폭시킵니다.",
-    "price": 500,
-    "icon": "/images/items/33.png",
+    "price": 500000,
+    "icon": "/images/items/34.png",
     "baseStatsBonus": { "1": 5 },
     "combatStatsBonus": {
       "maxHp": 50,
@@ -588,8 +588,8 @@
     "subType": "BOW",
     "twoHanded": true,
     "description": "먼 거리의 적을 제압할 수 있는 탄탄한 활입니다.",
-    "price": 550,
-    "icon": "/images/items/34.png",
+    "price": 120000,
+    "icon": "/images/items/35.png",
     "baseStatsBonus": {
       "2": 3,
       "15": 5 },
@@ -609,8 +609,8 @@
     "subType": "HEAVY",
     "twoHanded": false,
     "description": "전신을 감싸는 무거운 판금 갑옷입니다.",
-    "price": 1200,
-    "icon": "/images/items/35.png",
+    "price": 360000,
+    "icon": "/images/items/36.png",
     "baseStatsBonus": {
       "11": 10,
       "12": 15
@@ -633,7 +633,7 @@
     "twoHanded": false,
     "description": "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
     "price": 30,
-    "icon": "/images/items/36.png",
+    "icon": "/images/items/37.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -652,11 +652,48 @@
     "twoHanded": false,
     "description": "묵직한 무게감이 느껴지는 철퇴입니다.",
     "price": 350,
-    "icon": "/images/items/37.png",
+    "icon": "/images/items/38.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 10.0
     },
     "grantedSkillIds": [2]
+  },
+  {
+    "id": 39,
+    "name": "서리 폭군 몽둥이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "브루탈 팽이 사용하던 거대한 둔기입니다. 타격 시 서늘한 냉기가 뿜어져 나옵니다.",
+    "price": 750000,
+    "icon": "/images/items/39.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 32.0,
+      "iceAtk": 12.0,
+      "stunPen": 10.0,
+      "accuracy": -5.0
+    },
+    "grantedSkillIds": [50]
+  },
+  {
+    "id": 40,
+    "name": "팽의 잘린 송곳니",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "우두머리 라이칸스로프의 거대한 송곳니로 만든 목걸이입니다. 야성이 깨어납니다.",
+    "price": 5000,
+    "icon": "/images/items/40.png",
+    "baseStatsBonus": { "10": 4, "20": 4 },
+    "combatStatsBonus": {
+      "critRate": 5.0,
+      "moveSpeed": 0.2,
+      "bleedPen": 10.0
+    }
   }
 ]

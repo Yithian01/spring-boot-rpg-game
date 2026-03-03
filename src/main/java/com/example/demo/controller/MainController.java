@@ -27,7 +27,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
     private final GameService gameService;
-    private final BattleService battleService;
     private final ValidationService validationService;
 
     /**
@@ -80,7 +79,6 @@ public class MainController {
         }
 
         GameStatus status = gameService.getGameStatus();
-        battleService.applyPlayerRegeneration();
 
         switch (status.getLocation()) {
             case TOWN:

@@ -23,12 +23,28 @@
             width: 52px; height: 52px; background: #000; border: 2px solid #444;
             border-radius: 4px; overflow: hidden; flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
+            position: relative; /* 숫자 배지 위치 기준 */
         }
         .inv-icon-box img { width: 100%; height: 100%; object-fit: cover; cursor: help; }
 
+        /* [추가] 아이콘 위 숫자 배지 */
+        .inv-qty-badge {
+            position: absolute; bottom: 2px; right: 2px;
+            background: rgba(0, 0, 0, 0.75); color: #00ff00;
+            font-size: 0.7rem; font-weight: bold; padding: 1px 4px;
+            border-radius: 3px; border: 1px solid rgba(0, 255, 0, 0.3);
+            pointer-events: none; z-index: 5;
+        }
+
         /* 아이템 정보 */
         .inv-item-info { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-        .inv-item-name { font-weight: bold; font-size: 0.95rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+        .inv-item-name {
+            font-weight: bold; font-size: 0.95rem;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding-right: 5px;
+        }
 
         /* 버튼 그룹 */
         .inv-btn-group { display: flex; flex-direction: column; gap: 4px; margin-left: auto; min-width: 65px; }
@@ -40,7 +56,7 @@
         form[action*="consume"] .btn-quick { background: linear-gradient(180deg, #3a5a8a 0%, #2a3a5a 100%); }
         form[action*="sell"] .btn-quick { background: linear-gradient(180deg, #8a3a3a 0%, #5a2a2a 100%); }
 
-        /* 등급별 색상 (Text & Border) */
+        /* 등급별 색상 */
         .text-COMMON { color: #eee; }
         .text-UNCOMMON { color: #1eff00; }
         .text-RARE { color: #0070dd; }
@@ -56,14 +72,35 @@
         /* 고사양 툴팁 스타일 */
         #item-tooltip {
             position: fixed; display: none; z-index: 10000;
-            width: 280px; background: rgba(15, 15, 15, 0.98);
-            border: 2px solid #444; border-radius: 8px; padding: 15px;
-            pointer-events: none; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            width: 320px; /* 기존 280px에서 320px로 확장 */
+            background: rgba(10, 10, 10, 0.98); /* 좀 더 깊은 배경색 */
+            border: 2px solid #555; border-radius: 8px; padding: 18px;
+            pointer-events: none; box-shadow: 0 10px 30px rgba(0,0,0,0.9);
             font-family: 'Pretendard', sans-serif;
         }
-        .tt-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #444; padding-bottom: 8px; margin-bottom: 10px; }
-        .tt-name { font-size: 1.15rem; font-weight: bold; }
-        .tt-type { font-size: 0.8rem; color: #888; }
+
+        .tt-header {
+            display: flex;
+            flex-direction: column; /* 이름과 타입을 위아래로 배치하여 공간 확보 */
+            gap: 4px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tt-name {
+            font-size: 1.25rem; /* 폰트 살짝 키움 */
+            font-weight: bold;
+            line-height: 1.3;
+            word-break: keep-all; /* 단어 단위 줄바꿈으로 가독성 향상 */
+            overflow-wrap: break-word; /* 필요시 강제 줄바꿈 */
+        }
+
+        .tt-type {
+            font-size: 0.85rem;
+            color: #aaa;
+            font-weight: normal;
+        }
         .tt-desc { color: #bbb; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; white-space: pre-wrap; font-style: italic; }
         .tt-stats { color: #ffd700; font-size: 0.9rem; padding-top: 8px; border-top: 1px dashed #333; }
         .tt-stat-row { margin-bottom: 3px; }
@@ -96,13 +133,13 @@
                          th:data-type="${item.subType != null ? item.subType : item.type}"
                          th:data-desc="${item.description}"
                          th:data-bonuses="${#strings.listJoin(item.statBonuses, '|')}"
-                         th:data-recovery="${item.recoveryEffect}">
+                         th:data-recovery="${item.recoveryEffect}"
+                         th:data-quantity="${item.quantity}"> <span th:if="${item.quantity > 1}" class="inv-qty-badge" th:text="${item.quantity}"></span>
                 </div>
 
                 <div class="inv-item-info">
                     <span class="inv-item-name" th:classappend="${'text-' + item.grade}">
                         <span th:text="${item.name}"></span>
-                        <span th:if="${item.quantity > 1}" style="color: #00ff00; font-size: 0.85em;" th:text="' x' + ${item.quantity}"></span>
                     </span>
                     <small style="color: #ffd700; font-size: 0.75rem;"
                            th:text="${#strings.listJoin(item.statBonuses, ', ')}"></small>
@@ -136,18 +173,23 @@
                 type: el.getAttribute('data-type'),
                 desc: el.getAttribute('data-desc'),
                 bonuses: el.getAttribute('data-bonuses'),
-                recovery: el.getAttribute('data-recovery')
+                recovery: el.getAttribute('data-recovery'),
+                quantity: parseInt(el.getAttribute('data-quantity') || "1")
             };
 
-            // 타이틀 및 색상
             const nameEl = document.getElementById('tt-name');
-            nameEl.innerText = data.name;
+
+            // 수량 표시를 좀 더 강조 (예: [3개] 아이템 이름)
+            const displayName = data.quantity > 1 ? `<span style="color:#00ff00;">[${data.quantity}개]</span> ${data.name}` : data.name;
+
+            nameEl.innerHTML = displayName; // innerText 대신 innerHTML 사용
             nameEl.className = 'tt-name text-' + data.grade;
 
-            document.getElementById('tt-type').innerText = data.type;
+            // 타입 표시 (예: "장비 - 한손검")
+            document.getElementById('tt-type').innerText = "분류: " + data.type;
             document.getElementById('tt-desc').innerText = data.desc || "특별한 설명이 없는 아이템입니다.";
 
-            // 스탯 목록 생성
+            /* 스탯 및 회복 로직 동일... */
             let statsHtml = "";
             if (data.bonuses) {
                 data.bonuses.split('|').forEach(s => {
@@ -170,7 +212,6 @@
             let x = e.clientX + padding;
             let y = e.clientY + padding;
 
-            // 화면 밖으로 나가지 않게 보정
             if (x + 300 > window.innerWidth) x = e.clientX - 300;
             if (y + tooltip.offsetHeight > window.innerHeight) y = window.innerHeight - tooltip.offsetHeight - 10;
 

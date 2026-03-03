@@ -437,9 +437,6 @@ public class GameService {
     /**
      * ItemMeta 데이터를 UI용 ItemPageDto로 변환하는 공통 메서드
      */
-    /**
-     * ItemInstance 데이터를 UI용 ItemPageDto로 변환 (UUID 및 강화수치 반영)
-     */
     private ItemPageDto convertToItemPageDto(ItemInstance ii) {
         // 0. 기본 메타 데이터 참조 (설명, 아이콘 등 불변 데이터용)
         ItemMeta meta = gameDataManager.getItemMetaMap().get(ii.getItemMetaId());

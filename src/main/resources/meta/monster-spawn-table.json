@@ -89,7 +89,7 @@
     "spawns": [
       {
         "monsterId": 13,
-        "weight": 40,
+        "weight": 35,
         "comment": "서리발 늑대"
       },
       {
@@ -99,13 +99,18 @@
       },
       {
         "monsterId": 14,
-        "weight": 20,
-        "comment": "눈보라 라이칸스로프 "
+        "weight": 15,
+        "comment": "라이칸스로프 "
       },
       {
         "monsterId": 16,
-        "weight": 10,
+        "weight": 15,
         "comment": "고대 얼음 골렘"
+      },
+      {
+        "monsterId": 17,
+        "weight": 5,
+        "comment": "필드보스 타룬뱅"
       }
     ]
   }

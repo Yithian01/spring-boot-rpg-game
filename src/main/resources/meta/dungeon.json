@@ -7,10 +7,10 @@
     "monsterTableId": 10,
     "effects": { },
     "nextFloorWeights": {
-      "201": 40,
-      "202": 40,
-      "203": 15,
-      "204": 5
+      "201": 30,
+      "202": 25,
+      "203": 25,
+      "204": 20
     },
     "prevDungeonId" : 0
   },

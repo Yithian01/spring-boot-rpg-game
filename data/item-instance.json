@@ -1,6 +1,6 @@
 {
-  "b35e7299-e6fd-4f50-96fe-6720ec9cd22d" : {
-    "instanceId" : "b35e7299-e6fd-4f50-96fe-6720ec9cd22d",
+  "6b8b58ea-5608-4c88-8b37-c9e99ebd9b15" : {
+    "instanceId" : "6b8b58ea-5608-4c88-8b37-c9e99ebd9b15",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,56 +23,55 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "2d5c8245-2744-43d7-9937-1de3b04cf05a" : {
-    "instanceId" : "2d5c8245-2744-43d7-9937-1de3b04cf05a",
-    "itemMetaId" : 20,
-    "customName" : "무뎌진 이끼낫",
+  "411522d6-cf34-4320-ace6-e0a873e97c66" : {
+    "instanceId" : "411522d6-cf34-4320-ace6-e0a873e97c66",
+    "itemMetaId" : 22,
+    "customName" : "금이 간 연습용 지팡이",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "DAGGER",
-    "twoHanded" : false,
-    "description" : "지하 벽면의 이끼를 긁어낼 때 쓰던 날이 무딘 낫입니다.",
+    "subType" : "STAFF",
+    "twoHanded" : true,
+    "description" : "아카데미 시절 쓰던 지팡이입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 250,
+    "price" : 300000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "magicAtk" : 3,
-      "critRate" : 2,
-      "meleeAtk" : 6
+      "magicAtk" : 12,
+      "maxMp" : 30
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "c04646ca-7b03-4a78-a610-833e3ded8b24" : {
-    "instanceId" : "c04646ca-7b03-4a78-a610-833e3ded8b24",
-    "itemMetaId" : 21,
-    "customName" : "곰팡이 핀 누더기",
+  "55b7668e-745a-423d-b99e-76eea52b0980" : {
+    "instanceId" : "55b7668e-745a-423d-b99e-76eea52b0980",
+    "itemMetaId" : 23,
+    "customName" : "수습 마법사의 로브",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
     "subType" : "CLOTH",
     "twoHanded" : false,
-    "description" : "축축한 지하에서 오래 방치되어 곰팡이가 피어오른 넝마입니다. 냄새가 고약합니다.",
+    "description" : "마나 흐름을 돕는 얇은 천 옷입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 120,
+    "price" : 180000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "statusResist" : 3,
-      "magRes" : 4,
-      "physDef" : 2
+      "magRes" : 10,
+      "physDef" : 1,
+      "mpRegen" : 10
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "3591fe71-d459-42f2-93b2-8c87af75c65a" : {
-    "instanceId" : "3591fe71-d459-42f2-93b2-8c87af75c65a",
+  "64ca9f3c-1e30-44f0-bba7-88043bb5e772" : {
+    "instanceId" : "64ca9f3c-1e30-44f0-bba7-88043bb5e772",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -83,7 +82,7 @@
     "description" : "밑창이 너덜너덜해서 발바닥이 아픕니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 100,
+    "price" : 55000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
       "moveSpeed" : 2,

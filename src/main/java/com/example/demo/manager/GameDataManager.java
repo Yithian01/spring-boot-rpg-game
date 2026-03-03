@@ -38,6 +38,7 @@ public class GameDataManager  implements ApplicationRunner {
     @Getter private Map<Integer, MonsterSkillMeta> monsterSkillMetaMap;
     @Getter private Map<Integer, DungeonMeta> dungeonMetaMap;
     @Getter private Map<Integer, MonsterSpawnTableMeta> monsterSpawnTableMetaMap;
+    @Getter private Map<String, DropTableMeta> dropTableMetaMap;
 
 
     @Override
@@ -81,6 +82,9 @@ public class GameDataManager  implements ApplicationRunner {
 
         // 11. 몬스터 테이블 정보 로딩
         this.monsterSpawnTableMetaMap = loadMapData("monster-spawn-table.json", MonsterSpawnTableMeta.class, MonsterSpawnTableMeta::getTableId);
+
+        // 12. 드랍 테이블 정보 로딩
+        this.dropTableMetaMap = loadMapData("drop-table.json", DropTableMeta.class, DropTableMeta::getId);
 
         long end = System.currentTimeMillis();
         log.info("========== [GameData] 초기화 완료 (소요시간: {}ms) ==========", end - start);

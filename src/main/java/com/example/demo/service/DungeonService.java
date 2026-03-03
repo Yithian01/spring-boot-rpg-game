@@ -31,12 +31,22 @@ public class DungeonService {
     private final StatCalculationService statCalculationService;
     private final GameDataManager gameDataManager;
     private final EssenceService essenceService;
+    private final BattleService battleService;
 
     /**
      * 저장 함수
      */
     private void saveAll(UserStatus user, DungeonStatus ds, GameStatus gs) {
         ds.setActionCount(ds.getActionCount() + 1);
+        userFileRepository.saveUserStatus(user);
+        dungeonFileRepository.saveDungeonStatus(ds);
+        gameFileRepository.saveGameStatus(gs);
+    }
+
+    /**
+     * 행동 카운트를 올리지 않고 현재 모든 상태(로그 포함)를 저장
+     */
+    private void saveCurrentState(UserStatus user, DungeonStatus ds, GameStatus gs) {
         userFileRepository.saveUserStatus(user);
         dungeonFileRepository.saveDungeonStatus(ds);
         gameFileRepository.saveGameStatus(gs);
@@ -169,20 +179,23 @@ public class DungeonService {
      */
     public void explore() {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
-        UserStatus user = userFileRepository.findGameUser();
+        UserStatus us = userFileRepository.findGameUser();
         GameStatus gs = gameFileRepository.findGameStatus();
 
+        battleService.applyPlayerRegeneration(us, gs);
+
+
         // 1. 기본 비용 소모 (스태미나 감소 등)
-        user.setCurrentStamina(Math.max(0, user.getCurrentStamina() - 3));
+        us.setCurrentStamina(Math.max(0, us.getCurrentStamina() - 3));
 
         // 2. 난수 생성 (0.0 ~ 1.0)
         double roll = Math.random();
-        Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
+        Map<Integer, Integer> stats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
 
         // 3. 사건 판정 분기
         if (roll < 0.15) {
             // Case A: 함정 조우 (15% 확률)
-            handleTrap(user, stats, gs);
+            handleTrap(us, stats, gs);
         }
         else if (roll < 0.45) {
             // Case B: 몬스터 조우 (30% 확률)
@@ -194,7 +207,7 @@ public class DungeonService {
         }
 
         // 4. 상태 저장
-        saveAll(user, ds, gs);
+        saveAll(us, ds, gs);
     }
 
     /**
@@ -335,7 +348,7 @@ public class DungeonService {
         if (ds.getPendingEssence() == null) {
             finalizeRewards(us, ds, gs);
         } else {
-            saveAll(us, ds, gs);
+            saveCurrentState(us, ds, gs);
         }
     }
 
@@ -375,6 +388,6 @@ public class DungeonService {
         ds.setActiveMonster(null);
 
         // 2. 모든 변화 저장 (이제 '조사' 버튼이 다시 활성화될 준비 완료)
-        saveAll(us, ds, gs);
+        saveCurrentState(us, ds, gs);
     }
 }

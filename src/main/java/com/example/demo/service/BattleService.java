@@ -27,6 +27,7 @@ public class BattleService {
     private final ItemInstanceRepository itemInstanceRepository;
     private final MonsterBattleService monsterBattleService;
     private final EssenceService essenceService;
+    private final DropItemService dropItemService;
 
     /**
      * 저장 담당 메소드 + 행동 포인트 올림
@@ -297,6 +298,8 @@ public class BattleService {
         String skillType = skill.getType();
         String skillEffectType = skill.getEffect().getType();
         String resultMsg = null;
+
+        applyPlayerRegeneration(us, gs);
 
         // 도망(ESCAPE)의 확률은 scaling stat 기반
         if ("ESCAPE".equals(skillType) ) {
@@ -603,36 +606,41 @@ public class BattleService {
 
     /**
      * 현재 턴을 넘김니다.
-     * @param user 플레이어
+     * @param us 플레이어 정보
      * @param ds 몬스터 정보
+     * @param gs 게임 정보
      * @return 로그 메시지 추가
      */
-    private String handleWait(UserStatus user, DungeonStatus ds, GameStatus gs) {
+    private String handleWait(UserStatus us, DungeonStatus ds, GameStatus gs) {
         gs.addLog("<b style='color:#888;'>[대기]</b> 턴을 종료합니다.");
 
         // 1. 몬스터 행동 처리 (도트딜, 공격, 상태이상 부여 등)
-        monsterBattleService.processMonsterPhase(user, ds.getActiveMonster(), ds, gs);
+        monsterBattleService.processMonsterPhase(us, ds.getActiveMonster(), ds, gs);
 
         // 2. 몬스터 사망 체크 (도트딜로 죽었을 경우)
         if (ds.getActiveMonster().getCurrentHp() <= 0) {
-            finishBattle(user, ds, gs,true);
+            finishBattle(us, ds, gs,true);
             return "VICTORY";
         }
 
-        updatePlayerStatusTick(user, ds, gs);
+        updatePlayerStatusTick(us, ds, gs);
 
         // 3. 몬스터에게 디버프를 받았을 수 있으므로 플레이어 스탯 갱신
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
+        statCalculationService.refreshUserCombatStats(us, gameDataManager.getItemMetaMap());
 
         // 4. 플레이어 턴(AP) 리필
-        int maxTurns = statCalculationService.calculateCombatTurns(user);
+        int maxTurns = statCalculationService.calculateCombatTurns(us);
         ds.setPlayerMaxTurns(maxTurns);
         ds.setPlayerRemainingTurns(maxTurns);
+
+        //4-2. 플레이어 스테미나 회복
+        int stRecovery = statCalculationService.calculateStRestoration(us);
+        us.setCurrentStamina(Math.min(us.getCombatStats().getMaxStamina(), us.getCurrentStamina() + stRecovery));
 
         gs.addLog("<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.");
 
         // 파일 저장
-        saveCurrentState(user, ds, gs);
+        saveCurrentState(us, ds, gs);
         return "MONSTER_TURN_END";
     }
 
@@ -643,13 +651,13 @@ public class BattleService {
     private void finishBattle(UserStatus us, DungeonStatus ds, GameStatus gs, boolean isVictory) {
         if (isVictory) {
             ActiveMonster monster = ds.getActiveMonster();
+            MonsterMeta monsterMeta = gameDataManager.getMonsterMetaMap().get(monster.getMonsterId());
 
-            // 1. NPE 방지: 처치 목록 초기화 확인
             if (us.getDefeatedMonsterIds() == null) {
                 us.setDefeatedMonsterIds(new HashSet<>());
             }
 
-            // 2. 경험치 즉시 정산 및 레벨업 (DungeonService에서 이관된 핵심 로직)
+            // 1. 경험치 즉시 정산 및 레벨업 (DungeonService에서 이관된 핵심 로직)
             if (!us.getDefeatedMonsterIds().contains(monster.getMonsterId())) {
                 int expAmount = ds.getPendingExp();
                 if (expAmount > 0) {
@@ -661,6 +669,16 @@ public class BattleService {
 
                     gs.addLog(String.format("<span style='color:#51cf66;'>[전투 완료] %s 처치 성공!</span>", monster.getName()));
                 }
+            }
+
+            // 2. [추가] 마석 및 아이템 드롭 처리 (마석은 100%, 일반 템은 확률)
+            if (monsterMeta != null) {
+
+                // DropItemService 호출 (마석 100% 생성 포함)
+                dropItemService.processDrops(monsterMeta);
+
+                // 로그 추가
+                gs.addLog(String.format("<span style='color:#74c0fc;'>💎 %s의 마석을 획득했습니다.</span>", monster.getName()));
             }
 
             // 3. 정수 드랍 판정 (이제 us.getLevel()은 레벨업이 완료된 상태임)
@@ -708,14 +726,10 @@ public class BattleService {
     }
 
     /**
-     * [던전 + 마을] 자연 재생 처리
+     * [던전 + 전투] 자연 재생 처리
      */
-    public void applyPlayerRegeneration() {
-        GameStatus gs = gameFileRepository.findGameStatus();
-        UserStatus user = userFileRepository.findGameUser();
-        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
-
-
+    public void applyPlayerRegeneration(UserStatus user, GameStatus gs) { // 인자 추가
+        // 여기서 새로 가져오지 말고 넘겨받은걸 씁니다.
         if (user == null || user.getCurrentHp() <= 0) return;
 
         StringBuilder regenLog = new StringBuilder();
@@ -750,8 +764,7 @@ public class BattleService {
         if (recovered) {
             gs.addLog(String.format("<span style='color:#70db70;'>[자연 재생] %s</span>", regenLog.toString()));
         }
-
-        saveAllNotCount(user, ds);
+        // 여기서 저장(save)하지 않습니다. executeSkill의 마지막 saveAll에서 한꺼번에 저장될 거니까요.
     }
 
     /**

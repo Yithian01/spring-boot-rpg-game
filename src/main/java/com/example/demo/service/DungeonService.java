@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.domain.enums.LocationType;
 import com.example.demo.domain.meta.DungeonMeta;
 import com.example.demo.domain.meta.MonsterMeta;
+import com.example.demo.domain.meta.StatMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.DungeonFileRepository;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -28,6 +30,7 @@ public class DungeonService {
     private final UserFileRepository userFileRepository;
     private final StatCalculationService statCalculationService;
     private final GameDataManager gameDataManager;
+    private final EssenceService essenceService;
 
     /**
      * 저장 함수
@@ -231,10 +234,6 @@ public class DungeonService {
         int currentDungeonId = ds.getDungeonId();
         MonsterMeta monsterMeta = gameDataManager.getRandomMonsterByDungeon(currentDungeonId);
 
-        // 2. 골드 랜덤 결정 (goldMin ~ goldMax)
-        int rewardGold = monsterMeta.getGoldMin() +
-                (int)(Math.random() * (monsterMeta.getGoldMax() - monsterMeta.getGoldMin() + 1));
-
         // 3. ActiveMonster 빌드 (실시간 전투용 스냅샷)
         ActiveMonster activeMonster = ActiveMonster.builder()
                 .monsterId(monsterMeta.getId())
@@ -257,7 +256,7 @@ public class DungeonService {
 
         // 5. 보상 예치 (전투 승리 시 지급용)
         ds.setPendingExp(monsterMeta.getExpReward());
-        ds.setPendingGold(rewardGold);
+        ds.setPendingEssence(null);
 
         gs.addLog("<span style='color:#ff9f43;'>[전투]</span> " + activeMonster.getName() + "이(가) 나타났습니다!");
     }
@@ -320,5 +319,62 @@ public class DungeonService {
         // 3. 상태 저장
         saveAll(user, ds, gs);
         log.info(">>> 던전 휴식 완료. 기습 여부: {}", (roll > safetyRate));
+    }
+
+    /**
+     * [정수 획득 핸들러]
+     */
+    public void handlePickupEssence() {
+        UserStatus us = userFileRepository.findGameUser();
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        GameStatus gs = gameFileRepository.findGameStatus();
+
+        // 1. 정수 흡수 처리
+        essenceService.claimEssence(us, ds, gs);
+
+        if (ds.getPendingEssence() == null) {
+            finalizeRewards(us, ds, gs);
+        } else {
+            saveAll(us, ds, gs);
+        }
+    }
+
+    /**
+     * [정수 버리기 핸들러]
+     */
+    public void handleDiscardEssence() {
+        UserStatus us = userFileRepository.findGameUser();
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        GameStatus gs = gameFileRepository.findGameStatus();
+
+        gs.addLog("<span style='color:#aaaaaa;'>정수를 흡수하지 않고 버렸습니다.</span>");
+        ds.setPendingEssence(null);
+
+        finalizeRewards(us, ds, gs);
+    }
+
+    /**
+     * [이동/수거 핸들러]
+     */
+    public void handleMoveOnly() {
+        UserStatus us = userFileRepository.findGameUser();
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        GameStatus gs = gameFileRepository.findGameStatus();
+
+        finalizeRewards(us, ds, gs);
+    }
+
+    /**
+     * [공통 최종 정리]
+     * 이미 BattleService에서 경험치 정산이 끝났으므로, 여기서는 필드 데이터만 초기화합니다.
+     */
+    private void finalizeRewards(UserStatus us, DungeonStatus ds, GameStatus gs) {
+        // 1. 데이터 초기화 (전투 관련 잔재 청소)
+        ds.setPendingExp(0);
+        ds.setPendingEssence(null);
+        ds.setActiveMonster(null);
+
+        // 2. 모든 변화 저장 (이제 '조사' 버튼이 다시 활성화될 준비 완료)
+        saveAll(us, ds, gs);
     }
 }

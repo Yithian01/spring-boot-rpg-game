@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import com.example.demo.domain.save.ActiveMonster;
+import com.example.demo.domain.save.EssenceInstance;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,5 +35,5 @@ public class DungeonPageDto {
     private int playerMaxTurns;
 
     private int pendingExp;
-    private int pendingGold;
+    private EssenceInstance pendingEssence;
 }

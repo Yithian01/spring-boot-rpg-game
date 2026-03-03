@@ -22,6 +22,9 @@ public class GamePageDto {
     private String userName;        // 유저 이름
     private UserTribeDto tribe;     // 종족 정보 (id, name, description)
     private UserReligionDto religion; // 종교 정보 (id, name, description)
+    private int level;
+    private int currentExp;
+    private int requiredExp;
 
     // 2. 생존 자원 (Health, Mana, Stamina)
     private int currentHp;
@@ -51,5 +54,6 @@ public class GamePageDto {
     private int boxPrice;
     private int boxDiscount;
 
+    private List<EssencePageDto> activeEssences;
     private List<String> gameLogs;
 }

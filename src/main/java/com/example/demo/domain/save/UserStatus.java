@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Data
 @Builder
@@ -29,6 +26,13 @@ public class UserStatus {
 
     private int tribeId;
     private int religionId;
+
+    /* =========================
+     * 1-1. 레벨 정보
+     * ========================= */
+    private int level;
+    private int currentExp;
+    private int requiredExp;
 
     /* =========================
      * 2. 현재 자원 상태
@@ -66,9 +70,10 @@ public class UserStatus {
     private Map<Integer, Integer> potentials;
 
     /* =========================
-     * 6. 기록
+     * 6. 기록: 사용 아이템/잡은 몬스터 메타 ID
      * ========================= */
     private List<Integer> usedItemIds;
+    private Set<Integer> defeatedMonsterIds = new HashSet<>();
 
     /* =========================
      * 7. 장착 장비 (SlotType : ItemId)
@@ -87,4 +92,18 @@ public class UserStatus {
      * 8. 스킬 정보
      * ========================= */
     private List<Integer> learnedSkillIds = new ArrayList<>(); // 배운 마법/스킬 ID 리스트
+
+    /* =========================
+     * 9. 정수 시스템 (Essence System)
+     * ========================= */
+    // 획득한 순간부터 바로 효과가 적용되는 정수 ID 리스트
+    // 이 리스트에 들어있는 ID들은 모두 '장착' 상태로 간주합니다.
+    private List<String> activeEssenceIds = new ArrayList<>();
+
+    public Set<Integer> getDefeatedMonsterIds() {
+        if (this.defeatedMonsterIds == null) {
+            this.defeatedMonsterIds = new HashSet<>();
+        }
+        return defeatedMonsterIds;
+    }
 }

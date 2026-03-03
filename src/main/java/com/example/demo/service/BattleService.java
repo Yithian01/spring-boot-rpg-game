@@ -1,8 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.meta.CombatStats;
-import com.example.demo.domain.meta.SkillEffect;
-import com.example.demo.domain.meta.SkillMeta;
+import com.example.demo.domain.meta.*;
 import com.example.demo.domain.save.*;
 import com.example.demo.dto.SkillCardDto;
 import com.example.demo.manager.GameDataManager;
@@ -28,6 +26,7 @@ public class BattleService {
     private final GameFileRepository gameFileRepository;
     private final ItemInstanceRepository itemInstanceRepository;
     private final MonsterBattleService monsterBattleService;
+    private final EssenceService essenceService;
 
     /**
      * 저장 담당 메소드 + 행동 포인트 올림
@@ -639,33 +638,57 @@ public class BattleService {
 
     /**
      * [전투 종료 공통 처리 메서드]
-     * @param isVictory 승리 여부 (승리 시에만 보상 지급)
+     * 승리 시 즉시 경험치 정산 -> 레벨업 체크 -> 상승된 레벨 기반 정수 생성 순으로 진행합니다.
      */
     private void finishBattle(UserStatus us, DungeonStatus ds, GameStatus gs, boolean isVictory) {
         if (isVictory) {
-            // 1. 보상 지급 (경험치, 골드)
-            us.setCurrentGold(us.getCurrentGold() + ds.getPendingGold());
-            // TODO: 경험치 로직 (레벨업 체크 등은 별도 서비스 권장)
-
-            gs.addLog(String.format("<span style='color:#ffd700;'>[획득] %d Gold와 %d Exp를 얻었습니다!</span>",
-                    ds.getPendingGold(), ds.getPendingExp()));
-
             ActiveMonster monster = ds.getActiveMonster();
+
+            // 1. NPE 방지: 처치 목록 초기화 확인
+            if (us.getDefeatedMonsterIds() == null) {
+                us.setDefeatedMonsterIds(new HashSet<>());
+            }
+
+            // 2. 경험치 즉시 정산 및 레벨업 (DungeonService에서 이관된 핵심 로직)
+            if (!us.getDefeatedMonsterIds().contains(monster.getMonsterId())) {
+                int expAmount = ds.getPendingExp();
+                if (expAmount > 0) {
+                    us.setCurrentExp(us.getCurrentExp() + expAmount);
+                    us.getDefeatedMonsterIds().add(monster.getMonsterId());
+
+                    // [핵심] 경험치를 먼저 더한 후 바로 레벨업 체크
+                    checkLevelUp(us, gs);
+
+                    gs.addLog(String.format("<span style='color:#51cf66;'>[전투 완료] %s 처치 성공!</span>", monster.getName()));
+                }
+            }
+
+            // 3. 정수 드랍 판정 (이제 us.getLevel()은 레벨업이 완료된 상태임)
+            double dropChance = 20.0;
+            if (Math.random() * 100 < dropChance) {
+                EssenceInstance dropped = essenceService.generateEssence(monster.getMonsterId());
+                ds.setPendingEssence(dropped);
+                gs.addLog(String.format("<b style='color:#ffd700;'>✨ [발견] %s의 정수가 응축되었습니다!</b>", monster.getName()));
+            }
+
+            // 4. 필드 상태 업데이트 (UI 표시용)
             monster.setCurrentHp(0);
+            ds.setPendingExp(0); // 정산 완료했으므로 보류 경험치 비움
             ds.setActiveMonster(monster);
 
-        }else{
+        } else {
+            // 패배 시 초기화
             ds.setActiveMonster(null);
             ds.setPendingExp(0);
-            ds.setPendingGold(0);
+            ds.setPendingEssence(null);
         }
 
-        // 3. 전투 턴 리필 (말씀하신 대로 전투 종료 즉시 풀 충전)
+        // 5. 전투 턴 리필 (신규 레벨/스탯 기준 재계산 가능)
         int maxTurns = statCalculationService.calculateCombatTurns(us);
         ds.setPlayerMaxTurns(maxTurns);
         ds.setPlayerRemainingTurns(maxTurns);
 
-        // 4. 상태 저장
+        // 6. 상태 저장
         saveCurrentState(us, ds, gs);
     }
 
@@ -729,5 +752,74 @@ public class BattleService {
         }
 
         saveAllNotCount(user, ds);
+    }
+
+    /**
+     * 레벨업 처리 (경험치 이월 및 자동 스탯 성장)
+     */
+    private void checkLevelUp(UserStatus us, GameStatus gs) {
+        boolean leveledUp = false;
+
+        // while문을 사용하여 한 번에 여러 레벨이 오르는 경우 처리
+        while (us.getCurrentExp() >= us.getRequiredExp() && us.getRequiredExp() > 0) {
+            us.setCurrentExp(us.getCurrentExp() - us.getRequiredExp()); // 경험치 이월
+            us.setLevel(us.getLevel() + 1);
+
+            // 다음 레벨 필요 경험치 상승 (예: 기존 대비 40% 증가)
+            us.setRequiredExp((int)(us.getRequiredExp() * 1.4));
+
+            // [중요] potentials 기반 자동 스탯 성장 로직 호출 가능
+            applyPotentialGrowth(us, gs);
+
+            leveledUp = true;
+            gs.addLog(String.format("<b style='color:#00ff00;'>[LEVEL UP!] 레벨이 %d가 되었습니다!</b>", us.getLevel()));
+        }
+
+        if (leveledUp) {
+            // 최대 체력 등이 변했을 것이므로 전투 능력치 재계산
+            statCalculationService.refreshUserCombatStats(us, gameDataManager.getItemMetaMap());
+            // currentHp는 건드리지 않음 (질문하신 의도 반영)
+        }
+    }
+
+    /**
+     * 유저의 Potentials(잠재력 등급)에 따른 자동 스탯 성장 실행
+     */
+    private void applyPotentialGrowth(UserStatus us, GameStatus gs) {
+        Map<Integer, Integer> baseStats = us.getBaseStats();
+        Map<Integer, Integer> potentials = us.getPotentials();
+
+        // 로그를 예쁘게 한 줄로 모으기 위한 리스트
+        List<String> growthResults = new ArrayList<>();
+
+        // 고정된 기본 성장치 (이 값을 조절하여 게임의 전체적인 성장 속도를 제어할 수 있습니다)
+        final double BASE_GROWTH_UNIT = 5.0;
+
+        for (Integer statId : baseStats.keySet()) {
+            int potentialId = potentials.getOrDefault(statId, 7); // 기본 F등급(ID:7)
+
+            // [작성하신 메서드 활용] 잠재력 등급별 가중치 가져오기 (예: S=2.0, B=1.0, F=0.2)
+            double weight = gameDataManager.getPotentialWeight(potentialId);
+
+            // 공식 적용: 기본 5 * 가중치 (반올림 처리)
+            int increment = (int) Math.round(BASE_GROWTH_UNIT * weight);
+
+            if (increment > 0) {
+                // 1. 실제 데이터(BaseStats) 반영
+                int before = baseStats.getOrDefault(statId, 0);
+                baseStats.put(statId, before + increment);
+
+                // 2. 로그용 데이터 수집
+                StatMeta statMeta = gameDataManager.getStatMetaMap().get(statId);
+                String statName = (statMeta != null) ? statMeta.getName() : "스탯" + statId;
+                growthResults.add(statName + "+" + increment);
+            }
+        }
+
+        // 로그 출력: "└ [성장] 근력+10, 민첩+5, 지능+1"
+        if (!growthResults.isEmpty()) {
+            String logMsg = "  <span style='color:#ce93d8;'>└ [성장] " + String.join(", ", growthResults) + "</span>";
+            gs.addLog(logMsg);
+        }
     }
 }

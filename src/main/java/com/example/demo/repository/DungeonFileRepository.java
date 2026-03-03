@@ -132,7 +132,6 @@ public class DungeonFileRepository {
 
                 // 2. 보상 정보 초기화 (이미 지급 완료되었다고 가정)
                 status.setPendingExp(0);
-                status.setPendingGold(0);
 
                 // 3. 변경된 상태 덮어쓰기
                 saveDungeonStatus(status);

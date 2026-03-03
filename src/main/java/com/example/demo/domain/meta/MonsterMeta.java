@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Builder
@@ -15,14 +16,35 @@ public class MonsterMeta {
     private int id;
     private String name;
     private int tier;           // 9(약함) ~ 1(강함)
+    private int type;           // 0: 일반, 1: 변이종 등 (JSON 기준)
     private String description;
-    private String img;          // 이미지 경로 추가 대비
+    private String img;
 
-    private CombatStats stats; // 전투 수치 결과값들
-    private List<Integer> skillIds; // 사용 스킬들
+    // 1. 몬스터 본체의 전투 능력치
+    private CombatStats stats;
 
-    private int baseActionPoints; // 행동 포인트
-    private int expReward;      // 처치 시 경험치
-    private int goldMin;        // 최소 드랍 골드
-    private int goldMax;        // 최대 드랍 골드
+    // 2. 스킬 아이디 분리 (액티브 / 패시브)
+    private List<Integer> activeSkillIds;
+    private List<Integer> passiveSkillIds;
+
+    // 3. 전투 및 보상 관련
+    private int baseActionPoints;
+    private int expReward;      // 최초 처치 시 부여할 경험치
+
+    // 4. 정수(Essence) 드랍 시 부여될 보너스 메타
+    private EssenceBonusMeta essenceBonus;
+
+    /**
+     * 정수에 포함될 능력치 보너스 정보를 담는 내부 클래스
+     */
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class EssenceBonusMeta {
+        // baseStats: { "21": 1 } -> 21번 부위(예: 신경계)에 1포인트
+        private Map<String, Integer> baseStats;
+
+        // combatStats: { "dodge": 2.0 } -> 회피율 2.0 증가
+        private Map<String, Double> combatStats;
+    }
 }

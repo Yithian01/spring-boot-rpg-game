@@ -51,7 +51,7 @@ public class TownService {
         UserStatus us = userFileRepository.findGameUser();
         TownStatus ts = townFileRepository.findTownStatus();
 
-        if (ts.getCurrentTurn() <= 0) return "남은 턴이 없습니다. 던전에 입장하세요!";
+        //if (ts.getCurrentTurn() <= 0) return "남은 턴이 없습니다. 던전에 입장하세요!";
 
         int staminaCost = statCalculationService.calculateWorkStaminaCost(us.getBaseStats());
         if (us.getCurrentStamina() < staminaCost) return "스태미나가 부족합니다! (필요: " + staminaCost + ")";
@@ -77,7 +77,7 @@ public class TownService {
         UserStatus us = userFileRepository.findGameUser();
         TownStatus ts = townFileRepository.findTownStatus();
 
-        if (ts.getCurrentTurn() <= 0) return "남은 턴이 없어 휴식할 수 없습니다.";
+        // if (ts.getCurrentTurn() <= 0) return "남은 턴이 없어 휴식할 수 없습니다.";
 
         int hpRecovery = statCalculationService.calculateHpRestoration(us);
         int mpRecovery = statCalculationService.calculateMpRestoration(us);
@@ -129,7 +129,7 @@ public class TownService {
         UserStatus us = userFileRepository.findGameUser();
         TownStatus ts = townFileRepository.findTownStatus();
 
-        if (ts.getCurrentTurn() <= 0) return "남은 턴이 없습니다.";
+        // if (ts.getCurrentTurn() <= 0) return "남은 턴이 없습니다.";
 
         // 1. 골드 부족 체크
         if (us.getCurrentGold() < bettingGold) {

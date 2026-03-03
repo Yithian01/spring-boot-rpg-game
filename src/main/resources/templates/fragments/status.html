@@ -14,6 +14,13 @@
         .bar-container { flex-grow: 1; height: 10px; background: #333; margin: 0 8px; border-radius: 5px; overflow: hidden; }
         .bar-fill { height: 100%; transition: width 0.3s; }
 
+        /* 스태미나 및 경험치 바 전용 색상 */
+        .stamina-text { color: #51cf66; width: 25px; font-weight: bold; }
+        .stamina-fill { background: #51cf66; }
+
+        .exp-text { color: #e599f7; width: 25px; font-weight: bold; }
+        .exp-fill { background: linear-gradient(90deg, #ae3ec9, #e599f7); }
+
         /* 스탯 스크롤 및 섹션 */
         .stat-scroll { flex-grow: 1; overflow-y: auto; padding-right: 5px; }
         .stat-section { background: rgba(255,255,255,0.03); border-radius: 6px; margin-bottom: 12px; padding: 8px; border: 1px solid #2a2a2a; }
@@ -42,7 +49,7 @@
         .stat-scroll::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
 
         /* 툴팁 및 등급 색상 */
-        .stat-hover-tooltip { display: none; position: fixed; z-index: 9999; width: 220px; background: rgba(10, 10, 10, 0.95); border: 1px solid #d4af37; padding: 12px; border-radius: 4px; color: #fff; pointer-events: none; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .stat-hover-tooltip { display: none; position: fixed; z-index: 9999; width: 230px; background: rgba(10, 10, 10, 0.98); border: 1px solid #d4af37; padding: 12px; border-radius: 4px; color: #fff; pointer-events: none; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .grade-S { color: #ff4500 !important; text-shadow: 0 0 5px rgba(255,69,0,0.5); font-weight: bold; }
         .grade-A { color: #d6aaff !important; font-weight: bold; }
         .grade-B { color: #8ecae6 !important; font-weight: bold; }
@@ -51,6 +58,21 @@
 
         /* 상태 저항 칩 스타일 */
         .res-chip { background: rgba(255,255,255,0.05); border-radius: 4px; padding: 3px 6px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
+
+        /* [추가] 정수 슬롯 레이아웃 */
+        .essence-container { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 5px; }
+        .essence-slot {
+            aspect-ratio: 1 / 1; background: rgba(0, 0, 0, 0.4); border: 1px solid #333; border-radius: 4px;
+            display: flex; align-items: center; justify-content: center; position: relative; cursor: help; transition: 0.2s;
+        }
+        .essence-slot.empty { border-style: dashed; opacity: 0.4; }
+        .essence-slot:not(.empty):hover { border-color: #ffd700; background: rgba(212, 175, 55, 0.1); box-shadow: 0 0 8px rgba(255, 215, 0, 0.3); }
+        .slot-num { position: absolute; bottom: 2px; right: 4px; font-size: 0.6rem; color: #555; }
+        .essence-tooltip-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ffd700; padding-bottom: 5px; margin-bottom: 8px; }
+
+        /* 경험치 바 전용 색상 */
+        .exp-text { color: #e599f7; width: 25px; font-weight: bold; }
+        .exp-fill { background: linear-gradient(90deg, #ae3ec9, #e599f7); }
     </style>
 </th:block>
 
@@ -77,36 +99,39 @@
             <div class="bar-container"><div class="bar-fill" th:style="'width:' + ${game.maxMp > 0 ? (game.currentMp * 100 / game.maxMp) : 0} + '%; background:#4dabf7;'"></div></div>
             <span style="width:70px; text-align:right; font-size: 0.85em;">[[${game.currentMp}]] / [[${game.maxMp}]]</span>
         </div>
+
+        <div class="bar-row">
+            <span class="stamina-text">SP</span>
+            <div class="bar-container"><div class="bar-fill stamina-fill" th:style="'width:' + ${game.maxStamina > 0 ? (game.currentStamina * 100 / game.maxStamina) : 0} + '%;'"></div></div>
+            <span style="width:70px; text-align:right; font-size: 0.85em;">[[${game.currentStamina}]] / [[${game.maxStamina}]]</span>
+        </div>
+
+        <div class="bar-row" style="margin-top: 6px; border-top: 1px solid #2a2a2a; padding-top: 6px;">
+            <span class="exp-text">LV</span>
+            <b style="color:#fff;">[[${game.level}]]</b>
+            <div class="bar-container">
+                <div class="bar-fill exp-fill"
+                     th:style="'width:' + ${game.requiredExp > 0 ? (game.currentExp * 100.0 / game.requiredExp) : 0} + '%;'">
+                </div>
+            </div>
+            <span style="width:75px; text-align:right; font-size: 0.85em;">
+                <span style="color:#e599f7; font-size: 0.8em; margin-left: 4px;">
+                    ([[${game.currentExp}]]/[[${game.requiredExp}]])
+                </span>
+            </span>
+        </div>
     </div>
 
     <div class="stat-scroll">
         <div class="stat-section">
             <div class="section-title">⚔️ 전투 공격 및 명중</div>
             <div class="stat-grid">
-                <div class="stat-item full-row">
-                    <span class="stat-label">물리 공격력</span>
-                    <span class="stat-value" style="color:#ff8787">[[${#numbers.formatInteger(game.combatStats.meleeAtk, 0)}]]</span>
-                </div>
-                <div class="stat-item full-row">
-                    <span class="stat-label">마법 공격력</span>
-                    <span class="stat-value" style="color:#74c0fc">[[${#numbers.formatInteger(game.combatStats.magicAtk, 0)}]]</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">명중률</span>
-                    <span class="stat-value">[[${game.combatStats.accuracy}]]%</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">전투턴(AP)</span>
-                    <span class="stat-value" style="color:#ffd700">[[${game.combatStats.maxTurns}]]</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">치명 확률</span>
-                    <span class="stat-value">[[${game.combatStats.critRate}]]%</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">치명 피해</span>
-                    <span class="stat-value">[[${game.combatStats.critDmg}]]x</span>
-                </div>
+                <div class="stat-item full-row"><span class="stat-label">물리 공격력</span><span class="stat-value" style="color:#ff8787">[[${#numbers.formatInteger(game.combatStats.meleeAtk, 0)}]]</span></div>
+                <div class="stat-item full-row"><span class="stat-label">마법 공격력</span><span class="stat-value" style="color:#74c0fc">[[${#numbers.formatInteger(game.combatStats.magicAtk, 0)}]]</span></div>
+                <div class="stat-item"><span class="stat-label">명중률</span><span class="stat-value">[[${game.combatStats.accuracy}]]%</span></div>
+                <div class="stat-item"><span class="stat-label">전투턴(AP)</span><span class="stat-value" style="color:#ffd700">[[${game.combatStats.maxTurns}]]</span></div>
+                <div class="stat-item"><span class="stat-label">치명 확률</span><span class="stat-value">[[${game.combatStats.critRate}]]%</span></div>
+                <div class="stat-item"><span class="stat-label">치명 피해</span><span class="stat-value">[[${game.combatStats.critDmg}]]x</span></div>
             </div>
         </div>
 
@@ -133,48 +158,19 @@
         <div class="stat-section">
             <div class="section-title">🛡️ 방어 및 상태이상 내성</div>
             <div class="stat-grid">
-                <div class="stat-item">
-                    <span class="stat-label">물리 방어</span>
-                    <span class="stat-value">[[${#numbers.formatInteger(game.combatStats.physDef, 0)}]]</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">마법 저항</span>
-                    <span class="stat-value">[[${#numbers.formatInteger(game.combatStats.magRes, 0)}]]</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">물리 관통</span>
-                    <span class="stat-value" style="color:#ff922b">[[${game.combatStats.physPen}]]%</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">마법 관통</span>
-                    <span class="stat-value" style="color:#ff922b">[[${game.combatStats.magPen}]]%</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">회피율</span>
-                    <span class="stat-value">[[${game.combatStats.dodge}]]%</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">상태 저항</span>
-                    <span class="stat-value">[[${game.combatStats.statusResist}]]%</span>
-                </div>
+                <div class="stat-item"><span class="stat-label">물리 방어</span><span class="stat-value">[[${#numbers.formatInteger(game.combatStats.physDef, 0)}]]</span></div>
+                <div class="stat-item"><span class="stat-label">마법 저항</span><span class="stat-value">[[${#numbers.formatInteger(game.combatStats.magRes, 0)}]]</span></div>
+                <div class="stat-item"><span class="stat-label">물리 관통</span><span class="stat-value" style="color:#ff922b">[[${game.combatStats.physPen}]]%</span></div>
+                <div class="stat-item"><span class="stat-label">마법 관통</span><span class="stat-value" style="color:#ff922b">[[${game.combatStats.magPen}]]%</span></div>
+                <div class="stat-item"><span class="stat-label">회피율</span><span class="stat-value">[[${game.combatStats.dodge}]]%</span></div>
+                <div class="stat-item"><span class="stat-label">상태 저항</span><span class="stat-value">[[${game.combatStats.statusResist}]]%</span></div>
             </div>
-
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 10px; border-top: 1px solid #333; padding-top: 8px;">
-                <div class="res-chip" th:if="${game.combatStats.bleedRes != 0}" title="출혈 저항">
-                    <span style="font-size: 0.8em;">🩸 출혈</span><span class="stat-value">[[${game.combatStats.bleedRes}]]%</span>
-                </div>
-                <div class="res-chip" th:if="${game.combatStats.frozenRes != 0}" title="빙결 저항">
-                    <span style="font-size: 0.8em;">❄️ 빙결</span><span class="stat-value">[[${game.combatStats.frozenRes}]]%</span>
-                </div>
-                <div class="res-chip" th:if="${game.combatStats.poisonRes != 0}" title="중독 저항">
-                    <span style="font-size: 0.8em;">🧪 중독</span><span class="stat-value">[[${game.combatStats.poisonRes}]]%</span>
-                </div>
-                <div class="res-chip" th:if="${game.combatStats.stunRes != 0}" title="기절 저항">
-                    <span style="font-size: 0.8em;">💫 기절</span><span class="stat-value">[[${game.combatStats.stunRes}]]%</span>
-                </div>
-                <div class="res-chip" th:if="${game.combatStats.burnRes != 0}" title="화상 저항">
-                    <span style="font-size: 0.8em;">🔥 화상</span><span class="stat-value">[[${game.combatStats.burnRes}]]%</span>
-                </div>
+                <div class="res-chip" th:if="${game.combatStats.bleedRes != 0}"><span style="font-size: 0.8em;">🩸 출혈</span><span class="stat-value">[[${game.combatStats.bleedRes}]]%</span></div>
+                <div class="res-chip" th:if="${game.combatStats.frozenRes != 0}"><span style="font-size: 0.8em;">❄️ 빙결</span><span class="stat-value">[[${game.combatStats.frozenRes}]]%</span></div>
+                <div class="res-chip" th:if="${game.combatStats.poisonRes != 0}"><span style="font-size: 0.8em;">🧪 중독</span><span class="stat-value">[[${game.combatStats.poisonRes}]]%</span></div>
+                <div class="res-chip" th:if="${game.combatStats.stunRes != 0}"><span style="font-size: 0.8em;">💫 기절</span><span class="stat-value">[[${game.combatStats.stunRes}]]%</span></div>
+                <div class="res-chip" th:if="${game.combatStats.burnRes != 0}"><span style="font-size: 0.8em;">🔥 화상</span><span class="stat-value">[[${game.combatStats.burnRes}]]%</span></div>
             </div>
         </div>
 
@@ -196,6 +192,36 @@
                 <b class="total-val">[[${#numbers.formatInteger(group.totalValue, 0)}]]</b>
             </div>
         </div>
+
+        <div class="stat-section">
+            <div class="section-title">
+                <span>✨ 영혼 동화 (정수)</span>
+                <span style="font-size: 0.7rem; color: #888; margin-left: auto;">LV.[[${game.level}]] 슬롯</span>
+            </div>
+            <div class="essence-container">
+                <th:block th:each="i : ${#numbers.sequence(1, game.level)}">
+                    <div th:with="ess=${game.activeEssences != null and game.activeEssences.size() >= i ? game.activeEssences[i-1] : null}"
+                         th:class="${ess != null ? 'essence-slot' : 'essence-slot empty'}"
+                         th:data-has-ess="${ess != null}"
+                         th:data-name="${ess != null ? ess.monsterName : ''}"
+                         th:data-type="${ess != null ? ess.monsterType : ''}"
+                         th:data-tier="${ess != null ? ess.monsterTier : 0}"
+                         th:data-bonuses="${ess != null ? #strings.listJoin(ess.statBonuses, '|') : ''}"
+                         th:data-skills="${ess != null ? #strings.listJoin(ess.skillNames, '|') : ''}"
+                         onmouseover="if(this.getAttribute('data-has-ess')==='true') handleEssenceHover(event, this)"
+                         onmousemove="moveStatTooltip(event)"
+                         onmouseout="hideStatTooltip()">
+
+                        <img th:if="${ess != null}"
+                             th:src="@{'/images/monsters/' + ${ess.icon} + '.png'}"
+                             style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px;">
+
+                        <span th:if="${ess == null}" style="color: #444; font-size: 0.9rem;">+</span>
+                        <span class="slot-num">[[${i}]]</span>
+                    </div>
+                </th:block>
+            </div>
+        </div>
     </div>
 
     <div id="statTooltip" class="stat-hover-tooltip">
@@ -208,11 +234,12 @@
         const tooltipTitle = document.getElementById('tooltipTitle');
         const tooltipBody = document.getElementById('tooltipBody');
 
-        function showStatTooltip(e, n, d) {
-            if(!d || d.length === 0) return;
-            tooltipTitle.innerText = n + " 상세 잠재력";
+        // 1. 잠재력 계통 툴팁 로직
+        function showStatTooltip(e, name, details) {
+            if (!details || details.length === 0) return;
 
-            tooltipBody.innerHTML = d.map(s => `
+            tooltipTitle.innerText = name + " 상세 잠재력";
+            tooltipBody.innerHTML = details.map(s => `
                 <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.85em; margin:4px 0; border-bottom: 1px solid #222; padding-bottom: 2px;">
                     <span style="color:#bbb;">${s.name}</span>
                     <div style="display:flex; align-items:center; gap:8px;">
@@ -226,16 +253,69 @@
             moveStatTooltip(e);
         }
 
+        // 2. 정수 데이터 추출 핸들러
+        function handleEssenceHover(event, element) {
+            const name = element.getAttribute('data-name');
+            const type = element.getAttribute('data-type');
+            const tier = element.getAttribute('data-tier');
+            const bonusesStr = element.getAttribute('data-bonuses');
+            const skillsStr = element.getAttribute('data-skills');
+
+            const bonuses = bonusesStr ? bonusesStr.split('|') : [];
+            const skills = skillsStr ? skillsStr.split('|') : [];
+
+            showEssenceTooltip(event, name, type, tier, bonuses, skills);
+        }
+
+        // 3. 정수 상세 툴팁 로직
+        function showEssenceTooltip(e, name, type, tier, bonuses, skills) {
+            tooltipTitle.innerHTML = `
+                <div class="essence-tooltip-header">
+                    <span>${name}의 정수</span>
+                    <span style="font-size: 0.8em; color: #ff9f43;">T${tier} ${type}</span>
+                </div>
+            `;
+
+            let html = '<div style="margin-bottom: 8px;">';
+            if (bonuses && bonuses.length > 0) {
+                bonuses.forEach(b => { if(b) html += `<div style="color: #70db70; font-size: 0.85em;">• ${b}</div>`; });
+            }
+            html += '</div>';
+
+            if (skills && skills.length > 0) {
+                html += '<div style="border-top: 1px solid #333; padding-top: 5px;">';
+                html += '<div style="font-size: 0.75em; color: #ffd700; margin-bottom: 3px;">보유 스킬</div>';
+                skills.forEach(s => { if(s) html += `<div style="color: #4dabf7; font-size: 0.82em;">[${s}]</div>`; });
+                html += '</div>';
+            }
+
+            tooltipBody.innerHTML = html;
+            tooltip.style.display = 'block';
+            moveStatTooltip(e);
+        }
+
+        // 4. 공통: 마우스 위치 추적 함수
         function moveStatTooltip(e) {
+            const scrollX = window.scrollX || window.pageXOffset;
+            const scrollY = window.scrollY || window.pageYOffset;
+
             let x = e.clientX + 15;
             let y = e.clientY + 15;
-            if (x + 220 > window.innerWidth) x = e.clientX - 235;
+
+            // 화면 오른쪽 끝에서 툴팁이 잘리는 것 방지
+            if (x + 250 > window.innerWidth) {
+                x = e.clientX - 245;
+            }
+
             tooltip.style.left = x + 'px';
             tooltip.style.top = y + 'px';
         }
 
+        // 5. 공통: 툴팁 숨기기
         function hideStatTooltip() {
             tooltip.style.display = 'none';
+            tooltipTitle.innerHTML = '';
+            tooltipBody.innerHTML = '';
         }
     </script>
 </div>

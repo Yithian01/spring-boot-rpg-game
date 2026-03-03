@@ -1,6 +1,6 @@
 {
-  "be3ace2a-2d4f-4879-b9b5-4a43522527f6" : {
-    "instanceId" : "be3ace2a-2d4f-4879-b9b5-4a43522527f6",
+  "b35e7299-e6fd-4f50-96fe-6720ec9cd22d" : {
+    "instanceId" : "b35e7299-e6fd-4f50-96fe-6720ec9cd22d",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,56 +23,56 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "967feb2b-7c6a-4a1e-a5ce-121c206566ee" : {
-    "instanceId" : "967feb2b-7c6a-4a1e-a5ce-121c206566ee",
-    "itemMetaId" : 13,
-    "customName" : "훈련용 롱소드",
+  "2d5c8245-2744-43d7-9937-1de3b04cf05a" : {
+    "instanceId" : "2d5c8245-2744-43d7-9937-1de3b04cf05a",
+    "itemMetaId" : 20,
+    "customName" : "무뎌진 이끼낫",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "SWORD",
+    "subType" : "DAGGER",
     "twoHanded" : false,
-    "description" : "기사단에서 훈련용으로 쓰던 평범한 철검입니다. 날이 무뎌져 있습니다.",
+    "description" : "지하 벽면의 이끼를 긁어낼 때 쓰던 날이 무딘 낫입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 200,
+    "price" : 250,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "accuracy" : 3,
-      "critRate" : 1,
-      "meleeAtk" : 8
+      "magicAtk" : 3,
+      "critRate" : 2,
+      "meleeAtk" : 6
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "6cb95c4f-8879-4fbc-8767-2a063a990621" : {
-    "instanceId" : "6cb95c4f-8879-4fbc-8767-2a063a990621",
-    "itemMetaId" : 15,
-    "customName" : "수습 기사의 갑옷",
+  "c04646ca-7b03-4a78-a610-833e3ded8b24" : {
+    "instanceId" : "c04646ca-7b03-4a78-a610-833e3ded8b24",
+    "itemMetaId" : 21,
+    "customName" : "곰팡이 핀 누더기",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
-    "subType" : "HEAVY",
+    "subType" : "CLOTH",
     "twoHanded" : false,
-    "description" : "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
+    "description" : "축축한 지하에서 오래 방치되어 곰팡이가 피어오른 넝마입니다. 냄새가 고약합니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 350,
+    "price" : 120,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "maxHp" : 25,
-      "moveSpeed" : 0,
-      "physDef" : 12
+      "statusResist" : 3,
+      "magRes" : 4,
+      "physDef" : 2
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "7a729de3-5972-47bd-a557-2e23e3fea20b" : {
-    "instanceId" : "7a729de3-5972-47bd-a557-2e23e3fea20b",
+  "3591fe71-d459-42f2-93b2-8c87af75c65a" : {
+    "instanceId" : "3591fe71-d459-42f2-93b2-8c87af75c65a",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -88,29 +88,6 @@
     "combatStatsBonus" : {
       "moveSpeed" : 2,
       "maxStamina" : 15
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "a5ee2926-6fc7-4f0f-b484-092e9506c357" : {
-    "instanceId" : "a5ee2926-6fc7-4f0f-b484-092e9506c357",
-    "itemMetaId" : 14,
-    "customName" : "나무 방패",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "SUB_WEAPON",
-    "subType" : "SHIELD",
-    "twoHanded" : false,
-    "description" : "화살이나 가벼운 타격을 막기에 적합합니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 100,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "dodge" : -1,
-      "physDef" : 10
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },

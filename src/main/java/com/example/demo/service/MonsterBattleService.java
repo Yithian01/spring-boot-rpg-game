@@ -83,17 +83,36 @@ public class MonsterBattleService {
             // while문 내부의 updateMonsterStatusTick 호출은 삭제하거나
             // 기획에 따라 '행동당 지속시간 감소'가 아니라면 밖으로 빼는 것이 맞습니다.
 
-            List<MonsterSkillMeta> affordableSkills = monsterMeta.getSkillIds().stream()
+            List<MonsterSkillMeta> affordableSkills = monsterMeta.getActiveSkillIds().stream()
                     .map(id -> gameDataManager.getMonsterSkillMetaMap().get(id))
-                    .filter(s -> s != null && s.getTurnCost() <= finalCurrentAp)
+                    .filter(s -> s != null
+                            && s.getTurnCost() <= finalCurrentAp // 행동력 체크
+                            && monster.getCurrentMp() >= s.getCost().getOrDefault("mp", 0)) // MP 체크 추가
                     .toList();
 
-            if (affordableSkills.isEmpty()) break;
+            if (affordableSkills.isEmpty()) {
+                // 행동력은 충분한데(최소 1코스트 이상 스킬이 있는데) 마나 때문에 못 쓰는 스킬이 있는지 확인
+                boolean isMpLacking = monsterMeta.getActiveSkillIds().stream()
+                        .map(id -> gameDataManager.getMonsterSkillMetaMap().get(id))
+                        .anyMatch(s -> s != null
+                                && s.getTurnCost() <= finalCurrentAp // 행동력은 충분하지만
+                                && monster.getCurrentMp() < s.getCost().getOrDefault("mp", 0)); // 마나만 부족한 경우
+
+                if (isMpLacking) {
+                    gs.addLog(String.format("<span style='color:#aaaaaa;'>⚡ %s이(가) 스킬을 사용하려 했으나 마력이 부족해 주춤거립니다.</span>", monster.getName()));
+                }
+                break; // 루프 종료
+            }
 
             MonsterSkillMeta selectedSkill = affordableSkills.get(random.nextInt(affordableSkills.size()));
             executeMonsterAction(us, monster, selectedSkill, ds, gs);
 
             currentAp -= selectedSkill.getTurnCost();
+
+            int mpCost = selectedSkill.getCost().getOrDefault("mp", 0);
+            if (mpCost > 0) {
+                monster.setCurrentMp(Math.max(0, monster.getCurrentMp() - mpCost));
+            }
 
             saveAll(us, ds, gs);
 

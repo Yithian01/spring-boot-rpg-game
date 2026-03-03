@@ -24,6 +24,7 @@ public class GameService {
     private final InventoryFileRepository inventoryFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
     private final GameFileRepository gameFileRepository;
+    private final EssenceRepository essenceRepository;
     private final ItemInstanceRepository itemInstanceRepository;
     private final StatCalculationService statCalculationService;
     private final BattleService battleService;
@@ -76,6 +77,7 @@ public class GameService {
         inventoryFileRepository.deleteFile();
         dungeonFileRepository.deleteFile();
         itemInstanceRepository.deleteFile();
+        essenceRepository.deleteFile();
 
         // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
@@ -139,6 +141,9 @@ public class GameService {
                 .name(tribeMeta.getName())
                 .tribeId(tribeId)
                 .religionId(0)
+                .level(1)                // 1레벨부터 시작
+                .currentExp(0)          // 현재 경험치 0
+                .requiredExp(15)         //
                 .currentGold(initialMeta.getGold())
                 .baseStats(new HashMap<>(initialMeta.getInitialStats()))
                 .potentials(randomPotentials)
@@ -149,6 +154,7 @@ public class GameService {
                 .equippedItems(equippedUUIDs)
                 .usedItemIds(new ArrayList<>())
                 .learnedSkillIds(learnedSkillIds)
+                .activeEssenceIds(new ArrayList<>())
                 .saveVersion(1)
                 .build();
 
@@ -206,8 +212,6 @@ public class GameService {
         // 1. 인벤토리 로드 및 방어적 처리 (비어있을 수 있음)
         InventoryStatus inv = inventoryFileRepository.findInventoryStatus();
         List<ItemPageDto> inventory = new ArrayList<>();
-
-        // 인벤토리가 존재하고, 아이디 리스트가 비어있지 않을 때만 변환
         if (inv != null && inv.getInstanceIds() != null && !inv.getInstanceIds().isEmpty()) {
             inventory = inv.getInstanceIds().stream()
                     .map(uuid -> itemInstanceRepository.findById(uuid).orElse(null))
@@ -234,6 +238,17 @@ public class GameService {
             });
         }
 
+        // 4. [추가] 장착 중인 정수(Essence) 상세 정보 조립
+        // UserStatus의 activeEssenceIds(UUID)를 실제 EssencePageDto로 변환합니다.
+        List<EssencePageDto> activeEssences = new ArrayList<>();
+        if (us.getActiveEssenceIds() != null) {
+            activeEssences = us.getActiveEssenceIds().stream()
+                    .map(uuid -> essenceRepository.findById(uuid).orElse(null))
+                    .filter(Objects::nonNull)
+                    .map(this::convertToEssencePageDto)
+                    .collect(Collectors.toList());
+        }
+
         List<StatCategoryGroupDto> statGroups = buildStatGroups(us);
 
         return GamePageDto.builder()
@@ -241,6 +256,9 @@ public class GameService {
                 .userName(us.getName())
                 .tribe(mapUserTribe(us))
                 .religion(mapUserReligion(us))
+                .level(us.getLevel())
+                .currentExp(us.getCurrentExp())
+                .requiredExp(us.getRequiredExp())
                 .currentHp(us.getCurrentHp())
                 .maxHp(us.getCombatStats().getMaxHp())
                 .currentMp(us.getCurrentMp())
@@ -255,6 +273,7 @@ public class GameService {
                 .activeStatuses(us.getActiveStatuses())
                 .boxPrice(finalPrice)
                 .boxDiscount(discountPercent)
+                .activeEssences(activeEssences)
                 .gameLogs(gs != null ? gs.getGameLogs() : new ArrayList<>())
                 .build();
     }
@@ -538,7 +557,7 @@ public class GameService {
                 .playerRemainingTurns(ds.getPlayerRemainingTurns())
                 .playerMaxTurns(ds.getPlayerMaxTurns() > 0 ? ds.getPlayerMaxTurns() : calculatedMaxTurns)
                 .pendingExp(ds.getPendingExp())
-                .pendingGold(ds.getPendingGold())
+                .pendingEssence(ds.getPendingEssence())
                 .build();
     }
 
@@ -584,5 +603,54 @@ public class GameService {
         });
 
         return new ArrayList<>(groups.values());
+    }
+
+    private EssencePageDto convertToEssencePageDto(EssenceInstance ei) {
+        List<String> statTexts = new ArrayList<>();
+
+        // 1. 기초 스탯 보너스 변환 (Map<Integer, Integer>)
+        if (ei.getBaseStatsBonus() != null) {
+            ei.getBaseStatsBonus().forEach((id, val) -> {
+                if (val != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(id).getName();
+                    statTexts.add(statName + " +" + val);
+                }
+            });
+        }
+
+        // 2. 전투 스탯 보너스 변환 (Map<String, Integer>)
+        if (ei.getCombatStatsBonus() != null) {
+            ei.getCombatStatsBonus().forEach((name, val) -> {
+                if (val != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(name, name);
+                    // 퍼센트 단위인 경우 처리 (필요 시)
+                    String suffix = (name.toLowerCase().contains("rate") || name.toLowerCase().contains("dodge")) ? "%" : "";
+                    statTexts.add(displayName + " +" + val + suffix);
+                }
+            });
+        }
+
+        // 3. 스킬 이름 추출 (메타 데이터 참조)
+        List<String> skillNames = new ArrayList<>();
+        // 액티브 스킬
+        ei.getActiveSkillIds().forEach(id -> {
+            var meta = gameDataManager.getMonsterSkillMetaMap().get(id);
+            if (meta != null) skillNames.add("[A] " + meta.getName());
+        });
+        // 패시브 스킬
+        ei.getPassiveSkillIds().forEach(id -> {
+            var meta = gameDataManager.getMonsterSkillMetaMap().get(id);
+            if (meta != null) skillNames.add("[P] " + meta.getName());
+        });
+
+        return EssencePageDto.builder()
+                .instanceId(ei.getInstanceId())
+                .monsterName(ei.getMonsterName())
+                .monsterType(ei.getMonsterType())
+                .monsterTier(ei.getMonsterTier())
+                .statBonuses(statTexts)
+                .skillNames(skillNames)
+                .icon(String.valueOf(ei.getMonsterId()))
+                .build();
     }
 }

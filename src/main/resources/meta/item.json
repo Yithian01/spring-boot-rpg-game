@@ -302,7 +302,7 @@
     "grade": "COMMON",
     "type": "EQUIPMENT",
     "slot": "WEAPON",
-    "subType": "SICKLE",
+    "subType": "DAGGER",
     "twoHanded": false,
     "description": "지하 벽면의 이끼를 긁어낼 때 쓰던 날이 무딘 낫입니다.",
     "price": 250,

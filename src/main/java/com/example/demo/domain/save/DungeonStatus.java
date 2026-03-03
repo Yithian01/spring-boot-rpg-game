@@ -35,7 +35,7 @@ public class DungeonStatus {
     private int playerMaxTurns;       // 스탯 기반으로 계산된 라운드당 최대 턴
 
     private int pendingExp;       // 승리 시 획득할 예정인 경험치
-    private int pendingGold;      // 승리 시 획득할 예정인 골드
+    private EssenceInstance pendingEssence; // 승리 시 나왔다면 추가하는 정수
 
     @Builder.Default
     private Map<Integer, Integer> floorProgressMap = new HashMap<>(); // 각 맵의 진척도를 저장

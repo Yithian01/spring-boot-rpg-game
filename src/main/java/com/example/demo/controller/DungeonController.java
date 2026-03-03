@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.DungeonService;
+import com.example.demo.service.EssenceService;
 import com.example.demo.service.ValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +19,7 @@ public class DungeonController {
 
     private final DungeonService dungeonService;
     private final ValidationService validationService;
+    private final EssenceService essenceService;
 
     /**
      * [던전 진입] 마을에서 입장 버튼 클릭 시
@@ -104,6 +106,35 @@ public class DungeonController {
         }
 
         dungeonService.goToPrevFloor();
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [던전] 전투 승리 후 전리품 처리
+     */
+    @PostMapping("/collect")
+    public String collectReward(@RequestParam(name = "action") String action, RedirectAttributes redirectAttributes) {
+        // 공통 HP 검증
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        switch (action) {
+            case "pickup":
+                dungeonService.handlePickupEssence();
+                break;
+
+            case "discard":
+                dungeonService.handleDiscardEssence();
+                break;
+
+            case "move":
+                dungeonService.handleMoveOnly();
+                break;
+        }
+
         return "redirect:/game/play";
     }
 }

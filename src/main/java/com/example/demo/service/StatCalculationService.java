@@ -5,6 +5,7 @@ import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.meta.MonsterSkillMeta;
 import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.save.*;
+import com.example.demo.repository.EssenceRepository;
 import com.example.demo.repository.ItemInstanceRepository;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class StatCalculationService {
     private final ItemInstanceRepository itemInstanceRepository;
+    private final EssenceRepository essenceRepository;
 
     /**
      * 공통 조회 메서드: 키가 String일 경우를 대비해 조회
@@ -48,7 +50,7 @@ public class StatCalculationService {
         Map<String, Integer> combatStatOffsets = new HashMap<>();    // 전투스탯 고정치
         Map<String, Double> combatStatModifiers = new HashMap<>();   // 전투스탯 배율합
 
-        // 2. [장착 아이템] 보너스 수집
+        // 1. [장착 아이템] 보너스 수집
         if (user.getEquippedItems() != null) {
             for (String instanceId : user.getEquippedItems().values()) {
                 if (instanceId == null || "0".equals(instanceId)) continue;
@@ -74,6 +76,34 @@ public class StatCalculationService {
                 }
             }
         }
+
+        // 🔥 2. [추가] 장착 중인 정수(Essence) 보너스 수집
+        // UserStatus에 activeEssenceIds(UUID)가 있고, 이를 통해 EssenceInstance를 가져올 수 있다고 가정합니다.
+        if (user.getActiveEssenceIds() != null && !user.getActiveEssenceIds().isEmpty()) {
+            for (String essenceId : user.getActiveEssenceIds()) {
+                if (essenceId == null) continue;
+
+                // DB 또는 Repository에서 실제 정수 인스턴스 조회
+                // (주의: 이미 UserStatus에 EssenceInstance 객체 리스트가 있다면 직접 순회)
+                EssenceInstance ei = essenceRepository.findById(essenceId).orElse(null);
+                if (ei == null) continue;
+
+                // (A) 정수의 기초 스탯 보너스 (+고정치)
+                if (ei.getBaseStatsBonus() != null) {
+                    ei.getBaseStatsBonus().forEach((id, val) ->
+                            baseStatOffsets.merge(id, val, Integer::sum));
+                }
+
+                // (B) 정수의 전투 스탯 보너스 (+고정치)
+                if (ei.getCombatStatsBonus() != null) {
+                    ei.getCombatStatsBonus().forEach((name, val) ->
+                            combatStatOffsets.merge(name, val, Integer::sum));
+                }
+                // 만약 정수에 배율(%) 보너스도 있다면 동일하게 merge 처리
+            }
+        }
+
+
 
         // 3. [액티브 상태(버프)] 보너스 수집
         if (user.getActiveStatuses() != null) {

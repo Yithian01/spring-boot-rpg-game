@@ -303,9 +303,9 @@ public class InventoryService {
     }
 
     /**
-     * 아이템 판매 로직 (UUID 기반)
+     * 아이템 판매 로직 (선택 수량 반영)
      */
-    public String sellItem(String instanceId) {
+    public String sellItem(String instanceId, int sellQty) { // 파라미터에 sellQty 추가
         UserStatus user = userFileRepository.findGameUser();
         InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
 
@@ -317,27 +317,37 @@ public class InventoryService {
         ItemInstance ii = itemInstanceRepository.findById(instanceId).orElse(null);
         if (ii == null) {
             inventory.getInstanceIds().remove(instanceId);
+            inventoryFileRepository.saveInventoryStatus(inventory); // 정보 없으면 리스트에서 정리
             return "아이템 정보를 찾을 수 없습니다.";
         }
 
-        // 2. 골드 추가 (가격 정보는 Meta에서 가져오거나 Instance에 저장된 값 활용)
-        int sellPrice = ii.getPrice(); // ItemInstance에 가격 정보가 있다고 가정
-        user.setCurrentGold(user.getCurrentGold() + sellPrice);
+        // [검증] 보유 수량보다 많이 팔려고 하는지 확인
+        if (ii.getQuantity() < sellQty) {
+            return "보유 수량이 부족합니다. (현재: " + ii.getQuantity() + "개)";
+        }
 
-        // 3. 수량 차감 로직 (소모 로직과 동일)
-        ii.setQuantity(ii.getQuantity() - 1);
+        // 2. 골드 추가 (개당 가격 * 판매 수량)
+        int unitPrice = ii.getPrice();
+        int totalSellPrice = unitPrice * sellQty;
+        user.setCurrentGold(user.getCurrentGold() + totalSellPrice);
+
+        // 3. 수량 차감
+        ii.setQuantity(ii.getQuantity() - sellQty);
+
         if (ii.getQuantity() <= 0) {
+            // 수량이 0 이하면 인벤토리 목록에서 제거 및 인스턴스 삭제
             inventory.getInstanceIds().remove(instanceId);
             itemInstanceRepository.deleteByInstanceId(instanceId);
         } else {
+            // 수량이 남았으면 변경된 수량 저장
             itemInstanceRepository.save(ii);
         }
 
-        // 4. 저장
+        // 4. 상태 저장
         userFileRepository.saveUserStatus(user);
         inventoryFileRepository.saveInventoryStatus(inventory);
 
-        return ii.getCustomName() + "을(를) " + sellPrice + "G에 판매했습니다.";
+        return String.format("%s %d개를 %dG에 판매했습니다.", ii.getCustomName(), sellQty, totalSellPrice);
     }
 
     /**

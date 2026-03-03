@@ -74,10 +74,13 @@ public class InventoryController {
     }
 
     /**
-     * 아이템 판매
+     * 아이템 판매 (수량 선택 반영)
      */
     @PostMapping("/sell")
-    public String sell(@RequestParam String itemId, RedirectAttributes redirectAttributes) {
+    public String sell(@RequestParam String itemId,
+                       @RequestParam(defaultValue = "1") int quantity, // 수량 파라미터 추가
+                       RedirectAttributes redirectAttributes) {
+
         String checkMessage = validationService.checkHp();
         if (checkMessage != null && checkMessage.startsWith("GameOver")) {
             redirectAttributes.addFlashAttribute("gameOver", true);
@@ -85,8 +88,11 @@ public class InventoryController {
             return "redirect:/game/play";
         }
 
-        log.info(">>> 아이템 판매 요청: itemId={}", itemId);
-        String message = inventoryService.sellItem(itemId);
+        log.info(">>> 아이템 판매 요청: itemId={}, quantity={}", itemId, quantity);
+
+        // 서비스 메서드에도 quantity를 전달하도록 수정이 필요합니다.
+        String message = inventoryService.sellItem(itemId, quantity);
+
         redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/game/play";
     }

@@ -1,6 +1,6 @@
 {
-  "6b8b58ea-5608-4c88-8b37-c9e99ebd9b15" : {
-    "instanceId" : "6b8b58ea-5608-4c88-8b37-c9e99ebd9b15",
+  "2aed2202-c07d-4459-a132-d1e9f1a5018e" : {
+    "instanceId" : "2aed2202-c07d-4459-a132-d1e9f1a5018e",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,55 +23,57 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "411522d6-cf34-4320-ace6-e0a873e97c66" : {
-    "instanceId" : "411522d6-cf34-4320-ace6-e0a873e97c66",
-    "itemMetaId" : 22,
-    "customName" : "금이 간 연습용 지팡이",
+  "2475a527-f68c-4fe6-85d3-20d478aef688" : {
+    "instanceId" : "2475a527-f68c-4fe6-85d3-20d478aef688",
+    "itemMetaId" : 10,
+    "customName" : "날이 빠진 처형 도끼",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "STAFF",
+    "subType" : "AXE",
     "twoHanded" : true,
-    "description" : "아카데미 시절 쓰던 지팡이입니다.",
+    "description" : "관리가 되지 않아 날이 여기저기 빠졌지만, 무게만으로도 적의 뼈를 부수기에 충분합니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 300000,
+    "price" : 220000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "magicAtk" : 12,
-      "maxMp" : 30
+      "accuracy" : -3,
+      "critDmg" : 10,
+      "meleeAtk" : 12,
+      "penetration" : 2
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "55b7668e-745a-423d-b99e-76eea52b0980" : {
-    "instanceId" : "55b7668e-745a-423d-b99e-76eea52b0980",
-    "itemMetaId" : 23,
-    "customName" : "수습 마법사의 로브",
+  "bc83bfec-5a16-45af-aee5-b35537b6b0e3" : {
+    "instanceId" : "bc83bfec-5a16-45af-aee5-b35537b6b0e3",
+    "itemMetaId" : 11,
+    "customName" : "낡은 가죽 갑옷",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
-    "subType" : "CLOTH",
+    "subType" : "LEATHER",
     "twoHanded" : false,
-    "description" : "마나 흐름을 돕는 얇은 천 옷입니다.",
+    "description" : "땀 냄새가 배어있고 여기저기 찢어진 가죽 옷입니다. 최소한의 급소만 가려줍니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 180000,
+    "price" : 34000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "magRes" : 10,
-      "physDef" : 1,
-      "mpRegen" : 10
+      "maxHp" : 20,
+      "statusResist" : 2,
+      "physDef" : 6
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "64ca9f3c-1e30-44f0-bba7-88043bb5e772" : {
-    "instanceId" : "64ca9f3c-1e30-44f0-bba7-88043bb5e772",
+  "71b5c7cc-161b-4a72-b9f6-3c06c79f1497" : {
+    "instanceId" : "71b5c7cc-161b-4a72-b9f6-3c06c79f1497",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -92,5 +94,65 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
+  },
+  "aefc5483-b113-4ffe-a5dd-974bc77c8d2b" : {
+    "instanceId" : "aefc5483-b113-4ffe-a5dd-974bc77c8d2b",
+    "itemMetaId" : 9,
+    "customName" : "동굴 쥐의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 4,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "c6a5a1b8-1644-460b-b6cf-8b91b98a09d5" : {
+    "instanceId" : "c6a5a1b8-1644-460b-b6cf-8b91b98a09d5",
+    "itemMetaId" : 9,
+    "customName" : "고블린의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "7bfe58e8-27c6-4eb6-91a7-0fd8642c13fa" : {
+    "instanceId" : "7bfe58e8-27c6-4eb6-91a7-0fd8642c13fa",
+    "itemMetaId" : 9,
+    "customName" : "그림자 비늘 살무사의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
   }
 }

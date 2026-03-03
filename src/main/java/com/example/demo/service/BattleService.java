@@ -289,7 +289,7 @@ public class BattleService {
 
                 if ("회피".equals(failType)) {
                     // 방어자가 주인공인 로그
-                    logMsg = String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) 당신의 <b>%s</b> 공격을 유연하게 피했습니다!</span>",
+                    logMsg = String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) 당신의 <b>%s</b> 공격을 피했습니다!</span>",
                             monster.getName(), skill.getName());
                 } else {
                     // 공격자가 주인공인 로그
@@ -304,7 +304,7 @@ public class BattleService {
         }
 
         switch (skillEffectType) {
-            case "PASS" -> resultMsg =  handleWait(us, ds, gs);
+            case "PASS" -> resultMsg =  handlePass(us, ds, gs);
             case "DAMAGE" -> resultMsg = handleDamage(us, monster, skill, ds, gs, false);
             case "DOT" -> resultMsg = handleDamage(us, monster, skill, ds, gs, true);
             case "BUFF", "DEBUFF" -> resultMsg = handleStatus(us, monster, skill, ds, gs);
@@ -577,7 +577,7 @@ public class BattleService {
      * @param gs 게임 정보
      * @return 로그 메시지 추가
      */
-    private String handleWait(UserStatus us, DungeonStatus ds, GameStatus gs) {
+    private String handlePass(UserStatus us, DungeonStatus ds, GameStatus gs) {
         gs.addLog("<b style='color:#888;'>[대기]</b> 턴을 종료합니다.");
 
         // 1. 몬스터 행동 처리 (도트딜, 공격, 상태이상 부여 등)
@@ -652,7 +652,7 @@ public class BattleService {
             if (Math.random() * 100 < dropChance) {
                 EssenceInstance dropped = essenceService.generateEssence(monster.getMonsterId());
                 ds.setPendingEssence(dropped);
-                gs.addLog(String.format("<b style='color:#ffd700;'>✨ [발견] %s의 정수가 응축되었습니다!</b>", monster.getName()));
+                gs.addLog(String.format("<b style='color:#ffd700;'>✨ [발견] %s의 정수가 드랍되었습니다!</b>", monster.getName()));
             }
 
             // 4. 필드 상태 업데이트 (UI 표시용)

@@ -3,8 +3,8 @@
     "id": "DT_BOSS_BRUTAL_FANG",
     "description": "혹한의 폭군 전리품",
     "drops": [
-      { "itemId": 39, "dropRate": 50.0, "minQty": 1, "maxQty": 1 },
-      { "itemId": 40, "dropRate": 30.0, "minQty": 1, "maxQty": 1 }
+      { "itemId": 39, "dropRate": 90.0, "minQty": 1, "maxQty": 1 },
+      { "itemId": 40, "dropRate": 90.0, "minQty": 1, "maxQty": 1 }
     ]
   }
 ]

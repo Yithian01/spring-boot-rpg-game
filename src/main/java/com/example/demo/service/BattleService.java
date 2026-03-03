@@ -4,10 +4,7 @@ import com.example.demo.domain.meta.*;
 import com.example.demo.domain.save.*;
 import com.example.demo.dto.SkillCardDto;
 import com.example.demo.manager.GameDataManager;
-import com.example.demo.repository.DungeonFileRepository;
-import com.example.demo.repository.GameFileRepository;
-import com.example.demo.repository.ItemInstanceRepository;
-import com.example.demo.repository.UserFileRepository;
+import com.example.demo.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,6 +22,7 @@ public class BattleService {
     private final DungeonFileRepository dungeonFileRepository;
     private final GameFileRepository gameFileRepository;
     private final ItemInstanceRepository itemInstanceRepository;
+    private final EssenceRepository essenceRepository;
     private final MonsterBattleService monsterBattleService;
     private final EssenceService essenceService;
     private final DropItemService dropItemService;
@@ -110,180 +108,148 @@ public class BattleService {
     }
 
     /**
-     * UI로 사용 가능한 스킬을 반환
-     * @param user 플레이어
-     * @param ds 몬스터 정보
-     * @return 스킬 카드 정보
+     * UI로 사용 가능한 모든 스킬을 하나의 리스트에 담아 반환
+     * (플레이어 스킬 + 정수 스킬 통합)
      */
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
         ActiveMonster monster = ds.getActiveMonster();
+        List<SkillCardDto> totalHand = new ArrayList<>();
 
-        // 1. 현재 무기 타입 파악 및 아이템 부여 스킬 수집
+        // 1. 현재 무기 타입 파악 및 아이템 부여 스킬 ID 수집
         String weaponType = "NONE";
         Set<Integer> availableSkillIds = new HashSet<>(user.getLearnedSkillIds());
 
         for (var entry : user.getEquippedItems().entrySet()) {
-            String slotName = entry.getKey();
-            String instanceId = entry.getValue();
-
-            if (instanceId == null || "0".equals(instanceId)) continue;
-
-            ItemInstance ii = itemInstanceRepository.findById(instanceId).orElse(null);
+            if (entry.getValue() == null || "0".equals(entry.getValue())) continue;
+            ItemInstance ii = itemInstanceRepository.findById(entry.getValue()).orElse(null);
             if (ii == null) continue;
 
-            // (A) 무기 타입 파악 (WEAPON 슬롯인 경우)
-            if ("WEAPON".equals(slotName)) {
-                weaponType = ii.getSubType();
-            }
+            if ("WEAPON".equals(entry.getKey())) weaponType = ii.getSubType();
+            if (ii.getGrantedSkillIds() != null) availableSkillIds.addAll(ii.getGrantedSkillIds());
+        }
+        final String currentWeapon = weaponType;
 
-            // (B) 아이템이 부여하는 스킬 수집 (Meta 정보 + 인스턴스 추가 스킬 모두 포함)
-            if (ii.getGrantedSkillIds() != null) {
-                availableSkillIds.addAll(ii.getGrantedSkillIds());
+        // ---------------------------------------------------------
+        // 2. 플레이어 본연의 스킬 처리 (SkillMeta 기반)
+        // ---------------------------------------------------------
+        List<SkillCardDto> playerSkills = gameDataManager.getSkillMetaMap().values().stream()
+                .filter(meta -> {
+                    boolean hasSkill = availableSkillIds.contains(meta.getId());
+                    List<String> required = meta.getRequiredWeapons();
+                    boolean isGeneric = required.contains("NONE");
+                    boolean canUse = required.contains(currentWeapon);
+                    boolean isIntrinsic = !isGeneric && canUse;
+                    return (hasSkill && (isGeneric || canUse)) || isIntrinsic;
+                })
+                .map(meta -> buildSkillCardDto(user, ds, monster, meta, "PLAYER", meta.getIcon()))
+                .toList();
+
+        totalHand.addAll(playerSkills);
+
+        // ---------------------------------------------------------
+        // 3. 정수(Essence) 스킬 처리 (MonsterSkillMeta -> SkillCardDto)
+        // ---------------------------------------------------------
+        Map<String, EssenceInstance> essenceMap = essenceRepository.findAll();
+        if (user.getActiveEssenceIds() != null && essenceMap != null) {
+            for (String activeId : user.getActiveEssenceIds()) {
+                EssenceInstance ei = essenceMap.get(activeId);
+                if (ei == null || ei.getActiveSkillIds() == null) continue;
+
+                for (Integer sId : ei.getActiveSkillIds()) {
+                    // 정수 스킬은 MonsterSkillMetaMap에서 가져옴
+                    SkillMeta mMeta = gameDataManager.getMonsterSkillMetaMap().get(sId);
+                    if (mMeta == null) continue;
+
+                    // 무기 제한 필터링
+                    if (!mMeta.getRequiredWeapons().contains("NONE") &&
+                            !mMeta.getRequiredWeapons().contains(currentWeapon)) continue;
+
+                    // DTO 생성 (skillType: MONSTER, icon: monsterId 기반)
+                    String monsterIcon = "/images/monsters/" + ei.getMonsterId() + ".png";
+                    totalHand.add(buildSkillCardDto(user, ds, monster, mMeta, "MONSTER", monsterIcon));
+                }
             }
         }
 
-        final String currentWeapon = weaponType;
+        return totalHand;
+    }
 
-        return gameDataManager.getSkillMetaMap().values().stream()
-                .filter(meta -> {
-                    // 1. 스킬 소유 여부 (학습했거나 아이템 부여 스킬인가?)
-                    boolean hasSkill = availableSkillIds.contains(meta.getId());
+    /**
+     * [공통 가공 함수] SkillMeta 정보를 바탕으로 UI용 DTO를 빌드
+     */
+    private SkillCardDto buildSkillCardDto(UserStatus user, DungeonStatus ds, ActiveMonster monster,
+                                           SkillMeta meta, String skillType, String iconPath) {
 
-                    // 2. 무기 조건 리스트 가져오기 (List<String>이라고 가정)
-                    List<String> requiredWeapons = meta.getRequiredWeapons();
+        boolean canAct = statCalculationService.checkSkillAvailability(user, ds, meta);
+        String msg = "";
+        if (!canAct) {
+            if (ds.getPlayerRemainingTurns() < meta.getTurnCost()) msg = "AP 부족";
+            else if (user.getCurrentStamina() < meta.getCost().getOrDefault("stamina", 0)) msg = "기력 부족";
+            else if (user.getCurrentMp() < meta.getCost().getOrDefault("mp", 0)) msg = "마력 부족";
+        }
 
-                    // 3. 무기 조건 없이 사용 가능한가? (NONE 포함 여부)
-                    boolean isGenericSkill = requiredWeapons.stream()
-                            .anyMatch(w -> w.equalsIgnoreCase("NONE"));
+        // 스케일링 가공
+        List<String> scalingInfo = new ArrayList<>();
+        if (meta.getDamageScaling() != null) {
+            meta.getDamageScaling().forEach((k, v) -> {
+                String label = k.equals("meleeAtk") ? "물리" : (k.equals("magicAtk") ? "마법" : k);
+                scalingInfo.add(label + " " + (int)(v * 100) + "%");
+            });
+        }
 
-                    // 4. 현재 무기로 사용 가능한가?
-                    boolean canUseWithCurrentWeapon = requiredWeapons.stream()
-                            .anyMatch(w -> w.equalsIgnoreCase(currentWeapon));
+        // 명중/위력 계산
+        int realHitChance = 0;
+        if (monster != null) {
+            double attackerAcc = user.getCombatStats().getAccuracy();
+            realHitChance = (int) Math.max(5, Math.min(100, (attackerAcc + meta.getHitChance()) - monster.getActiveStats().getDodge()));
+        }
 
-                    // 5. 무기 고유 스킬인가? (학습하지 않았어도 무기 타입이 맞으면 노출)
-                    boolean isWeaponIntrinsic = !isGenericSkill && canUseWithCurrentWeapon;
+        int expectedPower = statCalculationService.calculateSkillPower(meta, user.getFinalStats());
+        boolean isMagic = "MAGIC".equals(meta.getType());
+        double baseAtk = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();
+        double scaling = meta.getDamageScaling().getOrDefault(isMagic ? "magicAtk" : "meleeAtk", 1.0);
+        expectedPower += (int)(baseAtk * scaling);
 
-                    // 최종 조건: (배운 스킬이면서 현재 무기로 쓸 수 있거나) OR (현재 무기의 고유 스킬이거나)
-                    return (hasSkill && (isGenericSkill || canUseWithCurrentWeapon)) || isWeaponIntrinsic;
-                })
-                .map(meta -> {
-                    // 사용 가능 여부 체크
-                    boolean canAct = statCalculationService.checkSkillAvailability(user, ds, meta);
-                    String msg = "";
-                    if (!canAct) {
-                        if (ds.getPlayerRemainingTurns() < meta.getTurnCost()) msg = "AP 부족";
-                        else if (user.getCurrentStamina() < meta.getCost().getOrDefault("stamina", 0)) msg = "기력 부족";
-                        else if (user.getCurrentMp() < meta.getCost().getOrDefault("mp", 0)) msg = "마력 부족";
-                        else if (user.getCurrentHp() <= meta.getCost().getOrDefault("hp", 0)) msg = "생명력 위험";
-                    }
-
-                    // --- 데이터 가공 영역 ---
-                    SkillEffect effect = meta.getEffect();
-
-                    // [4] 스케일링 정보 가공 ("meleeAtk 1.3" -> "근거리 공격력 130%")
-                    List<String> scalingInfo = new ArrayList<>();
-                    if (meta.getPlayerScaling() != null) {
-                        meta.getPlayerScaling().forEach((k, v) -> {
-                            String statLabel = k.equals("meleeAtk") ? "물리 공격력" : (k.equals("magicAtk") ? "마법 공격력" : k);
-                            scalingInfo.add(statLabel + " " + (int)(v * 100) + "%");
-                        });
-                    }
-                    if (meta.getStatScaling() != null) {
-                        meta.getStatScaling().forEach((statId, val) -> {
-                            // Manager에서 스탯 메타 정보 참조 (예: 10 -> "근력")
-                            var statMeta = gameDataManager.getStatMetaMap().get(statId);
-                            String statName = (statMeta != null) ? statMeta.getName() : "Stat " + statId;
-                            scalingInfo.add(statName + " 계수 " + val);
-                        });
-                    }
-
-                    // [5] 수치 보정 정보 가공 (버프/디버프 상세)
-                    List<String> modifierDetails = new ArrayList<>();
-                    if (effect != null) {
-                        if (effect.getCombatStatModifiers() != null) {
-                            effect.getCombatStatModifiers().forEach((k, v) -> {
-                                String trend = v >= 1.0 ? "증가" : "감소";
-                                int percent = (int) (Math.abs(1.0 - v) * 100);
-                                modifierDetails.add(k + " " + percent + "% " + trend);
-                            });
-                        }
-                        if (effect.getStatModifiers() != null) {
-                            effect.getStatModifiers().forEach((statId, v) -> {
-                                var statMeta = gameDataManager.getStatMetaMap().get(statId);
-                                String statName = (statMeta != null) ? statMeta.getName() : "Stat " + statId;
-                                String trend = v >= 1.0 ? "증가" : "감소";
-                                int percent = (int) (Math.abs(1.0 - v) * 100);
-                                modifierDetails.add(statName + " " + percent + "% " + trend);
-                            });
-                        }
-                    }
-
-                    // 1. 최종 명중률 계산 (상대 회피 고려)
-                    // 공식: (내 명중 + 스킬 명중) - 상대 회피
-                    int realHitChance = 0;
-                    if (monster != null) {
-                        double attackerAcc = user.getCombatStats().getAccuracy();
-                        int skillHit = meta.getHitChance();
-                        double defenderDodge = meta.getType().equals("BUFF") || meta.getType().equals("HEAL")
-                                ? 0 : monster.getActiveStats().getDodge();
-
-                        // (공격자 명중 + 스킬 기본 명중) * (1 - 상대 회피율/100) 형태로 가거나 단순 차감
-                        // 여기서는 직관적으로 (명중확률 - 회피확률)로 계산
-                        realHitChance = (int) Math.max(5, Math.min(100, (attackerAcc + skillHit) - defenderDodge));
-                    }
-
-                    // 2. 예상 위력 계산
-                    int expectedPower = 0;
-                    if ("HEAL".equals(meta.getEffect().getType())) {
-                        expectedPower = statCalculationService.calculateHeal(user, meta);
-                    } else if ("DAMAGE".equals(meta.getEffect().getType()) || "DOT".equals(meta.getEffect().getType())) {
-                        // 방어력을 제외한 순수 위력 혹은 평균 데미지 계산
-                        expectedPower = statCalculationService.calculateSkillPower(meta, user.getFinalStats());
-                        // 기본 공격력 합산 (calculateFinalDamage의 로직 일부 차용)
-                        boolean isMagic = "MAGIC".equals(meta.getType());
-                        double baseAtk = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();
-                        double scaling = meta.getPlayerScaling().getOrDefault(isMagic ? "magicAtk" : "meleeAtk", 1.0);
-                        expectedPower += (int)(baseAtk * scaling);
-                    }
-
-                    // DTO 빌드
-                    return SkillCardDto.builder()
-                            .id(meta.getId())
-                            .name(meta.getName())
-                            .icon(meta.getIcon())
-                            .description(meta.getDescription())
-                            .turnCost(meta.getTurnCost())
-                            .staminaCost(meta.getCost().getOrDefault("stamina", 0))
-                            .mpCost(meta.getCost().getOrDefault("mp", 0))
-                            .hpCost(meta.getCost().getOrDefault("hp", 0))
-                            .canAct(canAct)
-                            .message(msg)
-                            .type(meta.getType())
-                            .element(effect != null ? effect.getElement() : "NONE")
-                            .requiredWeapons(meta.getRequiredWeapons())
-                            .baseHitChance(meta.getHitChance())
-                            .effectType(effect != null ? effect.getType() : "NONE")
-                            .status(effect != null ? effect.getStatus() : null)
-                            .statusName(effect != null ? gameDataManager.getStatusName(effect.getStatus()) : null)
-                            .duration(effect != null ? effect.getDuration() : null)
-                            .effectChance(effect != null ? effect.getChance() : null)
-                            .scalingInfo(scalingInfo)
-                            .modifierDetails(modifierDetails)
-                            .realHitChance(realHitChance) // 신규: 실시간 명중률
-                            .expectedPower(expectedPower) // 신규: 실시간 예상 위력
-                            .build();
-                })
-                .toList();
+        return SkillCardDto.builder()
+                .id(meta.getId())
+                .name(meta.getName())
+                .icon(iconPath)
+                .description(meta.getDescription())
+                .skillType(skillType)
+                .turnCost(meta.getTurnCost())
+                .staminaCost(meta.getCost().getOrDefault("stamina", 0))
+                .mpCost(meta.getCost().getOrDefault("mp", 0))
+                .hpCost(meta.getCost().getOrDefault("hp", 0))
+                .canAct(canAct)
+                .message(msg)
+                .type(meta.getType())
+                .element(meta.getEffect() != null ? meta.getEffect().getElement() : "NONE")
+                .requiredWeapons(meta.getRequiredWeapons())
+                .realHitChance(realHitChance)
+                .expectedPower(expectedPower)
+                .scalingInfo(scalingInfo)
+                .build();
     }
 
     /**
      * 스킬 실행 메인 프로세스
      */
-    public String executeSkill(int skillId) {
+    public String executeSkill(int skillId, String skillCardType) {
         GameStatus gs = gameFileRepository.findGameStatus();
         UserStatus us = userFileRepository.findGameUser();
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
-        SkillMeta skill = gameDataManager.getSkillMetaMap().get(skillId);
+        SkillMeta skill;
+        if ("MONSTER".equals(skillCardType)) {
+            // 몬스터 정수 스킬 맵에서 가져오기
+            skill = gameDataManager.getMonsterSkillMetaMap().get(skillId);
+        } else {
+            // 기존 플레이어 스킬 맵에서 가져오기
+            skill = gameDataManager.getSkillMetaMap().get(skillId);
+        }
+        if (skill == null) {
+            log.error("Skill not found! ID: {}, Type: {}", skillId, skillCardType);
+            return "존재하지 않는 기술입니다.";
+        }
         ActiveMonster monster = ds.getActiveMonster();
 
         // 1. 코스트 체크 및 차감
@@ -682,7 +648,7 @@ public class BattleService {
             }
 
             // 3. 정수 드랍 판정 (이제 us.getLevel()은 레벨업이 완료된 상태임)
-            double dropChance = 20.0;
+            double dropChance = 100.0;
             if (Math.random() * 100 < dropChance) {
                 EssenceInstance dropped = essenceService.generateEssence(monster.getMonsterId());
                 ds.setPendingEssence(dropped);

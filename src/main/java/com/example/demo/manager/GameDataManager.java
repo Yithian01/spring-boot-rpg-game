@@ -35,7 +35,7 @@ public class GameDataManager  implements ApplicationRunner {
     @Getter private Map<Integer, TribeInitialMeta> tribeInitialMetaMap;
     @Getter private Map<Integer, MonsterMeta> monsterMetaMap;
     @Getter private Map<Integer, SkillMeta> skillMetaMap;
-    @Getter private Map<Integer, MonsterSkillMeta> monsterSkillMetaMap;
+    @Getter private Map<Integer, SkillMeta> monsterSkillMetaMap;
     @Getter private Map<Integer, DungeonMeta> dungeonMetaMap;
     @Getter private Map<Integer, MonsterSpawnTableMeta> monsterSpawnTableMetaMap;
     @Getter private Map<String, DropTableMeta> dropTableMetaMap;
@@ -75,7 +75,7 @@ public class GameDataManager  implements ApplicationRunner {
         this.skillMetaMap = loadMapData("skill.json", SkillMeta.class, SkillMeta::getId);
 
         // 9. 몬스터 스킬 정보 로딩
-        this.monsterSkillMetaMap = loadMapData("monster-skill.json", MonsterSkillMeta.class, MonsterSkillMeta::getId);
+        this.monsterSkillMetaMap = loadMapData("monster-skill.json", SkillMeta.class, SkillMeta::getId);
 
         // 10. 던전 정보 로딩
         this.dungeonMetaMap = loadMapData("dungeon.json", DungeonMeta.class, DungeonMeta::getId);

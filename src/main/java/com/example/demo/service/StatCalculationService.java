@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.meta.ItemMeta;
-import com.example.demo.domain.meta.MonsterSkillMeta;
 import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.repository.EssenceRepository;
@@ -629,7 +628,7 @@ public class StatCalculationService {
         double elementalAtk = getElementalAtkValue(attacker, element);
 
         String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
-        double scaling = skill.getPlayerScaling().getOrDefault(scalingKey, 1.0);
+        double scaling = skill.getDamageScaling().getOrDefault(scalingKey, 1.0);
 
         // 최종 로우 데미지
         double rawTotalDamage = (baseAtk * scaling) + skillPower + elementalAtk;
@@ -709,7 +708,7 @@ public class StatCalculationService {
     /**
      * 몬스터 데미지 계산기 (속성 시스템 반영 및 최소 데미지 0 제한)
      */
-    public int calculateMonsterDamage(UserStatus user, ActiveMonster monster, MonsterSkillMeta skill) {
+    public int calculateMonsterDamage(UserStatus user, ActiveMonster monster, SkillMeta skill) {
         // 1. 속성(Element) 파악
         String element = (skill.getEffect().getElement() != null) ? skill.getEffect().getElement() : "PHYSICAL";
 
@@ -722,7 +721,7 @@ public class StatCalculationService {
 
         // 4. 스킬 스케일링 적용
         String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
-        double scaling = skill.getMonsterScaling().getOrDefault(scalingKey, 1.0);
+        double scaling = skill.getDamageScaling().getOrDefault(scalingKey, 1.0);
 
         double rawTotalDamage = (baseAtk * scaling) + elementalAtk;
 
@@ -754,7 +753,7 @@ public class StatCalculationService {
         double baseStatValue = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();
 
         String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
-        double scaling = skill.getPlayerScaling().getOrDefault(scalingKey, 1.0);
+        double scaling = skill.getDamageScaling().getOrDefault(scalingKey, 1.0);
         double rawTotalHeal = (baseStatValue * scaling) + skillPower;
 
         return (int) Math.ceil(rawTotalHeal);

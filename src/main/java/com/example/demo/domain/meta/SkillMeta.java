@@ -22,7 +22,7 @@ public class SkillMeta {
     private int hitChance;        // 적중확률
 
     private Map<String, Integer> cost;       // stamina, mp 등
-    private Map<String, Double> playerScaling;    // { "meleeAtk": 1.2 } 스킬 계수
+    private Map<String, Double> DamageScaling;    // { "meleeAtk": 1.2 } 스킬 계수
     private Map<Integer, Double> statScaling;    // 스탯 인덱스 : 스탯 계수
 
     private SkillEffect effect;

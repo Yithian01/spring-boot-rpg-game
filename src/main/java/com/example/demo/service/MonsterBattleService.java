@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.meta.MonsterSkillMeta;
+import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.DungeonFileRepository;
@@ -83,7 +83,7 @@ public class MonsterBattleService {
             // while문 내부의 updateMonsterStatusTick 호출은 삭제하거나
             // 기획에 따라 '행동당 지속시간 감소'가 아니라면 밖으로 빼는 것이 맞습니다.
 
-            List<MonsterSkillMeta> affordableSkills = monsterMeta.getActiveSkillIds().stream()
+            List<SkillMeta> affordableSkills = monsterMeta.getActiveSkillIds().stream()
                     .map(id -> gameDataManager.getMonsterSkillMetaMap().get(id))
                     .filter(s -> s != null
                             && s.getTurnCost() <= finalCurrentAp // 행동력 체크
@@ -104,7 +104,7 @@ public class MonsterBattleService {
                 break; // 루프 종료
             }
 
-            MonsterSkillMeta selectedSkill = affordableSkills.get(random.nextInt(affordableSkills.size()));
+            SkillMeta selectedSkill = affordableSkills.get(random.nextInt(affordableSkills.size()));
             executeMonsterAction(us, monster, selectedSkill, ds, gs);
 
             currentAp -= selectedSkill.getTurnCost();
@@ -127,7 +127,7 @@ public class MonsterBattleService {
     /**
      * 몬스터 개별 액션 실행 (BattleService와 동일한 구조)
      */
-    private void executeMonsterAction(UserStatus user, ActiveMonster monster, MonsterSkillMeta skill, DungeonStatus ds, GameStatus gs) {
+    private void executeMonsterAction(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs) {
         String skillName = skill.getName();
         String skillType = skill.getType();
 
@@ -168,7 +168,7 @@ public class MonsterBattleService {
     /**
      * 몬스터 데미지 통합 처리 (즉발/도트 부가효과 포함)
      */
-    private void handleMonsterDamage(UserStatus user, ActiveMonster monster, MonsterSkillMeta skill, DungeonStatus ds, GameStatus gs, boolean isDotOnly) {
+    private void handleMonsterDamage(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs, boolean isDotOnly) {
         // 플레이어 방어력 등을 고려한 최종 데미지 계산
         int finalDamage = statCalculationService.calculateMonsterDamage(user, monster, skill);
 
@@ -189,7 +189,7 @@ public class MonsterBattleService {
     /**
      * [통합] 몬스터 상태이상 부여 (자가 버프 & 유저 디버프)
      */
-    private void applyStatusEffect(UserStatus user, ActiveMonster monster, MonsterSkillMeta skill, DungeonStatus ds, GameStatus gs, int baseDamage) {
+    private void applyStatusEffect(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs, int baseDamage) {
         var effect = skill.getEffect();
         String status = effect.getStatus();
         String icon = gameDataManager.getIcon(status);

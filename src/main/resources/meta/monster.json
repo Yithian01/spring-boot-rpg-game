@@ -591,5 +591,40 @@
       "baseStats": { "10": 25, "11": 23 },
       "combatStats": { "meleeAtk": 35.0, "iceAtk": 65.0, "stunPen": 5.0, "iceRes": 0.2 }
     }
+  },
+  {
+    "id": 18,
+    "name": "홉고블린",
+    "tier": 8,
+    "type": 1,
+    "description": "일반 고블린보다 두 배는 큰 덩치를 가졌습니다.",
+    "stats": {
+      "maxHp": 580,
+      "maxMp": 40,
+      "meleeAtk": 85.0,
+      "physDef": 12.0,
+      "dodge": 4.0,
+      "accuracy": 15.0,
+      "critRate": 6.0,
+      "critDamage": 150,
+      "moveSpeed": 1.1,
+      "statusResist": 10.0
+    },
+    "baseActionPoints": 2,
+    "activeSkillIds" : [4, 12, 15],
+    "passiveSkillIds" : [],
+    "expReward": 3,
+    "essenceBonus": {
+      "baseStats": {
+        "1": 12,
+        "2": 12,
+        "11": 11
+      },
+      "combatStats": {
+        "meleeAtk": 18.0,
+        "physDef": 24.0,
+        "maxHp": 110.0
+      }
+    }
   }
 ]

@@ -184,6 +184,8 @@ public class DungeonService {
         UserStatus us = userFileRepository.findGameUser();
         GameStatus gs = gameFileRepository.findGameStatus();
 
+        battleService.updatePlayerStatusTick(us, ds, gs);
+
         validationService.checkEndBattle();
         battleService.applyPlayerRegeneration(us, gs);
 

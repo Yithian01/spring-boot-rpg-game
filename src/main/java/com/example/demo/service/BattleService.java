@@ -62,8 +62,9 @@ public class BattleService {
      * 턴 시작 시 도트 데미지 처리 + 걸려있는 효과들 1턴씩 감소
      * @param user 플레이어 정보
      * @param ds 던전 + 몬스터 정보
+     * @param gs 로그 처리
      */
-    private void updatePlayerStatusTick(UserStatus user, DungeonStatus ds, GameStatus gs) {
+    public void updatePlayerStatusTick(UserStatus user, DungeonStatus ds, GameStatus gs) {
         if (user.getActiveStatuses() == null || user.getActiveStatuses().isEmpty()) return;
 
         user.getActiveStatuses().removeIf(status -> {

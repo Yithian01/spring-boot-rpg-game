@@ -20,19 +20,19 @@
     "name": "고블린의 숲 (2층) 스폰 테이블",
     "spawns": [
       {
-        "monsterId": 10,
-        "weight": 50,
+        "monsterId": 5,
+        "weight": 41,
         "comment": "고블린 검사"
       },
       {
-        "monsterId": 11,
-        "weight": 35,
+        "monsterId": 6,
+        "weight": 34,
         "comment": "고블린 궁수"
       },
       {
-        "monsterId": 3,
-        "weight": 15,
-        "comment": "병약한 고블린"
+        "monsterId": 25,
+        "weight": 30,
+        "comment": "홉고블린"
       }
     ]
   },

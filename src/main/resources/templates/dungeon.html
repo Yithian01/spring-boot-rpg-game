@@ -10,131 +10,227 @@
   <th:block th:replace="~{fragments/inventory :: inventoryStyle}"></th:block>
   <th:block th:replace="~{fragments/actions/dungeon-action :: dungeonActionStyle}"></th:block>
   <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
+  <th:block th:replace="~{fragments/status-effects :: statusEffectsStyle}"></th:block>
+  <th:block th:replace="~{fragments/monster-effects :: monsterEffectsStyle}"></th:block>
 </head>
 <body>
 
-<div th:if="${message}" class="system-message" th:text="${message}"></div>
+  <div th:if="${message}" class="system-message" th:text="${message}"></div>
 
-<div class="container">
-  <div th:replace="~{fragments/header :: gameHeader}"></div>
+  <div class="container" style="width: 1800px !important;"> <div th:replace="~{fragments/header :: gameHeader}"></div>
 
-  <div class="top-panel">
-    <div class="dungeon-col-stats">
-      <div class="box">
-        <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
+    <div class="top-panel" style="display: flex; gap: 15px; flex: 1; min-height: 0;">
+
+      <div class="dungeon-col-stats" style="flex: 0 0 280px;">
+        <div class="box" style="height: 100%;">
+          <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="dungeon-col-inv">
-      <div class="box" style="display: flex; flex-direction: row; gap: 20px; background: #222; padding: 20px; height: 100%;">
+      <div class="dungeon-col-status-effects" style="flex: 0 0 240px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="flex: 1; min-height: 0;">
+          <div th:replace="~{fragments/status-effects :: statusEffectsPanel(${game.activeStatuses})}"></div>
+        </div>
 
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0;">
+        <div style="flex: 1; min-height: 0;">
+          <div th:if="${dungeon.isInBattle and dungeon.activeMonster != null}" style="height: 100%;">
+            <div th:replace="~{fragments/monster-effects :: monsterEffectsPanel(${dungeon.activeMonster.activeStatuses})}"></div>
+          </div>
+          <div th:unless="${dungeon.isInBattle and dungeon.activeMonster != null}"
+               style="height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.2); border: 1px dashed #444; border-radius: 8px; opacity: 0.5;">
+            <span style="font-size: 0.8rem; color: #888;">적 탐색 중...</span>
+          </div>
+        </div>
+      </div>
 
-          <div style="flex-shrink: 0;">
+      <div class="dungeon-col-inv" style="flex: 1; min-width: 500px;">
+        <div class="box" style="display: flex; flex-direction: row; gap: 20px; background: #222; padding: 20px; height: 100%;">
+
+          <div style="flex: 0 0 320px; display: flex; flex-direction: column; gap: 15px;">
             <div th:replace="~{fragments/infos/dungeon-info :: dungeonInfo(${dungeon})}"></div>
           </div>
-        </div>
 
-        <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
-          <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #555; padding-left: 10px;">🎒 소지품 가방</h3>
-          <div style="flex: 1; min-height: 0; border: 1px solid #333; border-radius: 4px; overflow: hidden;">
-            <div th:replace="~{fragments/inventory :: inventoryList(${game.items}, 1)}"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+            <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #555; padding-left: 10px;">🎒 소지품 가방</h3>
+            <div style="flex: 1; min-height: 0; border: 1px solid #333; border-radius: 4px; overflow: hidden;">
+              <div th:replace="~{fragments/inventory :: inventoryList(${game.items}, 1)}"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="dungeon-col-equip" style="flex: 0 0 350px;">
+        <div class="box equipment-box" style="display: flex; flex-direction: column; height: 100%;">
+          <h2 style="margin-bottom: 10px;">장착 장비</h2>
+          <div th:replace="~{fragments/equipment :: equipmentGrid(${game.equippedItems})}"></div>
+          <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 15px;">
+            <div th:replace="~{fragments/gameLog :: gameLogPanel(${game.gameLogs})}"></div>
           </div>
         </div>
-
       </div>
+
     </div>
 
-    <div class="dungeon-col-equip">
-      <div class="box equipment-box">
-        <h2>장착 장비</h2>
-        <div th:replace="~{fragments/equipment :: equipmentGrid(${game.equippedItems})}"></div>
-        <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 15px;">
-
-          <div th:replace="~{fragments/gameLog :: gameLogPanel(${game.gameLogs})}"></div>
-        </div>
-
-      </div>
-    </div>
+    <div th:replace="~{fragments/actions/dungeon-action :: dungeonActionPanel(gameData=${game}, dungeon=${dungeon})}"></div>
   </div>
-  <div th:replace="~{fragments/actions/dungeon-action :: dungeonActionPanel(gameData=${game}, dungeon=${dungeon})}"></div>
-</div>
 
-<div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
+  <div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
 
-<script th:inline="javascript">
-  /*<![CDATA[*/
-  // [기존 스크립트 로직 유지]
-  function translateSubType(type) {
-      const map = {
-          'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
-          'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
-          'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
-      };
-      return map[type] || type;
-  }
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    // [기존 스크립트 로직 유지]
+    function translateSubType(type) {
+        const map = {
+            'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
+            'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
+            'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
+        };
+        return map[type] || type;
+    }
 
-  function castSkill(skillId) {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/battle/skill/' + skillId;
-    document.body.appendChild(form);
-    form.submit();
-  }
+    function castSkill(skillId) {
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/battle/skill/' + skillId;
+      document.body.appendChild(form);
+      form.submit();
+    }
 
-  window.onload = function() {
-      if ([[${gameOver ?: false}]]) {
-          document.querySelector('.container').style.pointerEvents = 'none';
+    window.onload = function() {
+        if ([[${gameOver ?: false}]]) {
+            document.querySelector('.container').style.pointerEvents = 'none';
+        }
+    };
+
+    // 스킬 툴팁 생성 및 표시
+    function showSkillTooltip(el) {
+        let tooltip = document.getElementById('skill-tooltip');
+        if (!tooltip) {
+            tooltip = document.createElement('div');
+            tooltip.id = 'skill-tooltip';
+            tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:10px; border-radius:8px; z-index:1000; width:220px; font-size:0.8rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.5);";
+            document.body.appendChild(tooltip);
+        }
+
+        const name = el.dataset.name;
+        const desc = el.dataset.desc;
+        const scaling = el.dataset.scaling; // "물리 공격력 130%, 근력 계수 2.5"
+        const mods = el.dataset.mods;       // "명중률 30% 감소"
+        const status = el.dataset.status;
+        const chance = el.dataset.chance;
+        const duration = el.dataset.duration;
+
+        let html = `<strong style="color:#ff4d4d; font-size:1rem;">${name}</strong><br/>`;
+        html += `<span style="color:#bbb;">${desc}</span><hr style="border:0; border-top:1px solid #444; margin:5px 0;">`;
+
+        if (scaling) {
+            html += `<div style="color:#ffd700; margin-bottom:4px;"><b>위력:</b> ${scaling}</div>`;
+        }
+
+        if (status) {
+            html += `<div style="color:#ff9f43;"><b>효과:</b> ${status} (${chance}%) [${duration}턴]</div>`;
+        }
+
+        if (mods) {
+            html += `<div style="color:#4dabf7;"><b>상세:</b> ${mods}</div>`;
+        }
+
+        tooltip.innerHTML = html;
+        tooltip.style.display = 'block';
+
+        // 위치 조절
+        const rect = el.getBoundingClientRect();
+        tooltip.style.left = rect.left + 'px';
+        tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
+    }
+
+    function hideSkillTooltip() {
+        const tooltip = document.getElementById('skill-tooltip');
+        if (tooltip) tooltip.style.display = 'none';
+    }
+
+    function handleStatusEffectHover(event, element) {
+      const name = element.getAttribute('data-name');
+      const category = element.getAttribute('data-category');
+      const code = element.getAttribute('data-code');
+      const turns = element.getAttribute('data-turns');
+
+      const statMods = element.getAttribute('data-stat-mods');
+      const combatMods = element.getAttribute('data-combat-mods');
+      // 추가: 틱 데미지 데이터 가져오기
+      const tickDamage = element.getAttribute('data-tick-damage');
+
+      showStatusEffectTooltip(event, name, category, code, turns, statMods, combatMods, tickDamage);
+    }
+
+    function showStatusEffectTooltip(e, name, category, code, turns, statMods, combatMods, tickDamage) {
+      const tooltip = document.getElementById('statTooltip');
+      const tooltipTitle = document.getElementById('tooltipTitle');
+      const tooltipBody = document.getElementById('tooltipBody');
+
+      if(!tooltip) return;
+
+      tooltipTitle.innerHTML = `<span style="color:${category === 'BUFF' ? '#4dabf7' : '#ff4d4d'}">${name}</span>`;
+
+      let html = `<div style="font-size:0.85em; margin-top:5px;">`;
+      html += `<div style="color:#ffd700; margin-bottom:4px;"><b>남은 지속 시간:</b> ${turns}턴</div>`;
+
+      html += `<div style="background:rgba(255,255,255,0.05); padding:8px; border-radius:4px; margin-top:8px; border:1px solid #333;">`;
+      html += `<b style="color:#bbb; display:block; margin-bottom:5px; font-size:0.8rem;">[상세 효과]</b>`;
+
+      let hasEffect = false;
+      let effectHtml = "";
+
+      // 1. 틱 데미지 처리 (고통의 낙인 등)
+      if (tickDamage && tickDamage !== '0' && tickDamage !== 'null') {
+          hasEffect = true;
+          effectHtml += `<div style="color:#ff4d4d; margin-bottom:2px;">매 턴 피해: ${tickDamage}</div>`;
       }
-  };
 
-  // 스킬 툴팁 생성 및 표시
-  function showSkillTooltip(el) {
-      let tooltip = document.getElementById('skill-tooltip');
-      if (!tooltip) {
-          tooltip = document.createElement('div');
-          tooltip.id = 'skill-tooltip';
-          tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:10px; border-radius:8px; z-index:1000; width:220px; font-size:0.8rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.5);";
-          document.body.appendChild(tooltip);
+      // 2. 스탯 보정치 처리
+      function parseAndFormat(modStr) {
+          if(!modStr || modStr === '{}' || modStr === 'null' || modStr === 'undefined') return "";
+          let clean = modStr.replace(/[{}]/g, "");
+          return clean.split(",").map(item => {
+              let parts = item.split("=");
+              if(parts.length < 2) return "";
+              let key = parts[0].trim();
+              let val = parts[1].trim();
+
+              hasEffect = true;
+              let percentage = Math.round((parseFloat(val) - 1) * 100);
+              let color = percentage >= 0 ? "#4dabf7" : "#ff4d4d";
+              let sign = percentage >= 0 ? "+" : "";
+
+              const keyMap = { 'accuracy': '명중률', 'meleeAtk': '근접공격력', 'physDef': '물리방어' };
+              let displayName = keyMap[key] || key;
+
+              return `<div style="color:${color};">${displayName}: ${sign}${percentage}%</div>`;
+          }).join("");
       }
 
-      const name = el.dataset.name;
-      const desc = el.dataset.desc;
-      const scaling = el.dataset.scaling; // "물리 공격력 130%, 근력 계수 2.5"
-      const mods = el.dataset.mods;       // "명중률 30% 감소"
-      const status = el.dataset.status;
-      const chance = el.dataset.chance;
-      const duration = el.dataset.duration;
+      effectHtml += parseAndFormat(statMods);
+      effectHtml += parseAndFormat(combatMods);
 
-      let html = `<strong style="color:#ff4d4d; font-size:1rem;">${name}</strong><br/>`;
-      html += `<span style="color:#bbb;">${desc}</span><hr style="border:0; border-top:1px solid #444; margin:5px 0;">`;
-
-      if (scaling) {
-          html += `<div style="color:#ffd700; margin-bottom:4px;"><b>위력:</b> ${scaling}</div>`;
+      if(!hasEffect) {
+          effectHtml = `<div style="color:#888;">특수 효과 정보 없음</div>`;
       }
 
-      if (status) {
-          html += `<div style="color:#ff9f43;"><b>효과:</b> ${status} (${chance}%) [${duration}턴]</div>`;
-      }
+      html += effectHtml;
+      html += `</div>`;
 
-      if (mods) {
-          html += `<div style="color:#4dabf7;"><b>상세:</b> ${mods}</div>`;
-      }
+      html += `<hr style="border:0; border-top:1px solid #333; margin:8px 0;">`;
+      html += `<div style="color:#888; font-size:0.75rem;">현재 적용 중인 특수 효과입니다.</div>`;
+      html += `</div>`;
 
-      tooltip.innerHTML = html;
+      tooltipBody.innerHTML = html;
       tooltip.style.display = 'block';
-
-      // 위치 조절
-      const rect = el.getBoundingClientRect();
-      tooltip.style.left = rect.left + 'px';
-      tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
-  }
-
-  function hideSkillTooltip() {
-      const tooltip = document.getElementById('skill-tooltip');
-      if (tooltip) tooltip.style.display = 'none';
-  }
-  /*]]>*/
-</script>
+      // moveStatTooltip 함수가 정의되어 있어야 합니다. (안보인다면 위치 고정 로직 필요)
+      tooltip.style.left = (e.clientX + 15) + 'px';
+      tooltip.style.top = (e.clientY + 15) + 'px';
+    }
+    /*]]>*/
+  </script>
 </body>
 </html>

@@ -318,9 +318,10 @@ public class StatCalculationService {
      */
     public double calculateStatusResist(Map<?, ?> baseStats) {
         // 기본 저항 5.0 + (대사 효율 * 0.8) + (계율 준수 * 0.8)
-        double resistScore = 5.0 + (getStat(baseStats, 3) * 0.8) + (getStat(baseStats, 9) * 0.8);
+        double rawResist = 5.0 + (getStat(baseStats, 3) * 0.8) + (getStat(baseStats, 9) * 0.8);
         // 최대 80%까지만 저항 가능하도록 캡핑
-        return Math.min(resistScore, 80.0);
+        double roundedResist = Math.round(rawResist * 10.0) / 10.0;
+        return Math.min(roundedResist, 80.0);
     }
 
     /**
@@ -608,21 +609,25 @@ public class StatCalculationService {
     }
 
     /**
-     * 2. 방어력/관통력 감쇄 계산 (점감법)
+     * 방어력(저항)과 관통력을 계산하여 최종 데미지를 산출합니다.
+     * * [계산 원리]
+     * 1. 상대의 저항에서 나의 관통력을 빼서 '최종 저항값'을 구함.
+     * 2. (1.0 - 최종 저항값)을 통해 데미지 배율(Multiplier)을 결정.
+     * 3. 관통이 저항보다 높으면 1.0배 이상의 추가 데미지가 발생 (재미 포인트!).
+     * 4. 저항이 너무 높아 배율이 마이너스가 되더라도 최소 0(무효)으로 처리.
      */
-    public int applyDefense(double rawDamage, double penetration, double defense) {
-        double effectiveDefense = defense * (1 - (penetration / 100.0));
-        double damageReduction = 100.0 / (100.0 + Math.max(0, effectiveDefense));
-        return (int) Math.round(rawDamage * damageReduction);
+    public int applyDefense(double rawDamage, double penetration, double resist) {
+        double finalResist = resist - penetration;
+        double damageMultiplier = Math.max(0, 1.0 - finalResist);
+        return (int) Math.round(rawDamage * damageMultiplier);
     }
 
     /**
-     * [PLAYER] 스킬 데미지 계산기
-     * 최종 통합 데미지 계산기 (BattleService에서 이걸 호출)
+     * [Player] 단순 위력 계산기 (monster 생각 X)
      */
-    public int calculateFinalDamage(SkillMeta skill, CombatStats attacker, CombatStats defender, Map<Integer, Integer> attackerFinalStats) {
+    public double expectDamage(SkillMeta skill, CombatStats attacker, Map<Integer, Integer> attackerFinalStats){
         // [STEP A] 기술 위력 + 공격자 기본 공격력
-        double skillPower = calculateSkillPower(skill, attackerFinalStats);
+        double skillPower = (attackerFinalStats != null ) ? calculateSkillPower(skill, attackerFinalStats) : 0;
 
         String element = (skill.getEffect() != null && skill.getEffect().getElement() != null)
                 ? skill.getEffect().getElement() : "PHYSICAL";
@@ -634,32 +639,56 @@ public class StatCalculationService {
         String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
         double scaling = skill.getDamageScaling().getOrDefault(scalingKey, 1.0);
 
-        // 최종 로우 데미지
-        double rawTotalDamage = (baseAtk * scaling) + skillPower + elementalAtk;
+        // [방어력 적용 전] 최종 로우 데미지
+        double rawTotalDamage = ((baseAtk + elementalAtk) * scaling) + skillPower;
 
-        // [STEP B] 방어력(Def) 및 관통 적용 (점감법)
-        double targetDef = isMagic ? defender.getMagRes() : defender.getPhysDef();
+        return rawTotalDamage;
+    }
+
+    /**
+     * [PLAYER/MONSTER] 스킬 대미지 계산기
+     * 최종 통합 대미지 계산기 (BattleService에서 이걸 호출)
+     * MONSTER의 경우 stat 추가 공격력 X
+     */
+    public int calculateFinalDamage(SkillMeta skill, CombatStats attacker, CombatStats defender, Map<Integer, Integer> attackerFinalStats) {
+        // [STEP A] 방어력 적용 전 대미지
+        double rawTotalDamage = (attackerFinalStats != null) ? expectDamage(skill, attacker, attackerFinalStats) : expectDamage(skill, attacker, null);
+
+        boolean isMagic = "MAGIC".equals(skill.getType()) || "MAGICAL".equals(skill.getType());
+        String element = (skill.getEffect() != null && skill.getEffect().getElement() != null)
+                ? skill.getEffect().getElement() : "PHYSICAL";
+
+        // [STEP B] 타입관통 + 속성관통
         double basePen = isMagic ? attacker.getMagPen() : attacker.getPhysPen();
+        double elePen = getPenetrationValue(attacker, element);
+        double finalPen = basePen + elePen;
 
-        int damageAfterDef = applyDefense(rawTotalDamage, basePen, targetDef);
+        // [STEP C] 타입저항 + 속성저항
+        double targetBaseRes = isMagic ? defender.getMagRes() : defender.getPhysRes();
+        double targetEleRes = getResistValue(defender, element);
+        double finalRes = targetBaseRes + targetEleRes;
 
-        // [STEP C] 속성 저항(Res) 및 속성 관통(Pen) 적용
-        double targetRes = getResistValue(defender, element);
-        double attackerElementPen = getPenetrationValue(attacker, element);
+        // [STEP D] 관통 적용 후 대미지
+        int damageAfterDef = applyDefense(rawTotalDamage, finalPen, finalRes);
 
-        // 최종 저항 배율 = 1.0 - (상대 저항 - 내 관통)
-        double resMultiplier = 1.0 - (targetRes - attackerElementPen);
+        // [STEP E] 타입에따라 최종 Def 차감 처리
+        double baseDef = isMagic ? 0 : defender.getPhysDef();
+        damageAfterDef = (int) Math.max(0, damageAfterDef - baseDef);
 
         // 크리티컬 없이 기본 결과만 반환
-        return (int) Math.max(1, Math.round(damageAfterDef * resMultiplier));
+        return damageAfterDef;
     }
 
     // 헬퍼 메서드: 문자열 element에 맞는 Atk/Res/Pen 수치를 반환 (switch-case 활용)
     private double getElementalAtkValue(CombatStats s, String el) {
         return switch(el) {
-            case "FIRE" -> s.getFireAtk(); case "ICE" -> s.getIceAtk();
-            case "LIGHT" -> s.getLightAtk(); case "EARTH" -> s.getEarthAtk();
-            case "HOLY" -> s.getHolyAtk(); case "DARK" -> s.getDarkAtk();
+            case "FIRE" -> s.getFireAtk();
+            case "ICE" -> s.getIceAtk();
+            case "LIGHT" -> s.getLightAtk();
+            case "EARTH" -> s.getEarthAtk();
+            case "HOLY" -> s.getHolyAtk();
+            case "DARK" -> s.getDarkAtk();
+            case "CHAOS"    -> s.getChaosRes();
             default -> 0;
         };
     }
@@ -673,79 +702,32 @@ public class StatCalculationService {
             case "DARK"     -> s.getDarkRes();
             case "LIGHT"    -> s.getLightRes();
             case "EARTH"    -> s.getEarthRes();
+            case "CHAOS"    -> s.getChaosRes();
             default -> 0;
         };
     }
     private double getPenetrationValue(CombatStats s, String el) {
         return switch(el) {
-            case "FIRE" -> s.getFirePen(); case "ICE" -> s.getIcePen();
-            case "DARK" -> s.getDarkPen(); // ... 나머지 동일
+            case "PHYSICAL" -> s.getPhysPen();
+            case "FIRE"     -> s.getFirePen();
+            case "ICE"      -> s.getIcePen();
+            case "HOLY"     -> s.getHolyPen();
+            case "DARK"     -> s.getDarkPen();
+            case "LIGHT"    -> s.getLightPen();
+            case "EARTH"    -> s.getEarthPen();
+            case "CHAOS"    -> s.getChaosPen();
             default -> 0;
         };
     }
 
     /**
-     * 1단계: 공격자 명중 판정 (내 명중 + 스킬 기본 명중)
+     * 공격 회피 판정 (내 명중 + 스킬 기본 명중 - 상대의 회피율)
+     * min 10% * max 100%
+     * return [true/false]
      */
-    public boolean isAttackerHit(double attackerAcc, int skillHitChance) {
-        // 예: (유저 명중 14 + 스킬 명중 70) = 84% 확률로 '정확한 공격'
-        double hitProb = attackerAcc + skillHitChance;
-        hitProb = Math.max(10, Math.min(100, hitProb)); // 최소 10% 보장
-
-        return Math.random() * 100 <= hitProb;
-    }
-
-    /**
-     * 2단계: 방어자 회피 판정 (상대 회피율)
-     */
-    public boolean isDefenderDodge(double defenderDodge, String skillType) {
-        if (("BUFF".equals(skillType) || "HEAL".equals(skillType) || "PASS".equals(skillType))){
-            return false;
-        }
-        // 예: 상대 회피 12 = 12% 확률로 '회피 성공'
-        double dodgeProb = defenderDodge;
-        dodgeProb = Math.max(0, Math.min(95, dodgeProb)); // 최대 95%까지만 회피 가능
-
-        return Math.random() * 100 <= dodgeProb;
-    }
-
-    /**
-     * 몬스터 데미지 계산기 (속성 시스템 반영 및 최소 데미지 0 제한)
-     */
-    public int calculateMonsterDamage(UserStatus user, ActiveMonster monster, SkillMeta skill) {
-        // 1. 속성(Element) 파악
-        String element = (skill.getEffect().getElement() != null) ? skill.getEffect().getElement() : "PHYSICAL";
-
-        // 2. 스킬 타입에 따른 기본 공격력 결정
-        boolean isMagic = !"PHYSICAL".equals(skill.getType());
-        double baseAtk = isMagic ? monster.getActiveStats().getMagicAtk() : monster.getActiveStats().getMeleeAtk();
-
-        // 3. 몬스터 원소별 고정 추가 데미지 합산
-        double elementalAtk = getElementalAtkValue(monster.getActiveStats(), element);
-
-        // 4. 스킬 스케일링 적용
-        String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
-        double scaling = skill.getDamageScaling().getOrDefault(scalingKey, 1.0);
-
-        double rawTotalDamage = (baseAtk * scaling) + elementalAtk;
-
-        // 5. 방어력(Def) 및 기본 관통 적용
-        double targetDef = isMagic ? user.getCombatStats().getMagRes() : user.getCombatStats().getPhysDef();
-        double basePen = isMagic ? monster.getActiveStats().getMagPen() : monster.getActiveStats().getPhysPen();
-
-        int damageAfterDef = applyDefense(rawTotalDamage, basePen, targetDef);
-
-        // 6. 속성 저항(Res) 및 속성 관통(Pen) 합연산 적용
-        double targetRes = getResistValue(user.getCombatStats(), element);
-        double attackerElementPen = getPenetrationValue(monster.getActiveStats(), element);
-
-        // 최종 저항 배율 = 1.0 - (상대 저항 - 내 관통)
-        double resMultiplier = 1.0 - (targetRes - attackerElementPen);
-
-        // 7. 최종 데미지 산출 (0 미만일 경우 0으로 보정)
-        int finalDamage = (int) Math.round(damageAfterDef * resMultiplier);
-
-        return Math.max(0, finalDamage); // 최소치를 1이 아닌 0으로 설정
+    public double attackerHitChance(int skillHitChance, double attackerAcc, double defenderDog) {
+        double hitProb =  Math.max(10, attackerAcc + skillHitChance - defenderDog);
+        return hitProb;
     }
 
     public int calculateHeal(UserStatus user, SkillMeta skill) {

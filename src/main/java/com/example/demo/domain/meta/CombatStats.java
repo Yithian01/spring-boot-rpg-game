@@ -33,7 +33,7 @@ public class CombatStats {
     private double dodge;         // 회피율 (%)
 
     /* =========================
-     * 상태 이상 저항 스탯
+     * 상태 이상 저항 스탯 - (%)
      * ========================= */
     private double statusResist;  // 상태이상 저항 (%)
     private double bleedRes; // 출혈 저항 (%)
@@ -43,7 +43,7 @@ public class CombatStats {
     private double poisonRes; // 중독 저항 (%)
 
     /* =========================
-     * 상태 이상 관통 스탯
+     * 상태 이상 관통 스탯 - (%)
      * ========================= */
     private double bleedPen;    // 출혈 부여 확률 보정
     private double stunPen;     // 스턴 부여 확률 보정
@@ -66,7 +66,7 @@ public class CombatStats {
 
     // 마법 공통 및 속성별 공격력 (고정치)
     private double magicAtk;
-    private double magRes;       // 마법 방어력 (고정치 감쇄용)
+    private double magRes;       // 마법 방어력 (%)
     private double magPen;       // 마법 저항 관통 (%)
 
     private double fireAtk;

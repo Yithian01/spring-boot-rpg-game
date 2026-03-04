@@ -197,7 +197,7 @@
     "statScaling": { "13": 2.5 },
     "effect": {
       "type": "DAMAGE",
-      "element": "MAGIC"
+      "element": "PHYSICAL"
     },
     "requiredWeapons": ["STAFF"]
   },

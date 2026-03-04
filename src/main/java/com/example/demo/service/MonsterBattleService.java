@@ -170,7 +170,7 @@ public class MonsterBattleService {
      */
     private void handleMonsterDamage(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs, boolean isDotOnly) {
         // 플레이어 방어력 등을 고려한 최종 데미지 계산
-        int finalDamage = statCalculationService.calculateMonsterDamage(user, monster, skill);
+        int finalDamage = statCalculationService.calculateFinalDamage(skill, monster.getActiveStats(), user.getCombatStats(), null);
 
         if (!isDotOnly) {
             user.setCurrentHp(Math.max(0, user.getCurrentHp() - finalDamage));

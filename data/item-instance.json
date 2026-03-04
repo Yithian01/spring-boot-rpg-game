@@ -1,6 +1,6 @@
 {
-  "325f8b16-aea1-4118-bd45-751c1b0d089d" : {
-    "instanceId" : "325f8b16-aea1-4118-bd45-751c1b0d089d",
+  "1be7c69e-894d-4a91-9802-4db05bf072ea" : {
+    "instanceId" : "1be7c69e-894d-4a91-9802-4db05bf072ea",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,32 +23,56 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "3cb03145-110a-420b-bcc5-9d206bb1801c" : {
-    "instanceId" : "3cb03145-110a-420b-bcc5-9d206bb1801c",
-    "itemMetaId" : 15,
-    "customName" : "수습 기사의 갑옷",
+  "f63186a8-89da-43a0-ae4e-62a20b5c925c" : {
+    "instanceId" : "f63186a8-89da-43a0-ae4e-62a20b5c925c",
+    "itemMetaId" : 24,
+    "customName" : "뒤틀린 짧은 활",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
-    "slot" : "BODY",
-    "subType" : "HEAVY",
-    "twoHanded" : false,
-    "description" : "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
+    "slot" : "WEAPON",
+    "subType" : "BOW",
+    "twoHanded" : true,
+    "description" : "관리가 안 되어 나무가 뒤틀린 활입니다. 사거리는 짧지만 없는 것보단 낫습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 220000,
+    "price" : 120000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "maxHp" : 25,
-      "moveSpeed" : 0,
-      "physDef" : 12
+      "accuracy" : 5,
+      "critRate" : 5,
+      "meleeAtk" : 10
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "b944c185-035e-4851-9464-8be036187c22" : {
-    "instanceId" : "b944c185-035e-4851-9464-8be036187c22",
+  "0dab90c4-d67f-4233-a42b-74ed4663891c" : {
+    "instanceId" : "0dab90c4-d67f-4233-a42b-74ed4663891c",
+    "itemMetaId" : 25,
+    "customName" : "낡은 나뭇잎 가슴받이",
+    "grade" : "COMMON",
+    "type" : "EQUIPMENT",
+    "slot" : "BODY",
+    "subType" : "LEATHER",
+    "twoHanded" : false,
+    "description" : "질긴 잎사귀와 가죽 끈을 엮어 만든 보호구입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 65000,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "dodge" : 4,
+      "moveSpeed" : 1,
+      "physDef" : 4
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "68084bb6-1b71-4f30-8a17-9d53a49fb84d" : {
+    "instanceId" : "68084bb6-1b71-4f30-8a17-9d53a49fb84d",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -69,97 +93,5 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
-  },
-  "fa684492-9fb3-435c-b709-3b0972b8f7dc" : {
-    "instanceId" : "fa684492-9fb3-435c-b709-3b0972b8f7dc",
-    "itemMetaId" : 39,
-    "customName" : "서리 폭군 몽둥이",
-    "grade" : "RARE",
-    "type" : "EQUIPMENT",
-    "slot" : "WEAPON",
-    "subType" : "BLUNT",
-    "twoHanded" : true,
-    "description" : "브루탈 팽이 사용하던 거대한 둔기입니다. 타격 시 서늘한 냉기가 뿜어져 나옵니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 750000,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "meleeAtk" : 32,
-      "iceAtk" : 12,
-      "stunPen" : 10,
-      "accuracy" : -5
-    },
-    "recoveryBonus" : null,
-    "baseStatsBonusModifiers" : null,
-    "combatStatsBonusModifiers" : null,
-    "grantedSkillIds" : null
-  },
-  "3ebdc8e7-c9e1-4066-b703-79a0886b846c" : {
-    "instanceId" : "3ebdc8e7-c9e1-4066-b703-79a0886b846c",
-    "itemMetaId" : 40,
-    "customName" : "팽의 잘린 송곳니",
-    "grade" : "EPIC",
-    "type" : "EQUIPMENT",
-    "slot" : "NECKLACE",
-    "subType" : "ACCESSORY",
-    "twoHanded" : false,
-    "description" : "우두머리 라이칸스로프의 거대한 송곳니로 만든 목걸이입니다. 야성이 깨어납니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 5000,
-    "baseStatsBonus" : {
-      "10" : 4,
-      "20" : 4
-    },
-    "combatStatsBonus" : {
-      "critRate" : 5,
-      "moveSpeed" : 0,
-      "bleedPen" : 10
-    },
-    "recoveryBonus" : null,
-    "baseStatsBonusModifiers" : null,
-    "combatStatsBonusModifiers" : null,
-    "grantedSkillIds" : null
-  },
-  "38e49542-513a-4c9d-a00e-960bdb8c8158" : {
-    "instanceId" : "38e49542-513a-4c9d-a00e-960bdb8c8158",
-    "itemMetaId" : 9,
-    "customName" : "동굴 쥐의 9등급 마석",
-    "grade" : "COMMON",
-    "type" : "MATERIAL",
-    "slot" : null,
-    "subType" : "MAGIC_STONE",
-    "twoHanded" : false,
-    "description" : "하급 몬스터에게서 보이는 마석입니다.",
-    "quantity" : 10,
-    "enhancementLevel" : 0,
-    "price" : 20,
-    "baseStatsBonus" : null,
-    "combatStatsBonus" : null,
-    "recoveryBonus" : null,
-    "baseStatsBonusModifiers" : null,
-    "combatStatsBonusModifiers" : null,
-    "grantedSkillIds" : null
-  },
-  "f3a7cd18-6b08-41cc-b8d7-0359e5e7cb9b" : {
-    "instanceId" : "f3a7cd18-6b08-41cc-b8d7-0359e5e7cb9b",
-    "itemMetaId" : 9,
-    "customName" : "고블린의 9등급 마석",
-    "grade" : "COMMON",
-    "type" : "MATERIAL",
-    "slot" : null,
-    "subType" : "MAGIC_STONE",
-    "twoHanded" : false,
-    "description" : "하급 몬스터에게서 보이는 마석입니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 20,
-    "baseStatsBonus" : null,
-    "combatStatsBonus" : null,
-    "recoveryBonus" : null,
-    "baseStatsBonusModifiers" : null,
-    "combatStatsBonusModifiers" : null,
-    "grantedSkillIds" : null
   }
 }

@@ -200,15 +200,13 @@ public class BattleService {
         // 명중/위력 계산
         int realHitChance = 0;
         if (monster != null) {
+            int skillHitChance = meta.getHitChance();
             double attackerAcc = user.getCombatStats().getAccuracy();
-            realHitChance = (int) Math.max(5, Math.min(100, (attackerAcc + meta.getHitChance()) - monster.getActiveStats().getDodge()));
+            double defenderDog = monster.getBaseStats().getDodge();
+            realHitChance = (int) statCalculationService.attackerHitChance(skillHitChance, attackerAcc, defenderDog);
         }
 
-        int expectedPower = statCalculationService.calculateSkillPower(meta, user.getFinalStats());
-        boolean isMagic = "MAGIC".equals(meta.getType());
-        double baseAtk = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();
-        double scaling = meta.getDamageScaling().getOrDefault(isMagic ? "magicAtk" : "meleeAtk", 1.0);
-        expectedPower += (int)(baseAtk * scaling);
+        int expectedPower = (int) statCalculationService.expectDamage(meta, user.getCombatStats(), user.getFinalStats());
 
         return SkillCardDto.builder()
                 .id(meta.getId())
@@ -279,10 +277,9 @@ public class BattleService {
             double attackerAcc = us.getCombatStats().getAccuracy();
             int skillHitBonus = skill.getHitChance();
             double defenderDodge = monster.getActiveStats().getDodge();
+            double finalHitChance =  statCalculationService.attackerHitChance(skillHitBonus, attackerAcc, defenderDodge);
 
             // 최종 확률 계산
-            int finalHitChance = (int) Math.max(0, Math.min(100, (attackerAcc + skillHitBonus) - defenderDodge));
-
             if (Math.random() * 100 > finalHitChance) {
                 String failType = (Math.random() < 0.5) ? "회피" : "실패";
                 String logMsg;
@@ -296,7 +293,7 @@ public class BattleService {
                     logMsg = String.format("<span style='color:#aaaaaa;'>[빗나감] 당신의 <b>%s</b> 공격이 빗나갔습니다!</span>",
                             skill.getName());
                 }
-                logMsg += String.format(" <small style='color:#888;'>(확률: %d%%)</small>", finalHitChance);
+                logMsg += String.format(" <small style='color:#888;'>(확률: %d%%)</small>", (int) finalHitChance);
                 gs.addLog(logMsg);
                 saveAll(us, ds, gs);
                 return "MISS";

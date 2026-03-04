@@ -85,7 +85,8 @@
       "physDef": 3.0,
       "dodge": 6.0,
       "accuracy": 9.0,
-      "critRate": 4.0,
+      "critRate": 5.0,
+      "critDmg": 150,
       "moveSpeed": 1.0
     },
     "baseActionPoints": 2,
@@ -145,7 +146,8 @@
       "physDef": 3.0,
       "dodge": 6.0,
       "accuracy": 9.0,
-      "critRate": 4.0,
+      "critRate": 14.0,
+      "critDmg": 150,
       "moveSpeed": 1.0
     },
     "baseActionPoints": 2,
@@ -171,6 +173,7 @@
       "dodge": 10.0,
       "accuracy": 9.0,
       "critRate": 4.0,
+      "critDmg": 150,
       "moveSpeed": 2.0
     },
     "baseActionPoints": 2,
@@ -542,7 +545,6 @@
       "iceRes": 1.0,
       "fireRes": -0.8,
       "lightRes": -0.4,
-      "physRes": 0.4,
       "frozenPen": 35.0,
       "stunPen": 20.0
     },
@@ -606,7 +608,7 @@
       "dodge": 4.0,
       "accuracy": 15.0,
       "critRate": 6.0,
-      "critDamage": 150,
+      "critDmg": 150,
       "moveSpeed": 1.1,
       "statusResist": 10.0
     },

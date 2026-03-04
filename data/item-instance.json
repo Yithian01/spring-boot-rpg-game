@@ -1,6 +1,30 @@
 {
-  "34626d2f-36a0-4b1d-8113-ba663136890e" : {
-    "instanceId" : "34626d2f-36a0-4b1d-8113-ba663136890e",
+  "d9d94956-7d62-4774-b473-0ef3c4105596" : {
+    "instanceId" : "d9d94956-7d62-4774-b473-0ef3c4105596",
+    "itemMetaId" : 37,
+    "customName" : "빵 한 조각",
+    "grade" : "COMMON",
+    "type" : "CONSUMABLE",
+    "slot" : "NONE",
+    "subType" : "FOOD",
+    "twoHanded" : false,
+    "description" : "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
+    "quantity" : 3,
+    "enhancementLevel" : 0,
+    "price" : 30,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : { },
+    "recoveryBonus" : {
+      "hp" : 20,
+      "mp" : 0,
+      "stamina" : 30
+    },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "8a49a2b9-01d1-45ef-adc3-a087209bdffc" : {
+    "instanceId" : "8a49a2b9-01d1-45ef-adc3-a087209bdffc",
     "itemMetaId" : 41,
     "customName" : "저주받은 이교도의 의식 단검",
     "grade" : "EPIC",
@@ -31,8 +55,8 @@
     },
     "grantedSkillIds" : [ 17, 19 ]
   },
-  "74c09295-36e1-4b86-9faa-1cc7f60a978f" : {
-    "instanceId" : "74c09295-36e1-4b86-9faa-1cc7f60a978f",
+  "8c20f77b-afd7-4667-9dad-d828d2788edf" : {
+    "instanceId" : "8c20f77b-afd7-4667-9dad-d828d2788edf",
     "itemMetaId" : 42,
     "customName" : "역병의사 가면",
     "grade" : "EPIC",
@@ -64,8 +88,8 @@
     },
     "grantedSkillIds" : [ 20 ]
   },
-  "26a41c15-39b9-46cb-ac12-4948a5be31a6" : {
-    "instanceId" : "26a41c15-39b9-46cb-ac12-4948a5be31a6",
+  "9ffc2da9-28fa-4bd4-afef-5e53d6ef086e" : {
+    "instanceId" : "9ffc2da9-28fa-4bd4-afef-5e53d6ef086e",
     "itemMetaId" : 16,
     "customName" : "낡은 시미터",
     "grade" : "COMMON",
@@ -88,8 +112,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "3e215b8d-f1a1-4340-8c43-d946ca2c7211" : {
-    "instanceId" : "3e215b8d-f1a1-4340-8c43-d946ca2c7211",
+  "7e0859c5-0508-4996-b661-53ef332fdccc" : {
+    "instanceId" : "7e0859c5-0508-4996-b661-53ef332fdccc",
     "itemMetaId" : 17,
     "customName" : "먼지 묻은 유목민 외투",
     "grade" : "COMMON",
@@ -112,8 +136,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "e1ebeb47-1e57-493f-a98c-a2fe0b1fb9ad" : {
-    "instanceId" : "e1ebeb47-1e57-493f-a98c-a2fe0b1fb9ad",
+  "5afb58f9-f7d9-4a79-a082-1f5c583501ef" : {
+    "instanceId" : "5afb58f9-f7d9-4a79-a082-1f5c583501ef",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -135,30 +159,10 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "1f9e9a94-c4c1-4b75-bf31-5e6196034ed5" : {
-    "instanceId" : "1f9e9a94-c4c1-4b75-bf31-5e6196034ed5",
+  "b7e21cd0-c9aa-4659-a9fe-9a5ffeb9c850" : {
+    "instanceId" : "b7e21cd0-c9aa-4659-a9fe-9a5ffeb9c850",
     "itemMetaId" : 9,
     "customName" : "동굴 쥐의 9등급 마석",
-    "grade" : "COMMON",
-    "type" : "MATERIAL",
-    "slot" : null,
-    "subType" : "MAGIC_STONE",
-    "twoHanded" : false,
-    "description" : "하급 몬스터에게서 보이는 마석입니다.",
-    "quantity" : 3,
-    "enhancementLevel" : 0,
-    "price" : 20,
-    "baseStatsBonus" : null,
-    "combatStatsBonus" : null,
-    "recoveryBonus" : null,
-    "baseStatsBonusModifiers" : null,
-    "combatStatsBonusModifiers" : null,
-    "grantedSkillIds" : null
-  },
-  "69843d14-069f-40d5-8932-78754ff0344a" : {
-    "instanceId" : "69843d14-069f-40d5-8932-78754ff0344a",
-    "itemMetaId" : 9,
-    "customName" : "고블린의 9등급 마석",
     "grade" : "COMMON",
     "type" : "MATERIAL",
     "slot" : null,
@@ -175,17 +179,17 @@
     "combatStatsBonusModifiers" : null,
     "grantedSkillIds" : null
   },
-  "2a747259-3baa-4a6a-85e0-e9cbd17b63e0" : {
-    "instanceId" : "2a747259-3baa-4a6a-85e0-e9cbd17b63e0",
+  "94c935e6-f1a4-4e7a-a710-89b526f2d674" : {
+    "instanceId" : "94c935e6-f1a4-4e7a-a710-89b526f2d674",
     "itemMetaId" : 9,
-    "customName" : "서리 늑대의 9등급 마석",
+    "customName" : "고블린의 9등급 마석",
     "grade" : "COMMON",
     "type" : "MATERIAL",
     "slot" : null,
     "subType" : "MAGIC_STONE",
     "twoHanded" : false,
     "description" : "하급 몬스터에게서 보이는 마석입니다.",
-    "quantity" : 1,
+    "quantity" : 2,
     "enhancementLevel" : 0,
     "price" : 20,
     "baseStatsBonus" : null,

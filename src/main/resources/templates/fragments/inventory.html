@@ -133,8 +133,7 @@
                     <span class="inv-item-name" th:classappend="${'text-' + item.grade}">
                         <span th:text="${item.name}"></span>
                     </span>
-                    <small style="color: #ffd700; font-size: 0.75rem;"
-                           th:text="${#strings.listJoin(item.statBonuses, ', ')}"></small>
+                    <small style="color: #ffd700; font-size: 0.75rem;"  th:text="${item.subType != null ? item.subType : item.type}"> </small>
                 </div>
 
                 <div class="inv-btn-group">

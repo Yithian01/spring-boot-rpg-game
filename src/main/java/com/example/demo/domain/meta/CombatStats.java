@@ -76,6 +76,7 @@ public class CombatStats {
     private double holyAtk;
     private double darkAtk;
     private double chaosAtk;
+    private double toxicAtk;
 
     // 속성별 저항력 (%)
     private double fireRes;
@@ -85,6 +86,7 @@ public class CombatStats {
     private double holyRes;
     private double darkRes;
     private double chaosRes;
+    private double toxicRes;
 
     // 속성별 관통력 (%)
     private double firePen;
@@ -94,6 +96,7 @@ public class CombatStats {
     private double holyPen;
     private double darkPen;
     private double chaosPen;
+    private double toxicPen;
 
     /**
      * 보너스 스탯 증가 (합연산: + 수치)
@@ -143,6 +146,7 @@ public class CombatStats {
             case "holyAtk" -> this.holyAtk = roundOne(this.holyAtk + val);
             case "darkAtk" -> this.darkAtk = roundOne(this.darkAtk + val);
             case "chaosAtk" -> this.chaosAtk = roundOne(this.chaosAtk + val);
+            case "toxicAtk" -> this.toxicAtk = roundOne(this.toxicAtk + val);
 
             // 방어력/저항력/관통력 (Def, Res, Pen - 고정치/배율 합산)
             case "physDef" -> this.physDef = roundOne(this.physDef + val);
@@ -157,6 +161,7 @@ public class CombatStats {
             case "holyRes" -> this.holyRes = roundOne(this.holyRes + val);
             case "darkRes" -> this.darkRes = roundOne(this.darkRes + val);
             case "chaosRes" -> this.chaosRes = roundOne(this.chaosRes + val);
+            case "toxicRes" -> this.toxicRes = roundOne(this.toxicRes + val);
 
             case "physPen" -> this.physPen = roundOne(this.physPen + val);
             case "firePen" -> this.firePen = roundOne(this.firePen + val);
@@ -166,6 +171,7 @@ public class CombatStats {
             case "holyPen" -> this.holyPen = roundOne(this.holyPen + val);
             case "darkPen" -> this.darkPen = roundOne(this.darkPen + val);
             case "chaosPen" -> this.chaosPen = roundOne(this.chaosPen + val);
+            case "toxicPen" -> this.toxicPen = roundOne(this.toxicPen + val);
         }
     }
 
@@ -216,6 +222,7 @@ public class CombatStats {
             case "holyAtk" -> this.holyAtk = roundOne(this.holyAtk * multiplier);
             case "darkAtk" -> this.darkAtk = roundOne(this.darkAtk * multiplier);
             case "chaosAtk" -> this.chaosAtk = roundOne(this.chaosAtk * multiplier);
+            case "toxicAtk" -> this.toxicAtk = roundOne(this.toxicAtk * multiplier);
 
             // 방어력/저항력/관통력 (Def, Res, Pen - 고정치/배율 합산)
             case "physDef" -> this.physDef = roundOne(this.physDef * multiplier);
@@ -230,6 +237,7 @@ public class CombatStats {
             case "holyRes" -> this.holyRes = roundOne(this.holyRes * multiplier);
             case "darkRes" -> this.darkRes = roundOne(this.darkRes * multiplier);
             case "chaosRes" -> this.chaosRes = roundOne(this.chaosRes * multiplier);
+            case "toxicRes" -> this.toxicRes = roundOne(this.toxicRes * multiplier);
 
             case "physPen" -> this.physPen = roundOne(this.physPen * multiplier);
             case "firePen" -> this.firePen = roundOne(this.firePen * multiplier);
@@ -239,6 +247,7 @@ public class CombatStats {
             case "holyPen" -> this.holyPen = roundOne(this.holyPen * multiplier);
             case "darkPen" -> this.darkPen = roundOne(this.darkPen * multiplier);
             case "chaosPen" -> this.chaosPen = roundOne(this.chaosPen * multiplier);
+            case "toxicPen" -> this.toxicPen = roundOne(this.toxicPen * multiplier);
         }
     }
 

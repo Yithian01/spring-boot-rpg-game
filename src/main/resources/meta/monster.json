@@ -17,7 +17,6 @@
       "critDmg": 150.0,
       "dodge": 15.0,
       "physDef": 2.0,
-      "magRes": 1.0,
       "statusResist": 5.0,
       "poisonRes": 0.4,
       "darkRes": 0.2,
@@ -55,14 +54,12 @@
       "critDmg": 150.0,
       "dodge": 2.0,
       "physDef": 5.0,
-      "magRes": 10.0,
       "bleedRes": 1.0,
       "stunRes": 0.7,
       "poisonRes": 0.5,
       "physRes": 0.3,
       "fireRes": -1.0,
       "earthRes": 0.5,
-      "waterRes": 0.8,
       "poisonPen": 10.0
     },
     "baseActionPoints": 2,
@@ -86,12 +83,10 @@
       "meleeAtk": 45.0,
       "magicAtk": 0.0,
       "physDef": 3.0,
-      "magRes": 2.0,
       "dodge": 6.0,
       "accuracy": 9.0,
       "critRate": 4.0,
-      "moveSpeed": 1.0,
-      "statusResist": 0.0
+      "moveSpeed": 1.0
     },
     "baseActionPoints": 2,
     "activeSkillIds" : [6, 7],
@@ -120,15 +115,13 @@
       "critDmg": 150.0,
       "dodge": 0.0,
       "physDef": 10.0,
-      "magRes": 0.0,
-      "statusResist": 30.0,
+      "statusResist": 0.0,
       "bleedRes": 1.0,
       "poisonRes": 1.0,
       "stunRes": 0.2,
       "physRes": 0.1,
-      "holyRes": -0.5,
-      "darkRes": 0.5,
-      "stunPen": 5.0
+      "holyRes": -1.0,
+      "darkRes": 0.3
     },
     "baseActionPoints": 2,
     "activeSkillIds" : [8, 9],
@@ -149,14 +142,11 @@
       "maxHp": 320,
       "maxMp": 0,
       "meleeAtk": 60.0,
-      "magicAtk": 0.0,
       "physDef": 3.0,
-      "magRes": 2.0,
       "dodge": 6.0,
       "accuracy": 9.0,
       "critRate": 4.0,
-      "moveSpeed": 1.0,
-      "statusResist": 0.0
+      "moveSpeed": 1.0
     },
     "baseActionPoints": 2,
     "activeSkillIds" : [6, 8],
@@ -177,14 +167,11 @@
       "maxHp": 220,
       "maxMp": 0,
       "meleeAtk": 60.0,
-      "magicAtk": 0.0,
       "physDef": 3.0,
-      "magRes": 2.0,
       "dodge": 10.0,
       "accuracy": 9.0,
       "critRate": 4.0,
-      "moveSpeed": 2.0,
-      "statusResist": 0.0
+      "moveSpeed": 2.0
     },
     "baseActionPoints": 2,
     "activeSkillIds" : [10, 11],
@@ -213,12 +200,8 @@
       "critDmg": 180.0,
       "dodge": 18.0,
       "physDef": 8.0,
-      "magRes": 5.0,
       "statusResist": 5.0,
-      "bleedRes": 0.1,
-      "stunRes": 0.0,
-      "poisonRes": 0.1,
-      "physRes": 0.0,
+      "physRes": 0.1,
       "darkRes": 0.2,
       "iceRes": -0.3,
       "bleedPen": 25.0
@@ -229,7 +212,7 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "20": 1, "21": 1 },
-      "combatStats": { "moveSpeed": 0.2, "critRate": 2.0, "bleedPen": 5.0 }
+      "combatStats": { "moveSpeed": 2, "critRate": 5.0, "bleedPen": 15.0 }
     }
   },
   {
@@ -250,14 +233,13 @@
       "critDmg": 160.0,
       "dodge": 2.0,
       "physDef": 25.0,
-      "magRes": 15.0,
       "statusResist": 40.0,
       "bleedRes": 0.5,
       "stunRes": 0.8,
       "poisonRes": 0.2,
       "physRes": 0.2,
       "earthRes": 0.5,
-      "fireRes": -0.2,
+      "fireRes": -0.5,
       "stunPen": 15.0
     },
     "baseActionPoints": 3,
@@ -266,7 +248,7 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": { "1": 1, "11": 1 },
-      "combatStats": { "maxHp": 30, "physDef": 5.0, "stunPen": 3.0 }
+      "combatStats": { "maxHp": 130, "physDef": 50.0, "stunRes": 15.0 }
     }
   },
   {
@@ -281,20 +263,19 @@
       "maxStamina": 100,
       "moveSpeed": 1.4,
       "hpRegen": 2.5,
-      "meleeAtk": 12.0,
-      "magicAtk": 15.0,
+      "meleeAtk": 50.0,
+      "magicAtk": 50.0,
       "accuracy": 20.0,
       "critRate": 10.0,
       "critDmg": 150.0,
       "dodge": 25.0,
       "physDef": 4.0,
-      "magRes": 20.0,
-      "statusResist": 15.0,
       "poisonRes": 0.8,
       "frozenRes": -0.2,
       "physRes": 0.0,
       "darkRes": 0.4,
-      "lightRes": -0.3,
+      "lightRes": -0.5,
+      "fireRes": -0.5,
       "poisonPen": 35.0
     },
     "baseActionPoints": 2,
@@ -325,7 +306,6 @@
       "critDmg": 150.0,
       "dodge": 20.0,
       "physDef": 0.0,
-      "magRes": 30.0,
       "statusResist": 50.0,
       "bleedRes": 1.0,
       "poisonRes": 1.0,
@@ -358,19 +338,17 @@
       "maxStamina": 100,
       "moveSpeed": 0.8,
       "hpRegen": 0.0,
-      "meleeAtk": 16.0,
+      "meleeAtk": 70.0,
       "accuracy": 10.0,
-      "critRate": 7.0,
+      "critRate": 17.0,
       "critDmg": 150.0,
-      "dodge": 0.0,
       "physDef": 10.0,
-      "magRes": 0.0,
       "statusResist": 30.0,
       "bleedRes": 1.0,
       "poisonRes": 1.0,
       "stunRes": 0.2,
       "physRes": 0.1,
-      "holyRes": -0.5,
+      "holyRes": -1.0,
       "darkRes": 0.5,
       "stunPen": 5.0
     },
@@ -408,8 +386,8 @@
       "stunRes": 0.3,
       "physRes": 0.1,
       "earthRes": 0.3,
-      "fireRes": -0.4,
-      "holyRes": -0.6,
+      "fireRes": -1.0,
+      "holyRes": -1.0,
       "poisonPen": 30.0
     },
     "baseActionPoints": 2,
@@ -417,8 +395,8 @@
     "passiveSkillIds" : [],
     "expReward": 1,
     "essenceBonus": {
-      "baseStats": { "2": 1, "3": 1 },
-      "combatStats": { "maxHp": 50, "poisonAtk": 5.0, "poisonRes": 0.2 }
+      "baseStats": { "2": 15, "3": 15, "22":-4, "23" : -5, "24" : -6 },
+      "combatStats": { "maxHp": 150, "toxicAtk": 50.0, "poisonRes": 0.2 }
     }
   },
   {
@@ -439,13 +417,12 @@
       "critDmg": 160.0,
       "dodge": 15.0,
       "physDef": 10.0,
-      "magRes": 15.0,
       "statusResist": 20.0,
       "frozenRes": 1.0,
       "burnRes": -0.5,
       "bleedRes": 0.2,
       "iceRes": 0.8,
-      "fireRes": -0.6,
+      "lightRes": -1.0,
       "physRes": 0.0,
       "frozenPen": 25.0,
       "moveSpeed": 1.4
@@ -455,8 +432,8 @@
     "passiveSkillIds" : [],
     "expReward": 1,
     "essenceBonus": {
-      "baseStats": { "20": 1, "19": 1 },
-      "combatStats": { "iceAtk": 5.0, "iceRes": 0.2, "frozenPen": 5.0 }
+      "baseStats": { "20": 10, "19": 10 },
+      "combatStats": { "iceAtk": 50.0, "iceRes": 0.2, "frozenPen": 15.0 }
     }
   },
   {
@@ -478,13 +455,12 @@
       "critDmg": 180.0,
       "dodge": 12.0,
       "physDef": 18.0,
-      "magRes": 12.0,
       "statusResist": 30.0,
       "frozenRes": 1.1,
       "burnRes": -0.3,
       "bleedRes": 0.4,
       "iceRes": 0.9,
-      "fireRes": -0.4,
+      "lightRes": -1.0,
       "physRes": 0.1,
       "frozenPen": 35.0,
       "bleedPen": 15.0
@@ -518,13 +494,13 @@
       "dodge": 2.0,
       "physDef": 22.0,
       "physRes": 0.2,
-      "magRes": 10.0,
       "statusResist": 25.0,
       "frozenRes": 1.0,
       "stunRes": 0.6,
       "burnRes": -0.4,
       "iceRes": 0.7,
       "fireRes": -0.5,
+      "lightRes": -1.0,
       "stunPen": 25.0,
       "frozenPen": 10.0
     },
@@ -534,7 +510,7 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "11": 2, "6": 1 },
-      "combatStats": { "maxHp": 80, "meleeAtk": 10.0, "stunPen": 10.0 }
+      "combatStats": { "maxHp": 180, "meleeAtk": 50.0, "stunPen": 10.0 }
     }
   },
   {
@@ -557,7 +533,7 @@
       "dodge": 0.0,
       "physDef": 50.0,
       "physRes": 0.2,
-      "magRes": 35.0,
+      "magRes": -0.3,
       "statusResist": 90.0,
       "bleedRes": 1.0,
       "poisonRes": 1.0,
@@ -565,6 +541,7 @@
       "frozenRes": 1.1,
       "iceRes": 1.0,
       "fireRes": -0.8,
+      "lightRes": -0.4,
       "physRes": 0.4,
       "frozenPen": 35.0,
       "stunPen": 20.0
@@ -597,10 +574,9 @@
       "critDmg": 200.0,
       "dodge": 5.0,
       "physDef": 35.0,
-      "magRes": 25.0,
       "statusResist": 50.0,
       "frozenRes": 1.5,
-      "burnRes": -0.5,
+      "lightRes": -1.5,
       "physRes": 0.3,
       "iceRes": 1.0,
       "frozenPen": 45.0,
@@ -612,8 +588,8 @@
     "expReward": 15,
     "dropTableId": "DT_BOSS_BRUTAL_FANG",
     "essenceBonus": {
-      "baseStats": { "10": 5, "11": 3 },
-      "combatStats": { "meleeAtk": 15.0, "iceAtk": 30.0, "stunPen": 5.0, "iceRes": 0.1 }
+      "baseStats": { "10": 25, "11": 23 },
+      "combatStats": { "meleeAtk": 35.0, "iceAtk": 65.0, "stunPen": 5.0, "iceRes": 0.2 }
     }
   }
 ]

@@ -1,20 +1,22 @@
 {
-  "ESS-50F13D9E" : {
-    "instanceId" : "ESS-50F13D9E",
-    "monsterId" : 4,
-    "description" : "해골 병사의 정수입니다.",
-    "monsterName" : "해골 병사",
+  "ESS-66982522" : {
+    "instanceId" : "ESS-66982522",
+    "monsterId" : 10,
+    "description" : "흐느끼는 벤시의 정수입니다.",
+    "monsterName" : "흐느끼는 벤시",
     "monsterTier" : 9,
     "monsterType" : "일반",
-    "obtainedAt" : 1772603825228,
-    "activeSkillIds" : [ 8 ],
+    "obtainedAt" : 1772608182027,
+    "activeSkillIds" : [ 27 ],
     "passiveSkillIds" : [ ],
     "baseStatsBonus" : {
-      "2" : 1
+      "18" : 1,
+      "13" : 1
     },
     "combatStatsBonus" : {
-      "statusResist" : 2.0,
-      "physDef" : 3.0
+      "frozenPen" : 5.0,
+      "magRes" : 5.0,
+      "magicAtk" : 5.0
     }
   }
 }

@@ -3,18 +3,24 @@
 
 <th:block th:fragment="equipmentStyle">
     <style>
+        /* 모든 관련 요소에 box-sizing 적용 (테두리가 밖으로 나가는 것 방지) */
+        .equip-grid, .slot, .slot *, .unequip-btn {
+            box-sizing: border-box !important;
+        }
+
         /* 장비창 컨테이너 */
         .equip-grid {
             display: grid !important;
-            grid-template-columns: repeat(3, 80px) !important; /* 3열 고정 */
-            grid-template-rows: repeat(3, 80px) !important;    /* 3행 고정 */
+            grid-template-columns: repeat(3, 80px) !important;
+            grid-template-rows: repeat(3, 80px) !important;
             gap: 12px !important;
             background: #111;
             border: 1px solid #444;
             border-radius: 8px;
-            padding: 15px;
+            padding: 16px; /* 여유 공간을 1px 늘림 */
             width: fit-content;
             margin: 10px auto;
+            overflow: visible !important; /* 내부 테두리가 짤리지 않게 허용 */
         }
 
         /* 개별 슬롯 */
@@ -22,39 +28,63 @@
             width: 80px;
             height: 80px;
             background: rgba(0, 0, 0, 0.4);
-            border: 2px solid #333;
+            border: 2px solid #333; /* 기본 테두리 */
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             transition: all 0.2s;
+            overflow: hidden; /* 슬롯 내부 이미지가 튀어나오지 않게 함 */
         }
 
-        .slot:hover { border-color: #ffd700; background: #222; }
-        .slot.empty { border: none !important; background: transparent !important; }
+        /* 폼 레이아웃 초기화 (가장 흔한 범인) */
+        .slot form {
+            display: block;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slot:hover { border-color: #ffd700 !important; background: #222; }
+        .slot.empty { border: 2px solid transparent !important; background: transparent !important; }
 
         /* 아이템 이미지 */
-        .item-icon-img { width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+        .item-icon-img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* 해제 버튼 레이아웃 초기화 */
+        .unequip-btn {
+            display: block;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        /* [중요] 등급별 테두리 강제 적용 */
+        .border-COMMON { border: 2px solid #555 !important; }
+        .border-UNCOMMON { border: 2px solid #1eff00 !important; }
+        .border-RARE { border: 2px solid #0070dd !important; }
+        .border-EPIC { border: 2px solid #a335ee !important; }
+        .border-LEGENDARY {
+            border: 2px solid #ff8000 !important;
+            box-shadow: inset 0 0 5px #ff8000, 0 0 8px #ff8000;
+        }
 
         /* 빈 슬롯 이모지 */
         .slot > span { font-size: 1.8rem; opacity: 0.3; pointer-events: none; }
-
-        /* 해제 버튼 */
-        .unequip-btn {
-            background: none; border: none; padding: 0;
-            width: 100%; height: 100%; cursor: pointer;
-        }
-
-        /* 등급별 테두리 (쨍하게) */
-        .border-COMMON { border-color: #555 !important; }
-        .border-UNCOMMON { border-color: #1eff00 !important; }
-        .border-RARE { border-color: #0070dd !important; }
-        .border-EPIC { border-color: #a335ee !important; }
-        .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 10px #ff8000; }
     </style>
 </th:block>
-
 <div th:fragment="equipmentGrid(equippedItems)" class="equip-grid">
     <th:block th:with="slotMap=${ {
         '0':'NECKLACE', '1':'HEAD', '2':'RING',

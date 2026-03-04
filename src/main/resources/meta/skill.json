@@ -83,7 +83,7 @@
     "turnCost": 1,
     "hitChance": 85,
     "cost": { "stamina": 9, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.05 },
+    "damageScaling": { "meleeAtk": 1.0 },
     "statScaling": { "15": 2.5 },
     "effect": {
       "type": "DAMAGE",
@@ -91,7 +91,7 @@
       "status": "BLEED",
       "duration": 3,
       "chance": 40,
-      "ignoreDef": 10
+      "penetration": 0.3
     },
     "requiredWeapons": ["SWORD", "DAGGER"]
   },
@@ -104,12 +104,13 @@
     "turnCost": 2,
     "hitChance": 70,
     "cost": { "stamina": 15, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.6 },
+    "damageScaling": { "meleeAtk": 0.5 },
     "statScaling": { "15": 4.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "critMod": 1.5
+      "critRate": 30,
+      "critDamage": 100
     },
     "requiredWeapons": ["DAGGER"]
   },
@@ -127,7 +128,7 @@
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "ignoreDef": 20
+      "penetration": 0.3
     },
     "requiredWeapons": ["BOW"]
   },

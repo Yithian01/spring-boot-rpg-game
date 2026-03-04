@@ -19,8 +19,10 @@ public class SkillEffect {
     private Integer chance;         // 상태이상/효과 부여 확률
 
     // --- 수치 보정 관련 ---
-    private Double critMod;         // 치명타 배수
     private Integer baseChance;     // 도망 기본 확률
+    private Double critRate;        // 치명타 확률
+    private Double critDamage;      // 치명타 배수
+    private Double penetration;     // 관통력
 
     // --- 버프/디버프 상세 (일관성을 위해 Map 활용) ---
     // Key: StatId(1~24), Value: 보정치 (1.2는 20% 상승, 0.8은 20% 감소)

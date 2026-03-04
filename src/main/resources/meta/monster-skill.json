@@ -40,14 +40,14 @@
     "description": "기분 나쁜 소리를 내어 적의 집중력을 흐트러뜨립니다.",
     "type": "DEBUFF",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 100,
     "cost": { "mp": 0 },
     "damageScaling": {},
     "effect": {
       "type": "DEBUFF",
       "status": "WEAKNESS",
       "duration": 3,
-      "chance": 50,
+      "chance": 100,
       "statModifiers": {},
       "combatStatModifiers": {
         "accuracy": 0.7

@@ -237,6 +237,7 @@ public class BattleService {
         UserStatus us = userFileRepository.findGameUser();
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
         SkillMeta skill;
+
         if ("MONSTER".equals(skillCardType)) {
             // 몬스터 정수 스킬 맵에서 가져오기
             skill = gameDataManager.getMonsterSkillMetaMap().get(skillId);
@@ -274,8 +275,8 @@ public class BattleService {
 
         if (!isAlwaysHit) {
             // 공격 스킬인 경우에만 명중/회피 계산
-            double attackerAcc = us.getCombatStats().getAccuracy();
             int skillHitBonus = skill.getHitChance();
+            double attackerAcc = us.getCombatStats().getAccuracy();
             double defenderDodge = monster.getActiveStats().getDodge();
             double finalHitChance =  statCalculationService.attackerHitChance(skillHitBonus, attackerAcc, defenderDodge);
 
@@ -332,19 +333,8 @@ public class BattleService {
         );
 
         // 2. 치명타 판정 (도트 스킬 포함 모든 데미지 스킬 적용)
-        boolean isCrit = false;
-        int finalDamage = baseDamage;
-
-        if (Math.random() * 100 < attackerStats.getCritRate()) {
-            isCrit = true;
-            double critMultiplier = attackerStats.getCritDmg() / 100.0;
-
-            // 스킬 고유의 치명타 배율 보정이 있다면 추가 곱산
-            if (skill.getEffect() != null && skill.getEffect().getCritMod() != null) {
-                critMultiplier *= skill.getEffect().getCritMod();
-            }
-            finalDamage = (int) Math.round(baseDamage * critMultiplier);
-        }
+        boolean isCrit = statCalculationService.isCrit(skill, us.getCombatStats());
+        int finalDamage = isCrit ? statCalculationService.calculateCritDamage(baseDamage, skill, us.getCombatStats()) : baseDamage;
 
         String battleLog = "";
 
@@ -376,7 +366,7 @@ public class BattleService {
         // 5. 부가 효과 및 도트 데미지 부여
         // 여기서 finalDamage를 넘겨주므로, 치명타가 터진 도트 데미지는 틱당 위력도 강해짐
         if (skill.getEffect() != null && skill.getEffect().getStatus() != null) {
-            applyAdditionalEffect(monster, skill, gs, finalDamage, isDotDmg);
+            applyAdditionalEffect(skill, us, monster, gs, finalDamage, isDotDmg);
         }
 
         return "HIT_SUCCESS";
@@ -385,7 +375,7 @@ public class BattleService {
     /**
      * 상태이상 스킬 전용 처리 로직 (공격기 외에 디버프/버프 전용 스킬용)
      */
-    private String handleStatus(UserStatus us, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs) {
+    private String handleStatus(UserStatus attacker, ActiveMonster defender, SkillMeta skill, DungeonStatus ds, GameStatus gs) {
         SkillEffect effect = skill.getEffect();
         String icon = gameDataManager.getIcon(effect.getStatus());
 
@@ -393,7 +383,7 @@ public class BattleService {
             // 플레이어의 상태 이상 리스트 중에서
             // 1. 카테고리가 "BUFF"이고
             // 2. 스킬 ID가 현재 시전한 스킬과 일치하는 것만 찾기
-            ActiveStatus existingBuff = us.getActiveStatuses().stream()
+            ActiveStatus existingBuff = attacker.getActiveStatuses().stream()
                     .filter(s -> "BUFF".equals(s.getCategory()) && s.getSkillId() == skill.getId())
                     .findFirst()
                     .orElse(null);
@@ -401,44 +391,33 @@ public class BattleService {
             if (existingBuff != null) {
                 // 시간 갱신 (지속시간 초기화)
                 existingBuff.setRemainingTurns(Math.max(existingBuff.getRemainingTurns(), effect.getDuration()));
-                gs.addLog(String.format("%s %s의 [%s] 지속시간 갱신!", icon, us.getName(), skill.getName()));
+                gs.addLog(String.format("%s %s의 [%s] 지속시간 갱신!", icon, attacker.getName(), skill.getName()));
             } else {
-                gs.addLog(String.format("%s %s에게 [%s] 부여! (%d턴)", icon, us.getName(), skill.getName(), effect.getDuration()));
-                us.getActiveStatuses().add(createStatus(skill, "BUFF", 0));
+                gs.addLog(String.format("%s %s에게 [%s] 부여! (%d턴)", icon, attacker.getName(), skill.getName(), effect.getDuration()));
+                attacker.getActiveStatuses().add(createStatus(skill, "BUFF", 0));
             }
         }else {
-            applyAdditionalEffect(monster, skill, gs, 0, false);
+            applyAdditionalEffect(skill, attacker, defender, gs, 0, false);
         }
-        saveCurrentState(us, ds, gs);
+        saveCurrentState(attacker, ds, gs);
         return "STATUS_APPLIED";
     }
 
     /**
      * [헬퍼] 대상에게 상태이상을 부여할지 판정하고 처리합니다.
      */
-    private void applyAdditionalEffect(ActiveMonster monster, SkillMeta skill, GameStatus gs, int baseDamage, boolean isDotDmg) {
+    private void applyAdditionalEffect(SkillMeta skill, UserStatus attacker, ActiveMonster defender, GameStatus gs, int baseDamage, boolean isDotDmg) {
         String status = skill.getEffect().getStatus();
         String icon = gameDataManager.getIcon(status);
 
         // [저항 판정] 도트 데미지 계산이 아닐 때(즉, 최초 부여 시)만 저항 확률 체크
         if (!isDotDmg) {
-            // 1. 스킬 기본 확률 (예: 70%)
-            double baseChance = skill.getEffect().getChance();
-
-            // 2. 공격자(유저)의 추가 부여 확률 (CombatStats에 부여 보너스가 있다고 가정, 없으면 0)
-            // 예: 특정 장비나 특성으로 인한 "상태이상 부여 확률 +10%"
-            double attackerBonus = 0; // 필요 시 us.getCombatStats().getStatusPen() 등으로 확장 가능
-
-            // 3. 방어자(몬스터)의 저항력 (예: 30)
-            double defenderResist = monster.getActiveStats().getStatusResist();
-
-            // 4. 최종 확률 계산: (스킬 확률 + 내 보너스) - 상대 저항
-            int finalApplyChance = (int) Math.max(5, Math.min(100, (baseChance + attackerBonus) - defenderResist));
+            int finalApplyChance = statCalculationService.calculateStatusChance(skill.getEffect(), attacker.getCombatStats(), defender.getActiveStats());
 
             // 5. 판정
             if (Math.random() * 100 > finalApplyChance) {
                 gs.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) 효과를 저항했습니다! (확률: %d%%)</span>",
-                        icon, monster.getName(), finalApplyChance));
+                        icon, defender.getName(), finalApplyChance));
                 return;
             }
         }
@@ -458,12 +437,12 @@ public class BattleService {
         ActiveStatus existingStatus;
         if (isStatDebuff) {
             // [디버프류] 스킬 ID로 찾아서 개별 인스턴스 유지 (다양성 확보)
-            existingStatus = monster.getActiveStatuses().stream()
+            existingStatus = defender.getActiveStatuses().stream()
                     .filter(s -> s.getSkillId() == skill.getId())
                     .findFirst().orElse(null);
         } else {
             // [도트류] 기존처럼 상태 코드(status)로 찾아서 데미지 합산
-            existingStatus = monster.getActiveStatuses().stream()
+            existingStatus = defender.getActiveStatuses().stream()
                     .filter(s -> s.getEffectCode().equals(status))
                     .findFirst().orElse(null);
         }
@@ -484,20 +463,20 @@ public class BattleService {
                 existingStatus.setTickDamage(existingStatus.getTickDamage() + newTickDamage);
                 String damageInfo = String.format(" / 틱당 %d 피해", existingStatus.getTickDamage());
                 gs.addLog(String.format("<span style='color:%s;'>[중첩]</span> %s의 %s <b>%s</b> 강화! (남은 %d턴%s)",
-                        color, monster.getName(), icon, status, existingStatus.getRemainingTurns(), damageInfo));
+                        color, defender.getName(), icon, status, existingStatus.getRemainingTurns(), damageInfo));
             } else {
                 gs.addLog(String.format("<span style='color:%s;'>[유지]</span> %s의 <b>%s</b> 효과가 갱신되었습니다. (%d턴)",
-                        color, monster.getName(), skill.getName(), existingStatus.getRemainingTurns()));
+                        color, defender.getName(), skill.getName(), existingStatus.getRemainingTurns()));
             }
         } else {
             ActiveStatus newStatus = createStatus(skill, isStatDebuff ? "DEBUFF" : "DOT", newTickDamage);
             newStatus.setSkillId(skill.getId());
-            monster.getActiveStatuses().add(newStatus);
+            defender.getActiveStatuses().add(newStatus);
 
             String damageInfo = newTickDamage > 0 ? String.format(" (틱당 %d)", newTickDamage) : "";
             String effectName = isStatDebuff ? skill.getName() : status;
             gs.addLog(String.format("<span style='color:%s;'>[효과]</span> %s에게 %s <b>%s</b> 부여! (%d턴%s)",
-                    color, monster.getName(), icon, effectName, skill.getEffect().getDuration(), damageInfo));
+                    color, defender.getName(), icon, effectName, skill.getEffect().getDuration(), damageInfo));
         }
     }
 

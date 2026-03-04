@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.meta.ItemMeta;
+import com.example.demo.domain.meta.SkillEffect;
 import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.repository.EssenceRepository;
@@ -659,9 +660,11 @@ public class StatCalculationService {
                 ? skill.getEffect().getElement() : "PHYSICAL";
 
         // [STEP B] 타입관통 + 속성관통
+        double skillBonusPen = (skill.getEffect().getPenetration() != null && skill.getEffect().getPenetration() > 0) ? skill.getEffect().getPenetration() : 0;
+
         double basePen = isMagic ? attacker.getMagPen() : attacker.getPhysPen();
         double elePen = getPenetrationValue(attacker, element);
-        double finalPen = basePen + elePen;
+        double finalPen = basePen + elePen + skillBonusPen;
 
         // [STEP C] 타입저항 + 속성저항
         double targetBaseRes = isMagic ? defender.getMagRes() : defender.getPhysRes();
@@ -679,7 +682,9 @@ public class StatCalculationService {
         return damageAfterDef;
     }
 
-    // 헬퍼 메서드: 문자열 element에 맞는 Atk/Res/Pen 수치를 반환 (switch-case 활용)
+    /**
+     * 속성 공격력 반환
+     */
     private double getElementalAtkValue(CombatStats s, String el) {
         return switch(el) {
             case "FIRE" -> s.getFireAtk();
@@ -692,6 +697,10 @@ public class StatCalculationService {
             default -> 0;
         };
     }
+
+    /**
+     * 데미지 저항력 반환
+     */
     private double getResistValue(CombatStats s, String el) {
         return switch(el) {
             case "PHYSICAL" -> s.getPhysRes();
@@ -706,6 +715,10 @@ public class StatCalculationService {
             default -> 0;
         };
     }
+
+    /**
+     * 데미지 관통력 반환
+     */
     private double getPenetrationValue(CombatStats s, String el) {
         return switch(el) {
             case "PHYSICAL" -> s.getPhysPen();
@@ -716,6 +729,34 @@ public class StatCalculationService {
             case "LIGHT"    -> s.getLightPen();
             case "EARTH"    -> s.getEarthPen();
             case "CHAOS"    -> s.getChaosPen();
+            default -> 0;
+        };
+    }
+
+    /**
+     * 상태이상 저항력 반환
+     */
+    private double getStatusResistValue(CombatStats s, String el) {
+        return switch(el) {
+            case "BLEED" -> s.getBleedRes();
+            case "STUN"  -> s.getStunRes();
+            case "BURN"  -> s.getBurnRes();
+            case "FROZEN"  -> s.getFrozenRes();
+            case "POISON"  -> s.getPoisonRes();
+            default -> 0;
+        };
+    }
+
+    /**
+     * 상태이상 관통력 반환
+     */
+    private double getStatusPenetrationValue(CombatStats s, String el) {
+        return switch(el) {
+            case "BLEED" -> s.getBleedPen();
+            case "STUN"  -> s.getStunPen();
+            case "BURN"  -> s.getBurnPen();
+            case "FROZEN"  -> s.getFrozenPen();
+            case "POISON"  -> s.getPoisonPen();
             default -> 0;
         };
     }
@@ -786,5 +827,55 @@ public class StatCalculationService {
         monster.setCurrentMp(Math.min(monster.getCurrentMp(), monster.getActiveStats().getMaxMp()));
 
         return monster;
+    }
+
+    /**
+     * 데미지 스킬 크리티컬 판정
+     * @param skill 스킬 추가 확률 보정
+     * @param stats 기본 확률
+     * @return [true/fasle]
+     */
+    public boolean isCrit(SkillMeta skill, CombatStats stats){
+        double skillBonusRate =(skill.getEffect().getCritRate() != null && skill.getEffect().getCritRate() > 0) ? skill.getEffect().getCritRate() : 0;
+        double baseRate = stats.getCritRate();
+
+        int finalRate = (int) Math.round(baseRate + skillBonusRate);
+        return Math.random() * 100 < finalRate;
+    }
+
+    /**
+     * 크리티컬 대미지 계산
+     * @param skillDamage 스킬 대미지
+     * @param skill 스킬 추가 크리티컬 대미지
+     * @param stats 기본 크리티컬 대미지
+     * @return [int] 최종 대미지
+     */
+    public int calculateCritDamage(int skillDamage, SkillMeta skill, CombatStats stats){
+        double skillBonusDamage =(skill.getEffect().getCritDamage() != null && skill.getEffect().getCritDamage() > 0) ? skill.getEffect().getCritDamage() : 0;
+        double baseDamage = stats.getCritDmg() + skillBonusDamage;
+        double critMultiplier = baseDamage / 100.0;
+
+        return (int) Math.round(skillDamage * critMultiplier);
+    }
+
+    /**
+     * 부가 효과로 오는 확률만 계산
+     * @param skillEffect 부가 효과 확률
+     * @param attacker 공격자 상태이상 관통률
+     * @param defender 방어자 상태이상 저항룰
+     * @return
+     */
+    public int calculateStatusChance(SkillEffect skillEffect, CombatStats attacker, CombatStats defender){
+        String status = skillEffect.getStatus();
+        double skillBaseChance = skillEffect.getChance();
+        double bonusPen = getStatusPenetrationValue(attacker, status);
+
+        double baseRes = defender.getStatusResist();
+        double bonusRes = getStatusResistValue(defender, status);
+
+        // 상태이상 관통력 = 부여확률, 최소값 보정 0 <-- 완전 면역 몬스터 고려
+        double finalChance = Math.max(0, (skillBaseChance + bonusPen)- (baseRes + bonusRes));
+
+        return (int) Math.round(finalChance);
     }
 }

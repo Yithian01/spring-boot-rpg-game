@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.meta.SkillEffect;
 import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
@@ -127,7 +128,7 @@ public class MonsterBattleService {
     /**
      * 몬스터 개별 액션 실행 (BattleService와 동일한 구조)
      */
-    private void executeMonsterAction(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs) {
+    private void executeMonsterAction(UserStatus us, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs) {
         String skillName = skill.getName();
         String skillType = skill.getType();
 
@@ -136,21 +137,25 @@ public class MonsterBattleService {
 
         if (!isAlwaysHit) {
             // [공식 적용] (몬스터 기본 명중 + 스킬 보너스) - 유저 회피
-            double monsterAcc = monster.getActiveStats().getAccuracy();
             int skillHitBonus = skill.getHitChance();
-            double userDodge = user.getCombatStats().getDodge();
+            double attackerAcc = monster.getActiveStats().getAccuracy();
+            double defenderDodge = us.getCombatStats().getDodge();
+            double finalHitChance = statCalculationService.attackerHitChance(skillHitBonus, attackerAcc, defenderDodge);
 
-            int finalHitChance = (int) Math.max(5, Math.min(100, (monsterAcc + skillHitBonus) - userDodge));
+            if (Math.random() * 100 > finalHitChance) {
+                String failType = (Math.random() < 0.5) ? "회피" : "실패";
+                String logMsg;
 
-            if (random.nextInt(100) >= finalHitChance) {
-                // 회피/빗나감 로그
-                if (random.nextBoolean()) {
-                    gs.addLog(String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 <b>%s</b> 공격을 유연하게 피했습니다!</span>",
-                            user.getName(), monster.getName(), skillName));
+                if ("회피".equals(failType)) {
+                    logMsg = String.format("💨 <span style='color:#ffcc00;'>[회피] %s이(가) %s의 <b>%s</b> 공격을 피했습니다!</span>",
+                            us.getName(), monster.getName(), skillName);
                 } else {
-                    gs.addLog(String.format("<span style='color:#aaaaaa;'>[빗나감] %s의 <b>%s</b> 공격이 빗나갔습니다.</span> <small>(확률: %d%%)</small>",
-                            monster.getName(), skillName, finalHitChance));
+                    logMsg = String.format("<span style='color:#aaaaaa;'>[빗나감] %s의 <b>%s</b> 공격이 빗나갔습니다.</span> <small>(확률: %d%%)</small>",
+                            monster.getName(), skillName, (int) finalHitChance);
                 }
+                logMsg += String.format(" <small style='color:#888;'>(확률: %d%%)</small>", (int) finalHitChance);
+                gs.addLog(logMsg);
+                saveAll(us, ds, gs);
                 return;
             }
         }
@@ -158,9 +163,9 @@ public class MonsterBattleService {
         // [효과 처리]
         String effectType = skill.getEffect().getType();
         switch (effectType) {
-            case "DAMAGE" -> handleMonsterDamage(user, monster, skill, ds, gs, false);
-            case "DOT" -> handleMonsterDamage(user, monster, skill, ds, gs, true);
-            case "BUFF", "DEBUFF" -> applyStatusEffect(user, monster, skill, ds, gs, 0);
+            case "DAMAGE" -> handleMonsterDamage(monster, us, skill, ds, gs, false);
+            case "DOT" -> handleMonsterDamage(monster, us, skill, ds, gs, true);
+            case "BUFF", "DEBUFF" -> handleStatus(monster, us, skill, ds, gs);
             default -> log.warn("정의되지 않은 몬스터 스킬 효과: {}", effectType);
         }
     }
@@ -168,93 +173,116 @@ public class MonsterBattleService {
     /**
      * 몬스터 데미지 통합 처리 (즉발/도트 부가효과 포함)
      */
-    private void handleMonsterDamage(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs, boolean isDotOnly) {
+    private void handleMonsterDamage(ActiveMonster attacker, UserStatus defender, SkillMeta skill, DungeonStatus ds, GameStatus gs, boolean isDotDmg) {
         // 플레이어 방어력 등을 고려한 최종 데미지 계산
-        int finalDamage = statCalculationService.calculateFinalDamage(skill, monster.getActiveStats(), user.getCombatStats(), null);
+        int baseDamage = statCalculationService.calculateFinalDamage(skill, attacker.getActiveStats(), defender.getCombatStats(), null);
 
-        if (!isDotOnly) {
-            user.setCurrentHp(Math.max(0, user.getCurrentHp() - finalDamage));
-            gs.addLog(String.format("<span style='color:#ff4d4d;'>[피격]</span> %s의 %s! <b>%d</b>의 피해!",
-                    monster.getName(), skill.getName(), finalDamage));
+        // 치명타 판정 (도트 스킬 포함 모든 데미지 스킬 적용)
+        boolean isCrit = statCalculationService.isCrit(skill, attacker.getActiveStats());
+        int finalDamage = isCrit ? statCalculationService.calculateCritDamage(baseDamage, skill, attacker.getActiveStats()) : baseDamage;
+
+        String battleLog = "";
+
+        if (!isDotDmg) {
+            defender.setCurrentHp(Math.max(0, defender.getCurrentHp() - finalDamage));
+
+            String critPrefix = isCrit ? "<b style='color:#ffcc00;'>[치명타!] 💥 </b>" : "⚔️ ";
+            battleLog = String.format("<span style='color:#ff4d4d;'>%s[피격]</span> %s의 %s! <b>%d</b>의 피해!",
+                    critPrefix, attacker.getName(), skill.getName(), finalDamage);
+
+            gs.addLog(battleLog);
+            saveAll(defender, ds, gs);
+        } else {
+            // [도트 스킬 (최초 부여 시점)]
+            // 도트 스킬 자체가 '데미지' 타입을 가지고 있다면,
+            // 여기서 결정된 finalDamage가 applyAdditionalEffect로 넘어가 틱 데미지의 기준이 됨
+            String critText = isCrit ? "<small style='color:#ffcc00;'>(치명타 적용됨)</small>" : "";
+            gs.addLog(String.format("✨ <b>%s</b> 시전! %s", skill.getName(), critText));
         }
-
-        // 플레이어 사망 체크는 BattleService의 handleWait 등에서 처리하거나 여기서 즉시 체크
 
         // 부가 효과(상태이상) 판정
         if (skill.getEffect() != null && skill.getEffect().getStatus() != null) {
-            applyStatusEffect(user, monster, skill, ds, gs, finalDamage);
+            applyAdditionalEffect(skill, attacker, defender, gs, finalDamage, isDotDmg);
         }
     }
 
     /**
-     * [통합] 몬스터 상태이상 부여 (자가 버프 & 유저 디버프)
+     * 상태이상 스킬 전용 처리 로직 (공격기 외에 디버프/버프 전용 스킬용)
      */
-    private void applyStatusEffect(UserStatus user, ActiveMonster monster, SkillMeta skill, DungeonStatus ds, GameStatus gs, int baseDamage) {
-        var effect = skill.getEffect();
-        String status = effect.getStatus();
-        String icon = gameDataManager.getIcon(status);
-        String category = effect.getType();
-        boolean isBuff = "BUFF".equals(category);
+    private String handleStatus(ActiveMonster attacker, UserStatus defender, SkillMeta skill, DungeonStatus ds, GameStatus gs) {
+        SkillEffect effect = skill.getEffect();
+        String icon = gameDataManager.getIcon(effect.getStatus());
 
-        String targetName = isBuff ? monster.getName() : user.getName();
-        List<ActiveStatus> targetStatuses = isBuff ? monster.getActiveStatuses() : user.getActiveStatuses();
+        if ("BUFF".equals(effect.getType())) {
+            // 몬스터 상태 이상 리스트 중에서
+            // 1. 카테고리가 "BUFF"이고
+            // 2. 스킬 ID가 현재 시전한 스킬과 일치하는 것만 찾기
+            ActiveStatus existingBuff = attacker.getActiveStatuses().stream()
+                    .filter(s -> "BUFF".equals(s.getCategory()) && s.getSkillId() == skill.getId())
+                    .findFirst()
+                    .orElse(null);
 
-        // [수정] 디버프 전용 스킬(baseDamage 0)인 경우, 시전 로그를 먼저 남겨줌
-        if (!isBuff && baseDamage == 0) {
-            gs.addLog(String.format("✨ %s이(가) %s에게 <b>%s</b> 시전!", monster.getName(), user.getName(), skill.getName()));
+            if (existingBuff != null) {
+                // 시간 갱신 (지속시간 초기화)
+                existingBuff.setRemainingTurns(Math.max(existingBuff.getRemainingTurns(), effect.getDuration()));
+                gs.addLog(String.format("%s %s의 [%s] 지속시간 갱신!", icon, attacker.getName(), skill.getName()));
+            } else {
+                gs.addLog(String.format("%s %s에게 [%s] 부여! (%d턴)", icon, attacker.getName(), skill.getName(), effect.getDuration()));
+                attacker.getActiveStatuses().add(createStatus(skill, "BUFF", 0));
+            }
+        }else {
+            applyAdditionalEffect(skill, attacker, defender, gs, 0, false);
         }
+        saveAll(defender, ds, gs);
+        return "STATUS_APPLIED";
+    }
 
-        if (!isBuff) {
-            // 1. 스킬 기본 확률
-            double baseChance = effect.getChance();
-            // 2. 몬스터의 상태이상 부여 보너스 (필요 시 monster.getActiveStats()에서 가져옴)
-            double monsterStatusAtk = 0;
-            // 3. 유저의 상태이상 저항력
-            double userResist = user.getCombatStats().getStatusResist();
+    /**
+     * [헬퍼] 대상에게 상태이상을 부여할지 판정하고 처리합니다.
+     */
+    private void applyAdditionalEffect(SkillMeta skill, ActiveMonster attacker, UserStatus defender, GameStatus gs, int baseDamage, boolean isDotDmg) {
+        String status = skill.getEffect().getStatus();
+        String icon = gameDataManager.getIcon(status);
 
-            // 최종 확률: (스킬 확률 + 몬스터 보너스) - 유저 저항
-            int finalApplyChance = (int) Math.max(5, Math.min(100, (baseChance + monsterStatusAtk) - userResist));
+        // [저항 판정] 도트 데미지 계산이 아닐 때(즉, 최초 부여 시)만 저항 확률 체크
+        if (!isDotDmg) {
+            int finalApplyChance = statCalculationService.calculateStatusChance(skill.getEffect(), attacker.getActiveStats(), defender.getCombatStats());
 
-            if (random.nextInt(100) >= finalApplyChance) {
-                gs.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) %s의 효과를 견뎌냈습니다! (확률: %d%%)</span>",
-                        icon, user.getName(), status, finalApplyChance));
+            // 5. 판정
+            if (Math.random() * 100 > finalApplyChance) {
+                gs.addLog(String.format("<span style='color:#aaaaaa;'>[저항] %s %s이(가) 효과를 저항했습니다! (확률: %d%%)</span>",
+                        icon, defender.getName(), finalApplyChance));
                 return;
             }
         }
 
-        // 2. 틱 데미지 계산
-        int tickDamage = 0;
-        if (!isBuff) {
-            if ("DOT".equals(effect.getType())) {
-                tickDamage = baseDamage; // 순수 도트기는 계산된 데미지 전체 반영
-            } else if (List.of("BLEED", "POISON", "BURN", "PAIN").contains(status)) {
-                tickDamage = Math.max(1, (int) Math.ceil(baseDamage / 3.0)); // 공격 부가효과는 1/3
-            }
+        int newTickDamage = 0;
+        boolean isStatDebuff = (skill.getEffect().getCombatStatModifiers() != null && !skill.getEffect().getCombatStatModifiers().isEmpty())
+                || (skill.getEffect().getStatModifiers() != null && !skill.getEffect().getStatModifiers().isEmpty());
+
+        // 1. 도트 데미지 수치 계산
+        if (isDotDmg) {
+            newTickDamage = baseDamage; // 순수 도트 스킬
+        } else if (List.of("BLEED", "POISON", "BURN", "PAIN").contains(status)) {
+            newTickDamage = Math.max(1, (int) Math.ceil(baseDamage / 3.0)); // 부가 효과 도트
         }
 
-        final int nowTickDmg = tickDamage;
-        // 3. 중첩 및 갱신 처리
-        ActiveStatus existing = targetStatuses.stream()
-                .filter(s -> {
-                    if (isBuff) {
-                        // 자가 버프는 스킬 ID로 개별 관리 (이미 잘 되어 있음)
-                        return s.getSkillId() == skill.getId() && "BUFF".equals(s.getCategory());
-                    } else {
-                        // 플레이어에게 거는 디버프 처리
-                        boolean isDotValue = (nowTickDmg > 0);
-                        if (isDotValue) {
-                            // 1. 도트류 (중첩 합산): BURN, BLEED 등은 상태 코드로 찾음
-                            return s.getEffectCode().equals(status);
-                        } else {
-                            // 2. 순수 디버프 (개별 유지): WEAKNESS 등은 스킬 ID로 찾음
-                            // 이렇게 해야 '쇠약(명중)'과 '쇠약(공격력)'이 공존 가능
-                            return s.getSkillId() == skill.getId();
-                        }
-                    }
-                })
-                .findFirst().orElse(null);
+        // 2. 기존 상태이상 찾기 (분기 처리)
+        ActiveStatus existingStatus;
+        if (isStatDebuff) {
+            // [디버프류] 스킬 ID로 찾아서 개별 인스턴스 유지 (다양성 확보)
+            existingStatus = defender.getActiveStatuses().stream()
+                    .filter(s -> s.getSkillId() == skill.getId())
+                    .findFirst().orElse(null);
+        } else {
+            // [도트류] 기존처럼 상태 코드(status)로 찾아서 데미지 합산
+            existingStatus = defender.getActiveStatuses().stream()
+                    .filter(s -> s.getEffectCode().equals(status))
+                    .findFirst().orElse(null);
+        }
 
-        String color = isBuff ? "#70db70" : switch(status) {
+        // 3. 로그 컬러 설정
+        String color = switch(status) {
             case "BURN" -> "#ff4500";
             case "FROZEN", "FREEZE" -> "#87ceeb";
             case "POISON" -> "#70db70";
@@ -262,42 +290,54 @@ public class MonsterBattleService {
             default -> "#ffffff";
         };
 
-        if (existing != null) {
-            // 지속 시간은 더 긴 것으로 갱신
-            existing.setRemainingTurns(Math.max(existing.getRemainingTurns(), effect.getDuration()));
+        if (existingStatus != null) {
+            existingStatus.setRemainingTurns(Math.max(existingStatus.getRemainingTurns(), skill.getEffect().getDuration()));
 
-            if (!isBuff && tickDamage > 0) {
-                // 도트 데미지가 있는 경우만 수치 합산
-                existing.setTickDamage(existing.getTickDamage() + tickDamage);
-                String damageInfo = String.format(" / 틱당 %d 피해", existing.getTickDamage());
-                gs.addLog(String.format("<span style='color:%s;'>[중첩]</span> %s %s %s 강화! (남은 %d턴%s)",
-                        color, icon, targetName, status, existing.getRemainingTurns(), damageInfo));
+            if (!isStatDebuff) {
+                existingStatus.setTickDamage(existingStatus.getTickDamage() + newTickDamage);
+                String damageInfo = String.format(" / 틱당 %d 피해", existingStatus.getTickDamage());
+                gs.addLog(String.format("<span style='color:%s;'>[중첩]</span> %s의 %s <b>%s</b> 강화! (남은 %d턴%s)",
+                        color, defender.getName(), icon, status, existingStatus.getRemainingTurns(), damageInfo));
             } else {
-                // 버프나 순수 디버프는 시간만 갱신
-                gs.addLog(String.format("<span style='color:%s;'>[%s]</span> %s %s %s 지속시간 갱신!",
-                        color, isBuff ? "강화" : "유지", icon, targetName, isBuff ? "버프" : "디버프"));
+                gs.addLog(String.format("<span style='color:%s;'>[유지]</span> %s의 <b>%s</b> 효과가 갱신되었습니다. (%d턴)",
+                        color, defender.getName(), skill.getName(), existingStatus.getRemainingTurns()));
             }
         } else {
-            ActiveStatus newStatus = ActiveStatus.builder()
-                    .skillId(skill.getId())
-                    .name(isBuff ? skill.getName() : status)
-                    .remainingTurns(effect.getDuration())
-                    .category(category)
-                    .effectCode(status)
-                    .tickDamage(tickDamage)
-                    .statModifiers(effect.getStatModifiers())
-                    .combatModifiers(effect.getCombatStatModifiers())
-                    .build();
-            targetStatuses.add(newStatus);
+            ActiveStatus newStatus = createStatus(skill, isStatDebuff ? "DEBUFF" : "DOT", newTickDamage);
+            newStatus.setSkillId(skill.getId());
+            defender.getActiveStatuses().add(newStatus);
 
-            String dmgInfo = tickDamage > 0 ? String.format(" (틱당 %d)", tickDamage) : "";
-            gs.addLog(String.format("<span style='color:%s;'>[%s]</span> %s에게 %s <b>%s</b> 부여! (%d턴%s)",
-                    color, isBuff ? "버프" : "효과", targetName, icon, newStatus.getName(), effect.getDuration(), dmgInfo));
+            String damageInfo = newTickDamage > 0 ? String.format(" (틱당 %d)", newTickDamage) : "";
+            String effectName = isStatDebuff ? skill.getName() : status;
+            gs.addLog(String.format("<span style='color:%s;'>[효과]</span> %s에게 %s <b>%s</b> 부여! (%d턴%s)",
+                    color, defender.getName(), icon, effectName, skill.getEffect().getDuration(), damageInfo));
         }
 
-        // 상태 이상 변화 후 플레이어 스탯 리프레시
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
+        statCalculationService.refreshUserCombatStats(defender, gameDataManager.getItemMetaMap());
     }
+
+    /**
+     * 스킬의 추가 효과 상태이상
+     * @param skill 스킬 정보
+     * @param category 어떤 상태이상 인지
+     * @param tickDamage 틱 데미지
+     * @return 디버프 상태이상 객체 반환
+     */
+    private ActiveStatus createStatus(SkillMeta skill, String category, int tickDamage) {
+        return ActiveStatus.builder()
+                .skillId(skill.getId())
+                .name(skill.getName())
+                .remainingTurns(skill.getEffect().getDuration())
+                .category(category)
+                .effectCode(skill.getEffect().getStatus())
+                .tickDamage(tickDamage) // 1/3 데미지 저장
+                .statModifiers(skill.getEffect().getStatModifiers())
+                .combatModifiers(skill.getEffect().getCombatStatModifiers())
+                .statOffsets(skill.getEffect().getStatOffsets())
+                .build();
+    }
+
+
 
     /**
      * 행동을 할 때마다 도트데미지 처리
@@ -384,5 +424,4 @@ public class MonsterBattleService {
                     monster.getName(), regenLog.toString()));
         }
     }
-
 }

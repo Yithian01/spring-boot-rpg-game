@@ -732,9 +732,9 @@
     "icon": "/images/items/42.png",
     "baseStatsBonus": { "3": 8, "9": 12 },
     "combatStatsBonus": {
-      "poisonAtk": 65.0,
-      "poisonPen": 25.0,
-      "poisonRes": 50.0,
+      "toxicAtk": 65.0,
+      "toxicPen": 25.0,
+      "toxicRes": 50.0,
       "statusResist": 15.0,
       "accuracy": 10.0,
       "dodge": -15.0

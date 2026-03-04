@@ -142,7 +142,7 @@
                 <span style="flex-grow:1; text-align:right;">ATK</span>
                 <span style="flex-grow:1; text-align:right;">RES / PEN</span>
             </div>
-            <th:block th:each="attr : ${ {'fire','ice','light','earth','holy','dark','chaos', 'toxic'} }">
+            <th:block th:each="attr : ${ {'fire','ice','light','earth','holy','dark','chaos','toxic'} }">
                 <div class="attr-row" th:if="${game.combatStats[attr + 'Atk'] > 0 or game.combatStats[attr + 'Res'] != 0 or game.combatStats[attr + 'Pen'] != 0}">
                     <span class="attr-name" th:text="${attr == 'fire' ? '🔥 화염' : attr == 'ice' ? '❄️ 냉기' : attr == 'light' ? '⚡ 번개' : attr == 'earth' ? '🌿 대지' : attr == 'holy' ? '✨ 신성' : attr == 'dark' ? '🌑 암흑' :  attr == 'chaos' ? '🌀 혼돈' : '🧪 중독'}"></span>
                     <span class="attr-atk">[[${#numbers.formatInteger(game.combatStats[attr + 'Atk'], 0)}]]</span>

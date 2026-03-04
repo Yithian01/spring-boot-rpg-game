@@ -209,7 +209,7 @@ public class GameDataManager  implements ApplicationRunner {
         return switch (code) {
             case "STUN" -> "💫";
             case "BURN" -> "🔥";
-            case "POISON" -> "🧪";
+            case "POISON, TOXIC" -> "🧪";
             case "BLEED" -> "🩸";
             case "FROZEN", "FREEZE" -> "❄️";
             case "SHOCK" -> "⚡";

@@ -7,7 +7,7 @@
   "level" : 1,
   "currentExp" : 5,
   "requiredExp" : 15,
-  "currentHp" : 142,
+  "currentHp" : 156,
   "currentMp" : 204,
   "currentStamina" : 296,
   "currentGold" : 90,
@@ -21,7 +21,7 @@
     "maxTurns" : 2,
     "critRate" : 31.0,
     "critDmg" : 166.0,
-    "accuracy" : 39.5,
+    "accuracy" : 21.3,
     "dodge" : 9.3,
     "statusResist" : 50.4,
     "bleedRes" : 0.0,
@@ -94,23 +94,10 @@
   },
   "equipmentBonusStats" : { },
   "activeStatuses" : [ {
-    "skillId" : 26,
-    "ownerType" : null,
-    "name" : "비탄의 비명",
-    "remainingTurns" : 1,
-    "category" : "DEBUFF",
-    "effectCode" : "BLIND",
-    "tickDamage" : 0,
-    "statModifiers" : { },
-    "statOffsets" : null,
-    "combatModifiers" : {
-      "accuracy" : 0.6
-    }
-  }, {
     "skillId" : 3,
     "ownerType" : null,
     "name" : "찍찍거리기",
-    "remainingTurns" : 2,
+    "remainingTurns" : 1,
     "category" : "DEBUFF",
     "effectCode" : "WEAKNESS",
     "tickDamage" : 0,

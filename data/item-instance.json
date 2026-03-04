@@ -52,9 +52,9 @@
       "statusResist" : 15.0,
       "accuracy" : 10.0,
       "dodge" : -15.0,
-      "poisonAtk" : 65.0,
-      "poisonRes" : 50.0,
-      "poisonPen" : 25.0
+      "toxicAtk" : 65.0,
+      "toxicRes" : 50.0,
+      "toxicPen" : 25.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },

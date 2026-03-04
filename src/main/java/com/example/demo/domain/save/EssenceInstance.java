@@ -33,6 +33,6 @@ public class EssenceInstance {
     @Builder.Default
     private Map<Integer, Integer> baseStatsBonus = new HashMap<>();
     @Builder.Default
-    private Map<String, Integer> combatStatsBonus = new HashMap<>();
+    private Map<String, Double> combatStatsBonus = new HashMap<>();
 
 }

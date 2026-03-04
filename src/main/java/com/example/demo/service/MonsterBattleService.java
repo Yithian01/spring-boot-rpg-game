@@ -80,10 +80,6 @@ public class MonsterBattleService {
         while (currentAp > 0 && monster.getCurrentHp() > 0) {
             final int finalCurrentAp = currentAp;
 
-            // [주의] 이미 밖에서 updateMonsterStatusTick을 했으므로,
-            // while문 내부의 updateMonsterStatusTick 호출은 삭제하거나
-            // 기획에 따라 '행동당 지속시간 감소'가 아니라면 밖으로 빼는 것이 맞습니다.
-
             List<SkillMeta> affordableSkills = monsterMeta.getActiveSkillIds().stream()
                     .map(id -> gameDataManager.getMonsterSkillMetaMap().get(id))
                     .filter(s -> s != null
@@ -201,7 +197,7 @@ public class MonsterBattleService {
         }
 
         // 부가 효과(상태이상) 판정
-        if (skill.getEffect() != null && skill.getEffect().getStatus() != null) {
+        if (finalDamage > 0 && skill.getEffect() != null && skill.getEffect().getStatus() != null) {
             applyAdditionalEffect(skill, attacker, defender, gs, finalDamage, isDotDmg);
         }
     }
@@ -231,7 +227,7 @@ public class MonsterBattleService {
                 attacker.getActiveStatuses().add(createStatus(skill, "BUFF", 0));
             }
         }else {
-            applyAdditionalEffect(skill, attacker, defender, gs, 0, false);
+            applyAdditionalEffect(skill, attacker, defender, gs, -1, false);
         }
         saveAll(defender, ds, gs);
         return "STATUS_APPLIED";
@@ -245,7 +241,7 @@ public class MonsterBattleService {
         String icon = gameDataManager.getIcon(status);
 
         // [저항 판정] 도트 데미지 계산이 아닐 때(즉, 최초 부여 시)만 저항 확률 체크
-        if (!isDotDmg) {
+        if (baseDamage > -1 && !isDotDmg) {
             int finalApplyChance = statCalculationService.calculateStatusChance(skill.getEffect(), attacker.getActiveStats(), defender.getCombatStats());
 
             // 5. 판정

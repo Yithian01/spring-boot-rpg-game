@@ -48,9 +48,9 @@ public class EssenceService {
             bonusMeta.getBaseStats().forEach((k, v) -> baseBonus.put(Integer.parseInt(k), v));
         }
 
-        Map<String, Integer> combatBonus = new HashMap<>();
+        Map<String, Double> combatBonus = new HashMap<>();
         if (bonusMeta != null && bonusMeta.getCombatStats() != null) {
-            bonusMeta.getCombatStats().forEach((k, v) -> combatBonus.put(k, (int) Math.round(v)));
+            bonusMeta.getCombatStats().forEach((k, v) -> combatBonus.put(k, (double) Math.round(v)));
         }
 
         // 스킬 추출 로직 추가

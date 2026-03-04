@@ -402,7 +402,6 @@
       "critDmg": 150.0,
       "dodge": 1.0,
       "physDef": 15.0,
-      "magRes": 5.0,
       "statusResist": 10.0,
       "poisonRes": 1.1,
       "bleedRes": 0.2,

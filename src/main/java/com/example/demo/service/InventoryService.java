@@ -81,6 +81,8 @@ public class InventoryService {
         // 1. 장착 해제
         user.getEquippedItems().put(slot, "0");
 
+        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
+
         // 2. 가방으로 돌려보내기
         ItemInstance oldItem = itemInstanceRepository.findById(equippedId).orElse(null);
         if (oldItem != null) {
@@ -90,7 +92,6 @@ public class InventoryService {
         // 3. 리프레시 및 저장
         userFileRepository.saveUserStatus(user);
         inventoryFileRepository.saveInventoryStatus(inventory);
-        statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
 
         return "장비를 해제했습니다.";
     }

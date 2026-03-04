@@ -1,6 +1,6 @@
 {
-  "f709625b-74e5-4af2-99bf-9f385c62bd73" : {
-    "instanceId" : "f709625b-74e5-4af2-99bf-9f385c62bd73",
+  "aababc6e-4136-4695-9541-be3472b221ce" : {
+    "instanceId" : "aababc6e-4136-4695-9541-be3472b221ce",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -9,7 +9,7 @@
     "subType" : "FOOD",
     "twoHanded" : false,
     "description" : "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
-    "quantity" : 3,
+    "quantity" : 2,
     "enhancementLevel" : 0,
     "price" : 30,
     "baseStatsBonus" : { },
@@ -23,79 +23,88 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "9f70dcca-e940-424b-9d4c-0717aeb17d69" : {
-    "instanceId" : "9f70dcca-e940-424b-9d4c-0717aeb17d69",
-    "itemMetaId" : 38,
-    "customName" : "낡은 철퇴",
-    "grade" : "COMMON",
+  "075fc421-58d6-41f9-976a-ebcb5b9a2c3c" : {
+    "instanceId" : "075fc421-58d6-41f9-976a-ebcb5b9a2c3c",
+    "itemMetaId" : 41,
+    "customName" : "저주받은 이교도의 의식 단검",
+    "grade" : "EPIC",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "BLUNT",
+    "subType" : "DAGGER",
     "twoHanded" : false,
-    "description" : "묵직한 무게감이 느껴지는 철퇴입니다.",
+    "description" : "금지된 의식에 쓰이던 단검입니다.",
     "quantity" : 3,
     "enhancementLevel" : 0,
-    "price" : 350,
-    "baseStatsBonus" : { },
+    "price" : 760000,
+    "baseStatsBonus" : {
+      "20" : 4,
+      "10" : 4
+    },
     "combatStatsBonus" : {
-      "meleeAtk" : 10
+      "holyRes" : -0.2,
+      "critRate" : 15.0,
+      "bleedPen" : 40.0,
+      "darkPen" : 0.3,
+      "darkAtk" : 110.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ 2 ]
+    "combatStatsBonusModifiers" : {
+      "maxHp" : 0.7,
+      "maxMp" : 1.3
+    },
+    "grantedSkillIds" : [ 17, 19 ]
   },
-  "5f435443-6453-4422-b478-875c51333897" : {
-    "instanceId" : "5f435443-6453-4422-b478-875c51333897",
-    "itemMetaId" : 10,
-    "customName" : "날이 빠진 처형 도끼",
+  "8a764adf-dcd0-41b9-a611-21ad1ce466a2" : {
+    "instanceId" : "8a764adf-dcd0-41b9-a611-21ad1ce466a2",
+    "itemMetaId" : 16,
+    "customName" : "낡은 시미터",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "AXE",
-    "twoHanded" : true,
-    "description" : "관리가 되지 않아 날이 여기저기 빠졌지만, 무게만으로도 적의 뼈를 부수기에 충분합니다.",
+    "subType" : "SWORD",
+    "twoHanded" : false,
+    "description" : "사막의 모래바람에 마모된 곡선형 칼입니다. 가볍고 휘두르기 좋습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 220000,
+    "price" : 170000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "accuracy" : -3,
-      "critDmg" : 10,
-      "meleeAtk" : 12,
-      "penetration" : 2
+      "accuracy" : 2.0,
+      "critRate" : 2.5,
+      "meleeAtk" : 9.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "3fde8317-6b47-4c35-8bee-cfb8be200b1b" : {
-    "instanceId" : "3fde8317-6b47-4c35-8bee-cfb8be200b1b",
-    "itemMetaId" : 11,
-    "customName" : "낡은 가죽 갑옷",
+  "2312ad1e-2883-43bb-9a67-31cc521e7d66" : {
+    "instanceId" : "2312ad1e-2883-43bb-9a67-31cc521e7d66",
+    "itemMetaId" : 17,
+    "customName" : "먼지 묻은 유목민 외투",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
-    "subType" : "LEATHER",
+    "subType" : "CLOTH",
     "twoHanded" : false,
-    "description" : "땀 냄새가 배어있고 여기저기 찢어진 가죽 옷입니다. 최소한의 급소만 가려줍니다.",
+    "description" : "햇빛과 모래를 막기 위해 겹겹이 두른 천 옷입니다. 방어력은 낮지만 매우 가볍습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 34000,
+    "price" : 33000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "maxHp" : 20,
-      "statusResist" : 2,
-      "physDef" : 6
+      "dodge" : 3.5,
+      "maxStamina" : 25.0,
+      "physDef" : 3.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "c8d7f454-fa12-485d-8d8c-3c483062b243" : {
-    "instanceId" : "c8d7f454-fa12-485d-8d8c-3c483062b243",
+  "e38835bc-93a6-427a-b88c-f5d78d003719" : {
+    "instanceId" : "e38835bc-93a6-427a-b88c-f5d78d003719",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -109,18 +118,18 @@
     "price" : 55000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "moveSpeed" : 2,
-      "maxStamina" : 15
+      "moveSpeed" : 2.0,
+      "maxStamina" : 15.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "b25e0763-7a01-45f9-ba17-e6f79a516677" : {
-    "instanceId" : "b25e0763-7a01-45f9-ba17-e6f79a516677",
+  "95763844-ca0c-48e2-8be5-b35d8838175b" : {
+    "instanceId" : "95763844-ca0c-48e2-8be5-b35d8838175b",
     "itemMetaId" : 9,
-    "customName" : "고블린의 9등급 마석",
+    "customName" : "동굴 쥐의 9등급 마석",
     "grade" : "COMMON",
     "type" : "MATERIAL",
     "slot" : null,
@@ -137,10 +146,50 @@
     "combatStatsBonusModifiers" : null,
     "grantedSkillIds" : null
   },
-  "e908d7ca-3ca1-47a5-be65-ccb1beeb99be" : {
-    "instanceId" : "e908d7ca-3ca1-47a5-be65-ccb1beeb99be",
+  "e54a3fab-1881-4d4e-a53c-00258fba1d90" : {
+    "instanceId" : "e54a3fab-1881-4d4e-a53c-00258fba1d90",
     "itemMetaId" : 9,
-    "customName" : "동굴 쥐의 9등급 마석",
+    "customName" : "해골 병사의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 3,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "b54f416a-a687-4b25-a39c-b8baf861ce54" : {
+    "instanceId" : "b54f416a-a687-4b25-a39c-b8baf861ce54",
+    "itemMetaId" : 9,
+    "customName" : "흐느끼는 벤시의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "6f755620-7923-431f-9cb2-e98609a2e10c" : {
+    "instanceId" : "6f755620-7923-431f-9cb2-e98609a2e10c",
+    "itemMetaId" : 9,
+    "customName" : "스켈레톤 궁수의 9등급 마석",
     "grade" : "COMMON",
     "type" : "MATERIAL",
     "slot" : null,

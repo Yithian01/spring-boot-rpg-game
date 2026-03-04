@@ -318,11 +318,11 @@
     "name": "고통의 낙인",
     "icon": "/images/skills/17.png",
     "description": "적의 영혼에 고통스러운 낙인을 새깁니다. 지속적인 피해를 입힙니다.",
-    "type": "DEBUFF",
+    "type": "MAGIC",
     "turnCost": 1,
     "hitChance": 85,
     "cost": { "stamina": 5, "mp": 25 },
-    "damageScaling": { "magicAtk":  2.0},
+    "damageScaling": { "magicAtk":  1.5},
     "statScaling": {"13": 1.5},
     "effect": {
       "type": "DOT",

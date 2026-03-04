@@ -29,7 +29,6 @@ public class SkillCardDto {
     private String type;        // PHYSICAL, MAGIC, BUFF, DEBUFF, HEAL, PASS, ESCAPE
     private String element;     // FIRE, ICE, PHYSICAL, DARK, HOLY 등
     private List<String> requiredWeapons; // 필요한 무기군 명칭
-    private int baseHitChance;  // 스킬 자체 명중률
 
     // [3] 효과 및 상태이상 상세
     private String effectType;  // DAMAGE, DOT, BUFF, HEAL 등

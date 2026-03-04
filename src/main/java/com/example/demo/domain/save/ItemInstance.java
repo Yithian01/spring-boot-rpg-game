@@ -35,7 +35,7 @@ public class ItemInstance {
 
     // 능력치 및 회복 정보 (Meta에서 복사)
     private Map<Integer, Integer> baseStatsBonus;
-    private Map<String, Integer> combatStatsBonus;
+    private Map<String, Double> combatStatsBonus;
     private Map<String, Integer> recoveryBonus;
 
     private Map<Integer, Double> baseStatsBonusModifiers;

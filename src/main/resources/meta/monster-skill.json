@@ -382,7 +382,7 @@
       "chance": 100,
       "statModifiers": {},
       "combatStatModifiers": {
-        "magRes": 2.5
+        "magRes": 0.1
       }
     },
     "requiredWeapons": ["NONE"]

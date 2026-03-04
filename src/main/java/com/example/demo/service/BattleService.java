@@ -214,18 +214,28 @@ public class BattleService {
                 .icon(iconPath)
                 .description(meta.getDescription())
                 .skillType(skillType)
+
                 .turnCost(meta.getTurnCost())
                 .staminaCost(meta.getCost().getOrDefault("stamina", 0))
                 .mpCost(meta.getCost().getOrDefault("mp", 0))
                 .hpCost(meta.getCost().getOrDefault("hp", 0))
                 .canAct(canAct)
                 .message(msg)
+
                 .type(meta.getType())
                 .element(meta.getEffect() != null ? meta.getEffect().getElement() : "NONE")
                 .requiredWeapons(meta.getRequiredWeapons())
-                .realHitChance(realHitChance)
-                .expectedPower(expectedPower)
+
+                .effectType(meta.getEffect() != null ? meta.getEffect().getType() : null)
+                .status(meta.getEffect() != null ? meta.getEffect().getStatus() : null)
+                .statusName(meta.getEffect() != null ? gameDataManager.getStatusName(meta.getEffect().getStatus()) : null)
+                .duration(meta.getEffect() != null ? meta.getEffect().getDuration() : null)
+                .effectChance(meta.getEffect() != null ? meta.getEffect().getChance() : null)
+
                 .scalingInfo(scalingInfo)
+
+                .expectedPower(expectedPower)
+                .realHitChance(realHitChance)
                 .build();
     }
 
@@ -327,23 +337,34 @@ public class BattleService {
         CombatStats defenderStats = monster.getActiveStats();
         Map<Integer, Integer> attackerFinalStats = us.getFinalStats();
 
+        String battleLog = "";
+
         // 1. 기본 데미지 계산 (StatCalculationService에서는 이제 순수 데미지만 반환)
         int baseDamage = statCalculationService.calculateFinalDamage(
                 skill, attackerStats, defenderStats, attackerFinalStats
         );
 
+        if (baseDamage == 0) {
+            String icon = gameDataManager.getIcon(skill.getEffect().getElement());
+
+            battleLog = String.format("%s %s! %s에게 공격이 통하지 않습니다! <b style='color:#ffcc00;'>[RESIST]</b>",
+                    icon, skill.getName(), monster.getName());
+
+            gs.addLog(battleLog);
+            saveCurrentState(us, ds, gs);
+        }
+
         // 2. 치명타 판정 (도트 스킬 포함 모든 데미지 스킬 적용)
         boolean isCrit = statCalculationService.isCrit(skill, us.getCombatStats());
         int finalDamage = isCrit ? statCalculationService.calculateCritDamage(baseDamage, skill, us.getCombatStats()) : baseDamage;
 
-        String battleLog = "";
 
         // 3. 데미지 적용 분기
         if (!isDotDmg) {
             // [즉발 공격]
             monster.setCurrentHp(Math.max(0, monster.getCurrentHp() - finalDamage));
 
-            String critPrefix = isCrit ? "<b style='color:#ffcc00;'>[치명타!] 💥 </b>" : "⚔️ ";
+            String critPrefix = (finalDamage > 0 && isCrit) ? "<b style='color:#ffcc00;'>[치명타!] 💥 </b>" : "⚔️ ";
             battleLog = String.format("%s<b style='color:#ffffff;'>%s</b>! %s에게 <b style='color:#ff4d4d;'>%d</b>의 피해!",
                     critPrefix, skill.getName(), monster.getName(), finalDamage);
 
@@ -365,7 +386,7 @@ public class BattleService {
 
         // 5. 부가 효과 및 도트 데미지 부여
         // 여기서 finalDamage를 넘겨주므로, 치명타가 터진 도트 데미지는 틱당 위력도 강해짐
-        if (skill.getEffect() != null && skill.getEffect().getStatus() != null) {
+        if (finalDamage > 0 && skill.getEffect() != null && skill.getEffect().getStatus() != null) {
             applyAdditionalEffect(skill, us, monster, gs, finalDamage, isDotDmg);
         }
 
@@ -397,7 +418,7 @@ public class BattleService {
                 attacker.getActiveStatuses().add(createStatus(skill, "BUFF", 0));
             }
         }else {
-            applyAdditionalEffect(skill, attacker, defender, gs, 0, false);
+            applyAdditionalEffect(skill, attacker, defender, gs, -1, false);
         }
         saveCurrentState(attacker, ds, gs);
         return "STATUS_APPLIED";
@@ -411,7 +432,7 @@ public class BattleService {
         String icon = gameDataManager.getIcon(status);
 
         // [저항 판정] 도트 데미지 계산이 아닐 때(즉, 최초 부여 시)만 저항 확률 체크
-        if (!isDotDmg) {
+        if (baseDamage > -1 && !isDotDmg) {
             int finalApplyChance = statCalculationService.calculateStatusChance(skill.getEffect(), attacker.getCombatStats(), defender.getActiveStats());
 
             // 5. 판정
@@ -633,8 +654,9 @@ public class BattleService {
 
             // 4. 필드 상태 업데이트 (UI 표시용)
             monster.setCurrentHp(0);
-            ds.setPendingExp(0); // 정산 완료했으므로 보류 경험치 비움
+            ds.setPendingExp(0);
             ds.setActiveMonster(monster);
+            ds.setProgress(ds.getProgress() + statCalculationService.calculateExplorationEfficiency(us.getBaseStats()));
 
         } else {
             // 패배 시 초기화

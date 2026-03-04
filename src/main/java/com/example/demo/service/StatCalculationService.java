@@ -44,10 +44,18 @@ public class StatCalculationService {
      * @param itemMap GameDataManager에서 관리하는 전체 아이템 메타 맵
      */
     public void refreshUserCombatStats(UserStatus user, Map<Integer, ItemMeta> itemMap) {
+        // [현재 체력비율 저장]
+        double hpRate = user.getCombatStats().getMaxHp() > 0
+                ? (double) user.getCurrentHp() / user.getCombatStats().getMaxHp() : 1.0;
+        double mpRate = user.getCombatStats().getMaxMp() > 0
+                ? (double) user.getCurrentMp() / user.getCombatStats().getMaxMp() : 1.0;
+        double staminaRate = user.getCombatStats().getMaxStamina() > 0
+                ? (double) user.getCurrentStamina() / user.getCombatStats().getMaxStamina() : 1.0;
+
         Map<Integer, Integer> baseStatOffsets = new HashMap<>();     // 고정치 (+)
         Map<Integer, Double> baseStatModifiers = new HashMap<>();    // 배율합 (%)
 
-        Map<String, Integer> combatStatOffsets = new HashMap<>();    // 전투스탯 고정치
+        Map<String, Double> combatStatOffsets = new HashMap<>();    // 전투스탯 고정치
         Map<String, Double> combatStatModifiers = new HashMap<>();   // 전투스탯 배율합
 
         // 1. [장착 아이템] 보너스 수집
@@ -68,7 +76,7 @@ public class StatCalculationService {
                 }
                 // 전투 스탯 보너스 수집
                 if (ii.getCombatStatsBonus() != null) {
-                    ii.getCombatStatsBonus().forEach((name, val) -> combatStatOffsets.merge(name, val, Integer::sum));
+                    ii.getCombatStatsBonus().forEach((name, val) -> combatStatOffsets.merge(name, val, Double::sum));
                 }
                 // 전투 스탯 배율 수집
                 if (ii.getCombatStatsBonusModifiers() != null) {
@@ -97,7 +105,7 @@ public class StatCalculationService {
                 // (B) 정수의 전투 스탯 보너스 (+고정치)
                 if (ei.getCombatStatsBonus() != null) {
                     ei.getCombatStatsBonus().forEach((name, val) ->
-                            combatStatOffsets.merge(name, val, Integer::sum));
+                            combatStatOffsets.merge(name, val, Double::sum));
                 }
                 // 만약 정수에 배율(%) 보너스도 있다면 동일하게 merge 처리
             }
@@ -124,7 +132,7 @@ public class StatCalculationService {
         // 공식: (기본 스탯 + 고정치 합) * (1.0 + 배율 합)
         Map<Integer, Integer> finalStats = new HashMap<>();
         user.getBaseStats().forEach((id, baseVal) -> {
-            int offset = baseStatOffsets.getOrDefault(id, 0);
+            double offset = baseStatOffsets.getOrDefault(id, 0);
             double modifierSum = baseStatModifiers.getOrDefault(id, 0.0);
 
             int finalVal = (int) Math.round((baseVal + offset) * (1.0 + modifierSum));
@@ -142,8 +150,11 @@ public class StatCalculationService {
 
         // (B) 배율 보정: 예) 공격력 +20% (합연산된 배율 적용)
         combatStatModifiers.forEach((name, val) -> combat.applyModifier(name, val));
-
         user.setCombatStats(combat);
+
+        user.setCurrentHp((int) Math.round(user.getCombatStats().getMaxHp() * hpRate));
+        user.setCurrentMp((int) Math.round(user.getCombatStats().getMaxMp() * mpRate));
+        user.setCurrentStamina((int) Math.round(user.getCombatStats().getMaxStamina() * staminaRate));
 
         // 7. 자원 상한선 보정
         user.setCurrentHp(Math.min(user.getCurrentHp(), user.getCombatStats().getMaxHp()));

@@ -1,0 +1,20 @@
+{
+  "ESS-50F13D9E" : {
+    "instanceId" : "ESS-50F13D9E",
+    "monsterId" : 4,
+    "description" : "해골 병사의 정수입니다.",
+    "monsterName" : "해골 병사",
+    "monsterTier" : 9,
+    "monsterType" : "일반",
+    "obtainedAt" : 1772603825228,
+    "activeSkillIds" : [ 8 ],
+    "passiveSkillIds" : [ ],
+    "baseStatsBonus" : {
+      "2" : 1
+    },
+    "combatStatsBonus" : {
+      "statusResist" : 2.0,
+      "physDef" : 3.0
+    }
+  }
+}

@@ -149,7 +149,7 @@
                     <span class="attr-res-pen">
                         <span th:style="${game.combatStats[attr + 'Res'] >= 0 ? 'color:#70db70' : 'color:#ff4d4d'}">[[${game.combatStats[attr + 'Res'] >= 0 ? '+' : ''}]][[${game.combatStats[attr + 'Res'] * 100 }]]%</span>
                         <span style="color:#888;">/</span>
-                        <span style="color:#ff922b">[[${game.combatStats[attr + 'Pen'] * 10}]]%</span>
+                        <span style="color:#ff922b">[[${game.combatStats[attr + 'Pen'] * 100}]]%</span>
                     </span>
                 </div>
             </th:block>

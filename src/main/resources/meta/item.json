@@ -733,8 +733,8 @@
     "baseStatsBonus": { "3": 8, "9": 12 },
     "combatStatsBonus": {
       "toxicAtk": 65.0,
-      "toxicPen": 25.0,
-      "toxicRes": 50.0,
+      "toxicPen": 0.2,
+      "toxicRes": 0.5,
       "statusResist": 15.0,
       "accuracy": 10.0,
       "dodge": -15.0

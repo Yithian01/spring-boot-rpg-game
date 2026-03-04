@@ -704,7 +704,8 @@ public class StatCalculationService {
             case "EARTH" -> s.getEarthAtk();
             case "HOLY" -> s.getHolyAtk();
             case "DARK" -> s.getDarkAtk();
-            case "CHAOS"    -> s.getChaosRes();
+            case "CHAOS"    -> s.getChaosAtk();
+            case "TOXIC"    -> s.getToxicAtk();
             default -> 0;
         };
     }
@@ -723,6 +724,7 @@ public class StatCalculationService {
             case "LIGHT"    -> s.getLightRes();
             case "EARTH"    -> s.getEarthRes();
             case "CHAOS"    -> s.getChaosRes();
+            case "TOXIC"    -> s.getToxicRes();
             default -> 0;
         };
     }
@@ -740,6 +742,7 @@ public class StatCalculationService {
             case "LIGHT"    -> s.getLightPen();
             case "EARTH"    -> s.getEarthPen();
             case "CHAOS"    -> s.getChaosPen();
+            case "TOXIC"    -> s.getToxicPen();
             default -> 0;
         };
     }

@@ -1,5 +1,5 @@
 {
   "location" : "TOWN",
   "dungeonId" : null,
-  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ]
+  "gameLogs" : [ "\uD83D\uDECC 편안한 휴식을 취했습니다. (HP/MP/ST 회복)", "\uD83C\uDFF0 마을에 도착했습니다." ]
 }

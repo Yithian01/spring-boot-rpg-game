@@ -1,7 +1,7 @@
 {
-  "currentTurn" : 30,
+  "currentTurn" : 29,
   "maxTurn" : 30,
-  "day" : 1,
+  "day" : 2,
   "currentTax" : 900000,
   "taxPaid" : false
 }

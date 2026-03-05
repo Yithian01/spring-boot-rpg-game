@@ -1,6 +1,6 @@
 {
-  "ace4b0ae-84d3-4f15-a62f-74447bddef77" : {
-    "instanceId" : "ace4b0ae-84d3-4f15-a62f-74447bddef77",
+  "3ce22fe0-1f7c-4962-bfe7-492782f091b4" : {
+    "instanceId" : "3ce22fe0-1f7c-4962-bfe7-492782f091b4",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -19,100 +19,6 @@
       "mp" : 0,
       "stamina" : 30
     },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "b592eeaa-f6cc-4196-b6d5-de3c9da78d3e" : {
-    "instanceId" : "b592eeaa-f6cc-4196-b6d5-de3c9da78d3e",
-    "itemMetaId" : 13,
-    "customName" : "훈련용 롱소드",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "WEAPON",
-    "subType" : "SWORD",
-    "twoHanded" : false,
-    "description" : "기사단에서 훈련용으로 쓰던 평범한 철검입니다. 날이 무뎌져 있습니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 110000,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "accuracy" : 3.0,
-      "critRate" : 1.0,
-      "meleeAtk" : 8.0
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "020d8f59-69ff-4d9b-9706-9e981484dd1a" : {
-    "instanceId" : "020d8f59-69ff-4d9b-9706-9e981484dd1a",
-    "itemMetaId" : 15,
-    "customName" : "수습 기사의 갑옷",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "BODY",
-    "subType" : "HEAVY",
-    "twoHanded" : false,
-    "description" : "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 220000,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "maxHp" : 25.0,
-      "moveSpeed" : -0.5,
-      "physDef" : 12.0
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "79caa98b-9659-4d3f-a33d-42ff66179632" : {
-    "instanceId" : "79caa98b-9659-4d3f-a33d-42ff66179632",
-    "itemMetaId" : 12,
-    "customName" : "낡은 가죽 신발",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "BOOTS",
-    "subType" : "LEATHER",
-    "twoHanded" : false,
-    "description" : "밑창이 너덜너덜해서 발바닥이 아픕니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 55000,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "moveSpeed" : 2.0,
-      "maxStamina" : 15.0
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "b4469859-a159-45f2-8a8e-a150b120b1b4" : {
-    "instanceId" : "b4469859-a159-45f2-8a8e-a150b120b1b4",
-    "itemMetaId" : 14,
-    "customName" : "나무 방패",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "SUB_WEAPON",
-    "subType" : "SHIELD",
-    "twoHanded" : false,
-    "description" : "화살이나 가벼운 타격을 막기에 적합합니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 35000,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "dodge" : -1.0,
-      "physDef" : 10.0
-    },
-    "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]

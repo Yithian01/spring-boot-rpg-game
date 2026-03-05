@@ -1,6 +1,6 @@
 {
-  "73ae79d5-41bd-4325-a97c-4a11085e36a8" : {
-    "instanceId" : "73ae79d5-41bd-4325-a97c-4a11085e36a8",
+  "ace4b0ae-84d3-4f15-a62f-74447bddef77" : {
+    "instanceId" : "ace4b0ae-84d3-4f15-a62f-74447bddef77",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,79 +23,56 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "b687f894-d5b0-4220-8023-be0d7c641c34" : {
-    "instanceId" : "b687f894-d5b0-4220-8023-be0d7c641c34",
-    "itemMetaId" : 38,
-    "customName" : "낡은 철퇴",
+  "b592eeaa-f6cc-4196-b6d5-de3c9da78d3e" : {
+    "instanceId" : "b592eeaa-f6cc-4196-b6d5-de3c9da78d3e",
+    "itemMetaId" : 13,
+    "customName" : "훈련용 롱소드",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "BLUNT",
+    "subType" : "SWORD",
     "twoHanded" : false,
-    "description" : "묵직한 무게감이 느껴지는 철퇴입니다.",
-    "quantity" : 3,
+    "description" : "기사단에서 훈련용으로 쓰던 평범한 철검입니다. 날이 무뎌져 있습니다.",
+    "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 350,
+    "price" : 110000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "meleeAtk" : 10.0
+      "accuracy" : 3.0,
+      "critRate" : 1.0,
+      "meleeAtk" : 8.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ 2 ]
+    "grantedSkillIds" : [ ]
   },
-  "64601658-5a72-4f80-86bd-e4a47f76b8fd" : {
-    "instanceId" : "64601658-5a72-4f80-86bd-e4a47f76b8fd",
-    "itemMetaId" : 10,
-    "customName" : "날이 빠진 처형 도끼",
+  "020d8f59-69ff-4d9b-9706-9e981484dd1a" : {
+    "instanceId" : "020d8f59-69ff-4d9b-9706-9e981484dd1a",
+    "itemMetaId" : 15,
+    "customName" : "수습 기사의 갑옷",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
-    "slot" : "WEAPON",
-    "subType" : "AXE",
-    "twoHanded" : true,
-    "description" : "관리가 되지 않아 날이 여기저기 빠졌지만, 무게만으로도 적의 뼈를 부수기에 충분합니다.",
+    "slot" : "BODY",
+    "subType" : "HEAVY",
+    "twoHanded" : false,
+    "description" : "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
     "price" : 220000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "accuracy" : -3.0,
-      "critDmg" : 10.0,
-      "meleeAtk" : 12.0,
-      "penetration" : 2.0
+      "maxHp" : 25.0,
+      "moveSpeed" : -0.5,
+      "physDef" : 12.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "b2859a75-7804-4222-ac65-7b4b847ced34" : {
-    "instanceId" : "b2859a75-7804-4222-ac65-7b4b847ced34",
-    "itemMetaId" : 11,
-    "customName" : "낡은 가죽 갑옷",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "BODY",
-    "subType" : "LEATHER",
-    "twoHanded" : false,
-    "description" : "땀 냄새가 배어있고 여기저기 찢어진 가죽 옷입니다. 최소한의 급소만 가려줍니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 34000,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "maxHp" : 20.0,
-      "statusResist" : 2.0,
-      "physDef" : 6.0
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "4bf68199-cb38-41fe-bcc0-4a669695594b" : {
-    "instanceId" : "4bf68199-cb38-41fe-bcc0-4a669695594b",
+  "79caa98b-9659-4d3f-a33d-42ff66179632" : {
+    "instanceId" : "79caa98b-9659-4d3f-a33d-42ff66179632",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -117,24 +94,27 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "f931f52d-ad50-4ca8-8b1e-3ba341747ef8" : {
-    "instanceId" : "f931f52d-ad50-4ca8-8b1e-3ba341747ef8",
-    "itemMetaId" : 9,
-    "customName" : "동굴 쥐의 9등급 마석",
+  "b4469859-a159-45f2-8a8e-a150b120b1b4" : {
+    "instanceId" : "b4469859-a159-45f2-8a8e-a150b120b1b4",
+    "itemMetaId" : 14,
+    "customName" : "나무 방패",
     "grade" : "COMMON",
-    "type" : "MATERIAL",
-    "slot" : null,
-    "subType" : "MAGIC_STONE",
+    "type" : "EQUIPMENT",
+    "slot" : "SUB_WEAPON",
+    "subType" : "SHIELD",
     "twoHanded" : false,
-    "description" : "하급 몬스터에게서 보이는 마석입니다.",
-    "quantity" : 3,
+    "description" : "화살이나 가벼운 타격을 막기에 적합합니다.",
+    "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 20,
-    "baseStatsBonus" : null,
-    "combatStatsBonus" : null,
-    "recoveryBonus" : null,
-    "baseStatsBonusModifiers" : null,
-    "combatStatsBonusModifiers" : null,
-    "grantedSkillIds" : null
+    "price" : 35000,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "dodge" : -1.0,
+      "physDef" : 10.0
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
   }
 }

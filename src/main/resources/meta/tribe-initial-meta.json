@@ -1,10 +1,10 @@
 [
   {
     "tribeId": 1,
-    "image": "/tribe_1.png",
+    "image": "/images/tribes/tribe_1.png",
     "gold": 100,
     "initialEquipment": {
-      "WEAPON": 16,
+      "WEAPON": 13,
       "BODY": 29,
       "GLOVES": 0,
       "HEAD": 0,
@@ -20,12 +20,12 @@
       "13": 9, "14": 9, "15": 9, "16": 9, "17": 9, "18": 9,
       "19": 9, "20": 9, "21": 9, "22": 9, "23": 9, "24": 9
     },
-    "initialItem" : [37],
+    "initialItem" : [37, 8],
     "initialSkill" : [1, 2]
   },
   {
     "tribeId": 2,
-    "image": "/tribe_2.png",
+    "image": "/images/tribes/tribe_2.png",
     "gold": 100,
     "initialEquipment": {
       "WEAPON": 18,
@@ -44,12 +44,12 @@
       "13": 1, "14": 1, "15": 4, "16": 5, "17": 5, "18": 8,
       "19": 4, "20": 4, "21": 5, "22": 4, "23": 6, "24": 5
     },
-    "initialItem" : [37],
+    "initialItem" : [37, 8],
     "initialSkill" : [1, 2]
   },
   {
     "tribeId": 3,
-    "image": "/tribe_3.png",
+    "image": "/images/tribes/tribe_3.png",
     "gold": 100,
     "initialEquipment": {
       "WEAPON": 22,
@@ -69,15 +69,15 @@
       "19": 20, "20": 10, "21": 10, "22": 12, "23": 15, "24": 18
     },
 
-    "initialItem" : [37],
+    "initialItem" : [37, 8],
     "initialSkill" : [1, 2]
   },
   {
     "tribeId": 4,
-    "image": "/tribe_4.png",
+    "image": "/images/tribes/tribe_4.png",
     "gold": 100,
     "initialEquipment": {
-      "WEAPON": 28,
+      "WEAPON": 43,
       "BODY": 27,
       "GLOVES": 0,
       "HEAD": 0,
@@ -93,7 +93,7 @@
       "13": 6, "14": 8, "15": 20, "16": 22, "17": 18, "18": 10,
       "19": 12, "20": 22, "21": 20, "22": 18, "23": 22, "24": 20
     },
-    "initialItem" : [37],
+    "initialItem" : [37, 8],
     "initialSkill" : [1, 2]
   }
 ]

@@ -23,6 +23,7 @@ public class UserStatus {
      * ========================= */
     private int id;
     private String name;
+    private String img;
 
     private int tribeId;
     private int religionId;

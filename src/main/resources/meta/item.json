@@ -172,7 +172,7 @@
     "slot": "WEAPON",
     "subType": "SWORD",
     "twoHanded": false,
-    "description": "기사단에서 훈련용으로 쓰던 평범한 철검입니다. 날이 무뎌져 있습니다.",
+    "description": "훈련용으로 쓰던 평범한 철검입니다.",
     "price": 110000,
     "icon": "/images/items/13.png",
     "baseStatsBonus": {},
@@ -197,7 +197,7 @@
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 10.0,
-      "dodge": -1.0
+      "dodge": -5.0
     },
     "grantedSkillIds": []
   },
@@ -271,7 +271,7 @@
     "icon": "/images/items/18.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "meleeAtk": 16.0,
+      "meleeAtk": 10.0,
       "penetration": 5.0,
       "accuracy": 1.0
     },
@@ -348,7 +348,7 @@
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 12.0,
-      "maxMp": 30.0
+      "maxMp": 150.0
     },
     "grantedSkillIds": []
   },
@@ -365,9 +365,9 @@
     "icon": "/images/items/23.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 1.0,
-      "magRes": 10.0,
-      "mpRegen": 10.0
+      "maxMp": 50.0,
+      "mpRegen": 15.0,
+      "magRes": 0.1
     },
     "grantedSkillIds": []
   },
@@ -480,9 +480,9 @@
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "physDef": 5.0,
-      "magRes": 5.0,
+      "magRes": 0.05,
       "maxStamina": 10.0,
-      "maxMp": 10.0
+      "maxMp": 50.0
     },
     "grantedSkillIds": []
   },
@@ -686,13 +686,13 @@
     "type": "EQUIPMENT",
     "slot": "NECKLACE",
     "subType": "ACCESSORY",
-    "description": "우두머리 라이칸스로프의 거대한 송곳니로 만든 목걸이입니다. 야성이 깨어납니다.",
+    "description": "우두머리 라이칸스로프의 거대한 송곳니로 만든 목걸이입니다.",
     "price": 5000,
     "icon": "/images/items/40.png",
     "baseStatsBonus": { "10": 4, "20": 4 },
     "combatStatsBonus": {
       "critRate": 5.0,
-      "moveSpeed": 0.2,
+      "moveSpeed": 2,
       "bleedPen": 10.0
     }
   },
@@ -744,5 +744,24 @@
       "maxMp" : 0.2
     },
     "grantedSkillIds": [20]
+  },
+  {
+    "id": 43,
+    "name": "무뎌진 사냥용 단검",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
+    "price": 115000,
+    "icon": "/images/items/43.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 7.0,
+      "accuracy": 2.0,
+      "critRate": 5.0
+    },
+    "grantedSkillIds": []
   }
 ]

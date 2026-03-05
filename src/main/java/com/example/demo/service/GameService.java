@@ -139,6 +139,7 @@ public class GameService {
         UserStatus newUser = UserStatus.builder()
                 .id(1)
                 .name(tribeMeta.getName())
+                .img(initialMeta.getImage())
                 .tribeId(tribeId)
                 .religionId(0)
                 .level(1)                // 1레벨부터 시작
@@ -252,7 +253,7 @@ public class GameService {
         List<StatCategoryGroupDto> statGroups = buildStatGroups(us);
 
         return GamePageDto.builder()
-                .img(String.valueOf(us.getTribeId()))
+                .img(us.getImg())
                 .userName(us.getName())
                 .tribe(mapUserTribe(us))
                 .religion(mapUserReligion(us))
@@ -360,37 +361,6 @@ public class GameService {
 
         statList.sort(Comparator.comparingInt(UserStatDto::getId));
         return statList;
-    }
-
-
-
-    /**
-     * 화면에 보여질 인벤토리 정보
-     * @return 인벤토리 정보 반환
-     */
-    /**
-     * 화면에 보여질 인벤토리 정보 (UUID 인스턴스 기반)
-     */
-    private List<ItemPageDto> getInventoryPageData() {
-        InventoryStatus invStatus = inventoryFileRepository.findInventoryStatus();
-        List<ItemPageDto> inventoryDtoList = new ArrayList<>();
-
-        if (invStatus == null || invStatus.getInstanceIds() == null) {
-            return inventoryDtoList;
-        }
-
-        // 1. 인벤토리에 등록된 모든 UUID를 순회
-        for (String uuid : invStatus.getInstanceIds()) {
-            // 2. UUID로 실제 아이템 인스턴스(상태 정보)를 가져옴
-            ItemInstance instance = itemInstanceRepository.findById(uuid).orElse(null);
-            if (instance == null) continue;
-
-            // 3. 인스턴스를 DTO로 변환하여 추가
-            // 장비는 애초에 각각의 인스턴스로 존재하므로 별도의 루프가 필요 없음
-            inventoryDtoList.add(convertToItemPageDto(instance));
-        }
-
-        return inventoryDtoList;
     }
 
     public TownPageDto getTownData() {

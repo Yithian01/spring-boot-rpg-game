@@ -78,7 +78,7 @@
 
 <div th:fragment="statusPanel(game)" class="box">
     <div class="profile-header">
-        <img th:src="@{'/tribe_' + ${game.img} + '.png'}" class="profile-img">
+        <img th:src="${game.img}" class="profile-img">
         <div style="flex-grow: 1;">
             <div style="display: flex; justify-content: space-between;">
                 <b th:text="${game.userName}">User</b>

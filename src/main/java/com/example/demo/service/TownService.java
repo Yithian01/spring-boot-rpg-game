@@ -308,12 +308,6 @@ public class TownService {
     }
 
     /**
-     * 다음 날로 진행 (턴 회복 및 납부 상태 초기화)
+     *
      */
-    private void nextDay(TownStatus town) {
-        town.setDay(town.getDay() + 1);
-        town.setCurrentTurn(town.getMaxTurn()); // 턴 풀 회복
-        town.setTaxPaid(false); // 다시 미납 상태로
-        // payTax에서 인상하지 않았다면 여기서 인상 로직을 넣어도 됩니다.
-    }
 }

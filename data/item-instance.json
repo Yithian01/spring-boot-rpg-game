@@ -1,6 +1,6 @@
 {
-  "8f538b2f-210e-48af-b56f-e1d7471139ec" : {
-    "instanceId" : "8f538b2f-210e-48af-b56f-e1d7471139ec",
+  "e588c1d6-fca8-4a30-af6a-c85bf371d336" : {
+    "instanceId" : "e588c1d6-fca8-4a30-af6a-c85bf371d336",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -9,7 +9,7 @@
     "subType" : "FOOD",
     "twoHanded" : false,
     "description" : "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
-    "quantity" : 3,
+    "quantity" : 5,
     "enhancementLevel" : 0,
     "price" : 30,
     "baseStatsBonus" : { },
@@ -23,8 +23,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "427c8188-fd37-47bd-b70a-f946af06c828" : {
-    "instanceId" : "427c8188-fd37-47bd-b70a-f946af06c828",
+  "7cfe2476-2283-4231-96e2-111db90b8ba9" : {
+    "instanceId" : "7cfe2476-2283-4231-96e2-111db90b8ba9",
     "itemMetaId" : 8,
     "customName" : "8등급 마석",
     "grade" : "COMMON",
@@ -33,7 +33,7 @@
     "subType" : "MAGIC_STONE",
     "twoHanded" : false,
     "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
-    "quantity" : 3,
+    "quantity" : 5,
     "enhancementLevel" : 0,
     "price" : 100,
     "baseStatsBonus" : { },
@@ -43,55 +43,56 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "0e78545a-91a3-4ae4-aa83-b452105c8d69" : {
-    "instanceId" : "0e78545a-91a3-4ae4-aa83-b452105c8d69",
-    "itemMetaId" : 22,
-    "customName" : "금이 간 연습용 완드",
+  "146bd660-4a5b-46bd-82ac-14fc6a51d6a9" : {
+    "instanceId" : "146bd660-4a5b-46bd-82ac-14fc6a51d6a9",
+    "itemMetaId" : 43,
+    "customName" : "무뎌진 사냥용 단검",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "WAND",
+    "subType" : "DAGGER",
     "twoHanded" : false,
-    "description" : "아카데미 시절 쓰던 완드입니다.",
+    "description" : "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 300000,
+    "price" : 115000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "magicAtk" : 12.0,
-      "maxMp" : 150.0
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ 11 ]
-  },
-  "c60e6afe-1cbf-48e9-854a-edfaa04ee6c2" : {
-    "instanceId" : "c60e6afe-1cbf-48e9-854a-edfaa04ee6c2",
-    "itemMetaId" : 23,
-    "customName" : "수습 마법사의 로브",
-    "grade" : "COMMON",
-    "type" : "EQUIPMENT",
-    "slot" : "BODY",
-    "subType" : "CLOTH",
-    "twoHanded" : false,
-    "description" : "마나 흐름을 돕는 얇은 천 옷입니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 180000,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : {
-      "maxMp" : 50.0,
-      "magRes" : 0.1,
-      "mpRegen" : 15.0
+      "accuracy" : 2.0,
+      "critRate" : 5.0,
+      "meleeAtk" : 7.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "17054560-9658-4c73-b769-405b5ea9a8bb" : {
-    "instanceId" : "17054560-9658-4c73-b769-405b5ea9a8bb",
+  "ef8aac77-7756-43bb-8d8d-867c020c293c" : {
+    "instanceId" : "ef8aac77-7756-43bb-8d8d-867c020c293c",
+    "itemMetaId" : 27,
+    "customName" : "변색된 가시 가죽 옷",
+    "grade" : "COMMON",
+    "type" : "EQUIPMENT",
+    "slot" : "BODY",
+    "subType" : "LEATHER",
+    "twoHanded" : false,
+    "description" : "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 76000,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : {
+      "dodge" : 3.0,
+      "critRate" : 2.0,
+      "physDef" : 5.0
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "7e3f011f-cc99-4244-8049-187482802bac" : {
+    "instanceId" : "7e3f011f-cc99-4244-8049-187482802bac",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -113,36 +114,34 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "6e70c851-d0f3-4ca5-a060-fb84d27ffb6b" : {
-    "instanceId" : "6e70c851-d0f3-4ca5-a060-fb84d27ffb6b",
-    "itemMetaId" : 45,
-    "customName" : "원소의 서 [초급]",
+  "59a529d4-7ef6-4c20-a84e-49a497562ba9" : {
+    "instanceId" : "59a529d4-7ef6-4c20-a84e-49a497562ba9",
+    "itemMetaId" : 44,
+    "customName" : "중독 허리띠",
     "grade" : "RARE",
     "type" : "EQUIPMENT",
-    "slot" : "SUB_WEAPON",
-    "subType" : "BOOK",
+    "slot" : "ARTIFACT",
+    "subType" : "BELT",
     "twoHanded" : false,
-    "description" : "기초적인 삼원소 마법이 기록된 마법서입니다. 마나의 흐름을 정돈하여 영창을 돕습니다.",
+    "description" : "다양한 독주머니가 매달린 허리띠입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 520000,
+    "price" : 480000,
     "baseStatsBonus" : {
-      "13" : 6,
-      "14" : 4
+      "9" : 5
     },
     "combatStatsBonus" : {
-      "accuracy" : 5.0,
-      "maxMp" : 80.0,
-      "mpRegen" : 5.0,
-      "magicAtk" : 15.0
+      "toxicPen" : 0.1,
+      "statusResist" : 5.0,
+      "toxicAtk" : 60.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ 13, 21, 22 ]
+    "grantedSkillIds" : [ 20 ]
   },
-  "fe800d82-cde9-428f-a5d0-e9158bb66e9a" : {
-    "instanceId" : "fe800d82-cde9-428f-a5d0-e9158bb66e9a",
+  "7b96dde5-1f49-44c0-bdae-3e869236be46" : {
+    "instanceId" : "7b96dde5-1f49-44c0-bdae-3e869236be46",
     "itemMetaId" : 9,
     "customName" : "동굴 쥐의 9등급 마석",
     "grade" : "COMMON",

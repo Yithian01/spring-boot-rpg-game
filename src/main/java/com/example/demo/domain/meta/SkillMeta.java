@@ -18,6 +18,7 @@ public class SkillMeta {
     private String icon;
     private String description;
     private String type;         // PHYSICAL, MAGIC, UTILITY 등
+    private String grade;        // 마석등급에 따라 뽑기위해 BASE, COMMON, UNCOMMON 등
     private int turnCost;        // 행동 소모 턴 (AP)
     private int hitChance;        // 적중확률
 

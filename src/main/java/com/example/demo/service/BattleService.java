@@ -142,7 +142,7 @@ public class BattleService {
                     boolean isIntrinsic = !isGeneric && canUse;
                     return (hasSkill && (isGeneric || canUse)) || isIntrinsic;
                 })
-                .map(meta -> buildSkillCardDto(user, ds, monster, meta, "PLAYER", meta.getIcon()))
+                .map(meta -> buildSkillCardDto(user, ds, monster, meta, meta.getGrade(), meta.getIcon()))
                 .toList();
 
         totalHand.addAll(playerSkills);
@@ -167,7 +167,7 @@ public class BattleService {
 
                     // DTO 생성 (skillType: MONSTER, icon: monsterId 기반)
                     String monsterIcon = "/images/monsters/" + ei.getMonsterId() + ".png";
-                    totalHand.add(buildSkillCardDto(user, ds, monster, mMeta, "MONSTER", monsterIcon));
+                    totalHand.add(buildSkillCardDto(user, ds, monster, mMeta, mMeta.getGrade(), monsterIcon));
                 }
             }
         }

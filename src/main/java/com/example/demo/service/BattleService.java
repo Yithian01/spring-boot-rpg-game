@@ -657,7 +657,9 @@ public class BattleService {
             monster.setCurrentHp(0);
             ds.setPendingExp(0);
             ds.setActiveMonster(monster);
-            ds.setProgress(ds.getProgress() + statCalculationService.calculateExplorationEfficiency(us.getBaseStats()));
+
+            int nextProgress = Math.min(100, ds.getProgress() + statCalculationService.calculateExplorationEfficiency(us.getBaseStats()));
+            ds.setProgress(nextProgress);
 
         } else {
             // 패배 시 초기화

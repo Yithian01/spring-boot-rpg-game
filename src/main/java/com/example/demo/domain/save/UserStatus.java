@@ -81,11 +81,13 @@ public class UserStatus {
     private Map<String, String> equippedItems = new HashMap<>() {{
         put("HEAD", "0");
         put("BODY", "0");
+        put("GLOVES", "0");
         put("BOOTS", "0");
         put("WEAPON", "0");
         put("SUB_WEAPON", "0");
         put("NECKLACE", "0");
         put("RING", "0");
+        put("ARTIFACT", "0");
     }};
 
     /* =========================

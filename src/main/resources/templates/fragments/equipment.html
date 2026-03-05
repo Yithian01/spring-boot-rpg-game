@@ -89,12 +89,12 @@
     <th:block th:with="slotMap=${ {
         '0':'NECKLACE', '1':'HEAD', '2':'RING',
         '3':'WEAPON',   '4':'BODY', '5':'SUB_WEAPON',
-        '6':'EMPTY',    '7':'BOOTS','8':'EMPTY'
+        '6':'GLOVES',    '7':'BOOTS','8':'ARTIFACT'
     } },
     icons=${ {
         'NECKLACE':'📿', 'HEAD':'👑', 'RING':'💍',
         'WEAPON':'⚔️',   'BODY':'👕', 'SUB_WEAPON':'🛡️',
-        'BOOTS':'👞'
+        'BOOTS':'👞',    'GLOVES':'🧤', 'ARTIFACT':'💎'
     } }">
 
         <div th:each="i : ${#numbers.sequence(0, 8)}"

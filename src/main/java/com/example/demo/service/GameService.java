@@ -171,12 +171,15 @@ public class GameService {
         // 8. 데이터 저장
         userFileRepository.saveUserStatus(newUser);
 
+        List<MagicStoneDto> magicStoneCounts = inventoryService.getMagicStoneList();
         TownStatus newTown = TownStatus.builder()
                 .currentTurn(30)
                 .maxTurn(30)
                 .day(1)
                 .currentTax(900000)
                 .isTaxPaid(false)
+                .magicStoneList(magicStoneCounts)
+                .skillOptions(new ArrayList<>())
                 .build();
         townFileRepository.saveTownStatus(newTown);
 
@@ -330,42 +333,10 @@ public class GameService {
                 .build();
     }
 
-    /**
-     * 초기 스탯을 처리
-     * @param user 유저 스탯
-     * @return 결과 반환
-     */
-    private List<UserStatDto> mapUserStats(UserStatus user) {
-        List<UserStatDto> statList = new ArrayList<>();
-        Map<Integer, StatMeta> metaMap = gameDataManager.getStatMetaMap();
-
-        // 무조건 finalStats를 보되, 혹시 비어있다면 baseStats를 백업으로 사용
-        Map<Integer, Integer> statsToDisplay = (user.getFinalStats() != null && !user.getFinalStats().isEmpty())
-                ? user.getFinalStats()
-                : user.getBaseStats();
-
-        for (StatMeta meta : metaMap.values()) {
-            int key = meta.getId();
-            int value = statsToDisplay.getOrDefault(key, 0);
-            int potential = user.getPotentials().getOrDefault(key, 0);
-
-            UserStatDto dto = UserStatDto.builder()
-                    .id(meta.getId())
-                    .name(meta.getName())
-                    .description(meta.getDescription())
-                    .value(value) // 장비+버프가 모두 합쳐진 최종값
-                    .growthGrade(gameDataManager.getPotentialGrade(potential))
-                    .build();
-            statList.add(dto);
-        }
-
-        statList.sort(Comparator.comparingInt(UserStatDto::getId));
-        return statList;
-    }
-
     public TownPageDto getTownData() {
         TownStatus town = townFileRepository.findTownStatus();
         boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
+        List<MagicStoneDto> magicStoneList = town.getMagicStoneList();
 
         return TownPageDto.builder()
                 .day(town.getDay())
@@ -374,6 +345,9 @@ public class GameService {
                 .currentTax(town.getCurrentTax())
                 .isTaxPaid(town.isTaxPaid())
                 .portalOpen(isFirstDayOfMonth)
+                .magicStoneList(magicStoneList)
+                .totalMagicStoneCount(magicStoneList.stream().mapToInt(MagicStoneDto::getQuantity).sum())
+                .skillOptions(town.getSkillOptions())
                 .build();
     }
 

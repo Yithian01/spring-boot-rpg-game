@@ -1,7 +1,137 @@
 {
   "currentTurn" : 30,
   "maxTurn" : 30,
-  "day" : 2,
+  "day" : 1,
   "currentTax" : 900000,
+  "magicStoneList" : [ {
+    "instanceId" : "900ee0b4-c4bb-4da3-a423-e01dd3b6fed3",
+    "customName" : "1등급 마석",
+    "grade" : 1,
+    "quantity" : 5
+  }, {
+    "instanceId" : "fcb88478-b877-47b3-bba8-2bc78693dd7a",
+    "customName" : "2등급 마석",
+    "grade" : 2,
+    "quantity" : 5
+  }, {
+    "instanceId" : "a8622282-305a-47c8-ae9c-4e4b7b74266c",
+    "customName" : "3등급 마석",
+    "grade" : 3,
+    "quantity" : 5
+  }, {
+    "instanceId" : "0b87f14d-ea6d-45b9-a205-46207c5b6cbd",
+    "customName" : "4등급 마석",
+    "grade" : 4,
+    "quantity" : 5
+  }, {
+    "instanceId" : "27ac8f75-8c9e-4465-8c4a-6fbb775aafbb",
+    "customName" : "5등급 마석",
+    "grade" : 5,
+    "quantity" : 5
+  }, {
+    "instanceId" : "b07eb649-7e62-4e1d-ab6c-9fe965c57af5",
+    "customName" : "6등급 마석",
+    "grade" : 6,
+    "quantity" : 5
+  }, {
+    "instanceId" : "438c9a97-51ac-4660-ac90-d527418a7ece",
+    "customName" : "7등급 마석",
+    "grade" : 7,
+    "quantity" : 5
+  }, {
+    "instanceId" : "af49f2b6-8089-4eed-9628-5b56fa30c5ef",
+    "customName" : "8등급 마석",
+    "grade" : 8,
+    "quantity" : 5
+  } ],
+  "skillOptions" : [ {
+    "id" : 15,
+    "name" : "매의 눈",
+    "icon" : null,
+    "description" : "집중력을 높여 공격의 정확도와 치명타 확률을 대폭 강화합니다.",
+    "grade" : "COMMON",
+    "turnCost" : 0,
+    "staminaCost" : 0,
+    "mpCost" : 0,
+    "hpCost" : 0,
+    "type" : null,
+    "element" : null,
+    "requiredWeapons" : null,
+    "effectType" : null,
+    "statusName" : null,
+    "duration" : null,
+    "effectChance" : null,
+    "scalingInfo" : null,
+    "modifierDetails" : null,
+    "alreadyLearned" : false,
+    "bonusStatType" : "PERCEPTION",
+    "bonusStatValue" : 5
+  }, {
+    "id" : 11,
+    "name" : "마력 화살",
+    "icon" : null,
+    "description" : "마나를 화살 형태로 형상화하여 발사합니다.",
+    "grade" : "COMMON",
+    "turnCost" : 0,
+    "staminaCost" : 0,
+    "mpCost" : 0,
+    "hpCost" : 0,
+    "type" : null,
+    "element" : null,
+    "requiredWeapons" : null,
+    "effectType" : null,
+    "statusName" : null,
+    "duration" : null,
+    "effectChance" : null,
+    "scalingInfo" : null,
+    "modifierDetails" : null,
+    "alreadyLearned" : false,
+    "bonusStatType" : "SPIRIT",
+    "bonusStatValue" : 5
+  }, {
+    "id" : 18,
+    "name" : "재생의 빛",
+    "icon" : null,
+    "description" : "성스러운 빛으로 상처를 치유합니다.",
+    "grade" : "COMMON",
+    "turnCost" : 0,
+    "staminaCost" : 0,
+    "mpCost" : 0,
+    "hpCost" : 0,
+    "type" : null,
+    "element" : null,
+    "requiredWeapons" : null,
+    "effectType" : null,
+    "statusName" : null,
+    "duration" : null,
+    "effectChance" : null,
+    "scalingInfo" : null,
+    "modifierDetails" : null,
+    "alreadyLearned" : false,
+    "bonusStatType" : "SPIRIT",
+    "bonusStatValue" : 5
+  }, {
+    "id" : 14,
+    "name" : "강화 근육",
+    "icon" : null,
+    "description" : "세포의 대사 효율을 일시적으로 높여 근력을 강화합니다.",
+    "grade" : "COMMON",
+    "turnCost" : 0,
+    "staminaCost" : 0,
+    "mpCost" : 0,
+    "hpCost" : 0,
+    "type" : null,
+    "element" : null,
+    "requiredWeapons" : null,
+    "effectType" : null,
+    "statusName" : null,
+    "duration" : null,
+    "effectChance" : null,
+    "scalingInfo" : null,
+    "modifierDetails" : null,
+    "alreadyLearned" : false,
+    "bonusStatType" : "PERCEPTION",
+    "bonusStatValue" : 5
+  } ],
   "taxPaid" : false
 }

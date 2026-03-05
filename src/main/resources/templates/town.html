@@ -12,6 +12,7 @@
     <th:block th:replace="~{fragments/modals/gamble-modal :: gambleStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/train-modal :: trainStyle}"></th:block>
     <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareStyle}"></th:block>
 </head>
 <body>
 
@@ -44,12 +45,13 @@
         </div>
     </div>
 
-    <div th:replace="~{fragments/actions/town-action :: actionPanel(gameData=${game})}"></div>
+    <div th:replace="~{fragments/actions/town-action :: actionPanel(gameData=${game}, town=${town})}"></div>
 </div>
 
 <div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
 <div th:replace="~{fragments/modals/gamble-modal :: gambleModal(${game})}"></div>
 <div th:replace="~{fragments/modals/train-modal :: trainModal}"></div>
+<div th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareModal(town=${town})}"></div>
 
 <script th:inline="javascript">
     /*<![CDATA[*/
@@ -137,10 +139,66 @@
         const map = {
             'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
             'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
-            'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
+            'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약',
+            'GLOVES': '장갑', 'BELT': '벨트', 'ARTIFACT': '아티펙트'
+
         };
         return map[type] || type; // 매핑 없으면 영어 그대로 노출
     }
+
+
+    let selectedStoneId = null;
+
+    function openExtractModal() {
+        document.getElementById('extractModal').style.display = 'flex';
+    }
+    function closeExtractModal() {
+        document.getElementById('extractModal').style.display = 'none';
+    }
+
+    function openConfirmModal(element) {
+        selectedStoneId = element.getAttribute('data-instance-id');
+        const stoneName = element.getAttribute('data-name');
+
+        const msgBox = document.getElementById('confirmMessage');
+        if (msgBox) {
+            msgBox.innerHTML = `<span class="highlight">[${stoneName}]</span><br>정말로 연성하시겠습니까?`;
+        }
+
+        document.getElementById('confirmModal').style.display = 'flex';
+    }
+
+    function closeConfirmModal() {
+        document.getElementById('confirmModal').style.display = 'none';
+    }
+
+    function prepareExtract(instanceId) {
+        if (!instanceId) return;
+
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/town/extract-prepare';
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'instanceId';
+        input.value = instanceId;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const finalBtn = document.getElementById('finalConfirmBtn');
+        if (finalBtn) {
+            finalBtn.onclick = function() {
+                if (selectedStoneId) {
+                    prepareExtract(selectedStoneId);
+                }
+            };
+        }
+    });
 
     /*]]>*/
 </script>

@@ -4,6 +4,7 @@ import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.save.InventoryStatus;
 import com.example.demo.domain.save.ItemInstance;
 import com.example.demo.domain.save.UserStatus;
+import com.example.demo.dto.MagicStoneDto;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.InventoryFileRepository;
 import com.example.demo.repository.ItemInstanceRepository;
@@ -12,10 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -220,6 +218,7 @@ public class InventoryService {
     }
 
     /**
+     * 마석 제외
      * 아이템 소모 로직 (UUID 기반)
      */
     public String consumeItem(String instanceId) {
@@ -433,5 +432,54 @@ public class InventoryService {
             if (randomValue <= currentSum) return grade;
         }
         return "COMMON";
+    }
+
+    /**
+     * UI 모달에 띄울 마석 인스턴스 리스트를 반환합니다.
+     */
+    public List<MagicStoneDto> getMagicStoneList() {
+        InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
+        List<MagicStoneDto> stoneList = new ArrayList<>();
+
+        for (String id : inventory.getInstanceIds()) {
+            itemInstanceRepository.findById(id).ifPresent(ii -> {
+                // metaId 1~9 혹은 subType이 MAGIC_STONE인 경우
+                if (ii.getItemMetaId() >= 1 && ii.getItemMetaId() <= 9) {
+                    stoneList.add(MagicStoneDto.builder()
+                            .instanceId(ii.getInstanceId())
+                            .customName(ii.getCustomName())
+                            .grade(ii.getItemMetaId())
+                            .quantity(ii.getQuantity())
+                            .build());
+                }
+            });
+        }
+        // 등급별로 정렬해서 보여주면 더 깔끔함 (1등급이 위로 오게)
+        stoneList.sort(Comparator.comparingInt(MagicStoneDto::getGrade));
+        return stoneList;
+    }
+
+    public ItemInstance getMagicStone(String instanceId){
+        ItemInstance item = itemInstanceRepository.findById(instanceId).orElseGet(null);
+        return item;
+    }
+
+    /**
+     * 마석 소모 --> Skill 로직 (UUID 기반)
+     */
+    public void consumeStone(ItemInstance ii) {
+        InventoryStatus inventory = inventoryFileRepository.findInventoryStatus();
+
+        ii.setQuantity(ii.getQuantity() - 1);
+
+        if (ii.getQuantity() <= 0) {
+            // 수량이 다 되면 인벤토리 명단에서 제거 및 인스턴스 파일 삭제
+            inventory.getInstanceIds().remove(ii.getInstanceId());
+            itemInstanceRepository.deleteByInstanceId(ii.getInstanceId());
+        } else {
+            itemInstanceRepository.save(ii);
+        }
+
+        inventoryFileRepository.saveInventoryStatus(inventory);
     }
 }

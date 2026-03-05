@@ -305,4 +305,75 @@ public class GameDataManager  implements ApplicationRunner {
         // 4. 최종 몬스터 메타 반환
         return monsterMetaMap.get(monsterId);
     }
+
+    /**
+     * 마석 등급(9~1)을 받아 랜덤하게 스킬 등급(COMMON~LEGENDARY)을 반환합니다.
+     * @param magicStoneGrade 마석의 아이템 메타 ID (9: 최하급 ~ 1: 최상급)
+     * @return 결정된 스킬 등급 문자열
+     */
+    public String rollSkillGrade(int magicStoneGrade) {
+        int roll = random.nextInt(100); // 0~99
+        return switch (magicStoneGrade) {
+            case 9 -> "COMMON"; // 9등급: 무조건 커먼
+            case 8 -> (roll < 70) ? "COMMON" : "UNCOMMON"; // 8등급: 커먼(70%), 언커먼(30%)
+            case 7 -> (roll < 30) ? "COMMON" : "UNCOMMON"; // 7등급: 커먼(30%), 언커먼(70%)
+            case 6 -> (roll < 60) ? "UNCOMMON" : "RARE"; // 6등급: 언커먼(60%), 레어(40%)
+            case 5 -> { // 5등급: 언커먼(20%), 레어(70%), 에픽(10%)
+                if (roll < 20) yield "UNCOMMON";
+                if (roll < 90) yield "RARE";
+                yield "EPIC";
+            }
+            case 4 -> (roll < 50) ? "RARE" : "EPIC";  // 4등급: 레어(50%), 에픽(50%)
+            case 3 -> { // 3등급: 레어(10%), 에픽(70%), 레전더리(20%)
+                if (roll < 10) yield "RARE";
+                if (roll < 80) yield "EPIC";
+                yield "LEGENDARY";
+            }
+            case 2 ->(roll < 50) ? "EPIC" : "LEGENDARY"; // 2등급: 에픽(50%), 레전더리(50%)
+            case 1 -> (roll < 20) ? "EPIC" : "LEGENDARY"; // 1등급: 에픽(20%), 레전더리(80%)
+            default -> "COMMON";
+        };
+    }
+
+    /**
+     * 등급별로 스킬 메타를 필터링하여 리스트로 반환 (메모리 풀 활용)
+     */
+    public List<SkillMeta> getSkillsByGrade(String grade) {
+        return skillMetaMap.values().stream()
+                .filter(s -> s.getGrade().equalsIgnoreCase(grade))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * 스탯 ID가 0이거나 정의되지 않은 경우 랜덤으로 카테고리 결정
+     * @param statId 스킬의 보정 스탯
+     * @return PHYSIQUE, AGILITY 등 반환
+     */
+    public String getStatBaseCategory(int statId) {
+        if (statId <= 0) {
+            String[] categories = {"PHYSIQUE", "AGILITY", "PERCEPTION", "SPIRIT"};
+            return categories[random.nextInt(categories.length)];
+        }
+        StatMeta meta = this.statMetaMap.get(statId);
+        if (meta == null) {
+            return "PHYSIQUE";
+        }
+        return meta.getCategory();
+    }
+
+    /**
+     * 마석 등급에 따른 중복 스킬 연마 보너스 수치를 반환합니다.
+     * @param stoneGrade 마석 메타 ID (1~9)
+     * @return 증가할 스탯 수치
+     */
+    public int calculateBonusValue(int stoneGrade) {
+        return switch (stoneGrade) {
+            case 1 -> 15;
+            case 2, 3 -> 10;
+            case 4, 5, 6 -> 5;
+            case 7, 8 -> 2;
+            case 9 -> 1;
+            default -> 1;
+        };
+    }
 }

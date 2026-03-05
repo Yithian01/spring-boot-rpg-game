@@ -117,10 +117,35 @@
             color: #ff7675;
             font-weight: normal;
         }
+
+        /* 마석 연성 전용 스타일 추가 */
+        .btn-extract {
+            background: #006266 !important; /* 심해의 마석 느낌 청록색 */
+            border-bottom: 4px solid #003d3f !important;
+            position: relative;
+        }
+
+        /* 마석 보유 수량 배지 */
+        .stone-badge {
+            position: absolute;
+            top: 5px; right: 5px;
+            background: #ff4757; color: white;
+            font-size: 0.7rem; padding: 2px 6px;
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        /* 마석 없을 때 비활성화 스타일 */
+        .btn-extract:disabled {
+            background: #2a2a2a !important;
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(1);
+        }
     </style>
 </th:block>
 
-<div th:fragment="actionPanel(gameData)" class="town-action-grid">
+<div th:fragment="actionPanel(gameData, town)" class="town-action-grid">
     <th:block th:with="isDungeonOpen=${town.portalOpen}">
 
         <form action="/town/tax" method="post" style="display:contents;">
@@ -167,7 +192,16 @@
             </button>
         </form>
 
-        <button type="button" class="action-btn btn-empty"></button>
+        <button type="button"
+                class="action-btn btn-extract"
+                onclick="openExtractModal()"
+                th:disabled="${town.totalMagicStoneCount == 0}">
+            <span>💎</span>
+            마석 연성
+            <span class="stone-badge"
+                  th:if="${town.totalMagicStoneCount > 0}"
+                  th:text="${town.totalMagicStoneCount}">0</span>
+        </button>
         <button type="button" class="action-btn btn-empty"></button>
     </th:block>
 </div>

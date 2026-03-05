@@ -117,4 +117,36 @@ public class TownController {
         return "redirect:/game/play";
     }
 
+    /**
+     * 특정 마석 인스턴스를 사용하여 연성 가능한 스킬 카드 리스트를 생성 (Step 1)
+     * @param instanceId 유저가 클릭한 마석의 고유 ID (UUID)
+     */
+    @PostMapping("/extract-prepare")
+    public String prepareExtraction(@RequestParam String instanceId, RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        townService.skillExtractionOptions(instanceId);
+        return "redirect:/game/play";
+    }
+
+//    /**
+//     * 유저가 선택한 스킬을 최종적으로 배우거나 스탯으로 전환 (Step 2)
+//     * @param skillId 선택한 스킬 ID
+//     * @param stoneGrade 사용된 마석 등급 (중복 보상 수치 결정용)
+//     */
+//    @PostMapping("/extract-confirm")
+//    public String confirmExtraction(@RequestParam int skillId,
+//                                    @RequestParam int stoneGrade,
+//                                    RedirectAttributes redirectAttributes) {
+//
+//        String resultMessage = townService.confirmSkillExtraction(skillId, stoneGrade);
+//        redirectAttributes.addFlashAttribute("message", resultMessage);
+//
+//        return "redirect:/game/play";
+//    }
 }

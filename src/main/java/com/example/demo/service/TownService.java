@@ -2,10 +2,13 @@ package com.example.demo.service;
 
 import java.text.DecimalFormat;
 import com.example.demo.domain.meta.GrowthMeta;
+import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.meta.StatMeta;
 import com.example.demo.domain.save.GameStatus;
+import com.example.demo.domain.save.ItemInstance;
 import com.example.demo.domain.save.TownStatus;
 import com.example.demo.domain.save.UserStatus;
+import com.example.demo.dto.RandomSkillCardDto;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.GameFileRepository;
 import com.example.demo.repository.TownFileRepository;
@@ -14,9 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -28,6 +29,7 @@ public class TownService {
     private final UserFileRepository userFileRepository;
     private final TownFileRepository townFileRepository;
     private final StatCalculationService statCalculationService;
+    private final InventoryService inventoryService;
     private final GameDataManager gameDataManager;
 
     /**
@@ -307,7 +309,65 @@ public class TownService {
         return actionMessage;
     }
 
-    /**
-     *
-     */
+    public void skillExtractionOptions(String instanceId) {
+        ItemInstance stone = inventoryService.getMagicStone(instanceId);
+        if (stone == null) throw new IllegalStateException("마석 정보가 없습니다.");
+
+        // 먼저 차감(제거)
+        inventoryService.consumeStone(stone);
+
+        UserStatus us = userFileRepository.findGameUser();
+        int stoneGrade = stone.getItemMetaId();
+        int cardCount = (us.getTribeId() == 1) ? 4 : 3;
+
+        // 등급 리스트 먼저 확정 (ex: [COMMON, UNCOMMON, COMMON])
+        List<String> gradesToPull = new ArrayList<>();
+        for (int i = 0; i < cardCount; i++) {
+            gradesToPull.add(gameDataManager.rollSkillGrade(stoneGrade));
+        }
+
+        // 비복원 추출을 위한 임시 스킬 풀 준비 (메모리 원본 보호를 위해 새 리스트로 복사)
+        Map<String, List<SkillMeta>> tempPools = new HashMap<>();
+        for (String grade : gradesToPull.stream().distinct().toList()) {
+            tempPools.put(grade, new ArrayList<>(gameDataManager.getSkillsByGrade(grade)));
+        }
+
+        List<RandomSkillCardDto> options = new ArrayList<>();
+        Random rnd = new Random();
+
+        for (String targetGrade : gradesToPull) {
+            List<SkillMeta> currentPool = tempPools.get(targetGrade);
+
+            // 만약 해당 등급 풀에 스킬이 부족하면 COMMON 등급에서 보충 (안전장치)
+            if (currentPool.isEmpty()) {
+                if (!tempPools.containsKey("COMMON")) {
+                    tempPools.put("COMMON", new ArrayList<>(gameDataManager.getSkillsByGrade("COMMON")));
+                }
+                currentPool = tempPools.get("COMMON");
+            }
+
+            // 중복 방지: 리스트에서 하나를 무작위로 꺼내고(remove) 결과에 담기
+            SkillMeta picked = currentPool.remove(rnd.nextInt(currentPool.size()));
+
+            // 유저가 이미 배운 스킬인지 확인
+            boolean alreadyLearned = us.getLearnedSkillIds().contains(picked.getId());
+            int primaryStatId = picked.getStatScaling().keySet().stream()
+                    .findFirst()
+                    .orElse(0);
+
+            options.add(RandomSkillCardDto.builder()
+                    .id(picked.getId())
+                    .name(picked.getName())
+                    .description(picked.getDescription())
+                    .grade(picked.getGrade())
+                    .alreadyLearned(alreadyLearned)
+                    .bonusStatType(gameDataManager.getStatBaseCategory(primaryStatId)) // 스킬 메타에 정의된 대표 스탯 (육신, 기민 등)
+                    .bonusStatValue(gameDataManager.calculateBonusValue(stoneGrade))
+                    .build());
+        }
+
+        TownStatus town = townFileRepository.findTownStatus();
+        town.setSkillOptions(options);
+        townFileRepository.saveTownStatus(town);
+    }
 }

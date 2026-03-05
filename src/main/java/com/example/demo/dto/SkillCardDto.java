@@ -15,7 +15,7 @@ public class SkillCardDto {
     private String name;
     private String icon;
     private String description;
-    private String skillType; // PLAYER, MONSTER
+    private String skillType; // BASE, COMMON, UNCOMMON, RARE, EPIC, MONSTER
 
     // [1] 비용 및 기본 제약
     private int turnCost;

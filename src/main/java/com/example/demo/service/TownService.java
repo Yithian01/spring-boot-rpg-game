@@ -358,8 +358,27 @@ public class TownService {
             options.add(RandomSkillCardDto.builder()
                     .id(picked.getId())
                     .name(picked.getName())
+                    .icon(picked.getIcon())
                     .description(picked.getDescription())
                     .grade(picked.getGrade())
+
+                    .turnCost(picked.getTurnCost())
+                    .staminaCost(picked.getCost().getOrDefault("stamina", 0))
+                    .mpCost(picked.getCost().getOrDefault("mp", 0))
+                    .hpCost(picked.getCost().getOrDefault("hp", 0))
+
+                    .type(picked.getType())
+                    .element(picked.getEffect().getElement())
+                    .requiredWeapons(picked.getRequiredWeapons())
+
+                    .effectType(picked.getEffect().getType())
+                    .statusName(gameDataManager.getStatusName(picked.getEffect().getStatus()))
+                    .duration(picked.getEffect().getDuration())
+                    .effectChance(picked.getEffect().getChance())
+
+                    .scalingInfo(gameDataManager.createSkillScalingInfo(picked))
+                    .modifierDetails(gameDataManager.createSkillModifierInfo(picked))
+
                     .alreadyLearned(alreadyLearned)
                     .bonusStatType(gameDataManager.getStatBaseCategory(primaryStatId)) // 스킬 메타에 정의된 대표 스탯 (육신, 기민 등)
                     .bonusStatValue(gameDataManager.calculateBonusValue(stoneGrade))

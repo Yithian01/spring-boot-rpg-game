@@ -376,4 +376,102 @@ public class GameDataManager  implements ApplicationRunner {
             default -> 1;
         };
     }
+
+    public List<String> createSkillScalingInfo(SkillMeta meta) {
+        List<String> scalingInfo = new ArrayList<>();
+
+        if (meta.getDamageScaling() != null) {
+            // [A] 공격력 계수 (물리/마법 + 속성)
+            boolean isMagic = "MAGIC".equals(meta.getType()) || "MAGICAL".equals(meta.getType()) || "HEAL".equals(meta.getType()) ;
+            String baseLabel = isMagic ? "마법" : "물리";
+            String element = (meta.getEffect() != null) ? meta.getEffect().getElement() : "NONE";
+
+            double atkScaling = meta.getDamageScaling().getOrDefault(isMagic ? "magicAtk" : "meleeAtk", 0.0);
+            if (atkScaling > 0) {
+                String elementLabel = getKoreanElement(element);
+                String label = (element.equals("NONE") || element.equals("PHYSICAL")) ? baseLabel : baseLabel + "+" + elementLabel;
+                scalingInfo.add(label + " : " + (int) (atkScaling * 100) + "%");
+            }
+
+            // [B] 세부 스탯 보정 (제공해주신 스탯 리스트 기반)
+            if (meta.getStatScaling() != null) {
+                meta.getStatScaling().forEach((statId, factor) -> {
+                    String statName = getStatName(statId);
+                    scalingInfo.add(statName + " : " + (int) (factor * 100) + "%");
+                });
+            }
+        }
+        return scalingInfo;
+    }
+
+    public List<String> createSkillModifierInfo(SkillMeta meta) {
+        List<String> modifierInfo = new ArrayList<>();
+        SkillEffect effect = meta.getEffect();
+        if (effect == null) return modifierInfo;
+
+        // 1. 베이스 스탯 가산 (statOffsets: Integer) -> "근력 +5"
+        if (effect.getStatOffsets() != null) {
+            effect.getStatOffsets().forEach((statId, value) -> {
+                String name = getStatName(statId);
+                if (value != 0) {
+                    String sign = value > 0 ? "+" : "";
+                    modifierInfo.add(name + " " + sign + value);
+                }
+            });
+        }
+
+        // 2. 베이스 스탯 배율 (statModifiers: Double) -> "근력 +20%"
+        if (effect.getStatModifiers() != null) {
+            effect.getStatModifiers().forEach((statId, value) -> {
+                String name = getStatName(statId);
+                int percent = (int) Math.round((value - 1.0) * 100);
+                if (percent != 0) {
+                    String sign = percent > 0 ? "+" : "";
+                    modifierInfo.add(name + " " + sign + percent + "%");
+                }
+            });
+        }
+
+        // 3. 전투 스탯 가산 (combatStatOffsets: Double) -> "화염 저항 +10%"
+        // fireRes: 0.1 같은 경우를 여기서 처리
+        if (effect.getCombatStatOffsets() != null) {
+            effect.getCombatStatOffsets().forEach((key, value) -> {
+                String name = STAT_NAME_MAP.getOrDefault(key, key);
+                int displayVal = (int) (value * 100); // 0.1 -> 10
+                if (displayVal != 0) {
+                    String sign = displayVal > 0 ? "+" : "";
+                    modifierInfo.add(name + " " + sign + displayVal + "%");
+                }
+            });
+        }
+
+        // 4. 전투 스탯 배율 (combatStatModifiers: Double) -> "명중률 +20%"
+        if (effect.getCombatStatModifiers() != null) {
+            effect.getCombatStatModifiers().forEach((key, value) -> {
+                String name = STAT_NAME_MAP.getOrDefault(key, key);
+                int percent = (int) Math.round((value - 1.0) * 100);
+                if (percent != 0) {
+                    String sign = percent > 0 ? "+" : "";
+                    modifierInfo.add(name + " " + sign + percent + "%");
+                }
+            });
+        }
+
+        processSpecialEffect(effect, modifierInfo);
+
+        return modifierInfo;
+    }
+
+    // 상세 수치 중 누락되기 쉬운 특수 필드들 처리
+    private void processSpecialEffect(SkillEffect effect, List<String> info) {
+        if (effect.getPenetration() != null && effect.getPenetration() > 0) {
+            info.add("방어 관통: " + (int)(effect.getPenetration() * 100) + "%");
+        }
+        if (effect.getCritRate() != null && effect.getCritRate() > 0) {
+            info.add("추가 치명타율: +" + effect.getCritRate() + "%");
+        }
+        if (effect.getCritDamage() != null && effect.getCritDamage() > 0) {
+            info.add("추가 치명타배율: +" + effect.getCritDamage() + "%");
+        }
+    }
 }

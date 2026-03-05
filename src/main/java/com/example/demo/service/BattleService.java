@@ -190,28 +190,8 @@ public class BattleService {
         }
 
         // 스케일링 가공
-        List<String> scalingInfo = new ArrayList<>();
-        if (meta.getDamageScaling() != null) {
-            // [A] 공격력 계수 (물리/마법 + 속성)
-            boolean isMagic = "MAGIC".equals(meta.getType()) || "MAGICAL".equals(meta.getType());
-            String baseLabel = isMagic ? "마법" : "물리";
-            String element = (meta.getEffect() != null) ? meta.getEffect().getElement() : "NONE";
-
-            double atkScaling = meta.getDamageScaling().getOrDefault(isMagic ? "magicAtk" : "meleeAtk", 0.0);
-            if (atkScaling > 0) {
-                String elementLabel = gameDataManager.getKoreanElement(element);
-                String label = (element.equals("NONE") || element.equals("PHYSICAL")) ? baseLabel : baseLabel + "+" + elementLabel;
-                scalingInfo.add(label + " : " + (int)(atkScaling * 100) + "%");
-            }
-
-            // [B] 세부 스탯 보정 (제공해주신 스탯 리스트 기반)
-            if (meta.getStatScaling() != null) {
-                meta.getStatScaling().forEach((statId, factor) -> {
-                    String statName = gameDataManager.getStatName(statId);
-                    scalingInfo.add(statName + " : " + (int)(factor * 100) + "%");
-                });
-            }
-        }
+        List<String> scalingInfo = gameDataManager.createSkillScalingInfo(meta);
+        List<String> modifierInfo = gameDataManager.createSkillModifierInfo(meta);
 
         // 명중/위력 계산
         int realHitChance = 0;
@@ -249,6 +229,7 @@ public class BattleService {
                 .effectChance(meta.getEffect() != null ? meta.getEffect().getChance() : null)
 
                 .scalingInfo(scalingInfo)
+                .modifierDetails(modifierInfo)
 
                 .expectedPower(expectedPower)
                 .realHitChance(realHitChance)

@@ -297,9 +297,9 @@
       "status": "STRENGTHEN",
       "duration": 5,
       "chance": 100,
-      "combatStatModifiers": {
-        "accuracy": 1.2,
-        "critRate": 1.3
+      "combatStatOffsets": {
+        "accuracy": 20,
+        "critRate": 30
       }
     },
     "requiredWeapons": ["NONE"]
@@ -322,9 +322,9 @@
       "status": "WEAKNESS",
       "duration": 4,
       "chance": 100,
-      "combatStatModifiers": {
-        "accuracy": 0.7,
-        "dodge": 0.7
+      "combatStatOffsets": {
+        "accuracy": -30,
+        "dodge": -30
       }
     },
     "requiredWeapons": ["NONE"]

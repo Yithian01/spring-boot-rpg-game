@@ -242,6 +242,31 @@ public class GameDataManager  implements ApplicationRunner {
     }
 
     /**
+     * 속성을 문자열로
+     * @param element 속성
+     * @return 속성 문자
+     */
+    public String getKoreanElement(String element) {
+        switch(element) {
+            case "TOXIC": return "독";
+            case "FIRE": return "화염";
+            case "ICE": return "냉기";
+            case "LIGHT": return "광휘";
+            case "DARK": return "암흑";
+            default: return "";
+        }
+    }
+
+    /**
+     * UI에 보낼 스탯명칭 ID --> NAME
+     * @param statId 스탯 ID
+     * @return 스탯 NAME
+     */
+    public String getStatName(Integer statId){
+        return this.getStatMetaMap().get(statId).getName();
+    }
+
+    /**
      * 아이템 추가 효과 UI 변환용
      */
     public Map<String, String> STAT_NAME_MAP = Map.ofEntries(

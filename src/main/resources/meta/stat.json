@@ -129,13 +129,13 @@
     "id": 22,
     "name": "관절 가동 범위",
     "description": "신체의 유연성. 회피 동작과 기동성을 향상시킨다.",
-    "category": "PERCEPTION"
+    "category": "AGILITY"
   },
   {
     "id": 23,
     "name": "공간 지각 능력",
     "description": "거리와 위치를 인식하는 능력. 명중률 산출에 기여한다.",
-    "category": "PERCEPTION"
+    "category": "AGILITY"
   },
   {
     "id": 24,

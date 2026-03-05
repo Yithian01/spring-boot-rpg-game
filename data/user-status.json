@@ -6,11 +6,11 @@
   "tribeId" : 4,
   "religionId" : 0,
   "level" : 1,
-  "currentExp" : 1,
+  "currentExp" : 2,
   "requiredExp" : 15,
-  "currentHp" : 163,
+  "currentHp" : 165,
   "currentMp" : 122,
-  "currentStamina" : 261,
+  "currentStamina" : 306,
   "currentGold" : 100,
   "combatStats" : {
     "maxHp" : 199,
@@ -148,7 +148,7 @@
     "24" : 4
   },
   "usedItemIds" : [ ],
-  "defeatedMonsterIds" : [ 1 ],
+  "defeatedMonsterIds" : [ 1, 3 ],
   "equippedItems" : {
     "HEAD" : "0",
     "NECKLACE" : "0",

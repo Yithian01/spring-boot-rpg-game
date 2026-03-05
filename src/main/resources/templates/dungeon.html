@@ -105,45 +105,60 @@
 
     // 스킬 툴팁 생성 및 표시
     function showSkillTooltip(el) {
-        let tooltip = document.getElementById('skill-tooltip');
-        if (!tooltip) {
-            tooltip = document.createElement('div');
-            tooltip.id = 'skill-tooltip';
-            tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:10px; border-radius:8px; z-index:1000; width:220px; font-size:0.8rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.5);";
-            document.body.appendChild(tooltip);
-        }
+      let tooltip = document.getElementById('skill-tooltip');
+      if (!tooltip) {
+          tooltip = document.createElement('div');
+          tooltip.id = 'skill-tooltip';
+          // white-space: pre-wrap을 추가하면 줄바꿈이 더 잘 먹습니다.
+          tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:12px; border-radius:8px; z-index:1000; width:240px; font-size:0.85rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.7); line-height:1.4;";
+          document.body.appendChild(tooltip);
+      }
 
-        const name = el.dataset.name;
-        const desc = el.dataset.desc;
-        const scaling = el.dataset.scaling; // "물리 공격력 130%, 근력 계수 2.5"
-        const mods = el.dataset.mods;       // "명중률 30% 감소"
-        const status = el.dataset.status;
-        const chance = el.dataset.chance;
-        const duration = el.dataset.duration;
+      const name = el.dataset.name;
+      const desc = el.dataset.desc;
 
-        let html = `<strong style="color:#ff4d4d; font-size:1rem;">${name}</strong><br/>`;
-        html += `<span style="color:#bbb;">${desc}</span><hr style="border:0; border-top:1px solid #444; margin:5px 0;">`;
+      // [수정] '|' 구분자로 쪼개서 배열로 만듦
+      const scaling = el.dataset.scaling ? el.dataset.scaling.split('|') : [];
+      const mods = el.dataset.mods ? el.dataset.mods.split('|') : [];
 
-        if (scaling) {
-            html += `<div style="color:#ffd700; margin-bottom:4px;"><b>위력:</b> ${scaling}</div>`;
-        }
+      const status = el.dataset.status;
+      const chance = el.dataset.chance;
+      const duration = el.dataset.duration;
 
-        if (status) {
-            html += `<div style="color:#ff9f43;"><b>효과:</b> ${status} (${chance}%) [${duration}턴]</div>`;
-        }
+      let html = `<strong style="color:#ff4d4d; font-size:1.1rem; display:block; margin-bottom:5px;">${name}</strong>`;
+      html += `<span style="color:#bbb;">${desc}</span><hr style="border:0; border-top:1px solid #444; margin:8px 0;">`;
 
-        if (mods) {
-            html += `<div style="color:#4dabf7;"><b>상세:</b> ${mods}</div>`;
-        }
+      // [수정] 위력(Scaling) 정보를 세로 리스트로 나열
+      if (scaling.length > 0) {
+          html += `<div style="color:#ffd700; margin-bottom:8px;"><b>■ 보정 수치</b>`;
+          scaling.forEach(item => {
+              if(item.trim()) html += `<div style="padding-left:5px;">• ${item.trim()}</div>`;
+          });
+          html += `</div>`;
+      }
 
-        tooltip.innerHTML = html;
-        tooltip.style.display = 'block';
+      // 상태 이상 효과
+      if (status && status !== 'null') {
+          html += `<div style="color:#ff9f43; margin-bottom:8px;"><b>■ 효과:</b> ${status} (${chance}%)<br/>└ ${duration}턴 지속</div>`;
+      }
 
-        // 위치 조절
-        const rect = el.getBoundingClientRect();
-        tooltip.style.left = rect.left + 'px';
-        tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
-    }
+      // [수정] 추가 상세(Mods) 정보를 세로 리스트로 나열
+      if (mods.length > 0 && mods[0] !== "") {
+          html += `<div style="color:#4dabf7;"><b>■ 상세 정보</b>`;
+          mods.forEach(item => {
+              if(item.trim()) html += `<div style="padding-left:5px;">• ${item.trim()}</div>`;
+          });
+          html += `</div>`;
+      }
+
+      tooltip.innerHTML = html;
+      tooltip.style.display = 'block';
+
+      // 위치 조절 (화면 밖으로 나가지 않게 살짝 보정)
+      const rect = el.getBoundingClientRect();
+      tooltip.style.left = (rect.left) + 'px';
+      tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
+  }
 
     function hideSkillTooltip() {
         const tooltip = document.getElementById('skill-tooltip');

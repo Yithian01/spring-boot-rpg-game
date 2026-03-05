@@ -192,10 +192,25 @@ public class BattleService {
         // 스케일링 가공
         List<String> scalingInfo = new ArrayList<>();
         if (meta.getDamageScaling() != null) {
-            meta.getDamageScaling().forEach((k, v) -> {
-                String label = k.equals("meleeAtk") ? "물리" : (k.equals("magicAtk") ? "마법" : k);
-                scalingInfo.add(label + " " + (int)(v * 100) + "%");
-            });
+            // [A] 공격력 계수 (물리/마법 + 속성)
+            boolean isMagic = "MAGIC".equals(meta.getType()) || "MAGICAL".equals(meta.getType());
+            String baseLabel = isMagic ? "마법" : "물리";
+            String element = (meta.getEffect() != null) ? meta.getEffect().getElement() : "NONE";
+
+            double atkScaling = meta.getDamageScaling().getOrDefault(isMagic ? "magicAtk" : "meleeAtk", 0.0);
+            if (atkScaling > 0) {
+                String elementLabel = gameDataManager.getKoreanElement(element);
+                String label = (element.equals("NONE") || element.equals("PHYSICAL")) ? baseLabel : baseLabel + "+" + elementLabel;
+                scalingInfo.add(label + " : " + (int)(atkScaling * 100) + "%");
+            }
+
+            // [B] 세부 스탯 보정 (제공해주신 스탯 리스트 기반)
+            if (meta.getStatScaling() != null) {
+                meta.getStatScaling().forEach((statId, factor) -> {
+                    String statName = gameDataManager.getStatName(statId);
+                    scalingInfo.add(statName + " : " + (int)(factor * 100) + "%");
+                });
+            }
         }
 
         // 명중/위력 계산

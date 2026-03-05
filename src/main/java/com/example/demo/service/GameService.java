@@ -97,7 +97,7 @@ public class GameService {
             for (Integer metaId : initialMeta.getInitialItem()) {
                 ItemMeta meta = gameDataManager.getItemMetaMap().get(metaId);
                 if (meta != null) {
-                    ItemInstance newItem = ItemInstance.createConsumable(meta, 3);
+                    ItemInstance newItem = ItemInstance.createConsumable(meta, 5);
                     inventoryService.processAddItem(initialInventory, newItem, true);
                 }
             }

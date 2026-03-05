@@ -1,6 +1,6 @@
 {
-  "bf5cbe37-9dbf-4679-8d3a-93b6cfd68a88" : {
-    "instanceId" : "bf5cbe37-9dbf-4679-8d3a-93b6cfd68a88",
+  "8f538b2f-210e-48af-b56f-e1d7471139ec" : {
+    "instanceId" : "8f538b2f-210e-48af-b56f-e1d7471139ec",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,8 +23,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "884315d0-b9e6-4dbc-9889-7d3dcd6a4945" : {
-    "instanceId" : "884315d0-b9e6-4dbc-9889-7d3dcd6a4945",
+  "427c8188-fd37-47bd-b70a-f946af06c828" : {
+    "instanceId" : "427c8188-fd37-47bd-b70a-f946af06c828",
     "itemMetaId" : 8,
     "customName" : "8등급 마석",
     "grade" : "COMMON",
@@ -43,56 +43,55 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "5a9ba07b-3484-40a4-8644-e3d2280ada98" : {
-    "instanceId" : "5a9ba07b-3484-40a4-8644-e3d2280ada98",
-    "itemMetaId" : 43,
-    "customName" : "무뎌진 사냥용 단검",
+  "0e78545a-91a3-4ae4-aa83-b452105c8d69" : {
+    "instanceId" : "0e78545a-91a3-4ae4-aa83-b452105c8d69",
+    "itemMetaId" : 22,
+    "customName" : "금이 간 연습용 완드",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "DAGGER",
+    "subType" : "WAND",
     "twoHanded" : false,
-    "description" : "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
+    "description" : "아카데미 시절 쓰던 완드입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 115000,
+    "price" : 300000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "accuracy" : 2.0,
-      "critRate" : 5.0,
-      "meleeAtk" : 7.0
+      "magicAtk" : 12.0,
+      "maxMp" : 150.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
+    "grantedSkillIds" : [ 11 ]
   },
-  "ca2d1af9-0e7b-4d2f-a5ce-6ed4de990d73" : {
-    "instanceId" : "ca2d1af9-0e7b-4d2f-a5ce-6ed4de990d73",
-    "itemMetaId" : 27,
-    "customName" : "변색된 가시 가죽 옷",
+  "c60e6afe-1cbf-48e9-854a-edfaa04ee6c2" : {
+    "instanceId" : "c60e6afe-1cbf-48e9-854a-edfaa04ee6c2",
+    "itemMetaId" : 23,
+    "customName" : "수습 마법사의 로브",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
-    "subType" : "LEATHER",
+    "subType" : "CLOTH",
     "twoHanded" : false,
-    "description" : "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다.",
+    "description" : "마나 흐름을 돕는 얇은 천 옷입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 76000,
+    "price" : 180000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "dodge" : 3.0,
-      "critRate" : 2.0,
-      "physDef" : 5.0
+      "maxMp" : 50.0,
+      "magRes" : 0.1,
+      "mpRegen" : 15.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "9d97039a-426d-4b9b-9b59-9a5e9a246cf1" : {
-    "instanceId" : "9d97039a-426d-4b9b-9b59-9a5e9a246cf1",
+  "17054560-9658-4c73-b769-405b5ea9a8bb" : {
+    "instanceId" : "17054560-9658-4c73-b769-405b5ea9a8bb",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -113,5 +112,53 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
+  },
+  "6e70c851-d0f3-4ca5-a060-fb84d27ffb6b" : {
+    "instanceId" : "6e70c851-d0f3-4ca5-a060-fb84d27ffb6b",
+    "itemMetaId" : 45,
+    "customName" : "원소의 서 [초급]",
+    "grade" : "RARE",
+    "type" : "EQUIPMENT",
+    "slot" : "SUB_WEAPON",
+    "subType" : "BOOK",
+    "twoHanded" : false,
+    "description" : "기초적인 삼원소 마법이 기록된 마법서입니다. 마나의 흐름을 정돈하여 영창을 돕습니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 520000,
+    "baseStatsBonus" : {
+      "13" : 6,
+      "14" : 4
+    },
+    "combatStatsBonus" : {
+      "accuracy" : 5.0,
+      "maxMp" : 80.0,
+      "mpRegen" : 5.0,
+      "magicAtk" : 15.0
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ 13, 21, 22 ]
+  },
+  "fe800d82-cde9-428f-a5d0-e9158bb66e9a" : {
+    "instanceId" : "fe800d82-cde9-428f-a5d0-e9158bb66e9a",
+    "itemMetaId" : 9,
+    "customName" : "동굴 쥐의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
   }
 }

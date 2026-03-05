@@ -59,7 +59,7 @@
       "NECKLACE": 0,
       "BOOTS": 12,
       "RING": 0,
-      "SUB_WEAPON": 0,
+      "SUB_WEAPON": 45,
       "ARTIFACT": 0
     },
     "combatBaseStats": {
@@ -85,7 +85,7 @@
       "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0,
-      "ARTIFACT": 0
+      "ARTIFACT": 44
     },
     "combatBaseStats": {
       "1": 6, "2": 5, "3": 7, "4": 6, "5": 6, "6": 14,

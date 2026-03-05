@@ -1,5 +1,5 @@
 {
-  "location" : "TOWN",
-  "dungeonId" : null,
-  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ]
+  "location" : "DUNGEON",
+  "dungeonId" : 202,
+  "gameLogs" : [ "<span style='color:#ff9f43;'>[전투]</span> 바위 등껍질 곰이(가) 나타났습니다!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "<span style='color:#aaaaaa;'>[환경] 이 장소의 특수한 기운이 몸을 감쌉니다...</span>", "⚔️ <b style='color:#ffd700;'>짐승의 소굴</b>에 입장했습니다.", "<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -33)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)" ]
 }

@@ -392,5 +392,45 @@
       "chance": 100
     },
     "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 21,
+    "name": "얼음 송곳",
+    "icon": "/images/skills/21.png",
+    "description": "차가운 냉기를 응축한 송곳을 발사하여 피해를 입히고 적의 행동을 둔화시킵니다.",
+    "type": "MAGIC",
+    "turnCost": 2,
+    "hitChance": 75,
+    "cost": { "stamina": 5, "mp": 20 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "13": 2.5, "14": 2.0, "16": 0.5 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 2,
+      "chance": 40
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 22,
+    "name": "연쇄 번개",
+    "icon": "/images/skills/22.png",
+    "description": "강력한 전류를 방출합니다. 적의 신경계를 자극하여 일정 확률로 기절시킵니다.",
+    "type": "MAGIC",
+    "turnCost": 2,
+    "hitChance": 65,
+    "cost": { "stamina": 8, "mp": 30 },
+    "damageScaling": { "magicAtk": 1.6 },
+    "statScaling": { "13": 4.0, "15": 1.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "LIGHTNING",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 20
+    },
+    "requiredWeapons": ["NONE"]
   }
 ]

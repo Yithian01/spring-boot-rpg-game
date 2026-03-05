@@ -336,13 +336,13 @@
   },
   {
     "id": 22,
-    "name": "금이 간 연습용 지팡이",
+    "name": "금이 간 연습용 완드",
     "grade": "COMMON",
     "type": "EQUIPMENT",
     "slot": "WEAPON",
-    "subType": "STAFF",
-    "twoHanded": true,
-    "description": "아카데미 시절 쓰던 지팡이입니다.",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "아카데미 시절 쓰던 완드입니다.",
     "price": 300000,
     "icon": "/images/items/22.png",
     "baseStatsBonus": {},
@@ -350,7 +350,7 @@
       "magicAtk": 12.0,
       "maxMp": 150.0
     },
-    "grantedSkillIds": []
+    "grantedSkillIds": [11]
   },
   {
     "id": 23,
@@ -763,5 +763,49 @@
       "critRate": 5.0
     },
     "grantedSkillIds": []
+  },
+  {
+    "id": 44,
+    "name": "중독 허리띠",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "BELT",
+    "twoHanded": false,
+    "description": "다양한 독주머니가 매달린 허리띠입니다.",
+    "price": 480000,
+    "icon": "/images/items/44.png",
+    "baseStatsBonus": {
+      "9": 5
+    },
+    "combatStatsBonus": {
+      "toxicAtk": 60.0,
+      "toxicPen": 0.1,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": [20]
+  },
+  {
+    "id": 45,
+    "name": "원소의 서 [초급]",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "BOOK",
+    "twoHanded": false,
+    "description": "기초적인 삼원소 마법이 기록된 마법서입니다. 마나의 흐름을 정돈하여 영창을 돕습니다.",
+    "price": 520000,
+    "icon": "/images/items/45.png",
+    "baseStatsBonus": {
+      "13": 6,
+      "14": 4
+    },
+    "combatStatsBonus": {
+      "magicAtk": 15.0,
+      "maxMp": 80.0,
+      "mpRegen": 5.0,
+      "accuracy": 5.0
+    },
+    "grantedSkillIds": [13, 21, 22]
   }
 ]

@@ -630,7 +630,7 @@ public class StatCalculationService {
      */
     public int applyDefense(double rawDamage, double penetration, double resist) {
         double finalResist = resist - penetration;
-        double damageMultiplier = Math.max(0, 1.0 - finalResist);
+        double damageMultiplier = Math.max(0, (100 - finalResist) / 100);
         return (int) Math.round(rawDamage * damageMultiplier);
     }
 

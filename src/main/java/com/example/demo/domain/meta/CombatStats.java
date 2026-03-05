@@ -28,7 +28,7 @@ public class CombatStats {
      * 공통 공격 스탯
      * ========================= */
     private double critRate;      // 치명타 확률 (%)
-    private double critDmg;       // 치명타 피해 (배율, 기본 1.5)
+    private double critDmg;       // 치명타 피해 (배율, 기본 150% + a)
     private double accuracy;      // 명중률 (%)
     private double dodge;         // 회피율 (%)
 
@@ -54,8 +54,8 @@ public class CombatStats {
     /* =========================
      * 3. 속성별 상세 스탯 (공격 Atk / 저항 Res / 관통 Pen)
      * Atk: 고정치 (meleeAtk 등과 동일)
-     * Res: 배율 (0.1 = 10% 감소, 1.0 = 면역, 1.1 = 흡수)
-     * Pen: 배율 (0.1 = 상대 저항 10% 무시)
+     * Res: 배율 (0 ~ 100% Over 시 흡수까지 고려 X)
+     * Pen: 배율 (0 ~ 100% Over 시 추가 대미지 고려 O )
      * ========================= */
 
     // 물리 (Physical)

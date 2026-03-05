@@ -258,8 +258,8 @@
       "duration": 5,
       "chance": 100,
       "statModifiers": {},
-      "combatStatModifiers": {
-        "physDef": 1.4
+      "combatStatOffsets": {
+        "physRes": 30
       }
     },
     "requiredWeapons": ["NONE"]
@@ -400,7 +400,7 @@
       "chance": 100,
       "statModifiers": {},
       "combatStatOffsets": {
-        "magRes": 0.1
+        "magRes": 10
       }
     },
     "requiredWeapons": ["NONE"]
@@ -463,17 +463,15 @@
       "duration": 4,
       "chance": 100,
       "statModifiers": {},
-      "combatStatModifiers": {
-        "physDef": 1.3,
-        "meleeAtk": 1.2
-      }
+      "combatStatOffsets": {"physDef": 30 },
+      "combatStatModifiers": {"meleeAtk": 1.2}
     },
     "requiredWeapons": ["NONE"]
   },
   {
     "id": 34,
     "name": "얼음 강타",
-    "description": "거대한 얼음 몽둥이로 대상을 내려찍습니다. 강력한 물리 피해와 냉기 피해를 동시에 입히며, 높은 확률로 대상을 [빙결] 상태로 만듭니다.",
+    "description": "거대한 얼음 몽둥이로 대상을 내려찍습니다.높은 확률로 대상을 [빙결] 상태로 만듭니다.",
     "type": "PHYSICAL",
     "grade": "MONSTER",
     "turnCost": 2,
@@ -485,12 +483,7 @@
       "element": "ICE",
       "status": "FROZEN",
       "duration": 5,
-      "chance": 45,
-      "statModifiers": {},
-      "combatStatModifiers": {
-        "iceAtk": 25.0,
-        "stunPen": 20.0
-      }
+      "chance": 45
     },
     "requiredWeapons": ["BLUNT"]
   }

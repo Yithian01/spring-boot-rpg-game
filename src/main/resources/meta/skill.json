@@ -96,7 +96,7 @@
       "status": "BLEED",
       "duration": 3,
       "chance": 40,
-      "penetration": 0.3
+      "penetration": 30
     },
     "requiredWeapons": ["SWORD", "DAGGER"]
   },
@@ -135,7 +135,7 @@
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 0.3
+      "penetration": 30
     },
     "requiredWeapons": ["BOW"]
   },

@@ -248,11 +248,15 @@ public class GameDataManager  implements ApplicationRunner {
      */
     public String getKoreanElement(String element) {
         switch(element) {
-            case "TOXIC": return "독";
+            case "PHYSICAL": return "물리";
             case "FIRE": return "화염";
             case "ICE": return "냉기";
-            case "LIGHT": return "광휘";
+            case "LIGHT": return "번개";
+            case "EARTH": return "대지";
+            case "HOLY": return "신성";
             case "DARK": return "암흑";
+            case "CHAOS": return "혼돈";
+            case "TOXIC": return "독성";
             default: return "";
         }
     }

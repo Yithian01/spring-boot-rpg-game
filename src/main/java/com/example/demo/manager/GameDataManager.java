@@ -273,18 +273,65 @@ public class GameDataManager  implements ApplicationRunner {
             Map.entry("maxHp", "최대 체력"),
             Map.entry("maxMp", "최대 마나"),
             Map.entry("maxStamina", "최대 스태미나"),
+
             Map.entry("hpRegen", "체력 재생"),
             Map.entry("mpRegen", "마나 재생"),
-            Map.entry("meleeAtk", "물리 공격력"),
-            Map.entry("magicAtk", "마법 공격력"),
+            Map.entry("moveSpeed", "이동 속도"),
+            Map.entry("maxTurns", "행동 턴"),
+
             Map.entry("critRate", "치명타 확률"),
             Map.entry("critDmg", "치명타 피해"),
-            Map.entry("penetration", "관통력"),
-            Map.entry("physDef", "물리 방어"),
-            Map.entry("magRes", "마법 저항"),
-            Map.entry("dodge", "회피율"),
             Map.entry("accuracy", "명중률"),
-            Map.entry("moveSpeed", "이동 속도")
+            Map.entry("dodge", "회피율"),
+
+            Map.entry("statusResist", "상태이상 저항"),
+            Map.entry("bleedRes", "출혈 저항"),
+            Map.entry("stunRes", "스턴 저항"),
+            Map.entry("burnRes", "화상 저항"),
+            Map.entry("frozenRes", "빙결 저항"),
+            Map.entry("poisonRes", "중독 저항"),
+
+            Map.entry("bleedPen", "출혈 확률"),
+            Map.entry("stunPen", "스턴 확률"),
+            Map.entry("burnPen", "화상 확률"),
+            Map.entry("frozenPen", "빙결 확률"),
+            Map.entry("poisonPen", "중독 확률"),
+
+            Map.entry("meleeAtk", "물리 공격"),
+            Map.entry("physDef", "물리 방어"),
+            Map.entry("physRes", "물리 저항"),
+            Map.entry("physPen", "물리 관통"),
+
+            Map.entry("magicAtk", "마법 공격"),
+            Map.entry("magRes", "마법 저항"),
+            Map.entry("magPen", "마법 관통"),
+
+            Map.entry("fireAtk", "화염 공격"),
+            Map.entry("iceAtk", "냉기 공격"),
+            Map.entry("lightAtk", "번개 공격"),
+            Map.entry("earthAtk", "대지 공격"),
+            Map.entry("holyAtk", "신성 공격"),
+            Map.entry("darkAtk", "암흑 공격"),
+            Map.entry("chaosAtk", "혼돈 공격"),
+            Map.entry("toxicAtk", "독성 공격"),
+
+            Map.entry("fireRes", "화염 저항"),
+            Map.entry("iceRes", "냉기 저항"),
+            Map.entry("lightRes", "번개 저항"),
+            Map.entry("earthRes", "대지 저항"),
+            Map.entry("holyRes", "신성 저항"),
+            Map.entry("darkRes", "암흑 저항"),
+            Map.entry("chaosRes", "혼돈 저항"),
+            Map.entry("toxicRes", "독성 저항"),
+
+            Map.entry("firePen", "화염 관통"),
+            Map.entry("icePen", "냉기 관통"),
+            Map.entry("lightPen", "번개 관통"),
+            Map.entry("earthPen", "대지 관통"),
+            Map.entry("holyPen", "신성 관통"),
+            Map.entry("darkPen", "암흑 관통"),
+            Map.entry("chaosPen", "혼돈 관통"),
+            Map.entry("toxicPen", "독성 관통")
     );
 
     /**

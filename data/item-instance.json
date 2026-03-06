@@ -23,26 +23,6 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "66b58f73-166c-4d4d-a68b-586e32838f7d" : {
-    "instanceId" : "66b58f73-166c-4d4d-a68b-586e32838f7d",
-    "itemMetaId" : 8,
-    "customName" : "8등급 마석",
-    "grade" : "COMMON",
-    "type" : "MATERIAL",
-    "slot" : "NONE",
-    "subType" : "MAGIC_STONE",
-    "twoHanded" : false,
-    "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
-    "quantity" : 4,
-    "enhancementLevel" : 0,
-    "price" : 100,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : { },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
   "919d8ce9-8a5b-46c6-9b92-6b4f8229a55f" : {
     "instanceId" : "919d8ce9-8a5b-46c6-9b92-6b4f8229a55f",
     "itemMetaId" : 22,

@@ -437,9 +437,10 @@ public class GameDataManager  implements ApplicationRunner {
         return switch (stoneGrade) {
             case 1 -> 15;
             case 2, 3 -> 10;
-            case 4, 5, 6 -> 5;
-            case 7, 8 -> 2;
-            case 9 -> 1;
+            case 4, 5 -> 5;
+            case 6 -> 3;
+            case 7 -> 2;
+            case 8, 9 -> 1;
             default -> 1;
         };
     }

@@ -93,7 +93,7 @@
     "id": 16,
     "name": "동체 시력",
     "description": "빠르게 움직이는 대상을 인식하는 능력. 치명타 확률과 명중에 기여한다.",
-    "category": "PERCEPTION"
+    "category": "AGILITY"
   },
   {
     "id": 17,
@@ -129,7 +129,7 @@
     "id": 22,
     "name": "관절 가동 범위",
     "description": "신체의 유연성. 회피 동작과 기동성을 향상시킨다.",
-    "category": "AGILITY"
+    "category": "PERCEPTION"
   },
   {
     "id": 23,

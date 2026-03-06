@@ -258,6 +258,7 @@ public class StatCalculationService {
      * 최대 생명력 계산 함수
      */
     public int calculateMaxHp(Map<?, ?> baseStats) {
+        // 1:코어, 2:조직강도, 3:대사효율
         return (100 + (getStat(baseStats, 1) * 10) + (getStat(baseStats, 2) * 5) + (getStat(baseStats, 3) * 2));
     }
 
@@ -265,6 +266,7 @@ public class StatCalculationService {
      * 최대 마나 계산 함수
      */
     public int calculateMana(Map<?, ?> baseStats) {
+        // 4:혈관탄성, 5:기억용량
         return (50 + (getStat(baseStats, 4) * 10) + (getStat(baseStats, 5) * 2));
     }
 
@@ -272,6 +274,7 @@ public class StatCalculationService {
      * 최대 스태미나 계산 함수
      */
     public int calculateStamina(Map<?, ?> baseStats) {
+        // 6:심폐지구력, 7:대퇴사두
         return (100 + (getStat(baseStats, 6) * 10) + (getStat(baseStats, 7) * 3));
     }
 
@@ -285,7 +288,6 @@ public class StatCalculationService {
     /**
      * 마나 재생 계산 함수
      */
-
     public double calculateManaRegen(Map<?, ?> baseStats) {
         return (getStat(baseStats, 8) * 0.5) + (getStat(baseStats, 9) * 0.2);
     }
@@ -294,6 +296,7 @@ public class StatCalculationService {
      * 이동속도 계산 함수
      */
     public double calculateMoveSpd(Map<?, ?> baseStats) {
+        // 21:비복근, 7:대퇴사두
         double rawSpd = (getStat(baseStats, 21) * 0.1) + (getStat(baseStats, 7) * 0.05);
         return Math.round(rawSpd * 10.0) / 10.0;
     }
@@ -302,13 +305,15 @@ public class StatCalculationService {
      * 치명타 확률 계산 함수
      */
     public double calculateCritRate(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 15) * 1.0) + (getStat(baseStats, 16) * 0.5); // 기존 코드 오타 수정 (13,14 중복 방지)
+        // 15:인과율간섭(주), 16:동체시력(부)
+        return (getStat(baseStats, 15) * 0.4) + (getStat(baseStats, 16) * 0.2);
     }
 
     /**
      * 치명타 피해 계산 함수
      */
     public double calculateCritDmg(Map<?, ?> baseStats) {
+        // 17:수지미세조작
         return (150 + (getStat(baseStats, 17) * 2.0));
     }
 
@@ -316,14 +321,16 @@ public class StatCalculationService {
      * 명중율 계산 함수
      */
     public double calculateAccuracy(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 16) * 1.0) + (getStat(baseStats, 23) * 0.5) + (getStat(baseStats, 24) * 0.2);
+        // 16:동체시력(주), 23:공간지각(부), 24:육감(보조)
+        return (getStat(baseStats, 16) * 0.5) + (getStat(baseStats, 23) * 0.3) + (getStat(baseStats, 24) * 0.2);
     }
 
     /**
      * 회피율 계산 함수
      */
     public double calculateDodge(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 20) * 0.8) + (getStat(baseStats, 21) * 0.5) + (getStat(baseStats, 22) * 0.3);
+        // 20:신경반응(주), 21:비복근(부), 24:육감(보조)
+        return (getStat(baseStats, 20) * 0.4) + (getStat(baseStats, 21) * 0.2) + (getStat(baseStats, 24) * 0.1);
     }
 
     /**
@@ -343,27 +350,30 @@ public class StatCalculationService {
      * 물리 공격력 계산 함수
      */
     public double calculateMeleeAtk(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 10) * 2.0) + (getStat(baseStats, 11) * 1.5) + (getStat(baseStats, 12) * 0.5);
+        // 10:상완, 11:대흉근, 12:전완
+        return (getStat(baseStats, 10) * 1.5) + (getStat(baseStats, 11) * 1.0) + (getStat(baseStats, 12) * 0.5);
     }
 
     /**
      * 마법 공격력 계산 함수
      */
     public double calculateMagicAtk(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 13) * 2.5) + (getStat(baseStats, 14) * 1.0);
+        // 13:에너지응집, 14:논리연산
+        return (getStat(baseStats, 13) * 1.8) + (getStat(baseStats, 14) * 0.7);
     }
 
     /**
      * 물리 방어 계산 함수
      */
     public double calculatePhysDef(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 2) * 1.5) + (getStat(baseStats, 1) * 0.5);
+        return (getStat(baseStats, 2) * 1.0) + (getStat(baseStats, 1) * 0.4);
     }
 
     /**
      * 마법 저항 계산 함수
      */
     public double calculateMagRes(Map<?, ?> baseStats) {
+        // 18:부패저항, 19:원소공명
         return (getStat(baseStats, 18) * 1.0) + (getStat(baseStats, 19) * 0.5);
     }
 
@@ -371,7 +381,9 @@ public class StatCalculationService {
      * 노동 효율(파워) 계산: 상완/대흉근/전완근 기반
      */
     public int calculateWorkPower(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 10) + getStat(baseStats, 11) + getStat(baseStats, 12)) / 2;
+        // 물리 카테고리 10, 11, 12 기반
+        int power = (getStat(baseStats, 10) + getStat(baseStats, 11) + getStat(baseStats, 12)) / 2;
+        return 10 + power;
     }
 
     /**
@@ -428,25 +440,17 @@ public class StatCalculationService {
 
     /**
      * 도박 기본 승률 계산 (%)
-     * 기본 40% + (행운 스탯 * 1.0) + (통찰 스탯 * 0.5)
+     * 기본 5% + (행운 스탯 * 1.0) + (통찰 스탯 * 0.5)
      */
     public double calculateGambleWinRate(Map<?, ?> baseStats) {
-        double baseRate = 10.0;
-        double luckBonus = getStat(baseStats, 20) * 1.0;
-        double insightBonus = getStat(baseStats, 16) * 0.5;
-
-        return Math.min(baseRate + luckBonus + insightBonus, 85.0);
+        return Math.min(5.0 + (getStat(baseStats, 20) * 0.5) + (getStat(baseStats, 16) * 0.3), 85.0);
     }
 
     /**
      * 도박 승리 시 배당금 보너스 배율 계산
-     * 기본 2.0배 + (지능 스탯 * 0.5)
      */
     public double calculateGambleMultiplier(Map<?, ?> baseStats) {
-        double baseMultiplier = 2.0;
-        double intelligenceBonus = getStat(baseStats, 23) * 0.5;
-
-        return baseMultiplier + intelligenceBonus;
+        return 2.0 + (getStat(baseStats, 23) * 0.1);
     }
 
     /**

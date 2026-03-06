@@ -120,10 +120,10 @@
     "icon": "/images/items/10.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "meleeAtk": 12.0,
-      "penetration": 2.0,
+      "meleeAtk": 20.0,
+      "penetration": 5.0,
       "critDmg": 10.0,
-      "accuracy": -3.0
+      "accuracy": -5.0
     },
     "grantedSkillIds": []
   },
@@ -159,8 +159,8 @@
     "icon": "/images/items/12.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "moveSpeed": 2,
-      "maxStamina": 50.0
+      "moveSpeed": 0.2,
+      "maxStamina": 15.0
     },
     "grantedSkillIds": []
   },
@@ -177,9 +177,7 @@
     "icon": "/images/items/13.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "meleeAtk": 8.0,
-      "accuracy": 3.0,
-      "critRate": 1.0
+      "meleeAtk": 10.0
     },
     "grantedSkillIds": []
   },
@@ -196,8 +194,9 @@
     "icon": "/images/items/14.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 10.0,
-      "dodge": -5.0
+      "physDef": 3.0,
+      "dodge": -2.0,
+      "statusResist": 2.0
     },
     "grantedSkillIds": []
   },
@@ -271,9 +270,8 @@
     "icon": "/images/items/18.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "meleeAtk": 10.0,
-      "penetration": 5.0,
-      "accuracy": 5
+      "meleeAtk": 15.0,
+      "penetration": 5.0
     },
     "grantedSkillIds": []
   },
@@ -290,9 +288,10 @@
     "icon": "/images/items/19.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 5.0,
+      "physDef": 12.0,
       "statusResist": 5.0,
-      "moveSpeed": -0.5
+      "burnRes": 10.0,
+      "moveSpeed": -0.1
     },
     "grantedSkillIds": []
   },
@@ -347,8 +346,7 @@
     "icon": "/images/items/22.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "magicAtk": 12.0,
-      "maxMp": 150.0
+      "magicAtk": 10.0
     },
     "grantedSkillIds": [11]
   },
@@ -365,9 +363,10 @@
     "icon": "/images/items/23.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "maxMp": 50.0,
-      "mpRegen": 15.0,
-      "magRes": 10
+      "physDef": 2.0,
+      "magRes": 12.0,
+      "maxMp": 60.0,
+      "mpRegen": 2.5
     },
     "grantedSkillIds": []
   },
@@ -430,7 +429,7 @@
   },
   {
     "id": 27,
-    "name": "변색된 가시 가죽 옷",
+    "name": "변색된 가죽 옷",
     "grade": "COMMON",
     "type": "EQUIPMENT",
     "slot": "BODY",
@@ -441,9 +440,10 @@
     "icon": "/images/items/27.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 5.0,
-      "dodge": 5,
-      "critRate": 5
+      "physDef": 3.0,
+      "dodge": 4.0,
+      "critRate": 4.0,
+      "moveSpeed": 0.3
     },
     "grantedSkillIds": []
   },
@@ -481,8 +481,8 @@
     "combatStatsBonus": {
       "physDef": 5.0,
       "magRes": 5.0,
-      "maxStamina": 50.0,
-      "maxMp": 50.0
+      "maxStamina": 30.0,
+      "maxMp": 30.0
     },
     "grantedSkillIds": []
   },
@@ -780,8 +780,8 @@
       "9": 5
     },
     "combatStatsBonus": {
-      "toxicAtk": 60.0,
-      "toxicPen": 10.0,
+      "toxicAtk": 15.0,
+      "critRate": 3.0,
       "statusResist": 5.0
     },
     "grantedSkillIds": [20]
@@ -802,10 +802,9 @@
       "14": 4
     },
     "combatStatsBonus": {
-      "magicAtk": 15.0,
-      "maxMp": 80.0,
-      "mpRegen": 5.0,
-      "accuracy": 5.0
+      "magicAtk": 8.0,
+      "maxMp": 40.0,
+      "mpRegen": 1.5
     },
     "grantedSkillIds": [13, 21, 22]
   }

@@ -1,6 +1,6 @@
 {
-  "9cdb2730-f64c-43ae-8e69-02e0f3af901f" : {
-    "instanceId" : "9cdb2730-f64c-43ae-8e69-02e0f3af901f",
+  "24b54eac-dd64-4a47-871e-d605edfd475a" : {
+    "instanceId" : "24b54eac-dd64-4a47-871e-d605edfd475a",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,8 +23,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "68099fef-25d5-4291-b575-1425c60ed89d" : {
-    "instanceId" : "68099fef-25d5-4291-b575-1425c60ed89d",
+  "dde52e15-7571-4ab4-991c-8412ee25dc09" : {
+    "instanceId" : "dde52e15-7571-4ab4-991c-8412ee25dc09",
     "itemMetaId" : 8,
     "customName" : "8등급 마석",
     "grade" : "COMMON",
@@ -43,8 +43,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "59db6bb4-ed73-487c-bb20-7585a940b1e3" : {
-    "instanceId" : "59db6bb4-ed73-487c-bb20-7585a940b1e3",
+  "bb89fb85-89bc-45b1-9bae-1c80d0a6c0f4" : {
+    "instanceId" : "bb89fb85-89bc-45b1-9bae-1c80d0a6c0f4",
     "itemMetaId" : 1,
     "customName" : "1등급 마석",
     "grade" : "LEGENDARY",
@@ -53,7 +53,7 @@
     "subType" : "MAGIC_STONE",
     "twoHanded" : false,
     "description" : "던전의 정점이 가진 힘입니다. 부와 명예를 동시에 거머쥘 수 있습니다.",
-    "quantity" : 4,
+    "quantity" : 5,
     "enhancementLevel" : 0,
     "price" : 100000000,
     "baseStatsBonus" : { },
@@ -63,8 +63,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "80c3fbbb-d7d6-470c-b1ac-8bca067326f7" : {
-    "instanceId" : "80c3fbbb-d7d6-470c-b1ac-8bca067326f7",
+  "1001f235-e6d7-4138-8f3c-051febaf582a" : {
+    "instanceId" : "1001f235-e6d7-4138-8f3c-051febaf582a",
     "itemMetaId" : 2,
     "customName" : "2등급 마석",
     "grade" : "EPIC",
@@ -83,8 +83,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "4733d6a1-e50d-42e3-8503-4184cff37b26" : {
-    "instanceId" : "4733d6a1-e50d-42e3-8503-4184cff37b26",
+  "d4ac8d0c-cf32-4378-80f1-f859daf44189" : {
+    "instanceId" : "d4ac8d0c-cf32-4378-80f1-f859daf44189",
     "itemMetaId" : 3,
     "customName" : "3등급 마석",
     "grade" : "RARE",
@@ -103,8 +103,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "da77d3a4-6f80-4589-a750-74d9012efb2c" : {
-    "instanceId" : "da77d3a4-6f80-4589-a750-74d9012efb2c",
+  "64a0e597-7027-4991-a5a0-fd5985bf0cfc" : {
+    "instanceId" : "64a0e597-7027-4991-a5a0-fd5985bf0cfc",
     "itemMetaId" : 4,
     "customName" : "4등급 마석",
     "grade" : "RARE",
@@ -113,7 +113,7 @@
     "subType" : "MAGIC_STONE",
     "twoHanded" : false,
     "description" : "희귀한 빛을 내뿜습니다. 고성능 장비의 핵심 재료입니다.",
-    "quantity" : 4,
+    "quantity" : 5,
     "enhancementLevel" : 0,
     "price" : 1000000,
     "baseStatsBonus" : { },
@@ -123,8 +123,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "21f562f0-c874-4e10-9a78-a12297ff24cf" : {
-    "instanceId" : "21f562f0-c874-4e10-9a78-a12297ff24cf",
+  "b95f7ff4-e1d6-43f1-b2e8-fa91184d403b" : {
+    "instanceId" : "b95f7ff4-e1d6-43f1-b2e8-fa91184d403b",
     "itemMetaId" : 5,
     "customName" : "5등급 마석",
     "grade" : "UNCOMMON",
@@ -143,8 +143,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "f89afc63-968f-4842-98d1-f7144768f372" : {
-    "instanceId" : "f89afc63-968f-4842-98d1-f7144768f372",
+  "d24b3568-2899-4554-ada5-e8de361b92a9" : {
+    "instanceId" : "d24b3568-2899-4554-ada5-e8de361b92a9",
     "itemMetaId" : 6,
     "customName" : "6등급 마석",
     "grade" : "UNCOMMON",
@@ -163,8 +163,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "4dc64699-3e3b-456b-b403-021986d983a6" : {
-    "instanceId" : "4dc64699-3e3b-456b-b403-021986d983a6",
+  "e39ce982-1269-4bd7-8e7d-124288776cad" : {
+    "instanceId" : "e39ce982-1269-4bd7-8e7d-124288776cad",
     "itemMetaId" : 7,
     "customName" : "7등급 마석",
     "grade" : "COMMON",
@@ -183,8 +183,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "56045ea8-56a3-4690-9dad-f5858b5dcc39" : {
-    "instanceId" : "56045ea8-56a3-4690-9dad-f5858b5dcc39",
+  "a87c471b-729c-4a48-9c42-c1ec5e8def08" : {
+    "instanceId" : "a87c471b-729c-4a48-9c42-c1ec5e8def08",
     "itemMetaId" : 13,
     "customName" : "훈련용 롱소드",
     "grade" : "COMMON",
@@ -207,8 +207,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "ab5a02f6-487f-4514-8c18-efe373df21c3" : {
-    "instanceId" : "ab5a02f6-487f-4514-8c18-efe373df21c3",
+  "29ce5695-46ff-4973-b1e5-2f7572dee58c" : {
+    "instanceId" : "29ce5695-46ff-4973-b1e5-2f7572dee58c",
     "itemMetaId" : 29,
     "customName" : "닳아버린 여행용 코트",
     "grade" : "COMMON",
@@ -232,8 +232,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "d9a86980-329b-4427-b3b9-651e55792d85" : {
-    "instanceId" : "d9a86980-329b-4427-b3b9-651e55792d85",
+  "34867fe8-f4eb-4288-ae32-1a396fe5d8bd" : {
+    "instanceId" : "34867fe8-f4eb-4288-ae32-1a396fe5d8bd",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -255,8 +255,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "9b09740d-4abc-4094-b88f-e196a8895199" : {
-    "instanceId" : "9b09740d-4abc-4094-b88f-e196a8895199",
+  "71c0b146-cfee-4d01-b037-4fdd48360843" : {
+    "instanceId" : "71c0b146-cfee-4d01-b037-4fdd48360843",
     "itemMetaId" : 14,
     "customName" : "나무 방패",
     "grade" : "COMMON",

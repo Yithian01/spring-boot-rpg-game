@@ -52,24 +52,39 @@
             transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* --- 속성(Element)별 배경색 --- */
-        .elem-physical .skill-card-body { background: linear-gradient(135deg, #3d3d3d, #2d3436) !important; }
-        .elem-fire .skill-card-body     { background: linear-gradient(135deg, #4b1212, #2d3436) !important; }
-        .elem-ice .skill-card-body      { background: linear-gradient(135deg, #12334b, #2d3436) !important; }
-        .elem-toxic .skill-card-body    { background: linear-gradient(135deg, #1a4b12, #2d3436) !important; }
-        .elem-light .skill-card-body    { background: linear-gradient(135deg, #4b4812, #2d3436) !important; }
-        .elem-dark .skill-card-body     { background: linear-gradient(135deg, #2d124b, #2d3436) !important; }
-        .elem-chaos .skill-card-body    { background: linear-gradient(135deg, #4b1243, #2d3436) !important; }
+        /* --- [수정/추가] 속성(Element)별 배경색 --- */
+        .elem-physical .skill-card-body  { background: linear-gradient(135deg, #3d3d3d, #2d3436) !important; }
+        .elem-fire .skill-card-body      { background: linear-gradient(135deg, #4b1212, #2d3436) !important; }
+        .elem-ice .skill-card-body       { background: linear-gradient(135deg, #12334b, #2d3436) !important; }
+        .elem-lightning .skill-card-body { background: linear-gradient(135deg, #4b4812, #2d3436) !important; } /* 추가: lightning */
+        .elem-earth .skill-card-body     { background: linear-gradient(135deg, #3e2723, #2d3436) !important; } /* 추가: earth */
+        .elem-holy .skill-card-body      { background: linear-gradient(135deg, #4d4d2d, #2d3436) !important; } /* 수정: light -> holy */
+        .elem-toxic .skill-card-body     { background: linear-gradient(135deg, #1a4b12, #2d3436) !important; }
+        .elem-dark .skill-card-body      { background: linear-gradient(135deg, #2d124b, #2d3436) !important; }
+        .elem-chaos .skill-card-body     { background: linear-gradient(135deg, #4b1243, #2d3436) !important; }
 
-        /* --- 속성별 아이콘 라벨 색상 --- */
-        .elem-label { position: absolute; bottom: 0; width: 100%; color: #fff; font-size: 0.6rem; text-align: center; font-weight: bold; padding: 1px 0; }
-        .elem-physical .elem-label { background: rgba(100, 100, 100, 0.8); }
-        .elem-fire .elem-label     { background: rgba(231, 76, 60, 0.8); }
-        .elem-ice .elem-label      { background: rgba(52, 152, 219, 0.8); }
-        .elem-toxic .elem-label    { background: rgba(46, 204, 113, 0.8); }
-        .elem-light .elem-label    { background: rgba(241, 196, 15, 0.8); color: #000; }
-        .elem-dark .elem-label     { background: rgba(155, 89, 182, 0.8); }
-        .elem-chaos .elem-label    { background: rgba(232, 67, 147, 0.8); }
+        /* --- [수정/추가] 속성별 아이콘 라벨 색상 --- */
+        .elem-label {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            font-size: 0.65rem; /* 살짝 키움 */
+            text-align: center;
+            font-weight: 800; /* 좀 더 굵게 */
+            padding: 2px 0; /* 상하 여백 살짝 추가 */
+            letter-spacing: -0.5px; /* 글자 간격 조절로 가독성 확보 */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* 글자 그림자로 선명하게 */
+        }
+        .elem-physical .elem-label  { background: rgba(100, 100, 100, 0.8); }
+        .elem-fire .elem-label      { background: rgba(231, 76, 60, 0.8); }
+        .elem-ice .elem-label       { background: rgba(52, 152, 219, 0.8); }
+        .elem-lightning .elem-label { background: rgba(241, 196, 15, 0.9); color: #000; } /* 추가: lightning */
+        .elem-earth .elem-label     { background: rgba(121, 85, 72, 0.8); }             /* 추가: earth */
+        .elem-holy .elem-label      { background: rgba(255, 235, 59, 0.8); color: #000; } /* 수정: light -> holy */
+        .elem-toxic .elem-label     { background: rgba(46, 204, 113, 0.8); }
+        .elem-dark .elem-label      { background: rgba(155, 89, 182, 0.8); }
+        .elem-chaos .elem-label     { background: rgba(232, 67, 147, 0.8); }
 
         /* 등급별 테두리(기존 유지) */
         .type-base .skill-card-body { border-left-color: #95a5a6 !important; }
@@ -152,7 +167,20 @@
                         <img th:src="@{{iconName}(iconName=${skill.icon})}"
                              style="width: 100%; height: 100%; object-fit: cover;"
                              onerror="this.onerror=null; this.src='/images/skills/default.png';">
-                        <div th:if="${skill.element != 'NONE'}" class="elem-label" th:text="${skill.element}"></div>
+                        <div th:if="${skill.element != 'NONE'}" class="elem-label">
+                            <th:block th:switch="${skill.element}">
+                                <span th:case="'PHYSICAL'">물리</span>
+                                <span th:case="'FIRE'">화염</span>
+                                <span th:case="'ICE'">냉기</span>
+                                <span th:case="'LIGHTNING'">번개</span>
+                                <span th:case="'EARTH'">대지</span>
+                                <span th:case="'HOLY'">신성</span>
+                                <span th:case="'DARK'">암흑</span>
+                                <span th:case="'CHAOS'">혼돈</span>
+                                <span th:case="'TOXIC'">독</span>
+                                <span th:case="*" th:text="${skill.element}"></span>
+                            </th:block>
+                        </div>
                     </div>
 
                     <div class="skill-info-main" style="flex-grow: 1; margin-left: 12px; overflow: hidden;">

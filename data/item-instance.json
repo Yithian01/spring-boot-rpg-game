@@ -1,6 +1,6 @@
 {
-  "54609c71-ddb1-4829-bc9a-45605f1970ce" : {
-    "instanceId" : "54609c71-ddb1-4829-bc9a-45605f1970ce",
+  "6506d49f-23c9-4cef-b768-7b379689df41" : {
+    "instanceId" : "6506d49f-23c9-4cef-b768-7b379689df41",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,8 +23,28 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "919d8ce9-8a5b-46c6-9b92-6b4f8229a55f" : {
-    "instanceId" : "919d8ce9-8a5b-46c6-9b92-6b4f8229a55f",
+  "f3369fca-5ccc-47ac-a6f0-97c24dcdef4e" : {
+    "instanceId" : "f3369fca-5ccc-47ac-a6f0-97c24dcdef4e",
+    "itemMetaId" : 8,
+    "customName" : "8등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : "NONE",
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
+    "quantity" : 3,
+    "enhancementLevel" : 0,
+    "price" : 100,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : { },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "86121178-5178-4d14-9e90-cdbf360c8e0f" : {
+    "instanceId" : "86121178-5178-4d14-9e90-cdbf360c8e0f",
     "itemMetaId" : 22,
     "customName" : "금이 간 연습용 완드",
     "grade" : "COMMON",
@@ -46,8 +66,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ 11 ]
   },
-  "040db790-f385-4be8-808f-6351cd322de9" : {
-    "instanceId" : "040db790-f385-4be8-808f-6351cd322de9",
+  "6888f7b3-11f8-44ef-b8e9-96c2c0fa223c" : {
+    "instanceId" : "6888f7b3-11f8-44ef-b8e9-96c2c0fa223c",
     "itemMetaId" : 23,
     "customName" : "수습 마법사의 로브",
     "grade" : "COMMON",
@@ -70,8 +90,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "999d3ebe-5ba7-499a-944c-64de677006d5" : {
-    "instanceId" : "999d3ebe-5ba7-499a-944c-64de677006d5",
+  "f6e53164-b2d9-43ad-9839-5efb01f8989d" : {
+    "instanceId" : "f6e53164-b2d9-43ad-9839-5efb01f8989d",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -93,8 +113,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "657ca978-3ede-4add-a3b8-7c158be3d9f5" : {
-    "instanceId" : "657ca978-3ede-4add-a3b8-7c158be3d9f5",
+  "07c1e92c-81f0-4781-a226-370131383ae3" : {
+    "instanceId" : "07c1e92c-81f0-4781-a226-370131383ae3",
     "itemMetaId" : 45,
     "customName" : "원소의 서 [초급]",
     "grade" : "RARE",
@@ -120,5 +140,25 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ 13, 21, 22 ]
+  },
+  "f359b503-8bd2-4327-8d62-0f36c3588026" : {
+    "instanceId" : "f359b503-8bd2-4327-8d62-0f36c3588026",
+    "itemMetaId" : 9,
+    "customName" : "고블린의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
   }
 }

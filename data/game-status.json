@@ -1,5 +1,5 @@
 {
-  "location" : "TOWN",
-  "dungeonId" : null,
-  "gameLogs" : [ "새로운 기술 [연쇄 번개]을(를) 성공적으로 습득했습니다!", "새로운 기술 [강화 근육]을(를) 성공적으로 습득했습니다!", "영혼이 공명하여 [SPIRIT] 계통의 [에너지 응집/압축률]능력이 2만큼 상승했습니다!", "새로운 기술 [재생의 빛]을(를) 성공적으로 습득했습니다!", "새로운 기술 [고통의 낙인]을(를) 성공적으로 습득했습니다!", "\uD83C\uDFF0 마을에 도착했습니다." ]
+  "location" : "DUNGEON",
+  "dungeonId" : 101,
+  "gameLogs" : [ "<span style='color:#aaaaaa;'>주변이 고요합니다. 충분히 기력을 회복했습니다.</span>", "\uD83D\uDECC <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)", "<b style='color:#ffd700;'>✨ [발견] 고블린의 정수가 드랍되었습니다!</b>", "<span style='color:#74c0fc;'>\uD83D\uDC8E 고블린의 마석을 획득했습니다.</span>", "<span style='color:#51cf66;'>[전투 완료] 고블린 처치 성공!</span>", "⚔️ <b style='color:#ffffff;'>화염구</b>! 고블린에게 <b style='color:#ff4d4d;'>340</b>의 피해!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 \uD83D\uDC99 MP +25 </span>", "<span style='color:#ff9f43;'>[전투]</span> 고블린이(가) 나타났습니다!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -33)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -33)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +13%)", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC9A HP +2 </span>", "<span style='color:#aaaaaa;'>주변이 고요합니다. 충분히 기력을 회복했습니다.</span>", "\uD83D\uDECC <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)" ]
 }

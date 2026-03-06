@@ -1,0 +1,36 @@
+{
+  "dungeonId" : 101,
+  "parentDungeonId" : 0,
+  "parentDungeonName" : null,
+  "dungeonName" : "수정 동굴",
+  "currentFloor" : 1,
+  "progress" : 100,
+  "actionCount" : 17,
+  "maxActionCount" : 100,
+  "activeMonster" : null,
+  "playerRemainingTurns" : 0,
+  "playerMaxTurns" : 0,
+  "pendingExp" : 0,
+  "pendingEssence" : {
+    "instanceId" : "ESS-AED5A6F7",
+    "monsterId" : 3,
+    "description" : "고블린의 정수입니다.",
+    "monsterName" : "고블린",
+    "monsterTier" : 9,
+    "monsterType" : "일반",
+    "obtainedAt" : 1772766419471,
+    "activeSkillIds" : [ 6 ],
+    "passiveSkillIds" : [ ],
+    "baseStatsBonus" : {
+      "12" : 1
+    },
+    "combatStatsBonus" : {
+      "accuracy" : 1.0,
+      "meleeAtk" : 2.0
+    }
+  },
+  "floorProgressMap" : {
+    "101" : 100
+  },
+  "inBattle" : false
+}

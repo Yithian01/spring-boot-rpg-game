@@ -25,7 +25,7 @@
         .border-COMMON { border-color: #555 !important; } .border-UNCOMMON { border-color: #1eff00 !important; } .border-RARE { border-color: #0070dd !important; } .border-EPIC { border-color: #a335ee !important; } .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 10px rgba(255,128,0,0.3); }
 
         /* 툴팁 */
-        #item-tooltip { position: fixed; display: none; z-index: 10000; width: 320px; background: rgba(10, 10, 10, 0.98); border: 2px solid #555; border-radius: 8px; padding: 18px; pointer-events: none; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: 'Pretendard', sans-serif; }
+        #item-tooltip { position: fixed; display: none; z-index: 16000; width: 320px; background: rgba(10, 10, 10, 0.98); border: 2px solid #555; border-radius: 8px; padding: 18px; pointer-events: none; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: 'Pretendard', sans-serif; }
         .tt-header { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 12px; }
         .tt-name { font-size: 1.25rem; font-weight: bold; line-height: 1.3; word-break: keep-all; overflow-wrap: break-word; }
         .tt-type { font-size: 0.85rem; color: #aaa; font-weight: normal; }
@@ -157,73 +157,13 @@
         </ul>
     </div>
 
+    /* inventory.html 하단 script 부분 */
     <script th:inline="javascript">
-        let currentSellId = null;
-        let currentUnitPrice = 0; // 개당 가격 저장용
-
-        function openSellModal(itemId, itemName, maxQty, unitPrice) {
-            currentSellId = itemId;
-            currentUnitPrice = parseInt(unitPrice) || 0;
-
-            const modal = document.getElementById('sell-modal');
-            const qtyInput = document.getElementById('modal-qty-input');
-
-            document.getElementById('modal-item-name').innerText = itemName;
-            document.getElementById('modal-max-label').innerText = "보유 수량: " + maxQty;
-
-            qtyInput.max = maxQty;
-            qtyInput.value = 1;
-
-            updateTotalPrice(); // 초기 합계 계산
-            modal.style.display = 'flex';
-            hideTooltip();
-        }
-
-        function updateTotalPrice() {
-            const qtyInput = document.getElementById('modal-qty-input');
-            let val = parseInt(qtyInput.value) || 0;
-            const max = parseInt(qtyInput.max);
-
-            if (val > max) { val = max; qtyInput.value = max; }
-            if (val < 0) { val = 0; qtyInput.value = 0; }
-
-            const total = val * currentUnitPrice;
-            document.getElementById('modal-total-price').innerText = total.toLocaleString();
-        }
-
-        function changeQty(delta) {
-            const input = document.getElementById('modal-qty-input');
-            let val = parseInt(input.value) || 0;
-            val += delta;
-            input.value = val;
-            updateTotalPrice();
-        }
-
-        function setMaxQty() {
-            const input = document.getElementById('modal-qty-input');
-            input.value = input.max;
-            updateTotalPrice();
-        }
-
-        function closeSellModal() {
-            document.getElementById('sell-modal').style.display = 'none';
-            currentSellId = null;
-        }
-
-        function confirmSell() {
-            if (!currentSellId) return;
-            const qtyInput = document.getElementById('modal-qty-input');
-            let val = parseInt(qtyInput.value);
-            if (isNaN(val) || val < 1) { alert("판매 수량을 확인해주세요."); return; }
-
-            const form = document.getElementById('form-sell-' + currentSellId);
-            form.querySelector('input[name="quantity"]').value = val;
-            form.submit();
-        }
-
-        /* 툴팁 및 기타 로직 */
-        function showTooltip(el) {
+        // 함수를 선언식이 아니라 전역 객체(window)에 직접 할당합니다.
+        window.showTooltip = function(el) {
             const tooltip = document.getElementById('item-tooltip');
+            if(!tooltip) return;
+
             const data = {
                 name: el.getAttribute('data-name'),
                 grade: el.getAttribute('data-grade'),
@@ -234,32 +174,43 @@
                 quantity: parseInt(el.getAttribute('data-quantity') || "1"),
                 gold: el.getAttribute('data-gold')
             };
+
             const nameEl = document.getElementById('tt-name');
             nameEl.innerHTML = data.quantity > 1 ? `<span style="color:#00ff00;">[${data.quantity}개]</span> ${data.name}` : data.name;
             nameEl.className = 'tt-name text-' + data.grade;
+
             document.getElementById('tt-type').innerText = "분류: " + data.type;
             document.getElementById('tt-desc').innerText = data.desc || "특별한 설명이 없는 아이템입니다.";
+
             let statsHtml = "";
             if (data.bonuses) data.bonuses.split('|').forEach(s => { if(s.trim()) statsHtml += `<div class="tt-stat-row">• ${s.trim()}</div>`; });
             if (data.recovery && data.recovery !== 'null') statsHtml += `<div class="tt-stat-row" style="color:#00ff00;">• ${data.recovery}</div>`;
             if (data.gold && data.gold !== "null") statsHtml += `<div class="tt-stat-row" style="color:#ffd700; margin-top:10px; border-top:1px solid #444; padding-top:8px;">💰 판매가: ${Number(data.gold).toLocaleString()} Gold</div>`;
+
             document.getElementById('tt-stats').innerHTML = statsHtml;
             tooltip.style.display = 'block';
             tooltip.style.borderColor = getGradeColor(data.grade);
-        }
-        function moveTooltip(e) {
+        };
+
+        window.moveTooltip = function(e) {
             const tooltip = document.getElementById('item-tooltip');
+            if(!tooltip) return;
             let x = e.clientX + 20, y = e.clientY + 20;
             if (x + 320 > window.innerWidth) x = e.clientX - 340;
             if (y + tooltip.offsetHeight > window.innerHeight) y = window.innerHeight - tooltip.offsetHeight - 10;
-            tooltip.style.left = x + 'px'; tooltip.style.top = y + 'px';
-        }
-        function hideTooltip() { document.getElementById('item-tooltip').style.display = 'none'; }
-        function getGradeColor(grade) {
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        };
+
+        window.hideTooltip = function() {
+            const tooltip = document.getElementById('item-tooltip');
+            if(tooltip) tooltip.style.display = 'none';
+        };
+
+        window.getGradeColor = function(grade) {
             const colors = { 'COMMON': '#555', 'UNCOMMON': '#1eff00', 'RARE': '#0070dd', 'EPIC': '#a335ee', 'LEGENDARY': '#ff8000' };
             return colors[grade] || '#444';
-        }
-    }
+        };
     </script>
 </div>
 </html>

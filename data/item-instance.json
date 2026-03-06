@@ -1,6 +1,6 @@
 {
-  "de37fd62-2114-410b-a379-6f517cef19b1" : {
-    "instanceId" : "de37fd62-2114-410b-a379-6f517cef19b1",
+  "766e38d2-560c-407f-b4a4-23fd5e8ccacc" : {
+    "instanceId" : "766e38d2-560c-407f-b4a4-23fd5e8ccacc",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,8 +23,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "7f05655f-dafe-4815-88e0-9e927c8b0195" : {
-    "instanceId" : "7f05655f-dafe-4815-88e0-9e927c8b0195",
+  "f2870965-aebe-4363-bc82-698eba16cfbf" : {
+    "instanceId" : "f2870965-aebe-4363-bc82-698eba16cfbf",
     "itemMetaId" : 8,
     "customName" : "8등급 마석",
     "grade" : "COMMON",
@@ -43,57 +43,56 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "48c564d0-3159-4137-901c-8efbf1c38e2b" : {
-    "instanceId" : "48c564d0-3159-4137-901c-8efbf1c38e2b",
-    "itemMetaId" : 43,
-    "customName" : "무뎌진 사냥용 단검",
+  "9d69c382-a341-45f1-a67a-5236534cccc6" : {
+    "instanceId" : "9d69c382-a341-45f1-a67a-5236534cccc6",
+    "itemMetaId" : 18,
+    "customName" : "낡은 채광용 망치",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "DAGGER",
-    "twoHanded" : false,
-    "description" : "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
+    "subType" : "BLUNT",
+    "twoHanded" : true,
+    "description" : "광석을 캘 때 쓰던 망치입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 115000,
+    "price" : 87000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "accuracy" : 5.0,
-      "critRate" : 5.0,
-      "meleeAtk" : 7.0
+      "penetration" : 5.0,
+      "meleeAtk" : 15.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "cefddc66-a1f0-450a-906e-41d447bd66bb" : {
-    "instanceId" : "cefddc66-a1f0-450a-906e-41d447bd66bb",
-    "itemMetaId" : 27,
-    "customName" : "변색된 가죽 옷",
+  "13256493-0428-40a3-863c-05ef4bef8625" : {
+    "instanceId" : "13256493-0428-40a3-863c-05ef4bef8625",
+    "itemMetaId" : 19,
+    "customName" : "두꺼운 가죽 앞치마",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
     "subType" : "LEATHER",
     "twoHanded" : false,
-    "description" : "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다.",
+    "description" : "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 76000,
+    "price" : 56000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "dodge" : 4.0,
-      "critRate" : 4.0,
-      "moveSpeed" : 0.3,
-      "physDef" : 3.0
+      "statusResist" : 5.0,
+      "burnRes" : 10.0,
+      "moveSpeed" : -0.1,
+      "physDef" : 12.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "26217138-5bcd-4748-9d08-714ff1522e7e" : {
-    "instanceId" : "26217138-5bcd-4748-9d08-714ff1522e7e",
+  "006f04ab-1b05-4dd1-ac59-126948c2afe1" : {
+    "instanceId" : "006f04ab-1b05-4dd1-ac59-126948c2afe1",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -114,51 +113,5 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
-  },
-  "a9e9ef13-a945-4234-b5f3-67c4cc8d559b" : {
-    "instanceId" : "a9e9ef13-a945-4234-b5f3-67c4cc8d559b",
-    "itemMetaId" : 44,
-    "customName" : "중독 허리띠",
-    "grade" : "RARE",
-    "type" : "EQUIPMENT",
-    "slot" : "ARTIFACT",
-    "subType" : "BELT",
-    "twoHanded" : false,
-    "description" : "다양한 독주머니가 매달린 허리띠입니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 480000,
-    "baseStatsBonus" : {
-      "9" : 5
-    },
-    "combatStatsBonus" : {
-      "statusResist" : 5.0,
-      "toxicAtk" : 15.0,
-      "critRate" : 3.0
-    },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ 20 ]
-  },
-  "5066d24b-8045-4e91-8284-4cbdd07738a3" : {
-    "instanceId" : "5066d24b-8045-4e91-8284-4cbdd07738a3",
-    "itemMetaId" : 9,
-    "customName" : "동굴 쥐의 9등급 마석",
-    "grade" : "COMMON",
-    "type" : "MATERIAL",
-    "slot" : null,
-    "subType" : "MAGIC_STONE",
-    "twoHanded" : false,
-    "description" : "하급 몬스터에게서 보이는 마석입니다.",
-    "quantity" : 1,
-    "enhancementLevel" : 0,
-    "price" : 20,
-    "baseStatsBonus" : null,
-    "combatStatsBonus" : null,
-    "recoveryBonus" : null,
-    "baseStatsBonusModifiers" : null,
-    "combatStatsBonusModifiers" : null,
-    "grantedSkillIds" : null
   }
 }

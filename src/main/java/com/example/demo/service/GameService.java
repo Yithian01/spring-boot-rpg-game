@@ -254,6 +254,7 @@ public class GameService {
         }
 
         List<StatCategoryGroupDto> statGroups = buildStatGroups(us);
+        List<SkillCardDto> learnedSkills = battleService.getSkillHand(us, null);
 
         return GamePageDto.builder()
                 .img(us.getImg())
@@ -279,6 +280,7 @@ public class GameService {
                 .boxDiscount(discountPercent)
                 .activeEssences(activeEssences)
                 .gameLogs(gs != null ? gs.getGameLogs() : new ArrayList<>())
+                .learnedSkills(learnedSkills)
                 .build();
     }
 

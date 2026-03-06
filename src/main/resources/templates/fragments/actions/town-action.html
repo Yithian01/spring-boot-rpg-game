@@ -180,7 +180,7 @@
             <button type="submit" class="action-btn btn-shop">
                 <span>🎁</span>
                 <div class="shop-content-row">
-                    <span style="font-size: 0.9rem;">비밀 상자</span>
+                    <span style="font-size: 0.9rem;">랜덤 박스</span>
                     <div class="price-tag">
                         <span class="gold-text" th:text="${#numbers.formatInteger(gameData.boxPrice, 3, 'COMMA')} + 'G'"></span>
                         <small th:if="${gameData.boxDiscount > 0}"
@@ -202,7 +202,15 @@
                   th:if="${town.totalMagicStoneCount > 0}"
                   th:text="${town.totalMagicStoneCount}">0</span>
         </button>
-        <button type="button" class="action-btn btn-empty"></button>
+
+
+        <button type="button"
+                class="action-btn btn-learned-skills"
+                onclick="openLearnedSkillModal()"
+                style="background: #2c3e50 !important; border-bottom: 4px solid #1a252f !important;">
+            <span>📔</span>
+            보유 기술
+        </button>
     </th:block>
 </div>
 

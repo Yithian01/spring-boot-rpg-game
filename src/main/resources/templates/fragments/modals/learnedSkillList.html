@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="learnedSkillStyle">
+    <style>
+        /* [1] 모달 기본 레이아웃 */
+        #learnedSkillModal {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+            z-index: 13000; display: none; justify-content: center;
+            align-items: center; backdrop-filter: blur(10px);
+        }
+        .learned-skill-outer {
+            width: 600px; background: #1a1a1a; border: 2px solid #555;
+            border-radius: 15px; padding: 25px; display: flex;
+            flex-direction: column; max-height: 85vh;
+        }
+        .learned-skill-scroll {
+            flex: 1; overflow-y: auto; margin: 15px 0; padding-right: 10px;
+        }
+        .learned-skill-scroll::-webkit-scrollbar { width: 6px; }
+        .learned-skill-scroll::-webkit-scrollbar-thumb { background: #ffd700; border-radius: 10px; }
+
+        /* [2] 직사각형 카드 리스트 강제 스타일 (전투 화면 복제) */
+        .modal-skill-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* 카드 사이 간격 */
+        }
+
+        /* 직사각형 카드 본체 */
+        .modal-skill-card {
+            display: flex !important;
+            align-items: center !important;
+            min-height: 90px;
+            background: linear-gradient(135deg, #232526, #414345);
+            border: 2px solid #555;
+            border-left: 6px solid #888; /* 등급별 색상이 들어갈 자리 */
+            border-radius: 10px;
+            padding: 10px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            transition: all 0.2s;
+        }
+
+        .modal-skill-card:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.2);
+            border-color: #ffd700;
+        }
+
+        /* 등급별 테두리 컬러 강제 적용 */
+        .type-base { border-left-color: #95a5a6 !important; }
+        .type-common { border-left-color: #cd7f32 !important; }
+        .type-uncommon { border-left-color: #2ecc71 !important; }
+        .type-rare { border-left-color: #3498db !important; }
+        .type-epic { border-left-color: #9b59b6 !important; }
+        .type-legendary { border-left-color: #f1c40f !important; }
+        .type-monster { border-left-color: #a29bfe !important; }
+
+        /* 내부 구성 요소 정렬 */
+        .modal-skill-icon {
+            width: 70px; height: 70px; flex-shrink: 0;
+            border-radius: 8px; overflow: hidden; border: 1px solid #555;
+            background: #000; position: relative;
+        }
+        .modal-skill-info {
+            flex-grow: 1; margin-left: 15px; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .modal-skill-costs {
+            width: 100px; flex-shrink: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 5px;
+            padding-left: 12px; border-left: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+    <script th:inline="javascript">
+        function openLearnedSkillModal() { document.getElementById('learnedSkillModal').style.display = 'flex'; }
+        function closeLearnedSkillModal() { document.getElementById('learnedSkillModal').style.display = 'none'; }
+    </script>
+</th:block>
+
+<div th:fragment="learnedSkillModal(ownedSkills)" id="learnedSkillModal">
+    <div class="learned-skill-outer">
+        <h3 style="color: #ffd700; text-align: center; margin: 0 0 15px 0;">📔 각인된 기술 도감</h3>
+
+        <div class="learned-skill-scroll">
+            <div class="modal-skill-container" th:if="${ownedSkills != null and !ownedSkills.isEmpty()}">
+
+                <div th:each="skill : ${ownedSkills}"
+                     class="modal-skill-card"
+                     th:classappend="'type-' + ${#strings.toLowerCase(skill.skillType)}"
+                     onmouseover="showSkillTooltip(this)"
+                     onmouseout="hideSkillTooltip()"
+                     th:data-name="${skill.name}"
+                     th:data-desc="${skill.description}"
+                     th:data-scaling="${skill.scalingInfo != null ? #strings.listJoin(skill.scalingInfo, '|') : ''}"
+                     th:data-mods="${skill.modifierDetails != null ? #strings.listJoin(skill.modifierDetails, '|') : ''}"
+                     th:data-status="${skill.statusName}"
+                     th:data-chance="${skill.effectChance}"
+                     th:data-duration="${skill.duration}">
+
+                    <div class="modal-skill-icon">
+                        <img th:src="${skill.icon}" style="width:100%; height:100%; object-fit:cover;"
+                             onerror="this.onerror=null; this.src='/images/skills/default.png';">
+                        <div th:if="${skill.element != 'NONE'}" class="elem-label"
+                             style="position:absolute; bottom:0; width:100%; background:rgba(0,0,0,0.7); font-size:0.6rem; text-align:center; color:#fff;"
+                             th:text="${skill.element}"></div>
+                    </div>
+
+                    <div class="modal-skill-info">
+                        <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 4px;">
+                            <span style="color: #fff; font-size: 1.05rem; font-weight: bold;">[[${skill.name}]]</span>
+                            <span class="grade-badge" th:classappend="'badge-' + ${#strings.toLowerCase(skill.skillType)}"
+                                  style="font-size:0.65rem; padding:1px 4px; border-radius:4px; color:#fff;"
+                                  th:text="${skill.skillType}">등급</span>
+                        </div>
+                        <div style="color: #bbb; font-size: 0.85rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                            [[${skill.description}]]
+                        </div>
+                    </div>
+
+                    <div class="modal-skill-costs">
+                        <div style="background: #ff9f43; color: #000; width: 100%; text-align: center; border-radius: 4px; font-weight: 900; font-size: 0.85rem;">
+                            [[${skill.turnCost}]] AP
+                        </div>
+                        <div th:if="${skill.staminaCost > 0}" style="color: #70db70; font-size: 0.75rem;">ST [[${skill.staminaCost}]]</div>
+                        <div th:if="${skill.mpCost > 0}" style="color: #4dabf7; font-size: 0.75rem;">MP [[${skill.mpCost}]]</div>
+                    </div>
+
+                </div> </div>
+
+            <p th:unless="${ownedSkills != null and !ownedSkills.isEmpty()}"
+               style="color: #666; text-align: center; margin-top: 50px;">습득한 기술이 없습니다.</p>
+        </div>
+
+        <button class="action-btn btn-tax" onclick="closeLearnedSkillModal()" style="height: 45px; margin-top: 10px;">닫기</button>
+    </div>
+</div>
+</html>

@@ -1,6 +1,6 @@
 {
-  "5f5bb6c9-f98e-408f-bb51-549433de7893" : {
-    "instanceId" : "5f5bb6c9-f98e-408f-bb51-549433de7893",
+  "54609c71-ddb1-4829-bc9a-45605f1970ce" : {
+    "instanceId" : "54609c71-ddb1-4829-bc9a-45605f1970ce",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,56 +23,75 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "8f65eb62-d145-4b00-ab54-bb17ea385e98" : {
-    "instanceId" : "8f65eb62-d145-4b00-ab54-bb17ea385e98",
-    "itemMetaId" : 18,
-    "customName" : "낡은 채광용 망치",
+  "66b58f73-166c-4d4d-a68b-586e32838f7d" : {
+    "instanceId" : "66b58f73-166c-4d4d-a68b-586e32838f7d",
+    "itemMetaId" : 8,
+    "customName" : "8등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : "NONE",
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
+    "quantity" : 4,
+    "enhancementLevel" : 0,
+    "price" : 100,
+    "baseStatsBonus" : { },
+    "combatStatsBonus" : { },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ ]
+  },
+  "919d8ce9-8a5b-46c6-9b92-6b4f8229a55f" : {
+    "instanceId" : "919d8ce9-8a5b-46c6-9b92-6b4f8229a55f",
+    "itemMetaId" : 22,
+    "customName" : "금이 간 연습용 완드",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "WEAPON",
-    "subType" : "BLUNT",
-    "twoHanded" : true,
-    "description" : "광석을 캘 때 쓰던 망치입니다.",
+    "subType" : "WAND",
+    "twoHanded" : false,
+    "description" : "아카데미 시절 쓰던 완드입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 87000,
+    "price" : 300000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "penetration" : 5.0,
-      "accuracy" : 1.0,
-      "meleeAtk" : 10.0
+      "magicAtk" : 12.0,
+      "maxMp" : 150.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
+    "grantedSkillIds" : [ 11 ]
   },
-  "dc2c9a94-5227-40f1-955a-5a849df4d923" : {
-    "instanceId" : "dc2c9a94-5227-40f1-955a-5a849df4d923",
-    "itemMetaId" : 19,
-    "customName" : "두꺼운 가죽 앞치마",
+  "040db790-f385-4be8-808f-6351cd322de9" : {
+    "instanceId" : "040db790-f385-4be8-808f-6351cd322de9",
+    "itemMetaId" : 23,
+    "customName" : "수습 마법사의 로브",
     "grade" : "COMMON",
     "type" : "EQUIPMENT",
     "slot" : "BODY",
-    "subType" : "LEATHER",
+    "subType" : "CLOTH",
     "twoHanded" : false,
-    "description" : "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
+    "description" : "마나 흐름을 돕는 얇은 천 옷입니다.",
     "quantity" : 1,
     "enhancementLevel" : 0,
-    "price" : 56000,
+    "price" : 180000,
     "baseStatsBonus" : { },
     "combatStatsBonus" : {
-      "statusResist" : 5.0,
-      "moveSpeed" : -0.1,
-      "physDef" : 5.0
+      "maxMp" : 50.0,
+      "magRes" : 0.1,
+      "mpRegen" : 15.0
     },
     "recoveryBonus" : { },
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "e8791565-cb74-4a36-bf3b-d150de2a2025" : {
-    "instanceId" : "e8791565-cb74-4a36-bf3b-d150de2a2025",
+  "999d3ebe-5ba7-499a-944c-64de677006d5" : {
+    "instanceId" : "999d3ebe-5ba7-499a-944c-64de677006d5",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -93,5 +112,33 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
+  },
+  "657ca978-3ede-4add-a3b8-7c158be3d9f5" : {
+    "instanceId" : "657ca978-3ede-4add-a3b8-7c158be3d9f5",
+    "itemMetaId" : 45,
+    "customName" : "원소의 서 [초급]",
+    "grade" : "RARE",
+    "type" : "EQUIPMENT",
+    "slot" : "SUB_WEAPON",
+    "subType" : "BOOK",
+    "twoHanded" : false,
+    "description" : "기초적인 삼원소 마법이 기록된 마법서입니다. 마나의 흐름을 정돈하여 영창을 돕습니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 520000,
+    "baseStatsBonus" : {
+      "13" : 6,
+      "14" : 4
+    },
+    "combatStatsBonus" : {
+      "accuracy" : 5.0,
+      "maxMp" : 80.0,
+      "mpRegen" : 5.0,
+      "magicAtk" : 15.0
+    },
+    "recoveryBonus" : { },
+    "baseStatsBonusModifiers" : { },
+    "combatStatsBonusModifiers" : { },
+    "grantedSkillIds" : [ 13, 21, 22 ]
   }
 }

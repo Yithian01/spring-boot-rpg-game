@@ -56,4 +56,7 @@ public class GamePageDto {
 
     private List<EssencePageDto> activeEssences;
     private List<String> gameLogs;
+
+    // 보유 스킬 카드
+    private List<SkillCardDto> learnedSkills;
 }

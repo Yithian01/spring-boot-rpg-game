@@ -109,11 +109,18 @@ public class BattleService {
     }
 
     /**
+     * 마을용: 단순히 보유한 스킬 리스트를 가져옴 (전투 계산 제외)
+     */
+    public List<SkillCardDto> getSkillHand(UserStatus user) {
+        return getSkillHand(user, null);
+    }
+
+    /**
      * UI로 사용 가능한 모든 스킬을 하나의 리스트에 담아 반환
      * (플레이어 스킬 + 정수 스킬 통합)
      */
     public List<SkillCardDto> getSkillHand(UserStatus user, DungeonStatus ds) {
-        ActiveMonster monster = ds.getActiveMonster();
+        ActiveMonster monster = (ds != null) ? ds.getActiveMonster() : null;
         List<SkillCardDto> totalHand = new ArrayList<>();
 
         // 1. 현재 무기 타입 파악 및 아이템 부여 스킬 ID 수집
@@ -181,9 +188,9 @@ public class BattleService {
     private SkillCardDto buildSkillCardDto(UserStatus user, DungeonStatus ds, ActiveMonster monster,
                                            SkillMeta meta, String skillType, String iconPath) {
 
-        boolean canAct = statCalculationService.checkSkillAvailability(user, ds, meta);
+        boolean canAct = (ds != null) && statCalculationService.checkSkillAvailability(user, ds, meta);
         String msg = "";
-        if (!canAct) {
+        if (ds != null && !canAct) {
             if (ds.getPlayerRemainingTurns() < meta.getTurnCost()) msg = "AP 부족";
             else if (user.getCurrentStamina() < meta.getCost().getOrDefault("stamina", 0)) msg = "기력 부족";
             else if (user.getCurrentMp() < meta.getCost().getOrDefault("mp", 0)) msg = "마력 부족";
@@ -195,7 +202,7 @@ public class BattleService {
 
         // 명중/위력 계산
         int realHitChance = 0;
-        if (monster != null) {
+        if (ds != null && monster != null) {
             int skillHitChance = meta.getHitChance();
             double attackerAcc = user.getCombatStats().getAccuracy();
             double defenderDog = monster.getBaseStats().getDodge();

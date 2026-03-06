@@ -69,7 +69,7 @@
 
     <div class="selection-outer" style="width: 100%; max-width: 1450px; text-align: center; padding: 20px;">
         <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 5px; text-shadow: 0 0 15px rgba(255,215,0,0.4);">✨ 영혼의 정수 연성</h2>
-        <p style="color: #aaa; margin-bottom: 35px; font-size: 1.1rem;">추출된 마법 공식 중 하나를 선택하여 영구히 각인하십시오.</p>
+        <p style="color: #aaa; margin-bottom: 35px; font-size: 1.1rem;">추출된 마법 공식 중 하나를 선택하여 배울 수 있습니다.</p>
 
         <div class="skill-card-container" style="display: flex; gap: 20px; justify-content: center; align-items: stretch;">
             <th:block th:if="${skillOptions != null}">
@@ -78,7 +78,7 @@
                      th:classappend="${skill.alreadyLearned ? 'already-learned' : ''}"
                      th:data-skill-id="${skill.id}"
                      th:data-learned="${skill.alreadyLearned}"
-                     onclick="prepareSkillSelection(this)">
+                     th:onclick="prepareSkillSelection([[${skill.id}]], [[${skill.name}]], [[${skill.alreadyLearned}]])">
 
                     <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                         <span th:class="'type-badge element-' + ${skill.element}">

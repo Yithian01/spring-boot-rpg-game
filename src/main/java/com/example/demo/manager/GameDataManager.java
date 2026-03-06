@@ -160,6 +160,22 @@ public class GameDataManager  implements ApplicationRunner {
     }
 
     /**
+     * 해당 카테고리의 스탯ID 중 1개를 반환합니다.
+     */
+    public Integer getStatIdByStatCategory(String category){
+        int randomStatId = 0;
+        List<Integer> targetIds = new ArrayList<>();
+
+        targetIds = this.statMetaMap.values().stream()
+                .filter(meta -> category.equals(meta.getCategory()))
+                .map(StatMeta::getId)
+                .collect(Collectors.toList());
+
+        randomStatId = targetIds.get(new Random().nextInt(targetIds.size()));
+        return randomStatId;
+    }
+
+    /**
      * 아이템 ID를 입력받아, 해당 아이템이 속한 종교(또는 그룹) ID를 반환합니다.
      * @param itemId 아이템 고유 번호
      * @return 1=무교(공용), 2~21=특정종교, 0=오류/범위밖

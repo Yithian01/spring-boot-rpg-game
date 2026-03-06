@@ -185,21 +185,14 @@ public class TownService {
             default -> type; // 이미 영문이거나 잘못된 값일 경우 그대로 전달
         };
 
-        // 3. Meta 데이터 필터링 (가져온 categoryKey와 비교)
-        List<Integer> targetIds = gameDataManager.getStatMetaMap().values().stream()
-                .filter(meta -> categoryKey.equals(meta.getCategory()))
-                .map(StatMeta::getId)
-                .collect(Collectors.toList());
+        // 3. 해당 카테고리 스탯 1개 ID를 가져옴
+        int randomStatId = gameDataManager.getStatIdByStatCategory(categoryKey);
 
-        // [중요] 리스트가 비어있으면 뒤에서 랜덤 에러가 발생하므로 여기서 차단
-        if (targetIds.isEmpty()) {
+        // 스탯ID = 1부터 시작
+        if (randomStatId <= 0) {
             System.out.println("매칭 실패: UI입력[" + type + "] -> 변환키[" + categoryKey + "]");
             return "수련 가능한 스탯을 찾을 수 없습니다. (계통: " + type + ")";
         }
-
-        // 4. 대상 스탯 중 랜덤하게 하나 선택 (이제 안전함)
-        int randomStatId = targetIds.get(new Random().nextInt(targetIds.size()));
-        String statName = gameDataManager.getStatMetaMap().get(randomStatId).getName();
 
         // 5. 잠재력(Potential) 가중치 기반 성장치 계산
         int growthId = us.getPotentials().getOrDefault(randomStatId, 7);
@@ -222,6 +215,9 @@ public class TownService {
         // 7. 스탯 재계산 및 저장
         statCalculationService.refreshUserCombatStats(us, gameDataManager.getItemMetaMap());
         saveAll(us, ts, gs);
+
+        String statName = gameDataManager.getStatMetaMap().get(randomStatId).getName();
+
 
         // UI 컨셉에 맞춘 결과 메시지
         String message = String.format("🌌 [%s] 계통 수련 완료!\n [%s] 스탯이 %d 상승했습니다.",
@@ -316,6 +312,20 @@ public class TownService {
         // 먼저 차감(제거)
         inventoryService.consumeStone(stone);
 
+        TownStatus town = townFileRepository.findTownStatus();
+        town.getMagicStoneList().stream()
+                .filter(ms -> instanceId.equals(ms.getInstanceId()))
+                .findFirst()
+                .ifPresent(targetStone -> {
+                    int newQty = targetStone.getQuantity() - 1;
+                    if (newQty <= 0) {
+                        // 수량이 0 이하면 리스트에서 아예 제거
+                        town.getMagicStoneList().remove(targetStone);
+                    } else {
+                        targetStone.setQuantity(newQty);
+                    }
+                });
+
         UserStatus us = userFileRepository.findGameUser();
         int stoneGrade = stone.getItemMetaId();
         int cardCount = (us.getTribeId() == 1) ? 4 : 3;
@@ -385,8 +395,66 @@ public class TownService {
                     .build());
         }
 
-        TownStatus town = townFileRepository.findTownStatus();
         town.setSkillOptions(options);
         townFileRepository.saveTownStatus(town);
     }
+
+    public void confirmSkillExtraction(String skillId) {
+        int targetId = Integer.parseInt(skillId);
+        SkillMeta skillMeta = gameDataManager.getSkillMetaMap().get(targetId);
+        if (skillMeta == null) throw new IllegalStateException("존재하지 않는 스킬 데이터입니다.");
+
+        TownStatus ts = townFileRepository.findTownStatus();
+        UserStatus us = userFileRepository.findGameUser();
+        GameStatus gs = gameFileRepository.findGameStatus();
+
+        // 1. 이미 배운 스킬인지 확인
+        boolean isAlreadyLearned = us.getLearnedSkillIds().contains(targetId);
+
+        if (isAlreadyLearned) {
+            // 2. 중복 시: TownStatus의 임시 옵션 리스트에서 해당 스킬의 보너스 정보를 찾음
+            RandomSkillCardDto selectedOption = ts.getSkillOptions().stream()
+                    .filter(opt -> opt.getId() == targetId)
+                    .findFirst()
+                    .orElseThrow(() -> new IllegalStateException("선택한 스킬이 옵션 목록에 없습니다."));
+
+            // 보너스 스탯 종류(ex: "육신")와 기본 보너스 수치(ex: 2) 가져오기
+            String categoryKey = selectedOption.getBonusStatType();
+            int baseBonusValue = selectedOption.getBonusStatValue();
+
+            // 2-1. 수련 로직과 동일하게 해당 카테고리의 랜덤 스탯 결정
+            int randomStatId = gameDataManager.getStatIdByStatCategory(categoryKey);
+            String randomStatName = gameDataManager.getStatName(randomStatId);
+
+            if (randomStatId > 0) {
+                // 2-2. 잠재력 가중치 적용 계산
+                int growthId = us.getPotentials().getOrDefault(randomStatId, 7);
+                GrowthMeta growthMeta = gameDataManager.getGrowthMetaMap().get(growthId);
+                double weight = (growthMeta != null) ? growthMeta.getWeight() : 1.0;
+
+                // 최종 증가량 = (마석 보너스 기본치) * (잠재력 가중치)
+                int finalGain = (int) Math.max(1, Math.round(baseBonusValue * weight));
+
+                // 스탯 반영
+                int currentVal = us.getBaseStats().getOrDefault(randomStatId, 0);
+                us.getBaseStats().put(randomStatId, currentVal + finalGain);
+
+                gs.addLog(String.format("영혼이 공명하여 [%s] 계통의 [%s]능력이 %d만큼 상승했습니다!",
+                        categoryKey, randomStatName, finalGain));
+            } else {
+                gs.addLog("각인 보너스 스탯 대상을 찾을 수 없습니다.");
+            }
+        } else {
+            // 3. 새로 배우는 경우
+            us.getLearnedSkillIds().add(targetId);
+            gs.addLog(String.format("새로운 기술 [%s]을(를) 성공적으로 습득했습니다!", skillMeta.getName()));
+        }
+
+        // 4. 공통 사후 처리: 옵션 초기화 및 데이터 저장
+        ts.setSkillOptions(null); // 연성 완료 후 리스트 초기화
+        userFileRepository.saveUserStatus(us);
+        townFileRepository.saveTownStatus(ts);
+        gameFileRepository.saveGameStatus(gs);
+    }
+
 }

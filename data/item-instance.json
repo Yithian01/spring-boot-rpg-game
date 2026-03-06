@@ -1,6 +1,6 @@
 {
-  "6b34b836-2ec1-4098-a123-4e2fdf48925b" : {
-    "instanceId" : "6b34b836-2ec1-4098-a123-4e2fdf48925b",
+  "5f5bb6c9-f98e-408f-bb51-549433de7893" : {
+    "instanceId" : "5f5bb6c9-f98e-408f-bb51-549433de7893",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,28 +23,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "73bfe33d-7c96-4e3d-9f0f-ef98306ab8e6" : {
-    "instanceId" : "73bfe33d-7c96-4e3d-9f0f-ef98306ab8e6",
-    "itemMetaId" : 8,
-    "customName" : "8등급 마석",
-    "grade" : "COMMON",
-    "type" : "MATERIAL",
-    "slot" : "NONE",
-    "subType" : "MAGIC_STONE",
-    "twoHanded" : false,
-    "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
-    "quantity" : 4,
-    "enhancementLevel" : 0,
-    "price" : 100,
-    "baseStatsBonus" : { },
-    "combatStatsBonus" : { },
-    "recoveryBonus" : { },
-    "baseStatsBonusModifiers" : { },
-    "combatStatsBonusModifiers" : { },
-    "grantedSkillIds" : [ ]
-  },
-  "c852a03b-7aa1-49b6-af6b-2caf33f60335" : {
-    "instanceId" : "c852a03b-7aa1-49b6-af6b-2caf33f60335",
+  "8f65eb62-d145-4b00-ab54-bb17ea385e98" : {
+    "instanceId" : "8f65eb62-d145-4b00-ab54-bb17ea385e98",
     "itemMetaId" : 18,
     "customName" : "낡은 채광용 망치",
     "grade" : "COMMON",
@@ -67,8 +47,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "92832beb-ea9b-412f-8cf1-02bfdff384a6" : {
-    "instanceId" : "92832beb-ea9b-412f-8cf1-02bfdff384a6",
+  "dc2c9a94-5227-40f1-955a-5a849df4d923" : {
+    "instanceId" : "dc2c9a94-5227-40f1-955a-5a849df4d923",
     "itemMetaId" : 19,
     "customName" : "두꺼운 가죽 앞치마",
     "grade" : "COMMON",
@@ -91,8 +71,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "4f24e27a-d460-4ea1-8f53-e214cc7d7eb5" : {
-    "instanceId" : "4f24e27a-d460-4ea1-8f53-e214cc7d7eb5",
+  "e8791565-cb74-4a36-bf3b-d150de2a2025" : {
+    "instanceId" : "e8791565-cb74-4a36-bf3b-d150de2a2025",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",

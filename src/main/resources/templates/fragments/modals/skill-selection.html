@@ -62,7 +62,20 @@
                      onclick="handleSkillClick(this)">
 
                     <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <span th:class="'type-badge element-' + ${skill.element}" th:text="${skill.element}">ELEMENT</span>
+                        <span th:class="'type-badge element-' + ${skill.element}">
+                            <th:block th:switch="${skill.element}">
+                                <span th:case="'PHYSICAL'">⚔️</span>
+                                <span th:case="'FIRE'">🔥</span>
+                                <span th:case="'ICE'">❄️</span>
+                                <span th:case="'LIGHTNING'">⚡</span>
+                                <span th:case="'EARTH'">⛰️</span>
+                                <span th:case="'HOLY'">✨</span>
+                                <span th:case="'DARK'">🌑</span>
+                                <span th:case="'CHAOS'">🌀</span>
+                                <span th:case="'TOXIC'">🧪</span>
+                                <span th:case="*">🔮</span> </th:block>
+                            [[${skill.element}]]
+                        </span>
                         <span th:text="${skill.grade}" th:class="'grade-text ' + ${skill.grade}" style="font-weight: 800; font-size: 0.8rem;">GRADE</span>
                     </div>
 

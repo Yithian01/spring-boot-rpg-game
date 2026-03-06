@@ -12,6 +12,7 @@
   <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
   <th:block th:replace="~{fragments/status-effects :: statusEffectsStyle}"></th:block>
   <th:block th:replace="~{fragments/monster-effects :: monsterEffectsStyle}"></th:block>
+  <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillStyle}"></th:block>
 </head>
 <body>
 
@@ -75,6 +76,7 @@
     <div th:replace="~{fragments/actions/dungeon-action :: dungeonActionPanel(gameData=${game}, dungeon=${dungeon})}"></div>
   </div>
 
+  <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillModal(${game.learnedSkills})}"></th:block>
   <div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
 
   <script th:inline="javascript">
@@ -110,7 +112,8 @@
           tooltip = document.createElement('div');
           tooltip.id = 'skill-tooltip';
           // white-space: pre-wrap을 추가하면 줄바꿈이 더 잘 먹습니다.
-          tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:12px; border-radius:8px; z-index:1000; width:240px; font-size:0.85rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.7); line-height:1.4;";
+          // z-index를 20000 정도로 대폭 높여서 모달(13000) 위로 올립니다.
+          tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:12px; border-radius:8px; z-index:20000; width:240px; font-size:0.85rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.7); line-height:1.4;";
           document.body.appendChild(tooltip);
       }
 

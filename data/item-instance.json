@@ -160,5 +160,25 @@
     "baseStatsBonusModifiers" : null,
     "combatStatsBonusModifiers" : null,
     "grantedSkillIds" : null
+  },
+  "26395466-10ed-4e44-aa49-05cc22d50324" : {
+    "instanceId" : "26395466-10ed-4e44-aa49-05cc22d50324",
+    "itemMetaId" : 9,
+    "customName" : "동굴 쥐의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 2,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
   }
 }

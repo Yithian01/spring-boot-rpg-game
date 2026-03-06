@@ -133,8 +133,10 @@
 
                     <div class="bonus-footer"
                          th:style="${skill.alreadyLearned} ? 'background: rgba(230,126,34,0.1); color: #ff922b;' : 'background: rgba(32,201,151,0.1); color: #63e6be;'">
-                        <span style="font-size: 0.75rem;">[[${skill.alreadyLearned ? '중복 보너스' : '각인 보너스'}]]</span><br>
-                        <strong>[[${skill.bonusStatType}]] +[[${skill.bonusStatValue}]]</strong>
+                        <span style="font-size: 0.75rem;">[[${skill.alreadyLearned ? '중복 보너스' : '스킬 습득'}]]</span><br>
+                        <strong th:if="${skill.alreadyLearned}">
+                            [[${skill.bonusStatType}]] +[[${skill.bonusStatValue}]]
+                        </strong>
                     </div>
                 </div>
             </th:block>

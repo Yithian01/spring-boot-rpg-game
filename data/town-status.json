@@ -1,13 +1,48 @@
 {
   "currentTurn" : 30,
   "maxTurn" : 30,
-  "day" : 2,
+  "day" : 1,
   "currentTax" : 900000,
   "magicStoneList" : [ {
-    "instanceId" : "f3369fca-5ccc-47ac-a6f0-97c24dcdef4e",
+    "instanceId" : "59db6bb4-ed73-487c-bb20-7585a940b1e3",
+    "customName" : "1등급 마석",
+    "grade" : 1,
+    "quantity" : 4
+  }, {
+    "instanceId" : "80c3fbbb-d7d6-470c-b1ac-8bca067326f7",
+    "customName" : "2등급 마석",
+    "grade" : 2,
+    "quantity" : 5
+  }, {
+    "instanceId" : "4733d6a1-e50d-42e3-8503-4184cff37b26",
+    "customName" : "3등급 마석",
+    "grade" : 3,
+    "quantity" : 5
+  }, {
+    "instanceId" : "da77d3a4-6f80-4589-a750-74d9012efb2c",
+    "customName" : "4등급 마석",
+    "grade" : 4,
+    "quantity" : 4
+  }, {
+    "instanceId" : "21f562f0-c874-4e10-9a78-a12297ff24cf",
+    "customName" : "5등급 마석",
+    "grade" : 5,
+    "quantity" : 5
+  }, {
+    "instanceId" : "f89afc63-968f-4842-98d1-f7144768f372",
+    "customName" : "6등급 마석",
+    "grade" : 6,
+    "quantity" : 5
+  }, {
+    "instanceId" : "4dc64699-3e3b-456b-b403-021986d983a6",
+    "customName" : "7등급 마석",
+    "grade" : 7,
+    "quantity" : 5
+  }, {
+    "instanceId" : "68099fef-25d5-4291-b575-1425c60ed89d",
     "customName" : "8등급 마석",
     "grade" : 8,
-    "quantity" : 3
+    "quantity" : 5
   } ],
   "skillOptions" : null,
   "taxPaid" : false

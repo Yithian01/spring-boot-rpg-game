@@ -42,6 +42,25 @@
         .scaling-box { background: rgba(148, 216, 45, 0.08); padding: 12px; border-radius: 10px; border: 1px solid rgba(148, 216, 45, 0.2); margin-top: 5px; }
         .bonus-footer { padding: 12px; border-radius: 10px; font-size: 0.85rem; text-align: center; margin-top: auto; border: 1px solid rgba(255,255,255,0.1); }
         .cost-item { font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 3px; }
+
+        /* [2] 2차 확인 팝업 스타일 */
+        #confirmOverlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+            display: none; justify-content: center; align-items: center; z-index: 11000;
+            backdrop-filter: blur(8px);
+        }
+        .confirm-box {
+            background: #1a1a1a; border: 2px solid #ffd700; border-radius: 20px;
+            padding: 40px; width: 450px; text-align: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+            animation: modalPop 0.2s ease-out;
+        }
+        @keyframes modalPop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .confirm-btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
+        .btn-confirm { padding: 12px 30px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-yes { background: #ffd700; color: #000; }
+        .btn-no { background: #333; color: #fff; border: 1px solid #444; }
     </style>
 </th:block>
 
@@ -59,7 +78,7 @@
                      th:classappend="${skill.alreadyLearned ? 'already-learned' : ''}"
                      th:data-skill-id="${skill.id}"
                      th:data-learned="${skill.alreadyLearned}"
-                     onclick="handleSkillClick(this)">
+                     onclick="prepareSkillSelection(this)">
 
                     <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                         <span th:class="'type-badge element-' + ${skill.element}">
@@ -120,16 +139,52 @@
                 </div>
             </th:block>
         </div>
+
+        <div id="confirmOverlay">
+            <div class="confirm-box">
+                <h3 id="confirmTitle" style="font-size: 1.8rem; margin-top: 0;">영혼 강화</h3>
+                <p id="confirmMessage" style="color: #ccc; font-size: 1.1rem; line-height: 1.6; margin: 20px 0;"></p>
+                <div class="confirm-btn-group">
+                    <button class="btn-confirm btn-yes" onclick="executeSelection()">기술 습득</button>
+                    <button class="btn-confirm btn-no" onclick="closeConfirm()">돌아가기</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script th:inline="javascript">
-        function handleSkillClick(element) {
-            const skillId = element.getAttribute('data-skill-id');
-            const isLearned = element.getAttribute('data-learned') === 'true';
-            const actionText = isLearned ? "이미 배운 기술입니다. 중복 보너스를 받으시겠습니까?" : "이 기술을 연마하시겠습니까?";
+        let selectedSkillId = null;
 
-            if(confirm(actionText)) {
-                location.href = '/town/learn-skill/' + skillId;
+        // 1. 카드를 눌렀을 때 팝업을 띄우는 함수
+        function prepareSkillSelection(id, name, isLearned) {
+            selectedSkillId = id;
+            const title = document.getElementById('confirmTitle');
+            const msg = document.getElementById('confirmMessage');
+            const overlay = document.getElementById('confirmOverlay');
+
+            if (isLearned) {
+                title.innerText = "영혼 강화";
+                title.style.color = "#fd7e14";
+                msg.innerHTML = `이미 익힌 <strong>[${name}]</strong>입니다.<br>영혼 강화를 하시겠습니까?`;
+            } else {
+                title.innerText = "기술 습득";
+                title.style.color = "#ffd700";
+                msg.innerHTML = `<strong>[${name}]</strong> 기술을 영혼에 습득하시겠습니까?`;
+            }
+
+            overlay.style.display = 'flex'; // 팝업 보이기
+        }
+
+        // 2. 팝업에서 '돌아가기' 눌렀을 때
+        function closeConfirm() {
+            document.getElementById('confirmOverlay').style.display = 'none';
+            selectedSkillId = null;
+        }
+
+        // 3. 팝업에서 '연성 시작' 눌렀을 때 진짜 이동
+        function executeSelection() {
+            if (selectedSkillId) {
+                location.href = '/town/learn-skill/' + selectedSkillId;
             }
         }
     </script>

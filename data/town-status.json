@@ -4,47 +4,56 @@
   "day" : 1,
   "currentTax" : 900000,
   "magicStoneList" : [ {
-    "instanceId" : "327f4f87-948b-46af-abd2-0b35618ce3ce",
-    "customName" : "1등급 마석",
-    "grade" : 1,
-    "quantity" : 5
-  }, {
-    "instanceId" : "59e142aa-cd3c-4188-a29a-74c425eb686e",
-    "customName" : "2등급 마석",
-    "grade" : 2,
-    "quantity" : 5
-  }, {
-    "instanceId" : "5f7b9a22-dd46-42cf-aace-4b8979ec8daf",
-    "customName" : "3등급 마석",
-    "grade" : 3,
-    "quantity" : 5
-  }, {
-    "instanceId" : "600b0c40-b08d-4d48-bf1e-6db2d28a144a",
-    "customName" : "4등급 마석",
-    "grade" : 4,
-    "quantity" : 5
-  }, {
-    "instanceId" : "e6da4461-6a4d-4e54-ab5c-aa91fffeaef7",
-    "customName" : "5등급 마석",
-    "grade" : 5,
-    "quantity" : 5
-  }, {
-    "instanceId" : "dd3015c0-b820-4e20-9eb9-e46c227c0cc2",
-    "customName" : "6등급 마석",
-    "grade" : 6,
-    "quantity" : 5
-  }, {
-    "instanceId" : "e8617028-3a40-4162-a8a5-163533cd5712",
-    "customName" : "7등급 마석",
-    "grade" : 7,
-    "quantity" : 5
-  }, {
-    "instanceId" : "f8d9020c-1a0b-4f1c-83b2-db003c5c7249",
+    "instanceId" : "73bfe33d-7c96-4e3d-9f0f-ef98306ab8e6",
     "customName" : "8등급 마석",
     "grade" : 8,
     "quantity" : 5
   } ],
   "skillOptions" : [ {
+    "id" : 11,
+    "name" : "마력 화살",
+    "icon" : "/images/skills/11.png",
+    "description" : "마나를 화살 형태로 형상화하여 발사합니다.",
+    "grade" : "COMMON",
+    "turnCost" : 1,
+    "staminaCost" : 0,
+    "mpCost" : 20,
+    "hpCost" : 0,
+    "type" : "MAGICAL",
+    "element" : "PHYSICAL",
+    "requiredWeapons" : [ "STAFF" ],
+    "effectType" : "DAMAGE",
+    "statusName" : null,
+    "duration" : null,
+    "effectChance" : null,
+    "scalingInfo" : [ "마법 : 130%", "에너지 응집/압축률 : 300%", "논리 연산 속도 : 100%" ],
+    "modifierDetails" : [ ],
+    "alreadyLearned" : false,
+    "bonusStatType" : "SPIRIT",
+    "bonusStatValue" : 2
+  }, {
+    "id" : 14,
+    "name" : "강화 근육",
+    "icon" : "/images/skills/14.png",
+    "description" : "세포의 대사 효율을 일시적으로 높여 근력을 강화합니다.",
+    "grade" : "COMMON",
+    "turnCost" : 1,
+    "staminaCost" : 10,
+    "mpCost" : 15,
+    "hpCost" : 0,
+    "type" : "BUFF",
+    "element" : "PHYSICAL",
+    "requiredWeapons" : [ "NONE" ],
+    "effectType" : "BUFF",
+    "statusName" : "강화",
+    "duration" : 5,
+    "effectChance" : 100,
+    "scalingInfo" : [ ],
+    "modifierDetails" : [ "상완 삼두/이두 +50%", "대흉근/광배근 +50%" ],
+    "alreadyLearned" : false,
+    "bonusStatType" : "SPIRIT",
+    "bonusStatValue" : 2
+  }, {
     "id" : 15,
     "name" : "매의 눈",
     "icon" : "/images/skills/15.png",
@@ -64,74 +73,8 @@
     "scalingInfo" : [ ],
     "modifierDetails" : [ "명중률 +20%", "치명타 확률 +30%" ],
     "alreadyLearned" : false,
-    "bonusStatType" : "PERCEPTION",
-    "bonusStatValue" : 10
-  }, {
-    "id" : 17,
-    "name" : "고통의 낙인",
-    "icon" : "/images/skills/17.png",
-    "description" : "적의 영혼에 고통스러운 낙인을 새깁니다. 지속적인 피해를 입힙니다.",
-    "grade" : "COMMON",
-    "turnCost" : 1,
-    "staminaCost" : 5,
-    "mpCost" : 25,
-    "hpCost" : 0,
-    "type" : "MAGIC",
-    "element" : "DARK",
-    "requiredWeapons" : [ "NONE" ],
-    "effectType" : "DOT",
-    "statusName" : "고통",
-    "duration" : 4,
-    "effectChance" : 100,
-    "scalingInfo" : [ "마법+암흑 : 100%", "에너지 응집/압축률 : 150%" ],
-    "modifierDetails" : [ ],
-    "alreadyLearned" : false,
     "bonusStatType" : "SPIRIT",
-    "bonusStatValue" : 10
-  }, {
-    "id" : 21,
-    "name" : "얼음 송곳",
-    "icon" : "/images/skills/21.png",
-    "description" : "차가운 냉기를 응축한 송곳을 발사하여 피해를 입히고 적의 행동을 둔화시킵니다.",
-    "grade" : "COMMON",
-    "turnCost" : 2,
-    "staminaCost" : 5,
-    "mpCost" : 20,
-    "hpCost" : 0,
-    "type" : "MAGIC",
-    "element" : "ICE",
-    "requiredWeapons" : [ "NONE" ],
-    "effectType" : "DAMAGE",
-    "statusName" : "FROZEN",
-    "duration" : 2,
-    "effectChance" : 40,
-    "scalingInfo" : [ "마법+냉기 : 120%", "논리 연산 속도 : 350%", "에너지 응집/압축률 : 100%" ],
-    "modifierDetails" : [ ],
-    "alreadyLearned" : false,
-    "bonusStatType" : "SPIRIT",
-    "bonusStatValue" : 10
-  }, {
-    "id" : 22,
-    "name" : "연쇄 번개",
-    "icon" : "/images/skills/22.png",
-    "description" : "강력한 전류를 방출합니다. 적의 신경계를 자극하여 일정 확률로 기절시킵니다.",
-    "grade" : "COMMON",
-    "turnCost" : 2,
-    "staminaCost" : 8,
-    "mpCost" : 30,
-    "hpCost" : 0,
-    "type" : "MAGIC",
-    "element" : "LIGHTNING",
-    "requiredWeapons" : [ "NONE" ],
-    "effectType" : "DAMAGE",
-    "statusName" : "기절",
-    "duration" : 1,
-    "effectChance" : 20,
-    "scalingInfo" : [ "마법+ : 160%", "에너지 응집/압축률 : 350%", "논리 연산 속도 : 150%" ],
-    "modifierDetails" : [ ],
-    "alreadyLearned" : false,
-    "bonusStatType" : "SPIRIT",
-    "bonusStatValue" : 10
+    "bonusStatValue" : 2
   } ],
   "taxPaid" : false
 }

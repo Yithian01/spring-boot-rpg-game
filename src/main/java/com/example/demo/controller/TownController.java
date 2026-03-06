@@ -5,9 +5,7 @@ import com.example.demo.service.ValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
@@ -134,19 +132,23 @@ public class TownController {
         return "redirect:/game/play";
     }
 
-//    /**
-//     * 유저가 선택한 스킬을 최종적으로 배우거나 스탯으로 전환 (Step 2)
-//     * @param skillId 선택한 스킬 ID
-//     * @param stoneGrade 사용된 마석 등급 (중복 보상 수치 결정용)
-//     */
-//    @PostMapping("/extract-confirm")
-//    public String confirmExtraction(@RequestParam int skillId,
-//                                    @RequestParam int stoneGrade,
-//                                    RedirectAttributes redirectAttributes) {
-//
-//        String resultMessage = townService.confirmSkillExtraction(skillId, stoneGrade);
-//        redirectAttributes.addFlashAttribute("message", resultMessage);
-//
-//        return "redirect:/game/play";
-//    }
+    /**
+     * 유저가 선택한 스킬을 최종적으로 각인 (Step 2)
+     * JS에서 location.href = '/town/learn-skill/' + selectedSkillId; 로 호출함
+     * @param skillId 선택한 스킬의 고유 ID
+     */
+    @GetMapping("/learn-skill/{skillId}")
+    public String learnSkill(@PathVariable String skillId, RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        log.info("스킬 각인 요청 수신 - 스킬 ID: {}", skillId);
+
+        townService.confirmSkillExtraction(skillId);
+        return "redirect:/game/play";
+    }
 }

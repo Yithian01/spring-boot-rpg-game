@@ -83,7 +83,6 @@ public class MainController {
         switch (status.getLocation()) {
             case TOWN:
                 GamePageDto gameData = gameService.getGamePageData();
-                // 인벤토리 정보도 가져오고 싶음
 
                 TownPageDto townData = gameService.getTownData();
 
@@ -95,6 +94,7 @@ public class MainController {
                 log.info(">>> 게임 데이터 로딩 완료: {}", gameData.getUserName());
 
                 System.out.println("gameData = " + gameData );
+                System.out.println("townData = " + townData );
 
                 return "town"; // town.html 템플릿 반환
             case DUNGEON:

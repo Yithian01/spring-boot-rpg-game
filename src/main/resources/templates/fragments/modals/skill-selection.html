@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="skillSelectionStyle">
+    <style>
+        .skill-choice-card {
+            width: 320px; min-height: 620px; background: #121212; border: 1px solid #333; border-radius: 16px;
+            padding: 22px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; display: flex; flex-direction: column; gap: 12px;
+        }
+        .skill-choice-card:not(.already-learned):hover {
+            transform: translateY(-12px); border-color: #ffd700;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 25px rgba(255,215,0,0.25); cursor: pointer;
+        }
+
+        /* 버프/수치 태그 시각화 강화 */
+        .modifier-tag {
+            display: inline-block; background: rgba(255, 215, 0, 0.15); color: #ffd700;
+            padding: 5px 10px; border-radius: 6px; font-size: 0.85rem; margin: 3px;
+            border: 1px solid rgba(255, 215, 0, 0.3); font-weight: 600;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .type-badge { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+        .element-DARK { background: #2b2d42; color: #ef233c; border: 1px solid #ef233c; }
+        .element-LIGHTNING { background: #ffd60a; color: #000; }
+        .element-NONE { background: #4a4e69; color: #fff; }
+
+        .skill-icon-img { width: 110px; height: 110px; border-radius: 18px; border: 2px solid #444; object-fit: cover; margin-bottom: 10px; }
+
+        .scaling-box { background: rgba(148, 216, 45, 0.08); padding: 12px; border-radius: 10px; border: 1px solid rgba(148, 216, 45, 0.2); margin-top: 5px; }
+        .bonus-footer { padding: 12px; border-radius: 10px; font-size: 0.85rem; text-align: center; margin-top: auto; border: 1px solid rgba(255,255,255,0.1); }
+
+        .cost-item { font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 3px; }
+    </style>
+</th:block>
+
+<div th:fragment="skillSelectionModal(skillOptions)" id="skillSelectionModal"
+     style="position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 10000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px);">
+
+    <div class="selection-outer" style="width: 100%; max-width: 1450px; text-align: center; padding: 20px;">
+        <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 5px; text-shadow: 0 0 15px rgba(255,215,0,0.4);">✨ 영혼의 정수 연성</h2>
+        <p style="color: #aaa; margin-bottom: 35px; font-size: 1.1rem;">추출된 마법 공식 중 하나를 선택하여 영구히 각인하십시오.</p>
+
+        <div class="skill-card-container" style="display: flex; gap: 20px; justify-content: center; align-items: stretch;">
+            <th:block th:if="${skillOptions != null}">
+                <div th:each="skill : ${skillOptions}"
+                     class="skill-choice-card"
+                     th:classappend="${skill.alreadyLearned ? 'already-learned' : ''}"
+                     th:data-skill-id="${skill.id}"
+                     th:data-learned="${skill.alreadyLearned}"
+                     onclick="handleSkillClick(this)">
+
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span th:class="'type-badge element-' + ${skill.element}" th:text="${skill.element}">ELEMENT</span>
+                        <span th:text="${skill.grade}" th:class="'grade-text ' + ${skill.grade}" style="font-weight: 800; font-size: 0.8rem;">GRADE</span>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <img th:src="${skill.icon}" class="skill-icon-img">
+                        <h3 style="color: #fff; font-size: 1.6rem; margin: 0;" th:text="${skill.name}">이름</h3>
+                        <p style="color: #ccc; font-size: 0.9rem; margin: 8px 0; min-height: 3em; line-height: 1.4;" th:text="${skill.description}">설명</p>
+                    </div>
+
+                    <div style="display: flex; justify-content: center; gap: 12px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 12px; border: 1px solid #333;">
+                        <span th:if="${skill.turnCost > 0}" class="cost-item" style="color: #ffd43b;">⏳ [[${skill.turnCost}]]T</span>
+                        <span th:if="${skill.mpCost > 0}" class="cost-item" style="color: #4dabf7;">💧 [[${skill.mpCost}]]</span>
+                        <span th:if="${skill.staminaCost > 0}" class="cost-item" style="color: #63e6be;">⚡ [[${skill.staminaCost}]]</span>
+                        <span th:if="${skill.hpCost != null and skill.hpCost > 0}" class="cost-item" style="color: #ff6b6b;">🩸 [[${skill.hpCost}]]</span>
+                    </div>
+
+                    <div th:if="${skill.modifierDetails != null and !skill.modifierDetails.isEmpty()}" style="text-align: left; margin-top: 5px;">
+                        <div style="font-size: 0.75rem; color: #ffec99; margin-bottom: 5px; font-weight: bold;">◈ 적용 효과 상세</div>
+                        <div style="display: flex; flex-wrap: wrap;">
+                            <span th:each="m : ${skill.modifierDetails}" class="modifier-tag" th:text="${m}"></span>
+                        </div>
+                    </div>
+
+                    <div th:if="${skill.scalingInfo != null and !skill.scalingInfo.isEmpty()}" class="scaling-box">
+                        <div style="font-size: 0.75rem; color: #b2f2bb; margin-bottom: 4px; font-weight: bold; text-align: left;">◈ 위력 공식</div>
+                        <div style="text-align: left; font-size: 0.8rem; color: #94d82d; line-height: 1.4;">
+                            <div th:each="s : ${skill.scalingInfo}">• [[${s}]]</div>
+                        </div>
+                    </div>
+
+                    <div th:if="${skill.statusName != null and skill.statusName != 'null'}"
+                         style="color: #ff9f43; font-size: 0.85rem; font-weight: bold; border-top: 1px solid #222; padding-top: 8px;">
+                        ⚠ [[${skill.statusName}]] [[${skill.type == 'BUFF' ? '지속' : '부여'}]]
+                        ([[${skill.effectChance}]]% / [[${skill.duration}]]T)
+                    </div>
+
+                    <div class="bonus-footer"
+                         th:style="${skill.alreadyLearned} ? 'background: rgba(230,126,34,0.1); color: #ff922b;' : 'background: rgba(32,201,151,0.1); color: #63e6be;'">
+                        <span style="font-size: 0.75rem;">[[${skill.alreadyLearned ? '중복 보너스' : '각인 보너스'}]]</span><br>
+                        <strong>[[${skill.bonusStatType}]] +[[${skill.bonusStatValue}]]</strong>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        function handleSkillClick(element) {
+            const skillId = element.getAttribute('data-skill-id');
+            const isLearned = element.getAttribute('data-learned') === 'true';
+            const actionText = isLearned ? "이미 배운 기술입니다. 중복 보너스를 받으시겠습니까?" : "이 기술을 연마하시겠습니까?";
+
+            if(confirm(actionText)) {
+                location.href = '/town/learn-skill/' + skillId;
+            }
+        }
+    </script>
+</div>
+</html>

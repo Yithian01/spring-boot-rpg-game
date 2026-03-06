@@ -1,13 +1,14 @@
 package com.example.demo.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.List;
 import java.util.Map;
 
-@Getter
+@Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class TownPageDto {
     private int day;            // 현재 며칠 차인지
     private int currentTurn;    // 현재 턴

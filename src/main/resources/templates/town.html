@@ -13,6 +13,7 @@
     <th:block th:replace="~{fragments/modals/train-modal :: trainStyle}"></th:block>
     <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/skill-selection :: skillSelectionStyle}"></th:block>
 </head>
 <body>
 
@@ -52,6 +53,12 @@
 <div th:replace="~{fragments/modals/gamble-modal :: gambleModal(${game})}"></div>
 <div th:replace="~{fragments/modals/train-modal :: trainModal}"></div>
 <div th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareModal(town=${town})}"></div>
+
+<th:block th:with="targetData=${townData != null ? townData : town}">
+    <div th:if="${targetData != null and targetData.skillOptions != null and !targetData.skillOptions.isEmpty()}">
+        <div th:replace="~{fragments/modals/skill-selection :: skillSelectionModal(${targetData.skillOptions})}"></div>
+    </div>
+</th:block>
 
 <script th:inline="javascript">
     /*<![CDATA[*/

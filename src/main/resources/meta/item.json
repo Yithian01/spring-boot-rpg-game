@@ -310,7 +310,7 @@
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 6.0,
-      "magicAtk": 3.0,
+      "magicAtk": 10.0,
       "critRate": 2.0
     },
     "grantedSkillIds": []

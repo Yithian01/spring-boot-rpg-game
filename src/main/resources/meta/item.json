@@ -118,12 +118,12 @@
     "description": "관리가 되지 않아 날이 여기저기 빠졌지만, 무게만으로도 적의 뼈를 부수기에 충분합니다.",
     "price": 220000,
     "icon": "/images/items/10.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {"10": 3.0},
     "combatStatsBonus": {
-      "meleeAtk": 20.0,
+      "meleeAtk": 25.0,
       "penetration": 5.0,
       "critDmg": 10.0,
-      "accuracy": -5.0
+      "accuracy": -8.0
     },
     "grantedSkillIds": []
   },
@@ -138,9 +138,10 @@
     "description": "여기저기 찢어진 가죽 옷입니다. 최소한의 급소만 가려줍니다.",
     "price": 34000,
     "icon": "/images/items/11.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {"2": 2.0},
     "combatStatsBonus": {
-      "physDef": 6.0,
+      "physDef": 10.0,
+      "physRes": 2.0,
       "maxHp": 20.0,
       "statusResist": 5.0
     },
@@ -211,11 +212,15 @@
     "description": "가죽 위에 얇은 철판을 덧댄 갑옷입니다. 상당히 무겁습니다.",
     "price": 220000,
     "icon": "/images/items/15.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {
+      "1": 3.0,
+      "2": 1.0
+    },
     "combatStatsBonus": {
-      "physDef": 12.0,
-      "moveSpeed": -1.0,
-      "maxHp": 25.0
+      "physDef": 15.0,
+      "physRes": 5.0,
+      "maxHp": 25.0,
+      "moveSpeed": -1.0
     },
     "grantedSkillIds": []
   },
@@ -230,11 +235,12 @@
     "description": "곡선형 칼입니다. 가볍고 휘두르기 좋습니다.",
     "price": 170000,
     "icon": "/images/items/16.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {"20": 3.0},
     "combatStatsBonus": {
-      "meleeAtk": 9.0,
-      "critRate": 5,
-      "accuracy": 5
+      "meleeAtk": 15.0,
+      "critRate": 5.0,
+      "accuracy": 5.0,
+      "bleedPen": 10.0
     },
     "grantedSkillIds": []
   },
@@ -249,10 +255,11 @@
     "description": "간단히 두른 천 옷입니다. 방어력은 낮지만 매우 가볍습니다.",
     "price": 33000,
     "icon": "/images/items/17.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {"20": 2.0},
     "combatStatsBonus": {
-      "physDef": 3.0,
-      "dodge": 5,
+      "physDef": 5.0,
+      "magRes": 5.0,
+      "dodge": 5.0,
       "maxStamina": 25.0
     },
     "grantedSkillIds": []
@@ -306,11 +313,13 @@
     "description": "지하 벽면의 이끼를 긁어낼 때 쓰던 날이 무딘 낫입니다.",
     "price": 120000,
     "icon": "/images/items/20.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {"9": 2.0},
     "combatStatsBonus": {
-      "meleeAtk": 6.0,
-      "magicAtk": 10.0,
-      "critRate": 2.0
+      "meleeAtk": 8.0,
+      "magicAtk": 15.0,
+      "toxicAtk": 5.0,
+      "critRate": 2.0,
+      "accuracy": 3.0
     },
     "grantedSkillIds": []
   },
@@ -325,11 +334,13 @@
     "description": "축축한 지하에서 오래 방치되어 곰팡이가 피어오른 넝마입니다. 냄새가 고약합니다.",
     "price": 45000,
     "icon": "/images/items/21.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {"13": 2.0},
     "combatStatsBonus": {
-      "physDef": 2.0,
-      "magRes": 4.0,
-      "statusResist": 3.0
+      "physDef": 4.0,
+      "magRes": 8.0,
+      "statusResist": 5.0,
+      "toxicRes": 10.0,
+      "maxStamina": 15.0
     },
     "grantedSkillIds": []
   },
@@ -381,9 +392,13 @@
     "description": "관리가 안 되어 나무가 뒤틀린 활입니다. 사거리는 짧지만 없는 것보단 낫습니다.",
     "price": 120000,
     "icon": "/images/items/24.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {
+      "15": 1.0,
+      "16": 1.0,
+      "21": 2.0
+    },
     "combatStatsBonus": {
-      "meleeAtk": 10.0,
+      "meleeAtk": 25.0,
       "accuracy": 5.0,
       "critRate": 5.0
     },
@@ -400,11 +415,16 @@
     "description": "질긴 잎사귀와 가죽 끈을 엮어 만든 보호구입니다.",
     "price": 65000,
     "icon": "/images/items/25.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {
+      "1": 1.0,
+      "20": 1.0
+    },
     "combatStatsBonus": {
-      "physDef": 5,
-      "dodge": 5,
-      "moveSpeed": 1
+      "physDef": 12.0,
+      "physRes": 3.0,
+      "magRes": 5.0,
+      "dodge": 2.0,
+      "moveSpeed": 0.05
     },
     "grantedSkillIds": []
   },
@@ -419,11 +439,15 @@
     "description": "소형 태엽 장치가 녹슬어 장전이 뻑뻑합니다.",
     "price": 170000,
     "icon": "/images/items/26.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {
+      "17": 2.0,
+      "23": 1.0
+    },
     "combatStatsBonus": {
-      "meleeAtk": 9.0,
-      "critDmg": 15.0,
-      "penetration": 4.0
+      "meleeAtk": 25.0,
+      "critDmg": 10.0,
+      "physPen": 5.0,
+      "accuracy": 3.0
     },
     "grantedSkillIds": []
   },
@@ -458,9 +482,12 @@
     "description": "다양한 상황에 대처하기 위해 만들어진 실용적인 칼입니다.",
     "price": 110000,
     "icon": "/images/items/28.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {
+      "11": 2.0,
+      "20": 1.0
+    },
     "combatStatsBonus": {
-      "meleeAtk": 7.0,
+      "meleeAtk": 15.0,
       "accuracy": 5.0,
       "critRate": 3.0
     },
@@ -497,8 +524,17 @@
     "description": "가볍고 질긴 가죽으로 만들어 발걸음이 가벼워집니다.",
     "price": 150000,
     "icon": "/images/items/30.png",
-    "baseStatsBonus": {},
-    "combatStatsBonus": { "dodge": 5.0, "moveSpeed": 2 },
+    "baseStatsBonus": {
+      "20": 4.0,
+      "21": 3.0
+    },
+    "combatStatsBonus": {
+      "physDef": 5.0,
+      "physRes": 2.0,
+      "magRes": 3.0,
+      "dodge": 5.0,
+      "moveSpeed": 0.15
+    },
     "grantedSkillIds": [101]
   },
   {
@@ -512,11 +548,17 @@
     "description": "시야는 좁아지지만 머리를 확실히 보호합니다.",
     "price": 260000,
     "icon": "/images/items/31.png",
-    "baseStatsBonus": { "11": 3, "12": 5 },
+    "baseStatsBonus": {
+      "1": 2.0,
+      "11": 1.0
+    },
     "combatStatsBonus": {
       "physDef": 15.0,
+      "physRes": 2.0,
+      "magRes": 2.0,
       "accuracy": -2.0,
-      "moveSpeed": -0.5 }
+      "moveSpeed": -0.05
+    }
   },
   {
     "id": 32,
@@ -531,10 +573,14 @@
     "icon": "/images/items/32.png",
     "baseStatsBonus": {
       "13": 4,
-      "14": 4 },
+      "14": 4
+    },
     "combatStatsBonus": {
-      "maxMp": 50,
-      "magicAtk": 15.0 }
+      "magicAtk": 20.0,
+      "maxMp": 30.0,
+      "mpRegen": 1.0,
+      "magRes": 2.0
+    }
   },
   {
     "id": 33,
@@ -548,13 +594,15 @@
     "price": 260000,
     "icon": "/images/items/33.png",
     "baseStatsBonus": {
-      "2": 6,
-      "15": 3
+      "15": 10.0,
+      "17": 10.0,
+      "20": 5.0
     },
     "combatStatsBonus": {
-      "meleeAtk": 45.0,
+      "meleeAtk": 60.0,
       "critRate": 10.0,
-      "critDmg": 20.0,
+      "critDmg": 25.0,
+      "physPen": 10.0,
       "accuracy": 5.0
     },
     "grantedSkillIds": [5]
@@ -570,12 +618,17 @@
     "description": "착용자의 생명력을 미세하게 증폭시킵니다.",
     "price": 500000,
     "icon": "/images/items/34.png",
-    "baseStatsBonus": { "1": 5 },
+    "baseStatsBonus": {
+      "1": 10.0,
+      "2": 10.0,
+      "18": 5.0
+    },
     "combatStatsBonus": {
-      "maxHp": 50,
-      "hpRegen": 10,
-      "physDef": 10.0,
-      "magRes": 10.0
+      "maxHp": 100.0,
+      "hpRegen": 3.0,
+      "physDef": 15.0,
+      "magRes": 10.0,
+      "statusResist": 5.0
     },
     "grantedSkillIds": [102]
   },
@@ -588,15 +641,18 @@
     "subType": "BOW",
     "twoHanded": true,
     "description": "먼 거리의 적을 제압할 수 있는 탄탄한 활입니다.",
-    "price": 120000,
+    "price": 240000,
     "icon": "/images/items/35.png",
     "baseStatsBonus": {
-      "2": 3,
-      "15": 5 },
+      "15": 10.0,
+      "16": 10.0,
+      "23": 5.0
+    },
     "combatStatsBonus": {
-      "meleeAtk": 20.0,
+      "meleeAtk": 100.0,
       "accuracy": 12.0,
-      "critRate": 10.0
+      "critRate": 10.0,
+      "explorationEfficiency": 5.0
     },
     "grantedSkillIds": [6]
   },
@@ -609,16 +665,18 @@
     "subType": "HEAVY",
     "twoHanded": false,
     "description": "전신을 감싸는 무거운 판금 갑옷입니다.",
-    "price": 360000,
+    "price": 1200000,
     "icon": "/images/items/36.png",
     "baseStatsBonus": {
-      "11": 10,
-      "12": 15
+      "1": 25.0,
+      "2": 15.0
     },
     "combatStatsBonus": {
-      "physDef": 40.0,
-      "magRes": 10.0,
-      "moveSpeed": -1.0,
+      "physDef": 120.0,
+      "physRes": 35.0,
+      "magRes": 30.0,
+      "statusResist": 10.0,
+      "moveSpeed": -0.1,
       "dodge": -10.0
     },
     "grantedSkillIds": []
@@ -653,9 +711,14 @@
     "description": "묵직한 무게감이 느껴지는 철퇴입니다.",
     "price": 350,
     "icon": "/images/items/38.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {
+      "1": 1.0,
+      "10": 2.0
+    },
     "combatStatsBonus": {
-      "meleeAtk": 10.0
+      "meleeAtk": 15.0,
+      "physPen": 3.0,
+      "accuracy": -2.0
     },
     "grantedSkillIds": [2]
   },
@@ -670,11 +733,16 @@
     "description": "브루탈 팽이 사용하던 거대한 둔기입니다. 타격 시 서늘한 냉기가 뿜어져 나옵니다.",
     "price": 750000,
     "icon": "/images/items/39.png",
-    "baseStatsBonus": {},
+    "baseStatsBonus": {
+      "10": 15.0,
+      "11": 5.0,
+      "19": 5.0
+    },
     "combatStatsBonus": {
-      "meleeAtk": 32.0,
-      "iceAtk": 12.0,
-      "stunPen": 10.0,
+      "meleeAtk": 100.0,
+      "iceAtk": 25.0,
+      "icePen": 10.0,
+      "physPen": 8.0,
       "accuracy": -5.0
     },
     "grantedSkillIds": [50]
@@ -687,13 +755,18 @@
     "slot": "NECKLACE",
     "subType": "ACCESSORY",
     "description": "우두머리 라이칸스로프의 거대한 송곳니로 만든 목걸이입니다.",
-    "price": 5000,
+    "price": 850000,
     "icon": "/images/items/40.png",
-    "baseStatsBonus": { "10": 4, "20": 4 },
+    "baseStatsBonus": {
+      "10": 15.0,
+      "20": 15.0,
+      "21": 10.0
+    },
     "combatStatsBonus": {
-      "critRate": 5.0,
-      "moveSpeed": 2,
-      "bleedPen": 10.0
+      "critRate": 8.0,
+      "moveSpeed": 0.2,
+      "bleedPen": 15.0,
+      "accuracy": 5.0
     }
   },
   {
@@ -706,13 +779,19 @@
     "description": "금지된 의식에 쓰이던 단검입니다.",
     "price": 760000,
     "icon": "/images/items/33.png",
-    "baseStatsBonus": { "10": 4, "20": 4 },
+    "baseStatsBonus": {
+      "9": 5.0,
+      "13": 20.0,
+      "15": 15.0
+    },
     "combatStatsBonus": {
+      "meleeAtk": 100.0,
+      "magicAtk": 50.0,
       "critRate": 15.0,
-      "bleedPen": 40.0,
-      "darkAtk": 200,
-      "darkPen": 30,
-      "holyRes": -20
+      "bleedPen": 20.0,
+      "darkAtk": 80.0,
+      "darkPen": 20.0,
+      "holyRes": -20.0
     },
     "combatStatsBonusModifiers" : {
       "maxHp" : 0.7,
@@ -730,19 +809,25 @@
     "description": "부리 안에 말린 독초가 가득 차 있는 기괴한 가면입니다.",
     "price": 420000,
     "icon": "/images/items/42.png",
-    "baseStatsBonus": { "3": 8, "9": 12 },
+    "baseStatsBonus": {
+      "3": 15.0,
+      "9": 15.0,
+      "17": 10.0
+    },
     "combatStatsBonus": {
+      "physDef": 40.0,
+      "physRes": 8.0,
+      "magRes": 15.0,
       "toxicAtk": 65.0,
       "toxicPen": 20.0,
-      "toxicPen": 20.0,
-      "toxicRes": 50,
+      "toxicRes": 50.0,
       "statusResist": 15.0,
       "accuracy": 10.0,
       "dodge": -15.0
     },
     "combatStatsBonusModifiers" : {
-      "hpRegen" : 0.3,
-      "maxMp" : 0.2
+      "hpRegen": 0.7,
+      "maxMp": 0.8
     },
     "grantedSkillIds": [20]
   },
@@ -798,13 +883,15 @@
     "price": 520000,
     "icon": "/images/items/45.png",
     "baseStatsBonus": {
-      "13": 6,
-      "14": 4
+      "4": 5.0,
+      "8": 5.0,
+      "13": 5.0
     },
     "combatStatsBonus": {
-      "magicAtk": 8.0,
-      "maxMp": 40.0,
-      "mpRegen": 1.5
+      "magicAtk": 5.0,
+      "maxMp": 20.0,
+      "mpRegen": 0.5,
+      "accuracy": 3.0
     },
     "grantedSkillIds": [13, 21, 22]
   }

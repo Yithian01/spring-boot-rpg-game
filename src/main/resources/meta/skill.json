@@ -268,7 +268,7 @@
     "statScaling": {},
     "effect": {
       "type": "BUFF",
-      "element": "NONE",
+      "element": "PHYSICAL",
       "status": "STRENGTHEN",
       "duration": 5,
       "chance": 100,
@@ -293,7 +293,7 @@
     "statScaling": {},
     "effect": {
       "type": "BUFF",
-      "element": "NONE",
+      "element": "PHYSICAL",
       "status": "STRENGTHEN",
       "duration": 5,
       "chance": 100,

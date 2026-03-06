@@ -7,7 +7,12 @@
             padding: 22px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative; display: flex; flex-direction: column; gap: 12px;
         }
-        .skill-choice-card:not(.already-learned):hover {
+
+        .skill-choice-card.already-learned {
+                border-color: #553a25; /* 평소엔 약간 어두운 구리색 */
+            }
+
+        .skill-choice-card:hover {
             transform: translateY(-12px); border-color: #ffd700;
             box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 25px rgba(255,215,0,0.25); cursor: pointer;
         }
@@ -20,16 +25,22 @@
             box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
         }
 
-        .type-badge { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
-        .element-DARK { background: #2b2d42; color: #ef233c; border: 1px solid #ef233c; }
-        .element-LIGHTNING { background: #ffd60a; color: #000; }
-        .element-NONE { background: #4a4e69; color: #fff; }
+        .type-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: #fff; display: flex; align-items: center; gap: 4px; }
+
+        .element-NONE { background: #495057; border: 1px solid #adb5bd; }
+        .element-PHYSICAL { background: #5c5c5c; border: 1px solid #ced4da; } /* ⚔️ */
+        .element-FIRE { background: #c92a2a; border: 1px solid #ff6b6b; box-shadow: 0 0 8px rgba(255,107,107,0.3); } /* 🔥 */
+        .element-ICE { background: #1864ab; border: 1px solid #4dabf7; box-shadow: 0 0 8px rgba(77,171,247,0.3); } /* ❄️ */
+        .element-LIGHTNING { background: #e67e22; border: 1px solid #fcc419; color: #000; } /* ⚡ */
+        .element-EARTH { background: #5f3e24; border: 1px solid #a67c52; } /* ⛰️ */
+        .element-HOLY { background: #f1f3f5; border: 1px solid #ffd43b; color: #000; box-shadow: 0 0 10px #fff; } /* ✨ */
+        .element-DARK { background: #1a1b1e; border: 1px solid #7048e8; color: #e599f7; } /* 🌑 */
+        .element-CHAOS { background: #3b003b; border: 1px solid #f03e3e; color: #ff8787; } /* 🌀 */
+        .element-TOXIC { background: #2b8a3e; border: 1px solid #69db7c; } /* 🧪 */
 
         .skill-icon-img { width: 110px; height: 110px; border-radius: 18px; border: 2px solid #444; object-fit: cover; margin-bottom: 10px; }
-
         .scaling-box { background: rgba(148, 216, 45, 0.08); padding: 12px; border-radius: 10px; border: 1px solid rgba(148, 216, 45, 0.2); margin-top: 5px; }
         .bonus-footer { padding: 12px; border-radius: 10px; font-size: 0.85rem; text-align: center; margin-top: auto; border: 1px solid rgba(255,255,255,0.1); }
-
         .cost-item { font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 3px; }
     </style>
 </th:block>

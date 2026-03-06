@@ -171,15 +171,17 @@
       const code = element.getAttribute('data-code');
       const turns = element.getAttribute('data-turns');
 
+      const statOffsets = element.getAttribute('data-stat-offsets');
       const statMods = element.getAttribute('data-stat-mods');
+      const combatOffsets = element.getAttribute('data-combat-offsets');
       const combatMods = element.getAttribute('data-combat-mods');
       // 추가: 틱 데미지 데이터 가져오기
       const tickDamage = element.getAttribute('data-tick-damage');
 
-      showStatusEffectTooltip(event, name, category, code, turns, statMods, combatMods, tickDamage);
+      showStatusEffectTooltip(event, name, category, code, turns, statOffsets, statMods, combatOffsets, combatMods, tickDamage);
     }
 
-    function showStatusEffectTooltip(e, name, category, code, turns, statMods, combatMods, tickDamage) {
+    function showStatusEffectTooltip(e, name, category, code, turns, statOffsets, statMods, combatOffsets, combatMods, tickDamage) {
       const tooltip = document.getElementById('statTooltip');
       const tooltipTitle = document.getElementById('tooltipTitle');
       const tooltipBody = document.getElementById('tooltipBody');
@@ -190,58 +192,70 @@
 
       let html = `<div style="font-size:0.85em; margin-top:5px;">`;
       html += `<div style="color:#ffd700; margin-bottom:4px;"><b>남은 지속 시간:</b> ${turns}턴</div>`;
-
       html += `<div style="background:rgba(255,255,255,0.05); padding:8px; border-radius:4px; margin-top:8px; border:1px solid #333;">`;
       html += `<b style="color:#bbb; display:block; margin-bottom:5px; font-size:0.8rem;">[상세 효과]</b>`;
 
       let hasEffect = false;
       let effectHtml = "";
 
-      // 1. 틱 데미지 처리 (고통의 낙인 등)
       if (tickDamage && tickDamage !== '0' && tickDamage !== 'null') {
           hasEffect = true;
           effectHtml += `<div style="color:#ff4d4d; margin-bottom:2px;">매 턴 피해: ${tickDamage}</div>`;
       }
 
-      // 2. 스탯 보정치 처리
-      function parseAndFormat(modStr) {
+      // 핵심 수정: 배율과 가산치를 구분해서 파싱하는 내부 함수
+      function parseAndFormat(modStr, isOffset) {
           if(!modStr || modStr === '{}' || modStr === 'null' || modStr === 'undefined') return "";
           let clean = modStr.replace(/[{}]/g, "");
           return clean.split(",").map(item => {
               let parts = item.split("=");
               if(parts.length < 2) return "";
               let key = parts[0].trim();
-              let val = parts[1].trim();
+              let val = parseFloat(parts[1].trim());
+              if (isNaN(val)) return "";
 
               hasEffect = true;
-              let percentage = Math.round((parseFloat(val) - 1) * 100);
-              let color = percentage >= 0 ? "#4dabf7" : "#ff4d4d";
-              let sign = percentage >= 0 ? "+" : "";
+              let displayVal, sign, color;
 
-              const keyMap = { 'accuracy': '명중률', 'meleeAtk': '근접공격력', 'physDef': '물리방어' };
+              if (isOffset) {
+                  // 가산치 (Offsets): 예) +5, -10% (저항 등)
+                  // 저항 수치(0.1)를 10%로 보여줄지, 고정수치 5를 보여줄지 판단
+                  let isPercentStat = key.toLowerCase().includes('res') || key.toLowerCase().includes('accuracy') || key.toLowerCase().includes('dodge');
+                  displayVal = isPercentStat ? Math.round(val * 1) + "%" : Math.round(val);
+                  sign = val >= 0 ? "+" : "";
+                  color = val >= 0 ? "#4dabf7" : "#ff4d4d";
+              } else {
+                  // 배율 (Modifiers): 예) 0.7 -> -30%
+                  let percentage = Math.round((val - 1) * 100);
+                  displayVal = Math.abs(percentage) + "%";
+                  sign = percentage >= 0 ? "+" : "-";
+                  color = percentage >= 0 ? "#4dabf7" : "#ff4d4d";
+              }
+
+              const keyMap = {
+                  'accuracy': '명중률', 'meleeAtk': '근접공격력', 'physDef': '물리방어',
+                  'physRes': '물리경감', 'fireRes': '화염저항', 'dodge': '회피율'
+              };
               let displayName = keyMap[key] || key;
 
-              return `<div style="color:${color};">${displayName}: ${sign}${percentage}%</div>`;
+              return `<div style="color:${color};">${displayName}: ${sign}${displayVal}</div>`;
           }).join("");
       }
 
-      effectHtml += parseAndFormat(statMods);
-      effectHtml += parseAndFormat(combatMods);
+      // 4가지 맵을 모두 순회하며 추가
+      effectHtml += parseAndFormat(statOffsets, true);    // 베이스 스탯 가산
+      effectHtml += parseAndFormat(statMods, false);      // 베이스 스탯 배율
+      effectHtml += parseAndFormat(combatOffsets, true);  // 전투 스탯 가산
+      effectHtml += parseAndFormat(combatMods, false);    // 전투 스탯 배율
 
-      if(!hasEffect) {
-          effectHtml = `<div style="color:#888;">특수 효과 정보 없음</div>`;
-      }
+      if(!hasEffect) effectHtml = `<div style="color:#888;">특수 효과 정보 없음</div>`;
 
-      html += effectHtml;
-      html += `</div>`;
-
+      html += effectHtml + `</div>`;
       html += `<hr style="border:0; border-top:1px solid #333; margin:8px 0;">`;
-      html += `<div style="color:#888; font-size:0.75rem;">현재 적용 중인 특수 효과입니다.</div>`;
-      html += `</div>`;
+      html += `<div style="color:#888; font-size:0.75rem;">현재 적용 중인 특수 효과입니다.</div></div>`;
 
       tooltipBody.innerHTML = html;
       tooltip.style.display = 'block';
-      // moveStatTooltip 함수가 정의되어 있어야 합니다. (안보인다면 위치 고정 로직 필요)
       tooltip.style.left = (e.clientX + 15) + 'px';
       tooltip.style.top = (e.clientY + 15) + 'px';
     }

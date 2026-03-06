@@ -27,5 +27,6 @@ public class ActiveStatus {
     private Map<Integer, Double> statModifiers; // 스탯 보정 퍼센트
     private Map<Integer, Integer> statOffsets; // 스탯 보정 고정치
 
-    private Map<String, Double> combatModifiers; // 전투스탯 보정
+    private Map<String, Double> combatStatOffsets; // 전투스탯 보정
+    private Map<String, Double> combatStatModifiers; // 전투스탯 보정
 }

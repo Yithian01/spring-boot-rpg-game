@@ -1,5 +1,5 @@
 {
-  "location" : "TOWN",
-  "dungeonId" : null,
-  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ]
+  "location" : "DUNGEON",
+  "dungeonId" : 101,
+  "gameLogs" : [ "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "\uD83D\uDCA8 <span style='color:#ffcc00;'>[회피] 인간 (Human)이(가) 동굴 쥐의 <b>찍찍거리기</b> 공격을 피했습니다!</span> <small style='color:#888;'>(확률: 70%)</small>", "<span style='color:#ffffff;'>[효과]</span> 인간 (Human)에게 \uD83D\uDC80 <b>찍찍거리기</b> 부여! (3턴)", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDC80 허약의 손길 종료</span>", "<span style='color:#aaaaaa;'>[해제] \uD83D\uDC80 쇠약의 저주 종료</span>", "<b style='color:#ff9f43;'>▶ 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +5 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#ff4d4d;'>⚔️ [피격]</span> 동굴 쥐의 몸통 박치기! <b>0</b>의 피해!", "<b style='color:#ff9f43;'>▶ 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +6 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[빗나감] 동굴 쥐의 <b>날카로운 이빨</b> 공격이 빗나갔습니다.</span> <small>(확률: 40%)</small> <small style='color:#888;'>(확률: 40%)</small>", "<span style='color:#aaaaaa;'>[빗나감] 동굴 쥐의 <b>날카로운 이빨</b> 공격이 빗나갔습니다.</span> <small>(확률: 40%)</small> <small style='color:#888;'>(확률: 40%)</small>", "<b style='color:#ff9f43;'>▶ 동굴 쥐의 차례 (행동력: 2)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +6 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다." ]
 }

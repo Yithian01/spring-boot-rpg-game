@@ -513,9 +513,10 @@ public class BattleService {
                 .category(category)
                 .effectCode(skill.getEffect().getStatus())
                 .tickDamage(tickDamage) // 1/3 데미지 저장
-                .statModifiers(skill.getEffect().getStatModifiers())
-                .combatModifiers(skill.getEffect().getCombatStatModifiers())
                 .statOffsets(skill.getEffect().getStatOffsets())
+                .statModifiers(skill.getEffect().getStatModifiers())
+                .combatStatOffsets(skill.getEffect().getCombatStatOffsets())
+                .combatStatModifiers(skill.getEffect().getCombatStatModifiers())
                 .build();
     }
 

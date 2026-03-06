@@ -328,7 +328,7 @@ public class MonsterBattleService {
                 .effectCode(skill.getEffect().getStatus())
                 .tickDamage(tickDamage) // 1/3 데미지 저장
                 .statModifiers(skill.getEffect().getStatModifiers())
-                .combatModifiers(skill.getEffect().getCombatStatModifiers())
+                .combatStatModifiers(skill.getEffect().getCombatStatModifiers())
                 .statOffsets(skill.getEffect().getStatOffsets())
                 .build();
     }

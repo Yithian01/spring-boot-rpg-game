@@ -122,8 +122,11 @@ public class StatCalculationService {
                 if (status.getStatModifiers() != null) {
                     status.getStatModifiers().forEach((id, val) -> baseStatModifiers.merge(id, val, Double::sum));
                 }
-                if (status.getCombatModifiers() != null) {
-                    status.getCombatModifiers().forEach((name, val) -> combatStatModifiers.merge(name, val, Double::sum));
+                if (status.getCombatStatOffsets() != null) {
+                    status.getCombatStatOffsets().forEach((name, val) -> combatStatOffsets.merge(name, val, Double::sum));
+                }
+                if (status.getCombatStatModifiers() != null) {
+                    status.getCombatStatModifiers().forEach((name, val) -> combatStatModifiers.merge(name, val, Double::sum));
                 }
             }
         }
@@ -813,21 +816,31 @@ public class StatCalculationService {
         CombatStats result = base.toBuilder().build();
 
         // 2. 배율 합산을 위한 바구니
+        Map<String, Double> offsetSumMap = new HashMap<>();
         Map<String, Double> modifierSumMap = new HashMap<>();
 
         // 3. 모든 액티브 상태에서 배율(Modifiers) 수집 및 합산
         if (monster.getActiveStatuses() != null) {
             for (ActiveStatus status : monster.getActiveStatuses()) {
-                if (status.getCombatModifiers() != null) {
-                    status.getCombatModifiers().forEach((name, val) ->
+                if (status.getCombatStatModifiers() != null) {
+                    status.getCombatStatModifiers().forEach((name, val) ->
                             // 1.2가 들어오면 0.2를 더하고, 0.7이 들어오면 -0.3을 더함
                             modifierSumMap.merge(name, val - 1.0, Double::sum)
+                    );
+                }
+                if (status.getCombatStatOffsets() != null) {
+                    status.getCombatStatOffsets().forEach((name, val) ->
+                            offsetSumMap.merge(name, val, Double::sum)
                     );
                 }
             }
         }
 
         // 4. 최종 합산된 배율을 베이스 스탯에 한 번만 적용
+        // 수치 합산
+        offsetSumMap.forEach((name, val) -> {
+            result.applyCombatStatsBonus(name, val);
+        });
         // modifier가 0.1(10%) 이라면 1.1을 곱해주는 방식
         modifierSumMap.forEach((name, totalMod) -> {
             double finalMultiplier = 1.0 + totalMod;

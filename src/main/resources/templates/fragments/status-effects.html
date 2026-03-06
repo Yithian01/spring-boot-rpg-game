@@ -24,8 +24,10 @@
                  th:data-category="${status.category}"
                  th:data-code="${status.effectCode}"
                  th:data-turns="${status.remainingTurns}"
-                 th:data-stat-mods="${status.statModifiers}"
-                 th:data-combat-mods="${status.combatModifiers}"
+                 th:data-stat-offsets="${status.statOffsets != null ? status.statOffsets : '{}'}"
+                 th:data-stat-mods="${status.statModifiers != null ? status.statModifiers : '{}'}"
+                 th:data-combat-offsets="${status.combatStatOffsets != null ? status.combatStatOffsets : '{}'}"
+                 th:data-combat-mods="${status.combatStatModifiers != null ? status.combatStatModifiers : '{}'}"
                  onmouseover="handleStatusEffectHover(event, this)"
                  onmouseout="hideStatTooltip()">
 

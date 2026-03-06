@@ -484,11 +484,11 @@ public class GameDataManager  implements ApplicationRunner {
         }
 
         // 3. 전투 스탯 가산 (combatStatOffsets: Double) -> "화염 저항 +10%"
-        // fireRes: 0.1 같은 경우를 여기서 처리
+        // fireRes: 0.1 같은 경우를 여기서 처리 ( 변경함 이제 0 ~ 100% 까지 )
         if (effect.getCombatStatOffsets() != null) {
             effect.getCombatStatOffsets().forEach((key, value) -> {
                 String name = STAT_NAME_MAP.getOrDefault(key, key);
-                int displayVal = (int) (value * 100); // 0.1 -> 10
+                int displayVal = (int) (value * 1);
                 if (displayVal != 0) {
                     String sign = displayVal > 0 ? "+" : "";
                     modifierInfo.add(name + " " + sign + displayVal + "%");
@@ -516,7 +516,7 @@ public class GameDataManager  implements ApplicationRunner {
     // 상세 수치 중 누락되기 쉬운 특수 필드들 처리
     private void processSpecialEffect(SkillEffect effect, List<String> info) {
         if (effect.getPenetration() != null && effect.getPenetration() > 0) {
-            info.add("방어 관통: " + (int)(effect.getPenetration() * 100) + "%");
+            info.add("방어 관통: " + (int)(effect.getPenetration() * 1) + "%");
         }
         if (effect.getCritRate() != null && effect.getCritRate() > 0) {
             info.add("추가 치명타율: +" + effect.getCritRate() + "%");

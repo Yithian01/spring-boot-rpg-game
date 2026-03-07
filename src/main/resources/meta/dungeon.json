@@ -56,14 +56,14 @@
     "prevDungeonId" : [101]
   },
   {
-    "id": 204,
+    "id": 203,
     "floor": 2,
-    "name": "얼어붙은 들판",
+    "name": "망자의 늪",
     "maxActionCount": 300,
-    "monsterTableId": 24,
+    "monsterTableId": 23,
     "effects": {
-      "hpRegen": 0.5,
-      "meleeAtk": 0.8
+      "accuracy": 0.7,
+      "dodge": 0.7
     },
     "nextFloorWeights": {
       "301": 100

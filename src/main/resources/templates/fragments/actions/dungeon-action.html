@@ -155,7 +155,7 @@
                  th:data-skill-id="${skill.id}"
                  th:data-card-type="${skill.skillType}"
                  th:data-name="${skill.name}"
-                 th:data-desc="'예상 위력: ' + ${skill.expectedPower}"
+                 th:data-desc="'예상 위력: ' + ${ (skill.type != 'PASS' && skill.type != 'ESCAPE') ? skill.expectedPower : ''}"
                  th:data-scaling="${skill.scalingInfo != null ? #strings.listJoin(skill.scalingInfo, '|') : ''}"
                  th:data-mods="${skill.modifierDetails != null ? #strings.listJoin(skill.modifierDetails, '|') : ''}"
                  th:data-chance="${skill.effectChance}"
@@ -191,7 +191,7 @@
                                   th:classappend="'badge-' + ${#strings.toLowerCase(skill.skillType)}"
                                   th:text="${skill.skillType == 'MONSTER' ? '정수' : skill.skillType}">등급</span>
 
-                            <span th:if="${skill.type != 'BUFF' && skill.type != 'HEAL'}" style="color: #00ff00; font-size: 0.75rem; font-weight: bold;">
+                            <span th:if="${skill.type != 'BUFF' && skill.type != 'HEAL' && skill.type != 'PASS'}" style="color: #00ff00; font-size: 0.75rem; font-weight: bold;">
                                 🎯 [[${skill.realHitChance}]]%
                             </span>
                         </div>

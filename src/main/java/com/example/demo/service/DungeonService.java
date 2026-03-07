@@ -71,7 +71,7 @@ public class DungeonService {
         if (isFirstEntry) {
             ds = DungeonStatus.builder()
                     .dungeonId(dungeonId)
-                    .parentDungeonId(meta.getPrevDungeonId())
+                    .parentDungeonId(meta.pickNextDungeonId())
                     .parentDungeonName(prevName)
                     .dungeonName(meta.getName())
                     .currentFloor(meta.getFloor())
@@ -89,7 +89,7 @@ public class DungeonService {
             // 이동이면 기존 데이터를 가져와서 갱신
             ds = dungeonFileRepository.findDungeonStatus();
             ds.setDungeonId(dungeonId);
-            ds.setParentDungeonId(meta.getPrevDungeonId());
+            ds.setParentDungeonId(meta.pickNextDungeonId());
             ds.setParentDungeonName(prevName);
             ds.setDungeonName(meta.getName());
             ds.setCurrentFloor(meta.getFloor());
@@ -166,7 +166,7 @@ public class DungeonService {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
         DungeonMeta currentMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
 
-        int prevId = currentMeta.getPrevDungeonId();
+        int prevId = currentMeta.pickPrevDungeonId();
 
         if (prevId != 0) {
             // 메타데이터에 정의된 '부모'로 돌아감 (이동이므로 false)

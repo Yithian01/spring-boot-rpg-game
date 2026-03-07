@@ -34,7 +34,7 @@ public class DungeonMeta {
     /**
      * [PREV FLOOR] 이전 층
      */
-    private int prevDungeonId;
+    private List<Integer> prevDungeonId;
 
     /**
      * 특정 효과 값을 가져올 때 사용하는 헬퍼 메서드
@@ -64,5 +64,21 @@ public class DungeonMeta {
             }
         }
         return nextFloorWeights.keySet().iterator().next();
+    }
+
+    /**
+     * 이전 층 ID 목록 중 하나를 랜덤으로 선택합니다.
+     * 리스트에 ID가 하나만 있으면 100% 확률로 그 ID가 선택됩니다.
+     */
+    public int pickPrevDungeonId() {
+        if (this.prevDungeonId == null || this.prevDungeonId.isEmpty()) {
+            // 도망칠 곳이 없는 경우 (예: 1층 혹은 최종 보스방 외통수)
+            return this.id;
+        }
+
+        // 리스트 사이즈가 1이면 무조건 0번 인덱스 추출 (고정)
+        // 리스트 사이즈가 N이면 1/N 확률로 추출 (랜덤)
+        int randomIndex = (int) (Math.random() * this.prevDungeonId.size());
+        return this.prevDungeonId.get(randomIndex);
     }
 }

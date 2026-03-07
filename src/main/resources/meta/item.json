@@ -464,10 +464,7 @@
     "icon": "/images/items/27.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 3.0,
-      "dodge": 4.0,
-      "critRate": 4.0,
-      "moveSpeed": 0.3
+      "physDef": 3.0
     },
     "grantedSkillIds": []
   },
@@ -801,7 +798,7 @@
   },
   {
     "id": 42,
-    "name": "역병의사 가면",
+    "name": "역병의사의 새부리 가면",
     "grade": "EPIC",
     "type": "EQUIPMENT",
     "slot": "HEAD",
@@ -862,12 +859,9 @@
     "price": 480000,
     "icon": "/images/items/44.png",
     "baseStatsBonus": {
-      "9": 5
     },
     "combatStatsBonus": {
-      "toxicAtk": 15.0,
-      "critRate": 3.0,
-      "statusResist": 5.0
+      "toxicAtk": 15.0
     },
     "grantedSkillIds": [20]
   },

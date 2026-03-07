@@ -306,7 +306,8 @@ public class StatCalculationService {
      */
     public double calculateCritRate(Map<?, ?> baseStats) {
         // 15:인과율간섭(주), 16:동체시력(부)
-        return (getStat(baseStats, 15) * 0.4) + (getStat(baseStats, 16) * 0.2);
+        double rawCritRate = (getStat(baseStats, 15) * 0.4) + (getStat(baseStats, 16) * 0.2);
+        return Math.round(rawCritRate * 10.0) / 10.0;
     }
 
     /**

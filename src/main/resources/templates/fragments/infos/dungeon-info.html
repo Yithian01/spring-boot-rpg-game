@@ -70,6 +70,75 @@
 
         /* [추가] 진행도 바 전용 스타일 */
         .progress-bar-container { height: 4px; background: #222; border-radius: 2px; overflow: hidden; margin-top: 6px; }
+
+        /* 플레이어 턴 섹션 강화 */
+        .turn-indicator-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 159, 67, 0.05);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 159, 67, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .turn-label {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .turn-title {
+            color: #ff9f43;
+            font-size: 0.65rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255, 159, 67, 0.5);
+        }
+
+        .turn-count-text {
+            font-size: 0.8rem;
+            color: #eee;
+            font-family: 'monospace';
+        }
+
+        .turn-dots-wrapper {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        /* 턴 포인트(구슬) 애니메이션 */
+        .turn-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px; /* 약간 각진 형태가 더 기계적이고 세련되어 보임 */
+            transform: rotate(45deg); /* 다이아몬드 형태 */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .turn-dot.active {
+            background: #ff9f43;
+            box-shadow: 0 0 8px #ff9f43, inset 0 0 4px white;
+            border: 1px solid #fff;
+        }
+
+        .turn-dot.empty {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #444;
+            transform: rotate(45deg) scale(0.8);
+        }
+
+        /* 현재 사용 가능한 마지막 턴에 깜빡임 효과 (긴박함 조성) */
+        .turn-dot.active:last-child {
+            animation: turn-pulse 1.5s infinite;
+        }
+
+        @keyframes turn-pulse {
+            0% { box-shadow: 0 0 5px #ff9f43; opacity: 1; }
+            50% { box-shadow: 0 0 15px #ff9f43; opacity: 0.8; }
+            100% { box-shadow: 0 0 5px #ff9f43; opacity: 1; }
+        }
     </style>
 
     <div class="box-sub progress-section" style="padding: 12px; flex-shrink: 0;">
@@ -133,7 +202,7 @@
                         <div class="stat-box"><span class="stat-label">마법 공격력</span><span class="stat-value" style="color:#da77f2;">[[${dungeon.activeMonster.activeStats.magicAtk}]]</span></div>
                         <div class="stat-box"><span class="stat-label">물리 방어력</span><span class="stat-value" style="color:#74c0fc;">[[${dungeon.activeMonster.activeStats.physDef}]]</span></div>
                         <div class="stat-box"><span class="stat-label">마법 저항력</span><span class="stat-value" style="color:#91a7ff;">[[${dungeon.activeMonster.activeStats.magRes}]]%</span></div>
-                        <div class="stat-box"><span class="stat-label">물리 저항력</span><span class="stat-value" style="color:#51cf66;">[[${T(java.lang.Math).round(dungeon.activeMonster.activeStats.physRes * 100)}]]%</span></div>
+                        <div class="stat-box"><span class="stat-label">물리 저항력</span><span class="stat-value" style="color:#51cf66;">[[${T(java.lang.Math).round(dungeon.activeMonster.activeStats.physRes)}]]%</span></div>
                         <div class="stat-box"><span class="stat-label">치명 확률</span><span class="stat-value" style="color:#ffd43b;">[[${dungeon.activeMonster.activeStats.critRate}]]%</span></div>
                         <div class="stat-box"><span class="stat-label">명중률</span><span class="stat-value">[[${dungeon.activeMonster.activeStats.accuracy}]]%</span></div>
                         <div class="stat-box"><span class="stat-label">회피율</span><span class="stat-value">[[${dungeon.activeMonster.activeStats.dodge}]]%</span></div>
@@ -147,7 +216,7 @@
                             <div class="attr-card" th:if="${dungeon.activeMonster.activeStats[attr + 'Atk'] > 0 or dungeon.activeMonster.activeStats[attr + 'Res'] != 0}">
                                 <span style="font-size:0.8rem;" th:text="${attr == 'fire'?'🔥':attr == 'ice'?'❄️':attr == 'light'?'⚡':attr == 'earth'?'🌿':attr == 'holy'?'✨':attr == 'dark'?'🌑':attr == 'chaos'?'🌀':'🧪'}"></span>
                                 <span style="font-size: 0.7rem; color: #ff8787; font-weight: bold;">[[${dungeon.activeMonster.activeStats[attr + 'Atk']}]]</span>
-                                <span style="font-size: 0.55rem; color: #51cf66;">[[${T(java.lang.Math).round(dungeon.activeMonster.activeStats[attr + 'Res'] * 100)}]]%</span>
+                                <span style="font-size: 0.55rem; color: #51cf66;">[[${T(java.lang.Math).round(dungeon.activeMonster.activeStats[attr + 'Res'])}]]%</span>
                             </div>
                         </th:block>
                     </div>
@@ -176,12 +245,17 @@
             </div>
 
             <div class="monster-footer">
-                <div th:if="${dungeon.activeMonster.currentHp > 0}" style="display: flex; align-items: center; justify-content:space-between; margin-bottom:10px;">
-                    <span style="color: #ff9f43; font-size: 0.7rem; font-weight: bold;">PLAYER TURN</span>
-                    <div style="display: flex; gap: 5px;">
+                <div th:if="${dungeon.activeMonster.currentHp > 0}" class="turn-indicator-container">
+                    <div class="turn-label">
+                        <span class="turn-title">PLAYER ACTION</span>
+                        <span class="turn-count-text">
+                REMAINING: <b style="color:#ff9f43;">[[${dungeon.playerRemainingTurns}]]</b>
+            </span>
+                    </div>
+
+                    <div class="turn-dots-wrapper">
                         <th:block th:if="${dungeon.playerMaxTurns > 0}" th:each="i : ${#numbers.sequence(1, dungeon.playerMaxTurns)}">
-                            <div th:style="${i <= dungeon.playerRemainingTurns} ? 'background: #ff9f43; box-shadow: 0 0 5px #ff9f43;' : 'background: transparent; border: 1px solid #444;'"
-                                 style="width:10px; height:10px; border-radius:50%; transition: 0.3s;"></div>
+                            <div th:class="${i <= dungeon.playerRemainingTurns} ? 'turn-dot active' : 'turn-dot empty'"></div>
                         </th:block>
                     </div>
                 </div>

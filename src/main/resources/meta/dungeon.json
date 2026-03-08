@@ -56,9 +56,9 @@
     "prevDungeonId" : [101]
   },
   {
-    "id": 203,
+    "id": 204,
     "floor": 2,
-    "name": "망자의 늪",
+    "name": "검은 바위 사막",
     "maxActionCount": 300,
     "monsterTableId": 23,
     "effects": {

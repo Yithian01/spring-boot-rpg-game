@@ -2439,12 +2439,11 @@
       "element": "CHAOS",
       "duration": 7,
       "combatStatOffsets" : {
-        "maxTurn": 3,
-        "mpRegen" : 17000
+        "maxTurns": 3,
+        "mpRegen" : 17000,
+        "chaosAtk": 4000
       },
       "combatStatModifiers": {
-        "magicAtk": 3.0,
-        "chaosAtk": 2.5,
         "physRes": 0.3,
         "magRes": 0.3
       }
@@ -2457,9 +2456,9 @@
     "description": "손짓 한 번으로 대상이 존재하는 차원을 종잇장처럼 구깁니다.",
     "type": "PHYSICAL",
     "grade": "MONSTER",
-    "turnCost": 8,
+    "turnCost": 7,
     "hitChance": 200,
-    "cost": { "mp": 80000 },
+    "cost": { "mp": 75000 },
     "damageScaling": { "meleeAtk": 1.8 },
     "effect": {
       "type": "DAMAGE",

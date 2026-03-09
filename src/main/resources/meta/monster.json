@@ -2115,6 +2115,7 @@
     "stats": {
       "maxHp": 65000,
       "maxMp": 80000,
+      "maxTurns": 5,
       "meleeAtk": 1.0,
       "physDef": 1200.0,
       "dodge": 20.0,

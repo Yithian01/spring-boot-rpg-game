@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.enums.LocationType;
+import com.example.demo.domain.meta.CombatStats;
 import com.example.demo.domain.meta.DungeonMeta;
 import com.example.demo.domain.meta.MonsterMeta;
 import com.example.demo.domain.meta.StatMeta;

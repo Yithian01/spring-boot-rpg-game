@@ -5,14 +5,14 @@
   "dungeonName" : "세상의 끝",
   "currentFloor" : 10,
   "progress" : 100,
-  "actionCount" : 15,
+  "actionCount" : 150,
   "maxActionCount" : 50000,
   "activeMonster" : {
     "monsterId" : 1000,
     "name" : "꿈꾸는 자",
     "tier" : 1,
     "currentHp" : 65000,
-    "currentMp" : 0,
+    "currentMp" : 5000,
     "baseStats" : {
       "maxHp" : 65000,
       "maxMp" : 80000,
@@ -20,7 +20,7 @@
       "hpRegen" : 0.0,
       "mpRegen" : 0.0,
       "moveSpeed" : 4.5,
-      "maxTurns" : 0,
+      "maxTurns" : 5,
       "critRate" : 30.0,
       "critDmg" : 300.0,
       "accuracy" : 55.0,
@@ -75,7 +75,7 @@
       "hpRegen" : 0.0,
       "mpRegen" : 17000.0,
       "moveSpeed" : 4.5,
-      "maxTurns" : 0,
+      "maxTurns" : 8,
       "critRate" : 30.0,
       "critDmg" : 300.0,
       "accuracy" : 55.0,
@@ -104,7 +104,7 @@
       "earthAtk" : 0.0,
       "holyAtk" : 0.0,
       "darkAtk" : 0.0,
-      "chaosAtk" : 25.0,
+      "chaosAtk" : 4010.0,
       "toxicAtk" : 0.0,
       "fireRes" : 0.0,
       "iceRes" : 0.0,
@@ -127,19 +127,18 @@
       "skillId" : 1001,
       "ownerType" : null,
       "name" : "인과의 붕괴",
-      "remainingTurns" : 7,
+      "remainingTurns" : 2,
       "category" : "BUFF",
       "effectCode" : null,
       "tickDamage" : 0,
       "statModifiers" : null,
       "statOffsets" : null,
       "combatStatOffsets" : {
-        "maxTurn" : 3.0,
-        "mpRegen" : 17000.0
+        "maxTurns" : 3.0,
+        "mpRegen" : 17000.0,
+        "chaosAtk" : 4000.0
       },
       "combatStatModifiers" : {
-        "magicAtk" : 3.0,
-        "chaosAtk" : 2.5,
         "physRes" : 0.3,
         "magRes" : 0.3
       }

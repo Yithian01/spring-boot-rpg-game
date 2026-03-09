@@ -37,7 +37,8 @@ public class MonsterBattleService {
         if (monster == null || monster.getCurrentHp() <= 0) return;
 
         var monsterMeta = gameDataManager.getMonsterMetaMap().get(monster.getMonsterId());
-        int currentAp = (monsterMeta != null) ? monsterMeta.getBaseActionPoints() : 1;
+        // int currentAp = (monsterMeta != null) ? monsterMeta.getBaseActionPoints() : 1;
+        int currentAp = (monsterMeta != null) ? monster.getActiveStats().getMaxTurns() : 1;
 
         gs.addLog(String.format("<b style='color:#ff9f43;'>▶ %s의 차례 (행동력: %d)</b>", monster.getName(), currentAp));
 
@@ -97,8 +98,12 @@ public class MonsterBattleService {
 
                 if (isMpLacking) {
                     gs.addLog(String.format("<span style='color:#aaaaaa;'>⚡ %s이(가) 스킬을 사용하려 했으나 마력이 부족해 주춤거립니다.</span>", monster.getName()));
+                } else {
+                    // 마나 문제가 아니라 행동력이 부족하거나 스킬 데이터가 없는 경우
+                    gs.addLog(String.format("<span style='color:#aaaaaa;'>☕ %s이(가) 숨을 고르며 행동을 마칩니다.</span>", monster.getName()));
                 }
-                break; // 루프 종료
+
+                break;
             }
 
             SkillMeta selectedSkill = affordableSkills.get(random.nextInt(affordableSkills.size()));

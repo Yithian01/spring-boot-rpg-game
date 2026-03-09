@@ -1,17 +1,27 @@
 [
   {
-    "tableId": 10,
+    "tableId": 11,
     "name": "수정 동굴 (1층) 스폰 테이블",
     "spawns": [
       {
-        "monsterId": 1,
-        "weight": 70,
-        "comment": "굶주린 동굴 쥐"
+        "monsterId": 101,
+        "weight": 35,
+        "comment": "고블린"
       },
       {
-        "monsterId": 3,
-        "weight": 30,
-        "comment": "병약한 고블린"
+        "monsterId": 102,
+        "weight": 25,
+        "comment": "구울"
+      },
+      {
+        "monsterId": 103,
+        "weight": 20,
+        "comment": "노움"
+      },
+      {
+        "monsterId": 104,
+        "weight": 20,
+        "comment": "칼날늑대"
       }
     ]
   },
@@ -37,80 +47,604 @@
     ]
   },
   {
-    "tableId": 22,
-    "name": "짐승의 소굴 (2층) 스폰 테이블",
+    "tableId": 20,
+    "name": "갈림길 (2층) - 구역 1 (짐승의 소굴) 스폰 테이블",
     "spawns": [
       {
-        "monsterId": 7,
-        "weight": 50,
-        "comment": "굶주린 늑대"
+        "monsterId": 201,
+        "weight": 20,
+        "comment": "거대칼날늑대"
       },
       {
-        "monsterId": 8,
-        "weight": 35,
-        "comment": "바위 등껍질 곰"
-      },
-      {
-        "monsterId": 9,
+        "monsterId": 202,
         "weight": 15,
-        "comment": "그림자 비늘 살무사"
+        "comment": "핏빛칼날늑대"
+      },
+      {
+        "monsterId": 203,
+        "weight": 15,
+        "comment": "벽두더지"
+      },
+      {
+        "monsterId": 204,
+        "weight": 10,
+        "comment": "벽두더지 여왕"
+      },
+      {
+        "monsterId": 205,
+        "weight": 15,
+        "comment": "반달바위곰"
+      },
+      {
+        "monsterId": 206,
+        "weight": 10,
+        "comment": "불카르"
+      },
+      {
+        "monsterId": 207,
+        "weight": 7,
+        "comment": "샤벨타이거 (8등급)"
+      },
+      {
+        "monsterId": 208,
+        "weight": 8,
+        "comment": "웨어울프 (8등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 21,
+    "name": "갈림길 (2층) - 구역 2 (망자의 땅) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 102,
+        "weight": 15,
+        "comment": "구울"
+      },
+      {
+        "monsterId": 209,
+        "weight": 12,
+        "comment": "엘더 구울"
+      },
+      {
+        "monsterId": 210,
+        "weight": 43,
+        "comment": "스켈레톤"
+      },
+      {
+        "monsterId": 211,
+        "weight": 10,
+        "comment": "벤시"
+      },
+      {
+        "monsterId": 212,
+        "weight": 7,
+        "comment": "데스핀드 (8등급)"
+      },
+      {
+        "monsterId": 213,
+        "weight": 5,
+        "comment": "구울 로드 (8등급)"
+      },
+      {
+        "monsterId": 2021,
+        "weight": 4,
+        "comment": "키메라 울프 (8등급 임의 ID)"
+      },
+      {
+        "monsterId": 214,
+        "weight": 3,
+        "comment": "듀라한 (7등급)"
+      },
+      {
+        "monsterId": 215,
+        "weight": 1,
+        "comment": "데스나이트 (6등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 22,
+    "name": "갈림길 (2층) - 구역 3 (검은 바위 사막) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 216,
+        "weight": 18,
+        "comment": "코볼트 투척병"
+      },
+      {
+        "monsterId": 103,
+        "weight": 15,
+        "comment": "노움"
+      },
+      {
+        "monsterId": 217,
+        "weight": 18,
+        "comment": "코볼트 방패병"
+      },
+      {
+        "monsterId": 218,
+        "weight": 15,
+        "comment": "타락한 노움"
+      },
+      {
+        "monsterId": 219,
+        "weight": 8,
+        "comment": "거석병 (8등급)"
+      },
+      {
+        "monsterId": 220,
+        "weight": 8,
+        "comment": "스톤골렘 (8등급)"
+      },
+      {
+        "monsterId": 221,
+        "weight": 10,
+        "comment": "샌드맨 (8등급)"
+      },
+      {
+        "monsterId": 222,
+        "weight": 7,
+        "comment": "샌드웜 (8등급)"
+      },
+      {
+        "monsterId": 223,
+        "weight": 1,
+        "comment": "데쓰웜 (5등급)"
       }
     ]
   },
   {
     "tableId": 23,
-    "name": "망자의 늪 (2층) 스폰 테이블",
+    "name": "갈림길 (2층) - 구역 4 (고블린의 숲) 스폰 테이블",
     "spawns": [
       {
-        "monsterId": 4,
-        "weight": 30,
-        "comment": "떠돌이 해골 병사"
+        "monsterId": 101,
+        "weight": 40,
+        "comment": "고블린 (기본)"
       },
       {
-        "monsterId": 11,
-        "weight": 30,
-        "comment": "스켈레톤 궁수"
+        "monsterId": 224,
+        "weight": 25,
+        "comment": "고블린 검사 (9등급 임의 ID)"
       },
       {
-        "monsterId": 12,
-        "weight": 20,
-        "comment": "부패한 늪 좀비"
+        "monsterId": 225,
+        "weight": 25,
+        "comment": "고블린 궁수 (9등급 임의 ID)"
       },
       {
-        "monsterId": 10,
-        "weight": 15,
-        "comment": "흐느끼는 벤시"
+        "monsterId": 226,
+        "weight": 10,
+        "comment": "홉 고블린 (7등급 임의 ID)"
       }
     ]
   },
   {
-    "tableId": 24,
-    "name": "얼어붙은 들판 (2층) 스폰 테이블",
+    "tableId": 30,
+    "name": "순례자의 길 (3층) - 구역 1 (강철바위 언덕) 스폰 테이블",
     "spawns": [
       {
-        "monsterId": 13,
-        "weight": 35,
-        "comment": "서리발 늑대"
-      },
-      {
-        "monsterId": 15,
+        "monsterId": 301,
         "weight": 30,
-        "comment": "굶주린 설인"
+        "comment": "웜스톤 (8등급)"
       },
       {
-        "monsterId": 14,
+        "monsterId": 302,
+        "weight": 25,
+        "comment": "아이언팔콘 (8등급)"
+      },
+      {
+        "monsterId": 303,
+        "weight": 30,
+        "comment": "강철언덕 수호병 (8등급)"
+      },
+      {
+        "monsterId": 304,
         "weight": 15,
-        "comment": "라이칸스로프 "
+        "comment": "아이안트로 (7등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 31,
+    "name": "순례자의 길 (3층) - 구역 2 (오크 군락지) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 305,
+        "weight": 25,
+        "comment": "오크 주술사 (8등급)"
       },
       {
-        "monsterId": 16,
+        "monsterId": 306,
+        "weight": 35,
+        "comment": "오크 전사 (8등급)"
+      },
+      {
+        "monsterId": 307,
+        "weight": 25,
+        "comment": "오크 궁수 (8등급)"
+      },
+      {
+        "monsterId": 308,
+        "weight": 14,
+        "comment": "오크 대전사 (7등급)"
+      },
+      {
+        "monsterId": 309,
+        "weight": 0.9,
+        "comment": "히든 보스: 오크 히어로 (5등급)"
+      },
+      {
+        "monsterId": 310,
+        "weight": 0.1,
+        "comment": "히든 보스: 오크 로드 (2등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 32,
+    "name": "순례자의 길 (3층) - 구역 3 (칠흑의 강어귀) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 311,
+        "weight": 100,
+        "comment": "프로그맨 (8등급 임의 ID)"
+      }
+    ]
+  },
+  {
+    "tableId": 33,
+    "name": "순례자의 길 (3층) - 구역 4 (녹빛꼬리 습지) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 312,
+        "weight": 85,
+        "comment": "리자드맨 (8등급 임의 ID)"
+      },
+      {
+        "monsterId": 313,
         "weight": 15,
-        "comment": "고대 얼음 골렘"
+        "comment": "무명 조각상 (7등급 임의 ID)"
+      }
+    ]
+  },
+  {
+    "tableId": 34,
+    "name": "순례자의 길 (3층) - 구역 5 (마녀의 숲) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 314,
+        "weight": 12,
+        "comment": "페어리 (9등급)"
       },
       {
-        "monsterId": 17,
+        "monsterId": 315,
+        "weight": 12,
+        "comment": "레이스 (9등급)"
+      },
+      {
+        "monsterId": 316,
+        "weight": 12,
+        "comment": "위치스램프 (9등급)"
+      },
+      {
+        "monsterId": 317,
+        "weight": 14,
+        "comment": "우드맨 (9등급)"
+      },
+      {
+        "monsterId": 318,
+        "weight": 7,
+        "comment": "스네트리 (8등급)"
+      },
+      {
+        "monsterId": 319,
+        "weight": 7,
+        "comment": "다이로우터 (8등급)"
+      },
+      {
+        "monsterId": 320,
+        "weight": 6,
+        "comment": "돌연변이 하급 정령 (8등급)"
+      },
+      {
+        "monsterId": 321,
+        "weight": 6,
+        "comment": "호문쿨루스 (8등급)"
+      },
+      {
+        "monsterId": 322,
+        "weight": 7,
+        "comment": "아울베어 (8등급)"
+      },
+      {
+        "monsterId": 323,
+        "weight": 7,
+        "comment": "드라이어드 (8등급)"
+      },
+      {
+        "monsterId": 324,
         "weight": 5,
-        "comment": "필드보스 타룬뱅"
+        "comment": "하프트롤 (7등급)"
+      },
+      {
+        "monsterId": 325,
+        "weight": 5,
+        "comment": "카나바로 (7등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 40,
+    "name": "시련의 탑 (4층) 스폰 테이블 - 3층 정예 전원 집결",
+    "spawns": [
+      { "monsterId": 215, "weight": 5, "comment": "데스나이트 (6등급)" },
+      { "monsterId": 304, "weight": 7, "comment": "아이안트로 (7등급)" },
+      { "monsterId": 308, "weight": 7, "comment": "오크 대전사 (7등급)" },
+      { "monsterId": 313, "weight": 7, "comment": "무명 조각상 (7등급)" },
+      { "monsterId": 324, "weight": 7, "comment": "하프트롤 (7등급)" },
+      { "monsterId": 325, "weight": 7, "comment": "카나바로 (7등급)" },
+      { "monsterId": 226, "weight": 7, "comment": "홉 고블린 (7등급)" },
+      { "monsterId": 301, "weight": 6, "comment": "웜스톤 (8등급)" },
+      { "monsterId": 302, "weight": 6, "comment": "아이언팔콘 (8등급)" },
+      { "monsterId": 303, "weight": 6, "comment": "강철언덕 수호병 (8등급)" },
+      { "monsterId": 305, "weight": 6, "comment": "오크 주술사 (8등급)" },
+      { "monsterId": 306, "weight": 6, "comment": "오크 전사 (8등급)" },
+      { "monsterId": 307, "weight": 6, "comment": "오크 궁수 (8등급)" },
+      { "monsterId": 311, "weight": 6, "comment": "프로그맨 (8등급)" },
+      { "monsterId": 312, "weight": 6, "comment": "리자드맨 (8등급)" },
+      { "monsterId": 318, "weight": 3, "comment": "스네트리 (8등급)" },
+      { "monsterId": 319, "weight": 3, "comment": "다이로우터 (8등급)" },
+      { "monsterId": 320, "weight": 3, "comment": "돌연변이 하급 정령 (8등급)" },
+      { "monsterId": 321, "weight": 3, "comment": "호문쿨루스 (8등급)" },
+      { "monsterId": 322, "weight": 3, "comment": "아울베어 (8등급)" },
+      { "monsterId": 323, "weight": 3, "comment": "드라이어드 (8등급)" },
+      { "monsterId": 701, "weight": 2, "comment": "트롤 (5등급)" }
+    ]
+  },
+  {
+    "tableId": 50,
+    "name": "원소 구역 (5층) - 구역 1 (화염의 땅)",
+    "spawns": [
+      { "monsterId": 501, "weight": 50, "comment": "불의 망자 (8등급)" },
+      { "monsterId": 502, "weight": 15, "comment": "밀라로든 (7등급 - 희귀종)" },
+      { "monsterId": 503, "weight": 20, "comment": "레드머드 (7등급)" },
+      { "monsterId": 504, "weight": 10, "comment": "스톤번 (6등급)" },
+      { "monsterId": 505, "weight": 3, "comment": "이프리트 (5등급)" },
+      { "monsterId": 506, "weight": 2, "comment": "헬 프레임 (5등급)" }
+    ]
+  },
+  {
+    "tableId": 51,
+    "name": "원소 구역 (5층) - 구역 2 (폭풍의 봉우리)",
+    "spawns": [
+      {
+        "monsterId": 511,
+        "weight": 35,
+        "comment": "구름 가오리 (8등급)"
+      },
+      {
+        "monsterId": 512,
+        "weight": 30,
+        "comment": "폭풍 정찰병 (8등급)"
+      },
+      {
+        "monsterId": 513,
+        "weight": 18,
+        "comment": "뇌전 정령 (7등급)"
+      },
+      {
+        "monsterId": 514,
+        "weight": 7,
+        "comment": "하피 여왕 (6등급)"
+      },
+      {
+        "monsterId": 515,
+        "weight": 7,
+        "comment": "뇌폭의 대정령 (6등급)"
+      },
+      {
+        "monsterId": 516,
+        "weight": 3,
+        "comment": "폭풍의 지배자 (5등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 52,
+    "name": "원소 구역 (5층) - 구역 3 (망령의 협곡)",
+    "spawns": [
+      {
+        "monsterId": 521,
+        "weight": 60,
+        "comment": "타락한 피조물 (8등급)"
+      },
+      {
+        "monsterId": 522,
+        "weight": 25,
+        "comment": "커스스톤 (6등급)"
+      },
+      {
+        "monsterId": 523,
+        "weight": 6,
+        "comment": "혈원귀 (5등급)"
+      },
+      {
+        "monsterId": 524,
+        "weight": 5,
+        "comment": "다키리온 (5등급)"
+      },
+      {
+        "monsterId": 525,
+        "weight": 4,
+        "comment": "소울이터 (5등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 53,
+    "name": "원소 구역 (5층) - 구역 4 (서리 협곡)",
+    "spawns": [
+      {
+        "monsterId": 531,
+        "weight": 35,
+        "comment": "하급 얼음 정령 (8등급)"
+      },
+      {
+        "monsterId": 532,
+        "weight": 30,
+        "comment": "설인 정찰꾼 (8등급)"
+      },
+      {
+        "monsterId": 533,
+        "weight": 12,
+        "comment": "아이스 워커 (7등급)"
+      },
+      {
+        "monsterId": 534,
+        "weight": 13,
+        "comment": "만년설 설인 (7등급)"
+      },
+      {
+        "monsterId": 535,
+        "weight": 7,
+        "comment": "얼음 골렘 (6등급 - 스톤골렘 데이터 변용)"
+      },
+      {
+        "monsterId": 536,
+        "weight": 3,
+        "comment": "브루탈 팽 (5등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 60,
+    "name": "심연의 바다 (6층) 스폰 테이블",
+    "spawns": [
+      { "monsterId": 601, "weight": 12, "comment": "부유하는 송장 (7등급)" },
+      { "monsterId": 602, "weight": 12, "comment": "맹독 해파리 (7등급)" },
+      { "monsterId": 603, "weight": 12, "comment": "저주받은 선원 (7등급)" },
+      { "monsterId": 611, "weight": 18, "comment": "심연의 대식가 (6등급)" },
+      { "monsterId": 612, "weight": 18, "comment": "심해의 수호자 (6등급)" },
+      { "monsterId": 613, "weight": 25, "comment": "어인 전사 (6등급)" },
+      { "monsterId": 621, "weight": 6, "comment": "심해 거인 (5등급)" },
+      { "monsterId": 622, "weight": 6, "comment": "히드라 (5등급)" },
+      { "monsterId": 631, "weight": 2, "comment": "심해의 주인 데이곤 (3등급)" },
+      { "monsterId": 632, "weight": 1, "comment": "레비아탄 (3등급)" }
+    ]
+  },
+  {
+    "tableId": 70,
+    "name": "대수림 (7층) 스폰 테이블",
+    "spawns": [
+      { "monsterId": 701, "weight": 11, "comment": "부정한 생명의 사제 (6등급)" },
+      { "monsterId": 702, "weight": 11, "comment": "검은 염소 전사 (6등급)" },
+      { "monsterId": 703, "weight": 11, "comment": "검은 염소 주술사 (6등급)" },
+      { "monsterId": 704, "weight": 11, "comment": "가시 돋친 키메라 (6등급)" },
+      { "monsterId": 401, "weight": 8, "comment": "트롤 (5등급 - 4층 데이터 재활용)" },
+      { "monsterId": 705, "weight": 8, "comment": "바실리스크 (5등급)" },
+      { "monsterId": 706, "weight": 7, "comment": "미노타우로스 (5등급)" },
+      { "monsterId": 707, "weight": 7, "comment": "외눈박이 거인 (5등급)" },
+      { "monsterId": 708, "weight": 7, "comment": "만티코어 (5등급)" },
+      { "monsterId": 709, "weight": 4, "comment": "고르곤 (4등급)" },
+      { "monsterId": 710, "weight": 4, "comment": "히드라(변종) (4등급)" },
+      { "monsterId": 711, "weight": 4, "comment": "비야키 (4등급)" },
+      { "monsterId": 712, "weight": 4, "comment": "아라크네 (4등급)" },
+      { "monsterId": 713, "weight": 1.5, "comment": "오우거 (3등급)" },
+      { "monsterId": 714, "weight": 0.5, "comment": "검은 어린 양 (3등급)" }
+    ]
+  },
+  {
+    "tableId": 80,
+    "name": "드림랜드 (8층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 801,
+        "weight": 40,
+        "comment": "샨타크 (6등급)"
+      },
+      {
+        "monsterId": 802,
+        "weight": 12,
+        "comment": "틴탈로스의 사냥개 (5등급)"
+      },
+      {
+        "monsterId": 803,
+        "weight": 12,
+        "comment": "나이트 건트 (5등급)"
+      },
+      {
+        "monsterId": 223,
+        "weight": 10,
+        "comment": "데쓰웜 (5등급 - 2층 데이터 재활용)"
+      },
+      {
+        "monsterId": 804,
+        "weight": 10,
+        "comment": "달의 짐승 (5등급)"
+      },
+      {
+        "monsterId": 805,
+        "weight": 5,
+        "comment": "쇼고스 (4등급)"
+      },
+      {
+        "monsterId": 806,
+        "weight": 5,
+        "comment": "사냥하는 공포 (4등급)"
+      },
+      {
+        "monsterId": 807,
+        "weight": 4,
+        "comment": "공포의 화신 (4등급)"
+      },
+      {
+        "monsterId": 808,
+        "weight": 2,
+        "comment": "검은 파라오 (3등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 90,
+    "name": "심연의 틈 (9층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 901,
+        "weight": 7.5,
+        "comment": "차원 포식자 (4등급)"
+      },
+      {
+        "monsterId": 902,
+        "weight": 7.5,
+        "comment": "날아다니는 플립 (4등급)"
+      },
+      {
+        "monsterId": 903,
+        "weight": 70,
+        "comment": "울부짖는 자 (3등급)"
+      },
+      {
+        "monsterId": 904,
+        "weight": 7.5,
+        "comment": "만물의 어머니 (2등급)"
+      },
+      {
+        "monsterId": 905,
+        "weight": 7.5,
+        "comment": "궁정 음악가 (2등급)"
+      }
+    ]
+  },
+  {
+    "tableId": 100,
+    "name": "세상의 끝 (10층) 스폰 테이블",
+    "spawns": [
+      {
+        "monsterId": 1000,
+        "weight": 100,
+        "comment": "아자토스 (1등급 - 최종 존재)"
       }
     ]
   }

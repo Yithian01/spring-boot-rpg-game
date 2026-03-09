@@ -206,7 +206,7 @@ public class StatCalculationService {
 
         combat.setFireAtk(0);
         combat.setIceAtk(0);
-        combat.setLightAtk(0);
+        combat.setLightningAtk(0);
         combat.setEarthAtk(0);
         combat.setHolyAtk(0);
         combat.setDarkAtk(0);
@@ -214,7 +214,7 @@ public class StatCalculationService {
 
         combat.setFirePen(0);
         combat.setIcePen(0);
-        combat.setLightPen(0);
+        combat.setLightningPen(0);
         combat.setEarthPen(0);
         combat.setHolyPen(0);
         combat.setDarkPen(0);
@@ -708,7 +708,7 @@ public class StatCalculationService {
         return switch(el) {
             case "FIRE" -> s.getFireAtk();
             case "ICE" -> s.getIceAtk();
-            case "LIGHT" -> s.getLightAtk();
+            case "LIGHT" -> s.getLightningAtk();
             case "EARTH" -> s.getEarthAtk();
             case "HOLY" -> s.getHolyAtk();
             case "DARK" -> s.getDarkAtk();
@@ -729,7 +729,7 @@ public class StatCalculationService {
             case "MAGIC"    -> s.getMagRes();
             case "HOLY"     -> s.getHolyRes();
             case "DARK"     -> s.getDarkRes();
-            case "LIGHT"    -> s.getLightRes();
+            case "LIGHT"    -> s.getLightningRes();
             case "EARTH"    -> s.getEarthRes();
             case "CHAOS"    -> s.getChaosRes();
             case "TOXIC"    -> s.getToxicRes();
@@ -747,7 +747,7 @@ public class StatCalculationService {
             case "ICE"      -> s.getIcePen();
             case "HOLY"     -> s.getHolyPen();
             case "DARK"     -> s.getDarkPen();
-            case "LIGHT"    -> s.getLightPen();
+            case "LIGHT"    -> s.getLightningPen();
             case "EARTH"    -> s.getEarthPen();
             case "CHAOS"    -> s.getChaosPen();
             case "TOXIC"    -> s.getToxicPen();

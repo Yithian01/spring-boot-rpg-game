@@ -59,6 +59,7 @@
 ### [최종 데미지 공식 (예시)]
 - **Final Phys Damage**: $(MeleeAtk \times (1 - PhysRes/100)) - PhysDef$
 - **Final Mag Damage**: $(MagicAtk \times (1 - MagRes/100))$
+
 ---
 
 ## 3. 초기 캐릭터 능력치 (All Stats 9, 알몸 기준)

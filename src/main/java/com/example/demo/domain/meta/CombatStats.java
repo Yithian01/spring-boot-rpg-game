@@ -71,7 +71,7 @@ public class CombatStats {
 
     private double fireAtk;
     private double iceAtk;
-    private double lightAtk;
+    private double lightningAtk;
     private double earthAtk;
     private double holyAtk;
     private double darkAtk;
@@ -81,7 +81,7 @@ public class CombatStats {
     // 속성별 저항력 (%)
     private double fireRes;
     private double iceRes;
-    private double lightRes;
+    private double lightningRes;
     private double earthRes;
     private double holyRes;
     private double darkRes;
@@ -91,7 +91,7 @@ public class CombatStats {
     // 속성별 관통력 (%)
     private double firePen;
     private double icePen;
-    private double lightPen;
+    private double lightningPen;
     private double earthPen;
     private double holyPen;
     private double darkPen;
@@ -141,7 +141,7 @@ public class CombatStats {
             case "magicAtk" -> this.magicAtk = roundOne(this.magicAtk + val);
             case "fireAtk" -> this.fireAtk = roundOne(this.fireAtk + val);
             case "iceAtk" -> this.iceAtk = roundOne(this.iceAtk + val);
-            case "lightAtk" -> this.lightAtk = roundOne(this.lightAtk + val);
+            case "lightAtk" -> this.lightningAtk = roundOne(this.lightningAtk + val);
             case "earthAtk" -> this.earthAtk = roundOne(this.earthAtk + val);
             case "holyAtk" -> this.holyAtk = roundOne(this.holyAtk + val);
             case "darkAtk" -> this.darkAtk = roundOne(this.darkAtk + val);
@@ -156,7 +156,7 @@ public class CombatStats {
             case "magPen" -> this.magPen = roundOne(this.magPen + val);
             case "fireRes" -> this.fireRes = roundOne(this.fireRes + val);
             case "iceRes" -> this.iceRes = roundOne(this.iceRes + val);
-            case "lightRes" -> this.lightRes = roundOne(this.lightRes + val);
+            case "lightRes" -> this.lightningRes = roundOne(this.lightningRes + val);
             case "earthRes" -> this.earthRes = roundOne(this.earthRes + val);
             case "holyRes" -> this.holyRes = roundOne(this.holyRes + val);
             case "darkRes" -> this.darkRes = roundOne(this.darkRes + val);
@@ -166,7 +166,7 @@ public class CombatStats {
             case "physPen" -> this.physPen = roundOne(this.physPen + val);
             case "firePen" -> this.firePen = roundOne(this.firePen + val);
             case "icePen" -> this.icePen = roundOne(this.icePen + val);
-            case "lightPen" -> this.lightPen = roundOne(this.lightPen + val);
+            case "lightPen" -> this.lightningPen = roundOne(this.lightningPen + val);
             case "earthPen" -> this.earthPen = roundOne(this.earthPen + val);
             case "holyPen" -> this.holyPen = roundOne(this.holyPen + val);
             case "darkPen" -> this.darkPen = roundOne(this.darkPen + val);
@@ -217,7 +217,7 @@ public class CombatStats {
             case "magicAtk" -> this.magicAtk = roundOne(this.magicAtk * multiplier);
             case "fireAtk" -> this.fireAtk = roundOne(this.fireAtk * multiplier);
             case "iceAtk" -> this.iceAtk = roundOne(this.iceAtk * multiplier);
-            case "lightAtk" -> this.lightAtk = roundOne(this.lightAtk * multiplier);
+            case "lightAtk" -> this.lightningAtk = roundOne(this.lightningAtk * multiplier);
             case "earthAtk" -> this.earthAtk = roundOne(this.earthAtk * multiplier);
             case "holyAtk" -> this.holyAtk = roundOne(this.holyAtk * multiplier);
             case "darkAtk" -> this.darkAtk = roundOne(this.darkAtk * multiplier);
@@ -232,7 +232,7 @@ public class CombatStats {
             case "magPen" -> this.magPen = roundOne(this.magPen * multiplier);
             case "fireRes" -> this.fireRes = roundOne(this.fireRes * multiplier);
             case "iceRes" -> this.iceRes = roundOne(this.iceRes * multiplier);
-            case "lightRes" -> this.lightRes = roundOne(this.lightRes * multiplier);
+            case "lightRes" -> this.lightningRes = roundOne(this.lightningRes * multiplier);
             case "earthRes" -> this.earthRes = roundOne(this.earthRes * multiplier);
             case "holyRes" -> this.holyRes = roundOne(this.holyRes * multiplier);
             case "darkRes" -> this.darkRes = roundOne(this.darkRes * multiplier);
@@ -242,7 +242,7 @@ public class CombatStats {
             case "physPen" -> this.physPen = roundOne(this.physPen * multiplier);
             case "firePen" -> this.firePen = roundOne(this.firePen * multiplier);
             case "icePen" -> this.icePen = roundOne(this.icePen * multiplier);
-            case "lightPen" -> this.lightPen = roundOne(this.lightPen * multiplier);
+            case "lightPen" -> this.lightningPen = roundOne(this.lightningPen * multiplier);
             case "earthPen" -> this.earthPen = roundOne(this.earthPen * multiplier);
             case "holyPen" -> this.holyPen = roundOne(this.holyPen * multiplier);
             case "darkPen" -> this.darkPen = roundOne(this.darkPen * multiplier);

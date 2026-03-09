@@ -1,19 +1,19 @@
 {
-  "dungeonId" : 303,
-  "parentDungeonId" : 401,
+  "dungeonId" : 204,
+  "parentDungeonId" : 304,
   "parentDungeonName" : null,
-  "dungeonName" : "녹빛꼬리 습지",
-  "currentFloor" : 3,
+  "dungeonName" : "검은 바위 사막",
+  "currentFloor" : 2,
   "progress" : 0,
   "actionCount" : 0,
-  "maxActionCount" : 700,
+  "maxActionCount" : 300,
   "activeMonster" : null,
   "playerRemainingTurns" : 0,
   "playerMaxTurns" : 5,
   "pendingExp" : 0,
   "pendingEssence" : null,
   "floorProgressMap" : {
-    "303" : 0
+    "204" : 0
   },
   "inBattle" : false
 }

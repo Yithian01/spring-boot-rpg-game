@@ -26,27 +26,6 @@
     ]
   },
   {
-    "tableId": 21,
-    "name": "고블린의 숲 (2층) 스폰 테이블",
-    "spawns": [
-      {
-        "monsterId": 5,
-        "weight": 41,
-        "comment": "고블린 검사"
-      },
-      {
-        "monsterId": 6,
-        "weight": 34,
-        "comment": "고블린 궁수"
-      },
-      {
-        "monsterId": 25,
-        "weight": 30,
-        "comment": "홉고블린"
-      }
-    ]
-  },
-  {
     "tableId": 20,
     "name": "갈림길 (2층) - 구역 1 (짐승의 소굴) 스폰 테이블",
     "spawns": [
@@ -540,19 +519,12 @@
     "spawns": [
       { "monsterId": 701, "weight": 11, "comment": "부정한 생명의 사제 (6등급)" },
       { "monsterId": 702, "weight": 11, "comment": "검은 염소 전사 (6등급)" },
-      { "monsterId": 703, "weight": 11, "comment": "검은 염소 주술사 (6등급)" },
-      { "monsterId": 704, "weight": 11, "comment": "가시 돋친 키메라 (6등급)" },
-      { "monsterId": 401, "weight": 8, "comment": "트롤 (5등급 - 4층 데이터 재활용)" },
-      { "monsterId": 705, "weight": 8, "comment": "바실리스크 (5등급)" },
-      { "monsterId": 706, "weight": 7, "comment": "미노타우로스 (5등급)" },
-      { "monsterId": 707, "weight": 7, "comment": "외눈박이 거인 (5등급)" },
-      { "monsterId": 708, "weight": 7, "comment": "만티코어 (5등급)" },
-      { "monsterId": 709, "weight": 4, "comment": "고르곤 (4등급)" },
-      { "monsterId": 710, "weight": 4, "comment": "히드라(변종) (4등급)" },
-      { "monsterId": 711, "weight": 4, "comment": "비야키 (4등급)" },
-      { "monsterId": 712, "weight": 4, "comment": "아라크네 (4등급)" },
-      { "monsterId": 713, "weight": 1.5, "comment": "오우거 (3등급)" },
-      { "monsterId": 714, "weight": 0.5, "comment": "검은 어린 양 (3등급)" }
+      { "monsterId": 711, "weight": 8, "comment": "트롤 (5등급 )" },
+      { "monsterId": 712, "weight": 8, "comment": "바실리스크 (5등급)" },
+      { "monsterId": 721, "weight": 4, "comment": "고르곤 (4등급)" },
+      { "monsterId": 722, "weight": 4, "comment": "아라크네 (4등급)" },
+      { "monsterId": 731, "weight": 1.5, "comment": "오우거 (3등급)" },
+      { "monsterId": 732, "weight": 0.5, "comment": "검은 어린 양 (3등급)" }
     ]
   },
   {
@@ -565,12 +537,12 @@
         "comment": "샨타크 (6등급)"
       },
       {
-        "monsterId": 802,
+        "monsterId": 811,
         "weight": 12,
         "comment": "틴탈로스의 사냥개 (5등급)"
       },
       {
-        "monsterId": 803,
+        "monsterId": 812,
         "weight": 12,
         "comment": "나이트 건트 (5등급)"
       },
@@ -580,27 +552,17 @@
         "comment": "데쓰웜 (5등급 - 2층 데이터 재활용)"
       },
       {
-        "monsterId": 804,
-        "weight": 10,
-        "comment": "달의 짐승 (5등급)"
-      },
-      {
-        "monsterId": 805,
+        "monsterId": 821,
         "weight": 5,
         "comment": "쇼고스 (4등급)"
       },
       {
-        "monsterId": 806,
+        "monsterId": 822,
         "weight": 5,
         "comment": "사냥하는 공포 (4등급)"
       },
       {
-        "monsterId": 807,
-        "weight": 4,
-        "comment": "공포의 화신 (4등급)"
-      },
-      {
-        "monsterId": 808,
+        "monsterId": 831,
         "weight": 2,
         "comment": "검은 파라오 (3등급)"
       }
@@ -612,26 +574,22 @@
     "spawns": [
       {
         "monsterId": 901,
-        "weight": 7.5,
+        "weight": 70,
         "comment": "차원 포식자 (4등급)"
       },
+
       {
-        "monsterId": 902,
-        "weight": 7.5,
-        "comment": "날아다니는 플립 (4등급)"
-      },
-      {
-        "monsterId": 903,
-        "weight": 70,
+        "monsterId": 911,
+        "weight": 15,
         "comment": "울부짖는 자 (3등급)"
       },
       {
-        "monsterId": 904,
+        "monsterId": 921,
         "weight": 7.5,
         "comment": "만물의 어머니 (2등급)"
       },
       {
-        "monsterId": 905,
+        "monsterId": 922,
         "weight": 7.5,
         "comment": "궁정 음악가 (2등급)"
       }

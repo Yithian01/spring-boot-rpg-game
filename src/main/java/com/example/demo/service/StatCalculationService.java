@@ -306,9 +306,13 @@ public class StatCalculationService {
      */
     public double calculateCritRate(Map<?, ?> baseStats) {
         // 15:인과율간섭(주), 16:동체시력(부)
-        double statCrit = (getStat(baseStats, 15) * 0.1) + (getStat(baseStats, 16) * 0.1);
-        double baseLimit = Math.min(statCrit, 50.0);
-        return Math.round(baseLimit * 10.0) / 10.0;
+        double statCrit = 5.0 + (getStat(baseStats, 15) * 0.1) + (getStat(baseStats, 16) * 0.1);
+
+        double threshold = 30.0;
+        if(statCrit > threshold) {
+            statCrit = threshold + (statCrit - threshold) * 0.1;
+        }
+        return Math.round(statCrit * 10.0) / 10.0;
     }
 
     /**

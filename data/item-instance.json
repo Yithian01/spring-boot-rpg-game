@@ -1,6 +1,6 @@
 {
-  "7c63aefd-789e-4bb4-b5b8-c108bb0ec6ff" : {
-    "instanceId" : "7c63aefd-789e-4bb4-b5b8-c108bb0ec6ff",
+  "4db3232f-5048-4bd2-9145-bc321dc30d64" : {
+    "instanceId" : "4db3232f-5048-4bd2-9145-bc321dc30d64",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,8 +23,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "13b208d1-2d73-4d7e-a326-b624b6cc0a22" : {
-    "instanceId" : "13b208d1-2d73-4d7e-a326-b624b6cc0a22",
+  "b2dab5d9-bf37-4fdf-9c07-b5f34c802885" : {
+    "instanceId" : "b2dab5d9-bf37-4fdf-9c07-b5f34c802885",
     "itemMetaId" : 8,
     "customName" : "8등급 마석",
     "grade" : "COMMON",
@@ -43,8 +43,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "2b65d657-ccff-4cfb-b234-4699c67856a4" : {
-    "instanceId" : "2b65d657-ccff-4cfb-b234-4699c67856a4",
+  "c4f8cf12-ac6c-4947-9629-f58b5beb2430" : {
+    "instanceId" : "c4f8cf12-ac6c-4947-9629-f58b5beb2430",
     "itemMetaId" : 1,
     "customName" : "1등급 마석",
     "grade" : "LEGENDARY",
@@ -63,8 +63,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "3184b1ec-a706-4db8-a30a-f11af022bf84" : {
-    "instanceId" : "3184b1ec-a706-4db8-a30a-f11af022bf84",
+  "128fb079-16ff-4931-91db-e3d2b8b82213" : {
+    "instanceId" : "128fb079-16ff-4931-91db-e3d2b8b82213",
     "itemMetaId" : 2,
     "customName" : "2등급 마석",
     "grade" : "EPIC",
@@ -83,8 +83,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "77df703d-d53a-4941-8dbb-8e02ce00d401" : {
-    "instanceId" : "77df703d-d53a-4941-8dbb-8e02ce00d401",
+  "3c55efb7-7482-4fba-add6-b693a90aeb47" : {
+    "instanceId" : "3c55efb7-7482-4fba-add6-b693a90aeb47",
     "itemMetaId" : 3,
     "customName" : "3등급 마석",
     "grade" : "RARE",
@@ -103,8 +103,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "d11beaa8-69f2-4b82-a519-cb00ba4782c5" : {
-    "instanceId" : "d11beaa8-69f2-4b82-a519-cb00ba4782c5",
+  "19ad96a0-3624-42b2-b94b-3161698b8012" : {
+    "instanceId" : "19ad96a0-3624-42b2-b94b-3161698b8012",
     "itemMetaId" : 4,
     "customName" : "4등급 마석",
     "grade" : "RARE",
@@ -123,8 +123,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "3ea918a2-dd34-48b7-bc09-009b84c8c2d5" : {
-    "instanceId" : "3ea918a2-dd34-48b7-bc09-009b84c8c2d5",
+  "c9898245-a13b-4d4b-9d3e-1452dc7e469d" : {
+    "instanceId" : "c9898245-a13b-4d4b-9d3e-1452dc7e469d",
     "itemMetaId" : 5,
     "customName" : "5등급 마석",
     "grade" : "UNCOMMON",
@@ -143,8 +143,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "4c150919-6f0a-491f-a3bf-13ea32ab214c" : {
-    "instanceId" : "4c150919-6f0a-491f-a3bf-13ea32ab214c",
+  "54bb343a-4195-449a-bc09-0db1ce6cc174" : {
+    "instanceId" : "54bb343a-4195-449a-bc09-0db1ce6cc174",
     "itemMetaId" : 6,
     "customName" : "6등급 마석",
     "grade" : "UNCOMMON",
@@ -163,8 +163,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "2c4841a5-41c5-4d47-8163-5dd1f0382656" : {
-    "instanceId" : "2c4841a5-41c5-4d47-8163-5dd1f0382656",
+  "31c71a69-6e12-4d0e-a2b3-68e5cd3d32e8" : {
+    "instanceId" : "31c71a69-6e12-4d0e-a2b3-68e5cd3d32e8",
     "itemMetaId" : 7,
     "customName" : "7등급 마석",
     "grade" : "COMMON",
@@ -183,8 +183,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "58705fc4-9a17-4f8f-878d-3e7e8d8e10d1" : {
-    "instanceId" : "58705fc4-9a17-4f8f-878d-3e7e8d8e10d1",
+  "1a40a25c-e57a-436a-8b2a-e0da926ecf3e" : {
+    "instanceId" : "1a40a25c-e57a-436a-8b2a-e0da926ecf3e",
     "itemMetaId" : 13,
     "customName" : "훈련용 롱소드",
     "grade" : "COMMON",
@@ -205,8 +205,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "04861237-8973-4770-a520-b01d469cda99" : {
-    "instanceId" : "04861237-8973-4770-a520-b01d469cda99",
+  "d8a2c62c-9daf-49e3-b152-05cb5b4a370a" : {
+    "instanceId" : "d8a2c62c-9daf-49e3-b152-05cb5b4a370a",
     "itemMetaId" : 29,
     "customName" : "닳아버린 여행용 코트",
     "grade" : "COMMON",
@@ -230,8 +230,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "d722ec66-12ae-46ff-8ec8-f2201a3fa72d" : {
-    "instanceId" : "d722ec66-12ae-46ff-8ec8-f2201a3fa72d",
+  "c8b97632-3b1a-45b9-a4bd-d0e350471321" : {
+    "instanceId" : "c8b97632-3b1a-45b9-a4bd-d0e350471321",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -253,8 +253,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "d948c907-a967-4aad-8e55-531bb4d55c9f" : {
-    "instanceId" : "d948c907-a967-4aad-8e55-531bb4d55c9f",
+  "6114d6e0-21a9-47eb-98f6-8c43b354d198" : {
+    "instanceId" : "6114d6e0-21a9-47eb-98f6-8c43b354d198",
     "itemMetaId" : 14,
     "customName" : "나무 방패",
     "grade" : "COMMON",
@@ -276,5 +276,45 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
+  },
+  "27b90695-d7c2-4fba-b9fe-21868fef753a" : {
+    "instanceId" : "27b90695-d7c2-4fba-b9fe-21868fef753a",
+    "itemMetaId" : 8,
+    "customName" : "오크 궁수의 8등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 100,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "e91fe73d-334f-49da-b622-2480c14d8a5e" : {
+    "instanceId" : "e91fe73d-334f-49da-b622-2480c14d8a5e",
+    "itemMetaId" : 4,
+    "customName" : "차원 포식자의 4등급 마석",
+    "grade" : "RARE",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "희귀한 빛을 내뿜습니다. 고성능 장비의 핵심 재료입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 1000000,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
   }
 }

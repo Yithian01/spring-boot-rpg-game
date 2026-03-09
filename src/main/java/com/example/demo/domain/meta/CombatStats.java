@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.lang.reflect.Field;
 import java.util.Map;
 
 @Data
@@ -97,6 +98,22 @@ public class CombatStats {
     private double darkPen;
     private double chaosPen;
     private double toxicPen;
+
+    /**
+     * thymeleaf 사용 시 Map 접근 
+     * @param statName 스탯명
+     * @return 해당 필드 반환
+     */
+    public double getStatValue(String statName) {
+        try {
+            // reflection을 사용해 필드 값 가져오기
+            Field field = this.getClass().getDeclaredField(statName);
+            field.setAccessible(true);
+            return field.getDouble(this);
+        } catch (Exception e) {
+            return 0.0; // 필드가 없으면 0 반환
+        }
+    }
 
     /**
      * 보너스 스탯 증가 (합연산: + 수치)

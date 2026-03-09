@@ -327,13 +327,11 @@ public class MonsterBattleService {
                 .category(category)
                 .effectCode(skill.getEffect().getStatus())
                 .tickDamage(tickDamage) // 1/3 데미지 저장
-                .statModifiers(skill.getEffect().getStatModifiers())
+                .combatStatOffsets(skill.getEffect().getCombatStatOffsets())
                 .combatStatModifiers(skill.getEffect().getCombatStatModifiers())
                 .statOffsets(skill.getEffect().getStatOffsets())
                 .build();
     }
-
-
 
     /**
      * 행동을 할 때마다 도트데미지 처리

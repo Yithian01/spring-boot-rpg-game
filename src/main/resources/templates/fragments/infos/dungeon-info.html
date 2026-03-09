@@ -177,7 +177,7 @@
                         <div>
                             <div style="display:flex; justify-content:space-between; font-size:0.65rem; margin-bottom:2px;">
                                 <span style="color:#ff8787;">HEALTH</span>
-                                <span>[[${dungeon.activeMonster.currentHp}]] / [[${dungeon.activeMonster.activeStats.maxHp}]]</span>
+                                <span>[[${dungeon.activeMonster.currentHp}]] / [[${dungeon.activeMonster.activeStats.maxHp}]]  <small style="color:#666;">(Regen: [[${dungeon.activeMonster.activeStats.hpRegen}]])</small></span>
                             </div>
                             <div class="bar-container">
                                 <div th:style="'width:' + (${dungeon.activeMonster.activeStats.maxHp > 0 ? (dungeon.activeMonster.currentHp * 100 / dungeon.activeMonster.activeStats.maxHp) : 0}) + '%; height:100%; background:linear-gradient(90deg, #820000, #ff4d4d)'"></div>
@@ -186,7 +186,7 @@
                         <div>
                             <div style="display:flex; justify-content:space-between; font-size:0.65rem; margin-bottom:2px;">
                                 <span style="color:#4dabf7;">MANA</span>
-                                <span>[[${dungeon.activeMonster.activeStats.maxMp}]] <small style="color:#666;">(Regen: [[${dungeon.activeMonster.activeStats.mpRegen}]])</small></span>
+                                <span>[[${dungeon.activeMonster.currentMp}]] / [${dungeon.activeMonster.activeStats.maxMp}]] <small style="color:#666;">(Regen: [[${dungeon.activeMonster.activeStats.mpRegen}]])</small></span>
                             </div>
                             <div class="bar-container">
                                 <div style="width: 100%; height:100%; background:linear-gradient(90deg, #1864ab, #4dabf7)"></div>
@@ -212,9 +212,9 @@
                 <div class="section-group">
                     <div class="section-header">ELEMENTAL MASTERY</div>
                     <div class="attr-table-grid">
-                        <th:block th:each="attr : ${ {'fire','ice','light','earth','holy','dark','chaos','toxic'} }">
+                        <th:block th:each="attr : ${ {'fire','ice','lightning','earth','holy','dark','chaos','toxic'} }">
                             <div class="attr-card" th:if="${dungeon.activeMonster.activeStats[attr + 'Atk'] > 0 or dungeon.activeMonster.activeStats[attr + 'Res'] != 0}">
-                                <span style="font-size:0.8rem;" th:text="${attr == 'fire'?'🔥':attr == 'ice'?'❄️':attr == 'light'?'⚡':attr == 'earth'?'🌿':attr == 'holy'?'✨':attr == 'dark'?'🌑':attr == 'chaos'?'🌀':'🧪'}"></span>
+                                <span style="font-size:0.8rem;" th:text="${attr == 'fire'?'🔥':attr == 'ice'?'❄️':attr == 'lightning'?'⚡':attr == 'earth'?'🌿':attr == 'holy'?'✨':attr == 'dark'?'🌑':attr == 'chaos'?'🌀':'🧪'}"></span>
                                 <span style="font-size: 0.7rem; color: #ff8787; font-weight: bold;">[[${dungeon.activeMonster.activeStats[attr + 'Atk']}]]</span>
                                 <span style="font-size: 0.55rem; color: #51cf66;">[[${T(java.lang.Math).round(dungeon.activeMonster.activeStats[attr + 'Res'])}]]%</span>
                             </div>

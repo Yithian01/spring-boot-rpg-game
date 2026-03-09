@@ -222,6 +222,10 @@ public class GameDataManager  implements ApplicationRunner {
      * @return 표현하는 아이콘 반환
      */
     public String getIcon(String code) {
+        if (code == null) {
+            return "❓"; // 혹은 "💢" (기본 아이콘)
+        }
+
         return switch (code) {
             case "STUN" -> "💫";
             case "BURN" -> "🔥";
@@ -267,7 +271,7 @@ public class GameDataManager  implements ApplicationRunner {
             case "PHYSICAL": return "물리";
             case "FIRE": return "화염";
             case "ICE": return "냉기";
-            case "LIGHT": return "번개";
+            case "LIGHTNING": return "번개";
             case "EARTH": return "대지";
             case "HOLY": return "신성";
             case "DARK": return "암흑";
@@ -328,7 +332,7 @@ public class GameDataManager  implements ApplicationRunner {
 
             Map.entry("fireAtk", "화염 공격"),
             Map.entry("iceAtk", "냉기 공격"),
-            Map.entry("lightAtk", "번개 공격"),
+            Map.entry("lightningAtk", "번개 공격"),
             Map.entry("earthAtk", "대지 공격"),
             Map.entry("holyAtk", "신성 공격"),
             Map.entry("darkAtk", "암흑 공격"),
@@ -337,7 +341,7 @@ public class GameDataManager  implements ApplicationRunner {
 
             Map.entry("fireRes", "화염 저항"),
             Map.entry("iceRes", "냉기 저항"),
-            Map.entry("lightRes", "번개 저항"),
+            Map.entry("lightningRes", "번개 저항"),
             Map.entry("earthRes", "대지 저항"),
             Map.entry("holyRes", "신성 저항"),
             Map.entry("darkRes", "암흑 저항"),
@@ -346,7 +350,7 @@ public class GameDataManager  implements ApplicationRunner {
 
             Map.entry("firePen", "화염 관통"),
             Map.entry("icePen", "냉기 관통"),
-            Map.entry("lightPen", "번개 관통"),
+            Map.entry("lightningPen", "번개 관통"),
             Map.entry("earthPen", "대지 관통"),
             Map.entry("holyPen", "신성 관통"),
             Map.entry("darkPen", "암흑 관통"),

@@ -150,7 +150,15 @@ public class DungeonService {
      */
     public void goToNextFloor() {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        GameStatus gs = gameFileRepository.findGameStatus();
         DungeonMeta currentMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
+
+        // 1. 현재 층이 10층인지 확인 (Floor 기준)
+        if (currentMeta.getFloor() >= 10) {
+            gs.addLog("<span style='color:#ff4d4d;'>[경고] 세상의 끝에서 벗어날 수 없습니다.</span>");
+            gameFileRepository.saveGameStatus(gs);
+            return;
+        }
 
         int nextId = currentMeta.pickNextDungeonId();
 

@@ -10,43 +10,4 @@
         </div>
     </div>
 
-    <div th:fragment="gambleModal(game)" id="gambleModal" class="gamble-modal-overlay">
-        <div class="gamble-content">
-            <h2>🎲 지하 도박장</h2>
-            <form action="/town/gamble" method="post">
-                <div class="bet-input-group">
-                    <input type="number" id="bettingAmount" name="amount" th:min="10" th:max="${game.currentGold}" value="100">
-                    <div class="quick-bet-btns">
-                        <button type="button" class="btn-quick" onclick="setBet(100)">100 G</button>
-                        <button type="button" class="btn-quick" th:onclick="'setBet(' + ${game.currentGold} + ')'">ALL-IN</button>
-                    </div>
-                </div>
-                <div class="gamble-actions">
-                    <button type="button" class="btn-modal btn-cancel-gamble" onclick="closeGamble()">취소</button>
-                    <button type="submit" class="btn-modal btn-confirm-gamble">배팅</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div th:fragment="trainModal" id="trainModal" class="gamble-modal-overlay">
-        <div class="gamble-content" style="border-color: #3498db;">
-            <h2 style="color: #3498db;">🧘 심신 수련</h2>
-                <p style="font-size: 0.85em; color: #888; margin-bottom: 15px;">단련할 분야를 선택하세요. (턴과 스태미나가 소모됩니다)</p>
-                <form action="/town/train" method="post">
-                    <div class="modal-actions" style="display: grid; gap: 10px;">
-                        <button type="submit" name="type" value="STRENGTH" class="btn-modal" style="background: #c0392b;">
-                            💪 근력 훈련 (체력/공격력)
-                        </button>
-                        <button type="submit" name="type" value="AGILITY" class="btn-modal" style="background: #27ae60;">
-                            🏃 민첩 훈련 (회피/치명타)
-                        </button>
-                        <button type="submit" name="type" value="INTELLIGENCE" class="btn-modal" style="background: #2980b9;">
-                            🔮 지능 훈련 (마나/마법력)
-                        </button>
-                    </div>
-                        <button type="button" class="btn-modal btn-menu" onclick="closeTrain()" style="margin-top: 15px; width: 100%;">취소</button>
-                </form>
-        </div>
-    </div>
 </div>

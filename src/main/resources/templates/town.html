@@ -51,6 +51,7 @@
 </div>
 
 <div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
+<div th:replace="~{fragments/modals/gameclear-modal :: gameClearModal(${game.clear})}"></div>
 <div th:replace="~{fragments/modals/gamble-modal :: gambleModal(${game})}"></div>
 <div th:replace="~{fragments/modals/train-modal :: trainModal}"></div>
 <div th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareModal(town=${town})}"></div>
@@ -95,7 +96,8 @@
 
     window.onload = function() {
         const isGameOver = [[${gameOver ?: false}]];
-        if (isGameOver) {
+        const isClear = [[${game.clear ?: false}]];
+        if (isGameOver || isClear) {
             document.querySelector('.container').style.pointerEvents = 'none';
         }
 

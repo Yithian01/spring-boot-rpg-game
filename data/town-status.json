@@ -4,42 +4,42 @@
   "day" : 2,
   "currentTax" : 900000,
   "magicStoneList" : [ {
-    "instanceId" : "e16a74fc-ea87-482c-bcae-4d8fb7ed540e",
+    "instanceId" : "a171cbe5-4c12-4d29-b2e3-18ec6725bc3d",
     "customName" : "1등급 마석",
     "grade" : 1,
     "quantity" : 5
   }, {
-    "instanceId" : "ca410702-3311-4618-9040-eab8c2c34ea1",
+    "instanceId" : "8db8166f-bee0-4c36-b2cf-7d52876096d4",
     "customName" : "2등급 마석",
     "grade" : 2,
     "quantity" : 5
   }, {
-    "instanceId" : "16fc6d41-2c46-4dd3-8280-1ad98adcfd34",
+    "instanceId" : "11e26985-a820-440d-b1d7-1dd2c021d914",
     "customName" : "3등급 마석",
     "grade" : 3,
     "quantity" : 5
   }, {
-    "instanceId" : "29c1b355-8a02-466e-859f-9b06e928d46b",
+    "instanceId" : "08551087-fd88-472d-9b64-4100a0659e1e",
     "customName" : "4등급 마석",
     "grade" : 4,
     "quantity" : 5
   }, {
-    "instanceId" : "f0c2ddf1-c114-47f6-b22e-493609c663c3",
+    "instanceId" : "028dbc93-4d2a-43a0-82b0-edaf18cbb0db",
     "customName" : "5등급 마석",
     "grade" : 5,
     "quantity" : 5
   }, {
-    "instanceId" : "3628177b-360a-404d-b24d-7703b417efdc",
+    "instanceId" : "f2ae9d50-4711-442a-a0f1-dcb5ef045e6d",
     "customName" : "6등급 마석",
     "grade" : 6,
     "quantity" : 5
   }, {
-    "instanceId" : "b2c65d1b-d926-400c-989c-4c01ffc2c0ca",
+    "instanceId" : "746a266c-6d8b-43a4-96f7-5805b3a7bd2a",
     "customName" : "7등급 마석",
     "grade" : 7,
     "quantity" : 5
   }, {
-    "instanceId" : "5e5221fd-1fb9-4982-85f0-63b07372b8b0",
+    "instanceId" : "48df3f8f-83c3-4b23-bbb0-352cfbfacc6c",
     "customName" : "8등급 마석",
     "grade" : 8,
     "quantity" : 5

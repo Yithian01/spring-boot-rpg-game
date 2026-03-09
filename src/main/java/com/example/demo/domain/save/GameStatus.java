@@ -20,6 +20,7 @@ public class GameStatus {
     // 통합 게임 로그 리스트
     @Builder.Default
     private List<String> gameLogs = new ArrayList<>();
+    private boolean isClear;
 
     /**
      * 통합 로그 추가 메소드

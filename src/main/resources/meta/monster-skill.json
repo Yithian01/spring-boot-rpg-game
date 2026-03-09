@@ -2444,8 +2444,8 @@
         "chaosAtk": 1000
       },
       "combatStatModifiers": {
-        "physRes": 0.3,
-        "magRes": 0.3
+        "physRes": 0.5,
+        "magRes": 0.5
       }
     },
     "requiredWeapons": ["NONE"]

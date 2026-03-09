@@ -98,6 +98,10 @@ public class MainController {
 
                 return "town"; // town.html 템플릿 반환
             case DUNGEON:
+                if (validationService.checkGameClear()){
+                    return "redirect:/game/play";
+                }
+
                 // 1. 공통 유저 데이터 (HP, MP, 스탯, 인벤토리, 장착템 등)
                 GamePageDto gameDataForDungeon = gameService.getGamePageData();
 

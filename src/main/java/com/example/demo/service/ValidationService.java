@@ -82,4 +82,33 @@ public class ValidationService {
 
         return isOverLimit;
     }
+
+    /**
+     * 게임 클리어 monsterId = 1000 죽일 시
+     */
+    public boolean checkGameClear(){
+        GameStatus gs = gameFileRepository.findGameStatus();
+
+        System.out.println("gs" + gs);
+
+        UserStatus us = userFileRepository.findGameUser();
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+
+        if (us.getCurrentHp() <= 0 || ds.getCurrentFloor() < 10 || ds.getActiveMonster() == null) return false;
+
+        if (ds.getActiveMonster().getMonsterId() == 1000 && ds.getActiveMonster().getCurrentHp() <= 0){
+            gs.setClear(true);
+            gs.setLocation(LocationType.TOWN);
+            gs.setDungeonId(0);
+            gs.addLog(">>> [강제귀환] 튜토리얼 완료!! 마을로 돌아갑니다.");
+
+            // 확실하게 파일에 저장
+            gameFileRepository.saveGameStatus(gs);
+
+            log.info(">>> 게임 클리어 저장 완료. 위치: {}", gs.getLocation());
+            return true;
+        }
+
+        return false;
+    }
 }

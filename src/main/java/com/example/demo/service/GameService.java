@@ -189,6 +189,7 @@ public class GameService {
                 .location(LocationType.valueOf("TOWN"))
                 .dungeonId(null)
                 .gameLogs(gameLog)
+                .isClear(false)
                 .build();
 
         gs.addLog("🏰 마을에 도착했습니다.");
@@ -264,6 +265,7 @@ public class GameService {
                 .level(us.getLevel())
                 .currentExp(us.getCurrentExp())
                 .requiredExp(us.getRequiredExp())
+                .clear(gs.isClear())
                 .currentHp(us.getCurrentHp())
                 .maxHp(us.getCombatStats().getMaxHp())
                 .currentMp(us.getCurrentMp())

@@ -258,8 +258,15 @@ public class StatCalculationService {
      * 최대 생명력 계산 함수
      */
     public int calculateMaxHp(Map<?, ?> baseStats) {
-        // 1:코어, 2:조직강도, 3:대사효율
-        return (100 + (getStat(baseStats, 1) * 10) + (getStat(baseStats, 2) * 5) + (getStat(baseStats, 3) * 2));
+        // 1:코어, 2:조직강도, 3:대사효율 (각각 300 캡 적용)
+        double s1 = getEffectiveStat300(getStat(baseStats, 1)); // 600 -> 360
+        double s2 = getEffectiveStat300(getStat(baseStats, 2)); // 600 -> 360
+        double s3 = getEffectiveStat300(getStat(baseStats, 3)); // 600 -> 360
+
+        // 기본 체력 상향(500) + 보정치 합산
+        // 계산: 500 + (360 * 8) + (360 * 1) + (360 * 0.5)
+        // 결과: 500 + 2880 + 360 + 180 = 3,920
+        return (int) (500 + (s1 * 8.0) + (s2 * 1.0) + (s3 * 0.5));
     }
 
     /**
@@ -386,19 +393,39 @@ public class StatCalculationService {
     }
 
     /**
-     * 물리 공격력 계산 함수
+     * 300 기준 소프트 캡 함수
+     * 300까지는 정직하게 반영, 이후는 20% 효율 (완만한 감쇄)
      */
-    public double calculateMeleeAtk(Map<?, ?> baseStats) {
-        // 10:상완, 11:대흉근, 12:전완
-        return (getStat(baseStats, 10) * 1.5) + (getStat(baseStats, 11) * 1.0) + (getStat(baseStats, 12) * 0.5);
+    private double getEffectiveStat300(double statValue) {
+        double cap = 300.0;
+        if (statValue <= cap) {
+            return statValue;
+        } else {
+            // 300 초과분(300)의 20%인 60만 추가 반영 -> 총 360 반영
+            return cap + (statValue - cap) * 0.2;
+        }
     }
 
     /**
-     * 마법 공격력 계산 함수
+     * 물리 공격력 계산 함수 (300 캡 반영)
+     */
+    public double calculateMeleeAtk(Map<?, ?> baseStats) {
+        double s10 = getEffectiveStat300(getStat(baseStats, 10)); // 상완
+        double s11 = getEffectiveStat300(getStat(baseStats, 11)); // 대흉근
+        double s12 = getEffectiveStat300(getStat(baseStats, 12)); // 전완
+
+        // 계수 합산 약 1.5 내외 (스탯 600일 때 순수 ATK 500~540 선)
+        return (s10 * 0.7) + (s11 * 0.5) + (s12 * 0.3);
+    }
+
+    /**
+     * 마법 공격력 계산 함수 (300 캡 반영)
      */
     public double calculateMagicAtk(Map<?, ?> baseStats) {
-        // 13:에너지응집, 14:논리연산
-        return (getStat(baseStats, 13) * 1.8) + (getStat(baseStats, 14) * 0.7);
+        double s13 = getEffectiveStat300(getStat(baseStats, 13)); // 에너지응집
+        double s14 = getEffectiveStat300(getStat(baseStats, 14)); // 논리연산
+
+        return (s13 * 0.9) + (s14 * 0.6);
     }
 
     /**

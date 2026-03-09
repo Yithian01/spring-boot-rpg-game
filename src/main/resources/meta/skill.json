@@ -96,7 +96,7 @@
       "status": "BLEED",
       "duration": 3,
       "chance": 40,
-      "penetration": 30
+      "penetration": 10
     },
     "requiredWeapons": ["SWORD", "DAGGER"]
   },

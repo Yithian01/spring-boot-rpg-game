@@ -468,7 +468,7 @@ public class BattleService {
         } else {
             // [도트류] 기존처럼 상태 코드(status)로 찾아서 데미지 합산
             existingStatus = defender.getActiveStatuses().stream()
-                    .filter(s -> s.getEffectCode().equals(status))
+                    .filter(s -> status.equals(s.getEffectCode()))
                     .findFirst().orElse(null);
         }
 

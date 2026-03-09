@@ -25,6 +25,7 @@ public class GamePageDto {
     private int level;
     private int currentExp;
     private int requiredExp;
+    private boolean clear;
 
     // 2. 생존 자원 (Health, Mana, Stamina)
     private int currentHp;

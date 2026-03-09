@@ -2437,11 +2437,11 @@
     "effect": {
       "type": "BUFF",
       "element": "CHAOS",
-      "duration": 7,
+      "duration": 13,
       "combatStatOffsets" : {
         "maxTurns": 3,
         "mpRegen" : 17000,
-        "chaosAtk": 4000
+        "chaosAtk": 1000
       },
       "combatStatModifiers": {
         "physRes": 0.3,

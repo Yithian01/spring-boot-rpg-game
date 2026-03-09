@@ -306,45 +306,79 @@ public class StatCalculationService {
      */
     public double calculateCritRate(Map<?, ?> baseStats) {
         // 15:인과율간섭(주), 16:동체시력(부)
-        double rawCritRate = (getStat(baseStats, 15) * 0.4) + (getStat(baseStats, 16) * 0.2);
-        return Math.round(rawCritRate * 10.0) / 10.0;
+        double statCrit = (getStat(baseStats, 15) * 0.1) + (getStat(baseStats, 16) * 0.1);
+        double baseLimit = Math.min(statCrit, 50.0);
+        return Math.round(baseLimit * 10.0) / 10.0;
     }
 
     /**
-     * 치명타 피해 계산 함수
+     * 치명타 피해 계산 (스탯 100 기준 200% 설계)
+     * 150% (기본) + (100 스탯 * 0.5) = 200%
      */
     public double calculateCritDmg(Map<?, ?> baseStats) {
-        // 17:수지미세조작
-        return (150 + (getStat(baseStats, 17) * 2.0));
+        double statValue = getStat(baseStats, 17);
+        double baseCritDmg = 150.0;
+
+        double statBonus = statValue * 0.5;
+
+        double cappedBonus = Math.min(statBonus, 100.0);
+
+        return baseCritDmg + cappedBonus;
     }
 
-    /**
-     * 명중율 계산 함수
-     */
     public double calculateAccuracy(Map<?, ?> baseStats) {
-        // 16:동체시력(주), 23:공간지각(부), 24:육감(보조)
-        return (getStat(baseStats, 16) * 0.5) + (getStat(baseStats, 23) * 0.3) + (getStat(baseStats, 24) * 0.2);
+        double rawScore = (getStat(baseStats, 16) * 0.5)
+                + (getStat(baseStats, 23) * 0.3)
+                + (getStat(baseStats, 24) * 0.2);
+
+        double threshold = 30.0; // 스탯 보너스 상한선
+        if (rawScore <= threshold) {
+            return Math.round(rawScore * 10.0) / 10.0;
+        } else {
+            // 30 초과분은 2% 효율만 적용
+            double finalAcc = threshold + (rawScore - threshold) * 0.02;
+            return Math.round(finalAcc * 10.0) / 10.0;
+        }
     }
 
     /**
-     * 회피율 계산 함수
+     * 회피율(Dodge) 계산 함수 (30 상한제 적용)
+     * 스탯 기여도를 30 내외로 제한하여 장비의 회피 옵션 가치를 보존
      */
     public double calculateDodge(Map<?, ?> baseStats) {
-        // 20:신경반응(주), 21:비복근(부), 24:육감(보조)
-        return (getStat(baseStats, 20) * 0.4) + (getStat(baseStats, 21) * 0.2) + (getStat(baseStats, 24) * 0.1);
+        // 20:신경반응(0.4), 21:비복근(0.2), 24:육감(0.1)
+        double rawScore = (getStat(baseStats, 20) * 0.4)
+                + (getStat(baseStats, 21) * 0.2)
+                + (getStat(baseStats, 24) * 0.1);
+
+        double threshold = 30.0;
+        double finalDodge;
+
+        if (rawScore <= threshold) {
+            finalDodge = rawScore;
+        } else {
+            finalDodge = threshold + (rawScore - threshold) * 0.02;
+        }
+
+        return Math.round(finalDodge * 10.0) / 10.0;
     }
 
     /**
-     * [추가] 상태 이상 저항력 계산 함수
+     * [추가] 상태 이상 저항력 계산 함수 (소프트 캡 적용)
      * 3: 대사 효율 (물리적 저항)
      * 9: 계율 준수 (정신적 저항)
      */
     public double calculateStatusResist(Map<?, ?> baseStats) {
         // 기본 저항 5.0 + (대사 효율 * 0.8) + (계율 준수 * 0.8)
         double rawResist = 5.0 + (getStat(baseStats, 3) * 0.8) + (getStat(baseStats, 9) * 0.8);
-        // 최대 80%까지만 저항 가능하도록 캡핑
-        double roundedResist = Math.round(rawResist * 10.0) / 10.0;
-        return Math.min(roundedResist, 80.0);
+
+        double finalStatusRes = rawResist;
+
+        double threshold = 50.0;
+        if(rawResist > threshold) {
+            finalStatusRes = threshold + (rawResist - threshold) * 0.02;
+        }
+        return Math.round(finalStatusRes * 10.0) / 10.0;
     }
 
     /**
@@ -364,18 +398,42 @@ public class StatCalculationService {
     }
 
     /**
-     * 물리 방어 계산 함수
+     * 물리 방어(Phys Def) 계산 함수
+     * 200까지는 정직하게 상승, 이후 효율 급감
      */
     public double calculatePhysDef(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 2) * 1.0) + (getStat(baseStats, 1) * 0.4);
+        // 기초 방어력 계산: 2(골밀도)*1.0 + 1(코어)*0.4
+        double rawDef = (getStat(baseStats, 2) * 1.0) + (getStat(baseStats, 1) * 0.4);
+
+        double finalDef;
+        double softCap = 200.0;
+
+        if (rawDef <= softCap) {
+            finalDef = rawDef;
+        } else {
+            // 구간 2: 200 초과분은 10%(0.1) 효율만 적용
+            // 스탯 600 유저(rawDef 840) 기준: 200 + (640 * 0.1) = 264
+            finalDef = softCap + (rawDef - softCap) * 0.1;
+        }
+
+        return Math.round(finalDef * 10.0) / 10.0;
     }
 
     /**
-     * 마법 저항 계산 함수
+     * 마법 저항 계산 함수 (소프트 캡 적용 )
+     * 50%까지는 정상 적용, 초과분은 10%의 효율만 적용
      */
     public double calculateMagRes(Map<?, ?> baseStats) {
         // 18:부패저항, 19:원소공명
-        return (getStat(baseStats, 18) * 1.0) + (getStat(baseStats, 19) * 0.5);
+        double rawRes = (getStat(baseStats, 18) * 1.0) + (getStat(baseStats, 19) * 0.5);
+
+        if (rawRes <= 50) {
+            return Math.round(rawRes * 10.0) / 10.0;
+        } else {
+            // 50 + (초과분의 2%)
+            double softCapped = 50.0 + (rawRes - 50.0) * 0.02;
+            return Math.round(softCapped * 10.0) / 10.0;
+        }
     }
 
     /**
@@ -538,6 +596,37 @@ public class StatCalculationService {
         // 기본 안전도 60% + 스탯 보너스 (최대 95% 제한)
         double safety = 60.0 + (getStat(baseStats, 23) * 1.5) + (getStat(baseStats, 24) * 1.5);
         return Math.min(safety, 95.0);
+    }
+
+    /**
+     * 도망 확률 계산 함수 (소프트 캡 적용)
+     * 기본 30% + 스탯 보너스(임계점 20% 이후 감쇄)
+     */
+    public double calculateEscapeChance(Map<?, ?> baseStats) {
+        double baseEscape = 30.0; // 기본 성공 확률 30%
+
+        // 21:비복근(순발력) 0.1, 24:육감(상황판단) 0.05
+        // 올 스탯 600 기준: (600 * 0.1) + (600 * 0.05) = 90.0
+        double rawStatBonus = (getStat(baseStats, 21) * 0.1)
+                + (getStat(baseStats, 24) * 0.05);
+
+        // 2. 스탯 보너스 소프트 캡 적용 (임계점: +20%)
+        double threshold = 20.0;
+        double finalStatBonus;
+
+        if (rawStatBonus <= threshold) {
+            // 구간 1: 보너스 20%까지는 1:1 효율 (스탯 합 약 133 지점까지)
+            finalStatBonus = rawStatBonus;
+        } else {
+            // 구간 2: 20% 초과분은 2% 효율만 적용 (소프트 캡)
+            // 올 스탯 600 기준: 20 + (70 * 0.02) = 21.4
+            finalStatBonus = threshold + (rawStatBonus - threshold) * 0.02;
+        }
+
+        // 3. 최종 확률 산출 (기본 30% + 보정치, 최대 상한 95%)
+        double finalChance = baseEscape + finalStatBonus;
+
+        return Math.round(Math.min(95.0, finalChance) * 10.0) / 10.0;
     }
 
     /**

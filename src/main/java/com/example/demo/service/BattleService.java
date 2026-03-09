@@ -545,28 +545,15 @@ public class BattleService {
      */
     private String handleEscape(UserStatus us, DungeonStatus ds, GameStatus gs, SkillMeta skill) {
         // 1. 기본 확률 (히트 찬스를 탈출 기본 확률로 활용)
-        double escapeChance = skill.getHitChance();
-
-        // 2. 스탯 보정치 (Scaling) 합산
-        double statBonus = 0;
-        if (skill.getStatScaling() != null) {
-            for (var entry : skill.getStatScaling().entrySet()) {
-                double statValue = us.getFinalStats().getOrDefault(entry.getKey(), 0);
-                statBonus += (statValue * entry.getValue());
-            }
-        }
-
-        // 3. 최종 확률 산출 (보정치 합산)
-        // 예: 40(기본) + 스탯보너스(15) = 55%
-        double finalChance = Math.min(95.0, escapeChance + statBonus);
+        double escapeChance = statCalculationService.calculateEscapeChance(us.getFinalStats());
 
         // 4. 주사위 굴리기
-        if (Math.random() * 100 < finalChance) {
-            gs.addLog(String.format("<span style='color:#70db70;'>[성공]</span> 도망에 성공했습니다! (확률: %.1f%%)", finalChance));
+        if (Math.random() * 100 < escapeChance) {
+            gs.addLog(String.format("<span style='color:#70db70;'>[성공]</span> 도망에 성공했습니다! (확률: %.1f%%)", escapeChance));
             finishBattle(us, ds, gs, false);
             return "ESCAPE_SUCCESS";
         } else {
-            gs.addLog(String.format("<span style='color:#ff4d4d;'>[실패]</span> 적이 앞을 가로막아 도망치지 못했습니다! (확률: %.1f%%)", finalChance));
+            gs.addLog(String.format("<span style='color:#ff4d4d;'>[실패]</span> 적이 앞을 가로막아 도망치지 못했습니다! (확률: %.1f%%)", escapeChance));
             saveCurrentState(us, ds, gs);
             return "ESCAPE_FAIL";
         }

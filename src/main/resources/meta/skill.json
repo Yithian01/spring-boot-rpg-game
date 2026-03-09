@@ -26,10 +26,10 @@
     "type": "ESCAPE",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 40,
+    "hitChance": 30,
     "cost": { "stamina": 0, "mp": 0 },
     "damageScaling": {},
-    "statScaling":  { "21": 1.0, "20": 1.0 },
+    "statScaling":  {},
     "effect": {
       "type": "ESCAPE",
       "element": "NONE"

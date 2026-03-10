@@ -1,10 +1,10 @@
 {
   "currentTurn" : 30,
   "maxTurn" : 30,
-  "day" : 1,
+  "day" : 2,
   "currentTax" : 900000,
   "magicStoneList" : [ {
-    "instanceId" : "77f3320e-b09a-4ff9-8487-12978a16b5e5",
+    "instanceId" : "bc75ca4d-0683-4ab4-980f-42ca22e2b3a3",
     "customName" : "8등급 마석",
     "grade" : 8,
     "quantity" : 5

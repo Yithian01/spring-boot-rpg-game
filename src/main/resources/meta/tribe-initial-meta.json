@@ -4,14 +4,14 @@
     "image": "/images/tribes/tribe_1.png",
     "gold": 100,
     "initialEquipment": {
-      "WEAPON": 13,
-      "BODY": 29,
+      "WEAPON": 10,
+      "BODY": 11,
       "GLOVES": 0,
       "HEAD": 0,
       "NECKLACE": 0,
       "BOOTS": 12,
       "RING": 0,
-      "SUB_WEAPON": 14,
+      "SUB_WEAPON": 13,
       "ARTIFACT": 0
     },
     "combatBaseStats": {
@@ -21,15 +21,15 @@
       "19": 600, "20": 600, "21": 600, "22": 600, "23": 600, "24": 600
     },
     "initialItem" : [37, 8, 1, 2, 3, 4, 5, 6, 7],
-    "initialSkill" : [1, 2, 19, 16]
+    "initialSkill" : [1, 2]
   },
   {
     "tribeId": 2,
     "image": "/images/tribes/tribe_2.png",
     "gold": 100,
     "initialEquipment": {
-      "WEAPON": 18,
-      "BODY": 19,
+      "WEAPON": 14,
+      "BODY": 15,
       "GLOVES": 0,
       "HEAD": 0,
       "NECKLACE": 0,
@@ -52,14 +52,14 @@
     "image": "/images/tribes/tribe_3.png",
     "gold": 100,
     "initialEquipment": {
-      "WEAPON": 22,
-      "BODY": 23,
+      "WEAPON": 16,
+      "BODY": 17,
       "GLOVES": 0,
       "HEAD": 0,
       "NECKLACE": 0,
       "BOOTS": 12,
       "RING": 0,
-      "SUB_WEAPON": 45,
+      "SUB_WEAPON": 18,
       "ARTIFACT": 0
     },
     "combatBaseStats": {
@@ -76,15 +76,15 @@
     "image": "/images/tribes/tribe_4.png",
     "gold": 100,
     "initialEquipment": {
-      "WEAPON": 43,
-      "BODY": 27,
+      "WEAPON": 19,
+      "BODY": 20,
       "GLOVES": 0,
       "HEAD": 0,
       "NECKLACE": 0,
       "BOOTS": 12,
       "RING": 0,
       "SUB_WEAPON": 0,
-      "ARTIFACT": 44
+      "ARTIFACT": 21
     },
     "combatBaseStats": {
       "1": 5, "2": 4, "3": 5, "4": 5, "5": 5, "6": 12,

@@ -37,157 +37,94 @@
     "requiredWeapons": ["NONE"]
   },
   {
-    "id": 3,
-    "name": "배쉬",
-    "icon": "/images/skills/3.png",
-    "description": "무게로 찍어 눌러 피해를 주고 적을 무력화합니다.",
-    "type": "PHYSICAL",
-    "grade": "BASE",
-    "turnCost": 1,
-    "hitChance": 75,
-    "cost": { "stamina": 12, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.2 },
-    "statScaling": { "10": 1.0, "11": 1.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "PHYSICAL",
-      "status": "STUN",
-      "duration": 1,
-      "chance": 25
-    },
-    "requiredWeapons": ["BLUNT"]
-  },
-  {
-    "id": 4,
+    "id": 101,
     "name": "베기",
-    "icon": "/images/skills/4.png",
-    "description": "적에게 지속적인 출혈을 유도합니다.",
+    "icon": "/images/skills/slash.png",
+    "description": "날카로운 날로 적을 베어 낮은 확률로 출혈을 일으킵니다.",
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
     "hitChance": 90,
-    "cost": { "stamina": 8, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.1 },
-    "statScaling": { "12": 1.5, "22": 1.0},
+    "cost": { "stamina": 5, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.0 },
+    "statScaling": { "10": 1.0, "12": 1.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "BLEED",
-      "duration": 3,
-      "chance": 20
+      "duration": 2,
+      "chance": 15
     },
-    "requiredWeapons": ["SWORD", "DAGGER"]
+    "requiredWeapons": ["SWORD", "DAGGER", "AXE"]
   },
   {
-    "id": 5,
+    "id": 102,
     "name": "찌르기",
-    "icon": "/images/skills/5.png",
-    "description": "방어구 사이를 파고들어 높은 확률로 출혈을 일으킵니다.",
+    "icon": "/images/skills/thrust.png",
+    "description": "무기의 끝으로 적의 틈을 찌릅니다. 약간의 방어를 무시합니다.",
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
     "hitChance": 85,
-    "cost": { "stamina": 9, "mp": 0 },
+    "cost": { "stamina": 6, "mp": 0 },
     "damageScaling": { "meleeAtk": 1.0 },
-    "statScaling": { "10": 1.5, "12": 1.0 },
+    "statScaling": { "10": 1.2, "20": 0.8 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "status": "BLEED",
-      "duration": 3,
-      "chance": 40,
       "penetration": 10
     },
-    "requiredWeapons": ["SWORD", "DAGGER"]
+    "requiredWeapons": ["SWORD", "DAGGER", "SPEAR"]
   },
   {
-    "id": 6,
-    "name": "기습",
-    "icon": "/images/skills/6.png",
-    "description": "적의 허점을 찔러 치명적인 피해를 입힙니다.",
-    "type": "PHYSICAL",
-    "grade": "BASE",
-    "turnCost": 2,
-    "hitChance": 70,
-    "cost": { "stamina": 15, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.0 },
-    "statScaling": { "20": 3.0, "21": 1.5 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "PHYSICAL",
-      "critRate": 30,
-      "critDamage": 100
-    },
-    "requiredWeapons": ["DAGGER"]
-  },
-  {
-    "id": 7,
-    "name": "정밀 사격",
-    "icon": "/images/skills/7.png",
-    "description": "조준 시간을 들여 적의 급소를 정확히 꿰뚫습니다.",
-    "type": "PHYSICAL",
-    "grade": "BASE",
-    "turnCost": 2,
-    "hitChance": 95,
-    "cost": { "stamina": 18, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.8 },
-    "statScaling": { "23": 3.5, "12": 2.0},
-    "effect": {
-      "type": "DAMAGE",
-      "element": "PHYSICAL",
-      "penetration": 30
-    },
-    "requiredWeapons": ["BOW"]
-  },
-  {
-    "id": 8,
-    "name": "내려찍기",
-    "icon": "/images/skills/8.png",
-    "description": "무거운 무게로 적의 방어구를 부숩니다.",
+    "id": 103,
+    "name": "휘두르기",
+    "icon": "/images/skills/swing.png",
+    "description": "무기를 크게 휘둘러 타격합니다.",
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 65,
-    "cost": { "stamina": 14, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.5 },
-    "statScaling": { "10": 4.0, "11": 1.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "PHYSICAL",
-      "ignoreDef": 30
-    },
-    "requiredWeapons": ["AXE", "BLUNT"]
-  },
-  {
-    "id": 9,
-    "name": "회전 베기",
-    "icon": "/images/skills/9.png",
-    "description": "넓은 범위를 휘둘러 피하기 어렵게 만듭니다.",
-    "type": "PHYSICAL",
-    "grade": "BASE",
-    "turnCost": 1,
-    "hitChance": 100,
-    "cost": { "stamina": 16, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.2 },
-    "statScaling": { "10": 2.0, "11": 1.5 },
+    "hitChance": 80,
+    "cost": { "stamina": 7, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.1 },
+    "statScaling": { "10": 1.4 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL"
     },
-    "requiredWeapons": ["SWORD", "AXE"]
+    "requiredWeapons": ["BLUNT", "AXE", "STAFF", "WAND"]
   },
   {
-    "id": 10,
-    "name": "연속 사격",
-    "icon": "/images/skills/10.png",
-    "description": "빠르게 두 번 사격합니다. 방어력이 높은 적에겐 취약합니다.",
+    "id": 104,
+    "name": "정밀 사격",
+    "icon": "/images/skills/aimed_shot.png",
+    "description": "시간을 들여 정확하게 조준 사격합니다.",
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 75,
-    "cost": { "stamina": 12, "mp": 0 },
-    "damageScaling": { "meleeAtk": 0.75 },
-    "statScaling": { "21": 1.2, "23": 1.2},
+    "hitChance": 95,
+    "cost": { "stamina": 10, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "23": 2.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "critRate": 15
+    },
+    "requiredWeapons": ["BOW", "CROSSBOW"]
+  },
+  {
+    "id": 105,
+    "name": "속사",
+    "icon": "/images/skills/rapid_fire.png",
+    "description": "화살을 빠르게 발사합니다.",
+    "type": "PHYSICAL",
+    "grade": "BASE",
+    "turnCost": 1,
+    "hitChance": 85,
+    "cost": { "stamina": 8, "mp": 0 },
+    "damageScaling": { "meleeAtk": 0.6 },
+    "statScaling": { "21": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -196,9 +133,111 @@
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
   {
-    "id": 11,
+    "id": 106,
+    "name": "방패 가격",
+    "icon": "/images/skills/shield_bash.png",
+    "description": "방패로 적을 밀어내어 자세를 무너뜨립니다.",
+    "type": "PHYSICAL",
+    "grade": "BASE",
+    "turnCost": 1,
+    "hitChance": 90,
+    "cost": { "stamina": 7, "mp": 0 },
+    "damageScaling": { "meleeAtk": 0.5 },
+    "statScaling": { "11": 2.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 20
+    },
+    "requiredWeapons": ["SHIELD"]
+  },
+  {
+    "id": 107,
+    "name": "연타",
+    "icon": "/images/skills/combo.png",
+    "description": "빠른 손놀림으로 적 타격합니다.",
+    "type": "PHYSICAL",
+    "grade": "BASE",
+    "turnCost": 1,
+    "hitChance": 90,
+    "cost": { "stamina": 10, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.0 },
+    "statScaling": { "21": 1.2, "10": 0.8 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL"
+    },
+    "requiredWeapons": ["KNUCKLE"]
+  },
+  {
+    "id": 108,
+    "name": "강타",
+    "icon": "/images/skills/smash.png",
+    "description": "무거운 충격을 가해 적을 무력화시킵니다.",
+    "type": "PHYSICAL",
+    "grade": "BASE",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": { "stamina": 12, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "10": 1.8 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 25
+    },
+    "requiredWeapons": ["BLUNT", "KNUCKLE", "STAFF"]
+  },
+  {
+    "id": 21,
+    "name": "독병 투척",
+    "icon": "/images/skills/21.png",
+    "description": "치명적인 맹독이 든 병을 던집니다. 즉시 피해를 주고 높은 확률로 중독을 일으킵니다.",
+    "type": "MAGIC",
+    "grade": "BASE",
+    "turnCost": 1,
+    "hitChance": 85,
+    "cost": { "stamina": 20},
+    "damageScaling": { "magicAtk": 0.5 },
+    "statScaling": { "20": 3.0, "23": 1.0 },
+    "effect": {
+      "type": "DOT",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 5,
+      "chance": 100
+    },
+    "requiredWeapons": ["NONE"]
+  },
+
+  {
+    "id": 22,
+    "name": "기습",
+    "icon": "/images/skills/22.png",
+    "description": "적의 허점을 찔러 치명적인 피해를 입힙니다.",
+    "type": "PHYSICAL",
+    "grade": "COMMON",
+    "turnCost": 2,
+    "hitChance": 70,
+    "cost": { "stamina": 15, "mp": 0 },
+    "damageScaling": { "meleeAtk": 0.5 },
+    "statScaling": { "20": 3.0, "21": 1.5 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "critRate": 30,
+      "critDamage": 50
+    },
+    "requiredWeapons": ["DAGGER"]
+  },
+  {
+    "id": 23,
     "name": "마력 화살",
-    "icon": "/images/skills/11.png",
+    "icon": "/images/skills/23.png",
     "description": "마나를 화살 형태로 형상화하여 발사합니다.",
     "type": "MAGICAL",
     "grade": "COMMON",
@@ -211,30 +250,10 @@
       "type": "DAMAGE",
       "element": "PHYSICAL"
     },
-    "requiredWeapons": ["STAFF"]
+    "requiredWeapons": ["WAND", "STAFF"]
   },
   {
-    "id": 12,
-    "name": "방패 밀치기",
-    "icon": "/images/skills/12.png",
-    "description": "방패의 면으로 적을 밀쳐 턴을 뺏습니다.",
-    "type": "PHYSICAL",
-    "grade": "BASE",
-    "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 10, "mp": 0 },
-    "damageScaling": { "meleeAtk": 0.4 },
-    "statScaling": { "11": 3.0, "1": 2.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "status": "STUN",
-      "duration": 1,
-      "chance": 45
-    },
-    "requiredWeapons": ["SHIELD"]
-  },
-  {
-    "id": 13,
+    "id": 24,
     "name": "화염구",
     "icon": "/images/skills/13.png",
     "description": "응축된 화염을 발사하여 적에게 마법 피해를 입히고 화상을 입힙니다.",
@@ -251,6 +270,68 @@
       "status": "BURN",
       "duration": 3,
       "chance": 30
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 25,
+    "name": "얼음 송곳",
+    "icon": "/images/skills/21.png",
+    "description": "차가운 냉기를 응축한 송곳을 발사하여 피해를 입히고 적의 행동을 둔화시킵니다.",
+    "type": "MAGIC",
+    "grade": "COMMON",
+    "turnCost": 2,
+    "hitChance": 75,
+    "cost": { "stamina": 5, "mp": 20 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 3.5, "13": 1.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 2,
+      "chance": 40
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 26,
+    "name": "연쇄 번개",
+    "icon": "/images/skills/22.png",
+    "description": "강력한 전류를 방출합니다. 적의 신경계를 자극하여 일정 확률로 기절시킵니다.",
+    "type": "MAGIC",
+    "grade": "COMMON",
+    "turnCost": 2,
+    "hitChance": 65,
+    "cost": { "stamina": 8, "mp": 30 },
+    "damageScaling": { "magicAtk": 1.6 },
+    "statScaling": { "13": 3.5, "14": 1.5 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "LIGHTNING",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 20
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 27,
+    "name": "재생의 빛",
+    "icon": "/images/skills/27.png",
+    "description": "성스러운 빛으로 상처를 치유합니다.",
+    "type": "HEAL",
+    "grade": "COMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 5, "mp": 30 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": {"8": 2.5, "9": 1.5 },
+    "effect": {
+      "type": "HEAL",
+      "element": "HOLY",
+      "status": "REGEN",
+      "chance": 100
     },
     "requiredWeapons": ["NONE"]
   },
@@ -308,7 +389,7 @@
     "id": 16,
     "name": "쇠약의 저주",
     "icon": "/images/skills/16.png",
-    "description": "대상에게 어둠의 굴레를 씌워 명중률과 회피율을 저하시킵니다.",
+    "description": "대상에게 어둠의 굴레를 씌워 물리 공격력을 저하시킵니다.",
     "type": "DEBUFF",
     "grade": "COMMON",
     "turnCost": 1,
@@ -322,9 +403,9 @@
       "status": "WEAKNESS",
       "duration": 4,
       "chance": 100,
+      "combatStatModifiers": {},
       "combatStatOffsets": {
-        "accuracy": -30,
-        "dodge": -30
+        "meleeAtk": -30
       }
     },
     "requiredWeapons": ["NONE"]
@@ -349,110 +430,6 @@
       "chance": 100
     },
     "requiredWeapons": ["NONE"]
-  },
-  {
-    "id": 18,
-    "name": "재생의 빛",
-    "icon": "/images/skills/18.png",
-    "description": "성스러운 빛으로 상처를 치유합니다.",
-    "type": "HEAL",
-    "grade": "COMMON",
-    "turnCost": 1,
-    "hitChance": 100,
-    "cost": { "stamina": 5, "mp": 30 },
-    "damageScaling": { "magicAtk": 1.5 },
-    "statScaling": {"8": 2.5, "9": 1.5 },
-    "effect": {
-      "type": "HEAL",
-      "element": "HOLY",
-      "status": "REGEN",
-      "chance": 100
-    },
-    "requiredWeapons": ["NONE"]
-  },
-  {
-    "id": 19,
-    "name": "허약의 손길",
-    "icon": "/images/skills/19.png",
-    "description": "대상에게 어물리 공격력을 감소시킵니다.",
-    "type": "DEBUFF",
-    "grade": "COMMON",
-    "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 8, "mp": 15 },
-    "damageScaling": {},
-    "statScaling": {},
-    "effect": {
-      "type": "DEBUFF",
-      "element": "DARK",
-      "status": "WEAKNESS",
-      "duration": 4,
-      "chance": 100,
-      "combatStatModifiers": {"meleeAtk": 0.7}
-    },
-    "requiredWeapons": ["NONE"]
-  },
-  {
-    "id": 20,
-    "name": "독병 투척",
-    "icon": "/images/skills/20.png",
-    "description": "치명적인 맹독이 든 병을 던집니다. 즉시 피해를 주고 높은 확률로 중독을 일으킵니다.",
-    "type": "MAGIC",
-    "grade": "BASE",
-    "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 10, "mp": 5 },
-    "damageScaling": { "magicAtk": 0.5 },
-    "statScaling": { "20": 3.0, "23": 1.0 },
-    "effect": {
-      "type": "DOT",
-      "element": "TOXIC",
-      "status": "POISON",
-      "duration": 5,
-      "chance": 100
-    },
-    "requiredWeapons": ["NONE"]
-  },
-  {
-    "id": 21,
-    "name": "얼음 송곳",
-    "icon": "/images/skills/21.png",
-    "description": "차가운 냉기를 응축한 송곳을 발사하여 피해를 입히고 적의 행동을 둔화시킵니다.",
-    "type": "MAGIC",
-    "grade": "COMMON",
-    "turnCost": 2,
-    "hitChance": 75,
-    "cost": { "stamina": 5, "mp": 20 },
-    "damageScaling": { "magicAtk": 1.2 },
-    "statScaling": { "14": 3.5, "13": 1.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "ICE",
-      "status": "FROZEN",
-      "duration": 2,
-      "chance": 40
-    },
-    "requiredWeapons": ["NONE"]
-  },
-  {
-    "id": 22,
-    "name": "연쇄 번개",
-    "icon": "/images/skills/22.png",
-    "description": "강력한 전류를 방출합니다. 적의 신경계를 자극하여 일정 확률로 기절시킵니다.",
-    "type": "MAGIC",
-    "grade": "COMMON",
-    "turnCost": 2,
-    "hitChance": 65,
-    "cost": { "stamina": 8, "mp": 30 },
-    "damageScaling": { "magicAtk": 1.6 },
-    "statScaling": { "13": 3.5, "14": 1.5 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "LIGHTNING",
-      "status": "STUN",
-      "duration": 1,
-      "chance": 20
-    },
-    "requiredWeapons": ["NONE"]
   }
+
 ]

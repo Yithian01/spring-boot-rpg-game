@@ -1,6 +1,6 @@
 {
-  "location" : "TOWN",
-  "dungeonId" : null,
-  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ],
+  "location" : "DUNGEON",
+  "dungeonId" : 201,
+  "gameLogs" : [ "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<b style='color:#ff4d4d;'>[치명상] 더 이상 버틸 수 없습니다...</b>", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDE78 엘프 (Elf)이(가) 효과를 저항했습니다! (확률: 10%)</span>", "<span style='color:#ff4d4d;'>⚔️ [피격]</span> 고블린 검사의 졸렬한 찌르기! <b>59</b>의 피해!", "<b style='color:#ff9f43;'>▶ 고블린 검사의 차례 (행동력: 1)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#87ceeb;'>[효과]</span> 고블린 검사에게 ❄️ <b>FROZEN</b> 부여! (2턴)", "⚔️ <b style='color:#ffffff;'>얼음 송곳</b>! 고블린 검사에게 <b style='color:#ff4d4d;'>43</b>의 피해!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#ff9f43;'>[전투]</span> 고블린 검사이(가) 나타났습니다!", "<span style='color:#aaaaaa;'>주변이 고요합니다. 충분히 기력을 회복했습니다.</span>", "\uD83D\uDECC <b style='color:#70db70;'>휴식을 취했습니다.</b> (HP/MP/STA 회복)", "<b style='color:#ffd700;'>✨ [발견] 고블린의 정수가 드랍되었습니다!</b>", "<span style='color:#74c0fc;'>\uD83D\uDC8E 고블린의 마석을 획득했습니다.</span>", "⚔️ <b style='color:#ffffff;'>화염구</b>! 고블린에게 <b style='color:#ff4d4d;'>51</b>의 피해!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "\uD83D\uDCA8 <span style='color:#ffcc00;'>[회피] 엘프 (Elf)이(가) 고블린의 <b>졸렬한 찌르기</b> 공격을 피했습니다!</span> <small style='color:#888;'>(확률: 88%)</small>", "<b style='color:#ff9f43;'>▶ 고블린의 차례 (행동력: 1)</b>" ],
   "clear" : false
 }

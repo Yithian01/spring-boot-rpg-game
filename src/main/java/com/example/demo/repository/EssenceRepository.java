@@ -27,7 +27,7 @@ import java.util.Optional;
 public class EssenceRepository {
     private final ObjectMapper objectMapper;
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
-    private final String ESSENCE_FILE = "essence-instance.json";
+    private final String ESSENCE_FILE = "essence_instance.json";
 
     /**
      * [로드] 보유중인 정수 Map 가져오기

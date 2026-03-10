@@ -24,7 +24,7 @@ public class TownFileRepository {
 
     private final ObjectMapper objectMapper;
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
-    private final String TOWN_FILE = "town-status.json";
+    private final String TOWN_FILE = "town_status.json";
 
     /**
      * [저장] 마을 상태(TownStatus) 저장

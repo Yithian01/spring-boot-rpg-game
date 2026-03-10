@@ -26,7 +26,7 @@ public class DungeonFileRepository {
     // 데이터 저장 경로 (Town과 동일한 data 폴더 사용)
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
     // 던전 상태 파일명
-    private final String DUNGEON_FILE = "dungeon-status.json";
+    private final String DUNGEON_FILE = "dungeon_status.json";
 
     /**
      * [저장] 던전 상태(DungeonStatus) 저장

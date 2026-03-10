@@ -26,7 +26,7 @@ import java.util.Optional;
 public class ItemInstanceRepository {
     private final ObjectMapper objectMapper;
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
-    private final String ITEM_FILE = "item-instance.json";
+    private final String ITEM_FILE = "item_instance.json";
 
     /**
      * [로드] 전체 아이템 Map 가져오기

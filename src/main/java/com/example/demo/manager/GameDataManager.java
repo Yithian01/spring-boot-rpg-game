@@ -39,6 +39,7 @@ public class GameDataManager  implements ApplicationRunner {
     @Getter private Map<Integer, DungeonMeta> dungeonMetaMap;
     @Getter private Map<Integer, MonsterSpawnTableMeta> monsterSpawnTableMetaMap;
     @Getter private Map<String, DropTableMeta> dropTableMetaMap;
+    @Getter private Map<String, ShopMeta> shopMetaMap;
 
 
     @Override
@@ -86,8 +87,12 @@ public class GameDataManager  implements ApplicationRunner {
         // 12. 드랍 테이블 정보 로딩
         this.dropTableMetaMap = loadMapData("drop-table.json", DropTableMeta.class, DropTableMeta::getId);
 
+        // 13. 상점 정보 로딩
+        this.shopMetaMap = loadMapData("shops.json", ShopMeta.class, ShopMeta::getNpcId);
+
         long end = System.currentTimeMillis();
         log.info("========== [GameData] 초기화 완료 (소요시간: {}ms) ==========", end - start);
+        System.out.println("shopMetaMap : " + shopMetaMap);
     }
 
     /**

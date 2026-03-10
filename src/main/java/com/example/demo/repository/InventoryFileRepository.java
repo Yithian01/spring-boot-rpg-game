@@ -23,7 +23,7 @@ import java.nio.file.Paths;
 public class InventoryFileRepository {
     private final ObjectMapper objectMapper;
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
-    private final String INVENTORY_FILE = "inventory-status.json";
+    private final String INVENTORY_FILE = "inventory_status.json";
 
     /**
      * [저장] 인벤토리 상태(InventoryStatus) 저장

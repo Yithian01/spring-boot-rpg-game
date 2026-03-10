@@ -38,7 +38,8 @@ public class GameService {
         return (gameFileRepository.existsFile()
                 && userFileRepository.existsFile()
                 && townFileRepository.existsFile()
-                && inventoryFileRepository.existsFile());
+                && inventoryFileRepository.existsFile()
+                && itemInstanceRepository.existsFile());
     }
 
     /**
@@ -555,6 +556,11 @@ public class GameService {
         return new ArrayList<>(groups.values());
     }
 
+    /**
+     * UI 표시용 정수 헬퍼 메소드
+     * @param ei 정수 인스턴스
+     * @return UI 표시용 정수 정보
+     */
     private EssencePageDto convertToEssencePageDto(EssenceInstance ei) {
         List<String> statTexts = new ArrayList<>();
 

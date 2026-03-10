@@ -27,7 +27,7 @@ public class GameFileRepository {
     // 데이터 저장 경로
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
     // 파일명 통일 (inventory-status.json 과 짝꿍)
-    private final String GAME_FILE = "game-status.json";
+    private final String GAME_FILE = "game_status.json";
 
     /**
      * [저장] 게임 상태(gameStatus) 저장

@@ -2,14 +2,8 @@ package com.example.demo.service;
 
 import com.example.demo.config.GameValidation;
 import com.example.demo.domain.enums.LocationType;
-import com.example.demo.domain.save.DungeonStatus;
-import com.example.demo.domain.save.GameStatus;
-import com.example.demo.domain.save.TownStatus;
-import com.example.demo.domain.save.UserStatus;
-import com.example.demo.repository.DungeonFileRepository;
-import com.example.demo.repository.GameFileRepository;
-import com.example.demo.repository.TownFileRepository;
-import com.example.demo.repository.UserFileRepository;
+import com.example.demo.domain.save.*;
+import com.example.demo.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

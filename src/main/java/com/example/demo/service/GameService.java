@@ -29,6 +29,7 @@ public class GameService {
     private final StatCalculationService statCalculationService;
     private final BattleService battleService;
     private final InventoryService inventoryService;
+    private final ShopService shopService;
 
     /**
      * 이어하던 게임 존재하는 지 확인
@@ -342,6 +343,8 @@ public class GameService {
         TownStatus town = townFileRepository.findTownStatus();
         boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
         List<MagicStoneDto> magicStoneList = town.getMagicStoneList();
+
+        shopService.townStoreRestock();
 
         return TownPageDto.builder()
                 .day(town.getDay())

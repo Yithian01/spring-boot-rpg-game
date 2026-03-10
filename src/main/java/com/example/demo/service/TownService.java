@@ -386,7 +386,7 @@ public class TownService {
                     .duration(picked.getEffect().getDuration())
                     .effectChance(picked.getEffect().getChance())
 
-                    .scalingInfo(gameDataManager.createSkillScalingInfo(picked))
+                    .scalingInfo(gameDataManager.createSkillScalingInfo(picked, us.getFinalStats()))
                     .modifierDetails(gameDataManager.createSkillModifierInfo(picked))
 
                     .alreadyLearned(alreadyLearned)

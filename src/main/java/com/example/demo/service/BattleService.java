@@ -197,7 +197,7 @@ public class BattleService {
         }
 
         // 스케일링 가공
-        List<String> scalingInfo = gameDataManager.createSkillScalingInfo(meta);
+        List<String> scalingInfo = gameDataManager.createSkillScalingInfo(meta, user.getFinalStats());
         List<String> modifierInfo = gameDataManager.createSkillModifierInfo(meta);
 
         // 명중/위력 계산

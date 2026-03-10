@@ -449,7 +449,21 @@ public class GameDataManager  implements ApplicationRunner {
         };
     }
 
-    public List<String> createSkillScalingInfo(SkillMeta meta) {
+    /**
+     * 300 기준 소프트 캡 함수
+     * 300까지는 정직하게 반영, 이후는 20% 효율 (완만한 감쇄)
+     */
+    public double getEffectiveStat300(double statValue) {
+        double cap = 300.0;
+        if (statValue <= cap) {
+            return statValue;
+        } else {
+            // 300 초과분(300)의 20%인 60만 추가 반영 -> 총 360 반영
+            return cap + (statValue - cap) * 0.2;
+        }
+    }
+
+    public List<String> createSkillScalingInfo(SkillMeta meta, Map<Integer, Integer> finalStats) {
         List<String> scalingInfo = new ArrayList<>();
 
         if (meta.getDamageScaling() != null) {
@@ -465,11 +479,20 @@ public class GameDataManager  implements ApplicationRunner {
                 scalingInfo.add(label + " : " + (int) (atkScaling * 100) + "%");
             }
 
-            // [B] 세부 스탯 보정 (제공해주신 스탯 리스트 기반)
-            if (meta.getStatScaling() != null) {
+            // [B] 세부 스탯 보정 (실시간 배수 계산 방식으로 변경)
+            if (meta.getStatScaling() != null && finalStats != null) {
                 meta.getStatScaling().forEach((statId, factor) -> {
                     String statName = getStatName(statId);
-                    scalingInfo.add(statName + " : " + (int) (factor * 100) + "%");
+
+                    // 1. 소프트캡 적용된 유저의 현재 스탯
+                    double effectiveStat = getEffectiveStat300(finalStats.getOrDefault(statId, 0));
+
+                    // 2. 실시간 보너스 % 계산 (공식: 스탯 * 계수 / 500 * 100)
+                    // 예: 360 * 1.0 / 500 * 100 = 72%
+                    int calculatedBonusPercent = (int) Math.round((effectiveStat * factor / 500.0) * 100);
+
+                    // 3. UI에는 "+72%" 형태로 출력하여 '추가 가산'임을 명시
+                    scalingInfo.add(statName + " : +" + calculatedBonusPercent + "%");
                 });
             }
         }

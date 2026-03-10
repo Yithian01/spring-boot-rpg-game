@@ -799,6 +799,26 @@ public class StatCalculationService {
     }
 
     /**
+     * 기술의 스탯 숙련도 배율 계산 (Stat Scaling to Multiplier)
+     * @return 0.72 같은 배율 가산치 반환 (72% 추가라는 뜻)
+     */
+    public double calculateSkillStatMultiplier(SkillMeta skill, Map<Integer, Integer> finalStats) {
+        double totalBonusMultiplier = 0;
+        if (skill.getStatScaling() != null && finalStats != null) {
+            for (Map.Entry<Integer, Double> entry : skill.getStatScaling().entrySet()) {
+                int statId = entry.getKey();
+                double factor = entry.getValue(); // 데이터 상의 1.0 (100%)
+
+                // [핵심] 스탯에 소프트 캡 적용 (600이어도 360으로 계산)
+                double effectiveStat = getEffectiveStat300(finalStats.getOrDefault(statId, 0));
+
+                totalBonusMultiplier += (effectiveStat * factor / 500.0);
+            }
+        }
+        return totalBonusMultiplier;
+    }
+
+    /**
      * 방어력(저항)과 관통력을 계산하여 최종 데미지를 산출합니다.
      * * [계산 원리]
      * 1. 상대의 저항에서 나의 관통력을 빼서 '최종 저항값'을 구함.
@@ -816,8 +836,6 @@ public class StatCalculationService {
      * [Player] 단순 위력 계산기 (monster 생각 X)
      */
     public double expectDamage(SkillMeta skill, CombatStats attacker, Map<Integer, Integer> attackerFinalStats){
-        // [STEP A] 기술 위력 + 공격자 기본 공격력
-        double skillPower = (attackerFinalStats != null ) ? calculateSkillPower(skill, attackerFinalStats) : 0;
 
         String element = (skill.getEffect() != null && skill.getEffect().getElement() != null)
                 ? skill.getEffect().getElement() : "PHYSICAL";
@@ -829,8 +847,10 @@ public class StatCalculationService {
         String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
         double scaling = skill.getDamageScaling().getOrDefault(scalingKey, 1.0);
 
+        double statBonusMultiplier = calculateSkillStatMultiplier(skill, attackerFinalStats);
+
         // [방어력 적용 전] 최종 로우 데미지
-        double rawTotalDamage = ((baseAtk + elementalAtk) * scaling) + skillPower;
+        double rawTotalDamage = (baseAtk + elementalAtk) * (scaling + statBonusMultiplier);
 
         return rawTotalDamage;
     }
@@ -964,16 +984,16 @@ public class StatCalculationService {
     }
 
     public int calculateHeal(UserStatus user, SkillMeta skill) {
-        // 1. 기술 위력 (statScaling 기반 추가 힐량) 계산
-        double skillPower = calculateSkillPower(skill, user.getBaseStats());
 
         // 2. 마법 여부에 따른 베이스 스탯 및 계수 결정
         boolean isMagic = "MAGIC".equals(skill.getType()) || "HEAL".equals(skill.getType());
         double baseStatValue = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();
 
+        double statBonusMultiplier = calculateSkillStatMultiplier(skill, user.getFinalStats());
+
         String scalingKey = isMagic ? "magicAtk" : "meleeAtk";
         double scaling = skill.getDamageScaling().getOrDefault(scalingKey, 1.0);
-        double rawTotalHeal = (baseStatValue * scaling) + skillPower;
+        double rawTotalHeal = baseStatValue * (scaling + statBonusMultiplier);
 
         return (int) Math.ceil(rawTotalHeal);
     }

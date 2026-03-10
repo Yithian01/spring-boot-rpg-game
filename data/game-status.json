@@ -1,6 +1,6 @@
 {
-  "location" : "DUNGEON",
-  "dungeonId" : 101,
-  "gameLogs" : [ "<span style='color:#ff4500;'>[효과]</span> 칼날늑대에게 \uD83D\uDD25 <b>BURN</b> 부여! (3턴 (틱당 12))", "⚔️ <b style='color:#ffffff;'>화염구</b>! 칼날늑대에게 <b style='color:#ff4d4d;'>35</b>의 피해!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#70db70;'>[시스템]</span> 당신의 턴이 시작되었습니다.", "<span style='color:#aaaaaa;'>[저항] \uD83E\uDE78 엘프 (Elf)이(가) 효과를 저항했습니다! (확률: 35%)</span>", "<span style='color:#ff4d4d;'><b style='color:#ffcc00;'>[치명타!] \uD83D\uDCA5 </b>[피격]</span> 칼날늑대의 칼날 발톱 갈기기! <b>36</b>의 피해!", "<b style='color:#ff9f43;'>▶ 칼날늑대의 차례 (행동력: 1)</b>", "<b style='color:#888;'>[대기]</b> 턴을 종료합니다.", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#aaaaaa;'>[저항] \uD83D\uDD25 칼날늑대이(가) 효과를 저항했습니다! (확률: 30%)</span>", "⚔️ <b style='color:#ffffff;'>화염구</b>! 칼날늑대에게 <b style='color:#ff4d4d;'>35</b>의 피해!", "<span style='color:#70db70;'>[자연 재생] \uD83D\uDC99 MP +4 </span>", "<span style='color:#ff9f43;'>[전투]</span> 칼날늑대이(가) 나타났습니다!", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +6%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +6%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +6%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +6%)", "주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +6%)", "<span style='color:#ff4d4d;'>[함정]</span> 치명적인 함정을 밟았습니다! (HP -10)", "⚔️ <b style='color:#ffd700;'>수정 동굴</b>에 입장했습니다." ],
+  "location" : "TOWN",
+  "dungeonId" : null,
+  "gameLogs" : [ "\uD83C\uDFF0 마을에 도착했습니다." ],
   "clear" : false
 }

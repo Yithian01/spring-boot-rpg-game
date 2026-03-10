@@ -6,9 +6,10 @@
     "type": 0,
     "description": "영악하고 손재주가 좋은 소형 괴물입니다. 주로 무리지어 사냥합니다.",
     "stats": {
-      "maxHp": 450, "maxMp": 0, "meleeAtk": 48.0, "magicAtk": 0.0,
-      "physDef": 3.0, "dodge": 8.0, "accuracy": 10.0, "critRate": 5.0,
-      "critDmg": 150, "moveSpeed": 1.1, "maxTurns": 1 },
+      "maxHp": 95, "maxMp": 0, "meleeAtk": 16.0, "magicAtk": 0.0,
+      "physDef": 1.0, "dodge": 4.0, "accuracy": 5.0, "critRate": 5.0,
+      "critDmg": 150, "moveSpeed": 0.5, "maxTurns": 1
+    },
     "baseActionPoints": 1,
     "activeSkillIds": [101, 102],
     "expReward": 1,
@@ -27,9 +28,10 @@
     "type": 2,
     "description": "부패한 육체를 가진 언데드입니다. 강력한 맷집과 재생력을 자랑합니다.",
     "stats": {
-      "maxHp": 600, "maxMp": 0, "meleeAtk": 42.0, "magicAtk": 0.0,
-      "physDef": 5.0, "dodge": 2.0, "accuracy": 7.0, "critRate": 2.0,
-      "critDmg": 150, "moveSpeed": 0.8 , "maxTurns": 1},
+      "maxHp": 130, "maxMp": 0, "meleeAtk": 14.0, "magicAtk": 0.0,
+      "physDef": 3.0, "dodge": 1.0, "accuracy": 3.0, "critRate": 2.0,
+      "critDmg": 150, "moveSpeed": 0.4, "maxTurns": 1
+    },
     "baseActionPoints": 2,
     "activeSkillIds": [108],
     "expReward": 1,
@@ -46,9 +48,10 @@
     "type": 0,
     "description": "대지의 마력을 다루는 작은 종족입니다.",
     "stats": {
-      "maxHp": 400, "maxMp": 120, "meleeAtk": 32.0, "magicAtk": 55.0,
-      "physDef": 2.0, "dodge": 5.0, "accuracy": 12.0, "critRate": 3.0,
-      "critDmg": 150, "moveSpeed": 0.9, "maxTurns": 1 },
+      "maxHp": 85, "maxMp": 120,"meleeAtk": 8.0, "magicAtk": 15.0,
+      "physDef": 1.0, "dodge": 3.0, "accuracy": 6.0, "critRate": 3.0,
+      "critDmg": 150, "moveSpeed": 0.45, "maxTurns": 1
+    },
     "baseActionPoints": 2,
     "activeSkillIds": [109, 110],
     "expReward": 1,
@@ -65,9 +68,10 @@
     "type": 1,
     "description": "칼날처럼 날카로운 털과 발톱을 가진 포식자입니다. 매우 빠릅니다.",
     "stats": {
-      "maxHp": 380, "maxMp": 0, "meleeAtk": 58.0, "physDef": 1.0,
-      "dodge": 12.0, "accuracy": 15.0, "critRate": 10.0, "critDmg": 165,
-      "moveSpeed": 1.4, "maxTurns": 1 },
+      "maxHp": 80, "maxMp": 0, "meleeAtk": 18.0, "physDef": 0.5,
+      "dodge": 8.0, "accuracy": 8.0, "critRate": 10.0, "critDmg": 165,
+      "moveSpeed": 0.65, "maxTurns": 1
+    },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
     "expReward": 1,

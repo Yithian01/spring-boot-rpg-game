@@ -81,11 +81,17 @@ public class MonsterBattleService {
         while (currentAp > 0 && monster.getCurrentHp() > 0) {
             final int finalCurrentAp = currentAp;
 
+            List<Integer> currentBuffSkillIds = monster.getActiveStatuses().stream()
+                    .filter(s -> "BUFF".equals(s.getCategory()))
+                    .map(ActiveStatus::getSkillId)
+                    .toList();
+
             List<SkillMeta> affordableSkills = monsterMeta.getActiveSkillIds().stream()
                     .map(id -> gameDataManager.getMonsterSkillMetaMap().get(id))
                     .filter(s -> s != null
-                            && s.getTurnCost() <= finalCurrentAp // 행동력 체크
-                            && monster.getCurrentMp() >= s.getCost().getOrDefault("mp", 0)) // MP 체크 추가
+                            && s.getTurnCost() <= finalCurrentAp
+                            && monster.getCurrentMp() >= s.getCost().getOrDefault("mp", 0))
+                    .filter(s -> !("BUFF".equals(s.getType()) && currentBuffSkillIds.contains(s.getId())))
                     .toList();
 
             if (affordableSkills.isEmpty()) {

@@ -8,8 +8,7 @@
     "stats": {
       "maxHp": 450, "maxMp": 0, "meleeAtk": 48.0, "magicAtk": 0.0,
       "physDef": 3.0, "dodge": 8.0, "accuracy": 10.0, "critRate": 5.0,
-      "critDmg": 150, "moveSpeed": 1.1
-    },
+      "critDmg": 150, "moveSpeed": 1.1, "maxTurns": 1 },
     "baseActionPoints": 1,
     "activeSkillIds": [101, 102],
     "expReward": 1,
@@ -30,7 +29,7 @@
     "stats": {
       "maxHp": 600, "maxMp": 0, "meleeAtk": 42.0, "magicAtk": 0.0,
       "physDef": 5.0, "dodge": 2.0, "accuracy": 7.0, "critRate": 2.0,
-      "critDmg": 150, "moveSpeed": 0.8 },
+      "critDmg": 150, "moveSpeed": 0.8 , "maxTurns": 1},
     "baseActionPoints": 2,
     "activeSkillIds": [108],
     "expReward": 1,
@@ -49,7 +48,7 @@
     "stats": {
       "maxHp": 400, "maxMp": 120, "meleeAtk": 32.0, "magicAtk": 55.0,
       "physDef": 2.0, "dodge": 5.0, "accuracy": 12.0, "critRate": 3.0,
-      "critDmg": 150, "moveSpeed": 0.9 },
+      "critDmg": 150, "moveSpeed": 0.9, "maxTurns": 1 },
     "baseActionPoints": 2,
     "activeSkillIds": [109, 110],
     "expReward": 1,
@@ -68,7 +67,7 @@
     "stats": {
       "maxHp": 380, "maxMp": 0, "meleeAtk": 58.0, "physDef": 1.0,
       "dodge": 12.0, "accuracy": 15.0, "critRate": 10.0, "critDmg": 165,
-      "moveSpeed": 1.4 },
+      "moveSpeed": 1.4, "maxTurns": 1 },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
     "expReward": 1,
@@ -87,7 +86,7 @@
     "stats": {
       "maxHp": 520, "maxMp": 0, "meleeAtk": 54.0,
       "physDef": 4.0, "dodge": 10.0, "accuracy": 12.0, "critRate": 7.0,
-      "critDmg": 160, "moveSpeed": 1.2
+      "critDmg": 160, "moveSpeed": 1.2, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
@@ -107,7 +106,7 @@
     "stats": {
       "maxHp": 420, "maxMp": 0, "meleeAtk": 60.0, "magicAtk": 0.0,
       "physDef": 2.0, "dodge": 14.0, "accuracy": 14.0, "critRate": 12.0,
-      "critDmg": 180, "moveSpeed": 1.5
+      "critDmg": 180, "moveSpeed": 1.5, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
@@ -127,7 +126,7 @@
     "stats": {
       "maxHp": 480, "maxMp": 0, "meleeAtk": 45.0,
       "physDef": 5.0, "dodge": 4.0, "accuracy": 10.0, "critRate": 2.0,
-      "critDmg": 150, "moveSpeed": 0.9
+      "critDmg": 150, "moveSpeed": 0.9, "maxTurns": 1
     },
     "baseActionPoints": 2,
     "activeSkillIds": [112],
@@ -147,8 +146,7 @@
     "stats": {
       "maxHp": 650, "maxMp": 0, "meleeAtk": 50.0, "magicAtk": 0.0,
       "physDef": 6.0, "dodge": 1.0, "accuracy": 8.0, "critRate": 1.0,
-      "critDmg": 150, "moveSpeed": 0.7
-    },
+      "critDmg": 150, "moveSpeed": 0.7, "maxTurns": 1 },
     "baseActionPoints": 1,
     "activeSkillIds": [112, 113],
     "expReward": 1,
@@ -167,8 +165,7 @@
     "stats": {
       "maxHp": 580, "maxMp": 0, "meleeAtk": 56.0, "magicAtk": 0.0,
       "physDef": 5.0, "dodge": 3.0, "accuracy": 9.0, "critRate": 4.0,
-      "critDmg": 160, "moveSpeed": 1.0
-    },
+      "critDmg": 160, "moveSpeed": 1.0, "maxTurns": 1 },
     "baseActionPoints": 1,
     "activeSkillIds": [114],
     "expReward": 1,
@@ -187,7 +184,7 @@
     "stats": {
       "maxHp": 440, "maxMp": 50, "meleeAtk": 40.0, "magicAtk": 45.0,
       "physDef": 3.0, "dodge": 6.0, "accuracy": 10.0, "critRate": 5.0,
-      "critDmg": 150, "moveSpeed": 1.1
+      "critDmg": 150, "moveSpeed": 1.1, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [115],
@@ -207,7 +204,7 @@
     "stats": {
       "maxHp": 850, "maxMp": 0, "meleeAtk": 95.0, "magicAtk": 0.0,
       "physDef": 10.0, "dodge": 14.0, "accuracy": 16.0, "critRate": 15.0,
-      "critDmg": 175, "moveSpeed": 1.6
+      "critDmg": 175, "moveSpeed": 1.6, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [116],
@@ -227,7 +224,7 @@
     "stats": {
       "maxHp": 950, "maxMp": 30, "meleeAtk": 88.0, "magicAtk": 0.0,
       "physDef": 12.0, "dodge": 8.0, "accuracy": 12.0, "critRate": 8.0,
-      "critDmg": 150, "moveSpeed": 1.3
+      "critDmg": 150, "moveSpeed": 1.3, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [208],
@@ -246,7 +243,7 @@
     "description": "오랜 시간 동굴에 머물며 비대해진 구울입니다. 재생력이 일반 구울보다 뛰어납니다.",
     "stats": {
       "maxHp": 650, "maxMp": 0, "meleeAtk": 45.0, "physDef": 5.5,
-      "dodge": 1.5, "accuracy": 8.0, "critRate": 2.0, "critDmg": 150, "moveSpeed": 0.8
+      "dodge": 1.5, "accuracy": 8.0, "critRate": 2.0, "critDmg": 150, "moveSpeed": 0.8, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [108, 209],
@@ -265,7 +262,7 @@
     "description": "마력에 의해 움직이는 해골 병사입니다. 통증을 느끼지 못합니다.",
     "stats": {
       "maxHp": 400, "maxMp": 0, "meleeAtk": 48.0, "physDef": 3.0,
-      "dodge": 5.0, "accuracy": 10.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.0
+      "dodge": 5.0, "accuracy": 10.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [210],
@@ -283,7 +280,7 @@
     "type": 2,
     "description": "죽음을 알리는 비명소리를 내는 영혼입니다. 마법 방어력이 높습니다.",
     "stats": {
-      "maxHp": 420, "maxMp": 150, "meleeAtk": 20.0,
+      "maxHp": 420, "maxMp": 150, "meleeAtk": 20.0, "maxTurns": 1,
       "physDef": 100.0, "dodge": 15.0, "accuracy": 12.0, "critRate": 4.0, "critDmg": 150, "moveSpeed": 1.2
     },
     "baseActionPoints": 1,
@@ -302,7 +299,7 @@
     "type": 2,
     "description": "죽음의 기운을 쫓는 흉측한 괴수입니다. 적의 생명력을 갈구합니다.",
     "stats": {
-      "maxHp": 850, "maxMp": 0, "meleeAtk": 85.0, "magicAtk": 0.0,
+      "maxHp": 850, "maxMp": 0, "meleeAtk": 85.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 12.0, "dodge": 8.0, "accuracy": 14.0, "critRate": 10.0, "critDmg": 160, "moveSpeed": 1.1
     },
     "baseActionPoints": 2,
@@ -321,7 +318,7 @@
     "type": 2,
     "description": "구울들의 왕입니다. 주변 시체들을 조종하거나 강력한 오라를 내뿜습니다.",
     "stats": {
-      "maxHp": 1200, "maxMp": 100, "meleeAtk": 75.0, "magicAtk": 60.0,
+      "maxHp": 1200, "maxMp": 100, "meleeAtk": 75.0, "magicAtk": 60.0, "maxTurns": 2,
       "physDef": 20.0, "dodge": 4.0, "accuracy": 10.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 0.9
     },
     "baseActionPoints": 2,
@@ -340,7 +337,7 @@
     "type": 2,
     "description": "머리 없는 기사입니다. 거대한 검을 휘둘러 영혼을 수확합니다.",
     "stats": {
-      "maxHp": 1800, "maxMp": 200, "meleeAtk": 150.0, "magicAtk": 80.0,
+      "maxHp": 1800, "maxMp": 200, "meleeAtk": 150.0, "magicAtk": 80.0, "maxTurns": 2,
       "physDef": 35.0, "dodge": 12.0, "accuracy": 18.0, "critRate": 15.0, "critDmg": 180, "moveSpeed": 1.3
     },
     "baseActionPoints": 2,
@@ -359,7 +356,7 @@
     "type": 2,
     "description": "죽음의 군주입니다. 암흑 마력과 정교한 검술로 살아있는 자들을 말살합니다.",
     "stats": {
-      "maxHp": 3500, "maxMp": 400, "meleeAtk": 230.0, "magicAtk": 180.0,
+      "maxHp": 3500, "maxMp": 400, "meleeAtk": 230.0, "magicAtk": 180.0, "maxTurns": 2,
       "physDef": 70.0, "dodge": 18.0, "accuracy": 22.0, "critRate": 20.0, "critDmg": 200, "moveSpeed": 1.5
     },
     "baseActionPoints": 2,
@@ -378,7 +375,7 @@
     "type": 0,
     "description": "사막의 바위 뒤에 숨어 돌이나 독병을 던지는 비겁한 생물입니다.",
     "stats": {
-      "maxHp": 420, "maxMp": 0, "meleeAtk": 45.0, "magicAtk": 0.0,
+      "maxHp": 420, "maxMp": 0, "meleeAtk": 45.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 2.0, "dodge": 8.0, "accuracy": 15.0, "critRate": 6.0, "critDmg": 150, "moveSpeed": 1.1
     },
     "baseActionPoints": 1,
@@ -397,7 +394,7 @@
     "type": 0,
     "description": "조잡하지만 단단한 선인장 방패를 든 코볼트입니다. 정면 방어가 까다롭습니다.",
     "stats": {
-      "maxHp": 550, "maxMp": 0, "meleeAtk": 40.0, "magicAtk": 0.0,
+      "maxHp": 550, "maxMp": 0, "meleeAtk": 40.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 7.0, "dodge": 2.0, "accuracy": 10.0, "critRate": 2.0, "critDmg": 150, "moveSpeed": 0.8
     },
     "baseActionPoints": 1,
@@ -416,7 +413,7 @@
     "type": 1,
     "description": "사막의 뜨거운 태양 아래 이성을 잃고 흑마법에 손을 댄 노움 변종입니다.",
     "stats": {
-      "maxHp": 400, "maxMp": 180, "meleeAtk": 25.0, "magicAtk": 58.0,
+      "maxHp": 400, "maxMp": 180, "meleeAtk": 25.0, "magicAtk": 58.0, "maxTurns": 1,
       "physDef": 2.0, "dodge": 5.0, "accuracy": 12.0, "critRate": 8.0, "critDmg": 150, "moveSpeed": 0.9
     },
     "baseActionPoints": 1,
@@ -435,7 +432,7 @@
     "type": 4,
     "description": "사막의 바위가 마력에 의해 뭉쳐진 존재입니다. 매우 느리지만 파괴적입니다.",
     "stats": {
-      "maxHp": 1100, "maxMp": 0, "meleeAtk": 90.0, "magicAtk": 0.0,
+      "maxHp": 1100, "maxMp": 0, "meleeAtk": 90.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 25.0, "dodge": 0.0, "accuracy": 8.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 0.6
     },
     "baseActionPoints": 2,
@@ -454,7 +451,7 @@
     "type": 4,
     "description": "거석병보다 정교하게 제작된 인조 생명체입니다. 물리 공격에 매우 강합니다.",
     "stats": {
-      "maxHp": 950, "maxMp": 0, "meleeAtk": 100.0, "magicAtk": 0.0,
+      "maxHp": 950, "maxMp": 0, "meleeAtk": 100.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 20.0, "dodge": 2.0, "accuracy": 12.0, "critRate": 10.0, "critDmg": 160, "moveSpeed": 0.8
     },
     "baseActionPoints": 2,
@@ -473,7 +470,7 @@
     "type": 3,
     "description": "모래 폭풍에서 태어난 정령입니다. 물리 공격을 흘려보내는 능력이 있습니다.",
     "stats": {
-      "maxHp": 750, "maxMp": 200, "meleeAtk": 70.0, "magicAtk": 85.0,
+      "maxHp": 750, "maxMp": 200, "meleeAtk": 70.0, "magicAtk": 85.0, "maxTurns":2,
       "physDef": 5.0, "dodge": 25.0, "accuracy": 15.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.3
     },
     "baseActionPoints": 2,
@@ -492,7 +489,7 @@
     "type": 1,
     "description": "모래 속을 헤엄치는 거대 벌레입니다. 갑작스러운 기습 공격이 특징입니다.",
     "stats": {
-      "maxHp": 850, "maxMp": 0, "meleeAtk": 95.0, "magicAtk": 0.0,
+      "maxHp": 850, "maxMp": 0, "meleeAtk": 95.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 12.0, "dodge": 10.0, "accuracy": 18.0, "critRate": 12.0, "critDmg": 170, "moveSpeed": 1.1
     },
     "baseActionPoints": 1,
@@ -511,7 +508,7 @@
     "type": 1,
     "description": "사막의 재앙이라 불리는 거대 괴수입니다. 맹독을 내뿜으며 모든 것을 삼킵니다.",
     "stats": {
-      "maxHp": 7500, "maxMp": 500, "meleeAtk": 500.0, "magicAtk": 420.0,
+      "maxHp": 7500, "maxMp": 500, "meleeAtk": 500.0, "magicAtk": 420.0, "maxTurns": 2,
       "physDef": 120.0, "dodge": 15.0, "accuracy": 25.0, "critRate": 15.0, "critDmg": 200, "moveSpeed": 1.4
     },
     "baseActionPoints": 2,
@@ -530,7 +527,7 @@
     "type": 0,
     "description": "숲의 나무를 깎아 만든 검과 방패를 든 고블린입니다. 나름의 검술 체계를 가졌습니다.",
     "stats": {
-      "maxHp": 480, "maxMp": 0, "meleeAtk": 52.0, "magicAtk": 0.0,
+      "maxHp": 480, "maxMp": 0, "meleeAtk": 52.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 4.5, "dodge": 6.0, "accuracy": 12.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.0
     },
     "baseActionPoints": 1,
@@ -549,7 +546,7 @@
     "type": 0,
     "description": "풀숲에 숨어 독화살을 쏘는 고블린입니다. 기동성이 좋고 시야가 넓습니다.",
     "stats": {
-      "maxHp": 400, "maxMp": 0, "meleeAtk": 35.0, "magicAtk": 0.0,
+      "maxHp": 400, "maxMp": 0, "meleeAtk": 35.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 2.0, "dodge": 10.0, "accuracy": 18.0, "critRate": 8.0, "critDmg": 160, "moveSpeed": 1.2
     },
     "baseActionPoints": 1,
@@ -568,7 +565,7 @@
     "type": 0,
     "description": "고블린 중에서도 비정상적으로 거대해진 개체입니다.",
     "stats": {
-      "maxHp": 1800, "maxMp": 50, "meleeAtk": 145.0, "magicAtk": 0.0,
+      "maxHp": 1800, "maxMp": 50, "meleeAtk": 145.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 30.0, "dodge": 8.0, "accuracy": 15.0, "critRate": 12.0, "critDmg": 180, "moveSpeed": 1.1
     },
     "baseActionPoints": 2,
@@ -587,7 +584,7 @@
     "type": 4,
     "description": "강철처럼 단단한 외피를 가진 거대 지렁이입니다. 바위를 먹어치우며 길을 만듭니다.",
     "stats": {
-      "maxHp": 950, "maxMp": 0, "meleeAtk": 82.0, "magicAtk": 0.0,
+      "maxHp": 950, "maxMp": 0, "meleeAtk": 82.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 18.0, "dodge": 5.0, "accuracy": 12.0, "critRate": 8.0, "critDmg": 160, "moveSpeed": 0.9
     },
     "baseActionPoints": 2,
@@ -606,7 +603,7 @@
     "type": 1,
     "description": "강철 깃털을 화살처럼 쏘아내는 사나운 맹금류입니다. 매우 빠르고 치명적입니다.",
     "stats": {
-      "maxHp": 750, "maxMp": 0, "meleeAtk": 95.0, "magicAtk": 0.0,
+      "maxHp": 750, "maxMp": 0, "meleeAtk": 95.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 12.0, "dodge": 18.0, "accuracy": 20.0, "critRate": 15.0, "critDmg": 170, "moveSpeed": 1.7
     },
     "baseActionPoints": 2,
@@ -625,7 +622,7 @@
     "type": 0,
     "description": "순례자의 길을 지키는 기계 인형입니다. 감정 없이 침입자를 제거합니다.",
     "stats": {
-      "maxHp": 1000, "maxMp": 50, "meleeAtk": 40.0, "magicAtk": 88.0,
+      "maxHp": 1000, "maxMp": 50, "meleeAtk": 40.0, "magicAtk": 88.0, "maxTurns": 2,
       "physDef": 22.0, "dodge": 2.0, "accuracy": 15.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.0
     },
     "baseActionPoints": 2,
@@ -644,7 +641,7 @@
     "type": 4,
     "description": "강철바위 언덕의 멧되지입니다. 피부는 어떤 칼날도 뚫지 못합니다.",
     "stats": {
-      "maxHp": 1800, "maxMp": 0, "meleeAtk": 130.0, "magicAtk": 0.0,
+      "maxHp": 1800, "maxMp": 0, "meleeAtk": 130.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 45.0, "dodge": 0.0, "accuracy": 15.0, "critRate": 10.0, "critDmg": 150, "moveSpeed": 0.8
     },
     "baseActionPoints": 2,
@@ -663,7 +660,7 @@
     "type": 0,
     "description": "피의 마력을 사용하여 아군을 광폭화시키는 보조 마법사입니다.",
     "stats": {
-      "maxHp": 750, "maxMp": 300, "meleeAtk": 40.0, "magicAtk": 95.0,
+      "maxHp": 750, "maxMp": 300, "meleeAtk": 40.0, "magicAtk": 95.0, "maxTurns": 2,
       "physDef": 8.0, "dodge": 10.0, "accuracy": 15.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.1
     },
     "baseActionPoints": 2,
@@ -682,7 +679,7 @@
     "type": 0,
     "description": "묵직한 도끼를 휘두르는 오크 군단의 주력 보병입니다.",
     "stats": {
-      "maxHp": 950, "maxMp": 0, "meleeAtk": 90.0, "magicAtk": 0.0,
+      "maxHp": 950, "maxMp": 0, "meleeAtk": 90.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 15.0, "dodge": 5.0, "accuracy": 12.0, "critRate": 8.0, "critDmg": 160, "moveSpeed": 1.1
     },
     "baseActionPoints": 2,
@@ -701,7 +698,7 @@
     "type": 0,
     "description": "강궁을 사용하여 원거리에서 적의 급소를 노립니다.",
     "stats": {
-      "maxHp": 700, "maxMp": 0, "meleeAtk": 65.0, "magicAtk": 0.0,
+      "maxHp": 700, "maxMp": 0, "meleeAtk": 65.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 8.0, "dodge": 15.0, "accuracy": 22.0, "critRate": 12.0, "critDmg": 180, "moveSpeed": 1.3
     },
     "baseActionPoints": 2,
@@ -720,7 +717,7 @@
     "type": 0,
     "description": "수많은 전장을 누빈 오크 지휘관입니다. 외침만으로 적을 위축시킵니다.",
     "stats": {
-      "maxHp": 1800, "maxMp": 50, "meleeAtk": 150.0, "magicAtk": 0.0,
+      "maxHp": 1800, "maxMp": 50, "meleeAtk": 150.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 35.0, "dodge": 8.0, "accuracy": 18.0, "critRate": 15.0, "critDmg": 185, "moveSpeed": 1.2
     },
     "baseActionPoints": 2,
@@ -739,7 +736,7 @@
     "type": 0,
     "description": "군락지의 영웅으로 추앙받는 존재입니다. 전설적인 무구를 다룹니다.",
     "stats": {
-      "maxHp": 7500, "maxMp": 200, "meleeAtk": 500.0, "magicAtk": 0.0,
+      "maxHp": 7500, "maxMp": 200, "meleeAtk": 500.0, "magicAtk": 0.0, "maxTurns": 3,
       "physDef": 120.0, "dodge": 20.0, "accuracy": 25.0, "critRate": 20.0, "critDmg": 220, "moveSpeed": 1.5
     },
     "baseActionPoints": 3,
@@ -758,7 +755,7 @@
     "type": 0,
     "description": "모든 오크의 왕입니다. 그의 권위 앞에서는 생존력과 방어력조차 무의미해집니다.",
     "stats": {
-      "maxHp": 45000, "maxMp": 1000, "meleeAtk": 2200.0, "magicAtk": 500.0,
+      "maxHp": 45000, "maxMp": 1000, "meleeAtk": 2200.0, "magicAtk": 500.0, "maxTurns": 5,
       "physDef": 900.0, "dodge": 30.0, "accuracy": 40.0, "critRate": 25.0, "critDmg": 250, "moveSpeed": 1.6
     },
     "baseActionPoints": 5,
@@ -786,7 +783,8 @@
       "accuracy": 15.0,
       "critRate": 12.0,
       "critDmg": 170,
-      "moveSpeed": 1.5
+      "moveSpeed": 1.5,
+      "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [317],
@@ -812,7 +810,7 @@
     "type": 1,
     "description": "습지의 진흙과 조화를 이루는 단단한 비늘을 가진 수인입니다.",
     "stats": {
-      "maxHp": 920, "maxMp": 50, "meleeAtk": 92.0, "magicAtk": 0.0,
+      "maxHp": 920, "maxMp": 50, "meleeAtk": 92.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 15.0, "dodge": 12.0, "accuracy": 15.0, "critRate": 10.0, "critDmg": 160, "moveSpeed": 1.3
     },
     "baseActionPoints": 1,
@@ -831,7 +829,7 @@
     "type": 4,
     "description": "이름 모를 고대 전사를 기리는 석상입니다. 침입자가 다가오면 눈에서 빛을 내며 움직이기 시작합니다.",
     "stats": {
-      "maxHp": 1800, "maxMp": 300, "meleeAtk": 110.0, "magicAtk": 130.0,
+      "maxHp": 1800, "maxMp": 300, "meleeAtk": 110.0, "magicAtk": 130.0, "maxTurns": 2,
       "physDef": 40.0, "dodge": 2.0, "accuracy": 20.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 0.8
     },
     "baseActionPoints": 2,
@@ -850,7 +848,7 @@
     "type": 3,
     "description": "반짝이는 가루를 뿌리며 날아다니는 작은 요정입니다. 장난기가 심해 시야를 방해합니다.",
     "stats": {
-      "maxHp": 350, "maxMp": 200, "meleeAtk": 10.0, "magicAtk": 55.0,
+      "maxHp": 350, "maxMp": 200, "meleeAtk": 10.0, "magicAtk": 55.0, "maxTurns": 2,
       "physDef": 2.0, "dodge": 15.0, "accuracy": 12.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.3
     },
     "baseActionPoints": 2,
@@ -869,7 +867,7 @@
     "type": 2,
     "description": "형체가 불분명한 유령입니다. 물리적인 공격이 잘 통하지 않습니다.",
     "stats": {
-      "maxHp": 420, "maxMp": 100, "meleeAtk": 35.0, "magicAtk": 60.0,
+      "maxHp": 420, "maxMp": 100, "meleeAtk": 35.0, "magicAtk": 60.0, "maxTurns": 1,
       "physDef": 80.0, "dodge": 12.0, "accuracy": 10.0, "critRate": 3.0, "critDmg": 150, "moveSpeed": 1.1
     },
     "baseActionPoints": 1,
@@ -888,7 +886,7 @@
     "type": 3,
     "description": "마녀가 길을 밝히기 위해 만든 마법 등불입니다.",
     "stats": {
-      "maxHp": 400, "maxMp": 150, "meleeAtk": 0.0, "magicAtk": 65.0,
+      "maxHp": 400, "maxMp": 150, "meleeAtk": 0.0, "magicAtk": 65.0, "maxTurns": 1,
       "physDef": 3.0, "dodge": 5.0, "accuracy": 20.0, "critRate": 10.0, "critDmg": 200, "moveSpeed": 0.9
     },
     "baseActionPoints": 1,
@@ -907,7 +905,7 @@
     "type": 0,
     "description": "나무 껍질로 이루어진 인형입니다. 둔탁하지만 끈질기게 따라옵니다.",
     "stats": {
-      "maxHp": 580, "maxMp": 0, "meleeAtk": 48.0, "magicAtk": 0.0,
+      "maxHp": 580, "maxMp": 0, "meleeAtk": 48.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 5.5, "dodge": 3.0, "accuracy": 10.0, "critRate": 2.0, "critDmg": 150, "moveSpeed": 0.8
     },
     "baseActionPoints": 1,
@@ -926,7 +924,7 @@
     "type": 1,
     "description": "뱀처럼 휘어지는 줄기를 가진 식물 괴물입니다. 적을 옭아맵니다.",
     "stats": {
-      "maxHp": 850, "maxMp": 0, "meleeAtk": 82.0, "magicAtk": 0.0,
+      "maxHp": 850, "maxMp": 0, "meleeAtk": 82.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 12.0, "dodge": 14.0, "accuracy": 15.0, "critRate": 8.0, "critDmg": 150, "moveSpeed": 1.2
     },
     "baseActionPoints": 1,
@@ -945,7 +943,7 @@
     "type": 1,
     "description": "죽은 뿌리에서 태어난 거대 쥐입니다. 전염병을 옮깁니다.",
     "stats": {
-      "maxHp": 720, "maxMp": 0, "meleeAtk": 95.0, "magicAtk": 0.0,
+      "maxHp": 720, "maxMp": 0, "meleeAtk": 95.0, "magicAtk": 0.0, "maxTurns": 1,
       "physDef": 8.0, "dodge": 16.0, "accuracy": 18.0, "critRate": 15.0, "critDmg": 170, "moveSpeed": 1.5
     },
     "baseActionPoints": 1,
@@ -964,7 +962,7 @@
     "type": 3,
     "description": "마녀의 마력에 오염된 정령입니다. 불안정한 원소 공격을 가합니다.",
     "stats": {
-      "maxHp": 800, "maxMp": 300, "meleeAtk": 20.0, "magicAtk": 100.0,
+      "maxHp": 800, "maxMp": 300, "meleeAtk": 20.0, "magicAtk": 100.0, "maxTurns": 1,
       "physDef": 10.0, "dodge": 10.0, "accuracy": 15.0, "critRate": 12.0, "critDmg": 180, "moveSpeed": 1.1
     },
     "baseActionPoints": 1,
@@ -983,7 +981,7 @@
     "type": 0,
     "description": "연금술로 만들어진 인조 인간입니다. 불안정하지만 강력한 출력을 내뿜습니다.",
     "stats": {
-      "maxHp": 900, "maxMp": 200, "meleeAtk": 88.0, "magicAtk": 88.0,
+      "maxHp": 900, "maxMp": 200, "meleeAtk": 88.0, "magicAtk": 88.0, "maxTurns": 2,
       "physDef": 10.0, "dodge": 8.0, "accuracy": 15.0, "critRate": 10.0, "critDmg": 160, "moveSpeed": 1.1
     },
     "baseActionPoints": 2,
@@ -1002,7 +1000,7 @@
     "type": 1,
     "description": "부엉이의 머리와 곰의 몸을 가진 괴수입니다. 사나운 포효로 적을 압도합니다.",
     "stats": {
-      "maxHp": 1000, "maxMp": 0, "meleeAtk": 105.0, "magicAtk": 0.0,
+      "maxHp": 1000, "maxMp": 0, "meleeAtk": 105.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 15.0, "dodge": 6.0, "accuracy": 14.0, "critRate": 12.0, "critDmg": 180, "moveSpeed": 1.2
     },
     "baseActionPoints": 2,
@@ -1021,7 +1019,7 @@
     "type": 3,
     "description": "나무의 정령입니다. 상대에게 환각을 보여줍니다.",
     "stats": {
-      "maxHp": 800, "maxMp": 400, "meleeAtk": 50.0, "magicAtk": 95.0,
+      "maxHp": 800, "maxMp": 400, "meleeAtk": 50.0, "magicAtk": 95.0, "maxTurns": 2,
       "physDef": 10.0, "dodge": 10.0, "accuracy": 16.0, "critRate": 5.0, "critDmg": 150, "moveSpeed": 1.0
     },
     "baseActionPoints": 2,
@@ -1040,7 +1038,7 @@
     "type": 1,
     "description": "트롤의 피가 섞인 거구입니다. 잘려나간 부위가 순식간에 재생됩니다.",
     "stats": {
-      "maxHp": 1800, "maxMp": 0, "meleeAtk": 145.0, "magicAtk": 0.0,
+      "maxHp": 1800, "maxMp": 0, "meleeAtk": 145.0, "magicAtk": 0.0, "maxTurns": 2,
       "physDef": 25.0, "dodge": 5.0, "accuracy": 12.0, "critRate": 10.0, "critDmg": 160, "moveSpeed": 1.0
     },
     "baseActionPoints": 2,
@@ -1059,7 +1057,7 @@
     "type": 2,
     "description": "온몸에 붕대를 감은 채 숲을 배회하는 언데드 사냥꾼입니다. 피할 수 없는 화살을 쏩니다.",
     "stats": {
-      "maxHp": 1400, "maxMp": 100, "meleeAtk": 85.0, "magicAtk": 60.0,
+      "maxHp": 1400, "maxMp": 100, "meleeAtk": 85.0, "magicAtk": 60.0, "maxTurns": 3,
       "physDef": 20.0, "dodge": 18.0, "accuracy": 40.0, "critRate": 25.0, "critDmg": 220, "moveSpeed": 1.4
     },
     "baseActionPoints": 3,
@@ -1078,7 +1076,7 @@
     "type": 2,
     "description": "꺼지지 않는 불꽃에 잠식된 스켈레톤입니다. 공격 시 화염 피해를 입힙니다.",
     "stats": {
-      "maxHp": 900, "maxMp": 50, "meleeAtk": 85.0, "fireAtk": 40.0,
+      "maxHp": 900, "maxMp": 50, "meleeAtk": 85.0, "fireAtk": 40.0, "maxTurns": 1,
       "physDef": 15.0, "dodge": 8.0, "accuracy": 15.0, "critRate": 10.0,
       "critDmg": 160, "moveSpeed": 1.1
     },
@@ -1098,7 +1096,7 @@
     "type": 4,
     "description": "끓어오르는 용암이 섞인 진흙 괴물입니다. 타격 시 공격자의 무기를 부식시킵니다.",
     "stats": {
-      "maxHp": 2200, "maxMp": 0, "meleeAtk": 80.0, "fireAtk": 40.0,
+      "maxHp": 2200, "maxMp": 0, "meleeAtk": 80.0, "fireAtk": 40.0, "maxTurns": 1,
       "physDef": 50.0, "dodge": 2.0, "accuracy": 12.0, "critRate": 5.0,
       "critDmg": 150, "moveSpeed": 0.7
     },
@@ -1120,7 +1118,7 @@
     "stats": {
       "maxHp": 1500, "maxMp": 100, "magicAtk": 50.0, "fireAtk": 110.0,
       "physDef": 25.0, "dodge": 22.0, "accuracy": 20.0, "critRate": 25.0,
-      "critDmg": 190, "moveSpeed": 1.8
+      "critDmg": 190, "moveSpeed": 1.8, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [504],
@@ -1140,7 +1138,7 @@
     "stats": {
       "maxHp": 5000, "maxMp": 200, "meleeAtk": 280.0, "fireAtk": 150.0,
       "physDef": 100.0, "dodge": 0.0, "accuracy": 18.0, "critRate": 10.0,
-      "critDmg": 170, "moveSpeed": 0.8
+      "critDmg": 170, "moveSpeed": 0.8, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [505, 506],
@@ -1160,7 +1158,7 @@
     "stats": {
       "maxHp": 6500, "maxMp": 1200, "magicAtk": 120.0, "fireAtk": 550.0,
       "physDef": 40.0, "dodge": 20.0, "accuracy": 30.0, "critRate": 15.0,
-      "critDmg": 220, "moveSpeed": 1.4
+      "critDmg": 220, "moveSpeed": 1.4, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [507],
@@ -1180,7 +1178,7 @@
     "stats": {
       "maxHp": 5500, "maxMp": 1000, "meleeAtk": 400.0, "magicAtk": 480.0,
       "physDef": 150.0, "dodge": 30.0, "accuracy": 25.0, "critRate": 20.0,
-      "critDmg": 200, "moveSpeed": 1.6
+      "critDmg": 200, "moveSpeed": 1.6, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [508],
@@ -1200,7 +1198,7 @@
     "stats": {
       "maxHp": 780, "maxMp": 100, "lightningAtk": 72.0, "magicAtk": 65.0,
       "physDef": 10.0, "dodge": 22.0, "accuracy": 18.0, "critRate": 12.0,
-      "critDmg": 160, "moveSpeed": 1.8
+      "critDmg": 160, "moveSpeed": 1.8, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [512],
@@ -1220,7 +1218,7 @@
     "stats": {
       "maxHp": 820, "maxMp": 150, "lightningAtk": 60.0, "magicAtk": 88.0,
       "physDef": 12.0, "dodge": 15.0, "accuracy": 25.0, "critRate": 8.0,
-      "critDmg": 150, "moveSpeed": 1.4
+      "critDmg": 150, "moveSpeed": 1.4, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [513],
@@ -1240,7 +1238,7 @@
     "stats": {
       "maxHp": 1600, "maxMp": 400, "magicAtk": 40.0, "lightningAtk": 185.0,
       "physDef": 20.0, "dodge": 20.0, "accuracy": 22.0, "critRate": 15.0,
-      "critDmg": 180, "moveSpeed": 1.5
+      "critDmg": 180, "moveSpeed": 1.5, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [513, 514],
@@ -1260,7 +1258,7 @@
     "stats": {
       "maxHp": 3200, "maxMp": 300, "meleeAtk": 245.0, "magicAtk": 120.0,
       "physDef": 45.0, "dodge": 35.0, "accuracy": 28.0, "critRate": 25.0,
-      "critDmg": 210, "moveSpeed": 2.0
+      "critDmg": 210, "moveSpeed": 2.0, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [515],
@@ -1280,7 +1278,7 @@
     "stats": {
       "maxHp": 4500, "maxMp": 1500, "lightningAtk": 100.0, "magicAtk": 260.0,
       "physDef": 60.0, "dodge": 15.0, "accuracy": 20.0, "critRate": 20.0,
-      "critDmg": 180, "moveSpeed": 1.2
+      "critDmg": 180, "moveSpeed": 1.2, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [513, 514],
@@ -1300,7 +1298,7 @@
     "stats": {
       "maxHp": 8000, "maxMp": 2000, "lightningAtk": 350.0, "magicAtk": 620.0,
       "physDef": 85.0, "dodge": 40.0, "accuracy": 35.0, "critRate": 30.0,
-      "critDmg": 240, "moveSpeed": 2.2
+      "critDmg": 240, "moveSpeed": 2.2, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [514, 517],
@@ -1320,7 +1318,7 @@
     "stats": {
       "maxHp": 1100, "maxMp": 0, "meleeAtk": 90.0, "magicAtk": 0.0,
       "physDef": 18.0, "dodge": 5.0, "accuracy": 15.0, "critRate": 10.0,
-      "critDmg": 160, "moveSpeed": 0.9
+      "critDmg": 160, "moveSpeed": 0.9, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [521],
@@ -1340,7 +1338,7 @@
     "stats": {
       "maxHp": 4800, "maxMp": 400, "meleeAtk": 220.0, "magicAtk": 180.0,
       "physDef": 110.0, "dodge": 0.0, "accuracy": 20.0, "critRate": 15.0,
-      "critDmg": 180, "moveSpeed": 0.7
+      "critDmg": 180, "moveSpeed": 0.7, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [522],
@@ -1360,7 +1358,7 @@
     "stats": {
       "maxHp": 6200, "maxMp": 800, "meleeAtk": 480.0, "magicAtk": 320.0,
       "physDef": 70.0, "dodge": 25.0, "accuracy": 30.0, "critRate": 25.0,
-      "critDmg": 210, "moveSpeed": 1.7
+      "critDmg": 210, "moveSpeed": 1.7, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [524, 525],
@@ -1380,7 +1378,7 @@
     "stats": {
       "maxHp": 7500, "maxMp": 1200, "darkAtk": 220.0, "iceAtk": 200.0, "magicAtk": 510.0,
       "physDef": 130.0, "dodge": 15.0, "accuracy": 35.0, "critRate": 15.0,
-      "critDmg": 200, "moveSpeed": 1.4
+      "critDmg": 200, "moveSpeed": 1.4, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [526, 527],
@@ -1400,7 +1398,7 @@
     "stats": {
       "maxHp": 5800, "maxMp": 3000, "darkAtk": 120.0, "chaosAtk": 80.0, "magicAtk": 680.0,
       "physDef": 60.0, "dodge": 35.0, "accuracy": 40.0, "critRate": 20.0,
-      "critDmg": 250, "moveSpeed": 1.5
+      "critDmg": 250, "moveSpeed": 1.5, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [528, 529],
@@ -1420,7 +1418,7 @@
     "stats": {
       "maxHp": 750, "maxMp": 250, "meleeAtk": 0.0, "magicAtk": 95.0,
       "physDef": 8.0, "dodge": 12.0, "accuracy": 15.0, "critRate": 5.0,
-      "critDmg": 150, "moveSpeed": 1.1, "lightningRes": -120.0
+      "critDmg": 150, "moveSpeed": 1.1, "lightningRes": -120.0, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [532],
@@ -1440,7 +1438,7 @@
     "stats": {
       "maxHp": 920, "maxMp": 0, "meleeAtk": 98.0, "magicAtk": 0.0,
       "physDef": 12.0, "dodge": 14.0, "accuracy": 22.0, "critRate": 10.0,
-      "critDmg": 160, "moveSpeed": 1.3, "lightningRes": -100.0
+      "critDmg": 160, "moveSpeed": 1.3, "lightningRes": -100.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [533],
@@ -1460,7 +1458,7 @@
     "stats": {
       "maxHp": 1500, "maxMp": 100, "meleeAtk": 135.0, "iceAtk": 60.0,
       "physDef": 25.0, "dodge": 13.0, "accuracy": 18.0, "critRate": 10.0,
-      "critDmg": 160, "moveSpeed": 1.4, "lightningRes": -110.0
+      "critDmg": 160, "moveSpeed": 1.4, "lightningRes": -110.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [534],
@@ -1480,7 +1478,7 @@
     "stats": {
       "maxHp": 1800, "maxMp": 0, "meleeAtk": 150.0, "magicAtk": 0.0,
       "physDef": 35.0, "dodge": 13.0, "accuracy": 15.0, "critRate": 15.0,
-      "critDmg": 180, "moveSpeed": 1.3, "lightningRes": -100.0
+      "critDmg": 180, "moveSpeed": 1.3, "lightningRes": -100.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [533],
@@ -1500,7 +1498,7 @@
     "stats": {
       "maxHp": 3200, "maxMp": 0, "meleeAtk": 220.0, "magicAtk": 0.0,
       "physDef": 70.0, "dodge": 16.0, "accuracy": 20.0, "critRate": 5.0,
-      "critDmg": 150, "moveSpeed": 1.6, "lightningRes": -150.0
+      "critDmg": 150, "moveSpeed": 1.6, "lightningRes": -150.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [536],
@@ -1520,7 +1518,7 @@
     "stats": {
       "maxHp": 7500, "maxMp": 400, "meleeAtk": 500.0, "iceAtk": 120.0,
       "physDef": 120.0, "dodge": 20.0, "accuracy": 26.0, "critRate": 25.0,
-      "critDmg": 220, "moveSpeed": 2.0, "lightningRes": -100.0
+      "critDmg": 220, "moveSpeed": 2.0, "lightningRes": -100.0, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [537, 538],
@@ -1540,7 +1538,7 @@
     "stats": {
       "maxHp": 1800, "maxMp": 0, "meleeAtk": 110.0, "magicAtk": 0.0,
       "physDef": 20.0, "dodge": 5.0, "accuracy": 15.0, "critRate": 5.0,
-      "critDmg": 150, "moveSpeed": 1.3, "lightningRes": -100.0
+      "critDmg": 150, "moveSpeed": 1.3, "lightningRes": -100.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [601],
@@ -1560,7 +1558,7 @@
     "stats": {
       "maxHp": 1200, "maxMp": 800, "meleeAtk": 0.0, "magicAtk": 150.0,
       "physDef": 20.0, "dodge": 18.0, "accuracy": 20.0, "critRate": 10.0,
-      "critDmg": 170, "moveSpeed": 1.8, "lightningRes": -150.0
+      "critDmg": 170, "moveSpeed": 1.8, "lightningRes": -150.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [602],
@@ -1580,7 +1578,7 @@
     "stats": {
       "maxHp": 1500, "maxMp": 200, "meleeAtk": 130.0, "magicAtk": 40.0,
       "physDef": 35.0, "dodge": 12.0, "accuracy": 18.0, "critRate": 12.0,
-      "critDmg": 160, "moveSpeed": 1.5, "lightningRes": -110.0
+      "critDmg": 160, "moveSpeed": 1.5, "lightningRes": -110.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [603],
@@ -1600,7 +1598,7 @@
     "stats": {
       "maxHp": 3500, "maxMp": 0, "meleeAtk": 180.0, "magicAtk": 0.0,
       "physDef": 50.0, "dodge": 0.0, "accuracy": 16.0, "critRate": 5.0,
-      "critDmg": 180, "moveSpeed": 1.6, "lightningRes": -120.0
+      "critDmg": 180, "moveSpeed": 1.6, "lightningRes": -120.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [611],
@@ -1620,7 +1618,7 @@
     "stats": {
       "maxHp": 3200, "maxMp": 0, "meleeAtk": 190.0, "magicAtk": 0.0,
       "physDef": 70.0, "dodge": 5.0, "accuracy": 20.0, "critRate": 8.0,
-      "critDmg": 150, "moveSpeed": 1.7, "lightningRes": -140.0
+      "critDmg": 150, "moveSpeed": 1.7, "lightningRes": -140.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [612,613],
@@ -1640,7 +1638,7 @@
     "stats": {
       "maxHp": 2800, "maxMp": 100, "meleeAtk": 230.0, "magicAtk": 0.0,
       "physDef": 45.0, "dodge": 18.0, "accuracy": 25.0, "critRate": 20.0,
-      "critDmg": 190, "moveSpeed": 2.1, "lightningRes": -100.0
+      "critDmg": 190, "moveSpeed": 2.1, "lightningRes": -100.0, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [614],
@@ -1660,7 +1658,7 @@
     "stats": {
       "maxHp": 7500, "maxMp": 200, "meleeAtk": 500.0, "magicAtk": 100.0,
       "physDef": 120.0, "dodge": 10.0, "accuracy": 24.0, "critRate": 15.0,
-      "critDmg": 200, "moveSpeed": 2.0, "lightningRes": -110.0
+      "critDmg": 200, "moveSpeed": 2.0, "lightningRes": -110.0, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [615],
@@ -1680,7 +1678,7 @@
     "stats": {
       "maxHp": 7000, "maxMp": 1200, "meleeAtk": 480.0, "magicAtk": 420.0,
       "physDef": 90.0, "dodge": 15.0, "accuracy": 26.0, "critRate": 25.0,
-      "critDmg": 220, "moveSpeed": 2.2, "lightningRes": -130.0
+      "critDmg": 220, "moveSpeed": 2.2, "lightningRes": -130.0, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [616, 617],
@@ -1700,7 +1698,7 @@
     "stats": {
       "maxHp": 22000, "maxMp": 10000, "chaosAtk": 600.0, "meleeAtk": 1300.0,
       "physDef": 350.0, "dodge": 25.0, "accuracy": 40.0, "critRate": 30.0,
-      "critDmg": 250, "moveSpeed": 3.0, "lightningRes": -150.0
+      "critDmg": 250, "moveSpeed": 3.0, "lightningRes": -150.0, "maxTurns": 5
     },
     "baseActionPoints": 5,
     "activeSkillIds": [631, 632, 633],
@@ -1720,7 +1718,7 @@
     "stats": {
       "maxHp": 22000, "maxMp": 2000, "meleeAtk": 1800.0,
       "physDef": 500.0, "dodge": 20.0, "accuracy": 35.0, "critRate": 25.0,
-      "critDmg": 280, "moveSpeed": 3.5, "lightningRes": -120.0
+      "critDmg": 280, "moveSpeed": 3.5, "lightningRes": -120.0, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [631, 632, 633],
@@ -1740,7 +1738,7 @@
     "stats": {
       "maxHp": 2200, "maxMp": 1500, "meleeAtk": 0.0, "magicAtk": 210.0,
       "physDef": 40.0, "dodge": 16.0, "accuracy": 20.0, "critRate": 10.0,
-      "critDmg": 180, "moveSpeed": 1.6, "chaosAtk": 25.0
+      "critDmg": 180, "moveSpeed": 1.6, "chaosAtk": 25.0, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [701, 702],
@@ -1760,7 +1758,7 @@
     "stats": {
       "maxHp": 3200, "maxMp": 0, "meleeAtk": 200.0, "chaosAtk": 30.0,
       "physDef": 65.0, "dodge": 18.0, "accuracy": 22.0, "critRate": 15.0,
-      "critDmg": 200, "moveSpeed": 1.9
+      "critDmg": 200, "moveSpeed": 1.9, "maxTurns": 2
     },
     "baseActionPoints": 2,
     "activeSkillIds": [703],
@@ -1780,7 +1778,7 @@
     "stats": {
       "maxHp": 7500, "maxMp": 200, "meleeAtk": 420.0, "magicAtk": 0.0,
       "physDef": 85.0, "dodge": 20.0, "accuracy": 24.0, "critRate": 10.0,
-      "critDmg": 180, "moveSpeed": 2.0, "fireRes": -50.0
+      "critDmg": 180, "moveSpeed": 2.0, "fireRes": -50.0, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [228, 704],
@@ -1800,7 +1798,7 @@
     "stats": {
       "maxHp": 5500, "maxMp": 500, "meleeAtk": 450.0, "magicAtk": 250.0,
       "physDef": 110.0, "dodge": 24.0, "accuracy": 28.0, "critRate": 20.0,
-      "critDmg": 210, "moveSpeed": 2.4
+      "critDmg": 210, "moveSpeed": 2.4, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [705, 706],
@@ -1820,7 +1818,7 @@
     "stats": {
       "maxHp": 9500, "maxMp": 3000, "meleeAtk": 300.0, "magicAtk": 720.0,
       "physDef": 160.0, "dodge": 26.0, "accuracy": 35.0, "critRate": 15.0,
-      "critDmg": 220, "moveSpeed": 2.6
+      "critDmg": 220, "moveSpeed": 2.6, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [705, 706],
@@ -1840,7 +1838,7 @@
     "stats": {
       "maxHp": 8800, "maxMp": 1200, "meleeAtk": 780.0, "magicAtk": 200.0,
       "physDef": 180.0, "dodge": 30.0, "accuracy": 40.0, "critRate": 25.0,
-      "critDmg": 240, "moveSpeed": 3.0, "chaosAtk": 40.0
+      "critDmg": 240, "moveSpeed": 3.0, "chaosAtk": 40.0, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [706, 707],
@@ -1860,7 +1858,7 @@
     "stats": {
       "maxHp": 22000, "maxMp": 0, "meleeAtk": 1300.0, "magicAtk": 0.0,
       "physDef": 480.0, "dodge": 15.0, "accuracy": 28.0, "critRate": 20.0,
-      "critDmg": 280, "moveSpeed": 2.8
+      "critDmg": 280, "moveSpeed": 2.8, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [228, 708],
@@ -1880,7 +1878,7 @@
     "stats": {
       "maxHp": 18000, "maxMp": 15000, "meleeAtk": 800.0, "chaosAtk": 1250.0,
       "physDef": 400.0, "dodge": 35.0, "accuracy": 45.0, "critRate": 30.0,
-      "critDmg": 250, "moveSpeed": 3.2
+      "critDmg": 250, "moveSpeed": 3.2, "maxTurns": 6
     },
     "baseActionPoints": 6,
     "activeSkillIds": [709, 710],
@@ -1900,7 +1898,7 @@
     "stats": {
       "maxHp": 2800, "maxMp": 500, "meleeAtk": 215.0, "magicAtk": 120.0,
       "physDef": 45.0, "dodge": 22.0, "accuracy": 25.0, "critRate": 15.0,
-      "critDmg": 180, "moveSpeed": 2.2
+      "critDmg": 180, "moveSpeed": 2.2, "maxTurns": 1
     },
     "baseActionPoints": 1,
     "activeSkillIds": [515],
@@ -1920,7 +1918,7 @@
     "stats": {
       "maxHp": 5200, "maxMp": 800, "meleeAtk": 500.0, "chaosAtk": 150.0,
       "physDef": 80.0, "dodge": 26.0, "accuracy": 40.0, "critRate": 0.0,
-      "critDmg": 220, "moveSpeed": 2.6
+      "critDmg": 220, "moveSpeed": 2.6, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [801, 802],
@@ -1940,7 +1938,7 @@
     "stats": {
       "maxHp": 5000, "maxMp": 2000, "meleeAtk": 400.0, "chaosAtk": 480.0,
       "physDef": 90.0, "dodge": 25.0, "accuracy": 30.0, "critRate": 20.0,
-      "critDmg": 200, "moveSpeed": 2.4, "chaosAtk": 30.0
+      "critDmg": 200, "moveSpeed": 2.4, "chaosAtk": 30.0, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [803, 804],
@@ -1970,7 +1968,8 @@
       "moveSpeed": 2.3,
       "physRes": 25.0,
       "fireRes": -150.0,
-      "lightningRes": -150.0
+      "lightningRes": -150.0,
+      "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [611, 804],
@@ -1995,7 +1994,7 @@
     "stats": {
       "maxHp": 9500, "maxMp": 2500, "meleeAtk": 800.0, "magicAtk": 650.0,
       "physDef": 150.0, "dodge": 30.0, "accuracy": 45.0, "critRate": 30.0,
-      "critDmg": 240, "moveSpeed": 3.0, "chaosAtk": 50.0
+      "critDmg": 240, "moveSpeed": 3.0, "chaosAtk": 50.0, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [803, 804],
@@ -2015,7 +2014,7 @@
     "stats": {
       "maxHp": 18000, "maxMp": 30000, "magicAtk": 600.0, "chaosAtk": 1300.0,
       "physDef": 400.0, "dodge": 35.0, "accuracy": 50.0, "critRate": 25.0,
-      "critDmg": 250, "moveSpeed": 3.5, "chaosAtk": 120.0
+      "critDmg": 250, "moveSpeed": 3.5, "chaosAtk": 120.0, "maxTurns": 6
     },
     "baseActionPoints": 6,
     "activeSkillIds": [709, 710],
@@ -2035,7 +2034,7 @@
     "stats": {
       "maxHp": 9000, "maxMp": 2000, "meleeAtk": 720.0, "magicAtk": 400.0,
       "physDef": 160.0, "dodge": 30.0, "accuracy": 35.0, "critRate": 20.0,
-      "critDmg": 220, "moveSpeed": 3.0, "chaosAtk": 40.0, "darkRes": 50.0
+      "critDmg": 220, "moveSpeed": 3.0, "chaosAtk": 40.0, "darkRes": 50.0, "maxTurns": 3
     },
     "baseActionPoints": 3,
     "activeSkillIds": [801, 802],
@@ -2055,7 +2054,7 @@
     "stats": {
       "maxHp": 18000, "maxMp": 15000, "meleeAtk": 300.0, "magicAtk": 1280.0,
       "physDef": 320.0, "dodge": 28.0, "accuracy": 40.0, "critRate": 25.0,
-      "critDmg": 250, "moveSpeed": 3.2, "chaosAtk": 80.0, "lightRes": -120.0
+      "critDmg": 250, "moveSpeed": 3.2, "chaosAtk": 80.0, "lightRes": -120.0, "maxTurns": 4
     },
     "baseActionPoints": 4,
     "activeSkillIds": [709, 710],
@@ -2075,7 +2074,7 @@
     "stats": {
       "maxHp": 45000, "maxMp": 20000, "meleeAtk": 1800.0, "magicAtk": 1600.0,
       "physDef": 850.0, "dodge": 15.0, "accuracy": 40.0, "critRate": 20.0,
-      "critDmg": 200, "moveSpeed": 3.2, "physRes": 25.0, "fireRes": -150.0
+      "critDmg": 200, "moveSpeed": 3.2, "physRes": 25.0, "fireRes": -150.0, "maxTurns": 5
     },
     "baseActionPoints": 5,
     "activeSkillIds": [709, 710],
@@ -2126,10 +2125,9 @@
       "physRes": 35.0,
       "magRes": 35.0,
       "chaosAtk": 10.0,
-      "chaosRes": -200.0,
-      "allRes": 30.0
+      "chaosRes": -200.0
     },
-    "baseActionPoints": 7,
+    "baseActionPoints": 5,
     "activeSkillIds": [1001, 1002],
     "expReward": 9,
     "essenceBonus": {

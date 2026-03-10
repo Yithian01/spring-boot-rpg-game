@@ -255,141 +255,190 @@ public class StatCalculationService {
     }
 
     /**
-     * 최대 생명력 계산 함수
+     * 최대 생명력 계산 함수 (처절한 생존 버전)
+     * 스탯 9(인간 초기): 50 + (9*1.2) = 약 60 (잡몹에게 1~2방)
+     * 스탯 600(만렙): 50 + (360*1.2) = 482 (여전히 보스에겐 한방)
      */
     public int calculateMaxHp(Map<?, ?> baseStats) {
-        // 1:코어, 2:조직강도, 3:대사효율 (각각 300 캡 적용)
-        double s1 = getEffectiveStat300(getStat(baseStats, 1)); // 600 -> 360
-        double s2 = getEffectiveStat300(getStat(baseStats, 2)); // 600 -> 360
-        double s3 = getEffectiveStat300(getStat(baseStats, 3)); // 600 -> 360
+        double s1 = getEffectiveStat300(getStat(baseStats, 1));
+        double s2 = getEffectiveStat300(getStat(baseStats, 2));
+        double s3 = getEffectiveStat300(getStat(baseStats, 3));
 
-        // 기본 체력 상향(500) + 보정치 합산
-        // 계산: 500 + (360 * 8) + (360 * 1) + (360 * 0.5)
-        // 결과: 500 + 2880 + 360 + 180 = 3,920
-        return (int) (500 + (s1 * 8.0) + (s2 * 1.0) + (s3 * 0.5));
+        // 기본값을 50으로 떡락, 계수를 1.0 내외로 조정
+        // 50 + (360 * 1.0) + (360 * 0.2) + (360 * 0.1) = 50 + 360 + 72 + 36 = 518
+        return (int) (50 + (s1 * 1.0) + (s2 * 0.2) + (s3 * 0.1));
     }
 
     /**
      * 최대 마나 계산 함수
+     * 스탯 600(만렙): 30 + (360 * 0.5) = 210
+     * 장비 없이는 고위 스킬 단 1번도 사용 불가하게 설계
      */
     public int calculateMana(Map<?, ?> baseStats) {
-        // 4:혈관탄성, 5:기억용량
-        return (50 + (getStat(baseStats, 4) * 10) + (getStat(baseStats, 5) * 2));
+        double s4 = getEffectiveStat300(getStat(baseStats, 4));
+        double s5 = getEffectiveStat300(getStat(baseStats, 5));
+
+        // 30 + (360 * 0.4) + (360 * 0.1) = 30 + 144 + 36 = 210
+        return (int) (30 + (s4 * 0.4) + (s5 * 0.1));
     }
 
     /**
      * 최대 스태미나 계산 함수
+     * 스탯 600(만렙): 50 + (360 * 0.8) = 338
+     * 장비 없이는 연속 공격/회피 몇 번에 헉헉대도록 유도
      */
     public int calculateStamina(Map<?, ?> baseStats) {
-        // 6:심폐지구력, 7:대퇴사두
-        return (100 + (getStat(baseStats, 6) * 10) + (getStat(baseStats, 7) * 3));
-    }
+        double s6 = getEffectiveStat300(getStat(baseStats, 6));
+        double s7 = getEffectiveStat300(getStat(baseStats, 7));
 
+        // 50 + (360 * 0.6) + (360 * 0.2) = 50 + 216 + 72 = 338
+        return (int) (50 + (s6 * 0.6) + (s7 * 0.2));
+    }
     /**
      * 체력 재생 계산 함수
      */
     public double calculateHpRegen(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 3) * 0.5);
+        // 3: 대사효율
+        double rawStat = getStat(baseStats, 3);
+        double effectiveStat = getEffectiveStat300(rawStat); // 600 -> 360
+
+        // 공식 변경: (스탯 / 10) -> 360일 때 36.0
+        // 여기에 추가로 0.5배를 해서 최종 18.0 정도로 조절
+        double regen = effectiveStat * 0.05;
+
+        return Math.round(regen * 10.0) / 10.0;
     }
 
     /**
      * 마나 재생 계산 함수
      */
     public double calculateManaRegen(Map<?, ?> baseStats) {
-        return (getStat(baseStats, 8) * 0.5) + (getStat(baseStats, 9) * 0.2);
+        // 8: 에너지 순환, 9: 계율 준수
+        double s8 = getEffectiveStat300(getStat(baseStats, 8));
+        double s9 = getEffectiveStat300(getStat(baseStats, 9));
+
+        // 스탯 600 기준: (360 * 0.05) + (360 * 0.02) = 18 + 7.2 = 25.2
+        double regen = (s8 * 0.05) + (s9 * 0.02);
+
+        return Math.round(regen * 10.0) / 10.0;
     }
 
     /**
-     * 이동속도 계산 함수
+     * 이동속도 계산 함수 (20 상한선 및 효율 급감)
+     * 스탯 9: (9*0.05) + (9*0.03) = 0.72 (기본 속도 제외 순수 보너스)
+     * 스탯 600: (360*0.05) + (360*0.03) = 18 + 10.8 = 28.8
+     * 20 초과분(8.8)에 대해 2% 효율 적용 -> 최종 약 20.1
      */
     public double calculateMoveSpd(Map<?, ?> baseStats) {
-        // 21:비복근, 7:대퇴사두
-        double rawSpd = (getStat(baseStats, 21) * 0.1) + (getStat(baseStats, 7) * 0.05);
-        return Math.round(rawSpd * 10.0) / 10.0;
+        double s21 = getEffectiveStat300(getStat(baseStats, 21)); // 비복근
+        double s7 = getEffectiveStat300(getStat(baseStats, 7));   // 대퇴사두
+
+        // 계수 자체도 낮춤 (0.05, 0.03)
+        double rawMoveSpdBonus = (s21 * 0.05) + (s7 * 0.03);
+
+        double threshold = 20.0;
+        double finalSpd;
+
+        if (rawMoveSpdBonus <= threshold) {
+            finalSpd = rawMoveSpdBonus;
+        } else {
+            // 20 초과분은 2% 효율만 적용 (사실상 20에서 멈춤)
+            finalSpd = threshold + (rawMoveSpdBonus - threshold) * 0.02;
+        }
+
+        return Math.round(finalSpd * 10.0) / 10.0;
     }
 
     /**
      * 치명타 확률 계산 함수
      */
     public double calculateCritRate(Map<?, ?> baseStats) {
-        // 15:인과율간섭(주), 16:동체시력(부)
-        double statCrit = 5.0 + (getStat(baseStats, 15) * 0.1) + (getStat(baseStats, 16) * 0.1);
+        // 15:인과율간섭, 16:동체시력
+        double s15 = getEffectiveStat300(getStat(baseStats, 15));
+        double s16 = getEffectiveStat300(getStat(baseStats, 16));
 
-        double threshold = 30.0;
-        if(statCrit > threshold) {
-            statCrit = threshold + (statCrit - threshold) * 0.1;
+        double statCrit = 5.0 + (s15 * 0.1) + (s16 * 0.1);
+
+        double finalCrit = statCrit;
+        if(statCrit > 30.0) {
+            finalCrit = 30.0 + (statCrit - 30.0) * 0.1; // 결과값 2차 보정
         }
-        return Math.round(statCrit * 10.0) / 10.0;
+        return Math.round(finalCrit * 10.0) / 10.0;
     }
 
     /**
-     * 치명타 피해 계산 (스탯 100 기준 200% 설계)
-     * 150% (기본) + (100 스탯 * 0.5) = 200%
+     * 치명타 피해 계산 (200% 초과 시 효율 급감)
+     * 스탯 9: 150 + 0.9 = 150.9%
+     * 스탯 600: 150 + 36 = 186.0% (아직 200% 미만이라 정직하게 상승)
+     * 만약 스탯이나 다른 보너스로 200%를 넘기려 하면 효율 10% 적용
      */
     public double calculateCritDmg(Map<?, ?> baseStats) {
-        double statValue = getStat(baseStats, 17);
-        double baseCritDmg = 150.0;
+        double s17 = getEffectiveStat300(getStat(baseStats, 17));
+        double baseValue = 150.0;
+        double statBonus = s17 * 0.1; // 360일 때 36%
 
-        double statBonus = statValue * 0.5;
+        double totalBeforeCap = baseValue + statBonus;
+        double threshold = 200.0;
 
-        double cappedBonus = Math.min(statBonus, 100.0);
-
-        return baseCritDmg + cappedBonus;
-    }
-
-    public double calculateAccuracy(Map<?, ?> baseStats) {
-        double rawScore = (getStat(baseStats, 16) * 0.5)
-                + (getStat(baseStats, 23) * 0.3)
-                + (getStat(baseStats, 24) * 0.2);
-
-        double threshold = 30.0; // 스탯 보너스 상한선
-        if (rawScore <= threshold) {
-            return Math.round(rawScore * 10.0) / 10.0;
+        if (totalBeforeCap <= threshold) {
+            return totalBeforeCap;
         } else {
-            // 30 초과분은 2% 효율만 적용
-            double finalAcc = threshold + (rawScore - threshold) * 0.02;
-            return Math.round(finalAcc * 10.0) / 10.0;
+            return threshold + (totalBeforeCap - threshold) * 0.1;
         }
     }
 
     /**
-     * 회피율(Dodge) 계산 함수 (30 상한제 적용)
-     * 스탯 기여도를 30 내외로 제한하여 장비의 회피 옵션 가치를 보존
+     * 명중률 계산 (스탯 자체에 300 캡 적용)
+     * 스탯 9: (9*0.1) + (9*0.06) + (9*0.04) = 1.8
+     * 스탯 600: (360*0.1) + (360*0.06) + (360*0.04) = 72.0 -> 캡 적용
+     */
+    public double calculateAccuracy(Map<?, ?> baseStats) {
+        double s16 = getEffectiveStat300(getStat(baseStats, 16));
+        double s23 = getEffectiveStat300(getStat(baseStats, 23));
+        double s24 = getEffectiveStat300(getStat(baseStats, 24));
+
+        double rawAcc = (s16 * 0.1) + (s23 * 0.06) + (s24 * 0.04);
+
+        // 계산 결과값에 한 번 더 상한선을 두어 장비의 가치 보존 (최대 15~20 수준)
+        return Math.round(Math.min(rawAcc, 20.0) * 10.0) / 10.0;
+    }
+
+    /**
+     * 회피율 계산 (스탯 자체에 300 캡 적용)
      */
     public double calculateDodge(Map<?, ?> baseStats) {
-        // 20:신경반응(0.4), 21:비복근(0.2), 24:육감(0.1)
-        double rawScore = (getStat(baseStats, 20) * 0.4)
-                + (getStat(baseStats, 21) * 0.2)
-                + (getStat(baseStats, 24) * 0.1);
+        double s20 = getEffectiveStat300(getStat(baseStats, 20));
+        double s21 = getEffectiveStat300(getStat(baseStats, 21));
+        double s24 = getEffectiveStat300(getStat(baseStats, 24));
 
-        double threshold = 30.0;
-        double finalDodge;
+        double rawDodge = (s20 * 0.1) + (s21 * 0.06) + (s24 * 0.04);
 
-        if (rawScore <= threshold) {
-            finalDodge = rawScore;
-        } else {
-            finalDodge = threshold + (rawScore - threshold) * 0.02;
-        }
-
-        return Math.round(finalDodge * 10.0) / 10.0;
+        return Math.round(Math.min(rawDodge, 20.0) * 10.0) / 10.0;
     }
 
     /**
-     * [추가] 상태 이상 저항력 계산 함수 (소프트 캡 적용)
-     * 3: 대사 효율 (물리적 저항)
-     * 9: 계율 준수 (정신적 저항)
+     * 상태 이상 저항력 계산 (처절한 하향)
+     * 목표: 맨몸 만렙(360) 기준 25% 내외
+     * 보스의 강력한 상태이상을 막으려면 '저항 장비'가 필수인 구조
      */
     public double calculateStatusResist(Map<?, ?> baseStats) {
-        // 기본 저항 5.0 + (대사 효율 * 0.8) + (계율 준수 * 0.8)
-        double rawResist = 5.0 + (getStat(baseStats, 3) * 0.8) + (getStat(baseStats, 9) * 0.8);
+        double s3 = getEffectiveStat300(getStat(baseStats, 3));
+        double s9 = getEffectiveStat300(getStat(baseStats, 9));
 
-        double finalStatusRes = rawResist;
+        // 기본 5.0 + (360 * 0.03) + (360 * 0.02)
+        // 5.0 + 10.8 + 7.2 = 23.0%
+        double rawResist = 5.0 + (s3 * 0.03) + (s9 * 0.02);
 
-        double threshold = 50.0;
-        if(rawResist > threshold) {
-            finalStatusRes = threshold + (rawResist - threshold) * 0.02;
+        // 결과값 2차 캡: 30%를 넘기기 매우 힘들게 설정
+        double threshold = 20.0;
+        double finalRes;
+        if (rawResist <= threshold) {
+            finalRes = rawResist;
+        } else {
+            finalRes = threshold + (rawResist - threshold) * 0.1;
         }
-        return Math.round(finalStatusRes * 10.0) / 10.0;
+
+        return Math.round(finalRes * 10.0) / 10.0;
     }
 
     /**
@@ -415,7 +464,7 @@ public class StatCalculationService {
         double s12 = getEffectiveStat300(getStat(baseStats, 12)); // 전완
 
         // 계수 합산 약 1.5 내외 (스탯 600일 때 순수 ATK 500~540 선)
-        return (s10 * 0.7) + (s11 * 0.5) + (s12 * 0.3);
+        return (s10 * 0.15) + (s11 * 0.1) + (s12 * 0.05);
     }
 
     /**
@@ -425,46 +474,31 @@ public class StatCalculationService {
         double s13 = getEffectiveStat300(getStat(baseStats, 13)); // 에너지응집
         double s14 = getEffectiveStat300(getStat(baseStats, 14)); // 논리연산
 
-        return (s13 * 0.9) + (s14 * 0.6);
+        return (s13 * 0.2) + (s14 * 0.1);
     }
 
     /**
      * 물리 방어(Phys Def) 계산 함수
-     * 200까지는 정직하게 상승, 이후 효율 급감
+     * 300 softcap 적용
      */
     public double calculatePhysDef(Map<?, ?> baseStats) {
         // 기초 방어력 계산: 2(골밀도)*1.0 + 1(코어)*0.4
-        double rawDef = (getStat(baseStats, 2) * 1.0) + (getStat(baseStats, 1) * 0.4);
+        double s2 = getEffectiveStat300(getStat(baseStats, 2));
+        double s1 = getEffectiveStat300(getStat(baseStats, 1));
 
-        double finalDef;
-        double softCap = 200.0;
-
-        if (rawDef <= softCap) {
-            finalDef = rawDef;
-        } else {
-            // 구간 2: 200 초과분은 10%(0.1) 효율만 적용
-            // 스탯 600 유저(rawDef 840) 기준: 200 + (640 * 0.1) = 264
-            finalDef = softCap + (rawDef - softCap) * 0.1;
-        }
-
-        return Math.round(finalDef * 10.0) / 10.0;
+        // (360 * 0.15) + (360 * 0.05) = 54 + 18 = 72
+        return (s2 * 0.15) + (s1 * 0.05);
     }
 
     /**
-     * 마법 저항 계산 함수 (소프트 캡 적용 )
-     * 50%까지는 정상 적용, 초과분은 10%의 효율만 적용
+     * 마법 저항 계산 (스탯 자체에 300 캡 적용)
      */
     public double calculateMagRes(Map<?, ?> baseStats) {
-        // 18:부패저항, 19:원소공명
-        double rawRes = (getStat(baseStats, 18) * 1.0) + (getStat(baseStats, 19) * 0.5);
+        double s18 = getEffectiveStat300(getStat(baseStats, 18));
+        double s19 = getEffectiveStat300(getStat(baseStats, 19));
 
-        if (rawRes <= 50) {
-            return Math.round(rawRes * 10.0) / 10.0;
-        } else {
-            // 50 + (초과분의 2%)
-            double softCapped = 50.0 + (rawRes - 50.0) * 0.02;
-            return Math.round(softCapped * 10.0) / 10.0;
-        }
+        double rawRes = (s18 * 0.1) + (s19 * 0.05); // 계수 하향: 600 기준 약 54
+        return Math.round(rawRes * 10.0) / 10.0;
     }
 
     /**
@@ -609,14 +643,30 @@ public class StatCalculationService {
     /**
      * [던전 전용] 탐사 진척도 효율 계산
      * 이동속도 23: 공간 지각(지형 파악), 24: 직관(길찾기)
+     * 목표: 만렙(스탯 600) 기준 1회 탐사당 약 25% 내외의 진척도
      */
     public int calculateExplorationEfficiency(Map<?, ?> baseStats) {
-        // 기본 진행도 5% + 스탯 가중치
-        double bonus = calculateMoveSpd(baseStats) +
-                (getStat(baseStats, 23) * 0.2) +
-                (getStat(baseStats, 24) * 0.2);
+        // 1. 이동속도 보너스 (이미 20 내외로 캡이 걸려있음)
+        double moveSpdBonus = calculateMoveSpd(baseStats); // 만렙 기준 약 20.1
 
-        return (int) (5 + bonus); // 탐사 한 번당 증가할 진척도 기본값
+        double s23 = getEffectiveStat300(getStat(baseStats, 23));
+        double s24 = getEffectiveStat300(getStat(baseStats, 24));
+
+        double statBonus = (s23 * 0.01) + (s24 * 0.01);
+
+        double totalEfficiency = 5.0 + moveSpdBonus + statBonus;
+
+        double threshold = 25.0;
+        double finalEfficiency;
+
+        if (totalEfficiency <= threshold) {
+            finalEfficiency = totalEfficiency;
+        } else {
+            // 25% 초과분은 10% 효율만 적용
+            finalEfficiency = threshold + (totalEfficiency - threshold) * 0.1;
+        }
+
+        return (int) Math.round(finalEfficiency);
     }
 
     /**

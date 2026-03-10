@@ -1,6 +1,6 @@
 {
-  "7aeb3a57-437e-47f0-bcb9-4109d340c065" : {
-    "instanceId" : "7aeb3a57-437e-47f0-bcb9-4109d340c065",
+  "d3c8791e-af6f-4af5-b5aa-481b792521f1" : {
+    "instanceId" : "d3c8791e-af6f-4af5-b5aa-481b792521f1",
     "itemMetaId" : 37,
     "customName" : "빵 한 조각",
     "grade" : "COMMON",
@@ -23,8 +23,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "48df3f8f-83c3-4b23-bbb0-352cfbfacc6c" : {
-    "instanceId" : "48df3f8f-83c3-4b23-bbb0-352cfbfacc6c",
+  "c2a3ee9c-9980-40ec-87d2-6fdb933508d2" : {
+    "instanceId" : "c2a3ee9c-9980-40ec-87d2-6fdb933508d2",
     "itemMetaId" : 8,
     "customName" : "8등급 마석",
     "grade" : "COMMON",
@@ -43,8 +43,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "a171cbe5-4c12-4d29-b2e3-18ec6725bc3d" : {
-    "instanceId" : "a171cbe5-4c12-4d29-b2e3-18ec6725bc3d",
+  "f1b95788-88cb-4d83-a717-2baaca37a845" : {
+    "instanceId" : "f1b95788-88cb-4d83-a717-2baaca37a845",
     "itemMetaId" : 1,
     "customName" : "1등급 마석",
     "grade" : "LEGENDARY",
@@ -63,8 +63,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "8db8166f-bee0-4c36-b2cf-7d52876096d4" : {
-    "instanceId" : "8db8166f-bee0-4c36-b2cf-7d52876096d4",
+  "ccc60750-af6d-46ae-82af-a4d3fd63b37a" : {
+    "instanceId" : "ccc60750-af6d-46ae-82af-a4d3fd63b37a",
     "itemMetaId" : 2,
     "customName" : "2등급 마석",
     "grade" : "EPIC",
@@ -83,8 +83,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "11e26985-a820-440d-b1d7-1dd2c021d914" : {
-    "instanceId" : "11e26985-a820-440d-b1d7-1dd2c021d914",
+  "0d7d1052-24c7-44ca-ad00-3c80a0f0c883" : {
+    "instanceId" : "0d7d1052-24c7-44ca-ad00-3c80a0f0c883",
     "itemMetaId" : 3,
     "customName" : "3등급 마석",
     "grade" : "RARE",
@@ -103,8 +103,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "08551087-fd88-472d-9b64-4100a0659e1e" : {
-    "instanceId" : "08551087-fd88-472d-9b64-4100a0659e1e",
+  "6353034a-da15-4899-9952-e882a49a3b0b" : {
+    "instanceId" : "6353034a-da15-4899-9952-e882a49a3b0b",
     "itemMetaId" : 4,
     "customName" : "4등급 마석",
     "grade" : "RARE",
@@ -123,8 +123,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "028dbc93-4d2a-43a0-82b0-edaf18cbb0db" : {
-    "instanceId" : "028dbc93-4d2a-43a0-82b0-edaf18cbb0db",
+  "b9bbba79-c891-4507-a460-983a54c72b4b" : {
+    "instanceId" : "b9bbba79-c891-4507-a460-983a54c72b4b",
     "itemMetaId" : 5,
     "customName" : "5등급 마석",
     "grade" : "UNCOMMON",
@@ -143,8 +143,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "f2ae9d50-4711-442a-a0f1-dcb5ef045e6d" : {
-    "instanceId" : "f2ae9d50-4711-442a-a0f1-dcb5ef045e6d",
+  "22af2b29-44c2-4ed6-8b8f-6f8c836bd57a" : {
+    "instanceId" : "22af2b29-44c2-4ed6-8b8f-6f8c836bd57a",
     "itemMetaId" : 6,
     "customName" : "6등급 마석",
     "grade" : "UNCOMMON",
@@ -163,8 +163,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "746a266c-6d8b-43a4-96f7-5805b3a7bd2a" : {
-    "instanceId" : "746a266c-6d8b-43a4-96f7-5805b3a7bd2a",
+  "5a426ad5-9ec6-4caa-a1a5-2dd4886b467d" : {
+    "instanceId" : "5a426ad5-9ec6-4caa-a1a5-2dd4886b467d",
     "itemMetaId" : 7,
     "customName" : "7등급 마석",
     "grade" : "COMMON",
@@ -183,8 +183,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "558ef4a6-ab34-4217-826b-435654ac0634" : {
-    "instanceId" : "558ef4a6-ab34-4217-826b-435654ac0634",
+  "d30dc4b6-f501-4cbc-bab8-90c855153339" : {
+    "instanceId" : "d30dc4b6-f501-4cbc-bab8-90c855153339",
     "itemMetaId" : 13,
     "customName" : "훈련용 롱소드",
     "grade" : "COMMON",
@@ -205,8 +205,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "b7d4d8de-5577-4d59-bb0c-f6e4a19f1f77" : {
-    "instanceId" : "b7d4d8de-5577-4d59-bb0c-f6e4a19f1f77",
+  "1ba3d42e-57ca-4155-b199-51b005fe8de3" : {
+    "instanceId" : "1ba3d42e-57ca-4155-b199-51b005fe8de3",
     "itemMetaId" : 29,
     "customName" : "닳아버린 여행용 코트",
     "grade" : "COMMON",
@@ -230,8 +230,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "e0ef2457-c635-48c0-a4fe-cff534387514" : {
-    "instanceId" : "e0ef2457-c635-48c0-a4fe-cff534387514",
+  "9b6a9a94-8446-4703-a980-45d2d4a67253" : {
+    "instanceId" : "9b6a9a94-8446-4703-a980-45d2d4a67253",
     "itemMetaId" : 12,
     "customName" : "낡은 가죽 신발",
     "grade" : "COMMON",
@@ -253,8 +253,8 @@
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
   },
-  "96c75330-a0da-4f0c-8a38-3ef6dae4b06c" : {
-    "instanceId" : "96c75330-a0da-4f0c-8a38-3ef6dae4b06c",
+  "ce332ec6-0c5a-4f1f-b126-c90e6ff2ef3e" : {
+    "instanceId" : "ce332ec6-0c5a-4f1f-b126-c90e6ff2ef3e",
     "itemMetaId" : 14,
     "customName" : "나무 방패",
     "grade" : "COMMON",
@@ -276,5 +276,165 @@
     "baseStatsBonusModifiers" : { },
     "combatStatsBonusModifiers" : { },
     "grantedSkillIds" : [ ]
+  },
+  "d844f3f2-533f-4aa6-ab8d-d04d66487ebe" : {
+    "instanceId" : "d844f3f2-533f-4aa6-ab8d-d04d66487ebe",
+    "itemMetaId" : 9,
+    "customName" : "고블린의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "fda0bd88-0f4b-4385-be7b-7081fb2d59ce" : {
+    "instanceId" : "fda0bd88-0f4b-4385-be7b-7081fb2d59ce",
+    "itemMetaId" : 9,
+    "customName" : "노움의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "1f0937d2-f419-488c-b2cc-0c1c3c9c28ab" : {
+    "instanceId" : "1f0937d2-f419-488c-b2cc-0c1c3c9c28ab",
+    "itemMetaId" : 9,
+    "customName" : "코볼트 투척병의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "189d57f8-636f-44d5-b4b0-029dfc6af140" : {
+    "instanceId" : "189d57f8-636f-44d5-b4b0-029dfc6af140",
+    "itemMetaId" : 9,
+    "customName" : "페어리의 9등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "하급 몬스터에게서 보이는 마석입니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 20,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "f41edc18-c73d-498e-92d8-32726892d05f" : {
+    "instanceId" : "f41edc18-c73d-498e-92d8-32726892d05f",
+    "itemMetaId" : 8,
+    "customName" : "웜스톤의 8등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 100,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "6c91da4e-b5e1-4ed2-8d08-76f05e20f2c4" : {
+    "instanceId" : "6c91da4e-b5e1-4ed2-8d08-76f05e20f2c4",
+    "itemMetaId" : 7,
+    "customName" : "밀라로든의 7등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "8등급보다 조금 더 순도가 높은 마석입니다. ",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 10000,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "018f4fd1-c4a2-46d9-9b5c-8956e02978e7" : {
+    "instanceId" : "018f4fd1-c4a2-46d9-9b5c-8956e02978e7",
+    "itemMetaId" : 8,
+    "customName" : "불의 망자의 8등급 마석",
+    "grade" : "COMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 100,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
+  },
+  "eb6dabf2-c2f3-497d-92e2-162928497fb2" : {
+    "instanceId" : "eb6dabf2-c2f3-497d-92e2-162928497fb2",
+    "itemMetaId" : 6,
+    "customName" : "심연의 대식가의 6등급 마석",
+    "grade" : "UNCOMMON",
+    "type" : "MATERIAL",
+    "slot" : null,
+    "subType" : "MAGIC_STONE",
+    "twoHanded" : false,
+    "description" : "안정적인 마력을 품고 있습니다.",
+    "quantity" : 1,
+    "enhancementLevel" : 0,
+    "price" : 100000,
+    "baseStatsBonus" : null,
+    "combatStatsBonus" : null,
+    "recoveryBonus" : null,
+    "baseStatsBonusModifiers" : null,
+    "combatStatsBonusModifiers" : null,
+    "grantedSkillIds" : null
   }
 }

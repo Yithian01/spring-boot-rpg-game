@@ -83,7 +83,7 @@
   },
   {
     "npcId": "HIPPIE_LUNA",
-    "npcName": "상인 루나",
+    "npcName": "장신구 상인 루나",
     "npcDescription": "이 예쁜 장신구들이 뿜어내는 기운이 느껴져?",
     "priceModifier": 0.8,
     "fixedItems": [],

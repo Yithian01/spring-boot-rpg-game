@@ -88,7 +88,7 @@ public class ShopService {
         Map<Integer, Integer> newItemQty = new HashMap<>();
 
         // 1. 고정 아이템 추가
-        if (meta.getFixedItems() != null) {
+        if (meta.getFixedItems() != null && !meta.getFixedItems().isEmpty()) {
             for (Integer itemId : meta.getFixedItems()) {
                 newItemQty.put(itemId, 99);
             }

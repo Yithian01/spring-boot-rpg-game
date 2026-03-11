@@ -362,7 +362,21 @@ public class GameDataManager  implements ApplicationRunner {
             Map.entry("holyPen", "신성 관통"),
             Map.entry("darkPen", "암흑 관통"),
             Map.entry("chaosPen", "혼돈 관통"),
-            Map.entry("toxicPen", "독성 관통")
+            Map.entry("toxicPen", "독성 관통"),
+
+            //=== 생활 스탯 ===
+            Map.entry("workGoldBonus", "노동 기본급 보너스"),
+            Map.entry("workStaminaBonus", "노동 스테미나 효율"),
+            Map.entry("workSuccessBonus", "노동 대박 확률"),
+
+            Map.entry("gambleWinRateBonus", "도박 승률"),
+            Map.entry("gambleMultiplierBonus", "도박 배당율"),
+
+            Map.entry("bartering", "구매 할인율"),
+
+            Map.entry("restEfficiency", "휴식 효율"),
+            Map.entry("taxReduction", "세금 감면율")
+
     );
 
     /**

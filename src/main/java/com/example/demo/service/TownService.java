@@ -55,11 +55,8 @@ public class TownService {
         // 평균 계산은 FinalStats(장착 아이템 포함) 기준
         Map<Integer, Integer> stats = us.getFinalStats();
 
-        // 2. 스태미나 비용 계산 (StatCalculationService 활용)
-        int staminaCost = statCalculationService.calculateWorkStaminaCost(stats);
-        if (us.getCurrentStamina() < staminaCost) {
-            return "스태미나가 부족합니다! (필요: " + staminaCost + ")";
-        }
+        double staminaMultiplier =  1.0 - (us.getLifeStats().getWorkStaminaBonus() / 100);
+        int staminaCost = 0;
 
         // 3. 업무 설정 매핑
         String jobName;
@@ -71,28 +68,37 @@ public class TownService {
             case "PHYSIQUE" -> {
                 jobName = "🏗️ 성벽 보수 작업";
                 basePay = 25;
-                multiplier = 0.8;
                 avgType = gameDataManager.getCategoryAverage(stats, "PHYSIQUE");
+                multiplier = 0.8;
+                staminaCost = (int)(10 * staminaMultiplier);
             }
             case "SPIRIT" -> {
                 jobName = "📜 마법 도서관 서기";
                 basePay = 10;
-                multiplier = 1.1;
                 avgType = gameDataManager.getCategoryAverage(stats, "SPIRIT");
+                multiplier = 1.1;
+                staminaCost = (int)(15 * staminaMultiplier);
             }
             case "AGILITY" -> {
                 jobName = "🏃 긴급 서신 배달";
                 basePay = 15;
-                multiplier = 0.7;
                 avgType = gameDataManager.getCategoryAverage(stats, "AGILITY");
+                multiplier = 0.7;
+                staminaCost = (int)(5 * staminaMultiplier);
             }
             case "PERCEPTION" -> {
                 jobName = "🔍 골동품 감정";
                 basePay = 5;
-                multiplier = 0.9;
                 avgType = gameDataManager.getCategoryAverage(stats, "PERCEPTION");
+                multiplier = 0.9;
+                staminaCost = (int)(10 * staminaMultiplier);
             }
             default -> { return "잘못된 업무 타입입니다."; }
+        }
+
+        // 2. 스태미나 비용 계산 (StatCalculationService 활용)
+        if (us.getCurrentStamina() < staminaCost) {
+            return "스태미나가 부족합니다! (필요: " + staminaCost + ")";
         }
 
         // 4. 골드 계산 (statCalculationService 사용)

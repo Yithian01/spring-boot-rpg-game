@@ -3729,5 +3729,105 @@
       "gambleMultiplierBonus": 30.0
     },
     "grantedSkillIds": []
+  },
+  {
+    "id": 801,
+    "name": "숙련된 석공의 가죽 장갑",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "GLOVES",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "수많은 성벽 보수 작업으로 손때가 묻은 장갑입니다. 무거운 자재를 다루는 데 능숙해져 노동 효율이 상승합니다.",
+    "price": 185000,
+    "icon": "/images/items/801.png",
+    "baseStatsBonus": {
+      "1": 5.0,
+      "10": 3.0
+    },
+    "combatStatsBonus": {
+      "physDef": 8.0,
+      "maxStamina": 25.0
+    },
+    "lifeStatsBonus": {
+      "workGoldBonus": 8.0,
+      "workStaminaBonus": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 802,
+    "name": "견습 서기의 낡은 필기구 주머니",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "도서관이나 관청에서 일하는 서기들이 허리춤에 차는 주머니입니다. 사무 노동 시 실수를 줄여줍니다.",
+    "price": 210000,
+    "icon": "/images/items/802.png",
+    "baseStatsBonus": {
+      "13": 6.0,
+      "14": 4.0
+    },
+    "combatStatsBonus": {
+      "maxMp": 40.0,
+      "mpRegen": 1.5
+    },
+    "lifeStatsBonus": {
+      "workGoldBonus": 12.0,
+      "workSuccessBonus": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 803,
+    "name": "길드 공인 '무한동력' 작업화",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "마을 노동 길드에서 장기 근속자에게 수여하는 장화입니다. 인체공학적 설계로 하루 종일 일해도 지치지 않을 것만 같습니다.",
+    "price": 450000,
+    "icon": "/images/items/803.png",
+    "baseStatsBonus": {
+      "2": 15.0,
+      "20": 10.0
+    },
+    "combatStatsBonus": {
+      "physDef": 15.0,
+      "moveSpeed": 0.1,
+      "maxStamina": 60.0
+    },
+    "lifeStatsBonus": {
+      "workStaminaBonus": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 804,
+    "name": "황금빛 유물 감별용 확대경",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "매우 정교한 렌즈가 장착된 확대경입니다. 유물 파편 분류 작업 시 가치 있는 물건을 찾아낼 확률이 비약적으로 상승합니다.",
+    "price": 580000,
+    "icon": "/images/items/804.png",
+    "baseStatsBonus": {
+      "4": 15.0,
+      "15": 10.0
+    },
+    "combatStatsBonus": {
+      "accuracy": 15.0,
+      "critRate": 5.0
+    },
+    "lifeStatsBonus": {
+      "workSuccessBonus": 10.0,
+      "workGoldBonus": 15.0
+    },
+    "grantedSkillIds": []
   }
 ]

@@ -361,25 +361,37 @@ public class GameService {
 
     public TownPageDto getTownData() {
         TownStatus town = townFileRepository.findTownStatus();
+        UserStatus us = userFileRepository.findGameUser();
+        LifeStats ls = us.getLifeStats();
         boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
         List<MagicStoneDto> magicStoneList = inventoryService.getMagicStoneList();
 
         List<WorkDetailDto> workOptions = List.of(
                 WorkDetailDto.builder()
                         .workType("PHYSIQUE").workName("성벽 보수 작업")
-                        .baseExpectedGold(100).staminaCost(10).successRate(1.0)
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(25, (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "PHYSIQUE"), 0.8))
+                        .bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(10).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(100)
                         .description("신체를 이용한 안정적인 노동").build(),
                 WorkDetailDto.builder()
                         .workType("SPIRIT").workName("마법 도서관 서기")
-                        .baseExpectedGold(150).staminaCost(15).successRate(1.0)
+                        .baseExpectedGold(150).bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(15).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(100)
                         .description("정신을 소모하는 고수익 노동").build(),
                 WorkDetailDto.builder()
-                        .workType("AGILITY").workName("긴급 서신 배달")
-                        .baseExpectedGold(80).staminaCost(5).successRate(1.0)
+                        .workType("AGILITY")
+                        .workName("긴급 서신 배달")
+                        .baseExpectedGold(80).bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(5).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(100)
                         .description("빠른 발을 이용한 저소모 노동").build(),
                 WorkDetailDto.builder()
                         .workType("PERCEPTION").workName("유물 파편 분류")
-                        .baseExpectedGold(50).staminaCost(10).successRate(0.1).bonusSuccessRate(0.1).bonusStaminaCost(0.2)
+                        .baseExpectedGold(50).bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(10).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(10).bonusSuccessRate(ls.getWorkSuccessBonus())
                         .description("운이 좋으면 대박이 터지는 노동").build()
         );
 
@@ -399,29 +411,6 @@ public class GameService {
 
     public GameStatus getGameStatus() {
         return gameFileRepository.findGameStatus();
-    }
-
-    /**
-     * COST TYPE을 반환함
-     */
-    public List<String> convertCostType(List<Integer> costType){
-        List<String> result = new ArrayList<>();
-        for (Integer i : costType) {
-            switch (i){
-                case 1:
-                    result.add("LIFE");
-                    break;
-                case 2:
-                    result.add("MANA");
-                    break;
-                case 3:
-                    result.add("STAMINA");
-                    break;
-                default:
-                    result.add("UNKNOWN");
-            }
-        }
-        return result;
     }
 
     /**
@@ -478,6 +467,16 @@ public class GameService {
                 if (value != 0) {
                     String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
                     statBonuses.add(displayName + " 최종 보정 +" + (int)(value * 100) + "%");
+                }
+            });
+        }
+
+        // 생활 스탯 보너스 (고정치: +5%)
+        if (ii.getLifeStatsBonus() != null) {
+            ii.getLifeStatsBonus().forEach((statId, value) -> {
+                if (value != 0) {
+                    String statName = gameDataManager.STAT_NAME_MAP.getOrDefault(statId, statId);
+                    statBonuses.add(statName + " +" + value + "%");
                 }
             });
         }
@@ -565,6 +564,16 @@ public class GameService {
                 if (value != 0) {
                     String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
                     statBonuses.add(displayName + " 최종 보정 +" + (int)(value * 100) + "%");
+                }
+            });
+        }
+
+        // 생활 스탯 보너스 (고정치: +5%)
+        if (meta.getLifeStatsBonus() != null) {
+            meta.getLifeStatsBonus().forEach((statId, value) -> {
+                if (value != 0) {
+                    String statName = gameDataManager.STAT_NAME_MAP.getOrDefault(statId, statId);
+                    statBonuses.add(statName + " +" + value + "%");
                 }
             });
         }

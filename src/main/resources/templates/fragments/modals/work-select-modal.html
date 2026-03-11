@@ -31,7 +31,7 @@
                                                     th:classappend="${option.bonusGold > 0} ? 'text-bonus' : ''">0</span>G
                                         </span>
                                         <span class="bonus-tag" th:if="${option.bonusGold > 0}"
-                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusGold * 100, 1, 0) + '%)'}"></span>
+                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusGold / 100, 1, 0) + '%)'}"></span>
 
                                         <span style="color: #444; margin: 0 8px;">|</span>
 
@@ -40,7 +40,7 @@
                                                     th:classappend="${option.bonusStaminaCost != 0} ? 'text-stamina-bonus' : ''">0</span>
                                         </span>
                                         <span class="bonus-low-tag" th:if="${option.bonusStaminaCost != 0}"
-                                              th:text="${(option.bonusStaminaCost > 0 ? '+' : '') + #numbers.formatDecimal(option.bonusStaminaCost * 100, 1, 0) + '%'}"></span>
+                                              th:text="${(option.bonusStaminaCost > 0 ? '+' : '') + #numbers.formatDecimal(option.bonusStaminaCost / 100, 1, 0) + '%'}"></span>
                                     </div>
                                     <div class="work-desc" th:text="${option.description}">설명</div>
                                 </div>
@@ -50,9 +50,9 @@
                                     <div class="rate-values">
                                         <span class="main-rate"
                                               th:classappend="${option.bonusSuccessRate > 0} ? 'text-bonus' : ''"
-                                              th:text="${#numbers.formatDecimal((option.successRate + option.bonusSuccessRate) * 100, 1, 0)} + '%'">10%</span>
+                                              th:text="${#numbers.formatDecimal((option.successRate + option.bonusSuccessRate) / 100, 1, 0)} + '%'">10%</span>
                                         <span class="bonus-tag" th:if="${option.bonusSuccessRate > 0}"
-                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusSuccessRate * 100, 1, 0) + '%)'}"></span>
+                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusSuccessRate / 100, 1, 0) + '%)'}"></span>
                                     </div>
                                 </div>
                             </button>

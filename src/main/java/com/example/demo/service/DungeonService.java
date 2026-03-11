@@ -221,7 +221,6 @@ public class DungeonService {
         }
         else {
             shopService.dungeonStoreRestock(gs);
-            gs.addLog("<span style='color:#ffd700; font-weight:bold;'>[이벤트]</span> 🕯️ 어둠 속에서 등불을 든 방랑 상인을 만났습니다.");
         }
 
         // 4. 상태 저장

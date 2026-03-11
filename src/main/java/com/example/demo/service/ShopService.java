@@ -3,8 +3,10 @@ package com.example.demo.service;
 import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.meta.ShopMeta;
 import com.example.demo.domain.meta.ShopRandomConfig;
+import com.example.demo.domain.save.GameStatus;
 import com.example.demo.domain.save.ShopInstance;
 import com.example.demo.manager.GameDataManager;
+import com.example.demo.repository.GameFileRepository;
 import com.example.demo.repository.ShopInstanceRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,56 +25,59 @@ public class ShopService {
 
     private final GameDataManager gameDataManager;
     private final ShopInstanceRepository shopInstanceRepository;
+    private final GameFileRepository gameFileRepository;
     private final Random random = new Random();
 
     /**
-     * 1. 특정 상점의 가격 배율(Price Modifier) 반환
-     * 비싸게 사주는 상인 존재
+     * 현재 상점 화면을 UI에게 열라고 표시
+     * @param npcId 상점 NPC ID (String)
      */
-    public double getPriceModifier(String npcId) {
-        ShopMeta meta = gameDataManager.getShopMetaMap().get(npcId);
-        if (meta == null) {
-            log.warn("상점 메타를 찾을 수 없어 기본 배율(1.0)을 반환합니다: {}", npcId);
-            return 1.0;
-        }
-        return meta.getPriceModifier();
+    public void openShop(String npcId) {
+        GameStatus gs = gameFileRepository.findGameStatus();
+        gs.openShop(npcId);
+        gameFileRepository.saveGameStatus(gs);
     }
 
     /**
-     * 2. 아이템 구매 시 수량 감소 처리 및 저장
-     * @return 구매 성공 여부
+     * 현재 상점 화면을 UI에게 닫으라고 표시
+     */
+    public void closeShop() {
+        GameStatus gs = gameFileRepository.findGameStatus();
+        gs.closeShop();
+        gameFileRepository.saveGameStatus(gs);
+    }
+
+    /**
+     * 아이템 구매 시 수량 감소 처리 및 저장
+     * 구매 성공 여부
+     * TO-BE
      * 0 : 성공
      * 1 : 상점 인스턴스 미존재
      * 2 : 재고 부족
      */
-    public int decreaseStock(String npcId, int itemMetaId, int quantity) {
-        // 현재 상점의 인스턴스(상태) 로드
+    public void decreaseStock(String npcId, int itemMetaId, int quantity) {
+        GameStatus gs = gameFileRepository.findGameStatus();
         ShopInstance shop = shopInstanceRepository.findByNpcId(npcId)
                 .orElse(null);
 
         if (shop == null) {
-            log.error("수량 감소 실패: 상점 인스턴스가 존재하지 않습니다. (npcId: {})", npcId);
-            return 1;
+            gs.addLog(String.format("수량 감소 실패: 상점 인스턴스가 존재하지 않습니다."));
         }
 
         Map<Integer, Integer> itemQtyMap = shop.getItemQty();
         int currentQty = itemQtyMap.getOrDefault(itemMetaId, 0);
 
-        // 재고 확인
         if (currentQty < quantity) {
-            log.warn("구매 실패: 재고 부족 (요청: {}, 현재: {})", quantity, currentQty);
-            return 2;
+            gs.addLog(String.format("구매 실패: 재고 부족"));
         }
 
-        // 수량 차감
         int remainQty = currentQty - quantity;
         itemQtyMap.put(itemMetaId, remainQty);
 
-        // 변경된 상태 저장 (Repository 내부에서 saveMap 호출됨)
         shopInstanceRepository.save(shop);
 
-        log.info("[{}] 아이템(ID:{}) 구매 완료. 잔여 재고: {}", npcId, itemMetaId, remainQty);
-        return 0;
+        gs.addLog(String.format(" 아이템 구매 완료."));
+        gameFileRepository.saveGameStatus(gs);
     }
 
     /**

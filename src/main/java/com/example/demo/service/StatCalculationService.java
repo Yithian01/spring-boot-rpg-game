@@ -498,7 +498,17 @@ public class StatCalculationService {
         double s19 = getEffectiveStat300(getStat(baseStats, 19));
 
         double rawRes = (s18 * 0.1) + (s19 * 0.05); // 계수 하향: 600 기준 약 54
-        return Math.round(rawRes * 10.0) / 10.0;
+
+        // 결과값 2차 캡: 20%를 넘기기 매우 힘들게 설정
+        double threshold = 20;
+        double finalRes;
+        if (rawRes <= threshold) {
+            finalRes = rawRes;
+        } else {
+            finalRes = threshold + (rawRes - threshold) * 0.1;
+        }
+
+        return Math.round(finalRes * 10.0) / 10.0;
     }
 
     /**
@@ -880,12 +890,14 @@ public class StatCalculationService {
         double targetEleRes = getResistValue(defender, element);
         double finalRes = targetBaseRes + targetEleRes;
 
-        // [STEP D] 관통 적용 후 대미지
-        int damageAfterDef = applyDefense(rawTotalDamage, finalPen, finalRes);
-
         // [STEP E] 타입에따라 최종 Def 차감 처리
         double baseDef = isMagic ? 0 : defender.getPhysDef();
-        damageAfterDef = (int) Math.max(0, damageAfterDef - baseDef);
+        rawTotalDamage = (int) Math.max(0, rawTotalDamage - baseDef);
+
+
+        // [STEP D] 관통 적용 후 대미지
+        int damageAfterDef = (rawTotalDamage > 0) ? applyDefense(rawTotalDamage, finalPen, finalRes) : 0;
+
 
         // 크리티컬 없이 기본 결과만 반환
         return damageAfterDef;

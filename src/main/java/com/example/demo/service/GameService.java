@@ -275,6 +275,10 @@ public class GameService {
         List<StatCategoryGroupDto> statGroups = buildStatGroups(us);
         List<SkillCardDto> learnedSkills = battleService.getSkillHand(us, null);
 
+        if (inventory != null && !inventory.isEmpty()) {
+            inventory = gameDataManager.sortInventoryItems(inventory);
+        }
+
         return GamePageDto.builder()
                 .img(us.getImg())
                 .userName(us.getName())
@@ -734,9 +738,11 @@ public class GameService {
                     .recoveryEffect(convertToItemRecoverEffect(itemMeta))
                     .twoHanded(itemMeta.isTwoHanded())
                     .stock(qty)
-                    .isSoldOut(false)
+                    .isSoldOut(qty <= 0)
                     .build());
         });
+
+        gameDataManager.sortShopItemsByGrade(itemList);
 
         return ShopPageDto.builder()
                 .npcId(shopId)

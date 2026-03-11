@@ -5,9 +5,11 @@ import com.example.demo.domain.meta.ShopMeta;
 import com.example.demo.domain.meta.ShopRandomConfig;
 import com.example.demo.domain.save.GameStatus;
 import com.example.demo.domain.save.ShopInstance;
+import com.example.demo.domain.save.UserStatus;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.GameFileRepository;
 import com.example.demo.repository.ShopInstanceRepository;
+import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,8 +27,31 @@ public class ShopService {
 
     private final GameDataManager gameDataManager;
     private final ShopInstanceRepository shopInstanceRepository;
+    private final UserFileRepository userFileRepository;
     private final GameFileRepository gameFileRepository;
     private final Random random = new Random();
+
+    /**
+     * 세이브 파일 저장
+     * @param gs 게임 상태
+     * @param us 유저 상태
+     * @param si 상점 상태
+     */
+    private void saveAll(GameStatus gs, UserStatus us, ShopInstance si){
+        gameFileRepository.saveGameStatus(gs);
+        userFileRepository.saveUserStatus(us);
+        shopInstanceRepository.save(si);
+    }
+
+    /**
+     * 반복되는 로그 기록 및 저장을 위한 헬퍼 메서드
+     */
+    private void logAndSave(GameStatus gs, String message) {
+        gs.addLog(message);
+        gameFileRepository.saveGameStatus(gs);
+        log.warn(message);
+    }
+
 
     /**
      * 현재 상점 화면을 UI에게 열라고 표시
@@ -56,28 +81,46 @@ public class ShopService {
      * 2 : 재고 부족
      */
     public void decreaseStock(String npcId, int itemMetaId, int quantity) {
+        // 1. 초기 데이터 로드
         GameStatus gs = gameFileRepository.findGameStatus();
-        ShopInstance shop = shopInstanceRepository.findByNpcId(npcId)
-                .orElse(null);
+        UserStatus us = userFileRepository.findGameUser();
+        ShopInstance si = shopInstanceRepository.findByNpcId(npcId).orElse(null);
 
-        if (shop == null) {
-            gs.addLog(String.format("수량 감소 실패: 상점 인스턴스가 존재하지 않습니다."));
+        ItemMeta itemMeta = gameDataManager.getItemMetaMap().get(itemMetaId);
+        ShopMeta shopMeta = gameDataManager.getShopMetaMap().get(npcId);
+
+        // 2. 유효성 검사 (Validation Phase)
+        if (si == null || itemMeta == null || shopMeta == null) {
+            logAndSave(gs, "구매 실패: 상점 또는 아이템 정보가 유효하지 않습니다.");
+            return;
         }
 
-        Map<Integer, Integer> itemQtyMap = shop.getItemQty();
-        int currentQty = itemQtyMap.getOrDefault(itemMetaId, 0);
+        // 3. 재고 및 금액 계산
+        int currentQty = si.getItemQty().getOrDefault(itemMetaId, 0);
+        int totalPrice = (int) (itemMeta.getPrice() * shopMeta.getPriceModifier()) * quantity;
 
+        // 4. 구매 가능 여부 체크 (Business Guard Clauses)
         if (currentQty < quantity) {
-            gs.addLog(String.format("구매 실패: 재고 부족"));
+            logAndSave(gs, String.format("구매 실패: [%s]의 재고가 부족합니다.", itemMeta.getName()));
+            return;
         }
 
-        int remainQty = currentQty - quantity;
-        itemQtyMap.put(itemMetaId, remainQty);
+        if (us.getCurrentGold() < totalPrice) {
+            logAndSave(gs, String.format("구매 실패: 골드가 부족합니다. (필요: %d G)", totalPrice));
+            return;
+        }
 
-        shopInstanceRepository.save(shop);
+        // 5. 상태 변경 (State Mutation)
+        us.setCurrentGold(us.getCurrentGold() - totalPrice);
+        si.getItemQty().put(itemMetaId, currentQty - quantity);
 
-        gs.addLog(String.format(" 아이템 구매 완료."));
-        gameFileRepository.saveGameStatus(gs);
+        // 6. 결과 기록 및 저장
+        String successMsg = String.format("✨ [%s] %d개 구매 완료! (잔액: %d G)",
+                itemMeta.getName(), quantity, us.getCurrentGold());
+        gs.addLog(successMsg);
+
+        saveAll(gs, us, si); // 한 번에 저장
+        log.info("Purchase Success: {} | Remaining Stock: {}", itemMeta.getName(), currentQty - quantity);
     }
 
     /**

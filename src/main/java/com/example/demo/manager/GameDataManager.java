@@ -1,6 +1,8 @@
 package com.example.demo.manager;
 
 import com.example.demo.domain.meta.*;
+import com.example.demo.dto.ItemPageDto;
+import com.example.demo.dto.ShopItemDetailDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -572,5 +574,62 @@ public class GameDataManager  implements ApplicationRunner {
         if (effect.getCritDamage() != null && effect.getCritDamage() > 0) {
             info.add("추가 치명타배율: +" + effect.getCritDamage() + "%");
         }
+    }
+
+    /**
+     * 아이템 등급별 우선순위 (높을수록 상단 노출)
+     */
+    public static final Map<String, Integer> GRADE_PRIORITY = Map.of(
+            "LEGENDARY", 5,
+            "EPIC", 4,
+            "RARE", 3,
+            "UNCOMMON", 2,
+            "COMMON", 1
+    );
+
+    /**
+     * 아이템 리스트를 등급 -> 이름 순으로 정렬하는 공통 메서드
+     * @param itemList 정렬할 아이템 리스트 (ShopItemDetailDto 외에도 grade와 name이 있는 DTO라면 제네릭 활용 가능)
+     */
+    public void sortShopItemsByGrade(List<ShopItemDetailDto> itemList) {
+        if (itemList == null || itemList.isEmpty()) return;
+
+        itemList.sort((a, b) -> {
+            // 1. 품절 여부 확인 (판매 중인 아이템 우선)
+            if (a.isSoldOut() != b.isSoldOut()) {
+                return Boolean.compare(a.isSoldOut(), b.isSoldOut());
+            }
+
+            // 2. 등급 우선순위 비교 (내림차순)
+            int priorityA = GRADE_PRIORITY.getOrDefault(a.getGrade(), 0);
+            int priorityB = GRADE_PRIORITY.getOrDefault(b.getGrade(), 0);
+
+            if (priorityA != priorityB) {
+                return priorityB - priorityA;
+            }
+
+            // 3. 등급이 같으면 이름순 (오름차순)
+            return a.getName().compareTo(b.getName());
+        });
+    }
+
+    public List<ItemPageDto> sortInventoryItems(List<ItemPageDto> inventory) {
+        if (inventory == null || inventory.isEmpty()) return inventory;
+
+        inventory.sort((a, b) -> {
+            // 대소문자 무시하고 매칭되도록 .toUpperCase() 권장
+            int pA = GRADE_PRIORITY.getOrDefault(a.getGrade().toUpperCase(), 0);
+            int pB = GRADE_PRIORITY.getOrDefault(b.getGrade().toUpperCase(), 0);
+
+            // 1. 등급 내림차순 (큰 숫자가 앞으로)
+            if (pA != pB) {
+                return Integer.compare(pB, pA);
+            }
+
+            // 2. 등급이 같으면 이름 오름차순
+            return a.getName().compareTo(b.getName());
+        });
+
+        return inventory;
     }
 }

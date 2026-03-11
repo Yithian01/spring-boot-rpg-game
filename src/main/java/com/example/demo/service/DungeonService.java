@@ -30,6 +30,7 @@ public class DungeonService {
     private final DungeonFileRepository dungeonFileRepository;
     private final UserFileRepository userFileRepository;
     private final StatCalculationService statCalculationService;
+    private final ShopService shopService;
     private final GameDataManager gameDataManager;
     private final EssenceService essenceService;
     private final BattleService battleService;
@@ -199,24 +200,28 @@ public class DungeonService {
         battleService.applyPlayerRegeneration(us, gs);
 
         // 1. 기본 비용 소모 (스태미나 감소 등)
-        us.setCurrentStamina(Math.max(0, us.getCurrentStamina() - 3));
+        us.setCurrentStamina(Math.max(0, us.getCurrentStamina() - 10));
 
         // 2. 난수 생성 (0.0 ~ 1.0)
         double roll = Math.random();
         Map<Integer, Integer> stats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
 
         // 3. 사건 판정 분기
-        if (roll < 0.15) {
-            // Case A: 함정 조우 (15% 확률)
+        if (roll < 0.10) {
+            // Case A: 함정 조우 (10% 확률)
             handleTrap(us, stats, gs);
         }
-        else if (roll < 0.45) {
-            // Case B: 몬스터 조우 (30% 확률)
+        else if (roll < 0.55) {
+            // Case B: 몬스터 조우 (45% 확률)
             handleMonsterEncounter(ds, gs);
         }
-        else {
-            // Case C: 무탈하게 탐사 성공 (55% 확률)
+        else if(roll < 0.95){
+            // Case C: 무탈하게 탐사 성공 (35% 확률)
             handlePureExploration(ds, stats, gs);
+        }
+        else {
+            shopService.dungeonStoreRestock(gs);
+            gs.addLog("<span style='color:#ffd700; font-weight:bold;'>[이벤트]</span> 🕯️ 어둠 속에서 등불을 든 방랑 상인을 만났습니다.");
         }
 
         // 4. 상태 저장
@@ -229,11 +234,13 @@ public class DungeonService {
      * @param stats
      */
     private void handleTrap(UserStatus user, Map<Integer, Integer> stats, GameStatus gs) {
-        int intuition = stats.getOrDefault(24, 0); // 직관
+        double dodge = user.getCombatStats().getDodge();
 
-        // 1. 회피 판정 (직관 스탯 기반)
-        if (Math.random() < (intuition * 0.005)) {
-            gs.addLog("<span style='color:#70db70;'>[함정]</span> 감각적으로 함정을 눈치채고 피해갔습니다.");
+        int displayDodge = (int) dodge;
+
+        // 1. 회피 판정
+        if (Math.random() < (dodge / 100.0)) {
+            gs.addLog("<span style='color:#70db70;'>[함정]</span> 날렵한 몸놀림으로 함정을 회피했습니다! (회피율: " + displayDodge + "%)");
             return;
         }
 

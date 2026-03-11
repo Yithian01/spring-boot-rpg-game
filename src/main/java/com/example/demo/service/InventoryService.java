@@ -3,11 +3,13 @@ package com.example.demo.service;
 import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.save.InventoryStatus;
 import com.example.demo.domain.save.ItemInstance;
+import com.example.demo.domain.save.ShopInstance;
 import com.example.demo.domain.save.UserStatus;
 import com.example.demo.dto.MagicStoneDto;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.InventoryFileRepository;
 import com.example.demo.repository.ItemInstanceRepository;
+import com.example.demo.repository.ShopInstanceRepository;
 import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,6 +26,7 @@ public class InventoryService {
     private final UserFileRepository userFileRepository;
     private final InventoryFileRepository inventoryFileRepository;
     private final ItemInstanceRepository itemInstanceRepository;
+    private final ShopInstanceRepository shopInstanceRepository;
     private final StatCalculationService statCalculationService;
     private final GameDataManager gameDataManager;
 
@@ -327,7 +330,7 @@ public class InventoryService {
         }
 
         // 2. 골드 추가 (개당 가격 * 판매 수량)
-        int unitPrice = ii.getPrice();
+        int unitPrice = (int) (ii.getPrice() * 0.8) ;
         int totalSellPrice = unitPrice * sellQty;
         user.setCurrentGold(user.getCurrentGold() + totalSellPrice);
 

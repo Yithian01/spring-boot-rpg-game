@@ -65,6 +65,16 @@ public class ShopService {
     }
 
     /**
+     * 던전에서 사용하는 용도 
+     * 오버로딩
+     */
+    public void openShop(String npcId, GameStatus gameStatus) {
+        GameStatus gs = (gameStatus != null) ? gameStatus : gameFileRepository.findGameStatus();
+        gs.openShop(npcId);
+        gameFileRepository.saveGameStatus(gs);
+    }
+
+    /**
      * 현재 상점 화면을 UI에게 닫으라고 표시
      */
     public void closeShop() {
@@ -92,7 +102,7 @@ public class ShopService {
 
         // 3. 재고 및 금액 계산
         int currentQty = si.getItemQty().getOrDefault(itemMetaId, 0);
-        int totalPrice = (int) (itemMeta.getPrice() * shopMeta.getPriceModifier()) * quantity;
+        int totalPrice = (int) (itemMeta.getPrice()) * quantity;
 
         // 4. 구매 가능 여부 체크
         if (currentQty < quantity) {
@@ -195,13 +205,13 @@ public class ShopService {
         gameDataManager.getShopMetaMap().keySet().stream()
                 .filter(npcId -> !npcId.equals("WANDERING_MERCHANT_MYST"))
                 .forEach(this::refreshStore);
-        log.info("마을 전체 상점 재입고 및 저장 완료");
     }
 
     /**
      * 던전 상점 갱신
      */
-    public void dungeonStoreRestock() {
+    public void dungeonStoreRestock(GameStatus gs) {
+        openShop("WANDERING_MERCHANT_MYST", gs);
         refreshStore("WANDERING_MERCHANT_MYST");
     }
 

@@ -11,6 +11,7 @@ import com.example.demo.domain.save.UserStatus;
 import com.example.demo.dto.RandomSkillCardDto;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.GameFileRepository;
+import com.example.demo.repository.ShopInstanceRepository;
 import com.example.demo.repository.TownFileRepository;
 import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ public class TownService {
     private final UserFileRepository userFileRepository;
     private final TownFileRepository townFileRepository;
     private final StatCalculationService statCalculationService;
+    private final ShopService shopService;
     private final InventoryService inventoryService;
     private final GameDataManager gameDataManager;
 
@@ -64,6 +66,7 @@ public class TownService {
         us.setCurrentGold(us.getCurrentGold() + earnedGold);
         us.setCurrentStamina(us.getCurrentStamina() - staminaCost);
         ts.setCurrentTurn(ts.getCurrentTurn() - 1);
+        shopService.townStoreRestock();
 
         String resultMsg = "⛏️ 일당으로 " + earnedGold + " G를 벌었습니다! (남은 턴: " + ts.getCurrentTurn() + ")";
         saveAll(us, ts, gs);
@@ -89,6 +92,7 @@ public class TownService {
         us.setCurrentMp(Math.min(us.getCombatStats().getMaxMp(), us.getCurrentMp() + mpRecovery));
         us.setCurrentStamina(Math.min(us.getCombatStats().getMaxStamina(), us.getCurrentStamina() + stRecovery));
         ts.setCurrentTurn(ts.getCurrentTurn() - 1);
+        shopService.townStoreRestock();
 
         saveAll(us, ts, gs);
         return checkTurnAndTax("🛌 편안한 휴식을 취했습니다. (HP/MP/ST 회복)");
@@ -145,6 +149,8 @@ public class TownService {
         String resultMessage;
         // 턴 소모
         ts.setCurrentTurn(ts.getCurrentTurn() - 1);
+        shopService.townStoreRestock();
+
 
         if (randomValue <= winRate) {
             // 승리!
@@ -211,6 +217,8 @@ public class TownService {
         // 자원 소모
         us.setCurrentStamina(us.getCurrentStamina() - trainCost);
         ts.setCurrentTurn(ts.getCurrentTurn() - 1);
+        shopService.townStoreRestock();
+
 
         // 7. 스탯 재계산 및 저장
         statCalculationService.refreshUserCombatStats(us, gameDataManager.getItemMetaMap());

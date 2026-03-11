@@ -252,7 +252,7 @@
 
         window.updateTotalPrice = function() {
             const qty = parseInt(document.getElementById('modal-qty-input').value) || 0;
-            const total = qty * currentItemGold;
+            const total = qty * (currentItemGold * 0.8);
             document.getElementById('modal-total-price').innerText = total.toLocaleString();
         };
 

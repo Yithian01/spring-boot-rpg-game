@@ -730,7 +730,7 @@ public class GameService {
                     .grade(itemMeta.getGrade())
                     .icon(itemMeta.getIcon())
                     .description(itemMeta.getDescription())
-                    .gold((int)(itemMeta.getPrice() * shopMeta.getPriceModifier()))
+                    .gold((int)(itemMeta.getPrice()))
                     .type(itemMeta.getType())
                     .slot(itemMeta.getSlot())
                     .subType(itemMeta.getSubType())

@@ -13,6 +13,7 @@
   <th:block th:replace="~{fragments/status-effects :: statusEffectsStyle}"></th:block>
   <th:block th:replace="~{fragments/monster-effects :: monsterEffectsStyle}"></th:block>
   <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillStyle}"></th:block>
+  <th:block th:replace="~{fragments/modals/shop-panel :: shopStyle}"></th:block>
 </head>
 <body>
 
@@ -79,6 +80,9 @@
   <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillModal(${game.learnedSkills})}"></th:block>
   <div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
 
+  <th:block th:if="${shop != null}">
+    <div th:replace="~{fragments/modals/shop-panel :: shopModal(${shop}, ${game})}"></div>
+  </th:block>
   <script th:inline="javascript">
     /*<![CDATA[*/
 

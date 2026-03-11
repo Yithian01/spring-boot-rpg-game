@@ -5,14 +5,17 @@
     "name": "수정 동굴",
     "maxActionCount": 100,
     "monsterTableId": 11,
-    "effects": { },
+    "effects": [],
     "nextFloorWeights": {
       "201": 30,
       "202": 25,
       "203": 25,
       "204": 20
     },
-    "prevDungeonId" : [0]
+    "prevDungeonId" : [0],
+    "explorationRate" : 7.0,
+    "trapEncounterRate" : 20.0,
+    "monsterEncounterRate" : 30.0
   },
   {
     "id": 201,
@@ -20,9 +23,12 @@
     "name": "고블린의 숲",
     "maxActionCount": 300,
     "monsterTableId": 23,
-    "effects": { },
+    "effects": [],
     "nextFloorWeights": {"303": 100},
-    "prevDungeonId" : [101]
+    "prevDungeonId" : [101],
+    "explorationRate" : 10.0,
+    "trapEncounterRate" : 20.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 202,
@@ -30,9 +36,11 @@
     "name": "짐승의 소굴",
     "maxActionCount": 300,
     "monsterTableId": 20,
-    "effects": {},
+    "effects": [],
     "nextFloorWeights": {"301": 100},
-    "prevDungeonId" : [101]
+    "prevDungeonId" : [101],
+    "explorationRate" : 4.0,
+    "monsterEncounterRate" : 50.0
   },
   {
     "id": 203,
@@ -40,9 +48,11 @@
     "name": "망자의 땅",
     "maxActionCount": 300,
     "monsterTableId": 21,
-    "effects": {},
+    "effects": [],
     "nextFloorWeights": {"302": 100},
-    "prevDungeonId" : [101]
+    "prevDungeonId" : [101],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 204,
@@ -50,9 +60,11 @@
     "name": "검은 바위 사막",
     "maxActionCount": 300,
     "monsterTableId": 22,
-    "effects": {},
+    "effects": [],
     "nextFloorWeights": {"304": 50, "305": 50},
-    "prevDungeonId" : [101]
+    "prevDungeonId" : [101],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 301,
@@ -60,10 +72,12 @@
     "name": "강철바위 언덕",
     "maxActionCount": 700,
     "monsterTableId": 30,
-    "effects": {},
+    "effects": [],
     "nextFloorWeights": { "401": 100 },
     "otherAreas": {"302": 20, "303": 20, "304": 20, "305": 20 },
-    "prevDungeonId": [202]
+    "prevDungeonId": [202],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 302,
@@ -71,10 +85,12 @@
     "name": "칠흑의 강어귀",
     "maxActionCount": 700,
     "monsterTableId": 32,
-    "effects": {},
+    "effects": [],
     "nextFloorWeights": { "401": 100 },
     "otherAreas": {"301": 20, "303": 20, "304": 20, "305": 20 },
-    "prevDungeonId": [203]
+    "prevDungeonId": [203],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 303,
@@ -82,10 +98,12 @@
     "name": "녹빛꼬리 습지",
     "maxActionCount": 700,
     "monsterTableId": 33,
-    "effects": { },
+    "effects": [],
     "nextFloorWeights": { "401": 100 },
     "otherAreas": {"302": 20, "303": 20, "304": 20, "305": 20 },
-    "prevDungeonId": [201]
+    "prevDungeonId": [201],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 304,
@@ -93,10 +111,25 @@
     "name": "마녀의 숲",
     "maxActionCount": 700,
     "monsterTableId": 34,
-    "effects": {},
+    "effects": [
+      {
+        "category": "STAT",
+        "type": "accuracy",
+        "value": -10.0,
+        "description": "이상한 것이 보입니다."
+      },
+      {
+        "category": "STAT",
+        "type": "dodge",
+        "value": -10.0,
+        "description": "이상한 것이 들립니다."
+      }
+    ],
     "nextFloorWeights": { "401": 100 },
     "otherAreas": {"302": 20, "303": 20, "301": 20, "305": 20 },
-    "prevDungeonId": [204]
+    "prevDungeonId": [204],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 305,
@@ -104,10 +137,12 @@
     "name": "오크 군락지",
     "maxActionCount": 700,
     "monsterTableId": 31,
-    "effects": {  },
+    "effects": [],
     "nextFloorWeights": { "401": 100 },
     "otherAreas": {"302": 20, "303": 20, "301": 20, "304": 20 },
-    "prevDungeonId": [204]
+    "prevDungeonId": [204],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 401,
@@ -115,9 +150,13 @@
     "name": "시련의 탑",
     "maxActionCount": 1200,
     "monsterTableId": 40,
-    "effects": {  },
+    "effects": [],
     "nextFloorWeights": { "501": 33, "502": 33, "503": 34 },
-    "prevDungeonId": [301, 302, 303, 304, 305]
+    "prevDungeonId": [301, 302, 303, 304, 305],
+    "explorationRate" : 5.0,
+    "trapEncounterRate": 10.0,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 3
   },
   {
     "id": 501,
@@ -125,10 +164,26 @@
     "name": "화염의 땅",
     "maxActionCount": 2200,
     "monsterTableId": 50,
-    "effects": {  },
+    "effects": [
+      {
+        "category": "STAT",
+        "type": "fireRes",
+        "value": -10.0,
+        "description": "뜨거운 열기가 방어막을 녹입니다."
+      },
+      {
+        "category": "DOT",
+        "type": "hp",
+        "value": 5,
+        "description": "지열로 인해 발을 델 것 같습니다!"
+      }
+    ],
     "nextFloorWeights": { "601": 100},
     "otherAreas": {"502": 33, "503": 33, "504": 34},
-    "prevDungeonId": [401]
+    "prevDungeonId": [401],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 1
   },
   {
     "id": 502,
@@ -136,10 +191,13 @@
     "name": "폭풍의 봉우리",
     "maxActionCount": 2200,
     "monsterTableId": 51,
-    "effects": {  },
+    "effects": [],
     "nextFloorWeights": { "601": 100},
     "otherAreas": {"501": 33, "503": 33, "504": 34},
-    "prevDungeonId": [401]
+    "prevDungeonId": [401],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 1
   },
   {
     "id": 503,
@@ -147,10 +205,20 @@
     "name": "망령의 협곡",
     "maxActionCount": 2200,
     "monsterTableId": 52,
-    "effects": {  },
+    "effects": [
+      {
+        "category": "STAT",
+        "type": "darkRes",
+        "value": -10.0,
+        "description": "음습한 공포가 밀려옵니다."
+      }
+    ],
     "nextFloorWeights": { "601": 100},
     "otherAreas": {"501": 33, "502": 33, "504": 34},
-    "prevDungeonId": [401]
+    "prevDungeonId": [401],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 1
   },
   {
     "id": 504,
@@ -158,10 +226,26 @@
     "name": "서리 협곡",
     "maxActionCount": 2200,
     "monsterTableId": 53,
-    "effects": {  },
+    "effects": [
+      {
+        "category": "STAT",
+        "type": "iceRes",
+        "value": -10.0,
+        "description": "차가운 냉기가 밀려옵니다."
+      },
+      {
+        "category": "STAT",
+        "type": "frozenRes",
+        "value": -20.0,
+        "description": "쉽게 얼어붙을 것 같습니다."
+      }
+    ],
     "nextFloorWeights": { "601": 100},
     "otherAreas": {"501": 33, "502": 33, "503": 34},
-    "prevDungeonId": [401]
+    "prevDungeonId": [401],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 1
   },
   {
     "id": 601,
@@ -169,9 +253,12 @@
     "name": "심연의 바다",
     "maxActionCount": 3800,
     "monsterTableId": 60,
-    "effects": {},
+    "effects": [],
     "nextFloorWeights": { "701": 100 },
-    "prevDungeonId": [501, 502, 503, 504]
+    "prevDungeonId": [501, 502, 503, 504],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 3
   },
   {
     "id": 701,
@@ -179,9 +266,12 @@
     "name": "대수림",
     "maxActionCount": 6000,
     "monsterTableId": 70,
-    "effects": { },
+    "effects": [],
     "nextFloorWeights": { "801": 100 },
-    "prevDungeonId": [601]
+    "prevDungeonId": [601],
+    "explorationRate" : 5.0,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 3
   },
   {
     "id": 801,
@@ -189,9 +279,13 @@
     "name": "드림랜드",
     "maxActionCount": 9000,
     "monsterTableId": 80,
-    "effects": {},
+    "effects": [],
     "nextFloorWeights": { "901": 100 },
-    "prevDungeonId": [701]
+    "prevDungeonId": [701],
+    "explorationRate" : 5.0,
+    "trapEncounterRate" : 20,
+    "monsterEncounterRate" : 40.0,
+    "mistEncounterRate": 4
   },
   {
     "id": 901,
@@ -199,9 +293,11 @@
     "name": "심연의 틈",
     "maxActionCount": 13000,
     "monsterTableId": 90,
-    "effects": {  },
+    "effects": [],
     "nextFloorWeights": { "1001": 100 },
-    "prevDungeonId": [801, 701]
+    "prevDungeonId": [801, 701],
+    "explorationRate" : 8.0,
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 1001,
@@ -209,8 +305,10 @@
     "name": "세상의 끝",
     "maxActionCount": 50000,
     "monsterTableId": 100,
-    "effects": { },
+    "effects": [],
     "nextFloorWeights": {},
-    "prevDungeonId": [1001]
+    "prevDungeonId": [1001],
+    "trapEncounterRate" : 20,
+    "monsterEncounterRate" : 80.0
   }
 ]

@@ -6,11 +6,15 @@
     "priceModifier": 1.2,
     "fixedItems": [],
     "randomConfigs": [
-      { "type": "ARTIFACT", "grade": "EPIC", "count": 1 },
-      { "type": "ARTIFACT", "grade": "RARE", "count": 1 },
-      { "type": "ARTIFACT", "grade": "RARE", "count": 1 },
-      { "type": "CONSUMABLE", "grade": "COMMON", "count": 1},
-      { "type": "CONSUMABLE", "grade": "RARE", "count": 1 }
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 }
     ]
   },
   {

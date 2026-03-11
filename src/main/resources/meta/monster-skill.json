@@ -686,7 +686,7 @@
     "grade": "MONSTER",
     "turnCost": 2,
     "hitChance": 85,
-    "cost": { "mp": 40, "stamina": 20 },
+    "cost": { "stamina": 20 },
     "damageScaling": { "magicAtk": 1.5 },
     "statScaling": { "10": 2.0, "11": 2.0 },
     "effect": {

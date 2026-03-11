@@ -186,6 +186,21 @@ public class DungeonService {
     }
 
     /**
+     * [다른 지역 이동]
+     */
+    public void goToOtherArea() {
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        DungeonMeta currentMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
+
+        int otherArea = currentMeta.pickOtherAreaDungeonId();
+
+        if (otherArea != 0) {
+            enterFloor(otherArea, false);
+            log.info(">>> 다른 구역으로 이동: {}", otherArea);
+        }
+    }
+
+    /**
      * [탐사하기] 버튼 클릭 시 호출
      * 몬스터를 조우하거나, 아무 일도 없거나, 탐사율 증가 가거나 결정
      */
@@ -194,33 +209,43 @@ public class DungeonService {
         UserStatus us = userFileRepository.findGameUser();
         GameStatus gs = gameFileRepository.findGameStatus();
 
-        battleService.updatePlayerStatusTick(us, ds, gs);
+        // 현재 던전의 메타 정보 가져오기 (ID 기반)
+        DungeonMeta dungeonMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
 
+        // 스테미나 소모 및 틱 업데이트
+        battleService.updatePlayerStatusTick(us, ds, gs);
         validationService.checkEndBattle();
         battleService.applyPlayerRegeneration(us, gs);
+        us.setCurrentStamina(Math.max(0, us.getCurrentStamina() - 3));
 
-        // 1. 기본 비용 소모 (스태미나 감소 등)
-        us.setCurrentStamina(Math.max(0, us.getCurrentStamina() - 10));
+        // 1. 메타 데이터에서 확률 추출 (기본단위가 %라면 100.0으로 나누어 소수점화)
+        double trapProb = dungeonMeta.getTrapEncounterRate() / 100.0;    // 예: 20% -> 0.2
+        double monsterProb = dungeonMeta.getMonsterEncounterRate() / 100.0; // 예: 40% -> 0.4
+        double merchantProb = dungeonMeta.getMistEncounterRate() / 100.0;  // 예: 3% -> 0.03
 
-        // 2. 난수 생성 (0.0 ~ 1.0)
+        // 2. 난수 생성
         double roll = Math.random();
         Map<Integer, Integer> stats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
 
-        // 3. 사건 판정 분기
-        if (roll < 0.10) {
-            // Case A: 함정 조우 (10% 확률)
-            handleTrap(us, stats, gs);
+        // 3. 사건 판정 분기 (누적 확률 방식)
+        double currentRange = 0;
+
+        if (roll < (currentRange += trapProb)) {
+            // Case A: 함정 조우
+            handleTrap(us, gs);
         }
-        else if (roll < 0.55) {
-            // Case B: 몬스터 조우 (45% 확률)
+        else if (roll < (currentRange += monsterProb)) {
+            // Case B: 몬스터 조우
             handleMonsterEncounter(ds, gs);
         }
-        else if(roll < 0.95){
-            // Case C: 무탈하게 탐사 성공 (35% 확률)
-            handlePureExploration(ds, stats, gs);
+        else if (roll < (currentRange + merchantProb)) {
+            // Case C: 상인(미스트) 조우
+            shopService.dungeonStoreRestock(gs);
         }
         else {
-            shopService.dungeonStoreRestock(gs);
+            // Case D: 아무 일도 없음 (순수 탐사 성공)
+            // 남은 확률 (100% - 함정 - 몬스터 - 상인)이 일로 들어옵니다.
+            handlePureExploration(ds, stats, gs);
         }
 
         // 4. 상태 저장
@@ -230,9 +255,8 @@ public class DungeonService {
     /**
      * 함정 발동 시 이벤트
      * @param user
-     * @param stats
      */
-    private void handleTrap(UserStatus user, Map<Integer, Integer> stats, GameStatus gs) {
+    private void handleTrap(UserStatus user, GameStatus gs) {
         double dodge = user.getCombatStats().getDodge();
 
         int displayDodge = (int) dodge;
@@ -298,15 +322,16 @@ public class DungeonService {
      */
     private void handlePureExploration(DungeonStatus ds, Map<Integer, Integer> stats, GameStatus gs) {
         // 1. 스탯 기반 탐사 효율 계산 (기본 5% ~ 최대 20% 등)
-        int efficiency = statCalculationService.calculateExplorationEfficiency(stats);
+        DungeonMeta dungeonMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
+        int explorationRate = (int) dungeonMeta.getExplorationRate() + statCalculationService.calculateExplorationEfficiency(stats);
 
         // 2. 진척도 업데이트 (최대 100)
         int currentProgress = ds.getProgress();
-        int nextProgress = Math.min(100, currentProgress + efficiency);
+        int nextProgress = Math.min(100, currentProgress + explorationRate);
         ds.setProgress(nextProgress);
         ds.getFloorProgressMap().put(ds.getDungeonId(), nextProgress);
         // 3. 로그 남기기
-        gs.addLog("주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +" + efficiency + "%)");
+        gs.addLog("주변을 면밀히 조사하며 길을 찾았습니다. (진척도 +" + explorationRate + "%)");
         // 4. 100% 달성 시 안내
         if (nextProgress >= 100) {
             gs.addLog("<span style='color:#ffd700; font-weight:bold;'>[알림] 이 층의 조사가 완료되었습니다! 다음 층으로 내려갈 수 있습니다.</span>");

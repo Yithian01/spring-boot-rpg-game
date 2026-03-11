@@ -653,7 +653,7 @@ public class StatCalculationService {
     /**
      * [던전 전용] 탐사 진척도 효율 계산
      * 이동속도 23: 공간 지각(지형 파악), 24: 직관(길찾기)
-     * 목표: 만렙(스탯 600) 기준 1회 탐사당 약 25% 내외의 진척도
+     * 목표: 만렙(스탯 600) 기준 1회 탐사당 약 15% 내외의 진척도
      */
     public int calculateExplorationEfficiency(Map<?, ?> baseStats) {
         // 1. 이동속도 보너스 (이미 20 내외로 캡이 걸려있음)
@@ -664,9 +664,9 @@ public class StatCalculationService {
 
         double statBonus = (s23 * 0.01) + (s24 * 0.01);
 
-        double totalEfficiency = 5.0 + moveSpdBonus + statBonus;
+        double totalEfficiency = moveSpdBonus + statBonus;
 
-        double threshold = 25.0;
+        double threshold = 10.0;
         double finalEfficiency;
 
         if (totalEfficiency <= threshold) {

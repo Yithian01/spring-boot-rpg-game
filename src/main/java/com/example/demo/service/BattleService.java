@@ -607,6 +607,7 @@ public class BattleService {
         if (isVictory) {
             ActiveMonster monster = ds.getActiveMonster();
             MonsterMeta monsterMeta = gameDataManager.getMonsterMetaMap().get(monster.getMonsterId());
+            DungeonMeta dungeonMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
 
             if (us.getDefeatedMonsterIds() == null) {
                 us.setDefeatedMonsterIds(new HashSet<>());
@@ -649,7 +650,8 @@ public class BattleService {
             ds.setPendingExp(0);
             ds.setActiveMonster(monster);
 
-            int nextProgress = Math.min(100, ds.getProgress() + statCalculationService.calculateExplorationEfficiency(us.getBaseStats()));
+            int explorationRate = (int) dungeonMeta.getExplorationRate() + statCalculationService.calculateExplorationEfficiency(us.getBaseStats());
+            int nextProgress = Math.min(100, ds.getProgress() + explorationRate );
             ds.setProgress(nextProgress);
 
         } else {

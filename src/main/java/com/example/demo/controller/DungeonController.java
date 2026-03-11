@@ -110,6 +110,21 @@ public class DungeonController {
     }
 
     /**
+     * [던전] 다른 지역 이동
+     */
+    @PostMapping("/other-area")
+    public String otherArea(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        dungeonService.goToOtherArea();
+        return "redirect:/game/play";
+    }
+
+    /**
      * [던전] 전투 승리 후 전리품 처리
      */
     @PostMapping("/collect")

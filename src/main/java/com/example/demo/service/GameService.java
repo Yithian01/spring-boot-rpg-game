@@ -579,6 +579,7 @@ public class GameService {
         UserStatus user = userFileRepository.findGameUser();
         if (ds == null || user == null) return null;
 
+        DungeonMeta dungeonMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
         Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
         List<SkillCardDto> skillCards = battleService.getSkillHand(user, ds);
 
@@ -591,6 +592,9 @@ public class GameService {
             pendingEssenceDto = convertToEssencePageDto(ds.getPendingEssence());
         }
 
+        int explorationRate = (int) dungeonMeta.getExplorationRate() + statCalculationService.calculateExplorationEfficiency(stats);
+        boolean isOtherAreas = !dungeonMeta.getOtherAreas().isEmpty();
+
         return DungeonPageDto.builder()
                 .dungeonId(ds.getDungeonId())
                 .dungeonName(ds.getDungeonName())
@@ -600,8 +604,9 @@ public class GameService {
                 .progress(ds.getProgress())
                 .actionCount(ds.getActionCount())
                 .maxActionCount(ds.getMaxActionCount())
-                .explorationEfficiency(statCalculationService.calculateExplorationEfficiency(stats))
+                .explorationEfficiency(explorationRate)
                 .restSafetyRate(statCalculationService.calculateRestSafetyRate(stats))
+                .otherAreas(isOtherAreas)
                 .isInBattle(ds.isInBattle())
                 .activeMonster(ds.getActiveMonster())
                 .skillCards(skillCards)

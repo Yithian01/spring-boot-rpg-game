@@ -202,7 +202,7 @@
     "turnCost": 1,
     "hitChance": 85,
     "cost": { "stamina": 20},
-    "damageScaling": { "magicAtk": 0.5 },
+    "damageScaling": { "magicAtk": 0.3 },
     "statScaling": { "20": 3.0, "23": 1.0 },
     "effect": {
       "type": "DOT",

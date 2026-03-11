@@ -25,6 +25,7 @@ public class DungeonPageDto {
 
     private int explorationEfficiency; // "탐사 시 진척도 +5%" 식의 표시용
     private double restSafetyRate;      // "휴식 안전도 85%" 표시용
+    private boolean otherAreas; // 같은 층에 다른 지역이 존재하는지 여부
 
     private boolean isInBattle;
     private ActiveMonster activeMonster;

@@ -94,6 +94,7 @@ public class GameDataManager  implements ApplicationRunner {
 
         long end = System.currentTimeMillis();
         log.info("========== [GameData] 초기화 완료 (소요시간: {}ms) ==========", end - start);
+        System.out.println("dungeon.meta = " + dungeonMetaMap);
     }
 
     /**

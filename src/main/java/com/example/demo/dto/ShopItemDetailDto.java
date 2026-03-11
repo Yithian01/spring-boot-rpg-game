@@ -11,8 +11,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class ShopItemDetailDto {
-    private String id;
+public class ShopItemDetailDto {
+    private int id;
     private String name;
     private String grade;
     private String icon;

@@ -1,6 +1,7 @@
 package com.example.demo.domain.save;
 
 import com.example.demo.domain.enums.LocationType;
+import com.example.demo.dto.ShopPageDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +17,7 @@ import java.util.List;
 public class GameStatus {
     private LocationType location;
     private Integer dungeonId; // TOWN이면 null
+    private String activeShopNpcId;
 
     // 통합 게임 로그 리스트
     @Builder.Default
@@ -39,5 +41,19 @@ public class GameStatus {
         if (this.gameLogs.size() > 20) {
             this.gameLogs.remove(this.gameLogs.size() - 1);
         }
+    }
+
+    /**
+     * 상점 진입 (Open)
+     */
+    public void openShop(String npcId) {
+        this.setActiveShopNpcId(npcId);
+    }
+
+    /**
+     * 상점 종료 (Close)
+     */
+    public void closeShop() {
+        this.setActiveShopNpcId(null);
     }
 }

@@ -26,6 +26,7 @@ public class GameService {
     private final GameFileRepository gameFileRepository;
     private final EssenceRepository essenceRepository;
     private final ItemInstanceRepository itemInstanceRepository;
+    private final ShopInstanceRepository shopInstanceRepository;
     private final StatCalculationService statCalculationService;
     private final BattleService battleService;
     private final InventoryService inventoryService;
@@ -70,6 +71,15 @@ public class GameService {
      * [새 게임 생성]
      * - 스탯(Stats): 종족별 고정값 사용 (바바리안은 힘이 세다)
      * - 잠재력(Potentials): 완전 랜덤 생성 (바바리안도 마법 S급 가능)
+     * 1) 세이브 파일 초기화
+     * 2) 메타 데이터 메모리 로드
+     * 3) 인벤토리 초기화
+     * 4) 장비 설정
+     * 5) 플레이어 스탯 초기화
+     * 6) 플레이어 자원 수치 보정
+     * 7) 마을 데이터 생성
+     * 8) 마을 상점 생성
+     * 9) 마을 도착 로그
      */
     public void createNewGame(int tribeId) {
         log.info(">>> 새 게임 시작: 기존 데이터 초기화 중...");
@@ -80,6 +90,7 @@ public class GameService {
         dungeonFileRepository.deleteFile();
         itemInstanceRepository.deleteFile();
         essenceRepository.deleteFile();
+        shopInstanceRepository.deleteFile();
 
         // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
@@ -165,14 +176,13 @@ public class GameService {
         // 장착된 초기 장비의 스탯 보너스를 먼저 계산 레이어에 반영합니다.
         statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMetaMap());
 
-        // 7. 자원 수치 보정
+        // 플레이어 자원 수치 보정
         newUser.setCurrentHp(newUser.getCombatStats().getMaxHp());
         newUser.setCurrentMp(newUser.getCombatStats().getMaxMp());
         newUser.setCurrentStamina(newUser.getCombatStats().getMaxStamina());
-
-        // 8. 데이터 저장
         userFileRepository.saveUserStatus(newUser);
 
+        // 마을 데이터 생성
         List<MagicStoneDto> magicStoneCounts = inventoryService.getMagicStoneList();
         TownStatus newTown = TownStatus.builder()
                 .currentTurn(30)
@@ -186,10 +196,16 @@ public class GameService {
         townFileRepository.saveTownStatus(newTown);
 
 
+        // 마을 상점 생성
+        shopService.townStoreRestock();
+
+
+        // 마을 도착 로그
         List<String> gameLog = new ArrayList<>();
         GameStatus gs = GameStatus.builder()
                 .location(LocationType.valueOf("TOWN"))
                 .dungeonId(null)
+                .activeShopNpcId(null)
                 .gameLogs(gameLog)
                 .isClear(false)
                 .build();
@@ -344,8 +360,6 @@ public class GameService {
         boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
         List<MagicStoneDto> magicStoneList = town.getMagicStoneList();
 
-        shopService.townStoreRestock();
-
         return TownPageDto.builder()
                 .day(town.getDay())
                 .currentTurn(town.getCurrentTurn())
@@ -475,8 +489,87 @@ public class GameService {
     }
 
     /**
-     * [조립] 던전 화면 전용 데이터 생성
+     * ShopPageDto 에서 사용하는 헬퍼 메서드
+     * 아이템 설명을 UI 표시 용으로 조립해 반환
      */
+    private List<String> convertToItemStatBonus(ItemMeta meta) {
+        List<String> statBonuses = new ArrayList<>();
+
+        if (meta.isTwoHanded()) {
+            statBonuses.add("● 양손 무기 (보조장비 착용 불가)");
+        }
+
+        // 1. 기초 스탯 보너스 (고정치: +5)
+        if (meta.getBaseStatsBonus() != null) {
+            meta.getBaseStatsBonus().forEach((statId, value) -> {
+                if (value != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    statBonuses.add(statName + " +" + value);
+                }
+            });
+        }
+
+        // 2. 기초 스탯 배율 (퍼센트: +10%) -> 유저님이 원하신 합연산 배율 표시
+        if (meta.getBaseStatsBonusModifiers() != null) {
+            meta.getBaseStatsBonusModifiers().forEach((statId, modifier) -> {
+                if (modifier != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    // 0.1 -> 10% 로 변환
+                    statBonuses.add(statName + " +" + (int)(modifier * 100) + "%");
+                }
+            });
+        }
+
+        // 3. 전투 능력치 보너스 (깡스탯 및 배율합)
+        if (meta.getCombatStatsBonus() != null) {
+            meta.getCombatStatsBonus().forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    // 기존 수식 유지하되 % 판단 로직 적용
+                    String suffix = (key.toLowerCase().contains("rate") ||
+                            key.toLowerCase().contains("dmg") ||
+                            key.toLowerCase().contains("dodge") ||
+                            key.toLowerCase().contains("accuracy")) ? "%" : "";
+                    statBonuses.add(displayName + " +" + value + suffix);
+                }
+            });
+        }
+
+        // 전투 능력치 배율(Modifiers)이 있다면 여기서 추가로 처리 가능
+        if (meta.getCombatStatsBonusModifiers() != null) {
+            meta.getCombatStatsBonusModifiers().forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    statBonuses.add(displayName + " 최종 보정 +" + (int)(value * 100) + "%");
+                }
+            });
+        }
+
+        return statBonuses;
+    }
+
+    /**
+     * ShopPageDto 에서 사용하는 헬퍼 메서드
+     * 아이템 설명(회복정보)을 UI 표시 용으로 조립해 반환
+     */
+    private String convertToItemRecoverEffect(ItemMeta meta) {
+        String recoveryEffect = "";
+
+        if (meta != null && meta.getRecoveryBonus() != null) {
+            List<String> recoveries = new ArrayList<>();
+            meta.getRecoveryBonus().forEach((key, value) -> {
+                if (value > 0) recoveries.add(key.toUpperCase() + " " + value + " 회복");
+            });
+            recoveryEffect = String.join(", ", recoveries);
+        }
+
+        return recoveryEffect;
+    }
+
+
+        /**
+         * [조립] 던전 화면 전용 데이터 생성
+         */
     public DungeonPageDto getDungeonData() {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
         UserStatus user = userFileRepository.findGameUser();
@@ -610,6 +703,46 @@ public class GameService {
                 .statBonuses(statTexts)
                 .skillNames(skillNames)
                 .icon(String.valueOf(ei.getMonsterId()))
+                .build();
+    }
+
+    /**
+     * 상점이 열렸을 경우에만 호출
+     * @param shopId 어떤 상점인지
+     * @return 상점 정보DTO를 반환
+     */
+    public ShopPageDto getShopPageDto(String shopId){
+        ShopInstance shopInstance = shopInstanceRepository.findByNpcId(shopId).orElse(null);
+        if (shopInstance == null) return null;
+
+        ShopMeta shopMeta = gameDataManager.getShopMetaMap().get(shopId);
+        List<ShopItemDetailDto> itemList = new ArrayList<>();
+
+        shopInstance.getItemQty().forEach((key, qty) -> {
+            var itemMeta = gameDataManager.getItemMetaMap().get(key);
+            itemList.add( ShopItemDetailDto.builder()
+                    .id(itemMeta.getId())
+                    .name(itemMeta.getName())
+                    .grade(itemMeta.getGrade())
+                    .icon(itemMeta.getIcon())
+                    .description(itemMeta.getDescription())
+                    .gold((int)(itemMeta.getPrice() * shopMeta.getPriceModifier()))
+                    .type(itemMeta.getType())
+                    .slot(itemMeta.getSlot())
+                    .subType(itemMeta.getSubType())
+                    .statBonuses(convertToItemStatBonus(itemMeta))
+                    .recoveryEffect(convertToItemRecoverEffect(itemMeta))
+                    .twoHanded(itemMeta.isTwoHanded())
+                    .stock(qty)
+                    .isSoldOut(false)
+                    .build());
+        });
+
+        return ShopPageDto.builder()
+                .npcId(shopId)
+                .npcDescription(shopMeta.getNpcDescription())
+                .priceModifier(shopMeta.getPriceModifier())
+                .saleItems(itemList)
                 .build();
     }
 }

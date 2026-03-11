@@ -46,29 +46,78 @@ public class TownService {
         gameFileRepository.saveGameStatus(gs);
     }
 
-    /**
-     * 육체 스탯 기반 노동
-     * @return 노동 결과 반환
-     */
-    public String performWork() {
+    public String performWork(String workType) {
+        // 1. 필요한 모든 데이터 로드
         GameStatus gs = gameFileRepository.findGameStatus();
         UserStatus us = userFileRepository.findGameUser();
         TownStatus ts = townFileRepository.findTownStatus();
 
-        //if (ts.getCurrentTurn() <= 0) return "남은 턴이 없습니다. 던전에 입장하세요!";
+        // 평균 계산은 FinalStats(장착 아이템 포함) 기준
+        Map<Integer, Integer> stats = us.getFinalStats();
 
-        int staminaCost = statCalculationService.calculateWorkStaminaCost(us.getBaseStats());
-        if (us.getCurrentStamina() < staminaCost) return "스태미나가 부족합니다! (필요: " + staminaCost + ")";
+        // 2. 스태미나 비용 계산 (StatCalculationService 활용)
+        int staminaCost = statCalculationService.calculateWorkStaminaCost(stats);
+        if (us.getCurrentStamina() < staminaCost) {
+            return "스태미나가 부족합니다! (필요: " + staminaCost + ")";
+        }
 
-        int earnedGold = statCalculationService.calculateEarnedGold(us.getBaseStats());
-        earnedGold += new Random().nextInt(11);
+        // 3. 업무 설정 매핑
+        String jobName;
+        int basePay;
+        double avgType = 1.0;
+        double multiplier;
 
+        switch (workType) {
+            case "PHYSIQUE" -> {
+                jobName = "🏗️ 성벽 보수 작업";
+                basePay = 25;
+                multiplier = 0.8;
+                avgType = gameDataManager.getCategoryAverage(stats, "PHYSIQUE");
+            }
+            case "SPIRIT" -> {
+                jobName = "📜 마법 도서관 서기";
+                basePay = 10;
+                multiplier = 1.1;
+                avgType = gameDataManager.getCategoryAverage(stats, "SPIRIT");
+            }
+            case "AGILITY" -> {
+                jobName = "🏃 긴급 서신 배달";
+                basePay = 15;
+                multiplier = 0.7;
+                avgType = gameDataManager.getCategoryAverage(stats, "AGILITY");
+            }
+            case "PERCEPTION" -> {
+                jobName = "🔍 골동품 감정";
+                basePay = 5;
+                multiplier = 0.9;
+                avgType = gameDataManager.getCategoryAverage(stats, "PERCEPTION");
+            }
+            default -> { return "잘못된 업무 타입입니다."; }
+        }
+
+        // 4. 골드 계산 (statCalculationService 사용)
+        // 감정(EXPERT)의 10% 대박 로직 등 특수 처리가 필요하다면 여기서 별도로 핸들링하거나
+        // 공통 메서드 호출 후 가공합니다.
+        int earnedGold = statCalculationService.calculateWorkGold(basePay, (int) avgType, multiplier);
+
+        // [특수] EXPERT 타입의 대박 로직 유지
+        if ("EXPERT".equals(workType) && new Random().nextDouble() < 0.1) {
+            earnedGold *= 2;
+            jobName = "🌟 희귀 유물 발견!";
+        }
+
+        // 5. 보상 지급 및 상태 업데이트
         us.setCurrentGold(us.getCurrentGold() + earnedGold);
         us.setCurrentStamina(us.getCurrentStamina() - staminaCost);
         ts.setCurrentTurn(ts.getCurrentTurn() - 1);
+
+        // 노동 시 상점 갱신 (시간 경과 연출)
         shopService.townStoreRestock();
 
-        String resultMsg = "⛏️ 일당으로 " + earnedGold + " G를 벌었습니다! (남은 턴: " + ts.getCurrentTurn() + ")";
+        String resultMsg = String.format("%s 업무를 완료하여 %d G를 벌었습니다! (남은 턴: %d)",
+                jobName, earnedGold, ts.getCurrentTurn());
+
+        // 6. 데이터 저장 및 세금/턴 종료 체크
         saveAll(us, ts, gs);
         return checkTurnAndTax(resultMsg);
     }

@@ -66,9 +66,14 @@
 
 <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillModal(${game.learnedSkills})}"></th:block>
 <th:block th:replace="~{fragments/modals/shop-select-modal :: shopSelectModal}"></th:block>
-
 <th:block th:if="${shop != null}">
     <div th:replace="~{fragments/modals/shop-panel :: shopModal(${shop}, ${game})}"></div>
+</th:block>
+
+<th:block th:with="targetData=${townData != null ? townData : town}">
+    <div th:if="${targetData != null and targetData.workOptions != null}">
+        <div th:replace="~{fragments/modals/work-select-modal :: workSelectModal(options=${targetData.workOptions})}"></div>
+    </div>
 </th:block>
 <script th:inline="javascript">
     /*<![CDATA[*/
@@ -280,6 +285,13 @@
         if (tooltip) tooltip.style.display = 'none';
     }
 
+    function openWorkModal() {
+        document.getElementById('workSelectModal').style.display = 'flex';
+    }
+
+    function closeWorkModal() {
+        document.getElementById('workSelectModal').style.display = 'none';
+    }
     /*]]>*/
 </script>
 </body>

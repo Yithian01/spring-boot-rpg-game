@@ -1,6 +1,7 @@
 package com.example.demo.domain.save;
 
 import com.example.demo.domain.meta.CombatStats;
+import com.example.demo.domain.meta.StatMeta;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

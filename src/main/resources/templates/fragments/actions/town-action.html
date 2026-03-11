@@ -151,9 +151,9 @@
         <form action="/town/tax" method="post" style="display:contents;">
             <button type="submit" class="action-btn btn-tax"><span>📜</span>세금 납부</button>
         </form>
-        <form action="/town/work" method="post" style="display:contents;">
-            <button type="submit" class="action-btn btn-work"><span>⛏️</span>노동 하기</button>
-        </form>
+        <button type="button" class="action-btn btn-work" onclick="openWorkModal()">
+            <span>⛏️</span>노동 하기
+        </button>
         <button type="button" class="action-btn btn-gamble" onclick="openGamble()"><span>🎲</span>도박장</button>
         <button type="button" class="action-btn btn-train" onclick="openTrain()"><span>🌌</span>영혼 단련</button>
         <form action="/town/rest" method="post" style="display:contents;">

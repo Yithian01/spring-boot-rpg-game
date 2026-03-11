@@ -23,7 +23,7 @@ public class TownController {
      * @return 결과 반환
      */
     @PostMapping("/work")
-    public String work(RedirectAttributes redirectAttributes) {
+    public String work(@RequestParam String workType,RedirectAttributes redirectAttributes) {
         String checkMessage = validationService.checkHp();
         if (checkMessage != null && checkMessage.startsWith("GameOver")) {
             redirectAttributes.addFlashAttribute("gameOver", true);
@@ -31,7 +31,7 @@ public class TownController {
             return "redirect:/game/play";
         }
 
-        String resultMessage = townService.performWork();
+        String resultMessage = townService.performWork(workType);
         redirectAttributes.addFlashAttribute("message", resultMessage);
         return "redirect:/game/play";
     }

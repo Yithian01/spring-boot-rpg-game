@@ -364,6 +364,25 @@ public class GameService {
         boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
         List<MagicStoneDto> magicStoneList = inventoryService.getMagicStoneList();
 
+        List<WorkDetailDto> workOptions = List.of(
+                WorkDetailDto.builder()
+                        .workType("PHYSIQUE").workName("성벽 보수 작업")
+                        .baseExpectedGold(100).staminaCost(10).successRate(1.0)
+                        .description("신체를 이용한 안정적인 노동").build(),
+                WorkDetailDto.builder()
+                        .workType("SPIRIT").workName("마법 도서관 서기")
+                        .baseExpectedGold(150).staminaCost(15).successRate(1.0)
+                        .description("정신을 소모하는 고수익 노동").build(),
+                WorkDetailDto.builder()
+                        .workType("AGILITY").workName("긴급 서신 배달")
+                        .baseExpectedGold(80).staminaCost(5).successRate(1.0)
+                        .description("빠른 발을 이용한 저소모 노동").build(),
+                WorkDetailDto.builder()
+                        .workType("PERCEPTION").workName("유물 파편 분류")
+                        .baseExpectedGold(50).staminaCost(10).successRate(0.1).bonusSuccessRate(0.1).bonusStaminaCost(0.2)
+                        .description("운이 좋으면 대박이 터지는 노동").build()
+        );
+
         return TownPageDto.builder()
                 .day(town.getDay())
                 .currentTurn(town.getCurrentTurn())
@@ -374,6 +393,7 @@ public class GameService {
                 .magicStoneList(magicStoneList)
                 .totalMagicStoneCount(magicStoneList.stream().mapToInt(MagicStoneDto::getQuantity).sum())
                 .skillOptions(town.getSkillOptions())
+                .workOptions(workOptions)
                 .build();
     }
 

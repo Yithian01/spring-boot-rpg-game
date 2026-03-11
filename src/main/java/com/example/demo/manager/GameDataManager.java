@@ -633,4 +633,19 @@ public class GameDataManager  implements ApplicationRunner {
 
         return inventory;
     }
+
+    /**
+     * 스탯의 카테고리의 평균을 반환하는 헬퍼 메소드
+     * @param stats 유저 스탯 (BaseStats)
+     * @param category 스탯 카테고리 (PHYSIQUE, SPIRIT, AGILITY, PERCEPTION)
+     * @return 평균 반환
+     */
+    public double getCategoryAverage(Map<Integer, Integer> stats, String category) {
+        // values()를 통해 StatMeta 객체들의 스트림을 생성합니다.
+        return this.statMetaMap.values().stream()
+                .filter(meta -> category.equals(meta.getCategory())) // 카테고리 필터링
+                .mapToInt(meta -> stats.getOrDefault(meta.getId(), 0)) // 유저의 해당 스탯 값 추출
+                .average() // 평균 계산
+                .orElse(0.0);
+    }
 }

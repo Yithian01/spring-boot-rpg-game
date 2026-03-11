@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Slf4j
 @Service
@@ -512,20 +513,14 @@ public class StatCalculationService {
     }
 
     /**
-     * 노동 효율(파워) 계산: 상완/대흉근/전완근 기반
+     * 카테고리 기반 노동 수입 계산
+     * @param basePay 업무별 기본급
+     * @param multiplier 스탯 반영 가중치
      */
-    public int calculateWorkPower(Map<?, ?> baseStats) {
-        // 물리 카테고리 10, 11, 12 기반
-        int power = (getStat(baseStats, 10) + getStat(baseStats, 11) + getStat(baseStats, 12)) / 2;
-        return 10 + power;
-    }
-
-    /**
-     * 예상 획득 골드 계산
-     */
-    public int calculateEarnedGold(Map<?, ?> baseStats) {
-        int power = calculateWorkPower(baseStats);
-        return 10 + (power * 1);
+    public int calculateWorkGold(int basePay, int avgPay, double multiplier) {
+        // (평균 스탯 * 가중치) + 기본급 + 난수(0~10)
+        double gold = (avgPay * multiplier) + basePay;
+        return (int) Math.round(gold + new Random().nextInt(11));
     }
 
     /**

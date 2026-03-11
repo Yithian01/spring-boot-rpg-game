@@ -26,4 +26,7 @@ public class TownPageDto {
 
     // 현재 연성 창에 떠 있는 스킬 카드들 (연성 버튼 클릭 시점에 채워짐)
     private List<RandomSkillCardDto> skillOptions;
+
+    // 노동 모달 전용 정보 추가
+    private List<WorkDetailDto> workOptions;
 }

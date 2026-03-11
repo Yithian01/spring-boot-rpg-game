@@ -192,6 +192,11 @@ public class DungeonService {
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
         DungeonMeta currentMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
 
+        if (ds.getProgress() < 50.0 ){
+            log.info(">>> 진행도 부족");
+            return;
+        }
+
         int otherArea = currentMeta.pickOtherAreaDungeonId();
 
         if (otherArea != 0) {

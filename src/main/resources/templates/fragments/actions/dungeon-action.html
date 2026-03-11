@@ -251,7 +251,26 @@
                 </button>
             </form>
             <button th:unless="${dungeon?.currentFloor > 1}" class="action-btn btn-empty"></button>
-            <button class="action-btn btn-empty"></button>
+
+            <th:block th:if="${dungeon.otherAreas}">
+                <th:block th:if="${dungeon.progress >= 50}">
+                    <form action="/dungeon/other-area" method="post" style="display:contents;">
+                        <button type="submit" class="action-btn" style="background: #8e44ad; border: 1px solid #732d91; border-bottom: 4px solid #5e2075;">
+                            <span>🗺️</span>
+                            다른 지역
+                        </button>
+                    </form>
+                </th:block>
+                <th:block th:unless="${dungeon.progress >= 50}">
+                    <button class="action-btn btn-empty" title="탐사 진척도 50% 필요">
+                        <span>🔒</span>
+                        <small style="font-size: 0.6rem;">진척도 50% 미만</small>
+                    </button>
+                </th:block>
+            </th:block>
+            <th:block th:unless="${dungeon.otherAreas}">
+                <button class="action-btn btn-empty"></button>
+            </th:block>
         </div>
     </th:block>
 </div>

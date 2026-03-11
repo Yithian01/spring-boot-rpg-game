@@ -3,11 +3,10 @@ package com.example.demo.service;
 import com.example.demo.domain.meta.ItemMeta;
 import com.example.demo.domain.meta.ShopMeta;
 import com.example.demo.domain.meta.ShopRandomConfig;
-import com.example.demo.domain.save.GameStatus;
-import com.example.demo.domain.save.ShopInstance;
-import com.example.demo.domain.save.UserStatus;
+import com.example.demo.domain.save.*;
 import com.example.demo.manager.GameDataManager;
 import com.example.demo.repository.GameFileRepository;
+import com.example.demo.repository.InventoryFileRepository;
 import com.example.demo.repository.ShopInstanceRepository;
 import com.example.demo.repository.UserFileRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +28,8 @@ public class ShopService {
     private final ShopInstanceRepository shopInstanceRepository;
     private final UserFileRepository userFileRepository;
     private final GameFileRepository gameFileRepository;
+    private final InventoryService inventoryService;
+    private final InventoryFileRepository inventoryFileRepository;
     private final Random random = new Random();
 
     /**
@@ -72,25 +73,19 @@ public class ShopService {
         gameFileRepository.saveGameStatus(gs);
     }
 
-    /**
-     * 아이템 구매 시 수량 감소 처리 및 저장
-     * 구매 성공 여부
-     * TO-BE
-     * 0 : 성공
-     * 1 : 상점 인스턴스 미존재
-     * 2 : 재고 부족
-     */
     public void decreaseStock(String npcId, int itemMetaId, int quantity) {
         // 1. 초기 데이터 로드
         GameStatus gs = gameFileRepository.findGameStatus();
         UserStatus us = userFileRepository.findGameUser();
-        ShopInstance si = shopInstanceRepository.findByNpcId(npcId).orElse(null);
+        // 인벤토리 상태 로드 추가
+        InventoryStatus inv = inventoryFileRepository.findInventoryStatus();
 
+        ShopInstance si = shopInstanceRepository.findByNpcId(npcId).orElse(null);
         ItemMeta itemMeta = gameDataManager.getItemMetaMap().get(itemMetaId);
         ShopMeta shopMeta = gameDataManager.getShopMetaMap().get(npcId);
 
-        // 2. 유효성 검사 (Validation Phase)
-        if (si == null || itemMeta == null || shopMeta == null) {
+        // 2. 유효성 검사
+        if (si == null || itemMeta == null || shopMeta == null || inv == null) {
             logAndSave(gs, "구매 실패: 상점 또는 아이템 정보가 유효하지 않습니다.");
             return;
         }
@@ -99,28 +94,56 @@ public class ShopService {
         int currentQty = si.getItemQty().getOrDefault(itemMetaId, 0);
         int totalPrice = (int) (itemMeta.getPrice() * shopMeta.getPriceModifier()) * quantity;
 
-        // 4. 구매 가능 여부 체크 (Business Guard Clauses)
+        // 4. 구매 가능 여부 체크
         if (currentQty < quantity) {
             logAndSave(gs, String.format("구매 실패: [%s]의 재고가 부족합니다.", itemMeta.getName()));
             return;
         }
-
         if (us.getCurrentGold() < totalPrice) {
             logAndSave(gs, String.format("구매 실패: 골드가 부족합니다. (필요: %d G)", totalPrice));
             return;
         }
 
-        // 5. 상태 변경 (State Mutation)
+        // 5. 상태 변경 (골드 및 상점 재고)
         us.setCurrentGold(us.getCurrentGold() - totalPrice);
         si.getItemQty().put(itemMetaId, currentQty - quantity);
 
-        // 6. 결과 기록 및 저장
+        // 6. [핵심 추가] 아이템 인스턴스 생성 및 인벤토리 추가
+        // 새로운 아이템 객체 조립
+        ItemInstance newItem = ItemInstance.builder()
+                .instanceId(java.util.UUID.randomUUID().toString())
+                .itemMetaId(itemMeta.getId())
+                .customName(itemMeta.getName())
+                .grade(itemMeta.getGrade())
+                .type(itemMeta.getType())
+                .slot(itemMeta.getSlot())
+                .subType(itemMeta.getSubType())
+                .twoHanded(itemMeta.isTwoHanded())
+                .description(itemMeta.getDescription())
+                .quantity(quantity) // 구매한 수량만큼 설정
+                .enhancementLevel(0)
+                .price(itemMeta.getPrice())
+                .baseStatsBonus(itemMeta.getBaseStatsBonus())
+                .combatStatsBonus(itemMeta.getCombatStatsBonus())
+                .baseStatsBonusModifiers(itemMeta.getBaseStatsBonusModifiers())
+                .combatStatsBonusModifiers(itemMeta.getCombatStatsBonusModifiers())
+                .recoveryBonus(itemMeta.getRecoveryBonus())
+                .grantedSkillIds(itemMeta.getGrantedSkillIds())
+                .build();
+
+        // 인벤토리 서비스의 통합 게이트웨이 호출 (중첩 처리 등 수행)
+        inventoryService.processAddItem(inv, newItem, true);
+
+        // 7. 결과 기록 및 저장
         String successMsg = String.format("✨ [%s] %d개 구매 완료! (잔액: %d G)",
                 itemMeta.getName(), quantity, us.getCurrentGold());
         gs.addLog(successMsg);
 
-        saveAll(gs, us, si); // 한 번에 저장
-        log.info("Purchase Success: {} | Remaining Stock: {}", itemMeta.getName(), currentQty - quantity);
+        // 변경된 모든 상태 저장 (InventoryStatus 포함)
+        inventoryFileRepository.saveInventoryStatus(inv);
+        saveAll(gs, us, si);
+
+        log.info("Purchase Success: {} | Remaining Stock: {}", itemMeta.getName(), si.getItemQty().get(itemMetaId));
     }
 
     /**

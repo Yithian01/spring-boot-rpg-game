@@ -210,6 +210,70 @@
             const colors = { 'COMMON': '#555', 'UNCOMMON': '#1eff00', 'RARE': '#0070dd', 'EPIC': '#a335ee', 'LEGENDARY': '#ff8000' };
             return colors[grade] || '#444';
         };
+
+        // --- 판매 모달 관련 변수 및 함수 ---
+        let currentSellItemId = null;
+        let currentItemGold = 0;
+        let currentMaxQty = 1;
+
+        window.openSellModal = function(id, name, maxQty, gold) {
+            currentSellItemId = id;
+            currentItemGold = gold;
+            currentMaxQty = maxQty;
+
+            document.getElementById('modal-item-name').innerText = name;
+            document.getElementById('modal-max-label').innerText = "보유 수량: " + maxQty;
+
+            const qtyInput = document.getElementById('modal-qty-input');
+            qtyInput.value = 1;
+            qtyInput.max = maxQty;
+
+            document.getElementById('sell-modal').style.display = 'flex';
+            updateTotalPrice();
+        };
+
+        window.closeSellModal = function() {
+            document.getElementById('sell-modal').style.display = 'none';
+        };
+
+        window.changeQty = function(delta) {
+            const input = document.getElementById('modal-qty-input');
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            if (val > currentMaxQty) val = currentMaxQty;
+            input.value = val;
+            updateTotalPrice();
+        };
+
+        window.setMaxQty = function() {
+            document.getElementById('modal-qty-input').value = currentMaxQty;
+            updateTotalPrice();
+        };
+
+        window.updateTotalPrice = function() {
+            const qty = parseInt(document.getElementById('modal-qty-input').value) || 0;
+            const total = qty * currentItemGold;
+            document.getElementById('modal-total-price').innerText = total.toLocaleString();
+        };
+
+        window.confirmSell = function() {
+            const qty = document.getElementById('modal-qty-input').value;
+            const form = document.getElementById('form-sell-' + currentSellItemId);
+
+            if (form) {
+                // form 내부의 quantity hidden input 값을 업데이트 후 제출
+                form.querySelector('input[name="quantity"]').value = qty;
+                form.submit();
+            }
+        };
+
+        // 모달 바깥 클릭 시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('sell-modal');
+            if (event.target == modal) {
+                closeSellModal();
+            }
+        };
     </script>
 </div>
 </html>

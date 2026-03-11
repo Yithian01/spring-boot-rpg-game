@@ -493,7 +493,7 @@ public class StatCalculationService {
     public int calculateWorkGold(int basePay, int avgPay, double multiplier) {
         // (평균 스탯 * 가중치) + 기본급 + 난수(0~10)
         double gold = (avgPay * multiplier) + basePay;
-        return (int) Math.round(gold + new Random().nextInt(11));
+        return (int) gold;
     }
 
     /**

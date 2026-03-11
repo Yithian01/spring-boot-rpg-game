@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.text.DecimalFormat;
 import com.example.demo.domain.meta.GrowthMeta;
+import com.example.demo.domain.meta.LifeStats;
 import com.example.demo.domain.meta.SkillMeta;
 import com.example.demo.domain.meta.StatMeta;
 import com.example.demo.domain.save.GameStatus;
@@ -47,68 +48,71 @@ public class TownService {
     }
 
     public String performWork(String workType) {
-        // 1. 필요한 모든 데이터 로드
+        // 1. 데이터 로드
         GameStatus gs = gameFileRepository.findGameStatus();
         UserStatus us = userFileRepository.findGameUser();
         TownStatus ts = townFileRepository.findTownStatus();
+        LifeStats ls = us.getLifeStats();
 
-        // 평균 계산은 FinalStats(장착 아이템 포함) 기준
         Map<Integer, Integer> stats = us.getFinalStats();
 
-        double staminaMultiplier =  1.0 - (us.getLifeStats().getWorkStaminaBonus() / 100);
-        int staminaCost = 0;
+        // 배율 계산 (실수 연산)
+        double staminaMultiplier = 1.0 - (ls.getWorkStaminaBonus() / 100.0);
+        double goldBonusMultiplier = 1.0 + (ls.getWorkGoldBonus() / 100.0); // 보수 금액 증가 15% -> 1.15
 
-        // 3. 업무 설정 매핑
+        int staminaCost = 0;
         String jobName;
         int basePay;
-        double avgType = 1.0;
+        double avgType;
         double multiplier;
 
+        // 3. 업무 설정 매핑 (basePay에서 보너스를 미리 곱하지 말고, 순수 기본값만 세팅)
         switch (workType) {
             case "PHYSIQUE" -> {
                 jobName = "🏗️ 성벽 보수 작업";
                 basePay = 25;
                 avgType = gameDataManager.getCategoryAverage(stats, "PHYSIQUE");
                 multiplier = 0.8;
-                staminaCost = (int)(10 * staminaMultiplier);
+                staminaCost = (int) (10 * staminaMultiplier);
             }
             case "SPIRIT" -> {
                 jobName = "📜 마법 도서관 서기";
                 basePay = 10;
                 avgType = gameDataManager.getCategoryAverage(stats, "SPIRIT");
                 multiplier = 1.1;
-                staminaCost = (int)(15 * staminaMultiplier);
+                staminaCost = (int) (15 * staminaMultiplier);
             }
             case "AGILITY" -> {
                 jobName = "🏃 긴급 서신 배달";
                 basePay = 15;
                 avgType = gameDataManager.getCategoryAverage(stats, "AGILITY");
                 multiplier = 0.7;
-                staminaCost = (int)(5 * staminaMultiplier);
+                staminaCost = (int) (5 * staminaMultiplier);
             }
             case "PERCEPTION" -> {
-                jobName = "🔍 골동품 감정";
+                jobName = "🔍 유물 파편 분류"; // 화면과 명칭 통일
                 basePay = 5;
                 avgType = gameDataManager.getCategoryAverage(stats, "PERCEPTION");
                 multiplier = 0.9;
-                staminaCost = (int)(10 * staminaMultiplier);
+                staminaCost = (int) (10 * staminaMultiplier);
             }
             default -> { return "잘못된 업무 타입입니다."; }
         }
 
-        // 2. 스태미나 비용 계산 (StatCalculationService 활용)
+        // 2. 스태미나 체크
         if (us.getCurrentStamina() < staminaCost) {
             return "스태미나가 부족합니다! (필요: " + staminaCost + ")";
         }
 
-        // 4. 골드 계산 (statCalculationService 사용)
-        // 감정(EXPERT)의 10% 대박 로직 등 특수 처리가 필요하다면 여기서 별도로 핸들링하거나
-        // 공통 메서드 호출 후 가공합니다.
-        int earnedGold = statCalculationService.calculateWorkGold(basePay, (int) avgType, multiplier);
+        // 4. 골드 계산
+        // [중요] statCalculationService 결과값에 최종적으로 goldBonusMultiplier를 곱해줍니다.
+        int earnedGold = (int) (statCalculationService.calculateWorkGold(basePay, (int) avgType, multiplier) * goldBonusMultiplier);
 
-        // [특수] EXPERT 타입의 대박 로직 유지
-        if ("EXPERT".equals(workType) && new Random().nextDouble() < 0.1) {
-            earnedGold *= 2;
+        // [특수] PERCEPTION 타입 대박 로직 (오타 수정: EXPERT -> PERCEPTION)
+        // 확률 또한 화면과 일치시키기 위해 (10 + 보너스확률) 적용
+        double totalSuccessChance = (10.0 + ls.getWorkSuccessBonus()) / 100.0;
+        if ("PERCEPTION".equals(workType) && new Random().nextDouble() < totalSuccessChance) {
+            earnedGold *= 2; // 대박 시 최종 금액의 2배
             jobName = "🌟 희귀 유물 발견!";
         }
 
@@ -117,13 +121,11 @@ public class TownService {
         us.setCurrentStamina(us.getCurrentStamina() - staminaCost);
         ts.setCurrentTurn(ts.getCurrentTurn() - 1);
 
-        // 노동 시 상점 갱신 (시간 경과 연출)
         shopService.townStoreRestock();
 
         String resultMsg = String.format("%s 업무를 완료하여 %d G를 벌었습니다! (남은 턴: %d)",
                 jobName, earnedGold, ts.getCurrentTurn());
 
-        // 6. 데이터 저장 및 세금/턴 종료 체크
         saveAll(us, ts, gs);
         return checkTurnAndTax(resultMsg);
     }

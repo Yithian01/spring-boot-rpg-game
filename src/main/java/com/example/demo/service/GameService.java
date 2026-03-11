@@ -369,30 +369,37 @@ public class GameService {
         List<WorkDetailDto> workOptions = List.of(
                 WorkDetailDto.builder()
                         .workType("PHYSIQUE").workName("성벽 보수 작업")
-                        .baseExpectedGold(statCalculationService.calculateWorkGold(25, (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "PHYSIQUE"), 0.8))
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(25,
+                                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "PHYSIQUE"), 0.8))
                         .bonusGold(ls.getWorkGoldBonus())
                         .staminaCost(10).bonusStaminaCost(ls.getWorkStaminaBonus())
                         .successRate(100)
                         .description("신체를 이용한 안정적인 노동").build(),
                 WorkDetailDto.builder()
                         .workType("SPIRIT").workName("마법 도서관 서기")
-                        .baseExpectedGold(150).bonusGold(ls.getWorkGoldBonus())
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(10,
+                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "SPIRIT"), 1.1))
+                        .bonusGold(ls.getWorkGoldBonus())
                         .staminaCost(15).bonusStaminaCost(ls.getWorkStaminaBonus())
                         .successRate(100)
                         .description("정신을 소모하는 고수익 노동").build(),
                 WorkDetailDto.builder()
                         .workType("AGILITY")
                         .workName("긴급 서신 배달")
-                        .baseExpectedGold(80).bonusGold(ls.getWorkGoldBonus())
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(15,
+                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "AGILITY"), 0.7))
+                        .bonusGold(ls.getWorkGoldBonus())
                         .staminaCost(5).bonusStaminaCost(ls.getWorkStaminaBonus())
                         .successRate(100)
                         .description("빠른 발을 이용한 저소모 노동").build(),
                 WorkDetailDto.builder()
                         .workType("PERCEPTION").workName("유물 파편 분류")
-                        .baseExpectedGold(50).bonusGold(ls.getWorkGoldBonus())
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(5,
+                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "PERCEPTION"), 0.9))
+                        .bonusGold(ls.getWorkGoldBonus())
                         .staminaCost(10).bonusStaminaCost(ls.getWorkStaminaBonus())
                         .successRate(10).bonusSuccessRate(ls.getWorkSuccessBonus())
-                        .description("운이 좋으면 대박이 터지는 노동").build()
+                        .description("희귀 유물 발견 시 골드 2배").build()
         );
 
         return TownPageDto.builder()

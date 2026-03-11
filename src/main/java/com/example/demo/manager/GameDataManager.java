@@ -365,7 +365,7 @@ public class GameDataManager  implements ApplicationRunner {
             Map.entry("toxicPen", "독성 관통"),
 
             //=== 생활 스탯 ===
-            Map.entry("workGoldBonus", "노동 기본급 보너스"),
+            Map.entry("workGoldBonus", "노동 보수 효율"),
             Map.entry("workStaminaBonus", "노동 스테미나 효율"),
             Map.entry("workSuccessBonus", "노동 대박 확률"),
 

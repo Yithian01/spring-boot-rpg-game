@@ -11,7 +11,7 @@
                     style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; z-index: 10;">&times;</button>
 
             <div class="modal-header" style="border-bottom: 1px solid #333; padding: 15px 20px;">
-                <h5 class="modal-title">⚒️ 마을 노동 센터</h5>
+                <h5 class="modal-title">⚒️ 노동 게시판 </h5>
             </div>
 
             <div class="modal-body p-4">
@@ -27,32 +27,32 @@
                                     <div class="work-name" th:text="${option.workName}">업무명</div>
                                     <div class="work-stat-detail">
                                         <span class="stat-unit">
-                                            💰 <span th:text="${#numbers.formatDecimal(option.baseExpectedGold * (1 + option.bonusGold), 1, 0)}"
+                                            💰 <span th:text="${#numbers.formatDecimal(option.baseExpectedGold * (1 + (option.bonusGold / 100.0)), 1, 0)}"
                                                     th:classappend="${option.bonusGold > 0} ? 'text-bonus' : ''">0</span>G
                                         </span>
                                         <span class="bonus-tag" th:if="${option.bonusGold > 0}"
-                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusGold / 100, 1, 0) + '%)'}"></span>
+                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusGold , 1, 0) + '%)'}"></span>
 
                                         <span style="color: #444; margin: 0 8px;">|</span>
 
                                         <span class="stat-unit">
-                                            ⚡ <span th:text="${#numbers.formatDecimal(option.staminaCost * (1 + option.bonusStaminaCost), 1, 0)}"
+                                            ⚡ <span th:text="${#numbers.formatDecimal(option.staminaCost * (1 - (option.bonusStaminaCost / 100.0)), 1, 0)}"
                                                     th:classappend="${option.bonusStaminaCost != 0} ? 'text-stamina-bonus' : ''">0</span>
                                         </span>
                                         <span class="bonus-low-tag" th:if="${option.bonusStaminaCost != 0}"
-                                              th:text="${(option.bonusStaminaCost > 0 ? '+' : '') + #numbers.formatDecimal(option.bonusStaminaCost / 100, 1, 0) + '%'}"></span>
+                                              th:text="${(option.bonusStaminaCost > 0 ? '-' : '') + #numbers.formatDecimal(option.bonusStaminaCost, 1, 0) + '%'}"></span>
                                     </div>
                                     <div class="work-desc" th:text="${option.description}">설명</div>
                                 </div>
 
-                                <div class="work-rate-box">
-                                    <div class="rate-label">대박 확률</div>
+                                <div class="work-rate-box" th:if="${option.workType == 'PERCEPTION'}">
+                                    <div class="rate-label">희귀유물 발견 확률</div>
                                     <div class="rate-values">
                                         <span class="main-rate"
                                               th:classappend="${option.bonusSuccessRate > 0} ? 'text-bonus' : ''"
-                                              th:text="${#numbers.formatDecimal((option.successRate + option.bonusSuccessRate) / 100, 1, 0)} + '%'">10%</span>
+                                              th:text="${#numbers.formatDecimal((option.successRate + option.bonusSuccessRate), 1, 0)} + '%'">10%</span>
                                         <span class="bonus-tag" th:if="${option.bonusSuccessRate > 0}"
-                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusSuccessRate / 100, 1, 0) + '%)'}"></span>
+                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusSuccessRate, 1, 0) + '%)'}"></span>
                                     </div>
                                 </div>
                             </button>

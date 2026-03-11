@@ -175,22 +175,12 @@
             </button>
         </form>
 
-        <form action="/inventory/gamble-item" method="post" style="display:contents;"
-              th:onsubmit="|return confirm('${gameData.boxPrice}골드를 지불하고 비밀 상자를 여시겠습니까?')|">
-            <button type="submit" class="action-btn btn-shop">
-                <span>🎁</span>
-                <div class="shop-content-row">
-                    <span style="font-size: 0.9rem;">랜덤 박스</span>
-                    <div class="price-tag">
-                        <span class="gold-text" th:text="${#numbers.formatInteger(gameData.boxPrice, 3, 'COMMA')} + 'G'"></span>
-                        <small th:if="${gameData.boxDiscount > 0}"
-                               class="discount-text"
-                               th:text="'-' + ${gameData.boxDiscount} + '%'">
-                        </small>
-                    </div>
-                </div>
-            </button>
-        </form>
+        <button type="button" class="action-btn btn-shop" onclick="openShopSelector()">
+            <span>🏪</span>
+            <div class="shop-content-row">
+                <span style="font-size: 0.9rem;">상점 방문</span>
+            </div>
+        </button>
 
         <button type="button"
                 class="action-btn btn-extract"

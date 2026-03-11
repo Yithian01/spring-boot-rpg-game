@@ -15,6 +15,8 @@
     <th:block th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/skill-selection :: skillSelectionStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/shop-select-modal :: shopSelectStyle}"></th:block>
+    <th:block th:replace="~{fragments/actions/shop-panel :: shopStyle}"></th:block>
 </head>
 <body>
 
@@ -33,7 +35,7 @@
         <div class="box col-inv">
             <h2>🎒 소지품 가방</h2>
             <div style="flex: 1; min-height: 0;">
-                <div th:replace="~{fragments/inventory :: inventoryList(${game.items}, 0)}"></div>
+                <div th:replace="~{fragments/inventory :: inventoryList(${game.items}, 1)}"></div>
             </div>
         </div>
 
@@ -63,7 +65,11 @@
 </th:block>
 
 <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillModal(${game.learnedSkills})}"></th:block>
+<th:block th:replace="~{fragments/modals/shop-select-modal :: shopSelectModal}"></th:block>
 
+<th:block th:if="${shop != null}">
+    <div th:replace="~{fragments/actions/shop-panel :: shopModal(${shop}, ${game})}"></div>
+</th:block>
 <script th:inline="javascript">
     /*<![CDATA[*/
 

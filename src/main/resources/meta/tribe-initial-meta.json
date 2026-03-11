@@ -2,7 +2,7 @@
   {
     "tribeId": 1,
     "image": "/images/tribes/tribe_1.png",
-    "gold": 100,
+    "gold": 1000000000,
     "initialEquipment": {
       "WEAPON": 10,
       "BODY": 11,

@@ -183,14 +183,14 @@ public class GameService {
         userFileRepository.saveUserStatus(newUser);
 
         // 마을 데이터 생성
-        List<MagicStoneDto> magicStoneCounts = inventoryService.getMagicStoneList();
+        List<MagicStoneDto> magicStoneList = inventoryService.getMagicStoneList();
         TownStatus newTown = TownStatus.builder()
                 .currentTurn(30)
                 .maxTurn(30)
                 .day(1)
                 .currentTax(900000)
                 .isTaxPaid(false)
-                .magicStoneList(magicStoneCounts)
+                .magicStoneList(magicStoneList)
                 .skillOptions(new ArrayList<>())
                 .build();
         townFileRepository.saveTownStatus(newTown);
@@ -362,7 +362,7 @@ public class GameService {
     public TownPageDto getTownData() {
         TownStatus town = townFileRepository.findTownStatus();
         boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
-        List<MagicStoneDto> magicStoneList = town.getMagicStoneList();
+        List<MagicStoneDto> magicStoneList = inventoryService.getMagicStoneList();
 
         return TownPageDto.builder()
                 .day(town.getDay())

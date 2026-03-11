@@ -40,6 +40,7 @@ public class ItemInstance {
 
     private Map<Integer, Double> baseStatsBonusModifiers;
     private Map<String, Double> combatStatsBonusModifiers;
+    private Map<String, Double> lifeStatsBonus;
 
     private List<Integer> grantedSkillIds;
 
@@ -65,6 +66,7 @@ public class ItemInstance {
                 .recoveryBonus(meta.getRecoveryBonus() != null ? new HashMap<>(meta.getRecoveryBonus()) : new HashMap<>())
                 .baseStatsBonusModifiers(meta.getBaseStatsBonusModifiers() != null ? new HashMap<>(meta.getBaseStatsBonusModifiers()) : new HashMap<>())
                 .combatStatsBonusModifiers(meta.getCombatStatsBonusModifiers() != null ? new HashMap<>(meta.getCombatStatsBonusModifiers()) : new HashMap<>())
+                .lifeStatsBonus(meta.getLifeStatsBonus() != null ? new HashMap<>(meta.getLifeStatsBonus()) : new HashMap<>())
                 .grantedSkillIds(meta.getGrantedSkillIds() != null ? List.copyOf(meta.getGrantedSkillIds()) : List.of())
                 .build();
     }
@@ -91,6 +93,7 @@ public class ItemInstance {
                 .recoveryBonus(meta.getRecoveryBonus() != null ? new HashMap<>(meta.getRecoveryBonus()) : new HashMap<>())
                 .baseStatsBonusModifiers(meta.getBaseStatsBonusModifiers() != null ? new HashMap<>(meta.getBaseStatsBonusModifiers()) : new HashMap<>())
                 .combatStatsBonusModifiers(meta.getCombatStatsBonusModifiers() != null ? new HashMap<>(meta.getCombatStatsBonusModifiers()) : new HashMap<>())
+                .lifeStatsBonus(meta.getLifeStatsBonus() != null ? new HashMap<>(meta.getLifeStatsBonus()) : new HashMap<>())
                 .grantedSkillIds(meta.getGrantedSkillIds() != null ? List.copyOf(meta.getGrantedSkillIds()) : List.of())
                 .build();
     }

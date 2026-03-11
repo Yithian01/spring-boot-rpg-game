@@ -34,5 +34,6 @@ public class EssenceInstance {
     private Map<Integer, Integer> baseStatsBonus = new HashMap<>();
     @Builder.Default
     private Map<String, Double> combatStatsBonus = new HashMap<>();
-
+    @Builder.Default
+    private Map<String, Double> lifeStatsBonus = new HashMap<>();
 }

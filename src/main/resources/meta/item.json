@@ -3659,5 +3659,75 @@
       "mp": 1800,
       "stamina": 100
     }
+  },
+  {
+    "id": 700,
+    "name": "금이 간 행운의 주사위",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "AMULET",
+    "twoHanded": false,
+    "description": "한쪽 모서리가 깨져 특정 숫자가 더 잘 나올 것 같은 예감이 드는 주사위입니다.",
+    "price": 150000,
+    "icon": "/images/items/700.png",
+    "baseStatsBonus": { "20": 5.0 },
+    "lifeStatsBonus": {
+      "gambleWinRateBonus": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 701,
+    "name": "방랑 도박사의 구리 칩",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "MEDAL",
+    "twoHanded": false,
+    "description": "수많은 판을 거쳐 손때가 탄 구리 칩입니다. 기묘한 승부욕을 자극합니다.",
+    "price": 450000,
+    "icon": "/images/items/701.png",
+    "baseStatsBonus": { "20": 10.0, "16": 5.0 },
+    "lifeStatsBonus": {
+      "gambleWinRateBonus": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 702,
+    "name": "카지노 거물의 황금 인장",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "MEDAL",
+    "twoHanded": false,
+    "description": "승리의 여신이 미소 짓는 자만이 가질 수 있다는 화려한 인장입니다.",
+    "price": 1200000,
+    "icon": "/images/items/702.png",
+    "baseStatsBonus": { "20": 20.0, "16": 15.0 },
+    "lifeStatsBonus": {
+      "gambleWinRateBonus": 8.0,
+      "gambleMultiplierBonus": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 777,
+    "name": "운명을 뒤트는 조커 카드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "MEDAL",
+    "twoHanded": false,
+    "description": "확률이라는 인과율을 무시하고 사용자에게 승리를 강요하는 전설적인 카드입니다.",
+    "price": 3500000,
+    "icon": "/images/items/703.png",
+    "baseStatsBonus": { "20": 40.0, "16": 25.0, "23": 10.0 },
+    "lifeStatsBonus": {
+      "gambleWinRateBonus": 10.0,
+      "gambleMultiplierBonus": 30.0
+    },
+    "grantedSkillIds": []
   }
 ]

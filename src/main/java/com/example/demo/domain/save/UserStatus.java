@@ -1,6 +1,7 @@
 package com.example.demo.domain.save;
 
 import com.example.demo.domain.meta.CombatStats;
+import com.example.demo.domain.meta.LifeStats;
 import com.example.demo.domain.meta.StatMeta;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -110,4 +111,9 @@ public class UserStatus {
         }
         return defeatedMonsterIds;
     }
+
+    /* =========================
+     * 10. 생활 능력치 (현재 적용값)
+     * ========================= */
+    private LifeStats lifeStats;
 }

@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.meta.CombatStats;
-import com.example.demo.domain.meta.ItemMeta;
-import com.example.demo.domain.meta.SkillEffect;
-import com.example.demo.domain.meta.SkillMeta;
+import com.example.demo.domain.meta.*;
 import com.example.demo.domain.save.*;
 import com.example.demo.repository.EssenceRepository;
 import com.example.demo.repository.ItemInstanceRepository;
@@ -55,9 +52,9 @@ public class StatCalculationService {
 
         Map<Integer, Integer> baseStatOffsets = new HashMap<>();     // 고정치 (+)
         Map<Integer, Double> baseStatModifiers = new HashMap<>();    // 배율합 (%)
-
         Map<String, Double> combatStatOffsets = new HashMap<>();    // 전투스탯 고정치
         Map<String, Double> combatStatModifiers = new HashMap<>();   // 전투스탯 배율합
+        Map<String, Double> lifeStatOffsets = new HashMap<>(); // 생활 스탯용
 
         // 1. [장착 아이템] 보너스 수집
         if (user.getEquippedItems() != null) {
@@ -82,6 +79,10 @@ public class StatCalculationService {
                 // 전투 스탯 배율 수집
                 if (ii.getCombatStatsBonusModifiers() != null) {
                     ii.getCombatStatsBonusModifiers().forEach((name, val) -> combatStatModifiers.merge(name, val, Double::sum));
+                }
+                // 생활 스탯 배율 수집
+                if (ii.getLifeStatsBonus() != null) {
+                    ii.getLifeStatsBonus().forEach((name, val) -> lifeStatOffsets.merge(name, val, Double::sum));
                 }
             }
         }
@@ -109,10 +110,11 @@ public class StatCalculationService {
                             combatStatOffsets.merge(name, val, Double::sum));
                 }
                 // 만약 정수에 배율(%) 보너스도 있다면 동일하게 merge 처리
+                if (ei.getLifeStatsBonus() != null) {
+                    ei.getLifeStatsBonus().forEach((name, val) -> lifeStatOffsets.merge(name, val, Double::sum));
+                }
             }
         }
-
-
 
         // 3. [액티브 상태(버프)] 보너스 수집
         if (user.getActiveStatuses() != null) {
@@ -147,14 +149,18 @@ public class StatCalculationService {
         // 5. [전투 능력치 수식 레이어 적용]
         CombatStats combat = new CombatStats();
         applyBaseFormulas(combat, finalStats); // calculateMaxHp 등 기존 수식 함수들 호출
-
         // 6. [전투 스탯 최종 보정]
         // (A) 고정치 보정: 예) 공격력 +50
         combatStatOffsets.forEach((name, val) -> combat.applyCombatStatsBonus(name, val.doubleValue()));
-
         // (B) 배율 보정: 예) 공격력 +20% (합연산된 배율 적용)
         combatStatModifiers.forEach((name, val) -> combat.applyModifier(name, val));
         user.setCombatStats(combat);
+
+        // 🔥 7. [생활 능력치 최종 적용]
+        LifeStats life = new LifeStats();
+        applyLifeBaseFormulas(life, finalStats);
+        lifeStatOffsets.forEach((name, val) -> life.applyLifeStatsBonus(name, val.doubleValue()));
+        user.setLifeStats(life);
 
         user.setCurrentHp((int) Math.round(user.getCombatStats().getMaxHp() * hpRate));
         user.setCurrentMp((int) Math.round(user.getCombatStats().getMaxMp() * mpRate));
@@ -220,39 +226,6 @@ public class StatCalculationService {
         combat.setHolyPen(0);
         combat.setDarkPen(0);
         combat.setChaosPen(0);
-    }
-
-    /**
-     * 전투 스탯 계산 메소드 (합연산: item + potion)
-     * @param user
-     * @param mods
-     */
-    private void applyCombatStatsBonus(UserStatus user, Map<String, Double> mods) {
-        if (mods == null || mods.isEmpty()) return;
-
-        mods.forEach((name, value) -> user.getCombatStats().applyCombatStatsBonus(name, value));
-    }
-
-    /**
-     * 전투 계산 메소드 (곱연산: BUFF + DEBUFF + potion)
-     * @param user 플레이어
-     * @param mods 전투 스탯
-     */
-    private void applyCombatModifiers(UserStatus user, Map<String, Double> mods) {
-        if (mods == null || mods.isEmpty()) return;
-
-        mods.forEach((name, value) -> user.getCombatStats().applyModifier(name, value));
-    }
-
-    /**
-     * 전투 계산 메소드 (곱연산: BUFF + DEBUFF)
-     * @param mstActiveStats 몬스터 적용할 스탯
-     * @param mods 전투 스탯
-     */
-    private void applyCombatModifiers(CombatStats mstActiveStats, Map<String, Double> mods) {
-        if (mods == null || mods.isEmpty()) return;
-
-        mods.forEach((name, value) -> mstActiveStats.applyModifier(name, value));
     }
 
     /**
@@ -1106,5 +1079,61 @@ public class StatCalculationService {
         double finalChance = Math.max(0, (skillBaseChance + bonusPen)- (baseRes + bonusRes));
 
         return (int) Math.round(finalChance);
+    }
+
+    //=================================
+    //===       생활 스탯 관련      =====
+    //=================================
+
+    /**
+     * [헬퍼] 수식을 통한 기본 생활 능력치 세팅
+     * 기본 스탯(BaseStats)에 의한 기초 확률/보너스를 LifeStats 객체에 담습니다.
+     */
+    private void applyLifeBaseFormulas(LifeStats life, Map<Integer, Integer> stats) {
+        life.setWorkGoldBonus(0.0);
+        life.setWorkStaminaBonus(0.0);
+        life.setWorkSuccessBonus(0.0);
+        life.setGambleWinRateBonus(calculateFinalGambleWinRateBonus(stats));
+        life.setGambleMultiplierBonus(0.0);
+        life.setBartering(calculateFinalBartering(stats));
+        life.setRestEfficiency(0.0);
+        life.setTaxReduction(0.0);
+    }
+
+    /**
+     * 최종 도박 승률 계산
+     * 스탯 9일 때: 5 + 1.2 = 6.2%
+     * 스탯 140일 때: 5 + 20.0 = 25.0%
+     */
+    public double calculateFinalGambleWinRateBonus(Map<?, ?> baseStats) {
+
+        // 1. 소프트 캡이 적용된 유효 스탯 가져오기
+        double s20 = getEffectiveStat300(getStat(baseStats, 20)); // 행운
+        double s16 = getEffectiveStat300(getStat(baseStats, 16)); // 통찰
+
+        // 2. 스탯 기반 추가 확률 계산 (140 기준 20%를 맞추기 위해 분모 7.0 사용)
+        // (140 * 0.1) + (140 * 0.042) ≈ 14 + 6 = 20
+        double statBonusRate = (s20 * 0.1) + (s16 * 0.043);
+
+        double finalRate = (double) Math.round(statBonusRate);
+        return Math.min(finalRate, 95.0);
+    }
+
+    /**
+     * 최종 화술(할인율) 계산
+     * 스탯 9일 때: 약 0.6% (아이템 없으면 미미함)
+     * 스탯 140일 때: 약 10% DC
+     */
+    public double calculateFinalBartering(Map<?, ?> baseStats) {
+        // 1. 유효 스탯 합산 (9: 계율, 14: 논리)
+        double s9 = getEffectiveStat300(getStat(baseStats, 9));
+        double s14 = getEffectiveStat300(getStat(baseStats, 14));
+        double effectiveSum = s9 + s14;
+
+        // 2. 140 기준 10%를 맞추기 위해 분모 28.0 사용 (280 / 28 = 10)
+        double baseBartering = effectiveSum / 28.0;
+
+        double finalBartering = (double) Math.round(baseBartering);
+        return Math.min(finalBartering, 90.0);
     }
 }

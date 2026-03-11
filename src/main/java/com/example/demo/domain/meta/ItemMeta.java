@@ -26,6 +26,7 @@ public class ItemMeta {
     private Map<Integer, Integer> baseStatsBonus;
     private Map<String, Double> combatStatsBonus;
     private Map<String, Integer> recoveryBonus;
+    private Map<String, Double> lifeStatsBonus;
 
     // [-- 배수 --]
     private Map<Integer, Double> baseStatsBonusModifiers;

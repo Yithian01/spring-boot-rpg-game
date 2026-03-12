@@ -37,7 +37,6 @@ public class GambleStatus {
     private boolean playerBlackJack; // 플레이어 블랙잭 여부
     private boolean dealerBlackJack; // 딜러 블랙잭 여부
 
-
     // --- [결과 처리 데이터] ---
     private boolean isWin;             // 승리 여부
     private int earnedGold;            // 최종 획득/손실 금액 (양수면 획득, 음수면 손실)
@@ -68,12 +67,12 @@ public class GambleStatus {
     /**
      * underOver 게임 초기화 (초기 상태로 복구할 때 사용)
      */
-    public void resetUnderOver(int betAmount) {
+    public void resetUnderOver() {
         this.currentMode = "UNDER_OVER"; // 도박장 메인 선택창으로 이동
         this.step = "PLAYING";
         this.userChoice = null;
         this.diceResults = new ArrayList<>();
-        this.betAmount = betAmount;
+        this.betAmount = 0;
 
         this.playerHand = null;
         this.dealerHand = null;
@@ -89,13 +88,13 @@ public class GambleStatus {
     /**
      * balckJack 게임 초기화 (초기 상태로 복구할 때 사용)
      */
-    public void resetBlackJack(int betAmount) {
+    public void resetBlackJack() {
         this.currentMode = "BLACKJACK"; // 도박장 메인 선택창으로 이동
         this.step = "PLAYING";
         this.userChoice = null;
         this.diceResults = null;
 
-        this.betAmount = betAmount;
+        this.betAmount = 0;
 
         this.playerHand = new ArrayList<>();
         this.dealerHand = new ArrayList<>();
@@ -109,7 +108,7 @@ public class GambleStatus {
     }
 
     /**
-     * 주사위 합계를 계산하여 반환하는 헬퍼 메소드
+     * 주사위 합계 (정상)
      */
     public int getDiceSum() {
         if (diceResults == null || diceResults.isEmpty()) return 0;
@@ -117,18 +116,25 @@ public class GambleStatus {
     }
 
     /**
-     * 플레이어 패 합계를 계산하여 반환하는 헬퍼 메소드
+     * 플레이어 패 합계 수정
      */
     public int getPlayerHandSum() {
-        if (diceResults == null || diceResults.isEmpty()) return 0;
-        return diceResults.stream().mapToInt(Integer::intValue).sum();
+        if (playerHand == null || playerHand.isEmpty()) return 0;
+        return calculateBlackjackSum(playerHand);
     }
 
     /**
-     * 딜러 패 합계를 계산하여 반환하는 헬퍼 메소드
+     * 딜러 패 합계 수정
      */
     public int getDealerHandSum() {
-        if (diceResults == null || diceResults.isEmpty()) return 0;
-        return diceResults.stream().mapToInt(Integer::intValue).sum();
+        if (dealerHand == null || dealerHand.isEmpty()) return 0;
+        return calculateBlackjackSum(dealerHand);
+    }
+
+    // 카드의 문자열(예: "H_A", "D_10")에서 숫자만 추출해 합산하는 로직이 필요합니다.
+    private int calculateBlackjackSum(List<String> hand) {
+        // 블랙잭 점수 계산 로직을 여기에 구현하시거나,
+        // 이미 계산된 값을 필드에 저장해두고 가져오는 것이 안전합니다.
+        return 0; // (현재는 일단 0으로 두거나 기존 로직에 맞게 구현)
     }
 }

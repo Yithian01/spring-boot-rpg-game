@@ -39,5 +39,43 @@ public class GambleController {
         return "redirect:/game/play";
     }
 
+    /**
+     * [UNDER_OVER, BLACKJACK] - 초기 설정 분기
+     */
+    @PostMapping("/start")
+    public String startGamble(@RequestParam String gameType,
+                              RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        String resultMessage = gambleService.handleGameInit(gameType);
+        redirectAttributes.addFlashAttribute("message", resultMessage);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [UNDER_OVER] - 실제 주사위 굴리기 및 결과 처리
+     */
+    @PostMapping("/under-over/play")
+    public String playUnderOver(@RequestParam("userChoice") String userChoice,
+                                @RequestParam("batAmount") int amount,
+                                RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        // 2. 서비스 호출: 실제 주사위 굴리기 로직
+        String resultMessage = gambleService.playUnderOverGame(userChoice, amount);
+        redirectAttributes.addFlashAttribute("message", resultMessage);
+        return "redirect:/game/play";
+    }
+
     // 추후 여기에 @PostMapping("/under-over/start") 등을 별도로 분리하면 됩니다.
 }

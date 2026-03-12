@@ -830,6 +830,10 @@ public class GameService {
                 .playerBlackJack(gambleStatus.isPlayerBlackJack())
                 .dealerBlackJack(gambleStatus.isDealerBlackJack())
 
+                .isWin(gambleStatus.isWin())
+                .earnedGold(gambleStatus.getEarnedGold())
+                .resultMessage(gambleStatus.getResultMessage())
+
                 .build();
     }
 }

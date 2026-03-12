@@ -743,25 +743,6 @@ public class StatCalculationService {
     }
 
     /**
-     * 기술 고유 추가 위력 계산 (stat scaling)
-     * @param skill 스킬 정보
-     * @param finalStats 플레이어 최종 스탯
-     * @return [int] 수치 반환
-     */
-    public int calculateSkillPower(SkillMeta skill, Map<Integer, Integer> finalStats) {
-        double power = 0;
-        if (skill.getStatScaling() != null) {
-            for (Map.Entry<Integer, Double> entry : skill.getStatScaling().entrySet()) {
-                int statId = entry.getKey();
-                double multiplier = entry.getValue();
-                int statValue = finalStats.getOrDefault(statId, 0);
-                power += (statValue * multiplier);
-            }
-        }
-        return (int) Math.round(power);
-    }
-
-    /**
      * 기술의 스탯 숙련도 배율 계산 (Stat Scaling to Multiplier)
      * @return 0.72 같은 배율 가산치 반환 (72% 추가라는 뜻)
      */
@@ -949,7 +930,6 @@ public class StatCalculationService {
     }
 
     public int calculateHeal(UserStatus user, SkillMeta skill) {
-
         // 2. 마법 여부에 따른 베이스 스탯 및 계수 결정
         boolean isMagic = "MAGIC".equals(skill.getType()) || "HEAL".equals(skill.getType());
         double baseStatValue = isMagic ? user.getCombatStats().getMagicAtk() : user.getCombatStats().getMeleeAtk();

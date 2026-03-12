@@ -12,7 +12,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 @Slf4j
@@ -91,7 +93,6 @@ public class GambleService {
      */
     public void openUnderOverGamble() {
         GambleStatus status = new GambleStatus();
-        status.setStep("BET"); // 처음은 베팅 입력 단계
         status.resetUnderOver();
         gambleFileRepository.saveGambleStatus(status);
         logAndSave("언더/오버 도박판에 자리를 잡았습니다.");
@@ -104,7 +105,7 @@ public class GambleService {
         GambleStatus status = new GambleStatus();
         status.resetBlackJack();
         gambleFileRepository.saveGambleStatus(status);
-        logAndSave("블랙잭 게임에 자리를 잡았습니다.  딜러가 카드를 섞고 있습니다.");
+        logAndSave("블랙잭 게임에 자리를 잡았습니다. 딜러가 카드를 섞고 있습니다.");
     }
 
     /**
@@ -255,5 +256,202 @@ public class GambleService {
                 return "🕯️ [꺼져가는 희망] 허망한 꿈이었나... 숫자는 무정하게 비껴갔군. 지하 도박장에선 흔한 일이지, 안 그런가?";
             }
         }
+    }
+
+    /**
+     * [BLACKJACK] - DEAL 단계 (게임 시작)
+     */
+    public String startBlackjack(int betAmount) {
+        UserStatus us = userFileRepository.findGameUser();
+        GambleStatus status = gambleFileRepository.findGambleStatus();
+
+        // 1. 유효성 검사: 골드 부족 여부 및 현재 상태 확인
+        if (us.getCurrentGold() < betAmount) {
+            return "보유한 골드가 부족하여 베팅할 수 없습니다.";
+        }
+        if (betAmount <= 0) {
+            return "베팅 금액은 0보다 커야 합니다.";
+        }
+        if (!"BET".equals(status.getStep())) {
+            return "이미 게임이 진행 중이거나 종료되었습니다.";
+        }
+
+        // 2. 골드 차감 및 베팅 설정
+        us.setCurrentGold(us.getCurrentGold() - betAmount);
+        status.setBetAmount(betAmount);
+        status.setStep("PLAYING");
+
+        // 플레이어 1장 -> 딜러 1장 순서로 분배
+        status.getPlayerHand().add(drawCard(status));
+        status.getDealerHand().add(drawCard(status));
+        status.getPlayerHand().add(drawCard(status));
+        status.getDealerHand().add(drawCard(status));
+
+        // 1. 점수 계산
+        int pTotal = calculateBlackjackSum(status.getPlayerHand());
+        int dTotal = calculateBlackjackSum(status.getDealerHand());
+        status.setPlayerTotal(pTotal);
+        status.setDealerTotal(dTotal);
+
+        // 2. 시작 즉시 종료 조건 체크 (Blackjack 체크)
+        if (pTotal == 21 || dTotal == 21) {
+            status.setStep("RESULT"); // 즉시 결과 단계로 이동
+
+            if (pTotal == 21 && dTotal == 21) {
+                // 둘 다 블랙잭 (비김)
+                status.setWin(false);
+                status.setEarnedGold(0);
+                us.setCurrentGold(us.getCurrentGold() + betAmount); // 배팅금 돌려줌
+                status.setResultMessage("🃏 [무승부] 당신과 딜러 모두 블랙잭입니다! 배팅금을 돌려받습니다.");
+            } else if (pTotal == 21) {
+                // 플레이어만 블랙잭 (승리)
+                double bonus = 1.5 + (us.getLifeStats().getGambleMultiplierBonus() / 100.0);
+                int reward = (int) (betAmount * bonus);
+                status.setWin(true);
+                status.setEarnedGold(reward);
+                us.setCurrentGold(us.getCurrentGold() + reward);
+                status.setResultMessage("✨ [블랙잭!] 완벽한 승리입니다! 딜러가 당황하며 " + reward + "G를 건넵니다.");
+            } else {
+                // 딜러만 블랙잭 (패배)
+                status.setWin(false);
+                status.setEarnedGold(-betAmount);
+                status.setResultMessage("💀 [딜러 블랙잭] 딜러가 처음부터 블랙잭을 완성했습니다... 운이 없었군요.");
+            }
+        } else {
+            // 블랙잭이 없으면 평소대로 진행
+            status.setStep("PLAYING");
+        }
+
+        // 3. 저장
+        userFileRepository.saveUserStatus(us);
+        gambleFileRepository.saveGambleStatus(status);
+
+        return status.getResultMessage() != null ? status.getResultMessage() : "HIT or STAY??";
+    }
+
+    /**
+     * 카드 한 장 뽑기 헬퍼 (Service 내부에 위치)
+     */
+    private String drawCard(GambleStatus status) {
+        if (status.getDeck() == null || status.getDeck().isEmpty()) {
+            status.setDeck(status.createNewDeck());
+        }
+        return status.getDeck().remove(0);
+    }
+
+    public int calculateBlackjackSum(List<String> hand) {
+        int sum = 0;
+        int aceCount = 0;
+
+        for (String card : hand) {
+            // 문양(첫글자) 제외하고 숫자만 파싱 (예: "♠A" -> "A", "♣10" -> "10")
+            String rank = card.substring(1);
+
+            if (rank.equals("A")) {
+                aceCount++;
+                sum += 11;
+            } else if (rank.equals("J") || rank.equals("Q") || rank.equals("K")) {
+                sum += 10;
+            } else {
+                sum += Integer.parseInt(rank);
+            }
+        }
+
+        // 21을 넘으면 에이스를 1로 취급
+        while (sum > 21 && aceCount > 0) {
+            sum -= 10;
+            aceCount--;
+        }
+        return sum;
+    }
+
+    /**
+     * [BLACKJACK] - HIT (카드 한 장 더 받기)
+     */
+    public String hitBlackjack() {
+        GambleStatus status = gambleFileRepository.findGambleStatus();
+
+        // 1. 상태 검증
+        if (!"PLAYING".equals(status.getStep())) {
+            return "카드를 받을 수 있는 상태가 아닙니다.";
+        }
+
+        // 2. 카드 지급 및 점수 계산
+        status.getPlayerHand().add(drawCard(status));
+        int pTotal = calculateBlackjackSum(status.getPlayerHand());
+        status.setPlayerTotal(pTotal);
+
+        // 3. 버스트(Bust) 체크
+        if (pTotal > 21) {
+            status.setStep("RESULT");
+            status.setWin(false);
+            status.setEarnedGold(-status.getBetAmount());
+            status.setResultMessage("💥 [버스트] 21점을 초과했습니다! 패배하셨습니다.");
+        } else if (pTotal == 21) {
+            // 21점이면 자동으로 STAY 처리하여 편의성 제공
+            return stayBlackjack();
+        }
+
+        gambleFileRepository.saveGambleStatus(status);
+        return "카드를 한 장 더 받았습니다. (현재 점수: " + pTotal + ")";
+    }
+
+    /**
+     * [BLACKJACK] - STAY (멈추고 결과 확인)
+     */
+    public String stayBlackjack() {
+        GambleStatus status = gambleFileRepository.findGambleStatus();
+        UserStatus us = userFileRepository.findGameUser();
+
+        if (!"PLAYING".equals(status.getStep())) return "잘못된 접근입니다.";
+
+        status.setPlayerStood(true); // 플레이어가 멈췄음을 표시 (UI에서 딜러 카드 공개용)
+
+        // 1. 딜러의 턴 (17점 이상이 될 때까지 카드를 뽑음)
+        int dTotal = status.getDealerTotal();
+        while (dTotal < 17) {
+            status.getDealerHand().add(drawCard(status));
+            dTotal = calculateBlackjackSum(status.getDealerHand());
+        }
+        status.setDealerTotal(dTotal);
+        status.setStep("RESULT");
+
+        // 2. 승패 판정
+        int pTotal = status.getPlayerTotal();
+        int bet = status.getBetAmount();
+        double bonus = 2.0 + (us.getLifeStats().getGambleMultiplierBonus() / 100.0); // 기본 2배당
+
+        if (dTotal > 21) {
+            // 딜러 버스트
+            processWin(status, us, (int)(bet * bonus), "🏆 [딜러 버스트] 딜러가 21점을 넘었습니다! 승리하셨습니다.");
+        } else if (pTotal > dTotal) {
+            // 플레이어 승리
+            processWin(status, us, (int)(bet * bonus), "🏆 [승리] 딜러보다 높은 점수입니다! " + (int)(bet * bonus) + "G를 획득했습니다.");
+        } else if (pTotal < dTotal) {
+            // 딜러 승리
+            status.setWin(false);
+            status.setEarnedGold(-bet);
+            status.setResultMessage("💀 [패배] 딜러의 점수가 더 높습니다. 다음 기회를 노리세요.");
+        } else {
+            // 무승부 (Push)
+            us.setCurrentGold(us.getCurrentGold() + bet);
+            status.setWin(false);
+            status.setEarnedGold(0);
+            status.setResultMessage("🃏 [무승부] 딜러와 점수가 같습니다. 배팅금을 돌려받습니다.");
+        }
+
+        userFileRepository.saveUserStatus(us);
+        gambleFileRepository.saveGambleStatus(status);
+        return status.getResultMessage();
+    }
+
+    /**
+     * 승리 처리 공통화 (더블 다운 대비)
+     */
+    private void processWin(GambleStatus status, UserStatus us, int reward, String msg) {
+        status.setWin(true);
+        status.setEarnedGold(reward);
+        us.setCurrentGold(us.getCurrentGold() + reward);
+        status.setResultMessage(msg);
     }
 }

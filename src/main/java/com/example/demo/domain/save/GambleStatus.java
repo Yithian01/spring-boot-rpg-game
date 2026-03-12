@@ -31,6 +31,9 @@ public class GambleStatus {
     private List<Integer> diceResults; // 주사위 결과 (예: [3, 4])
 
     // --- [블랙잭 전용 데이터] ---
+    private List<String> deck;
+    private int playerTotal;          // 매번 계산하기 번거로우므로 합계를 저장
+    private int dealerTotal;
     private List<String> playerHand;   // 플레이어 카드 리스트 (예: ["H_A", "D_10"])
     private List<String> dealerHand;   // 딜러 카드 리스트
     private boolean playerStood;       // 플레이어가 STAY(멈춤)를 눌렀는지 여부
@@ -69,7 +72,7 @@ public class GambleStatus {
      */
     public void resetUnderOver() {
         this.currentMode = "UNDER_OVER"; // 도박장 메인 선택창으로 이동
-        this.step = "PLAYING";
+        this.step = "BET";
         this.userChoice = null;
         this.diceResults = new ArrayList<>();
         this.betAmount = 0;
@@ -86,25 +89,60 @@ public class GambleStatus {
     }
 
     /**
-     * balckJack 게임 초기화 (초기 상태로 복구할 때 사용)
+     * blackjack 게임 초기화
      */
     public void resetBlackJack() {
-        this.currentMode = "BLACKJACK"; // 도박장 메인 선택창으로 이동
-        this.step = "PLAYING";
-        this.userChoice = null;
-        this.diceResults = null;
-
+        this.currentMode = "BLACKJACK";
+        this.step = "BET";
         this.betAmount = 0;
 
         this.playerHand = new ArrayList<>();
         this.dealerHand = new ArrayList<>();
         this.playerStood = false;
-        this.playerBlackJack = false;
-        this.dealerBlackJack = false;
 
+        // 덱 생성 및 셔플
+        this.deck = createNewDeck();
+
+        this.playerTotal = 0;
+        this.dealerTotal = 0;
         this.isWin = false;
         this.earnedGold = 0;
         this.resultMessage = "";
+    }
+
+    /**
+     * 52장의 트럼프 카드 생성
+     * 문양(S, H, D, C) + 숫자(A, 2~10, J, Q, K)
+     */
+    public List<String> createNewDeck() {
+        List<String> newDeck = new ArrayList<>();
+        String[] suits = {"♠", "♥", "♦", "♣"};
+        String[] ranks = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+
+        for (String suit : suits) {
+            for (String rank : ranks) {
+                newDeck.add(suit + rank);
+            }
+        }
+        java.util.Collections.shuffle(newDeck);
+        return newDeck;
+    }
+
+    /**
+     * 단일 카드의 블랙잭 점수를 계산하는 헬퍼 메소드
+     * @param card "♠A", "♦10" 등의 카드 문자열
+     * @return 카드 점수 (A는 기본 11로 처리)
+     */
+    public int calculateSingleCardValue(String card) {
+        if (card == null || card.length() < 2) return 0;
+
+        String rank = card.substring(1);
+
+        return switch (rank) {
+            case "A" -> 11;
+            case "J", "Q", "K" -> 10;
+            default -> Integer.parseInt(rank);
+        };
     }
 
     /**
@@ -113,28 +151,5 @@ public class GambleStatus {
     public int getDiceSum() {
         if (diceResults == null || diceResults.isEmpty()) return 0;
         return diceResults.stream().mapToInt(Integer::intValue).sum();
-    }
-
-    /**
-     * 플레이어 패 합계 수정
-     */
-    public int getPlayerHandSum() {
-        if (playerHand == null || playerHand.isEmpty()) return 0;
-        return calculateBlackjackSum(playerHand);
-    }
-
-    /**
-     * 딜러 패 합계 수정
-     */
-    public int getDealerHandSum() {
-        if (dealerHand == null || dealerHand.isEmpty()) return 0;
-        return calculateBlackjackSum(dealerHand);
-    }
-
-    // 카드의 문자열(예: "H_A", "D_10")에서 숫자만 추출해 합산하는 로직이 필요합니다.
-    private int calculateBlackjackSum(List<String> hand) {
-        // 블랙잭 점수 계산 로직을 여기에 구현하시거나,
-        // 이미 계산된 값을 필드에 저장해두고 가져오는 것이 안전합니다.
-        return 0; // (현재는 일단 0으로 두거나 기존 로직에 맞게 구현)
     }
 }

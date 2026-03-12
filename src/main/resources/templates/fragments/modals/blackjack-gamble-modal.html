@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="blackJackStyle">
+    <style>
+        .bj-modal-content {
+            background: #1a1a1c;
+            border: 2px solid #8e44ad; /* 블랙잭은 고유의 보라색 테마 */
+            border-radius: 24px;
+            padding: 30px;
+            width: 600px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(142, 68, 173, 0.3);
+            color: white;
+            position: relative;
+        }
+
+        /* 상태 헤더 */
+        .bj-status-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .bj-status-box {
+            background: #000;
+            padding: 10px;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .bj-status-label { display: block; font-size: 0.75rem; color: #aaa; margin-bottom: 4px; }
+        .bj-status-value { font-size: 1rem; font-weight: 800; color: #fff; }
+
+        /* 카드 구역 */
+        .card-zone {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            min-height: 140px;
+        }
+        .card-label {
+            font-size: 0.8rem;
+            color: #8e44ad;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .hand-display {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .card {
+            width: 60px;
+            height: 85px;
+            background: white;
+            border-radius: 6px;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            border: 2px solid #ddd;
+        }
+        .card.back {
+            background: linear-gradient(135deg, #2c3e50 25%, #34495e 25%, #34495e 50%, #2c3e50 50%, #2c3e50 75%, #34495e 75%);
+            background-size: 10px 10px;
+        }
+
+        /* 액션 버튼 */
+        .bj-action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn-bj {
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-hit { background: #3498db; color: white; }
+        .btn-stay { background: #e67e22; color: white; }
+        .btn-deal { background: #8e44ad; color: white; grid-column: span 2; }
+        .btn-bj:disabled { background: #333; color: #666; cursor: not-allowed; transform: none !important; }
+        .btn-bj:hover:not(:disabled) { transform: translateY(-3px); filter: brightness(1.1); }
+
+        /* 비활성화 오버레이 (베팅 칸 보호) */
+        .disabled-overlay {
+            pointer-events: none;
+            opacity: 0.5;
+            filter: grayscale(0.8);
+        }
+
+        /* 결과 메시지 */
+        .bj-result-msg {
+            margin: 15px 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #ffd700;
+            min-height: 1.5rem;
+        }
+    </style>
+</th:block>
+
+<div th:fragment="blackJackModal(gamble, town)" id="blackJackModal" class="gamble-modal-overlay" style="display: flex;">
+    <div class="bj-modal-content">
+
+        <div class="bj-status-row">
+            <div class="bj-status-box">
+                <span class="bj-status-label">나의 자산</span>
+                <span class="bj-status-value" th:text="${#numbers.formatInteger(gamble.currentGold, 0, 'COMMA')} + ' G'"></span>
+            </div>
+            <div class="bj-status-box">
+                <span class="bj-status-label">게임 상태</span>
+                <span class="bj-status-value" th:text="${gamble.step == 'BET' ? '배팅 중' : (gamble.step == 'PLAYING' ? '게임 중' : '결과 확인')}"></span>
+            </div>
+            <div class="bj-status-box">
+                <span class="bj-status-label">확정 배팅액</span>
+                <span class="bj-status-value" style="color: #ffd700;" th:text="${#numbers.formatInteger(gamble.betAmount, 0, 'COMMA')} + ' G'"></span>
+            </div>
+        </div>
+
+        <div th:classappend="${gamble.step != 'BET'} ? 'disabled-overlay' : ''">
+            <div class="bet-input-wrapper">
+                <input type="number" id="bjBettingAmount"
+                       th:value="${gamble.betAmount > 0 ? #numbers.formatInteger(gamble.betAmount, 0) : 100}"
+                       th:readonly="${gamble.step != 'BET'}">
+            </div>
+            <div class="bet-ctrl-grid">
+                <button type="button" class="ctrl-btn" onclick="stepAmountBJ(-100)">- 100</button>
+                <button type="button" class="ctrl-btn" onclick="stepAmountBJ(100)">+ 100</button>
+                <button type="button" class="ctrl-btn special" onclick="setHalfBJ()">HALF</button>
+                <button type="button" class="ctrl-btn danger" onclick="setAllInBJ()">ALL-IN</button>
+            </div>
+        </div>
+
+        <div class="card-zone">
+            <span class="card-label">Dealer <span th:text="'(' + ${gamble.dealerTotal} + ')'"></span></span>
+            <div class="hand-display">
+                <th:block th:each="card, iter : ${gamble.dealerHand}">
+                    <div class="card" th:text="${(gamble.step == 'PLAYING' and iter.index > 0) ? '?' : card}"
+                         th:classappend="${(gamble.step == 'PLAYING' and iter.index > 0)} ? 'back' : ''"></div>
+                </th:block>
+                <div th:if="${#lists.isEmpty(gamble.dealerHand)}" class="card back"></div>
+            </div>
+        </div>
+
+        <div class="card-zone">
+            <span class="card-label">Player <span th:if="${!#lists.isEmpty(gamble.playerHand)}" th:text="'(' + ${gamble.playerTotal} + ')'"></span></span>
+            <div class="hand-display">
+                <div class="card" th:each="card : ${gamble.playerHand}" th:text="${card}"></div>
+                <div th:if="${#lists.isEmpty(gamble.playerHand)}" class="card back"></div>
+            </div>
+        </div>
+
+        <div class="bj-result-msg" th:text="${gamble.resultMessage}"></div>
+
+        <div class="bj-action-row">
+            <form th:if="${gamble.step == 'BET'}" action="/gamble/blackjack/deal" method="post" style="display:contents;">
+                <input type="hidden" name="amount" id="bjFinalAmount">
+                <button type="submit" class="btn-bj btn-deal" onclick="syncAmountBJ()">카드 받기 (게임 시작)</button>
+            </form>
+
+            <th:block th:if="${gamble.step == 'PLAYING'}">
+                <form action="/gamble/blackjack/hit" method="post" style="display:contents;">
+                    <button type="submit" class="btn-bj btn-hit" th:disabled="${gamble.playerTotal >= 21}">HIT</button>
+                </form>
+                <form action="/gamble/blackjack/stay" method="post" style="display:contents;">
+                    <button type="submit" class="btn-bj btn-stay">STAY</button>
+                </form>
+            </th:block>
+
+            <form th:if="${gamble.step == 'RESULT'}" action="/gamble/start" method="post" style="display:contents;">
+                <input type="hidden" name="gameType" value="BLACKJACK">
+                <button type="submit" class="btn-bj btn-deal">다시 한 판!</button>
+            </form>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <a href="javascript:void(0);" class="btn-exit-bottom" onclick="confirmExitBJ()">🚪 그만하고 나가기</a>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        const currentStep = [[${gamble.step}]];
+        const maxGoldBJ = [[${gamble.currentGold}]];
+
+        function confirmExitBJ() {
+            if (currentStep === 'PLAYING') {
+                if (confirm("현재 게임이 진행 중입니다! 지금 나가면 배팅 금액을 모두 잃습니다. 정말 나가시겠습니까?")) {
+                    location.href = "/town/gamble/close";
+                }
+            } else {
+                location.href = "/town/gamble/close";
+            }
+        }
+
+        function syncAmountBJ() {
+            document.getElementById('bjFinalAmount').value = document.getElementById('bjBettingAmount').value;
+        }
+
+        // 베팅 컨트롤 함수들
+        function setBetBJ(amount) {
+            const input = document.getElementById('bjBettingAmount');
+            let target = Math.floor(amount);
+            if (target > maxGoldBJ) target = maxGoldBJ;
+            if (target < 10) target = 10;
+            input.value = target;
+        }
+        function stepAmountBJ(step) { setBetBJ(parseInt(document.getElementById('bjBettingAmount').value || 0) + step); }
+        function setHalfBJ() { setBetBJ(parseInt(document.getElementById('bjBettingAmount').value || 0) / 2); }
+        function setAllInBJ() { setBetBJ(maxGoldBJ); }
+    </script>
+</div>
+</html>

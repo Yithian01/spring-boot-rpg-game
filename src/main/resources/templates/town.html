@@ -18,6 +18,7 @@
     <th:block th:replace="~{fragments/modals/shop-select-modal :: shopSelectStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/shop-panel :: shopStyle}"></th:block>
     <th:block th:replace="~{fragments/modals/underover-gamble-modal :: underOverStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/blackjack-gamble-modal :: blackJackStyle}"></th:block>
 </head>
 <body>
 
@@ -62,6 +63,10 @@
 
 <th:block th:if="${gamble != null and gamble.currentMode == 'UNDER_OVER'}">
     <div th:replace="~{fragments/modals/underover-gamble-modal :: underOverModal(gamble=${gamble}, town=${town})}"></div>
+</th:block>
+
+<th:block th:if="${gamble != null and gamble.currentMode == 'BLACKJACK'}">
+    <div th:replace="~{fragments/modals/blackjack-gamble-modal :: blackJackModal(gamble=${gamble}, town=${town})}"></div>
 </th:block>
 
 <div th:replace="~{fragments/modals/train-modal :: trainModal}"></div>

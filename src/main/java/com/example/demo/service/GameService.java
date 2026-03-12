@@ -810,6 +810,13 @@ public class GameService {
         UserStatus us = userFileRepository.findGameUser();
         GambleStatus gambleStatus = gambleFileRepository.findGambleStatus();
 
+        List<String> displayedDealerHand = gambleStatus.getDealerHand();
+        int displayedDealerTotal = gambleStatus.getDealerTotal();
+        if (!gambleStatus.getStep().equals("RESULT") && displayedDealerHand != null && displayedDealerHand.size() >= 2 && !gambleStatus.isPlayerStood()) {
+            displayedDealerHand = List.of(displayedDealerHand.get(0), "hidden");
+            displayedDealerTotal = gambleStatus.calculateSingleCardValue(gambleStatus.getDealerHand().get(0));
+        }
+
         return GamblePageDto.builder()
                 .currentMode(gambleStatus.getCurrentMode())
                 .step(gambleStatus.getStep())
@@ -823,9 +830,9 @@ public class GameService {
                 .diceSum(gambleStatus.getDiceSum())
 
                 .playerHand(gambleStatus.getPlayerHand())
-                .dealerHand(gambleStatus.getDealerHand())
-                .playerTotal(gambleStatus.getPlayerHandSum())
-                .dealerTotal(gambleStatus.getDealerHandSum())
+                .dealerHand(displayedDealerHand)
+                .playerTotal(gambleStatus.getPlayerTotal())
+                .dealerTotal(displayedDealerTotal)
                 .playerStood(gambleStatus.isPlayerStood())
                 .playerBlackJack(gambleStatus.isPlayerBlackJack())
                 .dealerBlackJack(gambleStatus.isDealerBlackJack())

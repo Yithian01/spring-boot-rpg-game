@@ -219,7 +219,7 @@
                 </button>
             </form>
 
-            <form action="/town/gamble/start" method="post" style="display: contents;">
+            <form action="/gamble/start" method="post" style="display: contents;">
                 <input type="hidden" name="gameType" value="BLACKJACK">
                 <input type="hidden" name="amount" class="hidden-sync-amount">
                 <button type="submit" class="btn-game-select" onclick="syncAmount(this)">
@@ -241,7 +241,21 @@
         const maxGold = [[${gamble.currentGold}]];
 
         function syncAmount(btn) {
-            const amount = document.getElementById('bettingAmount').value;
+            const inputEl = document.getElementById('bettingAmount');
+            let amount = parseInt(inputEl.value || 0);
+
+            if (amount < 10) {
+                alert("최소 10G 이상은 베팅해야 합니다.");
+                amount = 10;
+                inputEl.value = 10;
+            }
+
+            if (amount > maxGold) {
+                amount = maxGold;
+                inputEl.value = maxGold;
+            }
+
+            // hidden input에 값 복사
             btn.closest('form').querySelector('.hidden-sync-amount').value = amount;
         }
 

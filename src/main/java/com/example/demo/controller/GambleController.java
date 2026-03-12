@@ -77,5 +77,52 @@ public class GambleController {
         return "redirect:/game/play";
     }
 
-    // 추후 여기에 @PostMapping("/under-over/start") 등을 별도로 분리하면 됩니다.
+    /**
+     * [BLACKJACK] - 카드 받기 (게임 시작 및 첫 카드 지급)
+     */
+    @PostMapping("/blackjack/deal")
+    public String blackjackDeal(@RequestParam(defaultValue = "100") int amount,
+                                RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        String resultMessage = gambleService.startBlackjack(amount);
+        redirectAttributes.addFlashAttribute("message", resultMessage);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [BLACKJACK] - HIT (카드 한 장 더 받기)
+     */
+    @PostMapping("/blackjack/hit")
+    public String blackjackHit(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        String resultMessage = gambleService.hitBlackjack();
+        redirectAttributes.addFlashAttribute("message", resultMessage);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [BLACKJACK] - STAY (멈추고 결과 확인)
+     */
+    @PostMapping("/blackjack/stay")
+    public String blackjackStay(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        String resultMessage = gambleService.stayBlackjack();
+        redirectAttributes.addFlashAttribute("message", resultMessage);
+        return "redirect:/game/play";
+    }
 }

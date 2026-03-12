@@ -54,7 +54,7 @@
 
 <div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
 <div th:replace="~{fragments/modals/gameclear-modal :: gameClearModal(${game.clear})}"></div>
-<div th:replace="~{fragments/modals/gamble-modal :: gambleModal(${game})}"></div>
+<div th:replace="~{fragments/modals/gamble-modal :: gambleModal(game=${game}, town=${town})}"></div>
 <div th:replace="~{fragments/modals/train-modal :: trainModal}"></div>
 <div th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareModal(town=${town})}"></div>
 

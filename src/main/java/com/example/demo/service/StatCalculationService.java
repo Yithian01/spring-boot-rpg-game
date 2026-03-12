@@ -541,21 +541,6 @@ public class StatCalculationService {
     }
 
     /**
-     * 도박 기본 승률 계산 (%)
-     * 기본 5% + (행운 스탯 * 1.0) + (통찰 스탯 * 0.5)
-     */
-    public double calculateGambleWinRate(Map<?, ?> baseStats) {
-        return Math.min(5.0 + (getStat(baseStats, 20) * 0.5) + (getStat(baseStats, 16) * 0.3), 85.0);
-    }
-
-    /**
-     * 도박 승리 시 배당금 보너스 배율 계산
-     */
-    public double calculateGambleMultiplier(Map<?, ?> baseStats) {
-        return 2.0 + (getStat(baseStats, 23) * 0.1);
-    }
-
-    /**
      * 비밀 상자(랜덤 가챠) 최종 비용 계산
      * @param baseStats 현재 유저의 최종/기초 스탯 맵
      * @param originalPrice 상자의 기본 가격

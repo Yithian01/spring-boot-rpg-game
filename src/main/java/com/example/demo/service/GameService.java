@@ -300,8 +300,6 @@ public class GameService {
                 .items(inventory) // 비어있으면 빈 리스트 전달
                 .equippedItems(equippedMap)
                 .activeStatuses(us.getActiveStatuses())
-                .boxPrice(finalPrice)
-                .boxDiscount(discountPercent)
                 .activeEssences(activeEssences)
                 .gameLogs(gs != null ? gs.getGameLogs() : new ArrayList<>())
                 .learnedSkills(learnedSkills)
@@ -402,6 +400,17 @@ public class GameService {
                         .description("희귀 유물 발견 시 골드 2배").build()
         );
 
+        double bonusGambleWinRate = us.getLifeStats().getGambleWinRateBonus();
+        double bonusGambleMultiplier = us.getLifeStats().getGambleMultiplierBonus();
+
+        // Gamble 정보 Detail
+        GambleDetailDto gembleOption = GambleDetailDto.builder()
+                .winRate(5.0 + bonusGambleWinRate)
+                .bonusWinRate(bonusGambleWinRate)
+                .dividendRate(2.0 + (bonusGambleMultiplier / 100))
+                .bonusDividendRate(bonusGambleMultiplier)
+                .build();
+
         return TownPageDto.builder()
                 .day(town.getDay())
                 .currentTurn(town.getCurrentTurn())
@@ -413,6 +422,7 @@ public class GameService {
                 .totalMagicStoneCount(magicStoneList.stream().mapToInt(MagicStoneDto::getQuantity).sum())
                 .skillOptions(town.getSkillOptions())
                 .workOptions(workOptions)
+                .gembleOption(gembleOption)
                 .build();
     }
 

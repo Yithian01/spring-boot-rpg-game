@@ -52,9 +52,6 @@ public class GamePageDto {
     // 유저가 "아, 내가 지금 독에 걸렸구나" 또는 "힘 물약을 먹었구나"를 알게 해줍니다.
     private List<ActiveStatus> activeStatuses;
 
-    private int boxPrice;
-    private int boxDiscount;
-
     private List<EssencePageDto> activeEssences;
     private List<String> gameLogs;
 

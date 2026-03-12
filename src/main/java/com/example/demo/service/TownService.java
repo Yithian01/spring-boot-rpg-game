@@ -200,7 +200,7 @@ public class TownService {
         }
 
         // 2. 확률 계산
-        double winRate = statCalculationService.calculateGambleWinRate(us.getBaseStats());
+        double winRate = 5.0 + us.getLifeStats().getGambleWinRateBonus();
         double randomValue = new Random().nextDouble() * 100; // 0.0 ~ 100.0
 
         String resultMessage;
@@ -211,7 +211,7 @@ public class TownService {
 
         if (randomValue <= winRate) {
             // 승리!
-            double multiplier = statCalculationService.calculateGambleMultiplier(us.getBaseStats());
+            double multiplier = 2.0 + (us.getLifeStats().getGambleMultiplierBonus() / 100);
             int reward = (int) (bettingGold * multiplier);
             us.setCurrentGold(us.getCurrentGold() + (reward - bettingGold)); // 배팅금 제외 순수익 추가
             resultMessage = "🎲 도박 성공! " + reward + " G를 획득했습니다! (승률: " + String.format("%.1f", winRate) + "%)";

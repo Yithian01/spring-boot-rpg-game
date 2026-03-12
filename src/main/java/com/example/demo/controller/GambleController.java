@@ -125,4 +125,20 @@ public class GambleController {
         redirectAttributes.addFlashAttribute("message", resultMessage);
         return "redirect:/game/play";
     }
+
+    /**
+     * [BLACKJACK] - DOUBLE (베팅금 2배 후 한 장만 더 받기)
+     */
+    @PostMapping("/blackjack/double")
+    public String blackjackDouble(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            return "redirect:/game/play";
+        }
+
+        String resultMessage = gambleService.doubleDownBlackjack();
+        redirectAttributes.addFlashAttribute("message", resultMessage);
+        return "redirect:/game/play";
+    }
 }

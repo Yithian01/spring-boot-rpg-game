@@ -454,4 +454,42 @@ public class GambleService {
         us.setCurrentGold(us.getCurrentGold() + reward);
         status.setResultMessage(msg);
     }
+
+    /**
+     * [BLACKJACK] - DOUBLE DOWN
+     */
+    public String doubleDownBlackjack() {
+        GambleStatus status = gambleFileRepository.findGambleStatus();
+        UserStatus us = userFileRepository.findGameUser();
+
+        // 1. 상태 및 자금 검증
+        if (!"PLAYING".equals(status.getStep())) return "잘못된 접근입니다.";
+        if (us.getCurrentGold() < status.getBetAmount()) {
+            return "골드가 부족하여 더블 다운을 할 수 없습니다!";
+        }
+
+        // 2. 추가 베팅금 차감 및 베팅액 갱신
+        us.setCurrentGold(us.getCurrentGold() - status.getBetAmount());
+        status.setBetAmount(status.getBetAmount() * 2);
+        userFileRepository.saveUserStatus(us);
+
+        // 3. 딱 한 장 더 받기
+        status.getPlayerHand().add(drawCard(status));
+        int pTotal = calculateBlackjackSum(status.getPlayerHand());
+        status.setPlayerTotal(pTotal);
+
+        // 4. 결과 처리 (버스트면 즉시 종료, 아니면 STAY와 동일하게 진행)
+        if (pTotal > 21) {
+            status.setStep("RESULT");
+            status.setWin(false);
+            status.setEarnedGold(-status.getBetAmount());
+            status.setResultMessage("💥 [더블다운 실패] 21점을 초과했습니다! (최종 점수: " + pTotal + ")");
+            gambleFileRepository.saveGambleStatus(status);
+            return status.getResultMessage();
+        } else {
+            // 버스트가 아니면 저장 후 바로 stay 로직 수행
+            gambleFileRepository.saveGambleStatus(status);
+            return stayBlackjack();
+        }
+    }
 }

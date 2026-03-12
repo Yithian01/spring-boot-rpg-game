@@ -5,7 +5,7 @@
     <style>
         .bj-modal-content {
             background: #1a1a1c;
-            border: 2px solid #8e44ad; /* 블랙잭은 고유의 보라색 테마 */
+            border: 2px solid #8e44ad;
             border-radius: 24px;
             padding: 30px;
             width: 600px;
@@ -30,6 +30,30 @@
         }
         .bj-status-label { display: block; font-size: 0.75rem; color: #aaa; margin-bottom: 4px; }
         .bj-status-value { font-size: 1rem; font-weight: 800; color: #fff; }
+
+        /* [추가] 배당률 정보 구역 */
+        .bj-multiplier-info {
+            background: rgba(142, 68, 173, 0.1);
+            border: 1px dashed #8e44ad;
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .multiplier-item { display: flex; flex-direction: column; gap: 2px; }
+        .mult-label { font-size: 0.7rem; color: #bbb; text-transform: uppercase; }
+        .mult-value { font-size: 1.1rem; font-weight: 900; color: #ffd700; }
+        .bonus-tag {
+            font-size: 0.65rem;
+            background: #27ae60;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
 
         /* 카드 구역 */
         .card-zone {
@@ -94,20 +118,36 @@
         .btn-bj:disabled { background: #333; color: #666; cursor: not-allowed; transform: none !important; }
         .btn-bj:hover:not(:disabled) { transform: translateY(-3px); filter: brightness(1.1); }
 
-        /* 비활성화 오버레이 (베팅 칸 보호) */
         .disabled-overlay {
             pointer-events: none;
             opacity: 0.5;
             filter: grayscale(0.8);
         }
 
-        /* 결과 메시지 */
         .bj-result-msg {
             margin: 15px 0;
             font-size: 1.2rem;
             font-weight: 800;
             color: #ffd700;
             min-height: 1.5rem;
+        }
+
+        /* 버튼 레이아웃 수정 */
+        .bj-action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 2fr에서 3fr로 변경 */
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-double {
+            background: #f1c40f;
+            color: #000;
+        }
+        /* 기존 deal 버튼은 3칸을 다 차지하도록 수정 */
+        .btn-deal {
+            background: #8e44ad;
+            color: white;
+            grid-column: span 3;
         }
     </style>
 </th:block>
@@ -127,6 +167,24 @@
             <div class="bj-status-box">
                 <span class="bj-status-label">확정 배팅액</span>
                 <span class="bj-status-value" style="color: #ffd700;" th:text="${#numbers.formatInteger(gamble.betAmount, 0, 'COMMA')} + ' G'"></span>
+            </div>
+        </div>
+
+        <div class="bj-multiplier-info">
+            <div class="multiplier-item">
+                <span class="mult-label">Normal Win</span>
+                <span class="mult-value">
+                    <span th:text="${2.0 + (town.gambleOption.bonusDividendRate / 100.0)} + 'x'"></span>
+                    <span class="bonus-tag" th:if="${town.gambleOption.bonusDividendRate > 0}"
+                          th:text="'+' + ${town.gambleOption.bonusDividendRate} + '% Bonus'"></span>
+                </span>
+            </div>
+            <div style="width: 1px; height: 30px; background: #444;"></div>
+            <div class="multiplier-item">
+                <span class="mult-label">BlackJack (21)</span>
+                <span class="mult-value" style="color: #00ffcc;"
+                      th:text="${2.5 + (town.gambleOption.bonusDividendRate / 100.0)} + 'x'">
+                </span>
             </div>
         </div>
 
@@ -175,6 +233,12 @@
                 <form action="/gamble/blackjack/hit" method="post" style="display:contents;">
                     <button type="submit" class="btn-bj btn-hit" th:disabled="${gamble.playerTotal >= 21}">HIT</button>
                 </form>
+
+                <form action="/gamble/blackjack/double" method="post" style="display:contents;">
+                    <button type="submit" class="btn-bj btn-double"
+                            th:disabled="${gamble.playerTotal >= 21 || gamble.currentGold < gamble.betAmount}">DOUBLE</button>
+                </form>
+
                 <form action="/gamble/blackjack/stay" method="post" style="display:contents;">
                     <button type="submit" class="btn-bj btn-stay">STAY</button>
                 </form>
@@ -209,7 +273,6 @@
             document.getElementById('bjFinalAmount').value = document.getElementById('bjBettingAmount').value;
         }
 
-        // 베팅 컨트롤 함수들
         function setBetBJ(amount) {
             const input = document.getElementById('bjBettingAmount');
             let target = Math.floor(amount);

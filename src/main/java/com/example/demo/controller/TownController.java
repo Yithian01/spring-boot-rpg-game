@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.service.GambleService;
 import com.example.demo.service.TownService;
 import com.example.demo.service.ValidationService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class TownController {
 
     private final TownService townService;
+    private final GambleService gambleService;
     private final ValidationService validationService;
 
     /**
@@ -80,7 +82,7 @@ public class TownController {
      * @param redirectAttributes town.html 상태
      * @return 결과 반환
      */
-    @PostMapping("/gamble")
+    @PostMapping("/old_gamble")
     public String gamble(@RequestParam(defaultValue = "100") int amount, RedirectAttributes redirectAttributes) {
         String checkMessage = validationService.checkHp();
         if (checkMessage != null && checkMessage.startsWith("GameOver")) {
@@ -149,6 +151,43 @@ public class TownController {
         log.info("스킬 각인 요청 수신 - 스킬 ID: {}", skillId);
 
         townService.confirmSkillExtraction(skillId);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [도박장 입장]
+     * 단순히 도박장 메인 선택창(모달)을 활성화합니다.
+     */
+    @GetMapping("/gamble/open")
+    public String openGambleModal(RedirectAttributes redirectAttributes) {
+        // HP 체크 공통 로직 (생략 가능하면 서비스로 밀어도 됨)
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        gambleService.openGamble();
+
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [도박장 나가기]
+     * 단순히 도박장 메인 선택창(모달)을 활성화합니다.
+     */
+    @GetMapping("/gamble/close")
+    public String closeGambleModal(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        gambleService.closeGamble();
+
         return "redirect:/game/play";
     }
 }

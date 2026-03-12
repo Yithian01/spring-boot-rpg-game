@@ -29,5 +29,5 @@ public class TownPageDto {
     // 노동 모달 전용 정보 추가
     private List<WorkDetailDto> workOptions;
 
-    private GambleDetailDto gembleOption;
+    private GambleDetailDto gambleOption;
 }

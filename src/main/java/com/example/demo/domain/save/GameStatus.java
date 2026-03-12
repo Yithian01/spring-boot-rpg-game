@@ -18,6 +18,7 @@ public class GameStatus {
     private LocationType location;
     private Integer dungeonId; // TOWN이면 null
     private String activeShopNpcId;
+    private boolean activeGamble;
 
     // 통합 게임 로그 리스트
     @Builder.Default

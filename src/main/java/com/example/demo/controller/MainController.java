@@ -77,11 +77,11 @@ public class MainController {
 
         GameStatus status = gameService.getGameStatus();
         ShopPageDto shopData = status.getActiveShopNpcId() != null ? gameService.getShopPageDto(status.getActiveShopNpcId()) : null;
+        GamblePageDto gambleData = status.isActiveGamble() ? gameService.getGamblePageDto() : null;
 
         switch (status.getLocation()) {
             case TOWN:
                 GamePageDto gameData = gameService.getGamePageData();
-
                 TownPageDto townData = gameService.getTownData();
 
                 // 3. 모델에 데이터 담기 (HTML로 전달)
@@ -89,12 +89,14 @@ public class MainController {
                 model.addAttribute("game", gameData);
                 model.addAttribute("town", townData);
                 model.addAttribute("shop", shopData);
+                model.addAttribute("gamble", gambleData);
 
                 log.info(">>> 게임 데이터 로딩 완료: {}", gameData.getUserName());
 
-                System.out.println("gameData = " + gameData );
-                System.out.println("townData = " + townData );
-                System.out.println("shopData = " + shopData );
+                System.out.println("game = " + gameData );
+                System.out.println("town = " + townData );
+                System.out.println("shop = " + shopData );
+                System.out.println("gamble = " + gambleData );
 
                 return "town"; // town.html 템플릿 반환
             case DUNGEON:
@@ -120,9 +122,9 @@ public class MainController {
 
                 // 4. (선택) 현재 무기에 따른 사용 가능 스킬
                 //model.addAttribute("skills", gameService.getAvailableSkills());
-                System.out.println("gameData = " + gameDataForDungeon );
-                System.out.println("dungeonData = " + dungeonData );
-                System.out.println("shopData = " + shopData );
+                System.out.println("game = " + gameDataForDungeon );
+                System.out.println("dungeon = " + dungeonData );
+                System.out.println("shop = " + shopData );
 
                 log.info(">>> 던전 화면 진입: {}층", dungeonData.getCurrentFloor());
                 return "dungeon";

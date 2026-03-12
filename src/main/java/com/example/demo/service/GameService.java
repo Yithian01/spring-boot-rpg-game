@@ -27,10 +27,12 @@ public class GameService {
     private final EssenceRepository essenceRepository;
     private final ItemInstanceRepository itemInstanceRepository;
     private final ShopInstanceRepository shopInstanceRepository;
+    private final GambleFileRepository gambleFileRepository;
     private final StatCalculationService statCalculationService;
     private final BattleService battleService;
     private final InventoryService inventoryService;
     private final ShopService shopService;
+    private final GambleService gambleService;
 
     /**
      * 이어하던 게임 존재하는 지 확인
@@ -91,6 +93,7 @@ public class GameService {
         itemInstanceRepository.deleteFile();
         essenceRepository.deleteFile();
         shopInstanceRepository.deleteFile();
+        gambleFileRepository.deleteFile();
 
         // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
@@ -199,13 +202,13 @@ public class GameService {
         // 마을 상점 생성
         shopService.townStoreRestock();
 
-
         // 마을 도착 로그
         List<String> gameLog = new ArrayList<>();
         GameStatus gs = GameStatus.builder()
                 .location(LocationType.valueOf("TOWN"))
                 .dungeonId(null)
                 .activeShopNpcId(null)
+                .activeGamble(false)
                 .gameLogs(gameLog)
                 .isClear(false)
                 .build();
@@ -404,7 +407,7 @@ public class GameService {
         double bonusGambleMultiplier = us.getLifeStats().getGambleMultiplierBonus();
 
         // Gamble 정보 Detail
-        GambleDetailDto gembleOption = GambleDetailDto.builder()
+        GambleDetailDto gambleOption = GambleDetailDto.builder()
                 .winRate(5.0 + bonusGambleWinRate)
                 .bonusWinRate(bonusGambleWinRate)
                 .dividendRate(2.0 + (bonusGambleMultiplier / 100))
@@ -422,7 +425,7 @@ public class GameService {
                 .totalMagicStoneCount(magicStoneList.stream().mapToInt(MagicStoneDto::getQuantity).sum())
                 .skillOptions(town.getSkillOptions())
                 .workOptions(workOptions)
-                .gembleOption(gembleOption)
+                .gambleOption(gambleOption)
                 .build();
     }
 
@@ -800,6 +803,33 @@ public class GameService {
                 .npcDescription(shopMeta.getNpcDescription())
                 .priceModifier(shopMeta.getPriceModifier())
                 .saleItems(itemList)
+                .build();
+    }
+
+    public GamblePageDto getGamblePageDto(){
+        UserStatus us = userFileRepository.findGameUser();
+        GambleStatus gambleStatus = gambleFileRepository.findGambleStatus();
+
+        return GamblePageDto.builder()
+                .currentMode(gambleStatus.getCurrentMode())
+                .step(gambleStatus.getStep())
+                .currentGold(us.getCurrentGold())
+
+                .betAmount(gambleStatus.getBetAmount())
+                .betMultiplier(us.getLifeStats().getGambleMultiplierBonus())
+
+                .userChoice(gambleStatus.getUserChoice())
+                .diceResults(gambleStatus.getDiceResults())
+                .diceSum(gambleStatus.getDiceSum())
+
+                .playerHand(gambleStatus.getPlayerHand())
+                .dealerHand(gambleStatus.getDealerHand())
+                .playerTotal(gambleStatus.getPlayerHandSum())
+                .dealerTotal(gambleStatus.getDealerHandSum())
+                .playerStood(gambleStatus.isPlayerStood())
+                .playerBlackJack(gambleStatus.isPlayerBlackJack())
+                .dealerBlackJack(gambleStatus.isDealerBlackJack())
+
                 .build();
     }
 }

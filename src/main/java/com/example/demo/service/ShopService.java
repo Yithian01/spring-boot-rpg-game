@@ -53,7 +53,6 @@ public class ShopService {
         log.warn(message);
     }
 
-
     /**
      * 현재 상점 화면을 UI에게 열라고 표시
      * @param npcId 상점 NPC ID (String)

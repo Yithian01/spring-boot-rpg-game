@@ -41,7 +41,7 @@ public class TownService {
      * @param ts 마을 정보
      * @param gs 게임 정보(로그 저장용)
      */
-    private void saveAll(UserStatus us, TownStatus ts, GameStatus gs) {
+    public void saveAll(UserStatus us, TownStatus ts, GameStatus gs) {
         userFileRepository.saveUserStatus(us);
         townFileRepository.saveTownStatus(ts);
         gameFileRepository.saveGameStatus(gs);
@@ -183,49 +183,6 @@ public class TownService {
     }
 
     /**
-     * 행운 기반 스탯에 따라 도박
-     * @param bettingGold 도박할 금액
-     * @return 도박 결과 반환
-     */
-    public String performGamble(int bettingGold) {
-        GameStatus gs = gameFileRepository.findGameStatus();
-        UserStatus us = userFileRepository.findGameUser();
-        TownStatus ts = townFileRepository.findTownStatus();
-
-        // if (ts.getCurrentTurn() <= 0) return "남은 턴이 없습니다.";
-
-        // 1. 골드 부족 체크
-        if (us.getCurrentGold() < bettingGold) {
-            return "보유한 골드가 부족합니다!";
-        }
-
-        // 2. 확률 계산
-        double winRate = 5.0 + us.getLifeStats().getGambleWinRateBonus();
-        double randomValue = new Random().nextDouble() * 100; // 0.0 ~ 100.0
-
-        String resultMessage;
-        // 턴 소모
-        ts.setCurrentTurn(ts.getCurrentTurn() - 1);
-        shopService.townStoreRestock();
-
-
-        if (randomValue <= winRate) {
-            // 승리!
-            double multiplier = 2.0 + (us.getLifeStats().getGambleMultiplierBonus() / 100);
-            int reward = (int) (bettingGold * multiplier);
-            us.setCurrentGold(us.getCurrentGold() + (reward - bettingGold)); // 배팅금 제외 순수익 추가
-            resultMessage = "🎲 도박 성공! " + reward + " G를 획득했습니다! (승률: " + String.format("%.1f", winRate) + "%)";
-        } else {
-            // 패배...
-            us.setCurrentGold(us.getCurrentGold() - bettingGold);
-            resultMessage = "💸 도박 실패... " + bettingGold + " G를 잃었습니다. (승률: " + String.format("%.1f", winRate) + "%)";
-        }
-
-        saveAll(us, ts, gs);
-        return checkTurnAndTax(resultMessage);
-    }
-
-    /**
      * 사용자의 선택에 따른 계통별 스탯 수련을 수행합니다.
      * @param type UI 버튼에서 전달된 훈련 종류 (육신, 기민, 정신, 감각)
      * @return 수련 결과 및 스탯 상승치 메시지
@@ -319,7 +276,7 @@ public class TownService {
      * - 30일 주기: 던전 개방
      * - 360일 주기: 세금 징수 (못 내면 처형)
      */
-    private String checkTurnAndTax(String actionMessage) {
+    public String checkTurnAndTax(String actionMessage) {
         TownStatus ts = townFileRepository.findTownStatus();
         UserStatus us = userFileRepository.findGameUser();
         GameStatus gs = gameFileRepository.findGameStatus();

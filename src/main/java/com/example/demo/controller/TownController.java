@@ -77,26 +77,6 @@ public class TownController {
     }
 
     /**
-     * 판돈 --> 도박
-     * @param amount 판돈
-     * @param redirectAttributes town.html 상태
-     * @return 결과 반환
-     */
-    @PostMapping("/old_gamble")
-    public String gamble(@RequestParam(defaultValue = "100") int amount, RedirectAttributes redirectAttributes) {
-        String checkMessage = validationService.checkHp();
-        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
-            redirectAttributes.addFlashAttribute("gameOver", true);
-            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
-            return "redirect:/game/play";
-        }
-
-        String resultMessage = townService.performGamble(amount);
-        redirectAttributes.addFlashAttribute("message", resultMessage);
-        return "redirect:/game/play";
-    }
-
-    /**
      * 4대 계통(육신, 기민, 정신, 감각) 중 하나를 선택하여 영혼 단련 수행
      * * @param type 수련 종류 (전달되는 값: "육신", "기민", "정신", "감각")
      * @param redirectAttributes 결과 메시지 및 게임 오버 상태 전달

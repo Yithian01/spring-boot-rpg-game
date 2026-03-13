@@ -61,6 +61,45 @@
         .btn-confirm { padding: 12px 30px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
         .btn-yes { background: #ffd700; color: #000; }
         .btn-no { background: #333; color: #fff; border: 1px solid #444; }
+
+
+        /* 등급별 텍스트 색상 및 글로우 효과 */
+        .grade-text {
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .grade-text.COMMON {
+            color: #e0e0e0; /* 연한 회색 */
+        }
+
+        .grade-text.UNCOMMON {
+            color: #2ecc71; /* 녹색 */
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+        }
+
+        .grade-text.RARE {
+            color: #3498db; /* 파란색 */
+            text-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+
+        .grade-text.EPIC {
+            color: #a335ee; /* 보라색 */
+            text-shadow: 0 0 10px rgba(163, 53, 238, 0.6);
+        }
+
+        .grade-text.LEGENDARY {
+            color: #ff8000; /* 주황색/금색 */
+            text-shadow: 0 0 12px rgba(255, 128, 0, 0.8);
+            animation: legendaryGlow 2s infinite alternate;
+        }
+
+        /* 레전더리 등급을 위한 특별 애니메이션 (선택사항) */
+        @keyframes legendaryGlow {
+            from { text-shadow: 0 0 5px #ff8000; }
+            to { text-shadow: 0 0 20px #fffbb0, 0 0 30px #ff8000; }
+        }
     </style>
 </th:block>
 

@@ -144,12 +144,15 @@ public class BattleService {
         // ---------------------------------------------------------
         List<SkillCardDto> playerSkills = gameDataManager.getSkillMetaMap().values().stream()
                 .filter(meta -> {
-                    boolean hasSkill = availableSkillIds.contains(meta.getId());
-                    List<String> required = meta.getRequiredWeapons();
+                    boolean hasSkill = availableSkillIds.contains(meta.getId()); // A. 스킬 보유 중?
+
+                    List<String> required = meta.getRequiredWeapons(); // B. 무기 조건 확인
                     boolean isGeneric = required.contains("NONE");
-                    boolean canUse = required.contains(currentWeapon);
-                    boolean isIntrinsic = !isGeneric && canUse;
-                    return (hasSkill && (isGeneric || canUse)) || isIntrinsic;
+                    boolean isWeaponMatch = required.contains(currentWeapon);
+
+                    boolean isBaseSkillForWeapon = "BASE".equals(meta.getGrade()) && isWeaponMatch; // BASE && WEAPON_TYPE
+
+                    return (hasSkill && (isGeneric || isWeaponMatch)) || isBaseSkillForWeapon;
                 })
                 .map(meta -> buildSkillCardDto(user, ds, monster, meta, meta.getGrade(), meta.getIcon()))
                 .toList();

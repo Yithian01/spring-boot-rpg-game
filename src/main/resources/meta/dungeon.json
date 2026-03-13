@@ -155,8 +155,7 @@
     "prevDungeonId": [301, 302, 303, 304, 305],
     "explorationRate" : 5.0,
     "trapEncounterRate": 10.0,
-    "monsterEncounterRate" : 40.0,
-    "mistEncounterRate": 3
+    "monsterEncounterRate" : 40.0
   },
   {
     "id": 501,

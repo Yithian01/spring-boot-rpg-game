@@ -83,7 +83,7 @@ public class BattleService {
             switch (code) {
                 case "STUN" -> {
                     ds.setPlayerRemainingTurns(0);
-                    gs.addLog(String.format("%s <b>기절</b> 상태입니다! 이번 턴을 상실합니다.", icon));
+                    gs.addLog(String.format("%s <b>기절</b> 상태입니다! 행동력을 상실합니다.", icon));
                 }
                 case "FROZEN", "FREEZE" -> {
                     int freezePenalty = 1;
@@ -104,8 +104,8 @@ public class BattleService {
             return isExpired;
         });
 
-        userFileRepository.saveUserStatus(user);
         statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
+        saveCurrentState(user,ds, gs );
     }
 
     /**

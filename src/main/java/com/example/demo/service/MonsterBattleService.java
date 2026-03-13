@@ -81,8 +81,15 @@ public class MonsterBattleService {
         while (currentAp > 0 && monster.getCurrentHp() > 0) {
             final int finalCurrentAp = currentAp;
 
+            // 자신에게 걸려있는 버프 스킬 ID 리스트 추출
             List<Integer> currentBuffSkillIds = monster.getActiveStatuses().stream()
                     .filter(s -> "BUFF".equals(s.getCategory()))
+                    .map(ActiveStatus::getSkillId)
+                    .toList();
+
+            // 유저(상대방)가 현재 걸려있는 디버프 스킬 ID 리스트 추출
+            List<Integer> currentDebuffSkillIds = us.getActiveStatuses().stream()
+                    .filter(s -> "DEBUFF".equals(s.getCategory()))
                     .map(ActiveStatus::getSkillId)
                     .toList();
 
@@ -92,6 +99,7 @@ public class MonsterBattleService {
                             && s.getTurnCost() <= finalCurrentAp
                             && monster.getCurrentMp() >= s.getCost().getOrDefault("mp", 0))
                     .filter(s -> !("BUFF".equals(s.getType()) && currentBuffSkillIds.contains(s.getId())))
+                    .filter(s -> !("DEBUFF".equals(s.getType()) && currentDebuffSkillIds.contains(s.getId())))
                     .toList();
 
             if (affordableSkills.isEmpty()) {

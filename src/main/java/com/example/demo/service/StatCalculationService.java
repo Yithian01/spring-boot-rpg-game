@@ -448,7 +448,7 @@ public class StatCalculationService {
         double s13 = getEffectiveStat300(getStat(baseStats, 13)); // 에너지응집
         double s14 = getEffectiveStat300(getStat(baseStats, 14)); // 논리연산
 
-        return 10 + (s13 * 0.2) + (s14 * 0.1);
+        return Math.round(10 + (s13 * 0.2) + (s14 * 0.1));
     }
 
     /**

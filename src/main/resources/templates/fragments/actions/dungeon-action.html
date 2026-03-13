@@ -158,6 +158,7 @@
                  th:data-desc="'예상 위력: ' + ${ (skill.type != 'PASS' && skill.type != 'ESCAPE') ? skill.expectedPower : ''}"
                  th:data-scaling="${skill.scalingInfo != null ? #strings.listJoin(skill.scalingInfo, '|') : ''}"
                  th:data-mods="${skill.modifierDetails != null ? #strings.listJoin(skill.modifierDetails, '|') : ''}"
+                 th:data-weapons="${skill.requiredWeapons != null ? #strings.listJoin(skill.requiredWeapons, '|') : ''}"
                  th:data-chance="${skill.effectChance}"
                  th:data-status="${skill.statusName}"
                  th:data-duration="${skill.duration}">

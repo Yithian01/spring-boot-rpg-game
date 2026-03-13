@@ -145,16 +145,21 @@ public class BattleService {
         List<SkillCardDto> playerSkills = gameDataManager.getSkillMetaMap().values().stream()
                 .filter(meta -> {
                     boolean hasSkill = availableSkillIds.contains(meta.getId()); // A. 스킬 보유 중?
+                    boolean isWeaponMatch = meta.getRequiredWeapons().contains("NONE") ||
+                            meta.getRequiredWeapons().contains(currentWeapon);
 
-                    List<String> required = meta.getRequiredWeapons(); // B. 무기 조건 확인
-                    boolean isGeneric = required.contains("NONE");
-                    boolean isWeaponMatch = required.contains(currentWeapon);
+                    if (hasSkill) {
+                        return true;
+                    }
 
-                    boolean isBaseSkillForWeapon = "BASE".equals(meta.getGrade()) && isWeaponMatch; // BASE && WEAPON_TYPE
+                    if ("BASE".equals(meta.getGrade()) && isWeaponMatch) {
+                        return true;
+                    }
 
-                    return (hasSkill && (isGeneric || isWeaponMatch)) || isBaseSkillForWeapon;
+                    // 그 외(배우지 않은 상위 등급 스킬 등)는 노출하지 않음
+                    return false;
                 })
-                .map(meta -> buildSkillCardDto(user, ds, monster, meta, meta.getGrade(), meta.getIcon()))
+                .map(meta -> buildSkillCardDto(user, ds, monster, meta, meta.getGrade(), meta.getIcon(), currentWeapon))
                 .toList();
 
         totalHand.addAll(playerSkills);
@@ -179,7 +184,7 @@ public class BattleService {
 
                     // DTO 생성 (skillType: MONSTER, icon: monsterId 기반)
                     String monsterIcon = "/images/monsters/" + ei.getMonsterId() + ".png";
-                    totalHand.add(buildSkillCardDto(user, ds, monster, mMeta, mMeta.getGrade(), monsterIcon));
+                    totalHand.add(buildSkillCardDto(user, ds, monster, mMeta, mMeta.getGrade(), monsterIcon, currentWeapon));
                 }
             }
         }
@@ -191,14 +196,23 @@ public class BattleService {
      * [공통 가공 함수] SkillMeta 정보를 바탕으로 UI용 DTO를 빌드
      */
     private SkillCardDto buildSkillCardDto(UserStatus user, DungeonStatus ds, ActiveMonster monster,
-                                           SkillMeta meta, String skillType, String iconPath) {
+                                           SkillMeta meta, String skillType, String iconPath, String currentWeapon) {
 
-        boolean canAct = (ds != null) && statCalculationService.checkSkillAvailability(user, ds, meta);
+        boolean isWeaponMatch = meta.getRequiredWeapons().contains("NONE") || meta.getRequiredWeapons().contains(currentWeapon);
+        boolean costCheck = (ds != null) && statCalculationService.checkSkillAvailability(user, ds, meta);
+        boolean canAct = isWeaponMatch && costCheck;
+
         String msg = "";
         if (ds != null && !canAct) {
-            if (ds.getPlayerRemainingTurns() < meta.getTurnCost()) msg = "AP 부족";
-            else if (user.getCurrentStamina() < meta.getCost().getOrDefault("stamina", 0)) msg = "기력 부족";
-            else if (user.getCurrentMp() < meta.getCost().getOrDefault("mp", 0)) msg = "마력 부족";
+            if (!isWeaponMatch) {
+                msg = "무기 장착 필요";
+            } else if (ds.getPlayerRemainingTurns() < meta.getTurnCost()) {
+                msg = "AP 부족";
+            } else if (user.getCurrentStamina() < meta.getCost().getOrDefault("stamina", 0)) {
+                msg = "기력 부족";
+            } else if (user.getCurrentMp() < meta.getCost().getOrDefault("mp", 0)) {
+                msg = "마력 부족";
+            }
         }
 
         // 스케일링 가공

@@ -114,6 +114,7 @@
                      th:data-desc="${skill.description}"
                      th:data-scaling="${skill.scalingInfo != null ? #strings.listJoin(skill.scalingInfo, '|') : ''}"
                      th:data-mods="${skill.modifierDetails != null ? #strings.listJoin(skill.modifierDetails, '|') : ''}"
+                     th:data-weapons="${skill.requiredWeapons != null ? #strings.listJoin(skill.requiredWeapons, '|') : ''}"
                      th:data-status="${skill.statusName}"
                      th:data-chance="${skill.effectChance}"
                      th:data-duration="${skill.duration}">

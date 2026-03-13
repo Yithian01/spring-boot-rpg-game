@@ -59,7 +59,7 @@ public class DungeonService {
     /**
      * [공통 로직] 던전 상태 정보를 세팅하고 저장함
      */
-    private void enterFloor(int dungeonId, boolean isFirstEntry) {
+    private void enterFloor(int dungeonId, boolean isFirstEntry, int currentActionCount) {
         GameStatus gs = gameFileRepository.findGameStatus();
         // 1. 메타 데이터 로드
         DungeonMeta meta = gameDataManager.getDungeonMetaMap().get(dungeonId);
@@ -77,10 +77,9 @@ public class DungeonService {
                     .parentDungeonName(prevName)
                     .dungeonName(meta.getName())
                     .currentFloor(meta.getFloor())
-                    .actionCount(0)
+                    .actionCount(currentActionCount)
                     .maxActionCount(meta.getMaxActionCount())
                     .progress(0)
-                    .actionCount(0)
                     .floorProgressMap(new HashMap<>())
                     .activeMonster(null)
                     .playerMaxTurns(maxTurns)
@@ -96,10 +95,11 @@ public class DungeonService {
             ds.setDungeonName(meta.getName());
             ds.setCurrentFloor(meta.getFloor());
             ds.setMaxActionCount(meta.getMaxActionCount());
+            ds.setActionCount(currentActionCount);
             // 이전 층으로 돌아올 때 기존 진행도를 기억하고 싶다면 아래 주석 해제
             // int lastProgress = ds.getFloorProgressMap().getOrDefault(dungeonId, 0);
             // ds.setProgress(lastProgress);
-            ds.setProgress(0);
+            ds.setProgress(50);
             ds.setActiveMonster(null);
             ds.setPlayerMaxTurns(maxTurns);
             gs.addLog("<b style='color:#ffd700;'>" + meta.getName() + "</b>(으)로 이동했습니다.");
@@ -141,7 +141,7 @@ public class DungeonService {
         townFileRepository.saveTownStatus(townStatus);
 
         // 3. 던전 초기화 로직 실행 (true: 처음 생성)
-        enterFloor(dungeonId, true);
+        enterFloor(dungeonId, true, 0);
 
         log.info(">>> 던전 최초 진입 완료: DungeonID {}, Day {}", dungeonId, townStatus.getDay());
     }
@@ -165,7 +165,7 @@ public class DungeonService {
 
         if (nextId != 0) {
             // 이전에 수동으로 parentId 세팅하던 로직들 전부 삭제 가능
-            enterFloor(nextId, true);
+            enterFloor(nextId, true, ds.getActionCount());
         }
     }
 
@@ -180,7 +180,7 @@ public class DungeonService {
 
         if (prevId != 0) {
             // 메타데이터에 정의된 '부모'로 돌아감 (이동이므로 false)
-            enterFloor(prevId, false);
+            enterFloor(prevId, false, ds.getActionCount());
             log.info(">>> 이전 층으로 이동: {}", prevId);
         }
     }
@@ -200,7 +200,7 @@ public class DungeonService {
         int otherArea = currentMeta.pickOtherAreaDungeonId();
 
         if (otherArea != 0) {
-            enterFloor(otherArea, false);
+            enterFloor(otherArea, false, ds.getActionCount());
             log.info(">>> 다른 구역으로 이동: {}", otherArea);
         }
     }

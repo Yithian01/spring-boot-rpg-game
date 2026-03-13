@@ -60,16 +60,13 @@ public class BattleService {
 
     /**
      * 턴 시작 시 도트 데미지 처리 + 걸려있는 효과들 1턴씩 감소
-     * @param user 플레이어 정보
-     * @param ds 던전 + 몬스터 정보
-     * @param gs 로그 처리
      */
     public void updatePlayerStatusTick(UserStatus user, DungeonStatus ds, GameStatus gs) {
         if (user.getActiveStatuses() == null || user.getActiveStatuses().isEmpty()) return;
 
         user.getActiveStatuses().removeIf(status -> {
             String code = status.getEffectCode();
-            String icon = gameDataManager.getIcon(code); // 통합 아이콘 가져오기
+            String icon = gameDataManager.getIcon(code);
             boolean isExpired = false;
 
             // 1. 도트 데미지 처리
@@ -79,11 +76,12 @@ public class BattleService {
                         icon, status.getName(), status.getTickDamage()));
             }
 
-            // 2. 특수 CC 효과 처리
+            // 2. 특수 CC 효과 처리 (행동력 차감)
             switch (code) {
                 case "STUN" -> {
-                    ds.setPlayerRemainingTurns(0);
-                    gs.addLog(String.format("%s <b>기절</b> 상태입니다! 행동력을 상실합니다.", icon));
+                    int stunPenalty = 1; // 스턴 시 행동력 1 감소
+                    ds.setPlayerRemainingTurns(Math.max(0, ds.getPlayerRemainingTurns() - stunPenalty));
+                    gs.addLog(String.format("%s <b>기절</b> 상태입니다! 행동력이 %d 감소했습니다.", icon, stunPenalty));
                 }
                 case "FROZEN", "FREEZE" -> {
                     int freezePenalty = 1;
@@ -92,22 +90,26 @@ public class BattleService {
                 }
             }
 
-            // 3. 지속시간 감소
+            // 3. 지속시간 공통 감소 (스턴 포함 모든 효과 1턴 감소)
             status.setRemainingTurns(status.getRemainingTurns() - 1);
+
             if (status.getRemainingTurns() <= 0) {
                 gs.addLog(String.format("<span style='color:#aaaaaa;'>[해제] %s %s 효과 종료</span>",
-                        gameDataManager.getIcon(code), status.getName()));
+                        icon, status.getName()));
                 isExpired = true;
+
+                // 만료 시에만 개별 저장 및 스탯 리프레시
                 userFileRepository.saveUserStatus(user);
                 statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
             }
+
             return isExpired;
         });
 
+        // 최종 스탯 확정 및 저장
         statCalculationService.refreshUserCombatStats(user, gameDataManager.getItemMetaMap());
-        saveCurrentState(user,ds, gs );
+        saveCurrentState(user, ds, gs);
     }
-
     /**
      * 마을용: 단순히 보유한 스킬 리스트를 가져옴 (전투 계산 제외)
      */
@@ -578,7 +580,6 @@ public class BattleService {
             return "VICTORY";
         }
 
-        updatePlayerStatusTick(us, ds, gs);
 
         // 3. 몬스터에게 디버프를 받았을 수 있으므로 플레이어 스탯 갱신
         statCalculationService.refreshUserCombatStats(us, gameDataManager.getItemMetaMap());
@@ -587,6 +588,8 @@ public class BattleService {
         int maxTurns = statCalculationService.calculateCombatTurns(us);
         ds.setPlayerMaxTurns(maxTurns);
         ds.setPlayerRemainingTurns(maxTurns);
+
+        updatePlayerStatusTick(us, ds, gs);
 
         //4-2. 플레이어 스테미나 회복
         int stRecovery = statCalculationService.calculateStRestoration(us);

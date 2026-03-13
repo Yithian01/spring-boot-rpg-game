@@ -2321,6 +2321,7 @@
     "effect": {
       "type": "BUFF",
       "element": "CHAOS",
+      "status": "STRENGTHEN",
       "duration": 5,
       "combatStatOffsets": {
         "accuracy": 10.0,
@@ -2382,6 +2383,7 @@
     "effect": {
       "type": "DEBUFF",
       "element": "CHAOS",
+      "status": "WEAKNESS",
       "duration": 5,
       "combatStatModifiers": {
         "magRes": 0.4,
@@ -2438,6 +2440,7 @@
     "effect": {
       "type": "BUFF",
       "element": "CHAOS",
+      "status": "STRENGTHEN",
       "duration": 13,
       "combatStatOffsets" : {
         "maxTurns": 3,

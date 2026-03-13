@@ -147,9 +147,9 @@
                     <span class="attr-name" th:text="${attr == 'fire' ? '🔥 화염' : attr == 'ice' ? '❄️ 냉기' : attr == 'lightning' ? '⚡ 번개' : attr == 'earth' ? '🌿 대지' : attr == 'holy' ? '✨ 신성' : attr == 'dark' ? '🌑 암흑' :  attr == 'chaos' ? '🌀 혼돈' : '🧪 중독'}"></span>
                     <span class="attr-atk">[[${#numbers.formatInteger(game.combatStats[attr + 'Atk'], 0)}]]</span>
                     <span class="attr-res-pen">
-                        <span th:style="${game.combatStats[attr + 'Res'] >= 0 ? 'color:#70db70' : 'color:#ff4d4d'}">[[${game.combatStats[attr + 'Res'] >= 0 ? '+' : ''}]][[${game.combatStats[attr + 'Res'] * 100 }]]%</span>
+                        <span th:style="${game.combatStats[attr + 'Res'] >= 0 ? 'color:#70db70' : 'color:#ff4d4d'}">[[${game.combatStats[attr + 'Res'] >= 0 ? '+' : ''}]][[${game.combatStats[attr + 'Res'] }]]%</span>
                         <span style="color:#888;">/</span>
-                        <span style="color:#ff922b">[[${game.combatStats[attr + 'Pen'] * 100}]]%</span>
+                        <span style="color:#ff922b">[[${game.combatStats[attr + 'Pen']}]]%</span>
                     </span>
                 </div>
             </th:block>

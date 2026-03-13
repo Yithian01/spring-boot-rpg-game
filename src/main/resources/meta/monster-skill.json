@@ -2360,6 +2360,7 @@
     "effect": {
       "type": "DEBUFF",
       "element": "DARK",
+      "status" : "WEAKNESS",
       "duration": 4,
       "combatStatModifiers": {
         "magRes": 0.6,

@@ -2303,9 +2303,9 @@
   },
   {
     "id": 463,
-    "name": "운석 소환",
-    "icon": "/images/skills/meteor_summon.png",
-    "description": "대기권 밖의 거대 운석을 끌어내려 일대를 소멸시킵니다.",
+    "name": "지핵의 심판",
+    "icon": "/images/skills/core_judgment.png",
+    "description": "지각 아래 잠든 행성의 핵 에너지를 일시에 분출시켜 주변의 모든 것을 용암과 바위 속에 매몰시킵니다.",
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
@@ -3674,8 +3674,6 @@
     },
     "requiredWeapons": ["NONE"]
   },
-
-
   {
     "id": 25,
     "name": "얼음 송곳",
@@ -3697,7 +3695,6 @@
     },
     "requiredWeapons": ["NONE"]
   },
-
   {
     "id": 26,
     "name": "연쇄 번개",
@@ -3736,56 +3733,6 @@
       "element": "HOLY",
       "status": "REGEN",
       "chance": 100
-    },
-    "requiredWeapons": ["NONE"]
-  },
-  {
-    "id": 14,
-    "name": "강화 근육",
-    "icon": "/images/skills/14.png",
-    "description": "세포의 대사 효율을 일시적으로 높여 근력을 강화합니다.",
-    "grade": "COMMON",
-    "type": "BUFF",
-    "turnCost": 1,
-    "hitChance": 100,
-    "cost": { "stamina": 10, "mp": 15 },
-    "damageScaling": {},
-    "statScaling": {},
-    "effect": {
-      "type": "BUFF",
-      "element": "PHYSICAL",
-      "status": "STRENGTHEN",
-      "duration": 5,
-      "chance": 100,
-      "statModifiers": {
-        "10": 1.5,
-        "11": 1.5
-      }
-    },
-    "requiredWeapons": ["NONE"]
-  },
-  {
-    "id": 15,
-    "name": "매의 눈",
-    "icon": "/images/skills/15.png",
-    "description": "집중력을 높여 공격의 정확도와 치명타 확률을 대폭 강화합니다.",
-    "grade": "COMMON",
-    "type": "BUFF",
-    "turnCost": 1,
-    "hitChance": 100,
-    "cost": { "stamina": 10, "mp": 15 },
-    "damageScaling": {},
-    "statScaling": {},
-    "effect": {
-      "type": "BUFF",
-      "element": "PHYSICAL",
-      "status": "STRENGTHEN",
-      "duration": 5,
-      "chance": 100,
-      "combatStatOffsets": {
-        "accuracy": 20,
-        "critRate": 30
-      }
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3834,6 +3781,1460 @@
       "chance": 100
     },
     "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 999,
+    "name": "매의 눈",
+    "icon": "/images/skills/999.png",
+    "description": "집중력을 높여 공격의 정확도와 치명타 확률을 대폭 강화합니다.",
+    "grade": "EPIC",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 10, "mp": 15 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatOffsets": {
+        "accuracy": 20,
+        "critRate": 30
+      }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1000,
+    "name": "강화된 근섬유",
+    "description": "순간적으로 근육의 밀도를 높여 물리 공격력과 방어력을 소폭 강화합니다.",
+    "type": "BUFF",
+    "grade": "COMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 15 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": { "meleeAtk": 1.15 },
+      "combatStatOffsets": { "physRes": 5 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1001,
+    "name": "마나 순환 가속",
+    "description": "체내 마나 흐름을 빠르게 유도하여 마법 위력과 재생력을 높입니다.",
+    "type": "BUFF",
+    "grade": "COMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 5, "mp": 10 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": { "magicAtk": 1.15 },
+      "combatStatOffsets": { "mpRegen": 10 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1002,
+    "name": "예리한 감각",
+    "description": "오감을 곤두세워 공격의 명중률과 회피율을 보정합니다.",
+    "type": "BUFF",
+    "grade": "COMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 12 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatOffsets": { "accuracy": 15, "dodge": 10 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1003,
+    "name": "강철의 의지",
+    "description": "정신을 집중하여 물리 및 마법 저항력을 골고루 상승시킵니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 25 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatOffsets": { "physRes": 15, "magicRes": 15 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1004,
+    "name": "아드레날린 폭발",
+    "description": "심박수를 급격히 올려 공격 속도와 관통력을 강화하지만, 체력을 소모합니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "hp": 15, "stamina": 10 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": { "meleeAtk": 1.25 },
+      "combatStatOffsets": { "physPen": 15 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1005,
+    "name": "원소 공명",
+    "description": "주변의 원소와 동조하여 마법 치명타 확률과 모든 속성 관통력을 높입니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 35 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": { "critRate": 15, "firePen": 10, "icePen": 10, "lightningPen": 10 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1006,
+    "name": "거인의 힘",
+    "description": "육체를 거대화하는 마력을 빌려 파괴력을 극대화합니다. 민첩성이 다소 떨어집니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 30, "mp": 20 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": { "meleeAtk": 1.5 },
+      "combatStatOffsets": { "physPen": 25, "dodge": -20 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1007,
+    "name": "마나 과부하",
+    "description": "마력 회로를 한계치까지 개방하여 마법 피해량을 폭증시킵니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 60 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": { "magicAtk": 1.6 },
+      "combatStatOffsets": { "magicRes": -15 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1008,
+    "name": "유령 보폭",
+    "description": "신체를 반실체화하여 회피율과 이동 효율을 비약적으로 높입니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 40 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 40, "accuracy": 20, "physRes": -10 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1009,
+    "name": "광폭화",
+    "description": "이성을 버리고 투쟁심에 몸을 맡깁니다. 주는 물리 피해가 폭증하지만 방어력이 급감합니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "hp": 50, "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 6,
+      "chance": 100,
+      "combatStatModifiers": { "meleeAtk": 2.0 },
+      "combatStatOffsets": { "physRes": -40, "magicRes": -40, "critRate": 25 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1010,
+    "name": "불의 심장",
+    "description": "심장을 화염 원소와 공명시킵니다. 강력한 화염 공격력을 얻지만 냉기에 취약해집니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 80 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": { "magicAtk": 1.5 },
+      "combatStatOffsets": { "firePen": 50, "iceRes": -50, "fireRes": 30 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1011,
+    "name": "제 7감의 개안",
+    "description": "초월적인 집중력으로 적의 모든 움직임을 예측합니다. 모든 명중 및 치명타 능력이 강화됩니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 2,
+    "hitChance": 100,
+    "cost": { "mp": 100, "stamina": 30 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": { "accuracy": 100, "critRate": 50, "critDamage": 80 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1012,
+    "name": "드래곤 하트",
+    "description": "용의 마력 원천을 일시적으로 구현합니다. 파괴적인 마법 출력과 강력한 저항력을 갖춥니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 200, "hp": 100 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 8,
+      "chance": 100,
+      "combatStatModifiers": { "magicAtk": 2.5 },
+      "combatStatOffsets": { "magicRes": 60, "fireRes": 100, "magicPen": 40 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1013,
+    "name": "전신의 강림",
+    "description": "전투의 신이 빙의한 듯한 신체 능력을 발휘합니다. 모든 물리 전투 능력이 한계를 초월합니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 100, "hp": 150 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 8,
+      "chance": 100,
+      "combatStatModifiers": { "meleeAtk": 2.8 },
+      "combatStatOffsets": { "physRes": 80, "physPen": 60, "accuracy": 50 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1014,
+    "name": "제로 시간 영역",
+    "description": "시간의 흐름을 왜곡하여 오직 자신만의 시간을 가집니다. 절대적인 회피와 명중률을 보장합니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 2,
+    "hitChance": 100,
+    "cost": { "mp": 300, "stamina": 100 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 200, "accuracy": 200, "critRate": 100, "critDamage": 150 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1015,
+    "name": "가벼운 발걸음",
+    "description": "신체의 무게중심을 낮추고 발걸음을 가볍게 하여 회피율을 높입니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 15 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 15, "accuracy": 5 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1016,
+    "name": "호흡 조절",
+    "description": "일정한 호흡을 유지하여 공격의 정확도를 높이고 스태미나 소모를 최적화합니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 10 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatOffsets": { "accuracy": 20, "staminaRegen": 5 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1017,
+    "name": "궤적 예측",
+    "description": "적의 공격 궤적을 미리 읽어 방어적인 움직임에 집중합니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 12, "mp": 5 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 25 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1018,
+    "name": "집중 사선",
+    "description": "시야를 좁히고 대상에게만 집중하여 명중률과 치명타 확률을 높입니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatOffsets": { "accuracy": 30, "critRate": 10, "dodge": -10 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1019,
+    "name": "유연한 근전환",
+    "description": "신경의 자극 전달 속도를 높여 다음 행동의 반응 속도를 보정합니다.",
+    "type": "BUFF",
+    "grade": "UNCOMMON",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 10, "mp": 10 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 12, "accuracy": 12 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1020,
+    "name": "잔상 보법",
+    "description": "빠른 가속을 통해 적의 시야에 잔상을 남깁니다. 회피 능력이 크게 상승합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "stamina": 35 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 45, "accuracy": -10 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1021,
+    "name": "약점 추적",
+    "description": "대상의 불필요한 움직임을 파악하여 치명적인 타격 기회를 포착합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 40 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatOffsets": { "accuracy": 40, "critRate": 20, "physPen": 15 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1022,
+    "name": "신경 가속화",
+    "description": "강제로 신경계에 마력을 주입하여 반응 속도를 한계치까지 끌어올립니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "hp": 25, "mp": 20 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 35, "accuracy": 35 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1023,
+    "name": "정밀한 타격 자세",
+    "description": "모든 근육을 타격 지점에 최적화하여 회피가 불가능한 일격을 준비합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 2,
+    "hitChance": 100,
+    "cost": { "stamina": 40 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatOffsets": { "accuracy": 80, "critDamage": 30 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1024,
+    "name": "공기 흐름 동조",
+    "description": "공기의 미세한 흐름을 읽어 공격을 흘려보냅니다. 마법 저항과 회피가 동시에 상승합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 50 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatOffsets": { "dodge": 25, "magicRes": 20, "accuracy": 15 }
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 1050,
+    "name": "화염의 춤",
+    "description": "신체를 화염의 흐름에 맡겨 마력의 투사 효율을 높입니다. 화염 공격력과 관통력이 상승합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": { "mp": 40, "stamina": 10 },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "fireAtk": 1.4
+      },
+      "combatStatOffsets": {
+        "firePen": 25
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1051,
+    "name": "불사조의 춤",
+    "description": "생명력을 연소시켜 폭발적인 화력을 얻습니다. 화염 공격력이 비약적으로 상승하지만 냉기에 매우 취약해집니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 50,
+      "mp": 80
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": {
+        "fireAtk": 2.0
+      },
+      "combatStatOffsets": {
+        "firePen": 50,
+        "iceRes": -40
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1052,
+    "name": "태양의 흑점",
+    "description": "신의 화염을 몸에 가두어 모든 것을 재로 만듭니다. 화염 관통이 극대화되며 모든 공격이 적의 마법 저항을 무시합니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 100,
+      "mp": 200,
+      "stamina": 50
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 6,
+      "chance": 100,
+      "combatStatModifiers": {
+        "fireAtk": 3.0
+      },
+      "combatStatOffsets": {
+        "firePen": 120,
+        "magRes": -50,
+        "physRes": -30
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1053,
+    "name": "얼음 핏줄",
+    "description": "혈액의 흐름을 늦추고 마력을 차갑게 식혀 마법의 투과력을 높입니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 45
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "iceAtk": 1.4
+      },
+      "combatStatOffsets": {
+        "icePen": 20,
+        "staminaRegen": -5
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1054,
+    "name": "절대 영도",
+    "description": "주변의 열을 모두 흡수하여 극저온의 상태를 유지합니다. 냉기 공격력이 대폭 상승하지만 화염에 매우 취약해집니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 90,
+      "stamina": 20
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": {
+        "iceAtk": 2.1
+      },
+      "combatStatOffsets": {
+        "icePen": 45,
+        "fireRes": -50,
+        "hpRegen": -15
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1055,
+    "name": "서리 거인의 심장",
+    "description": "태고의 냉기를 몸에 깃들게 합니다. 모든 공격이 적의 방어 체계를 동결시키며 마법 저항을 압도합니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 80,
+      "mp": 250
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 6,
+      "chance": 100,
+      "combatStatModifiers": {
+        "iceAtk": 3.2
+      },
+      "combatStatOffsets": {
+        "icePen": 130,
+        "magicRes": 40,
+        "physRes": -40,
+        "dodge": -20
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1056,
+    "name": "대지의 파동",
+    "description": "지맥의 흐름을 몸으로 받아들여 마력의 무게를 더합니다. 대지 공격력과 관통력이 상승합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 35,
+      "stamina": 15
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "earthAtk": 1.4
+      },
+      "combatStatOffsets": {
+        "earthPen": 25,
+        "physRes": 10
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1057,
+    "name": "금강부동",
+    "description": "신체를 바위처럼 단단하게 고정하여 파괴력을 극대화합니다. 방어력이 크게 오르지만 회피가 불가능해집니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 70,
+      "stamina": 30
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": {
+        "earthAtk": 2.2
+      },
+      "combatStatOffsets": {
+        "earthPen": 55,
+        "physRes": 50,
+        "dodge": -100
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1058,
+    "name": "가이아의 권능",
+    "description": "대지 그 자체가 되어 모든 것을 짓누릅니다. 압도적인 관통력으로 적의 모든 저항을 분쇄합니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 100,
+      "mp": 150,
+      "stamina": 80
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 6,
+      "chance": 100,
+      "combatStatModifiers": {
+        "earthAtk": 3.5
+      },
+      "combatStatOffsets": {
+        "earthPen": 150,
+        "physRes": 80,
+        "magRes": 40,
+        "dodge": -30
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1059,
+    "name": "전광석화: 잔상",
+    "description": "신경계에 약한 전류를 흘려 반응 속도를 끌어올립니다. 회피율과 번개 공격력이 상승합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 40,
+      "stamina": 10
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "LIGHTNING",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": {
+        "lightningAtk": 1.3
+      },
+      "combatStatOffsets": {
+        "lightningPen": 20,
+        "dodge": 15,
+        "magRes": -10
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1060,
+    "name": "전광석화: 초감각",
+    "description": "뇌의 연산 속도를 강제로 가속합니다. 적의 움직임이 느리게 보이며, 번개 마법의 파괴력이 극대화됩니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 85,
+      "stamina": 30
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "LIGHTNING",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "lightningAtk": 2.0
+      },
+      "combatStatOffsets": {
+        "lightningPen": 60,
+        "dodge": 40,
+        "actionSpeed": 15,
+        "hpRegen": -20
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1061,
+    "name": "전광석화: 신속(神速)",
+    "description": "스스로를 살아있는 번개로 변환합니다. 모든 공격을 회피할 기회를 얻고 장벽을 무시하지만, 육체는 파괴적인 과부하에 직면합니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 120,
+      "mp": 200
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "LIGHTNING",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": {
+        "lightningAtk": 3.0
+      },
+      "combatStatOffsets": {
+        "lightningPen": 180,
+        "dodge": 80,
+        "actionSpeed": 40,
+        "physRes": -50,
+        "magRes": -50,
+        "staminaRegen": -30
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1062,
+    "name": "성령의 가호",
+    "description": "신성한 기운으로 몸을 감싸 공격력과 치유력을 동시에 높입니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 50,
+      "stamina": 5
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "holyAtk": 1.3
+      },
+      "combatStatOffsets": {
+        "holyPen": 20,
+        "hpRegen": 15,
+        "magRes": 15
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1063,
+    "name": "천상의 광휘",
+    "description": "하늘의 빛을 불러내어 모든 어둠을 꿰뚫는 힘을 부여합니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 100,
+      "stamina": 10
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": {
+        "holyAtk": 1.8,
+        "hpRegen": 1.5
+      },
+      "combatStatOffsets": {
+        "holyPen": 50,
+        "magRes": 30,
+        "statusResist": 20
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1064,
+    "name": "성역의 강림: 오메가",
+    "description": "자신을 신성이 머무는 성역 그 자체로 변모시킵니다. 불멸에 가까운 재생력과 파괴적인 성법력을 얻습니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 250
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 7,
+      "chance": 100,
+      "combatStatModifiers": {
+        "holyAtk": 2.5,
+        "hpRegen": 3.0
+      },
+      "combatStatOffsets": {
+        "holyPen": 120,
+        "physRes": 50,
+        "magRes": 100,
+        "statusResist": 50
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1065,
+    "name": "불안정한 각성제",
+    "description": "신경을 자극하는 약물을 주입하여 반응 속도를 높입니다. 독 공격력이 상승하지만 방어력이 소폭 감소합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 15,
+      "stamina": 10
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": {
+        "toxicAtk": 1.4
+      },
+      "combatStatOffsets": {
+        "dodge": 10,
+        "physRes": -10,
+        "magRes": -10
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1066,
+    "name": "부식성 혈액 도포",
+    "description": "무기에 부식성 독액을 바릅니다. 독 관통력이 크게 상승하지만 약물의 독성이 시전자의 체력을 갉아먹습니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 30
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "toxicAtk": 1.2
+      },
+      "combatStatOffsets": {
+        "toxicPen": 35,
+        "hpRegen": -15
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1067,
+    "name": "연금술적 과부하",
+    "description": "세포의 대사 효율을 한계치까지 가속합니다. 공격력과 회복력이 폭증하지만 대사가 끝난 후 급격한 피로가 몰려옵니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 50,
+      "mp": 50
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatModifiers": {
+        "toxicAtk": 2.2,
+        "hpRegen": 2.0
+      },
+      "combatStatOffsets": {
+        "toxicPen": 80,
+        "staminaRegen": -30
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1068,
+    "name": "독무의 장막",
+    "description": "시전자 주변에 치명적인 독안개를 방출하여 접근을 차단하고 치명타 성능을 강화합니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 80,
+      "stamina": 20
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatModifiers": {
+        "toxicAtk": 1.8
+      },
+      "combatStatOffsets": {
+        "critRate": 25,
+        "critDamage": 40,
+        "dodge": 20,
+        "magRes": -30
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1069,
+    "name": "금단의 키메라 포뮬러",
+    "description": "인간의 한계를 초월하는 합성 약물을 투입합니다. 파괴적인 독성 공격력을 얻지만 생명 유지 장치가 망가집니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 150,
+      "mp": 100
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 6,
+      "chance": 100,
+      "combatStatModifiers": {
+        "toxicAtk": 3.5,
+        "meleeAtk": 1.5
+      },
+      "combatStatOffsets": {
+        "toxicPen": 250,
+        "hpRegen": -100,
+        "physRes": -50,
+        "magRes": -50
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1070,
+    "name": "만독불침의 정수",
+    "description": "모든 독의 정수를 흡수하여 신체를 재구성합니다. 압도적인 마나 회복력과 상태 이상 저항을 얻습니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "stamina": 50
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 8,
+      "chance": 100,
+      "combatStatModifiers": {
+        "mpRegen": 4.0
+      },
+      "combatStatOffsets": {
+        "toxicAtk": 100,
+        "statusResist": 100,
+        "toxicRes": 200,
+        "actionSpeed": -10
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1071,
+    "name": "공허의 속삭임",
+    "description": "심연의 목소리를 경청하여 일시적으로 마법 관통력을 높입니다. 대가로 정신이 오염되어 마나 재생력이 감소합니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 30
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatOffsets": {
+        "voidPen": 25,
+        "mpRegen": -15,
+        "statusResist": -10
+      },
+      "combatStatModifiers": {
+        "voidAtk": 1.2
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1072,
+    "name": "피의 제물",
+    "description": "자신의 생명력을 제물로 바쳐 신체 능력을 강제 가속합니다. 공격력이 오르지만 지속적인 출혈 상태가 됩니다.",
+    "type": "BUFF",
+    "grade": "RARE",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 50
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 4,
+      "chance": 100,
+      "combatStatOffsets": {
+        "hpRegen": -20,
+        "actionSpeed": 15
+      },
+      "combatStatModifiers": {
+        "meleeAtk": 1.3,
+        "voidAtk": 1.3
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1073,
+    "name": "광기의 찬가",
+    "description": "신을 향한 광기 어린 찬송을 불러 주변의 차원을 뒤퇍니다. 모든 공격에 공허의 힘이 서리지만 방어 능력을 상실합니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 80,
+      "hp": 30
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatOffsets": {
+        "voidPen": 60,
+        "physRes": -40,
+        "magRes": -40,
+        "critRate": 20
+      },
+      "combatStatModifiers": {
+        "voidAtk": 1.8
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1074,
+    "name": "심연의 수의",
+    "description": "그림자 속에 몸을 숨기고 심연의 가호를 받습니다. 회피율과 마법 저항이 크게 오르지만 빛의 힘에 취약해집니다.",
+    "type": "BUFF",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 100,
+      "stamina": 20
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 5,
+      "chance": 100,
+      "combatStatOffsets": {
+        "dodge": 30,
+        "magRes": 50,
+        "holyRes": -100,
+        "voidAtk": 40
+      },
+      "combatStatModifiers": {
+        "mpRegen": 1.5
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1075,
+    "name": "외신과의 접촉",
+    "description": "외신과의 접촉을 통해 육신을 초월적인 존재로 재구성합니다. 물리적 상식을 파괴하는 공격력을 얻지만 생명력이 빠르게 고갈됩니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 150,
+      "mp": 150
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 6,
+      "chance": 100,
+      "combatStatOffsets": {
+        "voidPen": 150,
+        "hpRegen": -150,
+        "statusResist": 100,
+        "actionSpeed": 20
+      },
+      "combatStatModifiers": {
+        "voidAtk": 3.0,
+        "meleeAtk": 2.0
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 1076,
+    "name": "아자토스의 눈먼 지혜",
+    "description": "우주의 중심에서 흘러나오는 금단의 지식에 눈을 뜹니다. 모든 인과율을 무시하는 마나 효율을 얻으나 육신이 부패하기 시작합니다.",
+    "type": "BUFF",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "stamina": 100
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 10,
+      "chance": 100,
+      "combatStatOffsets": {
+        "physRes": -100,
+        "magRes": -100,
+        "critDamage": 100,
+        "accuracy": 50
+      },
+      "combatStatModifiers": {
+        "mpRegen": 5.0,
+        "voidAtk": 4.0
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
   }
-
 ]

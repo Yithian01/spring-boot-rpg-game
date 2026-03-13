@@ -4339,10 +4339,7 @@
       "darkPen": 25.0
     },
     "baseActionPoints": 4,
-    "activeSkillIds": [
-      803,
-      804
-    ],
+    "activeSkillIds": [ 803, 804],
     "expReward": 6,
     "essenceBonus": {
       "baseStats": {

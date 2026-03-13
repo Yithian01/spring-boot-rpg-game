@@ -116,11 +116,11 @@ public class MonsterBattleService {
                     // 마나 문제가 아니라 행동력이 부족하거나 스킬 데이터가 없는 경우
                     gs.addLog(String.format("<span style='color:#aaaaaa;'>☕ %s이(가) 숨을 고르며 행동을 마칩니다.</span>", monster.getName()));
                 }
-
                 break;
             }
 
             SkillMeta selectedSkill = affordableSkills.get(random.nextInt(affordableSkills.size()));
+            System.out.println("selectedSkill = " + selectedSkill);
             executeMonsterAction(us, monster, selectedSkill, ds, gs);
 
             currentAp -= selectedSkill.getTurnCost();
@@ -278,7 +278,7 @@ public class MonsterBattleService {
         // 1. 도트 데미지 수치 계산
         if (isDotDmg) {
             newTickDamage = baseDamage; // 순수 도트 스킬
-        } else if (List.of("BLEED", "POISON", "BURN", "PAIN").contains(status)) {
+        } else if (status != null && List.of("BLEED", "POISON", "BURN", "PAIN").contains(status)) {
             newTickDamage = Math.max(1, (int) Math.ceil(baseDamage / 3.0)); // 부가 효과 도트
         }
 

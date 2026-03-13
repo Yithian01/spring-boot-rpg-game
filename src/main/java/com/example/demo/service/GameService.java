@@ -735,7 +735,8 @@ public class GameService {
                     String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(name, name);
                     // 퍼센트 단위인 경우 처리 (필요 시)
                     String suffix = (name.toLowerCase().contains("rate") || name.toLowerCase().contains("dodge")) ? "%" : "";
-                    statTexts.add(displayName + " +" + val + suffix);
+                    String sign = (val > 0) ? "+" : "";
+                    statTexts.add(displayName + " " + sign + val + suffix);
                 }
             });
         }

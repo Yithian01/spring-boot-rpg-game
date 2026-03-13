@@ -236,7 +236,7 @@ public class GameDataManager  implements ApplicationRunner {
         return switch (code) {
             case "STUN" -> "💫";
             case "BURN" -> "🔥";
-            case "POISON, TOXIC" -> "🧪";
+            case "POISON", "TOXIC" -> "🧪";
             case "BLEED" -> "🩸";
             case "FROZEN", "FREEZE" -> "❄️";
             case "SHOCK" -> "⚡";
@@ -345,6 +345,7 @@ public class GameDataManager  implements ApplicationRunner {
             Map.entry("darkAtk", "암흑 공격"),
             Map.entry("chaosAtk", "혼돈 공격"),
             Map.entry("toxicAtk", "독성 공격"),
+            Map.entry("voidAtk", "공허 공격"),
 
             Map.entry("fireRes", "화염 저항"),
             Map.entry("iceRes", "냉기 저항"),
@@ -354,6 +355,7 @@ public class GameDataManager  implements ApplicationRunner {
             Map.entry("darkRes", "암흑 저항"),
             Map.entry("chaosRes", "혼돈 저항"),
             Map.entry("toxicRes", "독성 저항"),
+            Map.entry("voidRes", "공허 저항"),
 
             Map.entry("firePen", "화염 관통"),
             Map.entry("icePen", "냉기 관통"),
@@ -363,6 +365,7 @@ public class GameDataManager  implements ApplicationRunner {
             Map.entry("darkPen", "암흑 관통"),
             Map.entry("chaosPen", "혼돈 관통"),
             Map.entry("toxicPen", "독성 관통"),
+            Map.entry("voidPen", "공허 관통"),
 
             //=== 생활 스탯 ===
             Map.entry("workGoldBonus", "노동 보수 효율"),

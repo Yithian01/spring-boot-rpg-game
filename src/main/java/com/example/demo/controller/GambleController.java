@@ -121,7 +121,7 @@ public class GambleController {
             return "redirect:/game/play";
         }
 
-        String resultMessage = gambleService.stayBlackjack();
+        String resultMessage = gambleService.stayBlackjack(null);
         redirectAttributes.addFlashAttribute("message", resultMessage);
         return "redirect:/game/play";
     }

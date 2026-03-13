@@ -2380,6 +2380,7 @@
     "turnCost": 3,
     "hitChance": 100,
     "cost": { "mp": 1200 },
+    "damageScaling": { "meleeAtk": 1.8 },
     "effect": {
       "type": "DEBUFF",
       "element": "CHAOS",
@@ -2403,6 +2404,8 @@
     "turnCost": 3,
     "hitChance": 95,
     "cost": { "mp": 2500 },
+    "damageScaling": { "meleeAtk": 1.8 },
+    "statScaling": { "16": 2.5, "23": 1.5, "15": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "CHAOS",
@@ -2422,6 +2425,7 @@
     "hitChance": 150,
     "cost": { "mp": 8500 },
     "damageScaling": { "meleeAtk": 1.8 },
+    "statScaling": { "16": 2.5, "23": 1.5, "15": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "CHAOS"
@@ -2464,6 +2468,7 @@
     "hitChance": 200,
     "cost": { "mp": 75000 },
     "damageScaling": { "meleeAtk": 1.8 },
+    "statScaling": { "16": 2.5, "23": 1.5, "15": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "CHAOS",

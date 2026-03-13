@@ -17,6 +17,7 @@ public class RandomSkillCardDto {
     private String icon;
     private String description;
     private String grade;        // COMMON, UNCOMMON 등 (테두리 색상 결정용)
+    private List<String> requiredWeapon; // 필요한 무기군
 
     // 비용 정보
     private int turnCost;

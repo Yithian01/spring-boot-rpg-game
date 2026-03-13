@@ -381,26 +381,35 @@ public class GambleService {
         int pTotal = calculateBlackjackSum(status.getPlayerHand());
         status.setPlayerTotal(pTotal);
 
-        // 3. 버스트(Bust) 체크
+        // 3. 판정 로직
+        String returnMsg;
         if (pTotal > 21) {
+            // 버스트 발생
             status.setStep("RESULT");
             status.setWin(false);
             status.setEarnedGold(-status.getBetAmount());
-            status.setResultMessage("💥 [버스트] 21점을 초과했습니다! 패배하셨습니다.");
+            status.setResultMessage("💥 [버스트] 21점을 초과했습니다! 패배하셨습니다. (최종 점수: " + pTotal + ")");
+            returnMsg = status.getResultMessage();
         } else if (pTotal == 21) {
-            // 21점이면 자동으로 STAY 처리하여 편의성 제공
-            return stayBlackjack();
+            // 21점이면 자동으로 STAY 처리 (stayBlackjack 내부에서 저장함)
+            return stayBlackjack(status);
+        } else {
+            // 게임 계속 진행
+            status.setResultMessage(""); // 진행 중일 땐 메시지 비움
+            returnMsg = "카드를 한 장 더 받았습니다. (현재 점수: " + pTotal + ")";
         }
 
+        // 4. 최종 상태를 반드시 저장! (가장 중요)
         gambleFileRepository.saveGambleStatus(status);
-        return "카드를 한 장 더 받았습니다. (현재 점수: " + pTotal + ")";
+
+        return returnMsg;
     }
 
     /**
      * [BLACKJACK] - STAY (멈추고 결과 확인)
      */
-    public String stayBlackjack() {
-        GambleStatus status = gambleFileRepository.findGambleStatus();
+    public String stayBlackjack(GambleStatus gambleStatusStatus) {
+        GambleStatus status = (gambleStatusStatus == null) ? gambleFileRepository.findGambleStatus() : gambleStatusStatus;
         UserStatus us = userFileRepository.findGameUser();
 
         if (!"PLAYING".equals(status.getStep())) return "잘못된 접근입니다.";
@@ -489,7 +498,7 @@ public class GambleService {
         } else {
             // 버스트가 아니면 저장 후 바로 stay 로직 수행
             gambleFileRepository.saveGambleStatus(status);
-            return stayBlackjack();
+            return stayBlackjack(status);
         }
     }
 }

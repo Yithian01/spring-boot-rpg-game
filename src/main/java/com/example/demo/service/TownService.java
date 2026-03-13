@@ -393,6 +393,7 @@ public class TownService {
                     .icon(picked.getIcon())
                     .description(picked.getDescription())
                     .grade(picked.getGrade())
+                    .requiredWeapon(picked.getRequiredWeapons())
 
                     .turnCost(picked.getTurnCost())
                     .staminaCost(picked.getCost().getOrDefault("stamina", 0))

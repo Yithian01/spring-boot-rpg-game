@@ -135,7 +135,10 @@
                     <span class="inv-item-name" th:classappend="${'text-' + item.grade}">
                         <span th:text="${item.name}"></span>
                     </span>
-                    <small style="color: #ffd700; font-size: 0.75rem;"  th:text="${item.subType != null ? item.subType : item.type}"> </small>
+                    <small class="inv-item-type"
+                           th:data-type="${item.subType != null ? item.subType : item.type}"
+                           th:data-slot="${item.slot}">
+                    </small>
                 </div>
 
                 <div class="inv-btn-group">
@@ -183,13 +186,15 @@
 
             const slotEl = document.getElementById('tt-slot');
             if (data.slot && data.slot !== 'NONE') {
-                slotEl.innerText = "장착 슬롯: " + data.slot;
+                const slotKr = SLOT_KR[data.slot] || data.slot;
+                slotEl.innerText = "장착 슬롯: " + slotKr;
                 slotEl.style.display = "block";
             } else {
                 slotEl.style.display = "none";
             }
 
-            document.getElementById('tt-type').innerText = "분류: " + data.type;
+            const typeKr = TYPE_KR[data.type] || data.type;
+            document.getElementById('tt-type').innerText = "분류: " + typeKr;
             document.getElementById('tt-desc').innerText = data.desc || "특별한 설명이 없는 아이템입니다.";
 
             let statsHtml = "";
@@ -285,6 +290,33 @@
                 closeSellModal();
             }
         };
+
+        const TYPE_KR = {
+            CONSUMABLE: "소모품", MATERIAL: "재료", MAGIC_STONE: "마석", QUEST: "퀘스트 아이템", POTION: "포션",
+            SWORD: "검", AXE: "도끼", SPEAR: "창", SHIELD: "방패", DAGGER: "단검", BLUNT: "둔기",
+            BOW: "활", CROSSBOW: "석궁", KNUCKLE: "너클", WAND: "완드", STAFF: "지팡이",
+            PLATE: "중갑", LEATHER: "가죽", CLOTH: "천옷"
+        };
+
+        const SLOT_KR = {
+            NONE: "",
+            WEAPON: "주무기",
+            SUB_WEAPON: "보조무기",
+            HEAD: "머리",
+            BODY: "갑옷",
+            GLOVES: "장갑",
+            BOOTS: "신발",
+            NECKLACE: "목걸이",
+            RING: "반지",
+            ARTIFACT: "아티팩트"
+        };
+
+        document.querySelectorAll(".inv-item-type").forEach(el => {
+            const type = TYPE_KR[el.dataset.type] || el.dataset.type;
+            const slot = SLOT_KR[el.dataset.slot] || "";
+
+            el.innerText = slot ? `${type} • ${slot}` : type;
+        });
     </script>
 </div>
 </html>

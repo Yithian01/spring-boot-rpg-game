@@ -104,6 +104,7 @@
         <div class="tt-header">
             <div id="tt-name" class="tt-name">아이템 이름</div>
             <div id="tt-type" class="tt-type">부위</div>
+            <div id="tt-slot" class="tt-type">장착슬릇</div>
         </div>
         <div id="tt-desc" class="tt-desc">설명이 여기에 표시됩니다.</div>
         <div id="tt-stats" class="tt-stats"></div>
@@ -121,6 +122,7 @@
                          th:data-name="${item.name}"
                          th:data-grade="${item.grade}"
                          th:data-type="${item.subType != null ? item.subType : item.type}"
+                         th:data-slot="${item.slot != 'NONE' ? item.slot : null}"
                          th:data-desc="${item.description}"
                          th:data-bonuses="${#strings.listJoin(item.statBonuses, '|')}"
                          th:data-recovery="${item.recoveryEffect}"
@@ -167,6 +169,7 @@
                 name: el.getAttribute('data-name'),
                 grade: el.getAttribute('data-grade'),
                 type: el.getAttribute('data-type'),
+                slot: el.getAttribute('data-slot') || null,
                 desc: el.getAttribute('data-desc'),
                 bonuses: el.getAttribute('data-bonuses'),
                 recovery: el.getAttribute('data-recovery'),
@@ -177,6 +180,14 @@
             const nameEl = document.getElementById('tt-name');
             nameEl.innerHTML = data.quantity > 1 ? `<span style="color:#00ff00;">[${data.quantity}개]</span> ${data.name}` : data.name;
             nameEl.className = 'tt-name text-' + data.grade;
+
+            const slotEl = document.getElementById('tt-slot');
+            if (data.slot && data.slot !== 'NONE') {
+                slotEl.innerText = "장착 슬롯: " + data.slot;
+                slotEl.style.display = "block";
+            } else {
+                slotEl.style.display = "none";
+            }
 
             document.getElementById('tt-type').innerText = "분류: " + data.type;
             document.getElementById('tt-desc').innerText = data.desc || "특별한 설명이 없는 아이템입니다.";

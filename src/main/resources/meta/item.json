@@ -7069,7 +7069,7 @@
     "slot": "BODY",
     "subType": "CLOTH",
     "twoHanded": false,
-    "description": "금지된 화학 실험 중 폭발과 오염을 견뎌낸 유일한 옷입니다. 기괴한 약품 냄새가 진동합니다.",
+    "description": "금지된 화학 실험 중 폭발과 오염을 견뎌낸 옷입니다. 기괴한 약품 냄새가 진동합니다.",
     "price": 82000000,
     "icon": "/images/items/1147.png",
     "baseStatsBonus": { "13": 50, "17": 40 },

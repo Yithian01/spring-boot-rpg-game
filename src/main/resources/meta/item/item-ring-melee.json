@@ -1,0 +1,316 @@
+[
+  {
+    "id": 680,
+    "name": "거친 구리 반지",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "구리를 두껍게 제련한 반지입니다. 투박하지만 힘이 느껴집니다.",
+    "price": 320000,
+    "icon": "/images/items/680.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 15.0,
+      "maxStamina": 10.0,
+      "physPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 681,
+    "name": "검은 가죽 반지",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "질긴 마수의 가죽을 덧댄 반지입니다. 손가락의 움직임이 민첩해집니다.",
+    "price": 345000,
+    "icon": "/images/items/681.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "critRate": 3.0,
+      "accuracy": 10.0,
+      "moveSpeed": 0.05
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 682,
+    "name": "연마된 돌 반지",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "단단한 화강암을 깎아 만든 반지입니다. 타격 시의 묵직함을 더해줍니다.",
+    "price": 310000,
+    "icon": "/images/items/682.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 20.0,
+      "critDmg": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 683,
+    "name": "뾰족한 뼈 반지",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "짐승의 뼈를 깎아 만든 투박한 반지입니다. 공격적인 기운이 감돕니다.",
+    "price": 330000,
+    "icon": "/images/items/683.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 10.0,
+      "critRate": 2.0,
+      "physPen": 3.0,
+      "bleedPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 684,
+    "name": "백철 반지",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "불순물을 제거한 백철로 제작되었습니다. 전사들의 기본 소양과 같은 장비입니다.",
+    "price": 750000,
+    "icon": "/images/items/684.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 40.0,
+      "maxStamina": 15.0,
+      "physPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 685,
+    "name": "푸른 강철 반지",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "강도가 높은 푸른 강철을 꼬아 만들었습니다. 활을 쏘거나 단검을 휘두를 때 안정감을 줍니다.",
+    "price": 780000,
+    "icon": "/images/items/685.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "accuracy": 15.0,
+      "critRate": 5.0,
+      "critDmg": 15.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 686,
+    "name": "흑연 반지",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "빛을 흡수하는 검은 암석으로 제작되었습니다. 은밀한 움직임을 선호하는 이들에게 적합합니다.",
+    "price": 820000,
+    "icon": "/images/items/686.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "critRate": 8.0,
+      "critDmg": 20.0,
+      "dodge": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 687,
+    "name": "황동 인장 반지",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "twoHanded": false,
+    "description": "중앙에 작은 문양이 새겨진 황동 반지입니다. 용병들 사이에서 행운의 징표로 통합니다.",
+    "price": 720000,
+    "icon": "/images/items/687.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 25.0,
+      "maxHp": 30.0,
+      "physRes": 5.0,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 710,
+    "name": "전투광의 붉은 표식",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "전장에서 수많은 적을 베어 넘긴 용병의 기운이 깃든 반지입니다. 피의 갈증을 불러일으킵니다.",
+    "price": 850000,
+    "icon": "/images/items/710.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 100.0,
+      "critRate": 8.0,
+      "physPen": 12.0,
+      "maxStamina": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 711,
+    "name": "그림자 추적자의 고리",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "암살자들이 즐겨 사용하는 어두운 금속의 반지입니다. 착용자의 움직임을 소리 없이 만듭니다.",
+    "price": 820000,
+    "icon": "/images/items/711.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "critRate": 12.0,
+      "critDmg": 30.0,
+      "accuracy": 8.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 712,
+    "name": "명사수의 정교한 인장",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "바람의 흐름을 읽게 해주는 정교한 각인이 새겨져 있습니다. 궁수들에게 보물과 같습니다.",
+    "price": 800000,
+    "icon": "/images/items/712.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "accuracy": 15.0,
+      "critRate": 10.0,
+      "windAtk": 100.0,
+      "windPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 713,
+    "name": "거인 파쇄자의 지문",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "압도적인 힘으로 무장한 전사들을 위한 무거운 반지입니다. 방어구를 짓이기는 힘을 줍니다.",
+    "price": 880000,
+    "icon": "/images/items/713.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 120.0,
+      "physPen": 15.0,
+      "earthAtk": 15.0,
+      "maxHp": 100.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 714,
+    "name": "불멸의 전쟁 군주 반지",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "전설적인 정복자가 착용했던 반지입니다. 존재만으로도 적들을 압도하는 기운이 뿜어져 나옵니다.",
+    "price": 5000000,
+    "icon": "/images/items/714.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 150.0,
+      "critRate": 12.0,
+      "critDmg": 50.0,
+      "physPen": 15.0,
+      "maxStamina": 50.0,
+      "hpRegen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 715,
+    "name": "심연 독니의 갈고리",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "암살자의 정점에 선 자만이 소유할 수 있는 독기의 반지입니다. 스치는 것만으로도 치명적입니다.",
+    "price": 5200000,
+    "icon": "/images/items/715.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "critRate": 15.0,
+      "critDmg": 60.0,
+      "toxicAtk": 150.0,
+      "toxicPen": 15.0,
+      "poisonPen": 20.0,
+      "moveSpeed": 0.2
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 716,
+    "name": "폭풍우를 부르는 자의 고리",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "전설적인 궁사가 사용하던 반지로, 화살 끝에 폭풍의 힘을 싣습니다.",
+    "price": 4900000,
+    "icon": "/images/items/716.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "accuracy": 25.0,
+      "critRate": 18.0,
+      "lightningAtk": 150.0,
+      "lightningPen": 15.0,
+      "dodge": 10.0,
+      "maxStamina": 60.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 717,
+    "name": "황금 용병단의 왕관 반지",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "RING",
+    "subType": "ACCESSORY",
+    "description": "대륙 전체를 호령하던 용병왕의 유물입니다. 부와 파괴력을 동시에 상징합니다.",
+    "price": 6000000,
+    "icon": "/images/items/717.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 20.0,
+      "fireAtk": 100.0,
+      "firePen": 12.0,
+      "statusResist": 15.0,
+      "maxHp": 200.0
+    },
+    "grantedSkillIds": []
+  }
+]

@@ -11,6 +11,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -66,7 +68,7 @@ public class GameDataManager  implements ApplicationRunner {
         this.statMetaMap = loadMapData("stat.json", StatMeta.class, StatMeta::getId);
 
         // 5. 아이템 정보 로딩
-        this.itemMetaMap = loadMapData("item.json", ItemMeta.class, ItemMeta::getId);
+        this.itemMetaMap = loadMergedMapDataFromFolder("meta/item/", ItemMeta.class, ItemMeta::getId);
 
         //6. 플레이어블 캐릭터 정보 로딩
         this.tribeInitialMetaMap = loadMapData("tribe-initial-meta.json", TribeInitialMeta.class, TribeInitialMeta::getTribeId);
@@ -122,6 +124,39 @@ public class GameDataManager  implements ApplicationRunner {
             log.error(fileName + " 로딩 실패", e);
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * 특정 폴더 내의 모든 JSON 파일을 읽어 하나의 Map으로 합칩니다.
+     * @param folderPath "meta/item/" 형태의 경로
+     */
+    private <T, K> Map<K, T> loadMergedMapDataFromFolder(String folderPath, Class<T> clazz, Function<T, K> keyMapper) {
+        Map<K, T> mergedMap = new java.util.HashMap<>();
+        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+
+        try {
+            // classpath:meta/item/*.json 패턴으로 모든 파일 탐색
+            Resource[] resources = resolver.getResources("classpath:" + folderPath + "*.json");
+
+            for (Resource resource : resources) {
+                List<T> list = objectMapper.readValue(
+                        resource.getInputStream(),
+                        objectMapper.getTypeFactory().constructCollectionType(List.class, clazz)
+                );
+
+                log.info("  -> [Folder Load] {} 로딩 완료 (항목: {}개)", resource.getFilename(), list.size());
+
+                for (T item : list) {
+                    mergedMap.put(keyMapper.apply(item), item);
+                }
+            }
+        } catch (Exception e) {
+            log.error(folderPath + " 폴더 내 데이터 로딩 실패", e);
+            throw new RuntimeException(e);
+        }
+
+        log.info("  => {} 폴더 내 총 {}개의 데이터 병합 완료", folderPath, mergedMap.size());
+        return mergedMap;
     }
 
     /**

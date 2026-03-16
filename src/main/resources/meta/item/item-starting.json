@@ -1,0 +1,79 @@
+[
+  {
+    "id": 11,
+    "name": "닳아버린 여행용 코트",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "이곳저곳 덧댄 흔적이 가득한 가죽 코트입니다. 활동성이 좋습니다.",
+    "price": 65000,
+    "icon": "/images/items/11.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 5.0,
+      "magRes": 5.0,
+      "maxStamina": 30.0,
+      "maxMp": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 15,
+    "name": "두꺼운 가죽 앞치마",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
+    "price": 56000,
+    "icon": "/images/items/15.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 12.0,
+      "statusResist": 5.0,
+      "burnRes": 10.0,
+      "moveSpeed": -0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 17,
+    "name": "수습 마법사의 로브",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "CLOTH",
+    "twoHanded": false,
+    "description": "마나 흐름을 돕는 얇은 천 옷입니다.",
+    "price": 180000,
+    "icon": "/images/items/17.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 2.0,
+      "magRes": 12.0,
+      "maxMp": 60.0,
+      "mpRegen": 2.5
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 20,
+    "name": "변색된 가죽 옷",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BODY",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다.",
+    "price": 76000,
+    "icon": "/images/items/20.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "physDef": 3.0
+    },
+    "grantedSkillIds": []
+  }
+]

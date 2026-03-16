@@ -1,0 +1,1249 @@
+[
+  {
+    "id": 730,
+    "name": "불꽃 펜던트",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "열기를 머금은 붉은 보석이 박힌 펜던트입니다. 화염 마법의 위력을 미세하게 높여줍니다.",
+    "price": 320000,
+    "icon": "/images/items/730.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 25.0,
+      "critDmg": 5.0,
+      "fireRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 731,
+    "name": "구운 구리 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "뜨거운 불길에서 달궈진 구리 목걸이입니다. 착용하면 몸이 훈훈해지는 기분이 듭니다.",
+    "price": 310000,
+    "icon": "/images/items/731.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 20.0,
+      "critDmg": 10.0,
+      "fireRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 732,
+    "name": "이그니스 원석 목걸이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "화산 근처에서 발견되는 원석을 깎아 만들었습니다. 강렬한 화염의 힘이 깃들어 있습니다.",
+    "price": 680000,
+    "icon": "/images/items/732.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 50.0,
+      "critDmg": 15.0,
+      "fireRes": 8.0,
+      "firePen": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 733,
+    "name": "붉은 마노 펜던트",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "불의 기운을 담은 마노석입니다. 마법사의 파괴적인 주문을 보조합니다.",
+    "price": 650000,
+    "icon": "/images/items/733.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 45.0,
+      "critDmg": 20.0,
+      "fireRes": 8.0,
+      "statusPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 734,
+    "name": "얼음 조각 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "녹지 않는 얼음으로 장식된 목걸이입니다. 정신을 맑게 하고 마나의 효율을 높입니다.",
+    "price": 340000,
+    "icon": "/images/items/734.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 25.0,
+      "maxMp": 30.0,
+      "iceRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 735,
+    "name": "서늘한 은 펜던트",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "차가운 은으로 제작된 펜던트입니다. 마력의 한기를 품는 데 도움을 줍니다.",
+    "price": 330000,
+    "icon": "/images/items/735.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 20.0,
+      "maxMp": 45.0,
+      "iceRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 736,
+    "name": "만년설 보석 목걸이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "높은 산맥의 만년설 사이에서 추출한 보석입니다. 방대한 냉기의 마력을 보조합니다.",
+    "price": 720000,
+    "icon": "/images/items/736.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 50.0,
+      "maxMp": 80.0,
+      "iceRes": 8.0,
+      "icePen": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 737,
+    "name": "청빙의 초커",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "푸른 빛이 감도는 얼음 결정으로 만든 초커입니다. 빙결 주문의 깊이를 더해줍니다.",
+    "price": 700000,
+    "icon": "/images/items/737.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 40.0,
+      "maxMp": 100.0,
+      "iceRes": 10.0,
+      "statusPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 738,
+    "name": "찌릿한 황동 줄",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "가느다란 황동 실을 꼬아 만든 목걸이입니다. 만지면 약한 정전기가 느껴집니다.",
+    "price": 315000,
+    "icon": "/images/items/738.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 25.0,
+      "lightningPen": 5.0,
+      "lightningRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 739,
+    "name": "자수정 고리",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "번개에 맞은 나무 근처에서 발견된 자수정입니다. 전격의 흐름을 날카롭게 합니다.",
+    "price": 325000,
+    "icon": "/images/items/739.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 30.0,
+      "lightningPen": 3.0,
+      "lightningRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 740,
+    "name": "폭풍우의 파편 목걸이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "폭풍이 지나간 자리에 남은 파편을 가공했습니다. 적의 저항을 뚫는 번개의 힘이 담겨 있습니다.",
+    "price": 690000,
+    "icon": "/images/items/740.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 55.0,
+      "lightningPen": 12.0,
+      "lightningRes": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 741,
+    "name": "전도율 높은 백금 줄",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "마력 전도율이 매우 높은 백금으로 제작되었습니다. 전격 마법의 관통력을 극대화합니다.",
+    "price": 710000,
+    "icon": "/images/items/741.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 50.0,
+      "lightningPen": 15.0,
+      "lightningRes": 10.0,
+      "statusPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 742,
+    "name": "단단한 돌 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "투박한 돌을 가죽 끈에 꿴 목걸이입니다. 생명력을 보존하는 대지의 기운이 서려 있습니다.",
+    "price": 300000,
+    "icon": "/images/items/742.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 25.0,
+      "hpRegen": 2.0,
+      "earthRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 743,
+    "name": "말린 덩굴 펜던트",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "신비로운 숲의 덩굴로 만든 펜던트입니다. 드루이드들이 즐겨 사용합니다.",
+    "price": 310000,
+    "icon": "/images/items/743.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 20.0,
+      "maxHp": 35.0,
+      "earthRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 744,
+    "name": "대지의 심장 조각",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "깊은 지하에서 채굴된 대지의 정수입니다. 강력한 회복력과 바위 같은 힘을 줍니다.",
+    "price": 640000,
+    "icon": "/images/items/744.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 50.0,
+      "hpRegen": 6.0,
+      "maxHp": 70.0,
+      "earthRes": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 745,
+    "name": "고대 나무 씨앗 목걸이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "화석이 된 고대 나무의 씨앗입니다. 끊임없는 생명력을 착용자에게 부여합니다.",
+    "price": 660000,
+    "icon": "/images/items/745.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 45.0,
+      "hpRegen": 8.0,
+      "maxHp": 100.0,
+      "earthRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 746,
+    "name": "축복받은 묵주 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "사제들이 기도할 때 사용하는 평범한 묵주입니다. 성스러운 기운이 깃들어 있습니다.",
+    "price": 350000,
+    "icon": "/images/items/746.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 25.0,
+      "maxMp": 30.0,
+      "holyRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 747,
+    "name": "백색 석영 펜던트",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "투명한 석영에 신성 마력을 주입했습니다. 정화의 빛을 돕습니다.",
+    "price": 340000,
+    "icon": "/images/items/747.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 30.0,
+      "maxHp": 30.0,
+      "holyRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 748,
+    "name": "성당의 은빛 목걸이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "성당에서 축성된 정교한 은 목걸이입니다. 사악한 기운을 물리치는 빛을 냅니다.",
+    "price": 750000,
+    "icon": "/images/items/748.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 55.0,
+      "maxMp": 60.0,
+      "holyRes": 15.0,
+      "statusRes": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 749,
+    "name": "천사의 눈물 보석",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "눈물 모양으로 깎인 성스러운 보석입니다. 신성 마법사의 영창을 안정시킵니다.",
+    "price": 730000,
+    "icon": "/images/items/749.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 60.0,
+      "maxHp": 60.0,
+      "holyRes": 10.0,
+      "holyPen": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 750,
+    "name": "검은 유리 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "어두운 빛을 흡수하는 유리 목걸이입니다. 흑마법의 효율을 높입니다.",
+    "price": 320000,
+    "icon": "/images/items/750.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 30.0,
+      "critRate": 3.0,
+      "darkRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 751,
+    "name": "그림자 실 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "어두운 곳에서만 보이는 신비로운 실로 만들었습니다. 착용자의 기척을 흐릿하게 합니다.",
+    "price": 310000,
+    "icon": "/images/items/751.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 25.0,
+      "critRate": 4.0,
+      "darkRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 752,
+    "name": "심연의 흑수정",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "빛조차 삼켜버리는 심연의 결정입니다. 치명적인 어둠의 마력을 뿜어냅니다.",
+    "price": 690000,
+    "icon": "/images/items/752.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 60.0,
+      "critRate": 6.0,
+      "darkRes": 8.0,
+      "darkPen": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 753,
+    "name": "사념의 뼛조각 펜던트",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "누군가의 유골을 깎아 만든 펜던트입니다. 원한 섞인 어둠이 서려 있습니다.",
+    "price": 670000,
+    "icon": "/images/items/753.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 55.0,
+      "critRate": 8.0,
+      "darkRes": 10.0,
+      "statusPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 754,
+    "name": "뒤틀린 금속 초커",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "알 수 없는 힘에 의해 멋대로 휘어진 초커입니다. 불규칙한 마력 흐름이 느껴집니다.",
+    "price": 380000,
+    "icon": "/images/items/754.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 30.0,
+      "chaosPen": 5.0,
+      "chaosRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 755,
+    "name": "이교도의 인장 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "수상한 의식에 사용되는 문양이 새겨진 목걸이입니다. 혼돈의 힘을 일깨웁니다.",
+    "price": 370000,
+    "icon": "/images/items/755.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 25.0,
+      "chaosPen": 6.0,
+      "chaosRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 756,
+    "name": "보이드 크리스탈",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "공허의 틈새에서 흘러나온 결정입니다. 현실의 경계를 허무는 관통력을 제공합니다.",
+    "price": 780000,
+    "icon": "/images/items/756.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 60.0,
+      "chaosPen": 12.0,
+      "chaosRes": 8.0,
+      "statusPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 757,
+    "name": "광신의 펜던트",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "외신의 시선이 닿은 듯한 기괴한 보석입니다. 착용자의 마력을 뒤틀어 방어선을 뚫습니다.",
+    "price": 760000,
+    "icon": "/images/items/757.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 55.0,
+      "chaosPen": 15.0,
+      "chaosRes": 10.0,
+      "maxMp": 60.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 758,
+    "name": "독니 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "거대 독사의 송곳니로 만든 목걸이입니다. 독에 대한 내성을 기르는 데 도움을 줍니다.",
+    "price": 310000,
+    "icon": "/images/items/758.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 25.0,
+      "poisonRes": 12.0,
+      "toxicRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 759,
+    "name": "역병 의사의 약병",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "독한 약 냄새가 배어 있는 작은 약병 펜던트입니다. 부정한 기운으로부터 몸을 보호합니다.",
+    "price": 320000,
+    "icon": "/images/items/759.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 20.0,
+      "poisonRes": 15.0,
+      "toxicRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 760,
+    "name": "맹독 전갈의 꼬리 목걸이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "치명적인 전갈의 꼬리 바늘을 가공했습니다. 적을 중독시키는 힘과 독 저항을 동시에 제공합니다.",
+    "price": 630000,
+    "icon": "/images/items/760.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 55.0,
+      "poisonRes": 20.0,
+      "toxicRes": 15.0,
+      "statusPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 761,
+    "name": "부식된 비취 펜던트",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "독기에 의해 표면이 녹아내린 비취입니다. 기괴한 독성 마력을 발산합니다.",
+    "price": 650000,
+    "icon": "/images/items/761.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 65.0,
+      "poisonRes": 25.0,
+      "toxicRes": 10.0,
+      "toxicPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 850,
+    "name": "불꽃 심장의 펜던트",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "끊임없이 타오르는 마력이 깃든 보석입니다. 마법사의 파괴적인 본능을 일깨웁니다.",
+    "price": 850000,
+    "icon": "/images/items/850.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 100.0,
+      "firePen": 10.0,
+      "critDmg": 30.0,
+      "maxMp": 120.0,
+      "fireRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 851,
+    "name": "홍련의 마도 목걸이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "과거 대마도사가 화염 마법의 극의를 깨닫기 위해 사용했다고 전해집니다.",
+    "price": 880000,
+    "icon": "/images/items/851.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 110.0,
+      "firePen": 8.0,
+      "critDmg": 32.0,
+      "maxHp": 120.0,
+      "fireRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 852,
+    "name": "태양의 눈물",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "태양의 파편을 깎아 만든 듯한 광채를 내뿜습니다. 모든 것을 태워버릴 화력을 선사합니다.",
+    "price": 12000000,
+    "icon": "/images/items/852.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 150.0,
+      "firePen": 15.0,
+      "critDmg": 50.0,
+      "maxMp": 250.0,
+      "fireRes": 15.0,
+      "statusPen": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 853,
+    "name": "종언의 화신",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "착용하는 것만으로 주변의 공기를 발화시킵니다. 화염 마법의 정점에 선 자를 위한 증표입니다.",
+    "price": 13500000,
+    "icon": "/images/items/853.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 180.0,
+      "firePen": 18.0,
+      "critDmg": 55.0,
+      "maxHp": 250.0,
+      "fireRes": 20.0,
+      "physPen": 12.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 854,
+    "name": "만년설의 영혼",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "절대 영도의 냉기를 품고 있는 보석입니다. 마나의 그릇을 거대하게 확장시킵니다.",
+    "price": 820000,
+    "icon": "/images/items/854.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 100.0,
+      "maxMp": 350.0,
+      "iceRes": 10.0,
+      "icePen": 10.0,
+      "mpRegen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 855,
+    "name": "빙결 마법사의 성물",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "심장을 차갑게 식혀 냉철한 마력 운용을 가능케 합니다.",
+    "price": 840000,
+    "icon": "/images/items/855.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 95.0,
+      "maxMp": 400.0,
+      "iceRes": 12.0,
+      "icePen": 8.0,
+      "statusResist": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 856,
+    "name": "서리 거인의 안광",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "세상을 뒤덮을 빙하기를 초래할 수 있는 마력을 담고 있습니다.",
+    "price": 11500000,
+    "icon": "/images/items/856.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 150.0,
+      "maxMp": 800.0,
+      "iceRes": 15.0,
+      "icePen": 15.0,
+      "mpRegen": 12.0,
+      "statusResist": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 857,
+    "name": "영겁의 동토",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "시간조차 얼려버릴 듯한 극저온의 마력이 소용돌이칩니다.",
+    "price": 12800000,
+    "icon": "/images/items/857.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 160.0,
+      "maxMp": 950.0,
+      "iceRes": 20.0,
+      "icePen": 12.0,
+      "mpRegen": 15.0,
+      "maxHp": 250.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 858,
+    "name": "전뢰의 푸른 펜던트",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "공기를 찢는 전격의 기운이 서려 있습니다. 적의 방어선을 가차 없이 뚫어냅니다.",
+    "price": 900000,
+    "icon": "/images/items/858.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 100.0,
+      "lightningPen": 25.0,
+      "accuracy": 15.0,
+      "maxMp": 120.0,
+      "lightningRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 859,
+    "name": "폭풍우의 부적",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "번개가 치는 하늘 아래에서 단련된 마력석입니다.",
+    "price": 870000,
+    "icon": "/images/items/859.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 110.0,
+      "lightningPen": 20.0,
+      "accuracy": 12.0,
+      "maxHp": 120.0,
+      "lightningRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 860,
+    "name": "천둥 신의 징표",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "하늘의 분노 그 자체를 형상화했습니다. 어떠한 저항도 의미 없게 만듭니다.",
+    "price": 14000000,
+    "icon": "/images/items/860.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 150.0,
+      "lightningPen": 40.0,
+      "accuracy": 20.0,
+      "maxMp": 250.0,
+      "lightningRes": 15.0,
+      "physPen": 12.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 861,
+    "name": "신벌의 낙뢰",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "빛보다 빠른 공격으로 적을 마비시키고 방어구를 무용지물로 만듭니다.",
+    "price": 13800000,
+    "icon": "/images/items/861.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 170.0,
+      "lightningPen": 35.0,
+      "accuracy": 25.0,
+      "maxHp": 250.0,
+      "lightningRes": 15.0,
+      "statusPen": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 862,
+    "name": "대지의 심장 마석",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "흔들리지 않는 대지의 생명력을 담고 있습니다. 신체를 끊임없이 정화합니다.",
+    "price": 830000,
+    "icon": "/images/items/862.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 100.0,
+      "maxHp": 450.0,
+      "hpRegen": 15.0,
+      "earthRes": 15.0,
+      "earthPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 863,
+    "name": "드루이드의 고목 가지",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "숲의 수호자가 남긴 유물입니다. 자연의 치유력이 깃들어 있습니다.",
+    "price": 810000,
+    "icon": "/images/items/863.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 90.0,
+      "maxHp": 500.0,
+      "hpRegen": 20.0,
+      "earthRes": 12.0,
+      "statusResist": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 864,
+    "name": "가이아의 성배",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "모든 생명의 근원인 대지의 힘을 상징합니다. 죽음을 거부하는 생명력을 부여합니다.",
+    "price": 11000000,
+    "icon": "/images/items/864.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 150.0,
+      "maxHp": 1200.0,
+      "hpRegen": 50.0,
+      "earthRes": 20.0,
+      "earthPen": 15.0,
+      "statusResist": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 865,
+    "name": "세계수의 핵",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "대지 그 자체가 당신을 지탱합니다. 그 어떠한 고통도 빠르게 씻겨 내려갑니다.",
+    "price": 12500000,
+    "icon": "/images/items/865.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 140.0,
+      "maxHp": 1500.0,
+      "hpRegen": 65.0,
+      "earthRes": 25.0,
+      "earthPen": 12.0,
+      "physRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 866,
+    "name": "성스러운 빛의 십자가",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "사악한 기운을 쫓는 신성한 목걸이입니다. 사제들의 경건한 기도문이 새겨져 있습니다.",
+    "price": 820000,
+    "icon": "/images/items/866.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 100.0,
+      "holyRes": 15.0,
+      "maxHp": 120.0,
+      "maxMp": 120.0,
+      "statusResist": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 867,
+    "name": "은총의 메달리온",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "착용자를 수호하는 따뜻한 빛이 감돕니다. 매우 균형 잡힌 신성력을 지녔습니다.",
+    "price": 800000,
+    "icon": "/images/items/867.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 105.0,
+      "holyRes": 10.0,
+      "holyPen": 10.0,
+      "hpRegen": 5.0,
+      "mpRegen": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 868,
+    "name": "대천사의 눈물",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "천상의 광채를 간직한 눈물 모양의 보석입니다. 모든 부정한 존재를 정화합니다.",
+    "price": 11000000,
+    "icon": "/images/items/868.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 150.0,
+      "holyRes": 25.0,
+      "maxHp": 250.0,
+      "maxMp": 250.0,
+      "statusResist": 30.0,
+      "holyPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 869,
+    "name": "세라핌의 찬가",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "찬란한 빛의 세례가 착용자를 감쌉니다. 어둠을 멸하는 가장 강력한 성물입니다.",
+    "price": 12200000,
+    "icon": "/images/items/869.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 165.0,
+      "holyRes": 20.0,
+      "holyPen": 20.0,
+      "hpRegen": 15.0,
+      "mpRegen": 10.0,
+      "statusPen": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 870,
+    "name": "그림자 영혼의 사슬",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "흑마법의 정수가 담긴 어두운 사슬입니다. 치명적인 약점을 포착하는 능력이 탁월합니다.",
+    "price": 860000,
+    "icon": "/images/items/870.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 100.0,
+      "critRate": 10.0,
+      "darkPen": 10.0,
+      "maxMp": 120.0,
+      "darkRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 871,
+    "name": "심연의 눈동자",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "어둠 속에서도 길을 잃지 않게 해주는 사악한 보석입니다.",
+    "price": 840000,
+    "icon": "/images/items/871.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 110.0,
+      "critRate": 8.0,
+      "darkPen": 12.0,
+      "accuracy": 10.0,
+      "darkRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 872,
+    "name": "공포의 주권자",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "그림자 세계의 지배자가 사용하던 유물입니다. 치명적인 어둠의 일격을 선사합니다.",
+    "price": 13000000,
+    "icon": "/images/items/872.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 150.0,
+      "critRate": 18.0,
+      "darkPen": 15.0,
+      "critDmg": 40.0,
+      "maxMp": 250.0,
+      "darkRes": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 873,
+    "name": "밤의 황제",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "빛을 집어삼키는 절대적인 어둠의 보석입니다. 적의 영혼을 갉아먹는 마력을 부여합니다.",
+    "price": 14500000,
+    "icon": "/images/items/873.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 180.0,
+      "critRate": 20.0,
+      "darkPen": 20.0,
+      "maxMp": 300.0,
+      "darkRes": 20.0,
+      "statusPen": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 874,
+    "name": "혼돈의 소용돌이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "이계의 변칙적인 마력이 소용돌이칩니다. 적의 방어 체계를 교란하여 무너뜨립니다.",
+    "price": 890000,
+    "icon": "/images/items/874.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 100.0,
+      "chaosPen": 25.0,
+      "accuracy": 15.0,
+      "maxMp": 120.0,
+      "chaosRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 875,
+    "name": "외신의 파편",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "차원의 틈새에서 흘러나온 기괴한 물질입니다. 이해할 수 없는 힘이 깃들어 있습니다.",
+    "price": 910000,
+    "icon": "/images/items/875.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 115.0,
+      "chaosPen": 20.0,
+      "statusPen": 20.0,
+      "chaosRes": 10.0,
+      "maxHp": 120.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 876,
+    "name": "코스믹 호러",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "광기와 공포를 형상화한 유물입니다. 존재만으로 현실의 법칙을 왜곡시킵니다.",
+    "price": 15000000,
+    "icon": "/images/items/876.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 150.0,
+      "chaosPen": 40.0,
+      "statusPen": 40.0,
+      "accuracy": 20.0,
+      "maxMp": 250.0,
+      "chaosRes": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 877,
+    "name": "판데모니움의 열쇠",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "지옥과 혼돈의 문을 여는 열쇠입니다. 적의 모든 저항을 무의미하게 만듭니다.",
+    "price": 16500000,
+    "icon": "/images/items/877.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 175.0,
+      "chaosPen": 35.0,
+      "physPen": 15.0,
+      "critDmg": 50.0,
+      "maxMp": 300.0,
+      "chaosRes": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 878,
+    "name": "역병 의사의 앰플",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "치명적인 독소와 중화제가 섞여 있는 기괴한 용기입니다. 질병에 대한 면역력을 높여줍니다.",
+    "price": 820000,
+    "icon": "/images/items/878.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 100.0,
+      "statusResist": 25.0,
+      "toxicRes": 20.0,
+      "toxicPen": 10.0,
+      "maxHp": 120.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 879,
+    "name": "부패한 맹독 주머니",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "강력한 산성 독을 내뿜는 괴수의 내장으로 만들었습니다.",
+    "price": 800000,
+    "icon": "/images/items/879.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 110.0,
+      "statusPen": 20.0,
+      "toxicRes": 15.0,
+      "toxicPen": 8.0,
+      "hpRegen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 880,
+    "name": "만독불침의 정수",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "세상의 모든 독을 다스릴 수 있는 전설적인 보석입니다. 어떠한 오염도 착용자를 건드릴 수 없습니다.",
+    "price": 11500000,
+    "icon": "/images/items/880.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 150.0,
+      "statusResist": 45.0,
+      "toxicRes": 40.0,
+      "toxicPen": 15.0,
+      "maxHp": 250.0,
+      "statusPen": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 881,
+    "name": "역병의 시초",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "모든 질병의 근원이 담긴 위험한 유물입니다. 숨결 한 번에 대지를 황폐화시킵니다.",
+    "price": 12500000,
+    "icon": "/images/items/881.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "toxicAtk": 170.0,
+      "statusPen": 45.0,
+      "toxicPen": 20.0,
+      "statusResist": 35.0,
+      "maxHp": 300.0,
+      "hpRegen": 25.0
+    },
+    "grantedSkillIds": []
+  }
+]

@@ -2158,6 +2158,7 @@
     "turnCost": 3,
     "hitChance": 100,
     "cost": { "mp": 120 },
+    "damageScaling": { },
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",

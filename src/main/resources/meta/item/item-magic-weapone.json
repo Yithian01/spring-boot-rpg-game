@@ -1,0 +1,1312 @@
+[
+
+  {
+    "id": 16,
+    "name": "금이 간 연습용 완드",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "아카데미 시절 쓰던 완드입니다.",
+    "price": 300000,
+    "icon": "/images/items/16.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "magicAtk": 10.0
+    },
+    "grantedSkillIds": [11]
+  },
+
+
+  {
+    "id": 107,
+    "name": "연소의 나무 완드",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "불의 마력이 깃든 붉은 나무로 깎아 만든 완드입니다.",
+    "price": 380000,
+    "icon": "/images/items/107.png",
+    "baseStatsBonus": { "13": 3.0, "14": 2.0 },
+    "combatStatsBonus": {
+      "magicAtk": 20.0,
+      "fireAtk": 10.0,
+      "maxMp": 30.0,
+      "mpRegen": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 108,
+    "name": "서린 서리 완드",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "냉기를 품고 있어 주변의 습기를 얼려버립니다.",
+    "price": 380000,
+    "icon": "/images/items/108.png",
+    "baseStatsBonus": { "13": 2.0, "14": 3.0 },
+    "combatStatsBonus": {
+      "magicAtk": 20.0,
+      "iceAtk": 10.0,
+      "maxMp": 30.0,
+      "mpRegen": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 109,
+    "name": "지릿한 정전기 지팡이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "전격 마법의 영창 속도를 미세하게 단축시켜 줍니다.",
+    "price": 380000,
+    "icon": "/images/items/109.png",
+    "baseStatsBonus": { "13": 5.0 },
+    "combatStatsBonus": {
+      "magicAtk": 20.0,
+      "lightningAtk": 10.0,
+      "maxMp": 30.0,
+      "accuracy": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 110,
+    "name": "바위 뿌리 완드",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "대지의 무게감이 느껴지는 투박한 완드입니다.",
+    "price": 380000,
+    "icon": "/images/items/110.png",
+    "baseStatsBonus": { "1": 5.0 },
+    "combatStatsBonus": {
+      "magicAtk": 20.0,
+      "earthAtk": 10.0,
+      "maxMp": 30.0,
+      "physDef": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 111,
+    "name": "수습 기도용 성채",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "성스러운 마력을 모으기 좋게 축복받은 은으로 장식되었습니다.",
+    "price": 420000,
+    "icon": "/images/items/111.png",
+    "baseStatsBonus": { "18": 5.0 },
+    "combatStatsBonus": {
+      "magicAtk": 20.0,
+      "holyAtk": 10.0,
+      "maxMp": 40.0,
+      "mpRegen": 1.5
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 112,
+    "name": "강화 마나 결정 완드",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "특정 속성보다는 순수한 마나 증폭에 집중한 완드입니다.",
+    "price": 400000,
+    "icon": "/images/items/112.png",
+    "baseStatsBonus": { "13": 8.0 },
+    "combatStatsBonus": {
+      "magicAtk": 30.0,
+      "maxMp": 50.0,
+      "mpRegen": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 113,
+    "name": "홍련의 대마법사 완드",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "타오르는 불꽃의 정수를 담은 붉은 보석이 박혀 있습니다.",
+    "price": 1100000,
+    "icon": "/images/items/113.png",
+    "baseStatsBonus": { "13": 12.0, "14": 8.0 },
+    "combatStatsBonus": {
+      "magicAtk": 40.0,
+      "fireAtk": 20.0,
+      "firePen": 10.0,
+      "maxMp": 100.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 114,
+    "name": "만년설의 영창",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "결코 녹지 않는 얼음으로 이루어져 차가운 마력을 뿜어냅니다.",
+    "price": 1100000,
+    "icon": "/images/items/114.png",
+    "baseStatsBonus": { "13": 10.0, "14": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 40.0,
+      "iceAtk": 20.0,
+      "icePen": 10.0,
+      "maxMp": 100.0
+    },
+    "grantedSkillIds": [22]
+  },
+  {
+    "id": 115,
+    "name": "천둥의 눈동자",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "완드 끝의 구체가 번뜩일 때마다 강력한 전격이 요동칩니다.",
+    "price": 1100000,
+    "icon": "/images/items/115.png",
+    "baseStatsBonus": { "13": 15.0, "15": 5.0 },
+    "combatStatsBonus": {
+      "magicAtk": 40.0,
+      "lightningAtk": 20.0,
+      "lightningPen": 10.0,
+      "accuracy": 10.0
+    },
+    "grantedSkillIds": [13]
+  },
+  {
+    "id": 116,
+    "name": "세계수의 잔가지",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "대지의 생명력과 단단함을 동시에 지닌 신비로운 나무 가치입니다.",
+    "price": 1100000,
+    "icon": "/images/items/116.png",
+    "baseStatsBonus": { "1": 15.0, "13": 5.0 },
+    "combatStatsBonus": {
+      "magicAtk": 40.0,
+      "earthAtk": 20.0,
+      "earthPen": 10.0,
+      "statusResist": 10.0
+    },
+    "grantedSkillIds": [102]
+  },
+  {
+    "id": 117,
+    "name": "대주교의 은총",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "신성한 의식을 위해 제작된 완드로, 착용자에게 평온함을 줍니다.",
+    "price": 1250000,
+    "icon": "/images/items/117.png",
+    "baseStatsBonus": { "18": 15.0, "14": 5.0 },
+    "combatStatsBonus": {
+      "magicAtk": 40.0,
+      "holyAtk": 20.0,
+      "holyPen": 10.0,
+      "hpRegen": 5.0,
+      "mpRegen": 3.0
+    },
+    "grantedSkillIds": [103]
+  },
+  {
+    "id": 118,
+    "name": "고대 마력의 핵 완드",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "속성에 얽매이지 않는 압도적인 순수 마력을 투사합니다.",
+    "price": 1300000,
+    "icon": "/images/items/118.png",
+    "baseStatsBonus": { "13": 25.0 },
+    "combatStatsBonus": {
+      "magicAtk": 60.0,
+      "maxMp": 200.0,
+      "mpRegen": 5.0,
+      "magicPen": 10.0
+    },
+    "grantedSkillIds": [11]
+  },
+  {
+    "id": 119,
+    "name": "상급 수습생의 지팡이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "품질 좋은 목재와 정제된 마석을 사용해 마력 전도율을 극대화한 지팡이입니다.",
+    "price": 1200000,
+    "icon": "/images/items/119.png",
+    "baseStatsBonus": { "13": 25.0 },
+    "combatStatsBonus": {
+      "magicAtk": 100.0,
+      "maxMp": 120.0,
+      "mpRegen": 4.0,
+      "accuracy": 8.0
+    },
+    "grantedSkillIds": [11]
+  },
+  {
+    "id": 120,
+    "name": "붉은 참나무 지팡이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "열기를 머금은 붉은 나무로 제작되어 화염 마법의 위력을 안정적으로 보조합니다.",
+    "price": 1100000,
+    "icon": "/images/items/120.png",
+    "baseStatsBonus": { "13": 15.0, "14": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 70.0,
+      "fireAtk": 30.0,
+      "firePen": 10.0,
+      "burnRes": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 121,
+    "name": "서늘한 결정 지팡이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "심층부의 냉기 결정을 박아 넣어 얼음 마법 영창 시 마나 소모를 돕습니다.",
+    "price": 1100000,
+    "icon": "/images/items/121.png",
+    "baseStatsBonus": { "13": 15.0, "2": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 70.0,
+      "iceAtk": 30.0,
+      "icePen": 10.0,
+      "iceRes": 15.0
+    },
+    "grantedSkillIds": [22]
+  },
+  {
+    "id": 122,
+    "name": "벼락 맞은 고목 지팡이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "강한 전조 현상을 품고 있는 고목입니다. 전격 마법의 사거리를 미세하게 늘려줍니다.",
+    "price": 1100000,
+    "icon": "/images/items/122.png",
+    "baseStatsBonus": { "13": 15.0, "20": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 70.0,
+      "lightningAtk": 30.0,
+      "lightningPen": 10.0,
+      "moveSpeed": 0.08
+    },
+    "grantedSkillIds": [13]
+  },
+  {
+    "id": 123,
+    "name": "단단한 바위 지팡이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "광물 성분이 포함되어 매우 단단합니다. 방어적인 마법을 구사하기에 적합합니다.",
+    "price": 1100000,
+    "icon": "/images/items/123.png",
+    "baseStatsBonus": { "1": 15.0, "13": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 70.0,
+      "earthAtk": 30.0,
+      "earthPen": 10.0,
+      "physDef": 25.0
+    },
+    "grantedSkillIds": [102]
+  },
+  {
+    "id": 124,
+    "name": "정화된 신전 지팡이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "신전에서 축복을 받은 지팡이입니다. 성스러운 마력을 다루는 데 특화되어 있습니다.",
+    "price": 1250000,
+    "icon": "/images/items/124.png",
+    "baseStatsBonus": { "18": 15.0, "13": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 70.0,
+      "holyAtk": 30.0,
+      "holyPen": 10.0,
+      "statusResist": 10.0
+    },
+    "grantedSkillIds": [103]
+  },
+  {
+    "id": 21000,
+    "name": "영겁의 불꽃 갈퀴",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "꺼지지 않는 지옥의 화염을 가두어 만든 지팡이입니다. 화염 마법사의 열망이 깃들어 있습니다.",
+    "price": 850000,
+    "icon": "/images/items/21000.png",
+    "baseStatsBonus": { "13": 25.0, "14": 15.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "fireAtk": 120.0,
+      "fireRes": 30.0,
+      "mpRegen": 5.0
+    },
+    "grantedSkillIds": [201]
+  },
+  {
+    "id": 21001,
+    "name": "홍련의 마력 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "사용자의 마력을 강제로 연소시켜 폭발적인 화력을 내뿜게 합니다.",
+    "price": 720000,
+    "icon": "/images/items/21001.png",
+    "baseStatsBonus": { "13": 20.0, "15": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "fireAtk": 85.0,
+      "critRate": 10.0
+    },
+    "grantedSkillIds": [202]
+  },
+  {
+    "id": 21002,
+    "name": "이그니스 제사장의 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "고대 화산 지대에서 의식을 치를 때 사용되던 성물입니다.",
+    "price": 880000,
+    "icon": "/images/items/21002.png",
+    "baseStatsBonus": { "13": 30.0, "1": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "fireAtk": 100.0,
+      "maxHp": 150.0
+    },
+    "grantedSkillIds": [203]
+  },
+  {
+    "id": 21003,
+    "name": "만년설의 정수 스태프",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "북해의 끝에서 발견된 절대 영도의 얼음 결정이 박혀 있습니다.",
+    "price": 860000,
+    "icon": "/images/items/21003.png",
+    "baseStatsBonus": { "13": 20.0, "8": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "iceAtk": 115.0,
+      "iceRes": 40.0,
+      "statusResist": 10.0
+    },
+    "grantedSkillIds": [204]
+  },
+  {
+    "id": 21004,
+    "name": "서리꽃 가지 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "아름답지만 치명적인 냉기를 내뿜는 꽃의 형상을 한 완드입니다.",
+    "price": 740000,
+    "icon": "/images/items/21004.png",
+    "baseStatsBonus": { "13": 15.0, "20": 15.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "iceAtk": 90.0,
+      "dodge": 5.0
+    },
+    "grantedSkillIds": [205]
+  },
+  {
+    "id": 21005,
+    "name": "동토의 지배자 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "냉기 마법의 정점에 달한 이들만이 다룰 수 있는 혹한의 지팡이입니다.",
+    "price": 900000,
+    "icon": "/images/items/21005.png",
+    "baseStatsBonus": { "13": 40.0, "2": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "iceAtk": 130.0,
+      "physDef": 30.0
+    },
+    "grantedSkillIds": [206]
+  },
+  {
+    "id": 21006,
+    "name": "뇌신룡의 뿔 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "번개를 먹고 사는 뇌신룡의 뿔을 깎아 만든 강력한 전격의 매개체입니다.",
+    "price": 870000,
+    "icon": "/images/items/21006.png",
+    "baseStatsBonus": { "13": 25.0, "21": 15.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "lightningAtk": 125.0,
+      "lightningRes": 35.0,
+      "accuracy": 15.0
+    },
+    "grantedSkillIds": [207]
+  },
+  {
+    "id": 21007,
+    "name": "폭풍우의 눈 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "작은 완드 끝에서 휘몰아치는 전격의 폭풍이 느껴집니다.",
+    "price": 750000,
+    "icon": "/images/items/21007.png",
+    "baseStatsBonus": { "13": 18.0, "16": 12.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "lightningAtk": 95.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": [208]
+  },
+  {
+    "id": 21008,
+    "name": "테슬라의 실험용 전도체",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "전격의 힘을 극대화하기 위해 구리 코일이 복잡하게 감긴 기괴한 지팡이입니다.",
+    "price": 820000,
+    "icon": "/images/items/21008.png",
+    "baseStatsBonus": { "13": 35.0, "4": 15.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "lightningAtk": 140.0,
+      "critDmg": 20.0
+    },
+    "grantedSkillIds": [209]
+  },
+  {
+    "id": 21009,
+    "name": "대지의 맥동 스태프",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "땅의 기운과 동화되어 대지술사의 의지를 전달하는 거대한 나무 지팡이입니다.",
+    "price": 840000,
+    "icon": "/images/items/21009.png",
+    "baseStatsBonus": { "1": 20.0, "13": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "earthAtk": 110.0,
+      "earthRes": 50.0,
+      "physDef": 45.0
+    },
+    "grantedSkillIds": [210]
+  },
+  {
+    "id": 21010,
+    "name": "토템 술사의 유골 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "조상의 영혼이 깃든 뼈로 제작되었습니다. 땅의 축복을 불러옵니다.",
+    "price": 680000,
+    "icon": "/images/items/21010.png",
+    "baseStatsBonus": { "1": 15.0, "13": 15.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "earthAtk": 70.0,
+      "maxHp": 200.0
+    },
+    "grantedSkillIds": [211]
+  },
+  {
+    "id": 21011,
+    "name": "가이아의 파쇄 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "지각 변동을 일으킬 정도의 묵직한 마력이 깃든 암석 지팡이입니다.",
+    "price": 890000,
+    "icon": "/images/items/21011.png",
+    "baseStatsBonus": { "10": 20.0, "13": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "earthAtk": 150.0,
+      "penetration": 15.0
+    },
+    "grantedSkillIds": [212]
+  },
+  {
+    "id": 21012,
+    "name": "성자의 찬란한 기도",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "신의 목소리를 대변하는 성직자의 지팡이입니다. 주변을 정화하는 빛이 감돕니다.",
+    "price": 950000,
+    "icon": "/images/items/21012.png",
+    "baseStatsBonus": { "13": 30.0, "18": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "holyAtk": 100.0,
+      "holyRes": 60.0,
+      "hpRegen": 15.0
+    },
+    "grantedSkillIds": [213]
+  },
+  {
+    "id": 21013,
+    "name": "은총의 백은 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "신성사제들이 치유의 기적을 행할 때 사용하는 정교한 완드입니다.",
+    "price": 780000,
+    "icon": "/images/items/21013.png",
+    "baseStatsBonus": { "13": 15.0, "14": 15.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "holyAtk": 60.0,
+      "maxMp": 100.0,
+      "mpRegen": 3.0
+    },
+    "grantedSkillIds": [214]
+  },
+  {
+    "id": 21014,
+    "name": "대천사의 심판 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "악을 멸하기 위한 강렬한 신성 마력이 응축되어 있습니다.",
+    "price": 1100000,
+    "icon": "/images/items/21014.png",
+    "baseStatsBonus": { "13": 50.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "holyAtk": 180.0,
+      "darkRes": 40.0
+    },
+    "grantedSkillIds": [215]
+  },
+  {
+    "id": 21015,
+    "name": "그림자 영창자의 스태프",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "어둠 속에 숨어 마법을 부리는 자들의 필수품입니다. 빛을 흡수합니다.",
+    "price": 830000,
+    "icon": "/images/items/21015.png",
+    "baseStatsBonus": { "13": 35.0, "15": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "darkAtk": 130.0,
+      "darkRes": 30.0,
+      "dodge": 10.0
+    },
+    "grantedSkillIds": [216]
+  },
+  {
+    "id": 21016,
+    "name": "칠흑의 마안 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "완드 끝에 박힌 보석이 마치 심연을 들여다보는 눈동자처럼 보입니다.",
+    "price": 710000,
+    "icon": "/images/items/21016.png",
+    "baseStatsBonus": { "13": 25.0, "17": 5.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "darkAtk": 90.0,
+      "critRate": 12.0
+    },
+    "grantedSkillIds": [217]
+  },
+  {
+    "id": 21017,
+    "name": "나락의 불길 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "검은 불꽃을 내뿜는 이 지팡이는 화염과 어둠의 힘을 동시에 상징합니다.",
+    "price": 870000,
+    "icon": "/images/items/21017.png",
+    "baseStatsBonus": { "13": 40.0, "9": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "darkAtk": 150.0,
+      "fireAtk": 50.0
+    },
+    "grantedSkillIds": [218]
+  },
+  {
+    "id": 21018,
+    "name": "공포의 크툴루 촉수 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "외신의 추종자들이 사용하는 뒤틀린 지팡이입니다. 바라보는 것만으로 이성을 잃게 만듭니다.",
+    "price": 920000,
+    "icon": "/images/items/21018.png",
+    "baseStatsBonus": { "13": 30.0, "23": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "chaosAtk": 140.0,
+      "chaosRes": 40.0,
+      "statusResist": -10.0
+    },
+    "grantedSkillIds": [219]
+  },
+  {
+    "id": 21019,
+    "name": "이교도의 뒤틀린 뼈 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "금기된 지식을 추구하는 암흑사제의 완드입니다.",
+    "price": 760000,
+    "icon": "/images/items/21019.png",
+    "baseStatsBonus": { "13": 20.0, "15": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "chaosAtk": 100.0,
+      "magRes": 20.0
+    },
+    "grantedSkillIds": [220]
+  },
+  {
+    "id": 21020,
+    "name": "카오스 디멘션 스태프",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "공간의 틈새에서 흘러나오는 무질서한 마력을 제어하는 광신도의 지팡이입니다.",
+    "price": 980000,
+    "icon": "/images/items/21020.png",
+    "baseStatsBonus": { "13": 50.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "chaosAtk": 200.0,
+      "accuracy": -20.0
+    },
+    "grantedSkillIds": [221]
+  },
+  {
+    "id": 21021,
+    "name": "역병 의사의 가시 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "온갖 치명적인 독소가 응축된 지팡이입니다. 매드 사이언티스트의 역작입니다.",
+    "price": 840000,
+    "icon": "/images/items/21021.png",
+    "baseStatsBonus": { "3": 20.0, "13": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "toxicAtk": 120.0,
+      "toxicRes": 50.0,
+      "accuracy": 10.0
+    },
+    "grantedSkillIds": [222]
+  },
+  {
+    "id": 21022,
+    "name": "독니 추출 완드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "부식성 액체가 담긴 유리관이 장착된 기계적인 형태의 완드입니다.",
+    "price": 690000,
+    "icon": "/images/items/21022.png",
+    "baseStatsBonus": { "9": 15.0, "13": 15.0 },
+    "combatStatsBonus": {
+      "magicAtk": 150.0,
+      "toxicAtk": 80.0,
+      "toxicPen": 15.0
+    },
+    "grantedSkillIds": [223]
+  },
+  {
+    "id": 21023,
+    "name": "만독불침의 고목 지팡이",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "수천 년간 독을 먹고 자라 오히려 모든 독에 면역이 된 전설적인 나무 지팡이입니다.",
+    "price": 910000,
+    "icon": "/images/items/21023.png",
+    "baseStatsBonus": { "1": 15.0, "13": 35.0 },
+    "combatStatsBonus": {
+      "magicAtk": 250.0,
+      "toxicAtk": 140.0,
+      "statusResist": 25.0
+    },
+    "grantedSkillIds": [224]
+  },
+  {
+    "id": 21030,
+    "name": "태양 파괴자의 종말 지팡이",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "태양의 중심핵을 추출하여 박아 넣은 지팡이입니다. 휘두르는 것만으로 대기를 불태웁니다.",
+    "price": 55000000,
+    "icon": "/images/items/21030.png",
+    "baseStatsBonus": { "13": 60.0, "14": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "fireAtk": 350.0,
+      "fireRes": 100.0,
+      "penetration": 25.0
+    },
+    "grantedSkillIds": [501]
+  },
+  {
+    "id": 21031,
+    "name": "피닉스의 영생 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "불사조의 깃털과 심장으로 제작되었습니다. 끝없는 생명력과 화염을 제공합니다.",
+    "price": 42000000,
+    "icon": "/images/items/21031.png",
+    "baseStatsBonus": { "13": 40.0, "1": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "fireAtk": 220.0,
+      "hpRegen": 50.0
+    },
+    "grantedSkillIds": [502]
+  },
+  {
+    "id": 21032,
+    "name": "연옥의 화염 군주 스태프",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "지옥의 가장 깊은 곳, 연옥을 다스리는 군주의 권능이 깃들어 있습니다.",
+    "price": 58000000,
+    "icon": "/images/items/21032.png",
+    "baseStatsBonus": { "13": 80.0, "15": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "fireAtk": 400.0,
+      "critDmg": 45.0
+    },
+    "grantedSkillIds": [503]
+  },
+  {
+    "id": 21033,
+    "name": "절대 영도의 은하수 지팡이",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "모든 분자의 운동이 멈추는 절대 영도의 마력이 서려 있습니다. 공간마저 얼려버립니다.",
+    "price": 56000000,
+    "icon": "/images/items/21033.png",
+    "baseStatsBonus": { "13": 70.0, "8": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "iceAtk": 380.0,
+      "iceRes": 120.0,
+      "statusResist": 30.0
+    },
+    "grantedSkillIds": [504]
+  },
+  {
+    "id": 21034,
+    "name": "눈보라 여왕의 숨결 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "한겨울의 가장 추운 밤, 여왕의 숨결을 유리병에 담아 응축해 만든 완드입니다.",
+    "price": 43000000,
+    "icon": "/images/items/21034.png",
+    "baseStatsBonus": { "13": 45.0, "20": 25.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "iceAtk": 250.0,
+      "dodge": 15.0
+    },
+    "grantedSkillIds": [505]
+  },
+  {
+    "id": 21035,
+    "name": "빙결의 옥좌 파편 스태프",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "고대 빙결의 왕이 앉아있던 옥좌의 거대한 파편을 깎아 만들었습니다.",
+    "price": 60000000,
+    "icon": "/images/items/21035.png",
+    "baseStatsBonus": { "13": 60.0, "2": 40.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "iceAtk": 420.0,
+      "physDef": 150.0
+    },
+    "grantedSkillIds": [506]
+  },
+  {
+    "id": 21036,
+    "name": "천벌의 제우스 라이트닝",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "하늘의 분노를 한곳에 모은 전설적인 지팡이입니다. 낙뢰가 끊이지 않습니다.",
+    "price": 62000000,
+    "icon": "/images/items/21036.png",
+    "baseStatsBonus": { "13": 50.0, "21": 50.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "lightningAtk": 450.0,
+      "lightningRes": 100.0,
+      "accuracy": 30.0
+    },
+    "grantedSkillIds": [507]
+  },
+  {
+    "id": 21037,
+    "name": "번개 요정의 스파크 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "가볍지만 그 끝에서 나오는 전격은 거대 몬스터를 마비시키기에 충분합니다.",
+    "price": 41000000,
+    "icon": "/images/items/21037.png",
+    "baseStatsBonus": { "13": 40.0, "16": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "lightningAtk": 280.0,
+      "moveSpeed": 0.3
+    },
+    "grantedSkillIds": [508]
+  },
+  {
+    "id": 21038,
+    "name": "폭풍우를 부르는 자의 전도체",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "폭풍의 눈 한가운데서 수만 번의 낙뢰를 견뎌낸 고대의 전도체입니다.",
+    "price": 59000000,
+    "icon": "/images/items/21038.png",
+    "baseStatsBonus": { "13": 80.0, "4": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "lightningAtk": 400.0,
+      "critRate": 25.0
+    },
+    "grantedSkillIds": [509]
+  },
+  {
+    "id": 21039,
+    "name": "대지의 어머니 가이아의 심장",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "대지의 근원적인 힘이 요동치는 지팡이입니다. 지각 변동을 일으키는 권능을 가졌습니다.",
+    "price": 57000000,
+    "icon": "/images/items/21039.png",
+    "baseStatsBonus": { "1": 50.0, "13": 50.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "earthAtk": 400.0,
+      "earthRes": 150.0,
+      "physDef": 200.0
+    },
+    "grantedSkillIds": [510]
+  },
+  {
+    "id": 21040,
+    "name": "인디언 대추장의 영혼 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "자연과 소통하던 대추장의 지혜가 깃든 완드입니다. 대지의 가호가 따릅니다.",
+    "price": 39000000,
+    "icon": "/images/items/21040.png",
+    "baseStatsBonus": { "13": 40.0, "18": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "earthAtk": 200.0,
+      "statusResist": 40.0
+    },
+    "grantedSkillIds": [511]
+  },
+  {
+    "id": 21041,
+    "name": "세계수의 뿌리 스태프",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "세상을 지탱하는 세계수의 가장 깊은 뿌리로 제작되었습니다. 무한한 대지의 마력이 솟구칩니다.",
+    "price": 63000000,
+    "icon": "/images/items/21041.png",
+    "baseStatsBonus": { "13": 60.0, "11": 40.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "earthAtk": 450.0,
+      "mpRegen": 20.0
+    },
+    "grantedSkillIds": [512]
+  },
+  {
+    "id": 21042,
+    "name": "성모의 구원받은 자의 광휘",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "진정한 믿음을 가진 자만이 들 수 있는 성스러운 지팡이입니다. 모든 어둠을 정화합니다.",
+    "price": 70000000,
+    "icon": "/images/items/21042.png",
+    "baseStatsBonus": { "13": 50.0, "14": 50.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "holyAtk": 400.0,
+      "holyRes": 200.0,
+      "hpRegen": 80.0
+    },
+    "grantedSkillIds": [513]
+  },
+  {
+    "id": 21043,
+    "name": "엘로힘의 축복 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "신성한 빛이 깃들어 있어, 쥐고 있는 것만으로 상처를 치유합니다.",
+    "price": 48000000,
+    "icon": "/images/items/21043.png",
+    "baseStatsBonus": { "13": 30.0, "18": 40.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "holyAtk": 250.0,
+      "maxHp": 1000.0
+    },
+    "grantedSkillIds": [514]
+  },
+  {
+    "id": 21044,
+    "name": "심판의 대천사 미카엘의 검광",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "지팡이의 형상을 하고 있으나, 휘두르는 궤적은 신의 검광과 같습니다.",
+    "price": 80000000,
+    "icon": "/images/items/21044.png",
+    "baseStatsBonus": { "13": 100.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "holyAtk": 600.0,
+      "penetration": 40.0
+    },
+    "grantedSkillIds": [515]
+  },
+  {
+    "id": 21045,
+    "name": "심연의 지배자 아바돈의 지팡이",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "밑바닥 없는 심연의 주인이 사용하던 지팡이입니다. 모든 빛을 삼켜버립니다.",
+    "price": 54000000,
+    "icon": "/images/items/21045.png",
+    "baseStatsBonus": { "13": 70.0, "15": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "darkAtk": 420.0,
+      "darkRes": 120.0,
+      "critRate": 20.0
+    },
+    "grantedSkillIds": [516]
+  },
+  {
+    "id": 21046,
+    "name": "그림자 암살자의 침묵 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "소리 없이 마법을 시전할 수 있게 설계된, 어둠 속에 최적화된 완드입니다.",
+    "price": 45000000,
+    "icon": "/images/items/21046.png",
+    "baseStatsBonus": { "13": 40.0, "17": 40.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "darkAtk": 280.0,
+      "dodge": 25.0
+    },
+    "grantedSkillIds": [517]
+  },
+  {
+    "id": 21047,
+    "name": "흑마법사의 금기된 성전",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "읽어서는 안 될 지식이 박힌 지팡이입니다. 영혼을 대가로 어둠의 불꽃을 부릅니다.",
+    "price": 61000000,
+    "icon": "/images/items/21047.png",
+    "baseStatsBonus": { "13": 90.0, "9": 10.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "darkAtk": 500.0,
+      "fireAtk": 100.0
+    },
+    "grantedSkillIds": [518]
+  },
+  {
+    "id": 21048,
+    "name": "크툴루의 일그러진 유물 스태프",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "외계의 금속으로 만들어진, 상식 밖의 형태를 띤 지팡이입니다. 보는 것만으로 광기에 빠집니다.",
+    "price": 66000000,
+    "icon": "/images/items/21048.png",
+    "baseStatsBonus": { "13": 60.0, "23": 40.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "chaosAtk": 500.0,
+      "chaosRes": 150.0,
+      "statusResist": -20.0
+    },
+    "grantedSkillIds": [519]
+  },
+  {
+    "id": 21049,
+    "name": "이교도의 기괴한 촉수 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "살아 움직이는 듯한 촉수가 완드를 휘감을 때마다 차원을 뒤트는 힘이 발생합니다.",
+    "price": 49000000,
+    "icon": "/images/items/21049.png",
+    "baseStatsBonus": { "13": 50.0, "15": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "chaosAtk": 350.0,
+      "magRes": 50.0
+    },
+    "grantedSkillIds": [520]
+  },
+  {
+    "id": 21050,
+    "name": "코스믹 호러의 눈동자 지팡이",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "차원 너머 거대 존재의 눈동자가 박혀 있습니다. 마주치는 자의 영혼을 붕괴시킵니다.",
+    "price": 75000000,
+    "icon": "/images/items/21050.png",
+    "baseStatsBonus": { "13": 100.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "chaosAtk": 666.0,
+      "accuracy": -50.0
+    },
+    "grantedSkillIds": [521]
+  },
+  {
+    "id": 21051,
+    "name": "역병의 신 판데모니우스의 지팡이",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "세상의 모든 역병을 담은 지팡이입니다. 지나간 자리에는 오직 죽음과 부패만이 남습니다.",
+    "price": 53000000,
+    "icon": "/images/items/21051.png",
+    "baseStatsBonus": { "3": 40.0, "13": 40.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "toxicAtk": 450.0,
+      "toxicRes": 150.0,
+      "accuracy": 20.0
+    },
+    "grantedSkillIds": [522]
+  },
+  {
+    "id": 21052,
+    "name": "죽음의 키스 독액 완드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "단 한 방울로 도시 하나를 멸망시킬 수 있는 맹독이 완드 끝에서 넘실거립니다.",
+    "price": 44000000,
+    "icon": "/images/items/21052.png",
+    "baseStatsBonus": { "9": 50.0, "13": 20.0 },
+    "combatStatsBonus": {
+      "magicAtk": 400.0,
+      "toxicAtk": 320.0,
+      "toxicPen": 35.0
+    },
+    "grantedSkillIds": [523]
+  },
+  {
+    "id": 21053,
+    "name": "아카식 독초의 정수 지팡이",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "STAFF",
+    "twoHanded": true,
+    "description": "최초의 독초에서 추출한 정수를 고대 나무 지팡이에 주입했습니다. 마력조차 부식시킵니다.",
+    "price": 59000000,
+    "icon": "/images/items/21053.png",
+    "baseStatsBonus": { "13": 60.0, "1": 30.0 },
+    "combatStatsBonus": {
+      "magicAtk": 700.0,
+      "toxicAtk": 500.0,
+      "statusResist": 50.0
+    },
+    "grantedSkillIds": [524]
+  }
+
+]

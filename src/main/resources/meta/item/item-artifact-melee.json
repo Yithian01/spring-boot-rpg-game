@@ -1,0 +1,345 @@
+[
+  {
+    "id": 690,
+    "name": "무딘 철제 허리띠",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "투박한 철판을 덧댄 가죽 허리띠입니다. 전사들이 기본적으로 선호합니다.",
+    "price": 125000,
+    "icon": "/images/items/690.png",
+    "baseStatsBonus": { "1": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 25.0,
+      "physPen": 3.0,
+      "maxHp": 20.0,
+      "hpRegen": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 691,
+    "name": "질긴 늑대 가죽 망토",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "거친 늑대 가죽으로 만든 망토입니다. 바람을 잘 막아주며 민첩한 움직임을 돕습니다.",
+    "price": 138000,
+    "icon": "/images/items/691.png",
+    "baseStatsBonus": { "20": 4.0 },
+    "combatStatsBonus": {
+      "moveSpeed": 0.1,
+      "dodge": 3.0,
+      "maxStamina": 15.0,
+      "critRate": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 692,
+    "name": "용병의 연마석 브로치",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "날을 갈 때 쓰는 연마석 조각을 박아 넣은 장식입니다. 무기 관리에 대한 마음가짐을 나타냅니다.",
+    "price": 110000,
+    "icon": "/images/items/692.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 15.0,
+      "accuracy": 5.0,
+      "physPen": 2.0,
+      "critDmg": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 693,
+    "name": "낡은 수렵용 장갑",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "궁수들이 시위를 당길 때 손가락을 보호하기 위해 착용하는 가죽 장갑입니다.",
+    "price": 142000,
+    "icon": "/images/items/693.png",
+    "baseStatsBonus": { "21": 3.0 },
+    "combatStatsBonus": {
+      "accuracy": 8.0,
+      "critRate": 3.0,
+      "maxStamina": 10.0,
+      "moveSpeed": 0.05
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 694,
+    "name": "정련된 구리 펜던트",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "불순물을 제거한 구리로 제작되었습니다. 신체 능력을 전반적으로 끌어올려 줍니다.",
+    "price": 450000,
+    "icon": "/images/items/694.png",
+    "baseStatsBonus": { "1": 8.0, "10": 5.0 },
+    "combatStatsBonus": {
+      "maxTurn": 1.0,
+      "meleeAtk": 40.0,
+      "physPen": 5.0,
+      "hpRegen": 5.0,
+      "statusPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 695,
+    "name": "검은 자수 가죽 가방",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "어두운 곳에서 잘 보이지 않도록 특수하게 염색된 작은 가방입니다. 암살자들이 애용합니다.",
+    "price": 485000,
+    "icon": "/images/items/695.png",
+    "baseStatsBonus": { "20": 10.0 },
+    "combatStatsBonus": {
+      "maxTurn": 1.0,
+      "critRate": 6.0,
+      "critDmg": 12.0,
+      "moveSpeed": 0.2,
+      "dodge": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 696,
+    "name": "강화된 힘줄 팔찌",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "거대 마수의 힘줄을 꼬아 만든 팔찌입니다. 착용자의 근력을 보조하는 마력이 깃들어 있습니다.",
+    "price": 520000,
+    "icon": "/images/items/696.png",
+    "baseStatsBonus": { "1": 12.0 },
+    "combatStatsBonus": {
+      "maxTurn": 1.0,
+      "meleeAtk": 50.0,
+      "maxStamina": 30.0,
+      "physRes": 5.0,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 697,
+    "name": "장인의 가죽 조끼",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "갑옷 안에 받쳐 입는 가벼운 가죽 조끼입니다. 활동성과 방어력을 동시에 챙겼습니다.",
+    "price": 510000,
+    "icon": "/images/items/697.png",
+    "baseStatsBonus": { "2": 8.0, "20": 5.0 },
+    "combatStatsBonus": {
+      "maxTurn": 1.0,
+      "physRes": 8.0,
+      "dodge": 6.0,
+      "maxHp": 50.0,
+      "hpRegen": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 720,
+    "name": "전쟁광의 피묻은 휘장",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "수많은 전장을 누빈 용병 대장의 휘장입니다. 주변의 살기를 흡수하여 착용자의 근력을 폭발시킵니다.",
+    "price": 2800000,
+    "icon": "/images/items/720.png",
+    "baseStatsBonus": {
+      "1": 10.0,
+      "10": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 100.0,
+      "physPen": 8.0,
+      "hpRegen": 25.0,
+      "maxTurn": 1.0,
+      "moveSpeed": 0.3
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 721,
+    "name": "심장 쐐기돌",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "암살자들이 급소를 정확히 꿰뚫기 위해 사용하는 보조 마석입니다. 공기를 가르는 소리조차 지워버립니다.",
+    "price": 2650000,
+    "icon": "/images/items/721.png",
+    "baseStatsBonus": {
+      "20": 20.0
+    },
+    "combatStatsBonus": {
+      "critDmg": 40.0,
+      "physPen": 10.0,
+      "statusPen": 20.0,
+      "moveSpeed": 0.4,
+      "accuracy": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 722,
+    "name": "폭풍의 눈 화살통",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "바람의 정령이 깃든 화살통입니다. 화살이 나아가는 궤적의 저항을 무효화합니다.",
+    "price": 2700000,
+    "icon": "/images/items/722.png",
+    "baseStatsBonus": {
+      "21": 15.0,
+      "23": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "critRate": 12.0,
+      "accuracy": 20.0,
+      "moveSpeed": 0.5,
+      "maxStamina": 100.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 723,
+    "name": "강철의 의지 메달",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "불굴의 기사가 지니고 있던 메달입니다. 치명적인 상처를 입어도 다시 일어설 힘을 줍니다.",
+    "price": 2900000,
+    "icon": "/images/items/723.png",
+    "baseStatsBonus": {
+      "1": 20.0,
+      "2": 20.0
+    },
+    "combatStatsBonus": {
+      "physDef": 50.0,
+      "physRes": 10.0,
+      "hpRegen": 30.0,
+      "statusResist": 15.0,
+      "maxHp": 300.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 724,
+    "name": "주신 아레스의 투기",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "전쟁의 신이 사용했다고 전해지는 성유물입니다. 착용하는 것만으로 대지를 울리는 압도적인 힘이 샘솟습니다.",
+    "price": 15000000,
+    "icon": "/images/items/724.png",
+    "baseStatsBonus": {
+      "1": 40.0,
+      "10": 50.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 250.0,
+      "physPen": 15.0,
+      "critDmg": 50.0,
+      "hpRegen": 40.0,
+      "maxTurn": 2.0,
+      "moveSpeed": 0.5
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 725,
+    "name": "그림자 왕의 베일",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "전설적인 암살 집단의 수장이 사용하던 유물입니다. 실재하는 형체를 흐릿하게 만들어 공간을 초월하게 합니다.",
+    "price": 14500000,
+    "icon": "/images/items/725.png",
+    "baseStatsBonus": {
+      "20": 60.0
+    },
+    "combatStatsBonus": {
+      "critRate": 25.0,
+      "critDmg": 70.0,
+      "statusPen": 35.0,
+      "moveSpeed": 1.2,
+      "dodge": 20.0,
+      "maxTurn": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 726,
+    "name": "천공의 날개 깃털",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "신수 시무르그의 깃털로 만든 장식입니다. 모든 투사체에 신의 가호를 부여하여 필중의 일격을 가합니다.",
+    "price": 14000000,
+    "icon": "/images/items/726.png",
+    "baseStatsBonus": {
+      "17": 40.0,
+      "21": 40.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 180.0,
+      "accuracy": 40.0,
+      "moveSpeed": 1.0,
+      "maxStamina": 500.0,
+      "physPen": 12.0,
+      "maxTurn": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 727,
+    "name": "불멸자의 심장 핵",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "ARTIFACT",
+    "subType": "ACCESSORY",
+    "description": "죽지 않는 괴수의 심장에서 추출한 핵입니다. 고동칠 때마다 마르지 않는 생명력을 주입합니다.",
+    "price": 16000000,
+    "icon": "/images/items/727.png",
+    "baseStatsBonus": {
+      "1": 50.0,
+      "2": 50.0,
+      "11": 30.0
+    },
+    "combatStatsBonus": {
+      "hpRegen": 100.0,
+      "maxHp": 1000.0,
+      "physRes": 15.0,
+      "statusResist": 30.0,
+      "maxStamina": 300.0,
+      "moveSpeed": 0.3
+    },
+    "grantedSkillIds": []
+  }
+]

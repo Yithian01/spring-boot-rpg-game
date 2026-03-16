@@ -1,0 +1,173 @@
+[
+  {
+    "id": 10000,
+    "name": "빵 한 조각",
+    "grade": "COMMON",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "FOOD",
+    "twoHanded": false,
+    "description": "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
+    "price": 30,
+    "icon": "/images/items/10000.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 20,
+      "mp": 0,
+      "stamina": 30
+    }
+  },
+  {
+    "id": 10001,
+    "name": "하급 회복 물약",
+    "grade": "COMMON",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "가벼운 찰과상을 치료하는 데 적합합니다.",
+    "price": 8500,
+    "icon": "/images/items/10001.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 50,
+      "mp": 0,
+      "stamina": 20
+    }
+  },
+  {
+    "id": 10002,
+    "name": "중급 회복 물약",
+    "grade": "UNCOMMON",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "깊게 베인 상처를 아물게 하고 활력을 되찾아줍니다.",
+    "price": 42000,
+    "icon": "/images/items/10002.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 200,
+      "mp": 0,
+      "stamina": 60
+    }
+  },
+  {
+    "id": 10003,
+    "name": "상급 회복 물약",
+    "grade": "RARE",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "치명적인 상처도 즉각적으로 회복시킵니다.",
+    "price": 185000,
+    "icon": "/images/items/10003.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 800,
+      "mp": 0,
+      "stamina": 150
+    }
+  },
+  {
+    "id": 10004,
+    "name": "최상급 회복 물약",
+    "grade": "EPIC",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "육체의 모든 손상을 복구합니다.",
+    "price": 950000,
+    "icon": "/images/items/10004.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 2500,
+      "mp": 0,
+      "stamina": 400
+    }
+  },
+  {
+    "id": 10005,
+    "name": "하급 마나 물약",
+    "grade": "COMMON",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "희미한 푸른빛을 띠는 액체입니다. 마력의 흐름을 미세하게 자극합니다.",
+    "price": 5000,
+    "icon": "/images/items/10005.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 0,
+      "mp": 40,
+      "stamina": 5
+    }
+  },
+  {
+    "id": 10006,
+    "name": "중급 마나 물약",
+    "grade": "UNCOMMON",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "소모된 마력을 안정적으로 보충해줍니다.",
+    "price": 26000,
+    "icon": "/images/items/10006.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 0,
+      "mp": 150,
+      "stamina": 15
+    }
+  },
+  {
+    "id": 10007,
+    "name": "상급 마나 물약",
+    "grade": "RARE",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "강력한 주문을 연달아 사용할 수 있게 돕습니다.",
+    "price": 110000,
+    "icon": "/images/items/10007.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 0,
+      "mp": 600,
+      "stamina": 30
+    }
+  },
+  {
+    "id": 10008,
+    "name": "최상급 마나 물약",
+    "grade": "EPIC",
+    "type": "CONSUMABLE",
+    "slot": "NONE",
+    "subType": "POTION",
+    "twoHanded": false,
+    "description": "대마법사들이 비전 마법을 연구할 때 마시던 물약입니다. 정신력을 최고조로 끌어올립니다.",
+    "price": 580000,
+    "icon": "/images/items/10008.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {},
+    "recoveryBonus": {
+      "hp": 0,
+      "mp": 1800,
+      "stamina": 100
+    }
+  }
+]

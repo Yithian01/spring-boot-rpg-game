@@ -105,11 +105,19 @@
                 <form action="/inventory/unequip" method="post" style="width:100%; height:100%;">
                     <input type="hidden" name="slot" th:value="${slotMap['' + i]}">
                     <button type="submit" class="unequip-btn"
+                            onmouseover="showTooltip(this)"
+                            onmousemove="moveTooltip(event)"
+                            onmouseout="hideTooltip()"
+
                             th:data-name="${equippedItems[slotMap['' + i]].name}"
                             th:data-grade="${equippedItems[slotMap['' + i]].grade}"
-                            th:data-subtype="${equippedItems[slotMap['' + i]].subType}"
-                            th:data-bonuses="${#strings.listJoin(equippedItems[slotMap['' + i]].statBonuses, ' / ')}"
-                            onmouseover="showItemDescription(this)" onmouseout="clearDescription()">
+                            th:data-type="${equippedItems[slotMap['' + i]].subType != null ? equippedItems[slotMap['' + i]].subType : equippedItems[slotMap['' + i]].type}"
+                            th:data-slot="${slotMap['' + i]}"
+                            th:data-desc="${equippedItems[slotMap['' + i]].description}"
+                            th:data-bonuses="${#strings.listJoin(equippedItems[slotMap['' + i]].statBonuses, '|')}"
+                            th:data-recovery="${equippedItems[slotMap['' + i]].recoveryEffect}"
+                            th:data-quantity="1"
+                            th:data-gold="${equippedItems[slotMap['' + i]].gold}">
                         <img th:src="${equippedItems[slotMap['' + i]].icon}" class="item-icon-img">
                     </button>
                 </form>

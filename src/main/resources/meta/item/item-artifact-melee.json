@@ -185,7 +185,7 @@
     "type": "EQUIPMENT",
     "slot": "ARTIFACT",
     "subType": "ACCESSORY",
-    "description": "암살자들이 급소를 정확히 꿰뚫기 위해 사용하는 보조 마석입니다. 공기를 가르는 소리조차 지워버립니다.",
+    "description": "암살자들이 급소를 정확히 꿰뚫기 위해 사용하는 보조 마석입니다.",
     "price": 2650000,
     "icon": "/images/items/721.png",
     "baseStatsBonus": {
@@ -207,7 +207,7 @@
     "type": "EQUIPMENT",
     "slot": "ARTIFACT",
     "subType": "ACCESSORY",
-    "description": "바람의 정령이 깃든 화살통입니다. 화살이 나아가는 궤적의 저항을 무효화합니다.",
+    "description": "바람의 정령이 깃든 화살통입니다.",
     "price": 2700000,
     "icon": "/images/items/722.png",
     "baseStatsBonus": {
@@ -230,7 +230,7 @@
     "type": "EQUIPMENT",
     "slot": "ARTIFACT",
     "subType": "ACCESSORY",
-    "description": "불굴의 기사가 지니고 있던 메달입니다. 치명적인 상처를 입어도 다시 일어설 힘을 줍니다.",
+    "description": "불굴의 기사가 지니고 있던 메달입니다.",
     "price": 2900000,
     "icon": "/images/items/723.png",
     "baseStatsBonus": {
@@ -253,7 +253,7 @@
     "type": "EQUIPMENT",
     "slot": "ARTIFACT",
     "subType": "ACCESSORY",
-    "description": "전쟁의 신이 사용했다고 전해지는 성유물입니다. 착용하는 것만으로 대지를 울리는 압도적인 힘이 샘솟습니다.",
+    "description": "전쟁의 신이 사용했다고 전해지는 성유물입니다.",
     "price": 15000000,
     "icon": "/images/items/724.png",
     "baseStatsBonus": {
@@ -277,7 +277,7 @@
     "type": "EQUIPMENT",
     "slot": "ARTIFACT",
     "subType": "ACCESSORY",
-    "description": "전설적인 암살 집단의 수장이 사용하던 유물입니다. 실재하는 형체를 흐릿하게 만들어 공간을 초월하게 합니다.",
+    "description": "전설적인 암살 집단의 수장이 사용하던 유물입니다.",
     "price": 14500000,
     "icon": "/images/items/725.png",
     "baseStatsBonus": {
@@ -300,7 +300,7 @@
     "type": "EQUIPMENT",
     "slot": "ARTIFACT",
     "subType": "ACCESSORY",
-    "description": "신수 시무르그의 깃털로 만든 장식입니다. 모든 투사체에 신의 가호를 부여하여 필중의 일격을 가합니다.",
+    "description": "신수 시무르그의 깃털로 만든 장식입니다.",
     "price": 14000000,
     "icon": "/images/items/726.png",
     "baseStatsBonus": {

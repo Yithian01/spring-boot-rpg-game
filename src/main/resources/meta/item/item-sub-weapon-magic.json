@@ -1,0 +1,1110 @@
+[
+  {
+    "id": 1450,
+    "name": "발열하는 마법서",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "페이지를 넘길 때마다 뜨거운 열기가 손끝에 전해집니다.",
+    "price": 420000,
+    "icon": "/images/items/1450.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 30.0,
+      "accuracy": 4.0,
+      "critDmg": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1451,
+    "name": "불꽃 심장 보주",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "불규칙하게 일렁이는 핵이 붉은 빛을 내뿜습니다.",
+    "price": 450000,
+    "icon": "/images/items/1451.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 30.0,
+      "accuracy": 4.0,
+      "critDmg": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1452,
+    "name": "영겁의 화염 기록물",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "재가 되지 않는 특수 양피지에 파괴적인 주문들이 적혀 있습니다.",
+    "price": 850000,
+    "icon": "/images/items/1452.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "critDmg": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1453,
+    "name": "태양의 조각 오팔",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "태양의 정수를 담은 듯 눈부신 열기를 간직한 보주입니다.",
+    "price": 880000,
+    "icon": "/images/items/1453.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "fireAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "critDmg": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1454,
+    "name": "만년설의 마도서",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "표지가 차가운 얼음 결정으로 덮여 있어 냉기가 흐릅니다.",
+    "price": 410000,
+    "icon": "/images/items/1454.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 30.0,
+      "accuracy": 4.0,
+      "maxMp": 50.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1455,
+    "name": "서리 맺힌 유리구",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "내부에 끊임없이 눈보라가 치는 듯한 신비로운 구체입니다.",
+    "price": 430000,
+    "icon": "/images/items/1455.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 30.0,
+      "accuracy": 4.0,
+      "maxMp": 50.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1456,
+    "name": "절대 영도의 복음",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "모든 것을 얼려버릴 듯한 극저온의 마력이 깃든 서적입니다.",
+    "price": 820000,
+    "icon": "/images/items/1456.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "maxMp": 100.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1457,
+    "name": "빙하의 핵 오브",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "심해 깊은 곳의 거대 빙하에서 추출한 정수입니다.",
+    "price": 860000,
+    "icon": "/images/items/1457.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "iceAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "maxMp": 100.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1458,
+    "name": "방전되는 양피지",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "책장을 넘길 때마다 미세한 전기 스파크가 튑니다.",
+    "price": 430000,
+    "icon": "/images/items/1458.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 30.0,
+      "accuracy": 4.0,
+      "lightningPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1459,
+    "name": "청류석 보주",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "푸른 빛이 감도는 보석 안에서 번개가 소용돌이칩니다.",
+    "price": 440000,
+    "icon": "/images/items/1459.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 30.0,
+      "accuracy": 4.0,
+      "lightningPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1460,
+    "name": "폭풍 소환사의 장서",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "뇌운의 힘을 억눌러 담은 강력한 마법서입니다.",
+    "price": 870000,
+    "icon": "/images/items/1460.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "lightningPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1461,
+    "name": "전신의 눈 보주",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "날카로운 전격의 힘이 응축되어 적의 방어를 꿰뚫습니다.",
+    "price": 890000,
+    "icon": "/images/items/1461.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "lightningAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "lightningPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1462,
+    "name": "이끼 낀 고서",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "오래된 나무의 껍질로 만든 표지에서 흙내음이 납니다.",
+    "price": 400000,
+    "icon": "/images/items/1462.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 30.0,
+      "accuracy": 4.0,
+      "hpRegen": 2.0,
+      "maxHp": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1463,
+    "name": "단단한 황토 보주",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "대지의 기운이 응집되어 묵직한 무게감을 자랑합니다.",
+    "price": 410000,
+    "icon": "/images/items/1463.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 30.0,
+      "accuracy": 4.0,
+      "hpRegen": 2.0,
+      "maxHp": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1464,
+    "name": "세계수의 잎 마법서",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "강인한 생명력이 깃든 잎사귀들에 자연의 섭리가 기록되어 있습니다.",
+    "price": 830000,
+    "icon": "/images/items/1464.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "hpRegen": 5.0,
+      "maxHp": 80.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1465,
+    "name": "대지의 심장석",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "깊은 지층에서 발견된 이 보주는 착용자에게 대지의 활력을 줍니다.",
+    "price": 850000,
+    "icon": "/images/items/1465.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "earthAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "hpRegen": 5.0,
+      "maxHp": 80.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1466,
+    "name": "순백의 기도문",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "정갈하게 적힌 글귀들이 마음을 평온하게 만듭니다.",
+    "price": 450000,
+    "icon": "/images/items/1466.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 30.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1467,
+    "name": "축복받은 진주",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "은은한 빛을 발산하며 주변의 부정한 기운을 밀어냅니다.",
+    "price": 460000,
+    "icon": "/images/items/1467.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 30.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1468,
+    "name": "대천사의 계시록",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "찬란한 금빛 문자들이 허공에 떠오르며 신성한 힘을 증폭시킵니다.",
+    "price": 900000,
+    "icon": "/images/items/1468.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1469,
+    "name": "광휘의 다이아몬드 오브",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "한 점의 흐트러짐도 없는 빛의 정수가 응축된 보주입니다.",
+    "price": 920000,
+    "icon": "/images/items/1469.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "holyAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1470,
+    "name": "그림자 양피지",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "빛이 닿지 않는 곳에서만 글자가 선명하게 드러납니다.",
+    "price": 440000,
+    "icon": "/images/items/1470.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 30.0,
+      "accuracy": 4.0,
+      "critRate": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1471,
+    "name": "흑마노 보주",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "주변의 빛을 빨아들이는 듯한 칠흑 같은 어둠의 구체입니다.",
+    "price": 460000,
+    "icon": "/images/items/1471.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 30.0,
+      "accuracy": 4.0,
+      "critRate": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1472,
+    "name": "심연의 금서",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "보는 것만으로도 정신이 아득해지는 어두운 지식의 집합체입니다.",
+    "price": 880000,
+    "icon": "/images/items/1472.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 6.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1473,
+    "name": "공허의 눈동자",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "어둠 속에서 무언가 나를 지켜보는 듯한 기괴한 보주입니다.",
+    "price": 910000,
+    "icon": "/images/items/1473.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "darkAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 6.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1474,
+    "name": "뒤틀린 문양의 서",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "이해할 수 없는 기호들이 꿈틀거리며 배치를 바꿉니다.",
+    "price": 470000,
+    "icon": "/images/items/1474.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 30.0,
+      "accuracy": 4.0,
+      "chaosPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1475,
+    "name": "균열의 파편 오브",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "차원의 틈새에서 흘러나온 불안정한 마력이 가득합니다.",
+    "price": 480000,
+    "icon": "/images/items/1475.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 30.0,
+      "accuracy": 4.0,
+      "chaosPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1476,
+    "name": "외신의 속삭임",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "GRIMORE",
+    "twoHanded": false,
+    "description": "이 세상의 것이 아닌 언어로 기록된 불길한 마법서입니다.",
+    "price": 950000,
+    "icon": "/images/items/1476.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "chaosPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1477,
+    "name": "혼돈의 소용돌이",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "SUB_WEAPON",
+    "subType": "ORB",
+    "twoHanded": false,
+    "description": "모든 질서를 거부하는 원초적인 힘이 소용돌이치는 보주입니다.",
+    "price": 980000,
+    "icon": "/images/items/1477.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "chaosAtk": 60.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "chaosPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id":1500,
+    "name":"홍련의 마도서",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"고급 마력 잉크로 기록된 페이지에서 끊임없이 열기가 뿜어져 나옵니다.",
+    "price":1250000,
+    "icon":"/images/items/1500.png",
+    "baseStatsBonus":{
+      "4":15.0
+    },
+    "combatStatsBonus":{
+      "fireAtk":150.0,
+      "fireRes":15.0,
+      "critDmg":10.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1501,
+    "name":"작열하는 보주",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"중심부에서 요동치는 핵이 주변의 온도를 급격히 높입니다.",
+    "price":1180000,
+    "icon":"/images/items/1501.png",
+    "baseStatsBonus":{
+      "4":12.0
+    },
+    "combatStatsBonus":{
+      "fireAtk":150.0,
+      "fireRes":10.0,
+      "critDmg":10.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1502,
+    "name":"영겁의 불꽃 기록서",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"태초의 불꽃 한 조각을 봉인하여 만든 책입니다. 만지는 것만으로도 화상을 입을 듯합니다.",
+    "price":8500000,
+    "icon":"/images/items/1502.png",
+    "baseStatsBonus":{
+      "4":30.0
+    },
+    "combatStatsBonus":{
+      "fireAtk":250.0,
+      "fireRes":30.0,
+      "critDmg":20.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1503,
+    "name":"태양의 심장",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"가장 깊은 화산의 정수만을 추출해 응축시킨 신비로운 구체입니다.",
+    "price":8900000,
+    "icon":"/images/items/1503.png",
+    "baseStatsBonus":{
+      "4":28.0
+    },
+    "combatStatsBonus":{
+      "fireAtk":250.0,
+      "fireRes":25.0,
+      "critDmg":20.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1504,
+    "name":"만년설의 마도서",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"책장을 넘길 때마다 차가운 서리가 내려앉아 정신을 맑게 해줍니다.",
+    "price":1220000,
+    "icon":"/images/items/1504.png",
+    "baseStatsBonus":{
+      "13":20.0
+    },
+    "combatStatsBonus":{
+      "iceAtk":150.0,
+      "iceRes":15.0,
+      "maxMp":100.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1505,
+    "name":"빙결된 눈동자",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"내부에 얼어붙은 냉기가 마력의 흐름을 차갑게 정돈합니다.",
+    "price":1150000,
+    "icon":"/images/items/1505.png",
+    "baseStatsBonus":{
+      "13":18.0
+    },
+    "combatStatsBonus":{
+      "iceAtk":150.0,
+      "iceRes":10.0,
+      "maxMp":120.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1506,
+    "name":"절대영도의 고서",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"모든 것이 멈춘 극한의 세계에서 발견된 고대의 기록물입니다.",
+    "price":8200000,
+    "icon":"/images/items/1506.png",
+    "baseStatsBonus":{
+      "13":40.0
+    },
+    "combatStatsBonus":{
+      "iceAtk":250.0,
+      "iceRes":30.0,
+      "maxMp":250.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1507,
+    "name":"북극성의 정수",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"가장 차갑게 빛나는 별의 파편을 깎아 만든 보주입니다.",
+    "price":8600000,
+    "icon":"/images/items/1507.png",
+    "baseStatsBonus":{
+      "13":35.0
+    },
+    "combatStatsBonus":{
+      "iceAtk":250.0,
+      "iceRes":25.0,
+      "maxMp":300.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1508,
+    "name":"뇌운의 마도서",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"마력을 주입하면 종이 사이로 푸른 불꽃이 튑니다.",
+    "price":1280000,
+    "icon":"/images/items/1508.png",
+    "baseStatsBonus":{
+      "14":15.0
+    },
+    "combatStatsBonus":{
+      "lightningAtk":150.0,
+      "lightningRes":15.0,
+      "lightningPen":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1509,
+    "name":"폭풍의 눈 보주",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"휘몰아치는 번개의 에너지를 안정화시켜 구체 안에 담아냈습니다.",
+    "price":1200000,
+    "icon":"/images/items/1509.png",
+    "baseStatsBonus":{
+      "14":12.0
+    },
+    "combatStatsBonus":{
+      "lightningAtk":150.0,
+      "lightningRes":10.0,
+      "lightningPen":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1510,
+    "name":"전신의 기록서",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"하늘의 분노를 기록한 이 책은 펼치는 것만으로도 공기를 이온화시킵니다.",
+    "price":9100000,
+    "icon":"/images/items/1510.png",
+    "baseStatsBonus":{
+      "14":32.0
+    },
+    "combatStatsBonus":{
+      "lightningAtk":250.0,
+      "lightningRes":30.0,
+      "lightningPen":10.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1511,
+    "name":"천둥의 핵 보주",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"낙뢰의 중심에서만 발견되는 극도로 희귀한 마법 광석을 가공했습니다.",
+    "price":9500000,
+    "icon":"/images/items/1511.png",
+    "baseStatsBonus":{
+      "14":30.0
+    },
+    "combatStatsBonus":{
+      "lightningAtk":250.0,
+      "lightningRes":25.0,
+      "lightningPen":10.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1512,
+    "name":"대지의 전승록",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"오래된 나무 껍질로 만든 표지에서 짙은 흙내음이 납니다.",
+    "price":1100000,
+    "icon":"/images/items/1512.png",
+    "baseStatsBonus":{
+      "1":15.0
+    },
+    "combatStatsBonus":{
+      "earthAtk":150.0,
+      "earthRes":15.0,
+      "maxHp":80.0,
+      "hpRegen":2.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1513,
+    "name":"에메랄드 대지구",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"초목의 생명력을 응축한 초록빛 보주입니다.",
+    "price":1050000,
+    "icon":"/images/items/1513.png",
+    "baseStatsBonus":{
+      "1":12.0
+    },
+    "combatStatsBonus":{
+      "earthAtk":150.0,
+      "earthRes":10.0,
+      "maxHp":100.0,
+      "hpRegen":1.5
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1514,
+    "name":"세계수의 잎사귀",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"태고의 생명력을 간직한 나뭇잎에 신성한 문자가 각인되어 있습니다.",
+    "price":7800000,
+    "icon":"/images/items/1514.png",
+    "baseStatsBonus":{
+      "1":35.0
+    },
+    "combatStatsBonus":{
+      "earthAtk":250.0,
+      "earthRes":30.0,
+      "maxHp":200.0,
+      "hpRegen":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1515,
+    "name":"가이아의 정수",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"대지의 심장부에서 추출한 액체 마나를 투명한 보석 안에 가두었습니다.",
+    "price":8100000,
+    "icon":"/images/items/1515.png",
+    "baseStatsBonus":{
+      "1":30.0
+    },
+    "combatStatsBonus":{
+      "earthAtk":250.0,
+      "earthRes":25.0,
+      "maxHp":250.0,
+      "hpRegen":4.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1516,
+    "name":"은총의 찬가집",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"성스러운 빛의 기운이 깃든 찬송이 적힌 마도서입니다.",
+    "price":1300000,
+    "icon":"/images/items/1516.png",
+    "baseStatsBonus":{
+      "18":15.0
+    },
+    "combatStatsBonus":{
+      "holyAtk":150.0,
+      "holyRes":15.0,
+      "accuracy":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1517,
+    "name":"정화의 보주",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"사악한 기운을 멀리하고 주변을 정화하는 은은한 빛을 냅니다.",
+    "price":1220000,
+    "icon":"/images/items/1517.png",
+    "baseStatsBonus":{
+      "18":12.0
+    },
+    "combatStatsBonus":{
+      "holyAtk":150.0,
+      "holyRes":10.0,
+      "accuracy":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1518,
+    "name":"대천사의 계시록",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"인간의 언어로는 이해할 수 없는 천상의 지혜가 담겨 있습니다.",
+    "price":9800000,
+    "icon":"/images/items/1518.png",
+    "baseStatsBonus":{
+      "18":30.0
+    },
+    "combatStatsBonus":{
+      "holyAtk":250.0,
+      "holyRes":30.0,
+      "accuracy":15.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1519,
+    "name":"신성의 찬란한 눈물",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"빛의 신이 남긴 정수라 불리는, 눈부시게 빛나는 결정체입니다.",
+    "price":9990000,
+    "icon":"/images/items/1519.png",
+    "baseStatsBonus":{
+      "18":28.0
+    },
+    "combatStatsBonus":{
+      "holyAtk":250.0,
+      "holyRes":25.0,
+      "accuracy":15.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1520,
+    "name":"그림자 영창집",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"어둠 속에서만 문자가 나타나는 기괴한 마도서입니다.",
+    "price":1150000,
+    "icon":"/images/items/1520.png",
+    "baseStatsBonus":{
+      "15":10.0
+    },
+    "combatStatsBonus":{
+      "darkAtk":150.0,
+      "darkRes":15.0,
+      "critRate":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1521,
+    "name":"심연의 구슬",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"모든 빛을 빨아들이는 듯한 칠흑 같은 색을 띠고 있습니다.",
+    "price":1100000,
+    "icon":"/images/items/1521.png",
+    "baseStatsBonus":{
+      "15":8.0
+    },
+    "combatStatsBonus":{
+      "darkAtk":150.0,
+      "darkRes":10.0,
+      "critRate":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1522,
+    "name":"공허의 마도전승",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"존재하지 않는 차원의 지식이 담긴, 존재 자체가 금기시되는 책입니다.",
+    "price":8800000,
+    "icon":"/images/items/1522.png",
+    "baseStatsBonus":{
+      "15":25.0
+    },
+    "combatStatsBonus":{
+      "darkAtk":250.0,
+      "darkRes":30.0,
+      "critRate":12.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1523,
+    "name":"멸망의 블랙 오팔",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"불길한 마력을 내뿜으며 주변의 생명력을 미세하게 갈구합니다.",
+    "price":9200000,
+    "icon":"/images/items/1523.png",
+    "baseStatsBonus":{
+      "15":22.0
+    },
+    "combatStatsBonus":{
+      "darkAtk":250.0,
+      "darkRes":25.0,
+      "critRate":12.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1524,
+    "name":"혼돈의 비망록",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"무질서한 마력의 흐름을 억지로 묶어둔 불안정한 마도서입니다.",
+    "price":1400000,
+    "icon":"/images/items/1524.png",
+    "baseStatsBonus":{
+      "16":15.0
+    },
+    "combatStatsBonus":{
+      "chaosAtk":150.0,
+      "chaosRes":15.0,
+      "chaosPen":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1525,
+    "name":"뒤틀린 차원석 보주",
+    "grade":"EPIC",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"공간의 일그러짐을 이용해 마력의 관통력을 극대화합니다.",
+    "price":1350000,
+    "icon":"/images/items/1525.png",
+    "baseStatsBonus":{
+      "16":12.0
+    },
+    "combatStatsBonus":{
+      "chaosAtk":150.0,
+      "chaosRes":10.0,
+      "chaosPen":5.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1526,
+    "name":"외신의 묵시록",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"GRIMORE",
+    "description":"먼 별의 파편 위에 새겨진 고대 신들의 광기 서린 기록입니다.",
+    "price":11000000,
+    "icon":"/images/items/1526.png",
+    "baseStatsBonus":{
+      "16":35.0
+    },
+    "combatStatsBonus":{
+      "chaosAtk":250.0,
+      "chaosRes":30.0,
+      "chaosPen":10.0
+    },
+    "grantedSkillIds":[]
+  },
+  {
+    "id":1527,
+    "name":"코스믹 싱귤러리티",
+    "grade":"LEGENDARY",
+    "type":"EQUIPMENT",
+    "slot":"SUB_WEAPON",
+    "subType":"ORB",
+    "description":"모든 마력이 하나로 수렴되는 특이점을 형상화한 보주입니다.",
+    "price":12500000,
+    "icon":"/images/items/1527.png",
+    "baseStatsBonus":{
+      "16":30.0
+    },
+    "combatStatsBonus":{
+      "chaosAtk":250.0,
+      "chaosRes":25.0,
+      "chaosPen":10.0
+    },
+    "grantedSkillIds":[]
+  }
+]

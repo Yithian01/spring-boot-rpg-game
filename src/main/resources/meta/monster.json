@@ -12,6 +12,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [101, 102],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "10": 8, "11": 6, "12": 6 },
@@ -34,6 +35,7 @@
     },
     "baseActionPoints": 2,
     "activeSkillIds": [108],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "1": 8, "2": 7, "3": 5 },
@@ -54,6 +56,7 @@
     },
     "baseActionPoints": 2,
     "activeSkillIds": [109, 110],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "13": 8, "4": 7, "8": 5 },
@@ -74,6 +77,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "20": 8, "16": 7, "15": 5 },
@@ -106,10 +110,6 @@
       "frozenRes": 5.0,
       "poisonRes": -5.0,
       "bleedPen": 5.0,
-      "stunPen": 0.0,
-      "burnPen": 0.0,
-      "frozenPen": 0.0,
-      "poisonPen": 0.0,
       "meleeAtk": 18.0,
       "physDef": 3.0,
       "physRes": 5.0,
@@ -121,6 +121,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "10": 10, "20": 5, "21": 5 },
@@ -164,6 +165,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -208,6 +210,7 @@
     },
     "baseActionPoints": 2,
     "activeSkillIds": [112],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -252,6 +255,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [112, 113],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -293,6 +297,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [114],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -338,6 +343,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [115],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -377,6 +383,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [116],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -421,6 +428,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [208],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -463,6 +471,7 @@
     },
     "baseActionPoints": 1,
     "activeSkillIds": [108, 209],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -503,6 +512,7 @@
     },
     "baseActionPoints": 2,
     "activeSkillIds": [210],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -542,10 +552,8 @@
       "fireRes": -10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      211,
-      212
-    ],
+    "activeSkillIds": [211, 212],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -584,9 +592,8 @@
       "fireRes": -5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      213
-    ],
+    "activeSkillIds": [213],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -631,9 +638,8 @@
       "fireRes": -10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      214
-    ],
+    "activeSkillIds": [214],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -674,10 +680,8 @@
       "holyRes": -10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      215,
-      216
-    ],
+    "activeSkillIds": [215, 216],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -721,10 +725,8 @@
       "holyRes": -5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      215,
-      216
-    ],
+    "activeSkillIds": [215, 216],
+    "essenceSkillIds": [101, 102],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -765,9 +767,8 @@
       "fireRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      217
-    ],
+    "activeSkillIds": [217],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -805,9 +806,8 @@
       "fireRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      218
-    ],
+    "activeSkillIds": [218],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -848,9 +848,8 @@
       "fireRes": 5.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      219
-    ],
+    "activeSkillIds": [219],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -892,9 +891,8 @@
       "iceRes": -15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      220
-    ],
+    "activeSkillIds": [220],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -935,9 +933,8 @@
       "iceRes": -15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      220
-    ],
+    "activeSkillIds": [220],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -982,10 +979,8 @@
       "iceRes": -15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      222,
-      223
-    ],
+    "activeSkillIds": [222, 223],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1025,9 +1020,8 @@
       "fireRes": -10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      224
-    ],
+    "activeSkillIds": [224],
+    "essenceSkillIds": [101, 102],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1077,10 +1071,8 @@
       "physPen": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      225,
-      226
-    ],
+    "activeSkillIds": [225, 226],
+    "essenceSkillIds": [101, 102],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -1119,10 +1111,8 @@
       "darkRes": 5.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      101,
-      102
-    ],
+    "activeSkillIds": [101, 102],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -1160,10 +1150,8 @@
       "toxicRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      106,
-      107
-    ],
+    "activeSkillIds": [106, 107],
+    "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -3319,46 +3307,6 @@
     }
   },
   {
-    "id": 601,
-    "name": "부유하는 송장",
-    "tier": 7,
-    "type": 2,
-    "description": "바다 위를 떠도는 저주받은 시체입니다. 몸이 불어 터져 전기에 민감합니다.",
-    "stats": {
-      "maxHp": 750,
-      "moveSpeed": 0.8,
-      "maxTurns": 2,
-      "critRate": 5.0,
-      "critDmg": 150.0,
-      "accuracy": 15.0,
-      "dodge": 5.0,
-      "meleeAtk": 60.0,
-      "toxicAtk": 10.0,
-      "physDef": 15.0,
-      "physRes": 5.0,
-      "lightningRes": -10.0,
-      "toxicRes": 15.0,
-      "poisonRes": 50.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      601
-    ],
-    "expReward": 3,
-    "essenceBonus": {
-      "baseStats": {
-        "1": 40,
-        "2": 40,
-        "18": 20
-      },
-      "combatStats": {
-        "maxHp": 150,
-        "physDef": 10.0
-      },
-      "description": "7등급 정수(합계 100). 코어와 골밀도 보정으로 생존력을 높입니다."
-    }
-  },
-  {
     "id": 602,
     "name": "맹독 해파리",
     "tier": 7,
@@ -3640,53 +3588,6 @@
         "magicAtk": 60.0
       },
       "description": "5등급 정수(합계 280). 대사 효율(ID 3) +150으로 재생력에 특화됩니다."
-    }
-  },
-  {
-    "id": 631,
-    "name": "심해의 주인 데이곤",
-    "tier": 3,
-    "type": 3,
-    "description": "심연을 통치하는 고대신입니다. ",
-    "stats": {
-      "maxHp": 25000,
-      "maxMp": 10000,
-      "moveSpeed": 2.2,
-      "maxTurns": 5,
-      "critRate": 30.0,
-      "critDmg": 250.0,
-      "accuracy": 40.0,
-      "dodge": 25.0,
-      "statusResist": 50.0,
-      "meleeAtk": 650.0,
-      "chaosAtk": 250.0,
-      "physDef": 240.0,
-      "physRes": 40.0,
-      "magRes": 45.0,
-      "iceRes": 60.0,
-      "lightningRes": 10.0,
-      "physPen": 20.0,
-      "chaosPen": 30.0
-    },
-    "baseActionPoints": 5,
-    "activeSkillIds": [
-      631,
-      632,
-      633
-    ],
-    "expReward": 7,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 300,
-        "15": 200,
-        "18": 200
-      },
-      "combatStats": {
-        "magicAtk": 150.0,
-        "magPen": 50.0,
-        "statusResist": 40.0
-      },
-      "description": "3등급 정수(합계 700). 에너지 응집(ID 13) +300을 제공하는 마법사 종결 정수입니다."
     }
   },
   {
@@ -4058,582 +3959,6 @@
       "description": "3등급 정수(합계 700). 상완(ID 10) +400의 전사 종결급 정수입니다."
     }
   },
-  {
-    "id": 732,
-    "name": "검은 어린 양",
-    "tier": 3,
-    "type": 4,
-    "description": "외계에서 온 혼돈의 화신입니다. 그 실체를 마주하는 것만으로 이성이 붕괴됩니다.",
-    "stats": {
-      "maxHp": 21000,
-      "maxMp": 15000,
-      "moveSpeed": 2.2,
-      "maxTurns": 6,
-      "critRate": 30.0,
-      "critDmg": 250.0,
-      "accuracy": 45.0,
-      "dodge": 35.0,
-      "statusResist": 60.0,
-      "bleedRes": 40.0,
-      "stunRes": 40.0,
-      "burnRes": 40.0,
-      "frozenRes": 40.0,
-      "poisonRes": 40.0,
-      "stunPen": 20.0,
-      "meleeAtk": 300.0,
-      "magicAtk": 400.0,
-      "chaosAtk": 200.0,
-      "physDef": 210.0,
-      "physRes": 25.0,
-      "magRes": 40.0,
-      "fireRes": 35.0,
-      "iceRes": 35.0,
-      "lightningRes": 35.0,
-      "earthRes": 35.0,
-      "holyRes": -20.0,
-      "darkRes": 45.0,
-      "chaosRes": 50.0,
-      "magPen": 30.0,
-      "chaosPen": 40.0,
-      "darkPen": 20.0
-    },
-    "baseActionPoints": 6,
-    "activeSkillIds": [
-      709,
-      710
-    ],
-    "expReward": 7,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 350,
-        "20": 200,
-        "18": 150
-      },
-      "combatStats": {
-        "chaosAtk": 80.0,
-        "allRes": 30.0,
-        "statusResist": 50.0
-      },
-      "description": "3등급 정수(합계 700). 혼돈(CHAOS) 속성 특화 마법사의 최종 정수입니다."
-    }
-  },
-  {
-    "id": 801,
-    "name": "샨타크",
-    "tier": 6,
-    "type": 1,
-    "description": "외계의 거대 괴조입니다. 비늘 덮인 날개로 차원을 가르며 이동합니다.",
-    "stats": {
-      "maxHp": 2200,
-      "maxMp": 500,
-      "moveSpeed": 1.1,
-      "maxTurns": 1,
-      "critRate": 15.0,
-      "critDmg": 180.0,
-      "accuracy": 25.0,
-      "dodge": 22.0,
-      "statusResist": 10.0,
-      "bleedRes": 15.0,
-      "meleeAtk": 110.0,
-      "magicAtk": 30.0,
-      "darkAtk": 20.0,
-      "physDef": 40.0,
-      "physRes": 10.0,
-      "magRes": 10.0,
-      "darkRes": 20.0,
-      "iceRes": -5.0,
-      "physPen": 10.0,
-      "darkPen": 15.0
-    },
-    "baseActionPoints": 1,
-    "activeSkillIds": [
-      515
-    ],
-    "expReward": 4,
-    "essenceBonus": {
-      "baseStats": {
-        "20": 100,
-        "16": 40,
-        "15": 40
-      },
-      "combatStats": {
-        "dodge": 12.0,
-        "moveSpeed": 0.25
-      },
-      "description": "6등급 정수(합계 180). 신경 반응(ID 20)에 특화되어 회피와 속도를 크게 높여줍니다."
-    }
-  },
-  {
-    "id": 811,
-    "name": "틴탈로스의 사냥개",
-    "tier": 5,
-    "type": 1,
-    "description": "시간의 각도를 통해 추적해오는 불사신 사냥개입니다. 피하는 것이 거의 불가능합니다.",
-    "stats": {
-      "maxHp": 5500,
-      "maxMp": 800,
-      "moveSpeed": 1.4,
-      "maxTurns": 4,
-      "critDmg": 220.0,
-      "accuracy": 60.0,
-      "dodge": 26.0,
-      "statusResist": 25.0,
-      "bleedRes": 20.0,
-      "stunRes": 20.0,
-      "poisonRes": 20.0,
-      "meleeAtk": 220.0,
-      "chaosAtk": 100.0,
-      "physDef": 75.0,
-      "physRes": 15.0,
-      "magRes": 15.0,
-      "chaosRes": 25.0,
-      "physPen": 20.0,
-      "chaosPen": 15.0
-    },
-    "baseActionPoints": 4,
-    "activeSkillIds": [
-      801,
-      802
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "16": 150,
-        "20": 80,
-        "23": 50
-      },
-      "combatStats": {
-        "accuracy": 50.0,
-        "critRate": 10.0,
-        "physPen": 15.0
-      },
-      "description": "5등급 정수(합계 280). 동체 시력(ID 16) +150으로 절대적인 명중률을 보장합니다."
-    }
-  },
-  {
-    "id": 812,
-    "name": "나이트 건트",
-    "tier": 5,
-    "type": 3,
-    "description": "얼굴이 없는 비행 괴수입니다. 소리 없이 다가와 대상을 끝없는 심연으로 떨어뜨립니다.",
-    "stats": {
-      "maxHp": 4800,
-      "maxMp": 2000,
-      "moveSpeed": 1.3,
-      "maxTurns": 3,
-      "critRate": 20.0,
-      "critDmg": 200.0,
-      "accuracy": 30.0,
-      "dodge": 25.0,
-      "statusResist": 20.0,
-      "darkRes": 25.0,
-      "chaosRes": 25.0,
-      "meleeAtk": 120.0,
-      "magicAtk": 100.0,
-      "darkAtk": 80.0,
-      "chaosAtk": 50.0,
-      "physDef": 70.0,
-      "physRes": 10.0,
-      "magRes": 20.0,
-      "magPen": 15.0,
-      "darkPen": 20.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      803,
-      804
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 140,
-        "18": 70,
-        "19": 70
-      },
-      "combatStats": {
-        "magRes": 30.0,
-        "darkRes": 30.0,
-        "chaosAtk": 20.0
-      },
-      "description": "5등급 정수(합계 280). 마법 응집과 모든 저항력을 고루 갖춘 정수입니다."
-    }
-  },
-  {
-    "id": 821,
-    "name": "쇼고스",
-    "tier": 4,
-    "type": 2,
-    "description": "일정한 형태가 무정형의 촉수 덩어리입니다. 물리 타격은 흘려내지만, 열과 전기 자극에는 신체가 급격히 붕괴됩니다.",
-    "stats": {
-      "maxHp": 10500,
-      "maxMp": 1000,
-      "hpRegen": 50.0,
-      "moveSpeed": 1.5,
-      "maxTurns": 3,
-      "critRate": 10.0,
-      "critDmg": 160.0,
-      "accuracy": 20.0,
-      "dodge": 5.0,
-      "statusResist": 40.0,
-      "bleedRes": 80.0,
-      "stunRes": 10.0,
-      "poisonRes": 50.0,
-      "meleeAtk": 450.0,
-      "toxicAtk": 100.0,
-      "physDef": 140.0,
-      "physRes": 35.0,
-      "magRes": 5.0,
-      "earthRes": 20.0,
-      "toxicRes": 30.0,
-      "physPen": 10.0,
-      "toxicPen": 20.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      611,
-      804
-    ],
-    "expReward": 6,
-    "essenceBonus": {
-      "baseStats": {
-        "1": 200,
-        "3": 150,
-        "2": 100
-      },
-      "combatStats": {
-        "maxHp": 1200,
-        "hpRegen": 80.0,
-        "physRes": 5.0,
-        "fireRes": -20.0
-      },
-      "description": "4등급 정수(합계 450). 압도적인 생명력을 얻는 대신 화염 저항력이 감소하는 패널티가 있습니다."
-    }
-  },
-  {
-    "id": 822,
-    "name": "사냥하는 공포",
-    "tier": 4,
-    "type": 1,
-    "description": "빛을 극도로 싫어하는 거대한 뱀 형상의 비행 괴수입니다. 그림자 속에서 치명적입니다.",
-    "stats": {
-      "maxHp": 9000,
-      "maxMp": 2500,
-      "moveSpeed": 1.7,
-      "maxTurns": 4,
-      "critRate": 30.0,
-      "critDmg": 240.0,
-      "accuracy": 45.0,
-      "dodge": 30.0,
-      "statusResist": 25.0,
-      "bleedPen": 20.0,
-      "meleeAtk": 350.0,
-      "magicAtk": 150.0,
-      "darkAtk": 100.0,
-      "chaosAtk": 50.0,
-      "physDef": 120.0,
-      "physRes": 15.0,
-      "magRes": 10.0,
-      "darkRes": 35.0,
-      "holyRes": 5.0,
-      "physPen": 15.0,
-      "darkPen": 25.0
-    },
-    "baseActionPoints": 4,
-    "activeSkillIds": [ 803, 804],
-    "expReward": 6,
-    "essenceBonus": {
-      "baseStats": {
-        "20": 200,
-        "10": 150,
-        "16": 100
-      },
-      "combatStats": {
-        "meleeAtk": 150.0,
-        "critDmg": 40.0,
-        "moveSpeed": 0.4
-      },
-      "description": "4등급 정수(합계 450). 공격적인 스탯을 극대화한 어쌔신용 정수입니다."
-    }
-  },
-  {
-    "id": 831,
-    "name": "검은 파라오",
-    "tier": 3,
-    "type": 3,
-    "description": "니알라토텝의 화신 중 하나입니다. 인간의 지성을 비웃으며 이성을 마비시킵니다.",
-    "stats": {
-      "maxHp": 22000,
-      "maxMp": 30000,
-      "hpRegen": 150.0,
-      "mpRegen": 300.0,
-      "moveSpeed": 2.2,
-      "maxTurns": 6,
-      "critRate": 25.0,
-      "critDmg": 250.0,
-      "accuracy": 50.0,
-      "dodge": 35.0,
-      "statusResist": 60.0,
-      "stunRes": 50.0,
-      "frozenRes": 50.0,
-      "darkPen": 40.0,
-      "chaosPen": 50.0,
-      "magicAtk": 600.0,
-      "darkAtk": 250.0,
-      "chaosAtk": 120.0,
-      "physDef": 240.0,
-      "magRes": 45.0,
-      "darkRes": 60.0,
-      "holyRes": 10.0,
-      "chaosRes": 50.0,
-      "magPen": 30.0
-    },
-    "baseActionPoints": 6,
-    "activeSkillIds": [
-      709,
-      710
-    ],
-    "expReward": 7,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 400,
-        "15": 150,
-        "18": 150
-      },
-      "combatStats": {
-        "magicAtk": 250.0,
-        "chaosAtk": 100.0,
-        "manaSteal": 15.0
-      },
-      "description": "3등급 정수(합계 700). 혼돈 마법의 정점이며 에너지 응집(ID 13) +400을 제공합니다."
-    }
-  },
-  {
-    "id": 901,
-    "name": "차원 포식자",
-    "tier": 4,
-    "type": 1,
-    "description": "차원의 경계를 뜯어먹고 사는 괴수입니다. 공간을 왜곡해 공격을 회피합니다.",
-    "stats": {
-      "maxHp": 10500,
-      "maxMp": 2000,
-      "moveSpeed": 1.6,
-      "maxTurns": 3,
-      "critRate": 20.0,
-      "critDmg": 220.0,
-      "accuracy": 35.0,
-      "dodge": 30.0,
-      "statusResist": 20.0,
-      "meleeAtk": 450.0,
-      "magicAtk": 80.0,
-      "chaosAtk": 40.0,
-      "physDef": 140.0,
-      "physRes": 15.0,
-      "magRes": 25.0,
-      "darkRes": 50.0,
-      "chaosRes": 30.0,
-      "magPen": 15.0,
-      "chaosPen": 20.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      801,
-      802
-    ],
-    "expReward": 6,
-    "essenceBonus": {
-      "baseStats": {
-        "20": 200,
-        "16": 150,
-        "13": 100
-      },
-      "combatStats": {
-        "dodge": 15.0,
-        "magPen": 20.0,
-        "moveSpeed": 0.3
-      },
-      "description": "4등급 정수(합계 450). 신경 반응과 동체 시력을 극대화하여 회피형 빌드에 적합합니다."
-    }
-  },
-  {
-    "id": 911,
-    "name": "울부짖는 자",
-    "tier": 3,
-    "type": 3,
-    "description": "심연의 구멍에서 끝없는 비명을 내지르는 존재입니다. 비명소리만으로 정신을 파괴합니다.",
-    "stats": {
-      "maxHp": 24000,
-      "maxMp": 15000,
-      "hpRegen": 120.0,
-      "mpRegen": 250.0,
-      "moveSpeed": 2.1,
-      "maxTurns": 4,
-      "critRate": 25.0,
-      "critDmg": 250.0,
-      "accuracy": 40.0,
-      "dodge": 28.0,
-      "statusResist": 45.0,
-      "stunRes": 40.0,
-      "meleeAtk": 100.0,
-      "magicAtk": 750.0,
-      "darkAtk": 100.0,
-      "chaosAtk": 80.0,
-      "physDef": 220.0,
-      "magRes": 40.0,
-      "darkRes": 45.0,
-      "chaosRes": 35.0,
-      "magPen": 25.0,
-      "darkPen": 20.0,
-      "chaosPen": 15.0
-    },
-    "baseActionPoints": 4,
-    "activeSkillIds": [
-      709,
-      710
-    ],
-    "expReward": 7,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 350,
-        "15": 200,
-        "18": 150
-      },
-      "combatStats": {
-        "magicAtk": 200.0,
-        "chaosAtk": 50.0,
-        "statusResist": 30.0
-      },
-      "description": "3등급 정수(합계 700). 마법 응집에 350을 투자한 최상급 마법 정수입니다."
-    }
-  },
-  {
-    "id": 921,
-    "name": "만물의 어머니",
-    "tier": 2,
-    "type": 2,
-    "description": "수천의 새끼를 품은 숲의 검은 풍요입니다. 무한한 재생력과 증식 능력을 가졌습니다.",
-    "stats": {
-      "maxHp": 65000,
-      "maxMp": 20000,
-      "hpRegen": 1200.0,
-      "mpRegen": 400.0,
-      "moveSpeed": 3.0,
-      "maxTurns": 5,
-      "critRate": 20.0,
-      "critDmg": 200.0,
-      "accuracy": 40.0,
-      "dodge": 15.0,
-      "statusResist": 55.0,
-      "poisonRes": 80.0,
-      "bleedRes": 50.0,
-      "meleeAtk": 900.0,
-      "magicAtk": 500.0,
-      "earthAtk": 200.0,
-      "toxicAtk": 150.0,
-      "physDef": 420.0,
-      "physRes": 45.0,
-      "magRes": 40.0,
-      "earthRes": 60.0,
-      "toxicRes": 70.0,
-      "holyRes": 20.0,
-      "darkRes": 20.0,
-      "physPen": 25.0,
-      "toxicPen": 30.0
-    },
-    "baseActionPoints": 5,
-    "activeSkillIds": [709, 710],
-    "expReward": 8,
-    "essenceBonus": {
-      "baseStats": { "1": 500, "3": 300, "2": 200 },
-      "combatStats": { "maxHp": 5000, "hpRegen": 500.0, "physRes": 15.0 },
-      "description": "2등급 정수(합계 1000). 코어(ID 1)에 500을 투자한 좀비 빌드의 최종 정수입니다."
-    }
-  },
-  {
-    "id": 922,
-    "name": "궁정 음악가",
-    "tier": 2,
-    "type": 3,
-    "description": "아자토스의 옥좌 옆에서 미친 듯한 피리 소리를 연주합니다. 박자가 바뀔 때마다 차원이 붕괴됩니다.",
-    "stats": {
-      "maxHp": 55000,
-      "maxMp": 50000,
-      "hpRegen": 450.0,
-      "mpRegen": 800.0,
-      "moveSpeed": 3.5,
-      "maxTurns": 4,
-      "critRate": 35.0,
-      "critDmg": 300.0,
-      "accuracy": 55.0,
-      "dodge": 42.0,
-      "statusResist": 50.0,
-      "stunRes": 60.0,
-      "magicAtk": 800.0,
-      "chaosAtk": 600.0,
-      "darkAtk": 200.0,
-      "physDef": 350.0,
-      "magRes": 55.0,
-      "chaosRes": 60.0,
-      "darkRes": 40.0,
-      "physRes": 20.0,
-      "magPen": 45.0,
-      "chaosPen": 40.0,
-      "darkPen": 20.0
-    },
-    "baseActionPoints": 4,
-    "activeSkillIds": [
-      901,
-      902,
-      903
-    ],
-    "expReward": 8,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 500,
-        "20": 300,
-        "15": 200
-      },
-      "combatStats": {
-        "magicAtk": 400.0,
-        "chaosAtk": 150.0,
-        "castSpeed": 30.0
-      },
-      "description": "2등급 정수(합계 1000). 혼돈과 지능에 특화된 극딜 마법사용 최종 정수입니다."
-    }
-  },
-  {
-    "id": 1000,
-    "name": "꿈꾸는 자",
-    "tier": 1,
-    "type": 3,
-    "description": "아자토스가 필멸자들의 발버둥을 감상하기 위해 빚어낸 육신입니다.",
-    "stats": {
-      "maxHp": 220000,
-      "maxMp": 80000,
-      "maxTurns": 5,
-      "meleeAtk": 1.0,
-      "physDef": 1200.0,
-      "dodge": 20.0,
-      "accuracy": 55.0,
-      "critRate": 30.0,
-      "critDmg": 300,
-      "moveSpeed": 4.5,
-      "physRes": 35.0,
-      "magRes": 35.0,
-      "chaosAtk": 10.0,
-      "chaosRes": -200.0
-    },
-    "baseActionPoints": 5,
-    "activeSkillIds": [1001, 1002],
-    "expReward": 9,
-    "essenceBonus": {
-      "baseStats": {},
-      "combatStats": {
-        "chaosAtk": 250.0,
-        "physDef": 300.0,
-        "physRes": 300.0,
-        "statusRes": 80.0
-      },
-      "description": "1등급 정수(합계 2000). 신의 파편을 흡수하여 상상을 초월하는 권능을 얻지만, 그 대가로 세상의 인과에서 벗어납니다."
-    }
-  }
+
+
 ]

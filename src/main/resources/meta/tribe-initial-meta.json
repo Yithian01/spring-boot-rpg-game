@@ -4,15 +4,15 @@
     "image": "/images/tribes/tribe_1.png",
     "gold": 100000000,
     "initialEquipment": {
-      "WEAPON": 20105,
-      "BODY": 1016,
-      "GLOVES": 1216,
-      "HEAD": 958,
-      "NECKLACE": 14217,
-      "BOOTS": 1385,
-      "RING": 14457,
-      "SUB_WEAPON": 30006,
-      "ARTIFACT": 15117
+      "WEAPON": 1253,
+      "BODY": 135,
+      "GLOVES": 417,
+      "HEAD": 395,
+      "NECKLACE": 707,
+      "BOOTS": 406,
+      "RING": 717,
+      "SUB_WEAPON": 1437,
+      "ARTIFACT": 721
     },
     "combatBaseStats": {
       "1": 50, "2": 50, "3": 50, "4": 18, "5": 16, "6": 19,

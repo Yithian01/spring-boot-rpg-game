@@ -20,6 +20,60 @@
     "grantedSkillIds": []
   },
   {
+    "id": 10,
+    "name": "훈련용 롱소드",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "훈련용으로 쓰던 평범한 철검입니다.",
+    "price": 110000,
+    "icon": "/images/items/10.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 14,
+    "name": "낡은 채광용 망치",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "광석을 캘 때 쓰던 망치입니다.",
+    "price": 87000,
+    "icon": "/images/items/14.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 15.0,
+      "penetration": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 19,
+    "name": "무뎌진 사냥용 단검",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
+    "price": 115000,
+    "icon": "/images/items/19.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 7.0,
+      "accuracy": 5.0,
+      "critRate": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
     "id": 15,
     "name": "두꺼운 가죽 앞치마",
     "grade": "COMMON",

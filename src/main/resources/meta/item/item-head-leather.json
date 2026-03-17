@@ -171,13 +171,13 @@
     "icon": "/images/items/390.png",
     "baseStatsBonus": { "15": 10.0, "20": 10.0 },
     "combatStatsBonus": {
-      "maxHp": 150.0,
-      "maxStamina": 100.0,
-      "physRes": 5.0,
-      "darkRes": 10.0,
-      "accuracy": 15.0,
-      "dodge": 10.0,
-      "statusResist": 10.0
+      "maxHp": 250.0,
+      "maxMp": 100.0,
+      "physRes": 8.0,
+      "darkRes": 8.0,
+      "accuracy": 5.0,
+      "critRate": 8.0,
+      "dodge": 3.0
     },
     "grantedSkillIds": []
   },
@@ -194,12 +194,12 @@
     "baseStatsBonus": { "1": 15.0, "10": 10.0 },
     "combatStatsBonus": {
       "maxHp": 250.0,
-      "physRes": 12.0,
+      "maxMp": 50.0,
+      "physRes": 8.0,
       "fireRes": 8.0,
-      "accuracy": 10.0,
-      "statusResist": 15.0,
-      "bleedRes": 20.0,
-      "meleeAtk": 25.0
+      "accuracy": 5.0,
+      "statusResist": 10.0,
+      "meleeAtk": 15.0
     },
     "grantedSkillIds": []
   },
@@ -215,13 +215,12 @@
     "icon": "/images/items/392.png",
     "baseStatsBonus": { "16": 12.0, "21": 12.0 },
     "combatStatsBonus": {
-      "maxHp": 120.0,
-      "maxMp": 80.0,
-      "accuracy": 25.0,
+      "maxHp": 200.0,
+      "maxMp": 100.0,
+      "accuracy": 10.0,
       "critRate": 8.0,
-      "lightningRes": 10.0,
-      "dodge": 5.0,
-      "moveSpeed": 0.1
+      "lightningRes": 8.0,
+      "moveSpeed": 0.05
     },
     "grantedSkillIds": []
   },
@@ -237,13 +236,13 @@
     "icon": "/images/items/393.png",
     "baseStatsBonus": { "17": 15.0, "23": 10.0 },
     "combatStatsBonus": {
-      "maxHp": 100.0,
-      "maxMp": 120.0,
-      "physRes": 4.0,
-      "toxicRes": 20.0,
-      "critDmg": 15.0,
-      "accuracy": 12.0,
-      "statusResist": 15.0
+      "maxHp": 150.0,
+      "maxMp": 150.0,
+      "physRes": 5.0,
+      "toxicRes": 10.0,
+      "critDmg": 10.0,
+      "accuracy": 5.0,
+      "statusResist": 5.0
     },
     "grantedSkillIds": []
   },
@@ -259,14 +258,14 @@
     "icon": "/images/items/394.png",
     "baseStatsBonus": { "1": 30.0, "10": 30.0, "11": 20.0 },
     "combatStatsBonus": {
-      "maxHp": 600.0,
-      "maxStamina": 300.0,
-      "physRes": 20.0,
-      "fireRes": 35.0,
-      "statusResist": 30.0,
-      "meleeAtk": 80.0,
-      "accuracy": 20.0,
-      "dodge": 15.0
+      "maxHp": 350.0,
+      "maxMp": 100.0,
+      "physRes": 10.0,
+      "fireRes": 10.0,
+      "statusResist": 15.0,
+      "meleeAtk": 30.0,
+      "accuracy": 5.0,
+      "dodge": 2.0
     },
     "grantedSkillIds": []
   },
@@ -282,14 +281,14 @@
     "icon": "/images/items/395.png",
     "baseStatsBonus": { "15": 40.0, "20": 40.0 },
     "combatStatsBonus": {
-      "maxHp": 400.0,
-      "maxMp": 300.0,
-      "physRes": 15.0,
-      "darkRes": 50.0,
-      "dodge": 45.0,
-      "critRate": 20.0,
-      "critDmg": 40.0,
-      "moveSpeed": 0.5
+      "maxHp": 300.0,
+      "maxMp": 220.0,
+      "physRes": 10.0,
+      "darkRes": 10.0,
+      "dodge": 8.0,
+      "critRate": 10.0,
+      "critDmg": 20.0,
+      "moveSpeed": 0.1
     },
     "grantedSkillIds": []
   },
@@ -306,12 +305,12 @@
     "baseStatsBonus": { "16": 50.0, "21": 30.0 },
     "combatStatsBonus": {
       "maxHp": 350.0,
-      "maxStamina": 400.0,
-      "accuracy": 70.0,
-      "critRate": 25.0,
-      "physPen": 15.0,
-      "statusResist": 25.0,
-      "dodge": 20.0
+      "maxMp": 150.0,
+      "accuracy": 10.0,
+      "critRate": 10.0,
+      "physPen": 5.0,
+      "statusResist": 10.0,
+      "dodge": 5.0
     },
     "grantedSkillIds": []
   },
@@ -327,14 +326,13 @@
     "icon": "/images/items/397.png",
     "baseStatsBonus": { "1": 40.0, "2": 40.0, "18": 20.0 },
     "combatStatsBonus": {
-      "maxHp": 800.0,
-      "hpRegen": 15.0,
-      "physRes": 25.0,
-      "holyRes": 30.0,
-      "statusResist": 50.0,
-      "bleedRes": 60.0,
-      "poisonRes": 60.0,
-      "meleeAtk": 50.0
+      "maxHp": 350.0,
+      "hpRegen": 5.0,
+      "physRes": 10.0,
+      "holyRes": 10.0,
+      "statusResist": 20.0,
+      "bleedRes": 20.0,
+      "meleeAtk": 20.0
     },
     "grantedSkillIds": []
   }

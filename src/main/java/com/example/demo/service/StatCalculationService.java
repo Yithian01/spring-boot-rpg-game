@@ -769,10 +769,12 @@ public class StatCalculationService {
      * 2. (1.0 - 최종 저항값)을 통해 데미지 배율(Multiplier)을 결정.
      * 3. 관통이 저항보다 높으면 1.0배 이상의 추가 데미지가 발생 (재미 포인트!).
      * 4. 저항이 너무 높아 배율이 마이너스가 되더라도 최소 0(무효)으로 처리.
+     *
+     * 5. 대미지 상승이 너무나도 유의미함 --> 현재 max(1, N)을 통해서 방어 무시까지왔음)
      */
     public int applyDefense(double rawDamage, double penetration, double resist) {
         double finalResist = resist - penetration;
-        double damageMultiplier = Math.max(0, (100 - finalResist) / 100);
+        double damageMultiplier = Math.max(1, Math.max(0, (100 - finalResist) / 100));
         return (int) Math.round(rawDamage * damageMultiplier);
     }
 

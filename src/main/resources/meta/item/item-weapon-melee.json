@@ -1,0 +1,2314 @@
+[
+  {
+    "id": 1000,
+    "name": "잘 제련된 철제 검",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "마을 대장간에서 흔히 볼 수 있는 철제 검입니다. 불순물을 잘 걸러내어 이가 쉽게 빠지지 않습니다.",
+    "price": 280000,
+    "icon": "/images/items/1000.png",
+    "baseStatsBonus": {
+      "1": 5.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1001,
+    "name": "경량화 철제 곡도",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "철을 얇게 펴서 만든 가벼운 곡도입니다. 보급형 무기치고는 밸런스가 좋아 용병들이 자주 찾습니다.",
+    "price": 310000,
+    "icon": "/images/items/1001.png",
+    "baseStatsBonus": {
+      "20": 5.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "critRate": 4.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1002,
+    "name": "단단한 강철 검",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "강철을 여러 번 겹쳐 두드려 만든 튼튼한 검입니다. 철제 무기보다 훨씬 예리하고 단단합니다.",
+    "price": 620000,
+    "icon": "/images/items/1002.png",
+    "baseStatsBonus": {
+      "1": 8.0,
+      "20": 4.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1003,
+    "name": "강철 찌르기용 세검",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "탄성이 좋은 강철로 제작된 세검입니다. 적의 갑옷 틈새를 정교하게 찌르기에 최적화되어 있습니다.",
+    "price": 650000,
+    "icon": "/images/items/1003.png",
+    "baseStatsBonus": {
+      "20": 12.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "physPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1004,
+    "name": "투박한 철제 대검",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "철을 두껍고 크게 뭉쳐 만든 양손검입니다. 정교함은 떨어지지만 그 무게감은 확실합니다.",
+    "price": 450000,
+    "icon": "/images/items/1004.png",
+    "baseStatsBonus": {
+      "1": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "physPen": 8.0,
+      "critDmg": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1005,
+    "name": "철제 활날 양손검",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "길다란 철제 날을 가진 양손용 무기입니다. 전장에서 보병들이 가장 무난하게 사용하는 형태입니다.",
+    "price": 420000,
+    "icon": "/images/items/1005.png",
+    "baseStatsBonus": {
+      "1": 5.0,
+      "10": 5.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "critDmg": 20.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1006,
+    "name": "강철 합금 참마도",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "질 좋은 강철 합금으로 단조된 거대한 검입니다. 웬만한 목재 방패는 한 번의 휘두름으로 파괴합니다.",
+    "price": 950000,
+    "icon": "/images/items/1006.png",
+    "baseStatsBonus": {
+      "10": 20.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "physPen": 20.0,
+      "critDmg": 40.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1007,
+    "name": "정련된 강철 양손검",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "불순물을 완전히 제거한 정련 강철로 만든 고급 양손검입니다. 묵직하면서도 날의 예리함이 살아있습니다.",
+    "price": 980000,
+    "icon": "/images/items/1007.png",
+    "baseStatsBonus": {
+      "1": 10.0,
+      "20": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "critDmg": 40.0,
+      "accuracy": 8.0,
+      "physPen": 12.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1010,
+    "name": "튼튼한 철제 도끼",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "질 좋은 철을 두껍게 제련하여 만든 한손 도끼입니다. 무게감이 있어 목재 방패 정도는 가뿐히 찍어 누릅니다.",
+    "price": 320000,
+    "icon": "/images/items/1010.png",
+    "baseStatsBonus": { "1": 5.0, "10": 3.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1011,
+    "name": "철제 경량 전투도끼",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "불필요한 부분을 쳐내고 철의 강도만 살린 가벼운 도끼입니다. 빠른 연격을 선호하는 용병들이 주로 사용합니다.",
+    "price": 310000,
+    "icon": "/images/items/1011.png",
+    "baseStatsBonus": { "20": 5.0, "21": 3.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 6.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1012,
+    "name": "통강철 날 도끼",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "도끼날 전체를 강철로 주조하여 파괴력이 압도적입니다. 중갑 전사들이 적의 전열을 무너뜨릴 때 애용합니다.",
+    "price": 780000,
+    "icon": "/images/items/1012.png",
+    "baseStatsBonus": { "1": 12.0, "10": 8.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1013,
+    "name": "정련 강철 워액스",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "여러 번 두드려 강도를 높인 정련 강철 도끼입니다. 날카로운 절삭력과 견고함을 동시에 갖춘 숙련병용 무기입니다.",
+    "price": 820000,
+    "icon": "/images/items/1013.png",
+    "baseStatsBonus": { "10": 10.0, "20": 10.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 8.0,
+      "critRate": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1014,
+    "name": "무거운 무쇠 양손 도끼",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": true,
+    "description": "투박한 무쇠 덩어리를 달아 만든 거대한 도끼입니다. 정교함보다는 힘으로 적을 분쇄하는 데 특화되어 있습니다.",
+    "price": 450000,
+    "icon": "/images/items/1014.png",
+    "baseStatsBonus": { "10": 12.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "physPen": 8.0,
+      "critDmg": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1015,
+    "name": "철제 보강 긴자루 도끼",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": true,
+    "description": "긴 자루 끝에 철제 날을 붙인 양손 무기입니다. 사거리가 길어 용병들이 다수의 적을 상대할 때 유용하게 씁니다.",
+    "price": 480000,
+    "icon": "/images/items/1015.png",
+    "baseStatsBonus": { "10": 6.0, "20": 6.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "physPen": 8.0,
+      "critDmg": 20.0,
+      "accuracy": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1016,
+    "name": "강철 합금 그레이트 액스",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": true,
+    "description": "강철 합금을 아낌없이 사용하여 제작된 대형 도끼입니다. 한 번의 휘두름으로 적의 무장과 신체를 통째로 끊어버립니다.",
+    "price": 1150000,
+    "icon": "/images/items/1016.png",
+    "baseStatsBonus": { "1": 15.0, "10": 25.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "physPen": 20.0,
+      "critDmg": 40.0,
+      "accuracy": -5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1017,
+    "name": "강철제 폴액스",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": true,
+    "description": "정련된 강철로 날을 세운 양손 무기입니다. 도끼의 파괴력과 창의 사거리를 겸비합니다.",
+    "price": 1200000,
+    "icon": "/images/items/1017.png",
+    "baseStatsBonus": { "10": 20.0, "20": 20.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "physPen": 20.0,
+      "critDmg": 40.0,
+      "accuracy": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1020,
+    "name": "철제 표준 투창",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "철을 길게 늘려 뽑아낸 표준적인 한손 창입니다. 방패 뒤에서 적을 견제하기에 가장 적합한 도구입니다.",
+    "price": 320000,
+    "icon": "/images/items/1020.png",
+    "baseStatsBonus": { "1": 3.0, "2": 2.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1021,
+    "name": "경량화 철제 단창",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "철제 창촉의 무게를 줄여 민첩한 찌르기가 가능하게 만든 창입니다. 주로 가벼운 무장을 한 용병들이 사용합니다.",
+    "price": 310000,
+    "icon": "/images/items/1021.png",
+    "baseStatsBonus": { "20": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1022,
+    "name": "강철 촉 기병창",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "단단한 강철로 벼린 창촉이 장착된 한손 창입니다. 중갑 전사가 돌격하며 적의 방어구를 뚫어내기에 충분한 강도를 지녔습니다.",
+    "price": 850000,
+    "icon": "/images/items/1022.png",
+    "baseStatsBonus": { "1": 10.0, "11": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1023,
+    "name": "정련 강철 숏스피어",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "정련된 강철을 사용하여 균형과 강도를 모두 잡은 짧은 창입니다. 힘과 기술을 고루 갖춘 숙련된 전사를 위한 무기입니다.",
+    "price": 820000,
+    "icon": "/images/items/1023.png",
+    "baseStatsBonus": { "10": 8.0, "20": 7.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1024,
+    "name": "철제 보강 긴자루 장창",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "단단한 나무 자루에 철제 장식을 덧대어 강도를 높인 장창입니다. 양손으로 쥐고 묵직한 타격을 가하기 좋습니다.",
+    "price": 450000,
+    "icon": "/images/items/1024.png",
+    "baseStatsBonus": { "10": 6.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "physPen": 8.0,
+      "critDmg": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1025,
+    "name": "철제 삼지창",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "철로 만든 세 갈래 날이 달린 양손 창입니다. 적의 무기를 낚아채거나 넓은 범위를 타격하는 투박한 위력을 보여줍니다.",
+    "price": 480000,
+    "icon": "/images/items/1025.png",
+    "baseStatsBonus": { "10": 3.0, "20": 3.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "physPen": 8.0,
+      "critDmg": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1026,
+    "name": "강철날 광폭 장창",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "날이 넓고 두꺼운 강철 창촉이 특징인 장창입니다. 적의 중갑을 찢어버릴 듯한 파괴적인 찌르기가 가능합니다.",
+    "price": 1150000,
+    "icon": "/images/items/1026.png",
+    "baseStatsBonus": { "10": 15.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "physPen": 20.0,
+      "critDmg": 40.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1027,
+    "name": "강철 윙드 스피어",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "창촉 옆에 강철 날개가 달린 고급 양손 창입니다. 찌른 뒤 적을 제어하기 용이하며, 방어적인 운용도 가능한 명품입니다.",
+    "price": 1120000,
+    "icon": "/images/items/1027.png",
+    "baseStatsBonus": { "20": 15.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "physPen": 20.0,
+      "critDmg": 40.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1030,
+    "name": "철제 가시 메이스",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "타격부에 철제 가시를 촘촘히 박아 넣은 둔기입니다. 튼튼한 가죽 갑옷 정도는 가볍게 찢어발길 수 있습니다.",
+    "price": 320000,
+    "icon": "/images/items/1030.png",
+    "baseStatsBonus": { "1": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1031,
+    "name": "철제 사슬 플레일",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "묵직한 철구를 사슬로 연결한 무기입니다. 방패 뒤에 숨은 적의 머리를 우회해서 타격하기에 안성맞춤입니다.",
+    "price": 345000,
+    "icon": "/images/items/1031.png",
+    "baseStatsBonus": { "20": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1032,
+    "name": "통강철 주조 메이스",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "불순물 없는 강철을 통째로 부어 만든 메이스입니다. 손으로 전해지는 묵직한 무게감이 타격의 위력을 보장합니다.",
+    "price": 680000,
+    "icon": "/images/items/1032.png",
+    "baseStatsBonus": { "1": 8.0, "10": 4.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1033,
+    "name": "강철제 징벌 워해머",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "판금 갑옷을 무력화하기 위해 정련된 강철로 제작된 망치입니다. 뾰족한 뒷날은 두꺼운 투구마저 뚫어버립니다.",
+    "price": 720000,
+    "icon": "/images/items/1033.png",
+    "baseStatsBonus": { "1": 6.0, "20": 6.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1034,
+    "name": "납을 채운 철제 모닝스타",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "철제 타격부 안에 무거운 납을 채워 넣은 대형 둔기입니다. 투박하지만 뼈를 가루로 만드는 위력을 자랑합니다.",
+    "price": 410000,
+    "icon": "/images/items/1034.png",
+    "baseStatsBonus": { "10": 8.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "physPen": 8.0,
+      "critDmg": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1035,
+    "name": "철제 보강 전투망치",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "긴 자루에 철제 머리를 단 양손 망치입니다. 원심력을 이용해 휘두르면 적의 방어선을 단숨에 무너뜨릴 수 있습니다.",
+    "price": 395000,
+    "icon": "/images/items/1035.png",
+    "baseStatsBonus": { "1": 4.0, "20": 4.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "physPen": 8.0,
+      "critDmg": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1036,
+    "name": "강철 흑색 대맥",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "검게 단조된 상급 강철 덩어리를 휘두르는 듯한 압도적 중량의 대형 망치입니다. 가드 위를 타격해도 치명적입니다.",
+    "price": 1150000,
+    "icon": "/images/items/1036.png",
+    "baseStatsBonus": { "1": 15.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "physPen": 20.0,
+      "critDmg": 40.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1037,
+    "name": "강철판 보강 대형 곤봉",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "거대한 통나무에 강철판을 덧대어 내구성과 파괴력을 극대화했습니다. 단순하지만 가장 확실한 살육 병기입니다.",
+    "price": 1080000,
+    "icon": "/images/items/1037.png",
+    "baseStatsBonus": { "1": 8.0, "10": 7.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "physPen": 20.0,
+      "critDmg": 40.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1040,
+    "name": "철제 징 박힌 너클",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "투박한 철제 징이 박혀 있는 주먹 무기입니다. 뒷골목 불량배들이 시비가 붙었을 때 즐겨 사용합니다.",
+    "price": 310000,
+    "icon": "/images/items/1040.png",
+    "baseStatsBonus": { "10": 10.0, "20": 20.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1041,
+    "name": "철제 암살용 핸드블레이드",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "손가락 사이에 짧은 철제 날이 솟아 있는 무기입니다. 주먹을 휘두르는 것만으로도 치명적인 자상을 입힙니다.",
+    "price": 325000,
+    "icon": "/images/items/1041.png",
+    "baseStatsBonus": { "20": 15.0, "21": 15.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1042,
+    "name": "철제 경량 권갑",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "손등을 얇은 철판으로 보호하는 격투가용 무기입니다. 무게가 가벼워 전광석화 같은 연타가 가능합니다.",
+    "price": 290000,
+    "icon": "/images/items/1042.png",
+    "baseStatsBonus": { "20": 30.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1043,
+    "name": "철제 가시 건틀릿",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "철가시가 돋아나 있어 방어하는 적의 팔을 긁어버리기 좋습니다. 주로 거친 용병들이 선호합니다.",
+    "price": 330000,
+    "icon": "/images/items/1043.png",
+    "baseStatsBonus": { "1": 15.0, "10": 15.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1044,
+    "name": "강철 중량 너클",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "묵직한 통강철을 깎아 만든 너클입니다. 단순한 주먹질도 둔기로 얻어맞은 듯한 충격을 줍니다.",
+    "price": 780000,
+    "icon": "/images/items/1044.png",
+    "baseStatsBonus": { "10": 30.0, "11": 30.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1045,
+    "name": "정련 강철 클로",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "세 갈래의 날카로운 강철 칼날이 부착된 무기입니다. 암살자들이 적의 숨통을 끊을 때 애용하는 상급 장비입니다.",
+    "price": 850000,
+    "icon": "/images/items/1045.png",
+    "baseStatsBonus": { "20": 40.0, "21": 20.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1046,
+    "name": "강철 보강 권갑",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "격투가들의 정권 돌파력을 극대화하기 위해 강철로 보강된 무기입니다. 웬만한 칼날은 주먹으로 쳐낼 수 있습니다.",
+    "price": 820000,
+    "icon": "/images/items/1046.png",
+    "baseStatsBonus": { "1": 20.0, "10": 20.0, "20": 20.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1047,
+    "name": "강철 톱날 너클",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "강철 톱날이 미세하게 돋아 있어 스치기만 해도 살점이 찢겨 나갑니다. 잔인한 불량배 두목들이 주로 사용합니다.",
+    "price": 810000,
+    "icon": "/images/items/1047.png",
+    "baseStatsBonus": { "10": 20.0, "20": 40.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1040,
+    "name": "철제 송곳 단검",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "끝이 날카롭게 벼려진 철제 단검입니다. 갑옷의 틈새를 찌르기에 적합합니다.",
+    "price": 280000,
+    "icon": "/images/items/1040.png",
+    "baseStatsBonus": { "20": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "physPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1041,
+    "name": "투박한 철제 식칼",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "뒷골목 불량배들이 주로 사용하는 묵직한 칼입니다. 화려함보단 실용성을 중시합니다.",
+    "price": 250000,
+    "icon": "/images/items/1041.png",
+    "baseStatsBonus": { "10": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "bleedPen": 5.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1042,
+    "name": "암살용 철제 비수",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "빛 반사를 줄이기 위해 표면을 어둡게 처리한 철제 비수입니다.",
+    "price": 310000,
+    "icon": "/images/items/1042.png",
+    "baseStatsBonus": { "21": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "critRate": 2.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1043,
+    "name": "철제 날 부메랑 단검",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "격투가들이 근접전에서 기습적으로 휘두르기 위해 고안된 곡선형 철제 단검입니다.",
+    "price": 290000,
+    "icon": "/images/items/1043.png",
+    "baseStatsBonus": { "15": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 30.0,
+      "dodge": 2.0,
+      "accuracy": 4.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1044,
+    "name": "강철 플레잉 대거",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "고탄성 강철로 제작되어 매우 가볍고 빠릅니다. 숙련된 암살자들이 선호합니다.",
+    "price": 650000,
+    "icon": "/images/items/1044.png",
+    "baseStatsBonus": { "20": 10.0, "21": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physPen": 10.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1045,
+    "name": "강철 고리 단검",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "손잡이 끝에 고리가 달린 강철 단검입니다. 현란한 손기술을 발휘하기 좋습니다.",
+    "price": 620000,
+    "icon": "/images/items/1045.png",
+    "baseStatsBonus": { "15": 8.0, "20": 7.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "accuracy": 6.0,
+      "critRate": 3.0,
+      "moveSpeed": 0.05
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1046,
+    "name": "강철 전투 단검",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "내구도가 높은 강철을 사용하여 격투 중 적의 무기를 받아내기에도 충분한 강도를 지녔습니다.",
+    "price": 680000,
+    "icon": "/images/items/1046.png",
+    "baseStatsBonus": { "1": 5.0, "20": 10.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "physDef": 5.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1047,
+    "name": "강철 톱날 단검",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "날의 한쪽에 톱날 처리가 된 강철 단검입니다. 거친 불량배들이 적을 위협할 때 사용합니다.",
+    "price": 640000,
+    "icon": "/images/items/1047.png",
+    "baseStatsBonus": { "10": 10.0, "15": 5.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 80.0,
+      "bleedPen": 15.0,
+      "accuracy": 6.0,
+      "critRate": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1050,
+    "name": "연마된 철제 숏보우",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "가볍고 유연한 철제 프레임으로 제작된 짧은 활입니다. 빠른 사격이 가능하여 민첩한 움직임을 선호하는 궁수에게 적합합니다.",
+    "price": 280000,
+    "icon": "/images/items/1050.png",
+    "baseStatsBonus": {
+      "20": 5.0,
+      "21": 3.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "penetration": 8.0,
+      "critDmg": 20.0,
+      "accuracy": 5.0,
+      "moveSpeed": 0.05
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1051,
+    "name": "철제 경량 쇠뇌",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "기계 장치의 효율을 높인 철제 석궁입니다. 장전 속도가 준수하며 일정한 관통력을 보장합니다.",
+    "price": 310000,
+    "icon": "/images/items/1051.png",
+    "baseStatsBonus": {
+      "10": 4.0,
+      "11": 4.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "penetration": 10.0,
+      "critDmg": 20.0,
+      "accuracy": 3.0,
+      "physPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1052,
+    "name": "강화 철제 롱보우",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "철사로 감아 탄성을 극대화한 긴 활입니다. 사거리가 길고 정밀한 조준 사격에 용이합니다.",
+    "price": 295000,
+    "icon": "/images/items/1052.png",
+    "baseStatsBonus": {
+      "15": 6.0,
+      "16": 2.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "penetration": 8.0,
+      "critDmg": 20.0,
+      "accuracy": 8.0,
+      "critRate": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1053,
+    "name": "철제 중석궁",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "묵직한 철제 몸체를 가진 석궁입니다. 반동이 크지만 궤적이 안정적입니다.",
+    "price": 330000,
+    "icon": "/images/items/1053.png",
+    "baseStatsBonus": {
+      "1": 5.0,
+      "10": 3.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 55.0,
+      "penetration": 12.0,
+      "critDmg": 20.0,
+      "accuracy": 2.0,
+      "physDef": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1054,
+    "name": "정련된 강철 곡궁",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "고순도 강철을 수차례 두드려 만든 활입니다. 압도적인 탄성으로 적의 방어구를 손쉽게 뚫어버립니다.",
+    "price": 850000,
+    "icon": "/images/items/1054.png",
+    "baseStatsBonus": {
+      "20": 15.0,
+      "21": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "penetration": 20.0,
+      "critDmg": 40.0,
+      "accuracy": 10.0,
+      "critRate": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1055,
+    "name": "강철 대형 석궁",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "중갑을 착용한 병사들을 상대하기 위해 설계된 거대한 강철 석궁입니다. 파괴력이 일품입니다.",
+    "price": 920000,
+    "icon": "/images/items/1055.png",
+    "baseStatsBonus": {
+      "1": 15.0,
+      "10": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "penetration": 25.0,
+      "critDmg": 40.0,
+      "accuracy": 5.0,
+      "physPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1056,
+    "name": "강철 복합궁",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "여러 겹의 강철판을 겹쳐 만든 현대적인 구조의 활입니다. 힘을 효율적으로 전달하여 화살의 속도가 매우 빠릅니다.",
+    "price": 880000,
+    "icon": "/images/items/1056.png",
+    "baseStatsBonus": {
+      "15": 12.0,
+      "20": 13.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "penetration": 20.0,
+      "critDmg": 45.0,
+      "accuracy": 12.0,
+      "moveSpeed": 0.08
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1057,
+    "name": "강철 연사 석궁",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "강철로 된 정교한 태엽 장치가 장착된 석궁입니다. 견고한 구조 덕분에 중갑을 입고도 안정적인 사격이 가능합니다.",
+    "price": 950000,
+    "icon": "/images/items/1057.png",
+    "baseStatsBonus": {
+      "2": 15.0,
+      "11": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 135.0,
+      "penetration": 22.0,
+      "critDmg": 40.0,
+      "accuracy": 8.0,
+      "physRes": 10.0,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1200,
+    "name": "심판관의 강철검",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "묵직한 무게를 자랑하는 한손검입니다. 중갑 전사들이 방패와 함께 사용하여 적의 전열을 무너뜨리는 데 쓰입니다.",
+    "price": 8500000,
+    "icon": "/images/items/1200.png",
+    "baseStatsBonus": { "1": 15.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "physDef": 40.0,
+      "maxHp": 110.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1201,
+    "name": "왕실 호위대의 세이버",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "세밀하게 세공된 날카로운 검입니다. 높은 민첩성을 가진 숙련된 용병들이 주로 사용합니다.",
+    "price": 8200000,
+    "icon": "/images/items/1201.png",
+    "baseStatsBonus": { "20": 15.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "dodge": 25.0,
+      "moveSpeed": 0.15,
+      "critDmg": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1202,
+    "name": "학살자의 처형 대검",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "압도적인 크기의 양손검입니다. 힘 전사의 강력한 일격을 위해 제작되었으며, 휘두를 때마다 공기가 찢어지는 소리가 납니다.",
+    "price": 12000000,
+    "icon": "/images/items/1202.png",
+    "baseStatsBonus": { "10": 25.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 25.0,
+      "critDmg": 70.0,
+      "bleedPen": 40.0,
+      "accuracy": -5.0,
+      "physRes": 20.0,
+      "statusResist": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1203,
+    "name": "폭풍 추적자의 츠와이헨더",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "힘과 민첩을 동시에 요구하는 거대한 검입니다. 넓은 범위를 휩쓸며 적의 숨통을 조입니다.",
+    "price": 11500000,
+    "icon": "/images/items/1203.png",
+    "baseStatsBonus": { "10": 12.0, "20": 13.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 25.0,
+      "critDmg": 85.0,
+      "accuracy": 15.0,
+      "critRate": 10.0,
+      "maxStamina": 50.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1204,
+    "name": "성기사단의 태양검",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "전설적인 성기사가 사용했다고 전해지는 한손검입니다. 신성한 빛이 깃들어 있어 악을 심판합니다.",
+    "price": 95000000,
+    "icon": "/images/items/1204.png",
+    "baseStatsBonus": { "1": 30.0, "13": 20.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 20.0,
+      "accuracy": 20.0,
+      "critRate": 12.0,
+      "holyAtk": 100.0,
+      "physDef": 60.0,
+      "statusResist": 30.0,
+      "hpRegen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1205,
+    "name": "무영의 암살검",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": false,
+    "description": "형체를 알아볼 수 없을 정도로 빠르게 휘둘러지는 전설적인 검입니다. 극도의 민첩을 가진 자만이 다룰 수 있습니다.",
+    "price": 92000000,
+    "icon": "/images/items/1205.png",
+    "baseStatsBonus": { "20": 50.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 20.0,
+      "accuracy": 25.0,
+      "critRate": 15.0,
+      "critDmg": 80.0,
+      "dodge": 40.0,
+      "moveSpeed": 0.25,
+      "poisonPen": 50.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1206,
+    "name": "드래곤 슬레이어",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "용의 비늘마저 종잇장처럼 찢어버리는 전설의 대검입니다. 진정한 힘의 정점에 선 자를 위한 무기입니다.",
+    "price": 150000000,
+    "icon": "/images/items/1206.png",
+    "baseStatsBonus": { "10": 60.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 35.0,
+      "critDmg": 150.0,
+      "fireAtk": 100.0,
+      "physRes": 50.0,
+      "maxHp": 500.0,
+      "statusResist": 50.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1207,
+    "name": "차원의 균열 블레이드",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SWORD",
+    "twoHanded": true,
+    "description": "시공간의 틈새에서 발견된 기이한 검입니다. 힘과 민첩의 완벽한 조화가 있어야만 균열의 힘을 제어할 수 있습니다.",
+    "price": 145000000,
+    "icon": "/images/items/1207.png",
+    "baseStatsBonus": { "10": 30.0, "20": 30.0 },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 130.0,
+      "chaosAtk": 120.0,
+      "magPen": 30.0,
+      "accuracy": 40.0,
+      "critRate": 20.0,
+      "dodge": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1210,
+    "name": "용병단장의 투박한 도끼",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "수많은 전장을 누빈 용병단장의 무기입니다. 실전에서 단련된 민첩함과 파괴력을 동시에 갖추었습니다.",
+    "price": 3200000,
+    "icon": "/images/items/1210.png",
+    "baseStatsBonus": {
+      "10": 10.0,
+      "20": 5.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "moveSpeed": 0.05
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1211,
+    "name": "고결한 기사단의 부쇄부",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "중갑 전사들이 부무장으로 사용하는 도끼입니다. 적의 방어구를 파쇄하는 데 특화되어 있습니다.",
+    "price": 3450000,
+    "icon": "/images/items/1211.png",
+    "baseStatsBonus": {
+      "1": 8.0,
+      "10": 7.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "physDef": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1212,
+    "name": "심연의 처형자",
+    "grade": "EPIC",
+    "twoHanded": true,
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "description": "던전 깊숙한 곳에서 발견된 거대한 양손도끼입니다. 휘두르는 것만으로도 주변의 공기를 압도합니다.",
+    "price": 5800000,
+    "icon": "/images/items/1212.png",
+    "baseStatsBonus": {
+      "10": 25.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 25.0,
+      "critDmg": 70.0,
+      "accuracy": -5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1213,
+    "name": "폭풍우의 낙차",
+    "grade": "EPIC",
+    "twoHanded": true,
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "description": "무게 중심이 극단적으로 날 쪽에 쏠려 있어, 내려찍는 힘이 폭풍과도 같습니다.",
+    "price": 5500000,
+    "icon": "/images/items/1213.png",
+    "baseStatsBonus": {
+      "10": 15.0,
+      "20": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 25.0,
+      "critDmg": 70.0,
+      "accuracy": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1214,
+    "name": "발할라의 도살자",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "전설적인 투사가 사용했다고 전해지는 도끼입니다. 피를 머금을수록 날카로운 광채를 내뿜습니다.",
+    "price": 12500000,
+    "icon": "/images/items/1214.png",
+    "baseStatsBonus": {
+      "10": 15.0,
+      "20": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 20.0,
+      "accuracy": 20.0,
+      "critRate": 12.0,
+      "bleedPen": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1215,
+    "name": "성벽 파괴자",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "twoHanded": false,
+    "description": "이 도끼 앞에서는 그 어떤 방패와 갑옷도 무력화됩니다.",
+    "price": 13800000,
+    "icon": "/images/items/1215.png",
+    "baseStatsBonus": {
+      "1": 15.0,
+      "10": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 25.0,
+      "accuracy": 20.0,
+      "critRate": 12.0,
+      "physRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1216,
+    "name": "세계수의 뿌리 절단기",
+    "grade": "LEGENDARY",
+    "twoHanded": true,
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "description": "신화 속 거인이 사용하던 도끼입니다. 한 번의 휘두름으로 산맥을 가를 정도의 파괴력을 품고 있습니다.",
+    "price": 28000000,
+    "icon": "/images/items/1216.png",
+    "baseStatsBonus": {
+      "10": 45.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 120.0,
+      "accuracy": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1217,
+    "name": "멸망의 선구자",
+    "grade": "LEGENDARY",
+    "twoHanded": true,
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "AXE",
+    "description": "종말을 고하는 전사의 무기입니다. 힘과 기민함을 모두 갖춘 자만이 이 파괴적인 균형을 다룰 수 있습니다.",
+    "price": 31000000,
+    "icon": "/images/items/1217.png",
+    "baseStatsBonus": {
+      "10": 25.0,
+      "20": 20.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 120.0,
+      "accuracy": 25.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1220,
+    "name": "제국 근위대의 돌격창",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "중갑 전사들이 주로 사용하는 묵직한 한손창입니다. 방패와 함께 사용 시 전선의 파괴력을 극대화합니다.",
+    "price": 3500000,
+    "icon": "/images/items/1220.png",
+    "baseStatsBonus": {
+      "1": 20.0,
+      "10": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "penetration": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "physDef": 25.0,
+      "physRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1221,
+    "name": "고결한 기사의 롱스피어",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "정교하게 제련된 한손창입니다. 힘과 민첩을 고루 갖춘 기사들이 선호하며, 공수 밸런스가 뛰어납니다.",
+    "price": 3450000,
+    "icon": "/images/items/1221.png",
+    "baseStatsBonus": {
+      "10": 18.0,
+      "20": 17.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "penetration": 15.0,
+      "accuracy": 15.0,
+      "critRate": 8.0,
+      "dodge": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1222,
+    "name": "심연의 수호자 파르티잔",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "던전 심층부의 수호자들이 휘두르던 거대한 창입니다. 무게만으로 적의 갑옷을 뚫어버립니다.",
+    "price": 4200000,
+    "icon": "/images/items/1222.png",
+    "baseStatsBonus": {
+      "1": 35.0,
+      "10": 30.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "penetration": 25.0,
+      "critDmg": 70.0,
+      "accuracy": -5.0,
+      "physRes": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1223,
+    "name": "질풍의 용병 대창",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "길이에 비해 가벼운 소재로 제작되어, 민첩한 움직임으로 적의 사각지대를 찌르기에 적합합니다.",
+    "price": 4100000,
+    "icon": "/images/items/1223.png",
+    "baseStatsBonus": {
+      "20": 40.0,
+      "21": 25.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "penetration": 25.0,
+      "critDmg": 70.0,
+      "accuracy": 15.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1224,
+    "name": "태양왕의 심판(한손)",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "전설적인 왕이 전쟁터에서 휘둘렀다는 성물입니다. 한 손으로 휘두름에도 대지를 가르는 힘이 깃들어 있습니다.",
+    "price": 25000000,
+    "icon": "/images/items/1224.png",
+    "baseStatsBonus": {
+      "1": 50.0,
+      "10": 50.0,
+      "11": 30.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "penetration": 20.0,
+      "accuracy": 20.0,
+      "critRate": 12.0,
+      "holyAtk": 50.0,
+      "statusResist": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1225,
+    "name": "무영의 신화적 창",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": false,
+    "description": "공기를 가르는 소리조차 들리지 않는다고 전해지는 창입니다. 극의에 달한 민첩 전사만이 다룰 수 있습니다.",
+    "price": 24500000,
+    "icon": "/images/items/1225.png",
+    "baseStatsBonus": {
+      "20": 60.0,
+      "21": 40.0,
+      "15": 30.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "penetration": 20.0,
+      "accuracy": 25.0,
+      "critRate": 15.0,
+      "dodge": 10.0,
+      "moveSpeed": 0.2
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1226,
+    "name": "행성 파괴자",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "신화 속 거인이 산맥을 뚫기 위해 사용했다는 거창입니다. 단 한 번의 찌르기로 성벽을 무너뜨립니다.",
+    "price": 45000000,
+    "icon": "/images/items/1226.png",
+    "baseStatsBonus": {
+      "10": 100.0,
+      "1": 50.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "penetration": 30.0,
+      "critDmg": 120.0,
+      "accuracy": -10.0,
+      "physPen": 20.0,
+      "stunChance": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1227,
+    "name": "화룡의 이빨",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "SPEAR",
+    "twoHanded": true,
+    "description": "고대 화룡의 송곳니를 깎아 만든 창입니다. 적의 심장을 꿰뚫을 때 폭발적인 위력을 발휘합니다.",
+    "price": 48000000,
+    "icon": "/images/items/1227.png",
+    "baseStatsBonus": {
+      "10": 60.0,
+      "20": 60.0,
+      "13": 30.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "penetration": 30.0,
+      "critDmg": 120.0,
+      "accuracy": 20.0,
+      "fireAtk": 80.0,
+      "bleedPen": 25.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1230,
+    "name": "성벽 파괴자의 철퇴",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "성문을 부수기 위해 제작된 육중한 철퇴입니다. 중갑 전사들이 선호하는 파괴적인 위력을 지녔습니다.",
+    "price": 2500000,
+    "icon": "/images/items/1230.png",
+    "baseStatsBonus": {
+      "1": 15.0,
+      "10": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "physRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1231,
+    "name": "은빛 성기사의 메이스",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "축복받은 은으로 제련된 메이스입니다. 신성한 힘과 물리적인 타격력을 동시에 갖추었습니다.",
+    "price": 2750000,
+    "icon": "/images/items/1231.png",
+    "baseStatsBonus": {
+      "1": 10.0,
+      "13": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "magicAtk": 40.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "holyAtk": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1232,
+    "name": "거인 도살자의 모닝스타",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "거대한 가시가 돋아난 양손 모닝스타입니다. 휘두르는 것만으로도 대지를 진동시킵니다.",
+    "price": 3800000,
+    "icon": "/images/items/1232.png",
+    "baseStatsBonus": {
+      "10": 25.0,
+      "11": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 25.0,
+      "critDmg": 70.0,
+      "accuracy": -5.0,
+      "stunPen": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1233,
+    "name": "심연의 흑철 대망치",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "던전 심층부의 흑철을 녹여 만든 대망치입니다. 압도적인 무게로 적의 방어구를 무용지물로 만듭니다.",
+    "price": 4100000,
+    "icon": "/images/items/1233.png",
+    "baseStatsBonus": {
+      "1": 20.0,
+      "10": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 35.0,
+      "critDmg": 70.0,
+      "accuracy": -10.0,
+      "physDef": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1234,
+    "name": "천상의 심판자 플레일",
+    "grade": "LEGENDARY",
+    "type": "MATERIAL",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "전설적인 성전사가 사용했다고 전해지는 무기입니다. 공중에 휘두를 때마다 빛의 잔상이 남습니다.",
+    "price": 15000000,
+    "icon": "/images/items/1234.png",
+    "baseStatsBonus": {
+      "1": 30.0,
+      "13": 30.0,
+      "20": 20.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 20.0,
+      "accuracy": 20.0,
+      "critRate": 12.0,
+      "holyAtk": 100.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1235,
+    "name": "고대 용병왕의 전투 망치",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": false,
+    "description": "수많은 전장을 누빈 용병왕의 유산입니다. 힘과 민첩함의 완벽한 조화를 보여줍니다.",
+    "price": 14500000,
+    "icon": "/images/items/1235.png",
+    "baseStatsBonus": {
+      "10": 40.0,
+      "20": 40.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 25.0,
+      "accuracy": 25.0,
+      "critRate": 15.0,
+      "critDmg": 30.0,
+      "dodge": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1236,
+    "name": "월드 브레이커 (World Breaker)",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "세계의 근간을 뒤흔들 수 있다는 전설의 거대 둔기입니다. 진정한 파괴신만이 다룰 수 있습니다.",
+    "price": 25000000,
+    "icon": "/images/items/1236.png",
+    "baseStatsBonus": {
+      "10": 100.0,
+      "1": 50.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 120.0,
+      "accuracy": 5.0,
+      "earthAtk": 150.0,
+      "statusResist": 25.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1237,
+    "name": "영겁의 파편 대곤봉",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BLUNT",
+    "twoHanded": true,
+    "description": "시간의 흐름에서 벗어난 영겁의 금속으로 제작되었습니다. 타격 시 시공간의 뒤틀림을 일으킵니다.",
+    "price": 23000000,
+    "icon": "/images/items/1237.png",
+    "baseStatsBonus": {
+      "13": 60.0,
+      "10": 40.0,
+      "21": 30.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 120.0,
+      "accuracy": 15.0,
+      "magicAtk": 100.0,
+      "mpRegen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1240,
+    "name": "뒷골목의 사형집행인",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "불법 도박장과 어두운 골목을 지배하던 무법자의 너클입니다. 투박한 외형과 달리 급소를 파고드는 궤적이 치명적입니다.",
+    "price": 3200000,
+    "icon": "/images/items/1240.png",
+    "baseStatsBonus": {
+      "15": 10.0,
+      "20": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "critDmg": 15.0,
+      "bleedPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1241,
+    "name": "그림자 습격자의 손톱",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": false,
+    "description": "심층부의 암살자들이 사용하던 무기입니다. 너클 끝에 부착된 날카로운 칼날은 갑옷 사이의 틈새를 정확히 노립니다.",
+    "price": 3500000,
+    "icon": "/images/items/1241.png",
+    "baseStatsBonus": {
+      "15": 20.0,
+      "17": 5.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 10.0,
+      "critDmg": 10.0,
+      "dodge": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1242,
+    "name": "파괴신 아수라의 금강권",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": true,
+    "description": "전설적인 격투가가 사용했다고 전해지는 양손 너클입니다. 휘두르는 것만으로도 공간을 진동시키며, 적의 방어구와 뼈를 동시에 가루로 만듭니다.",
+    "price": 12500000,
+    "icon": "/images/items/1242.png",
+    "baseStatsBonus": {
+      "10": 25.0,
+      "20": 30.0,
+      "21": 20.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 120.0,
+      "accuracy": 15.0,
+      "penetration": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1243,
+    "name": "심연의 추적자: 칠흑의 발톱",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "KNUCKLE",
+    "twoHanded": true,
+    "description": "던전 가장 깊은 곳, 빛조차 닿지 않는 곳에서 태어난 무기입니다. 착용자의 살기를 먹고 자라나며, 적이 비명을 지르기도 전에 숨통을 끊어놓습니다.",
+    "price": 13800000,
+    "icon": "/images/items/1243.png",
+    "baseStatsBonus": {
+      "15": 35.0,
+      "17": 25.0,
+      "20": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 120.0,
+      "critRate": 15.0,
+      "moveSpeed": 0.25,
+      "darkAtk": 50.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1250,
+    "name": "밤의 갈증 (Night's Thirst)",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "그림자 속에 숨어든 암살자들이 즐겨 사용하던 단검입니다. 날에 닿은 피를 흡수하여 소유자의 감각을 날카롭게 세워줍니다.",
+    "price": 3200000,
+    "icon": "/images/items/1250.png",
+    "baseStatsBonus": {
+      "20": 15.0,
+      "21": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "critDmg": 20.0,
+      "lifeSteal": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1251,
+    "name": "뒷골목의 지배자",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "불량배들의 우두머리가 휘두르던 투박한 단검입니다. 정교하진 않지만, 적의 상처를 헤집어 치명적인 출혈을 유도합니다.",
+    "price": 2850000,
+    "icon": "/images/items/1251.png",
+    "baseStatsBonus": {
+      "10": 10.0,
+      "15": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "bleedAtk": 40.0,
+      "bleedPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1252,
+    "name": "심연의 송곳니 (Abyssal Fang)",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "던전 최하층의 고대 생명체의 송곳니를 깎아 만든 단검입니다. 공간을 가르는 듯한 절삭력을 지니고 있습니다.",
+    "price": 15000000,
+    "icon": "/images/items/1252.png",
+    "baseStatsBonus": {
+      "20": 30.0,
+      "21": 20.0,
+      "17": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 20.0,
+      "accuracy": 20.0,
+      "critRate": 12.0,
+      "critDmg": 50.0,
+      "moveSpeed": 0.25,
+      "dodge": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1253,
+    "name": "무영(無影)의 비수",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "그림자조차 남기지 않는다는 전설적인 암살자의 무기입니다.",
+    "price": 18200000,
+    "icon": "/images/items/1253.png",
+    "baseStatsBonus": {
+      "20": 40.0,
+      "23": 25.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 20.0,
+      "accuracy": 15.0,
+      "critRate": 12.0,
+      "moveSpeed": 0.3
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1260,
+    "name": "바람추적자의 그림자 활",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "바람의 정령석을 깎아 만든 활입니다. 화살이 공기의 저항을 받지 않아 소리 없이 적의 심장을 꿰뚫습니다.",
+    "price": 2800000,
+    "icon": "/images/items/1260.png",
+    "baseStatsBonus": {
+      "20": 15.0,
+      "21": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 25.0,
+      "critDmg": 70.0,
+      "accuracy": 15.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1261,
+    "name": "공성용 중강철 석궁",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "중갑 기사들이 성벽 수비를 위해 사용하는 거대한 석궁입니다. 장전은 느리지만 판금 갑옷조차 종이처럼 찢어버립니다.",
+    "price": 3150000,
+    "icon": "/images/items/1261.png",
+    "baseStatsBonus": {
+      "1": 15.0,
+      "10": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 420.0,
+      "physPen": 35.0,
+      "critDmg": 85.0,
+      "accuracy": -5.0,
+      "physDef": 25.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1262,
+    "name": "궁신(弓神)의 성광 장궁",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "전설적인 궁술의 신이 사용했다고 전해지는 성스러운 활입니다. 시위를 당기면 빛의 화살이 자동으로 형성됩니다.",
+    "price": 15000000,
+    "icon": "/images/items/1262.png",
+    "baseStatsBonus": {
+      "20": 30.0,
+      "21": 25.0,
+      "23": 15.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 30.0,
+      "critDmg": 120.0,
+      "accuracy": 30.0,
+      "critRate": 15.0,
+      "holyAtk": 100.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1263,
+    "name": "드래곤 슬레이어 : 발리스타",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "BOW",
+    "twoHanded": true,
+    "description": "용의 비늘을 뚫기 위해 고안된 금단의 무기입니다. 인간의 힘으로는 당길 수 없으나, 진정한 용사만이 이 파괴적인 힘을 다룹니다.",
+    "price": 18500000,
+    "icon": "/images/items/1263.png",
+    "baseStatsBonus": {
+      "1": 40.0,
+      "10": 30.0,
+      "11": 20.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 750.0,
+      "physPen": 50.0,
+      "critDmg": 150.0,
+      "accuracy": 10.0,
+      "statusResist": 25.0,
+      "physRes": 20.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1264,
+    "name": "강철 태엽 중석궁",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "중갑 기사들의 방패를 뚫기 위해 설계된 무거운 석궁입니다. 정교한 태엽 장치가 강력한 관통력을 보장합니다.",
+    "price": 1850000,
+    "icon": "/images/items/1264.png",
+    "baseStatsBonus": {
+      "1": 15.0,
+      "10": 10.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 380.0,
+      "physPen": 25.0,
+      "critDmg": 70.0,
+      "accuracy": 10.0,
+      "moveSpeed": -0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1265,
+    "name": "그림자 추적자의 연사 쇠뇌",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "민첩한 움직임을 방해하지 않도록 경량화된 쇠뇌입니다. 어둠 속에서 소리 없이 적의 급소를 꿰뚫습니다.",
+    "price": 1720000,
+    "icon": "/images/items/1265.png",
+    "baseStatsBonus": {
+      "20": 20.0,
+      "21": 5.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 200.0,
+      "physPen": 15.0,
+      "accuracy": 10.0,
+      "critRate": 5.0,
+      "moveSpeed": 0.05
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1266,
+    "name": "공성 파괴자: 발리스타",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "전설적인 대장장이가 용의 뼈를 깎아 만든 거대 석궁입니다. 이 무기 앞에서는 어떤 두꺼운 갑옷도 종잇장과 같습니다.",
+    "price": 12000000,
+    "icon": "/images/items/1266.png",
+    "baseStatsBonus": {
+      "1": 40.0,
+      "10": 30.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 600.0,
+      "physPen": 35.0,
+      "critDmg": 120.0,
+      "accuracy": 20.0,
+      "moveSpeed": -0.2
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 1267,
+    "name": "바람의 전령 '아퀼라'",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "CROSSBOW",
+    "twoHanded": true,
+    "description": "바람의 정령석이 박힌 신화적인 쇠뇌입니다. 화살이 공기의 저항을 받지 않으며, 사용자에게 초자연적인 반사신경을 부여합니다.",
+    "price": 11500000,
+    "icon": "/images/items/1267.png",
+    "baseStatsBonus": {
+      "20": 50.0,
+      "23": 20.0
+    },
+    "combatStatsBonus": {
+      "meleeAtk": 350.0,
+      "physPen": 20.0,
+      "accuracy": 25.0,
+      "critRate": 15.0,
+      "moveSpeed": 1.2
+    },
+    "grantedSkillIds": []
+  }
+]

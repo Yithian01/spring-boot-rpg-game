@@ -115,7 +115,7 @@ public class TownController {
     }
 
     /**
-     * 유저가 선택한 스킬을 최종적으로 각인 (Step 2)
+     * 유저가 선택한 스킬을 최종적으로 각인 (Step 2-A)
      * JS에서 location.href = '/town/learn-skill/' + selectedSkillId; 로 호출함
      * @param skillId 선택한 스킬의 고유 ID
      */
@@ -130,7 +130,27 @@ public class TownController {
 
         log.info("스킬 각인 요청 수신 - 스킬 ID: {}", skillId);
 
-        townService.confirmSkillExtraction(skillId);
+        townService.confirmSkillExtraction(skillId, false);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * 유저가 선택한 스킬을 최종적으로 각인 (Step 2-B)
+     * [흡수] 스킬을 배우지 않고 즉시 능력치로 변환함
+     * @param skillId 선택한 스킬의 고유 ID
+     */
+    @GetMapping("/absorb-skill/{skillId}")
+    public String absorbSkill(@PathVariable String skillId, RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        log.info("스킬 스탯 흡수 요청: {}", skillId);
+
+        townService.confirmSkillExtraction(skillId, true);
         return "redirect:/game/play";
     }
 

@@ -32,8 +32,10 @@ public class MonsterMeta {
     private int expReward;      // 최초 처치 시 부여할 경험치
     private String dropTableId; // 드랍 테이블 key 값
 
-    // 4. 정수(Essence) 드랍 시 부여될 보너스 메타
+    // 4. 정수(Essence) 드랍 시 부여될 보너스 메타 & 스킬
     private EssenceBonusMeta essenceBonus;
+    private List<Integer> essenceSkillIds;
+    private Double dropRate;
 
     /**
      * 정수에 포함될 능력치 보너스 정보를 담는 내부 클래스

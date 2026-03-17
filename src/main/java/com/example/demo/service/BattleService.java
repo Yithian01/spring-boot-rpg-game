@@ -658,7 +658,7 @@ public class BattleService {
             }
 
             // 3. 정수 드랍 판정 (이제 us.getLevel()은 레벨업이 완료된 상태임)
-            double dropChance = 100.0;
+            double dropChance = (monsterMeta.getDropRate() != null) ? monsterMeta.getDropRate() : 1.0;
             if (Math.random() * 100 < dropChance) {
                 EssenceInstance dropped = essenceService.generateEssence(monster.getMonsterId());
                 ds.setPendingEssence(dropped);

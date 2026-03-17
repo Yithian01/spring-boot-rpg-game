@@ -422,7 +422,7 @@ public class TownService {
         townFileRepository.saveTownStatus(town);
     }
 
-    public void confirmSkillExtraction(String skillId) {
+    public void confirmSkillExtraction(String skillId, boolean absorb) {
         int targetId = Integer.parseInt(skillId);
         SkillMeta skillMeta = gameDataManager.getSkillMetaMap().get(targetId);
         if (skillMeta == null) throw new IllegalStateException("존재하지 않는 스킬 데이터입니다.");
@@ -434,7 +434,7 @@ public class TownService {
         // 1. 이미 배운 스킬인지 확인
         boolean isAlreadyLearned = us.getLearnedSkillIds().contains(targetId);
 
-        if (isAlreadyLearned) {
+        if (isAlreadyLearned || absorb) {
             // 2. 중복 시: TownStatus의 임시 옵션 리스트에서 해당 스킬의 보너스 정보를 찾음
             RandomSkillCardDto selectedOption = ts.getSkillOptions().stream()
                     .filter(opt -> opt.getId() == targetId)
@@ -462,8 +462,9 @@ public class TownService {
                 int currentVal = us.getBaseStats().getOrDefault(randomStatId, 0);
                 us.getBaseStats().put(randomStatId, currentVal + finalGain);
 
-                gs.addLog(String.format("영혼이 공명하여 [%s] 계통의 [%s]능력이 %d만큼 상승했습니다!",
-                        categoryKey, randomStatName, finalGain));
+                String logPrefix = absorb ? "✨ [흡수]" : "🔥 [공명]";
+                gs.addLog(String.format("%s 영혼이 반응하여 [%s] 계통의 [%s]능력이 %d 상승했습니다!",
+                        logPrefix, categoryKey, randomStatName, finalGain));
             } else {
                 gs.addLog("각인 보너스 스탯 대상을 찾을 수 없습니다.");
             }

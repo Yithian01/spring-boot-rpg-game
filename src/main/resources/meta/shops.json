@@ -6,15 +6,21 @@
     "priceModifier": 1.2,
     "fixedItems": [],
     "randomConfigs": [
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
       { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 }
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 }
     ]
   },
   {
@@ -110,12 +116,12 @@
       { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
       { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
       { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
-      { "type": "ARTIFACT", "grade": "EPIC", "count": 1 },
-      { "type": "ARTIFACT", "grade": "EPIC", "count": 1 },
-      { "type": "ARTIFACT", "grade": "EPIC", "count": 1 },
-      { "type": "EQUIPMENT", "grade": "RARE", "count": 1 },
-      { "type": "EQUIPMENT", "grade": "RARE", "count": 1 },
-      { "type": "EQUIPMENT", "grade": "RARE", "count": 1 }
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT","grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 }
     ]
   }
 ]

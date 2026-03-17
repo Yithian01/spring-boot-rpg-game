@@ -7,7 +7,7 @@
     "grade": "MONSTER",
     "turnCost": 1,
     "hitChance": 85,
-    "cost": {  "stamina": 10 },
+    "cost": { "stamina": 10 },
     "damageScaling": { "meleeAtk": 1.2 },
     "statScaling": { "15": 2.0 },
     "effect": {

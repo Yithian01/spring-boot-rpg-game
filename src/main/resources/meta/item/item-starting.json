@@ -1,6 +1,6 @@
 [
   {
-    "id": 11,
+    "id": 10,
     "name": "닳아버린 여행용 코트",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -19,7 +19,7 @@
     "grantedSkillIds": []
   },
   {
-    "id": 10,
+    "id": 11,
     "name": "훈련용 롱소드",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -36,7 +36,26 @@
     "grantedSkillIds": []
   },
   {
-    "id": 14,
+    "id": 12,
+    "name": "낡은 가죽 장화",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "그런대로 신을 수 있는 장화입니다.",
+    "price": 55000,
+    "icon": "/images/items/12.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 20.0,
+      "moveSpeed": 0.2,
+      "physRes": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 13,
     "name": "낡은 채광용 망치",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -45,7 +64,7 @@
     "twoHanded": true,
     "description": "광석을 캘 때 쓰던 망치입니다.",
     "price": 87000,
-    "icon": "/images/items/14.png",
+    "icon": "/images/items/13.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 15.0,
@@ -53,27 +72,9 @@
     },
     "grantedSkillIds": []
   },
+
   {
-    "id": 19,
-    "name": "무뎌진 사냥용 단검",
-    "grade": "COMMON",
-    "type": "EQUIPMENT",
-    "slot": "WEAPON",
-    "subType": "DAGGER",
-    "twoHanded": false,
-    "description": "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
-    "price": 115000,
-    "icon": "/images/items/19.png",
-    "baseStatsBonus": {},
-    "combatStatsBonus": {
-      "meleeAtk": 7.0,
-      "accuracy": 5.0,
-      "critRate": 5.0
-    },
-    "grantedSkillIds": []
-  },
-  {
-    "id": 15,
+    "id": 14,
     "name": "두꺼운 가죽 앞치마",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -83,7 +84,7 @@
     "twoHanded": false,
     "description": "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
     "price": 56000,
-    "icon": "/images/items/15.png",
+    "icon": "/images/items/14.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp" : 30,
@@ -94,7 +95,25 @@
     "grantedSkillIds": []
   },
   {
-    "id": 17,
+    "id": 15,
+    "name": "연습용 완드",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "WAND",
+    "twoHanded": false,
+    "description": "은은한 마력이 감도는 것이 느껴집니다.",
+    "price": 87000,
+    "icon": "/images/items/15.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "magicAtk": 10.0,
+      "critDmg": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 16,
     "name": "수습 마법사의 로브",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -103,7 +122,7 @@
     "twoHanded": false,
     "description": "마나 흐름을 돕는 얇은 천 옷입니다.",
     "price": 180000,
-    "icon": "/images/items/17.png",
+    "icon": "/images/items/16.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp" : 20.0,
@@ -114,7 +133,26 @@
     "grantedSkillIds": []
   },
   {
-    "id": 20,
+    "id": 17,
+    "name": "무뎌진 사냥용 단검",
+    "grade": "COMMON",
+    "type": "EQUIPMENT",
+    "slot": "WEAPON",
+    "subType": "DAGGER",
+    "twoHanded": false,
+    "description": "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
+    "price": 115000,
+    "icon": "/images/items/17.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "meleeAtk": 7.0,
+      "accuracy": 5.0,
+      "critRate": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 18,
     "name": "변색된 가죽 옷",
     "grade": "COMMON",
     "type": "EQUIPMENT",
@@ -123,7 +161,7 @@
     "twoHanded": false,
     "description": "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다.",
     "price": 76000,
-    "icon": "/images/items/20.png",
+    "icon": "/images/items/18.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp" : 30.0,

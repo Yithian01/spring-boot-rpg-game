@@ -27,7 +27,8 @@ public class DropItemService {
     /**
      * 전투 종료 후 드롭 테이블을 참조하여 아이템을 생성하고 인벤토리에 저장합니다.
      */
-    public void processDrops(MonsterMeta monster) {
+    public List<String> processDrops(MonsterMeta monster) {
+        List<String> dropMsg = new ArrayList<>();
         var inventory = inventoryRepository.findInventoryStatus();
         List<ItemInstance> rewards = new ArrayList<>();
 
@@ -49,11 +50,18 @@ public class DropItemService {
                         if (meta != null) {
                             int qty = calculateQuantity(dropInfo.getMinQty(), dropInfo.getMaxQty());
                             rewards.add(createInstanceFromMeta(meta, qty));
+                            dropMsg.add(meta.getName());
                         }
                     }
                 }
             } else {
                 log.warn("몬스터({})의 드랍 테이블 ID({})가 정의되어 있으나 데이터를 찾을 수 없습니다.", monster.getName(), tableId);
+            }
+        }else{
+            ItemInstance dropItem = generateTierDrops(monster.getTier());
+            if (dropItem != null){
+                rewards.add(dropItem);
+                dropMsg.add(dropItem.getCustomName());
             }
         }
 
@@ -65,6 +73,8 @@ public class DropItemService {
         // 4. 가방 상태 최종 저장
         inventoryRepository.saveInventoryStatus(inventory);
         log.info("{} 처치 보상 지급 완료: {}종 획득", monster.getName(), rewards.size());
+
+        return dropMsg;
     }
 
     /**
@@ -105,7 +115,7 @@ public class DropItemService {
     /**
      * 일반 아이템 메타로부터 인스턴스를 생성합니다.
      */
-    private ItemInstance createInstanceFromMeta(ItemMeta meta, int qty) { // qty 추가
+    private ItemInstance createInstanceFromMeta(ItemMeta meta, int qty) {
         return ItemInstance.builder()
                 .instanceId(java.util.UUID.randomUUID().toString())
                 .itemMetaId(meta.getId())
@@ -122,5 +132,23 @@ public class DropItemService {
                 .combatStatsBonus(meta.getCombatStatsBonus())
                 .recoveryBonus(meta.getRecoveryBonus())
                 .build();
+    }
+
+    /**
+     * 몬스터 티어 숫자를 입력받아 드랍된 아이템 ID 리스트를 반환합니다. (최대 1개)
+     */
+    public ItemInstance generateTierDrops(int monsterTier) {
+        ItemInstance dropItemId = null;
+
+        String selectedGrade = gameDataManager.rollGradeFromPool(monsterTier);
+
+        if (selectedGrade != null && !"NONE".equalsIgnoreCase(selectedGrade)) {
+            Integer itemId = gameDataManager.pickRandomItemIdByGrade(selectedGrade);
+            if (itemId != null) {
+                var meta = gameDataManager.getItemMetaMap().get(itemId);
+                dropItemId = createInstanceFromMeta(meta, 1);
+            }
+        }
+        return dropItemId;
     }
 }

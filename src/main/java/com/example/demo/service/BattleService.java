@@ -650,11 +650,11 @@ public class BattleService {
             // 2. [추가] 마석 및 아이템 드롭 처리 (마석은 100%, 일반 템은 확률)
             if (monsterMeta != null) {
 
-                // DropItemService 호출 (마석 100% 생성 포함)
-                dropItemService.processDrops(monsterMeta);
-
-                // 로그 추가
+                List<String> dropMsg = dropItemService.processDrops(monsterMeta);
                 gs.addLog(String.format("<span style='color:#74c0fc;'>💎 %s의 마석을 획득했습니다.</span>", monster.getName()));
+                for (String msg : dropMsg){
+                    gs.addLog(String.format("<span style='color:#ffec99;'>✨ %s을(를) 획득했습니다!</span>", msg));
+                }
             }
 
             // 3. 정수 드랍 판정 (이제 us.getLevel()은 레벨업이 완료된 상태임)

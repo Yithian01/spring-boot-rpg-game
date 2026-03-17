@@ -30,6 +30,7 @@ public class GameDataManager  implements ApplicationRunner {
 
     private final ObjectMapper objectMapper;
     private final Random random = new Random();
+    private Map<String, List<ItemMeta>> equipmentCacheByGrade;
 
     @Getter private Map<Integer, GrowthMeta> growthMetaMap;
     @Getter private Map<Integer, TribeMeta> tribeMetaMap;
@@ -44,7 +45,7 @@ public class GameDataManager  implements ApplicationRunner {
     @Getter private Map<Integer, MonsterSpawnTableMeta> monsterSpawnTableMetaMap;
     @Getter private Map<String, DropTableMeta> dropTableMetaMap;
     @Getter private Map<String, ShopMeta> shopMetaMap;
-
+    @Getter private Map<Integer, TierDropTableMeta> tierDropTableMetaMap;
 
     @Override
     public void run(ApplicationArguments args) {
@@ -93,6 +94,13 @@ public class GameDataManager  implements ApplicationRunner {
 
         // 13. 상점 정보 로딩
         this.shopMetaMap = loadMapData("shops.json", ShopMeta.class, ShopMeta::getNpcId);
+
+        // 14. 몬스터 티어 드랍 테이블 정보 로딩
+        this.tierDropTableMetaMap = loadMapData("tier-drop-group.json", TierDropTableMeta.class, TierDropTableMeta::getId);
+
+        this.equipmentCacheByGrade = this.itemMetaMap.values().stream()
+                .filter(item -> "EQUIPMENT".equals(item.getType()))
+                .collect(Collectors.groupingBy(item -> item.getGrade().toUpperCase()));
 
         long end = System.currentTimeMillis();
         log.info("========== [GameData] 초기화 완료 (소요시간: {}ms) ==========", end - start);
@@ -700,4 +708,47 @@ public class GameDataManager  implements ApplicationRunner {
                 .average() // 평균 계산
                 .orElse(0.0);
     }
+
+    /**
+     * 테이블의 pools 가중치를 합산해 주사위를 굴려 등급을 반환
+     */
+    public String rollGradeFromPool(int monsterTier) {
+        TierDropTableMeta table = tierDropTableMetaMap.get(monsterTier);
+        if (table == null) {
+            log.warn("TierDropTableMeta 에 티어 {} 정보가 없습니다!", monsterTier);
+            return "NONE";
+        }
+
+        List<TierDropPool> pools = tierDropTableMetaMap.get(monsterTier).getPools();
+        if (pools == null || pools.isEmpty()) return "NONE";
+
+        int totalWeight = pools.stream().mapToInt(TierDropPool::getWeight).sum();
+
+        // 2. 0 ~ (총합-1) 사이에서 랜덤 숫자 뽑기 (예: 850)
+        int rand = random.nextInt(totalWeight);
+
+        // 3. 어느 구간에 속하는지 확인
+        int currentSum = 0;
+        for (TierDropPool pool : pools) {
+            currentSum += pool.getWeight();
+            if (rand < currentSum) {
+                return pool.getGrade(); // 당첨!
+            }
+        }
+        return "NONE";
+    }
+
+    /**
+     * 캐시된 데이터를 활용하여 특정 등급의 장비 ID를 랜덤하게 하나 가져옵니다.
+     */
+    public Integer pickRandomItemIdByGrade(String grade) {
+        List<ItemMeta> candidates = equipmentCacheByGrade.get(grade.toUpperCase());
+
+        if (candidates == null || candidates.isEmpty()) {
+            return null;
+        }
+
+        return candidates.get(random.nextInt(candidates.size())).getId();
+    }
+
 }

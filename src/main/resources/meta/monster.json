@@ -3264,49 +3264,6 @@
     }
   },
   {
-    "id": 536,
-    "name": "브루탈 팽",
-    "tier": 5,
-    "type": 0,
-    "description": "둔기를 사용하는 거대한 라이칸스로프. 둔기에 마력을 실어 공격하지만 번개에는 취약합니다.",
-    "stats": {
-      "maxHp": 5800,
-      "maxMp": 400,
-      "moveSpeed": 1.3,
-      "maxTurns": 3,
-      "critRate": 25.0,
-      "critDmg": 220.0,
-      "accuracy": 26.0,
-      "dodge": 20.0,
-      "meleeAtk": 280.0,
-      "iceAtk": 50.0,
-      "physDef": 75.0,
-      "physRes": 15.0,
-      "iceRes": 20.0,
-      "lightningRes": -5.0,
-      "bleedPen": 10.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      537,
-      538
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "10": 170,
-        "15": 50,
-        "20": 60
-      },
-      "combatStats": {
-        "meleeAtk": 120.0,
-        "physPen": 25.0,
-        "critDmg": 25.0
-      },
-      "description": "5등급 정수(합계 280). 상완(10) 극대화. 물리 딜러용 종결 정수."
-    }
-  },
-  {
     "id": 602,
     "name": "맹독 해파리",
     "tier": 7,
@@ -3386,44 +3343,6 @@
         "darkRes": 10.0
       },
       "description": "7등급 정수(합계 100). 상완과 신경 반응을 골고루 보정합니다."
-    }
-  },
-  {
-    "id": 611,
-    "name": "심연의 대식가",
-    "tier": 6,
-    "type": 4,
-    "description": "무엇이든 삼키는 거대 아귀입니다.",
-    "stats": {
-      "maxHp": 2200,
-      "moveSpeed": 1.0,
-      "maxTurns": 2,
-      "critRate": 5.0,
-      "critDmg": 180.0,
-      "accuracy": 16.0,
-      "meleeAtk": 130.0,
-      "physDef": 45.0,
-      "physRes": 15.0,
-      "magRes": 5.0,
-      "lightningRes": -5.0,
-      "bleedPen": 10.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      611
-    ],
-    "expReward": 4,
-    "essenceBonus": {
-      "baseStats": {
-        "3": 80,
-        "1": 60,
-        "11": 40
-      },
-      "combatStats": {
-        "maxHp": 350,
-        "lifeSteal": 5.0
-      },
-      "description": "6등급 정수(합계 180). 대사 효율(ID 3)에 투자하여 유지력을 강화합니다."
     }
   },
   {
@@ -3633,49 +3552,6 @@
     }
   },
   {
-    "id": 701,
-    "name": "부정한 생명의 사제",
-    "tier": 6,
-    "type": 3,
-    "description": "숲의 생명력을 뒤틀어 혼돈의 마력으로 변환하는 사제입니다.",
-    "stats": {
-      "maxHp": 2000,
-      "maxMp": 1500,
-      "moveSpeed": 1.1,
-      "maxTurns": 2,
-      "critRate": 10.0,
-      "critDmg": 180.0,
-      "accuracy": 20.0,
-      "dodge": 16.0,
-      "statusResist": 15.0,
-      "magicAtk": 110.0,
-      "chaosAtk": 40.0,
-      "physDef": 35.0,
-      "physRes": 5.0,
-      "magRes": 20.0,
-      "earthRes": 15.0,
-      "darkRes": 15.0,
-      "holyRes": -5.0,
-      "magPen": 10.0,
-      "chaosPen": 15.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [701, 702],
-    "expReward": 4,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 100,
-        "15": 40,
-        "4": 40
-      },
-      "combatStats": {
-        "magicAtk": 40.0,
-        "chaosAtk": 15.0
-      },
-      "description": "6등급 정수(합계 180). 혼돈 마법 화력을 극대화합니다."
-    }
-  },
-  {
     "id": 702,
     "name": "검은 염소 전사",
     "tier": 6,
@@ -3761,52 +3637,6 @@
         "maxHp": 600
       },
       "description": "5등급 정수(합계 280). 대사 효율(ID 3) +150으로 압도적 재생력을 부여합니다."
-    }
-  },
-  {
-    "id": 712,
-    "name": "바실리스크",
-    "tier": 5,
-    "type": 1,
-    "description": "마주치는 자를 돌로 만드는 맹독의 파충류입니다.",
-    "stats": {
-      "maxHp": 5200,
-      "maxMp": 500,
-      "moveSpeed": 1.3,
-      "maxTurns": 3,
-      "critRate": 20.0,
-      "critDmg": 210.0,
-      "accuracy": 28.0,
-      "dodge": 24.0,
-      "statusResist": 25.0,
-      "poisonRes": 50.0,
-      "poisonPen": 20.0,
-      "meleeAtk": 220.0,
-      "toxicAtk": 80.0,
-      "physDef": 75.0,
-      "physRes": 15.0,
-      "magRes": 15.0,
-      "toxicRes": 40.0,
-      "earthRes": 20.0,
-      "iceRes": -10.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      705,
-      706
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "16": 120,
-        "18": 80,
-        "13": 80
-      },
-      "combatStats": {
-        "accuracy": 30.0,
-        "statusResist": 25.0
-      },
-      "description": "5등급 정수(합계 280). 동체 시력(ID 16) 보정으로 명중률을 크게 높입니다."
     }
   },
   {
@@ -3958,7 +3788,5 @@
       },
       "description": "3등급 정수(합계 700). 상완(ID 10) +400의 전사 종결급 정수입니다."
     }
-  },
-
-
+  }
 ]

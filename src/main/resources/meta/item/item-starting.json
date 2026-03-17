@@ -12,10 +12,9 @@
     "icon": "/images/items/11.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 5.0,
-      "magRes": 5.0,
-      "maxStamina": 30.0,
-      "maxMp": 30.0
+      "maxHp": 30.0,
+      "maxMp": 20.0,
+      "magRes": 1.0
     },
     "grantedSkillIds": []
   },
@@ -81,12 +80,13 @@
     "slot": "BODY",
     "subType": "LEATHER",
     "twoHanded": false,
+    "twoHanded": false,
     "description": "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
     "price": 56000,
     "icon": "/images/items/15.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 12.0,
+      "maxHp" : 30,
       "statusResist": 5.0,
       "burnRes": 10.0,
       "moveSpeed": -0.1
@@ -106,9 +106,9 @@
     "icon": "/images/items/17.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 2.0,
+      "maxHp" : 20.0,
+      "maxMp": 40.0,
       "magRes": 12.0,
-      "maxMp": 60.0,
       "mpRegen": 2.5
     },
     "grantedSkillIds": []
@@ -126,7 +126,9 @@
     "icon": "/images/items/20.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
-      "physDef": 3.0
+      "maxHp" : 30.0,
+      "maxMp": 20.0,
+      "physRes": 1.0
     },
     "grantedSkillIds": []
   }

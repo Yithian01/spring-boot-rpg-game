@@ -58,7 +58,6 @@ public class DropItemService {
         }
 
         // 3. 인벤토리에 일괄 추가
-        // inventoryService.processAddItem 내부에서 수량 합치기(Stacking)가 처리된다고 가정합니다.
         for (ItemInstance item : rewards) {
             inventoryService.processAddItem(inventory, item, true);
         }

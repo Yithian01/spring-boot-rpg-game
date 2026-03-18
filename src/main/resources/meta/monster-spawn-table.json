@@ -89,33 +89,34 @@
     "tableId": 302,
     "name": "순례자의 길 (3층) - 구역 3 (칠흑의 강어귀) 스폰 테이블",
     "spawns": [
-      {"monsterId": 311, "weight": 100, "comment": "프로그맨 (8등급 임의 ID)"}
+      {"monsterId": 311, "weight": 60, "comment": "프로그맨 전사 (8등급 임의 ID)"},
+      {"monsterId": 312, "weight": 40, "comment": "프로그맨 주술사 (8등급 임의 ID)"}
     ]
   },
   {
     "tableId": 303,
     "name": "순례자의 길 (3층) - 구역 4 (녹빛꼬리 습지) 스폰 테이블",
     "spawns": [
-      {"monsterId": 312, "weight": 85, "comment": "리자드맨 (8등급 임의 ID)"},
-      {"monsterId": 313, "weight": 15, "comment": "무명 조각상 (7등급 임의 ID)"}
+      {"monsterId": 313, "weight": 40, "comment": "리자드맨 전사(8등급 임의 ID)"},
+      {"monsterId": 314, "weight": 40, "comment": "리자드맨 맹독주술사(8등급 임의 ID)"},
+      {"monsterId": 315, "weight": 20, "comment": "무명 조각상 (7등급 임의 ID)"}
     ]
   },
   {
     "tableId": 304,
     "name": "순례자의 길 (3층) - 구역 5 (마녀의 숲) 스폰 테이블",
     "spawns": [
-      {"monsterId": 314, "weight": 12, "comment": "페어리 (9등급)"},
-      {"monsterId": 315, "weight": 12, "comment": "레이스 (9등급)"},
-      {"monsterId": 316, "weight": 12, "comment": "위치스램프 (9등급)"},
-      {"monsterId": 317, "weight": 14, "comment": "우드맨 (9등급)"},
-      {"monsterId": 318, "weight": 7, "comment": "스네트리 (8등급)"},
-      {"monsterId": 319, "weight": 7, "comment": "다이로우터 (8등급)"},
-      {"monsterId": 320, "weight": 6, "comment": "돌연변이 하급 정령 (8등급)"},
-      {"monsterId": 321, "weight": 6, "comment": "호문쿨루스 (8등급)"},
-      {"monsterId": 322, "weight": 7, "comment": "아울베어 (8등급)"},
-      {"monsterId": 323, "weight": 7, "comment": "드라이어드 (8등급)"},
-      {"monsterId": 324, "weight": 5, "comment": "하프트롤 (7등급)"},
-      {"monsterId": 325, "weight": 5, "comment": "카나바로 (7등급)"}
+      {"monsterId": 316, "weight": 12, "comment": "페어리 (9등급)"},
+      {"monsterId": 317, "weight": 12, "comment": "레이스 (9등급)"},
+      {"monsterId": 318, "weight": 12, "comment": "위치스램프 (9등급)"},
+      {"monsterId": 319, "weight": 7, "comment": "스네트리 (8등급)"},
+      {"monsterId": 320, "weight": 7, "comment": "다이로우터 (8등급)"},
+      {"monsterId": 321, "weight": 6, "comment": "돌연변이 하급 정령 (8등급)"},
+      {"monsterId": 322, "weight": 6, "comment": "호문쿨루스 (8등급)"},
+      {"monsterId": 323, "weight": 7, "comment": "아울베어 (8등급)"},
+      {"monsterId": 324, "weight": 7, "comment": "드라이어드 (8등급)"},
+      {"monsterId": 325, "weight": 5, "comment": "하프트롤 (7등급)"},
+      {"monsterId": 326, "weight": 5, "comment": "카나바로 (7등급)"}
     ]
   },
   {
@@ -162,23 +163,23 @@
     "tableId": 501,
     "name": "대마경 (5층) - 구역 2 (망령의 협곡)",
     "spawns": [
-      {"monsterId": 511, "weight": 35, "comment": "구름 가오리 (8등급)"},
-      {"monsterId": 512, "weight": 30, "comment": "폭풍 정찰병 (8등급)"},
-      {"monsterId": 513, "weight": 18, "comment": "뇌전 정령 (7등급)"},
-      {"monsterId": 514, "weight": 7, "comment": "하피 여왕 (6등급)"},
-      {"monsterId": 515, "weight": 7, "comment": "뇌폭의 대정령 (6등급)"},
-      {"monsterId": 516, "weight": 3, "comment": "폭풍의 지배자 (5등급)"}
+      { "monsterId": 510, "weight": 15, "comment": "울부짖는 영혼 (8등급) - 수치상 약하나 MP 흡수 특화" },
+      { "monsterId": 511, "weight": 35, "comment": "망령 기사 (7등급) - 물리와 마법 방어력을 골고루 갖춘 주력" },
+      { "monsterId": 512, "weight": 25, "comment": "냉기 서린 그림자 (7등급) - 높은 회피율과 빙결 속성 공격" },
+      { "monsterId": 513, "weight": 20, "comment": "밴시 리더 (6등급) - 광역 스턴 및 마법 관통력 특화" },
+      { "monsterId": 514, "weight": 4, "comment": "데스 나이트 (5등급) - 압도적인 물리 공격력과 암흑 속성 보정" },
+      { "monsterId": 515, "weight": 1, "comment": "리치 로드 (5등급) - 낮은 확률로 등장하는 필드 보스급 마법사" }
     ]
   },
   {
     "tableId": 502,
     "name": "대마경 (5층) - 구역 3 (서리 협곡)",
     "spawns": [
-      {"monsterId": 521, "weight": 60, "comment": "타락한 피조물 (8등급)"},
-      {"monsterId": 522, "weight": 25, "comment": "커스스톤 (6등급)"},
-      {"monsterId": 523, "weight": 6, "comment": "혈원귀 (5등급)"},
-      {"monsterId": 524, "weight": 5, "comment": "다키리온 (5등급)"},
-      {"monsterId": 525, "weight": 4, "comment": "소울이터 (5등급)"}
+      { "monsterId": 520, "weight": 40, "comment": "얼어붙은 파수병 (7등급) - 높은 물리 방어력과 얼음 파편 반격" },
+      { "monsterId": 521, "weight": 25, "comment": "서리꽃 유령 (6등급) - 마나 재생 방해 및 높은 빙결 관통" },
+      { "monsterId": 522, "weight": 30, "comment": "설원 도살자 (6등급) - 출혈과 빙결을 동시에 거는 근접 위협" },
+      { "monsterId": 523, "weight": 4, "comment": "영겁의 켈베로스 (5등급) - 압도적인 기동성과 3연속 공격 패턴" },
+      { "monsterId": 524, "weight": 1, "comment": "글라시아 로드 (5등급) - 협곡의 주인, 광역 절대 영도 마법사" }
     ]
   },
   {

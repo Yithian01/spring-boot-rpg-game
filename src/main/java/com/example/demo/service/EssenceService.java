@@ -60,8 +60,8 @@ public class EssenceService {
         // 3(수호자), 4(계층 군주)가 아닌 경우 1개만 무작위 추출
         if (monster.getType() < 3) {
             // 액티브 스킬 중 1개 무작위 선택
-            if (monster.getActiveSkillIds() != null && !monster.getActiveSkillIds().isEmpty()) {
-                List<Integer> tempActives = new ArrayList<>(monster.getActiveSkillIds());
+            if (monster.getEssenceSkillIds() != null && !monster.getEssenceSkillIds().isEmpty()) {
+                List<Integer> tempActives = new ArrayList<>(monster.getEssenceSkillIds());
                 Collections.shuffle(tempActives);
                 finalActiveSkills.add(tempActives.get(0));
             }
@@ -74,7 +74,7 @@ public class EssenceService {
             }
         } else {
             // 3, 4번(보스급)인 경우 모든 스킬 보유
-            if (monster.getActiveSkillIds() != null) finalActiveSkills.addAll(monster.getActiveSkillIds());
+            if (monster.getEssenceSkillIds() != null) finalActiveSkills.addAll(monster.getEssenceSkillIds());
             if (monster.getPassiveSkillIds() != null) finalPassiveSkills.addAll(monster.getPassiveSkillIds());
         }
 

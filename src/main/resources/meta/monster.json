@@ -6,20 +6,33 @@
     "type": 0,
     "description": "영악하고 손재주가 좋은 소형 괴물입니다. 주로 무리지어 사냥합니다.",
     "stats": {
-      "maxHp": 95, "maxMp": 0, "meleeAtk": 16.0, "magicAtk": 0.0,
-      "physDef": 1.0, "dodge": 4.0, "accuracy": 5.0, "critRate": 5.0,
-      "critDmg": 150, "moveSpeed": 0.5, "maxTurns": 1
+      "maxHp": 95,
+      "maxStamina": 60,
+      "meleeAtk": 18.0,
+      "physDef": 2.0,
+      "physRes": 5.0,
+      "statusResist": 10.0,
+      "accuracy": 8.0,
+      "dodge": 8.0,
+      "critRate": 5.0,
+      "critDmg": 150.0,
+      "moveSpeed": 0.5,
+      "maxTurns": 1,
+      "fireRes": -80.0,
+      "poisonPen": 5.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [101, 102],
     "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
-      "baseStats": { "10": 8, "11": 6, "12": 6 },
+      "baseStats": { "10": 15, "11": 15, "12": 15, "4": -10 },
       "combatStats": {
-        "meleeAtk": 3.5, "physDef": 0.5
+        "meleeAtk": 40.0,
+        "physRes": 1.0,
+        "maxMp": -20.0
       },
-      "description": "상완/대흉근/전완근(ID 10,11,12) 보정. 초기 물리 공격력을 보조합니다."
+      "description": "9등급 정수. 상체 근력(ID 10,11,12)을 보정하여 물리 공격력을 강화하지만, 마력 혈관(ID 4)이 좁아져 최대 MP가 감소합니다."
     }
   },
   {
@@ -29,18 +42,35 @@
     "type": 2,
     "description": "부패한 육체를 가진 언데드입니다. 강력한 맷집과 재생력을 자랑합니다.",
     "stats": {
-      "maxHp": 130, "maxMp": 0, "meleeAtk": 14.0, "magicAtk": 0.0,
-      "physDef": 3.0, "dodge": 1.0, "accuracy": 3.0, "critRate": 2.0,
-      "critDmg": 150, "moveSpeed": 0.4, "maxTurns": 1
+      "maxHp": 130,
+      "hpRegen": 2.0,
+      "meleeAtk": 15.0,
+      "physDef": 5.0,
+      "physRes": 5.0,
+      "darkRes": 10.0,
+      "holyRes": -100.0,
+      "statusResist": 10.0,
+      "poisonRes": 50.0,
+      "accuracy": 8.0,
+      "dodge": 2.0,
+      "critRate": 2.0,
+      "critDmg": 150.0,
+      "moveSpeed": 0.4,
+      "maxTurns": 1,
+      "fireRes": -90.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [108],
     "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
-      "baseStats": { "1": 8, "2": 7, "3": 5 },
-      "combatStats": { "maxHp": 20, "hpRegen": 1.5 },
-      "description": "코어/골밀도/대사효율(ID 1,2,3) 보정. 생존력과 방어력에 특화되어 있습니다."
+      "baseStats": { "1": 20, "2": 15, "3": 10, "21": -10 },
+      "combatStats": {
+        "maxHp": 55.0,
+        "hpRegen": 1.0,
+        "moveSpeed": -0.05
+      },
+      "description": "9등급 정수. 코어 및 골밀도(ID 1,2) 보정으로 생존력을 크게 높이나, 신체가 무거워져 이동 속도(ID 21)가 감소합니다."
     }
   },
   {
@@ -50,18 +80,37 @@
     "type": 0,
     "description": "대지의 마력을 다루는 작은 종족입니다.",
     "stats": {
-      "maxHp": 85, "maxMp": 120,"meleeAtk": 8.0, "magicAtk": 15.0,
-      "physDef": 1.0, "dodge": 3.0, "accuracy": 6.0, "critRate": 3.0,
-      "critDmg": 150, "moveSpeed": 0.45, "maxTurns": 1
+      "maxHp": 85,
+      "maxMp": 120,
+      "mpRegen": 2.0,
+      "magicAtk": 15.0,
+      "earthAtk": 5.0,
+      "physDef": 1.0,
+      "magRes": 5.0,
+      "earthRes": 10.0,
+      "earthPen": 10.0,
+      "statusResist": 10.0,
+      "accuracy": 8.0,
+      "dodge": 5.0,
+      "critRate": 3.0,
+      "critDmg": 150.0,
+      "moveSpeed": 0.45,
+      "maxTurns": 1,
+      "fireRes": -80.0,
+      "iceRes": -20.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [109, 110],
     "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
-      "baseStats": { "13": 8, "4": 7, "8": 5 },
-      "combatStats": { "magicAtk": 4.2, "maxMp": 15 },
-      "description": "에너지응집/마나혈관/마나회로(ID 13,4,8) 보정. 마법사 빌드의 필수 정수입니다."
+      "baseStats": { "13": 20, "14": 20, "11": -10 },
+      "combatStats": {
+        "earthAtk": 35.0,
+        "earthPen": 1.0,
+        "meleeAtk": -25.0
+      },
+      "description": "9등급 정수. 에너지 응집 및 연산(ID 13,14) 보정으로 마법 위력을 높이지만, 근섬유(ID 11)가 퇴화하여 물리 공격력이 하락합니다."
     }
   },
   {
@@ -71,18 +120,34 @@
     "type": 1,
     "description": "칼날처럼 날카로운 털과 발톱을 가진 포식자입니다. 매우 빠릅니다.",
     "stats": {
-      "maxHp": 80, "maxMp": 0, "meleeAtk": 18.0, "physDef": 0.5,
-      "dodge": 8.0, "accuracy": 8.0, "critRate": 10.0, "critDmg": 165,
-      "moveSpeed": 0.65, "maxTurns": 1
+      "maxHp": 80,
+      "maxStamina": 80,
+      "meleeAtk": 20.0,
+      "physDef": 1.0,
+      "physPen": 10.0,
+      "bleedPen": 10.0,
+      "statusResist": 10.0,
+      "accuracy": 10.0,
+      "dodge": 10.0,
+      "critRate": 8.0,
+      "critDmg": 160.0,
+      "moveSpeed": 0.65,
+      "maxTurns": 1,
+      "fireRes": -100.0,
+      "earthRes": 5.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [111],
     "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
-      "baseStats": { "20": 8, "16": 7, "15": 5 },
-      "combatStats": { "dodge": 2.5, "critRate": 2.0 },
-      "description": "신경반응/동체시력/인과율간섭(ID 20,16,15) 보정. 속도와 치명타에 올인합니다."
+      "baseStats": { "20": 20, "21": 20, "2": -15 },
+      "combatStats": {
+        "dodge": 1.5,
+        "moveSpeed": 0.05,
+        "physRes": -1.0
+      },
+      "description": "9등급 정수. 반응 속도와 가속(ID 20,21)을 강화하여 기동성을 얻으나, 골밀도(ID 2)가 낮아져 물리 저항력이 소폭 하락합니다."
     }
   },
   {
@@ -93,28 +158,21 @@
     "description": "칼날늑대 무리의 우두머리급 개체입니다. 9등급 중에서는 강력한 편이나, 화염에 매우 취약합니다.",
     "stats": {
       "maxHp": 125,
-      "maxMp": 10,
-      "maxStamina": 50,
-      "hpRegen": 0.5,
-      "mpRegen": 0.1,
+      "maxStamina": 80,
+      "hpRegen": 1.0,
       "moveSpeed": 0.6,
       "maxTurns": 1,
       "critRate": 5.0,
       "critDmg": 150.0,
-      "accuracy": 75.0,
-      "dodge": 5.0,
-      "statusResist": 2.0,
+      "accuracy": 8.0,
+      "dodge": 8.0,
+      "statusResist": 10.0,
       "bleedRes": 10.0,
-      "stunRes": 0.0,
-      "burnRes": -10.0,
-      "frozenRes": 5.0,
-      "poisonRes": -5.0,
-      "bleedPen": 5.0,
-      "meleeAtk": 18.0,
-      "physDef": 3.0,
+      "bleedPen": 10.0,
+      "meleeAtk": 20.0,
+      "physDef": 5.0,
       "physRes": 5.0,
-      "physPen": 2.0,
-      "fireRes": -20.0,
+      "fireRes": -80.0,
       "iceRes": 5.0,
       "earthRes": 5.0,
       "toxicRes": -20.0
@@ -124,13 +182,17 @@
     "essenceSkillIds": [101, 102],
     "expReward": 1,
     "essenceBonus": {
-      "baseStats": { "10": 10, "20": 5, "21": 5 },
-      "combatStats": {
-        "meleeAtk": 2.0,
-        "moveSpeed": 0.02,
-        "physPen": 0.5
+      "baseStats": {
+        "10": 15,
+        "21": 10,
+        "4": -10
       },
-      "description": "상완(ID 10) 몰입 투자. 물리 공격력과 미세한 방어 관통력을 강화합니다."
+      "combatStats": {
+        "meleeAtk": 40.0,
+        "moveSpeed": 0.05,
+        "maxMp": -30.0
+      },
+      "description": "9등급 정수. 상완 출력(ID 10)과 가속(ID 21)을 강화하지만, 마나 혈관(ID 4)이 위축되어 최대 MP가 감소합니다."
     }
   },
   {
@@ -141,26 +203,21 @@
     "description": "피 냄새에 광분하는 변종 늑대입니다. 공격력이 매우 높지만 방어력이 낮습니다.",
     "stats": {
       "maxHp": 95,
-      "maxMp": 10,
-      "maxStamina": 40,
-      "hpRegen": 0.2,
-      "moveSpeed": 0.6,
+      "maxStamina": 100,
+      "moveSpeed": 0.7,
       "maxTurns": 1,
-      "critRate": 12.0,
-      "critDmg": 180.0,
-      "accuracy": 80.0,
+      "critRate": 10.0,
+      "critDmg": 170.0,
+      "accuracy": 10.0,
       "dodge": 10.0,
-      "statusResist": 2.0,
-      "bleedRes": 5.0,
-      "burnRes": -20.0,
-      "toxicRes": -20.0,
-      "bleedPen": 10.0,
-      "meleeAtk": 20.0,
-      "physDef": 1.0,
-      "physRes": -5.0,
-      "physPen": 5.0,
-      "fireRes": -20.0,
-      "iceRes": -5.0,
+      "statusResist": 5.0,
+      "bleedPen": 15.0,
+      "meleeAtk": 25.0,
+      "physDef": 0.0,
+      "physRes": -10.0,
+      "physPen": 10.0,
+      "fireRes": -100.0,
+      "iceRes": -20.0,
       "toxicRes": -20.0
     },
     "baseActionPoints": 1,
@@ -169,15 +226,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "15": 10,
-        "17": 5,
-        "10": 5
+        "15": 20,
+        "17": 15,
+        "12": -15
       },
       "combatStats": {
-        "critRate": 3.5,
-        "critDmg": 10.0
+        "critRate": 2.0,
+        "critDmg": 10.0,
+        "physRes": -2.0
       },
-      "description": "인과율 간섭(ID 15) 특화. 치명타 확률과 피해량을 극대화합니다."
+      "description": "9등급 정수. 인과율 간섭(ID 15)과 미세 조작(ID 17)을 높여 치명타 성능을 극대화하나, 전완 강도(ID 12)가 약해져 물리 저항이 감소합니다."
     }
   },
   {
@@ -188,24 +246,22 @@
     "description": "땅을 파고드는 단단한 앞발을 가진 두더지입니다.",
     "stats": {
       "maxHp": 130,
-      "maxStamina": 60,
-      "hpRegen": 0.5,
+      "maxStamina": 100,
+      "hpRegen": 1.0,
       "moveSpeed": 0.4,
       "maxTurns": 1,
       "critRate": 2.0,
       "critDmg": 150.0,
-      "accuracy": 70.0,
-      "dodge": 2.0,
-      "statusResist": 5.0,
-      "bleedRes": 10.0,
-      "stunRes": 5.0,
-      "poisonRes": 5.0,
+      "accuracy": 8.0,
+      "dodge": 5.0,
+      "statusResist": 10.0,
+      "stunRes": 20.0,
       "meleeAtk": 15.0,
       "physDef": 5.0,
-      "physRes": 5.0,
-      "earthRes": 10.0,
-      "fireRes": -20.0,
-      "iceRes": -20.0,
+      "physRes": 10.0,
+      "earthRes": 20.0,
+      "fireRes": -80.0,
+      "iceRes": -40.0,
       "toxicRes": 5.0
     },
     "baseActionPoints": 2,
@@ -214,15 +270,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "12": 10,
-        "2": 5,
-        "1": 5
+        "12": 20,
+        "2": 15,
+        "21": -10
       },
       "combatStats": {
-        "meleeAtk": 2.0,
-        "physDef": 2.0
+        "physRes": 2.0,
+        "meleeAtk": 30.0,
+        "moveSpeed": -0.05
       },
-      "description": "전완근(ID 12)과 골밀도 보정. 악력과 물리 방어력을 제공합니다."
+      "description": "9등급 정수. 골밀도(ID 2)와 악력(ID 12)을 보정해 방어와 공격을 동시에 챙기지만, 가속(ID 21) 능력이 저하됩니다."
     }
   },
   {
@@ -232,25 +289,23 @@
     "type": 0,
     "description": "거대한 몸집을 가진 여왕 두더지입니다. 땅울림 공격을 주의해야 합니다.",
     "stats": {
-      "maxHp": 130,
-      "maxStamina": 80,
-      "hpRegen": 1.0,
-      "moveSpeed": 0.4,
+      "maxHp": 180,
+      "maxStamina": 120,
+      "hpRegen": 2.0,
+      "moveSpeed": 0.3,
       "maxTurns": 1,
       "critRate": 1.0,
       "critDmg": 150.0,
-      "accuracy": 60.0,
-      "dodge": 1.0,
-      "statusResist": 10.0,
-      "bleedRes": 15.0,
-      "stunRes": 10.0,
-      "poisonRes": 10.0,
+      "accuracy": 8.0,
+      "dodge": 2.0,
+      "statusResist": 15.0,
+      "stunRes": 30.0,
       "meleeAtk": 20.0,
-      "physDef": 5.0,
-      "physRes": 5.0,
-      "earthRes": 15.0,
-      "fireRes": -20.0,
-      "iceRes": -20.0,
+      "physDef": 10.0,
+      "physRes": 15.0,
+      "earthRes": 30.0,
+      "fireRes": -100.0,
+      "iceRes": -50.0,
       "toxicRes": 10.0
     },
     "baseActionPoints": 1,
@@ -259,14 +314,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "1": 12,
-        "2": 8
+        "1": 25,
+        "3": 10,
+        "20": -15
       },
       "combatStats": {
-        "maxHp": 40,
-        "physDef": 3.0
+        "maxHp": 60.0,
+        "hpRegen": 1.0,
+        "dodge": -2.0
       },
-      "description": "단일 스탯 최대치인 코어(ID 1) +12 투자. 초반 탱킹의 정점입니다."
+      "description": "9등급 정수. 코어(ID 1)와 대사(ID 3)를 강화하여 생존력을 높이지만, 거대해진 몸집으로 반응 속도(ID 20)가 느려집니다."
     }
   },
   {
@@ -276,23 +333,23 @@
     "type": 1,
     "description": "바위처럼 단단한 털을 가진 곰입니다. 한 방의 파괴력이 묵직합니다.",
     "stats": {
-      "maxHp": 130,
-      "maxStamina": 100,
-      "moveSpeed": 0.5,
+      "maxHp": 150,
+      "maxStamina": 120,
+      "hpRegen": 1.5,
+      "moveSpeed": 0.4,
       "maxTurns": 1,
-      "critRate": 4.0,
+      "critRate": 5.0,
       "critDmg": 160.0,
-      "accuracy": 75.0,
-      "dodge": 2.0,
-      "statusResist": 5.0,
-      "bleedRes": 10.0,
-      "stunRes": 10.0,
-      "meleeAtk": 20.0,
-      "physDef": 5.0,
-      "physRes": 5.0,
-      "earthRes": 10.0,
-      "fireRes": -15.0,
-      "iceRes": -20.0,
+      "accuracy": 8.0,
+      "dodge": 5.0,
+      "statusResist": 10.0,
+      "stunRes": 20.0,
+      "meleeAtk": 25.0,
+      "physDef": 10.0,
+      "physRes": 10.0,
+      "earthRes": 15.0,
+      "fireRes": -80.0,
+      "iceRes": -80.0,
       "toxicRes": -10.0
     },
     "baseActionPoints": 1,
@@ -301,15 +358,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "11": 10,
-        "10": 5,
-        "1": 5
+        "11": 20,
+        "10": 15,
+        "16": -10
       },
       "combatStats": {
-        "meleeAtk": 5.0,
-        "physRes": 2.0
+        "meleeAtk": 50.0,
+        "physRes": 1.0,
+        "accuracy": -2.0
       },
-      "description": "대흉근(ID 11) 보정. 묵직한 타격감과 물리 내구도를 높여줍니다."
+      "description": "9등급 정수. 상체 출력(ID 11, 10)을 크게 높이나, 둔중한 힘에 집중하느라 시력(ID 16) 보정이 감소합니다."
     }
   },
   {
@@ -320,26 +378,24 @@
     "description": "체내의 열기를 뿜어내는 붉은 도마뱀입니다.",
     "stats": {
       "maxHp": 110,
-      "maxMp": 50,
-      "maxStamina": 60,
+      "maxMp": 80,
+      "maxStamina": 80,
       "moveSpeed": 0.6,
       "maxTurns": 1,
       "critRate": 5.0,
       "critDmg": 150.0,
-      "accuracy": 70.0,
-      "dodge": 6.0,
-      "statusResist": 5.0,
-      "burnRes": 30.0,
-      "frozenRes": -20.0,
-      "meleeAtk": 10.0,
-      "magicAtk": 10.0,
-      "fireAtk": 5.0,
+      "accuracy": 10.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
+      "burnRes": 50.0,
+      "burnPen": 10.0,
+      "magicAtk": 15.0,
+      "fireAtk": 10.0,
       "physDef": 3.0,
-      "physRes": -5.0,
-      "magRes": 5.0,
-      "fireRes": 20.0,
-      "iceRes": -20.0,
-      "waterRes": -15.0
+      "magRes": 10.0,
+      "fireRes": 30.0,
+      "iceRes": -100.0,
+      "toxicRes": -20.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [115],
@@ -347,14 +403,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "18": 10,
-        "19": 10
+        "14": 20,
+        "13": 15,
+        "2": -15
       },
       "combatStats": {
-        "fireRes": 10.0,
-        "magicAtk": 2.0
+        "fireAtk": 20.0,
+        "magicAtk": 30.0,
+        "physRes": -2.0
       },
-      "description": "저항력(ID 18, 19) 특화. 환경 적응력과 마법 방어에 기여합니다."
+      "description": "9등급 정수. 속성 연산(ID 14)과 에너지 응집(ID 13)을 강화하나, 고열로 인해 골밀도(ID 2)가 약화됩니다."
     }
   },
   {
@@ -365,21 +423,21 @@
     "description": "고대 포식자의 위용을 가진 맹수입니다. 압도적인 속도로 적을 유린합니다.",
     "stats": {
       "maxHp": 350,
-      "maxStamina": 150,
-      "moveSpeed": 0.8,
-      "maxTurns": 1,
+      "maxStamina": 200,
+      "moveSpeed": 0.9,
+      "maxTurns": 2,
       "critRate": 15.0,
-      "critDmg": 175.0,
-      "accuracy": 85.0,
-      "dodge": 14.0,
+      "critDmg": 180.0,
+      "accuracy": 12.0,
+      "dodge": 15.0,
       "statusResist": 10.0,
-      "bleedPen": 10.0,
+      "bleedPen": 15.0,
       "meleeAtk": 40.0,
-      "physDef": 10.0,
+      "physDef": 8.0,
       "physRes": 10.0,
-      "earthRes": 5.0,
-      "fireRes": -10.0,
-      "holyRes": -15.0
+      "earthRes": 10.0,
+      "fireRes": -80.0,
+      "holyRes": -100.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [116],
@@ -387,16 +445,23 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "20": 20,
-        "10": 15,
-        "16": 10
+        "20": 40,
+        "21": 30,
+        "18": -16
       },
       "combatStats": {
-        "meleeAtk": 12.0,
-        "dodge": 5.0,
-        "moveSpeed": 0.2
+        "dodge": 3.0,
+        "moveSpeed": 0.08,
+        "fireRes": -2.0,
+        "iceRes": -2.0,
+        "lightningRes": -2.0,
+        "earthRes": -2.0,
+        "holyRes": -2.0,
+        "darkRes": -2.0,
+        "chaosRes": -2.0,
+        "toxicRes": -2.0
       },
-      "description": "8등급 정수(합계 45). 신경 반응(ID 20)에 20을 투자하여 기동전의 우위를 점합니다."
+      "description": "8등급 정수. 극한의 반응 속도(ID 20, 21)를 부여하지만, 신경이 예민해져 원소 저항력(ID 18)이 하락합니다."
     }
   },
   {
@@ -406,25 +471,24 @@
     "type": 0,
     "description": "이성을 잃고 흉포해진 수인입니다. 강력한 완력과 생존력을 겸비했습니다.",
     "stats": {
-      "maxHp": 350,
-      "maxMp": 30,
-      "maxStamina": 120,
+      "maxHp": 450,
+      "maxStamina": 180,
       "hpRegen": 5.0,
-      "moveSpeed": 0.7,
+      "moveSpeed": 0.8,
       "maxTurns": 1,
-      "critRate": 8.0,
-      "critDmg": 150.0,
-      "accuracy": 80.0,
-      "dodge": 8.0,
-      "statusResist": 15.0,
+      "critRate": 10.0,
+      "critDmg": 160.0,
+      "accuracy": 12.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
       "bleedRes": 20.0,
       "bleedPen": 15.0,
-      "meleeAtk": 40.0,
+      "meleeAtk": 50.0,
       "physDef": 10.0,
       "physRes": 10.0,
       "darkRes": 10.0,
-      "fireRes": -15.0,
-      "holyRes": -15.0
+      "fireRes": -100.0,
+      "holyRes": -100.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [208],
@@ -432,16 +496,16 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "10": 25,
-        "1": 10,
-        "3": 10
+        "10": 40,
+        "1": 35,
+        "8": -16
       },
       "combatStats": {
-        "meleeAtk": 15.0,
-        "maxHp": 50,
-        "hpRegen": 3.0
+        "meleeAtk": 75.0,
+        "maxHp": 80.0,
+        "mpRegen": -1.5
       },
-      "description": "8등급 정수(합계 45). 단일 스탯 최대치인 상완(ID 10) +25 투자. 압도적 완력을 선사합니다."
+      "description": "8등급 정수. 파괴적인 상체 출력(ID 10)과 생명력(ID 1)을 얻으나, 야수화로 인해 마나 계율(ID 8)을 잃습니다."
     }
   },
   {
@@ -449,25 +513,25 @@
     "name": "엘더 구울",
     "tier": 9,
     "type": 2,
-    "description": "오랜 시간 동굴에 머물며 비대해진 구울입니다. 재생력이 일반 구울보다 뛰어납니다.",
+    "description": "어둠의 마법을 사용하는 구울입니다.",
     "stats": {
       "maxHp": 130,
       "maxStamina": 100,
-      "hpRegen": 3.0,
+      "hpRegen": 2.0,
       "moveSpeed": 0.4,
       "maxTurns": 1,
       "critRate": 2.0,
       "critDmg": 150.0,
-      "accuracy": 70.0,
-      "dodge": 1.5,
-      "statusResist": 5.0,
+      "accuracy": 8.0,
+      "dodge": 5.0,
+      "statusResist": 10.0,
       "poisonRes": 30.0,
-      "darkRes": 10.0,
-      "meleeAtk": 18.0,
+      "meleeAtk": 20.0,
       "physDef": 5.0,
       "physRes": 5.0,
-      "fireRes": -20.0,
-      "holyRes": -20.0
+      "fireRes": -80.0,
+      "holyRes": -80.0,
+      "darkRes": 10.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [108, 209],
@@ -475,14 +539,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "1": 12,
-        "3": 8
+        "1": 15,
+        "3": 10,
+        "21": -10
       },
       "combatStats": {
-        "maxHp": 50,
-        "hpRegen": 2.5
+        "maxHp": 50.0,
+        "hpRegen": 1.0,
+        "moveSpeed": -0.05
       },
-      "description": "9등급 정수(합계 20). 코어(ID 1)에 집중하여 압도적인 생존력을 확보합니다."
+      "description": "9등급 정수. 생명력과 재생력(ID 1, 3)을 얻지만, 부패한 신체로 인해 이동 속도(ID 21)가 감소합니다."
     }
   },
   {
@@ -493,22 +559,22 @@
     "description": "마력에 의해 움직이는 해골 병사입니다. 통증을 느끼지 못합니다.",
     "stats": {
       "maxHp": 110,
-      "maxStamina": 80,
+      "maxStamina": 100,
       "moveSpeed": 0.5,
       "maxTurns": 2,
       "critRate": 5.0,
       "critDmg": 150.0,
-      "accuracy": 75.0,
-      "dodge": 5.0,
+      "accuracy": 10.0,
+      "dodge": 8.0,
       "statusResist": 10.0,
       "bleedRes": 100.0,
       "poisonRes": 100.0,
       "meleeAtk": 15.0,
-      "physDef": 3.0,
+      "physDef": 5.0,
       "physRes": 5.0,
-      "darkRes": 10.0,
-      "holyRes": -20.0,
-      "fireRes": -10.0
+      "fireRes": -20.0,
+      "holyRes": -100.0,
+      "darkRes": 10.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [210],
@@ -516,14 +582,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "2": 10,
-        "10": 10
+        "2": 20,
+        "10": 15,
+        "1": -15
       },
       "combatStats": {
-        "physDef": 2.0,
-        "meleeAtk": 3.0
+        "physRes": 1.0,
+        "meleeAtk": 40.0,
+        "maxHp": -40.0
       },
-      "description": "9등급 정수(합계 20). 골밀도와 상완 스탯을 골고루 보정합니다."
+      "description": "9등급 정수. 뼈의 강도와 완력(ID 2, 10)을 강화하나, 장기가 없어 코어 생명력(ID 1)이 낮아집니다."
     }
   },
   {
@@ -534,22 +602,22 @@
     "description": "죽음을 알리는 비명소리를 내는 영혼입니다. 마법 방어력이 높습니다.",
     "stats": {
       "maxHp": 90,
-      "maxMp": 150,
-      "maxStamina": 50,
+      "maxMp": 180,
+      "maxStamina": 60,
       "moveSpeed": 0.6,
       "maxTurns": 1,
-      "critRate": 4.0,
+      "critRate": 5.0,
       "critDmg": 150.0,
-      "accuracy": 80.0,
+      "accuracy": 12.0,
       "dodge": 15.0,
-      "statusResist": 15.0,
+      "statusResist": 20.0,
       "frozenRes": 20.0,
-      "magicAtk": 18.0,
-      "magRes": 25.0,
+      "magicAtk": 20.0,
+      "magRes": 20.0,
       "physRes": 50.0,
-      "darkRes": 10.0,
-      "holyRes": -20.0,
-      "fireRes": -10.0
+      "fireRes": -20.0,
+      "holyRes": -100.0,
+      "darkRes": 15.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [211, 212],
@@ -557,14 +625,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "18": 12,
-        "13": 8
+        "18": 20,
+        "13": 15,
+        "10": -20
       },
       "combatStats": {
-        "magRes": 10.0,
-        "magicAtk": 5.0
+        "magRes": 3.0,
+        "magicAtk": 30.0,
+        "meleeAtk": -40.0
       },
-      "description": "9등급 정수(합계 20). 침식 저항(ID 18)을 높여 마법 대항력을 키웁니다."
+      "description": "9등급 정수. 영적인 저항과 마력(ID 18, 13)을 강화하지만, 물리적 실체가 약해져 근접 공격력(ID 10)이 크게 감소합니다."
     }
   },
   {
@@ -574,22 +644,22 @@
     "type": 2,
     "description": "죽음의 기운을 쫓는 흉측한 괴수입니다. 적의 생명력을 갈구합니다.",
     "stats": {
-      "maxHp": 320,
-      "maxStamina": 120,
-      "moveSpeed": 0.7,
+      "maxHp": 350,
+      "maxStamina": 100,
+      "moveSpeed": 0.8,
       "maxTurns": 2,
-      "critRate": 10.0,
+      "critRate": 5.0,
       "critDmg": 160.0,
-      "accuracy": 85.0,
-      "dodge": 8.0,
-      "statusResist": 5.0,
-      "bleedPen": 10.0,
-      "meleeAtk": 35.0,
+      "accuracy": 10.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
+      "bleedPen": 15.0,
+      "meleeAtk": 40.0,
       "physDef": 10.0,
       "physRes": 10.0,
-      "darkRes": 15.0,
-      "holyRes": -15.0,
-      "fireRes": -5.0
+      "fireRes": -80.0,
+      "holyRes": -100.0,
+      "darkRes": 10.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [213],
@@ -597,16 +667,16 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "10": 25,
-        "15": 10,
-        "17": 10
+        "10": 40,
+        "15": 25,
+        "16": -16
       },
       "combatStats": {
-        "meleeAtk": 10.0,
-        "critRate": 4.0,
-        "critDmg": 15.0
+        "meleeAtk": 75.0,
+        "critRate": 2.0,
+        "accuracy": -3.0
       },
-      "description": "8등급 정수(합계 45). 물리 화력과 치명타 관련 스탯을 균형 있게 제공합니다."
+      "description": "8등급 정수. 야수와 같은 완력과 운(ID 10, 15)을 얻으나, 광기로 인해 정밀한 시력(ID 16)을 일부 잃습니다."
     }
   },
   {
@@ -616,26 +686,27 @@
     "type": 2,
     "description": "구울들의 왕입니다. 주변 시체들을 조종하거나 강력한 오라를 내뿜습니다.",
     "stats": {
-      "maxHp": 350,
-      "maxMp": 100,
-      "maxStamina": 150,
+      "maxHp": 450,
+      "maxMp": 150,
+      "maxStamina": 80,
+      "hpRegen": 1.5,
       "moveSpeed": 0.7,
       "maxTurns": 2,
-      "critRate": 5.0,
-      "critDmg": 150.0,
-      "accuracy": 85.0,
-      "dodge": 4.0,
-      "statusResist": 10.0,
+      "critRate": 3.0,
+      "critDmg": 155.0,
+      "accuracy": 10.0,
+      "dodge": 5.0,
+      "statusResist": 15.0,
       "poisonPen": 15.0,
       "meleeAtk": 25.0,
       "magicAtk": 15.0,
       "physDef": 10.0,
       "physRes": 10.0,
-      "magRes": 5.0,
-      "darkRes": 10.0,
-      "toxicRes": 15.0,
-      "holyRes": -15.0,
-      "fireRes": -10.0
+      "magRes": 10.0,
+      "fireRes": -90.0,
+      "holyRes": -100.0,
+      "darkRes": 15.0,
+      "toxicRes": 20.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [214],
@@ -643,14 +714,16 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "1": 25,
-        "2": 20
+        "1": 40,
+        "2": 35,
+        "15": -16
       },
       "combatStats": {
-        "maxHp": 100,
-        "physRes": 5.0
+        "maxHp": 80.0,
+        "hpRegen": 1.5,
+        "critRate": -2.0
       },
-      "description": "8등급 정수(합계 45). 극단적인 물리 탱킹 스탯을 제공합니다."
+      "description": "8등급 정수. 군주의 강인한 육체(ID 1, 2)를 계승하지만, 무거운 몸으로 인해 인과율 간섭(ID 15) 능력이 떨어집니다."
     }
   },
   {
@@ -660,24 +733,24 @@
     "type": 2,
     "description": "머리 없는 기사입니다. 거대한 검을 휘둘러 영혼을 수확합니다.",
     "stats": {
-      "maxHp": 850,
-      "maxMp": 100,
-      "maxStamina": 200,
+      "maxHp": 900,
+      "maxMp": 120,
+      "maxStamina": 150,
       "moveSpeed": 0.9,
       "maxTurns": 2,
-      "critRate": 15.0,
-      "critDmg": 180.0,
-      "accuracy": 90.0,
-      "dodge": 12.0,
+      "critRate": 8.0,
+      "critDmg": 170.0,
+      "accuracy": 13.0,
+      "dodge": 10.0,
       "statusResist": 15.0,
-      "stunPen": 10.0,
-      "meleeAtk": 55.0,
+      "stunPen": 20.0,
+      "meleeAtk": 80.0,
       "magicAtk": 20.0,
       "physDef": 25.0,
       "physRes": 15.0,
       "magRes": 10.0,
-      "darkRes": 20.0,
-      "holyRes": -10.0
+      "holyRes": -100.0,
+      "darkRes": 20.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [215, 216],
@@ -685,16 +758,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "10": 60,
-        "11": 20,
-        "17": 20
+        "10": 50,
+        "17": 50,
+        "20": -20
       },
       "combatStats": {
-        "meleeAtk": 30.0,
-        "critDmg": 25.0,
-        "physPen": 10.0
+        "meleeAtk": 100.0,
+        "critDmg": 10.0,
+        "dodge": -4.0
       },
-      "description": "7등급 정수(합계 100). 상완(ID 10) 몰빵 투자로 전사 빌드의 중반 종결 정수입니다."
+      "description": "7등급 정수. 파괴적인 완력과 정밀 조작(ID 10, 17)을 제공하나, 반응 속도(ID 20)가 무뎌져 회피가 어려워집니다."
     }
   },
   {
@@ -702,27 +775,29 @@
     "name": "데스나이트",
     "tier": 6,
     "type": 2,
-    "description": "죽음의 군주입니다. 암흑 마력과 정교한 검술로 살아있는 자들을 말살합니다.",
+    "description": "죽음의 군주입니다. 암혹 마력과 정교한 검술로 살아있는 자들을 말살합니다.",
     "stats": {
-      "maxHp": 2200,
-      "maxMp": 300,
-      "maxStamina": 400,
+      "maxHp": 2500,
+      "maxMp": 400,
+      "maxStamina": 250,
+      "hpRegen": 5.0,
       "moveSpeed": 1.1,
-      "maxTurns": 2,
-      "critRate": 20.0,
-      "critDmg": 200.0,
-      "accuracy": 95.0,
-      "dodge": 18.0,
-      "statusResist": 25.0,
-      "bleedPen": 15.0,
-      "meleeAtk": 90.0,
-      "magicAtk": 40.0,
-      "darkAtk": 20.0,
-      "physDef": 45.0,
+      "maxTurns": 3,
+      "critRate": 15.0,
+      "critDmg": 180.0,
+      "accuracy": 15.0,
+      "dodge": 15.0,
+      "statusResist": 20.0,
+      "bleedPen": 25.0,
+      "meleeAtk": 160.0,
+      "magicAtk": 80.0,
+      "physDef": 40.0,
       "physRes": 20.0,
-      "magRes": 15.0,
+      "magRes": 20.0,
+      "darkAtk": 50.0,
+      "holyRes": -100.0,
       "darkRes": 30.0,
-      "holyRes": -5.0
+      "darkPen": 20.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [215, 216],
@@ -730,17 +805,16 @@
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
-        "10": 100,
-        "1": 40,
-        "13": 40
+        "10": 60,
+        "13": 60,
+        "3": -30
       },
       "combatStats": {
-        "meleeAtk": 50.0,
-        "physRes": 10.0,
-        "magRes": 10.0,
-        "statusResist": 15.0
+        "meleeAtk": 120.0,
+        "magicAtk": 80.0,
+        "hpRegen": -3.0
       },
-      "description": "6등급 정수(합계 180). 공/방/마의 완벽한 밸런스. 정수 하나로 캐릭터 급이 바뀝니다."
+      "description": "6등급 정수. 압도적인 문무 겸비 스탯(ID 10, 13)을 부여하지만, 대사 기능(ID 3)을 마력으로 치환하여 재생력을 상실합니다."
     }
   },
   {
@@ -751,20 +825,21 @@
     "description": "사막의 바위 뒤에 숨어 돌이나 독병을 던지는 비겁한 생물입니다.",
     "stats": {
       "maxHp": 110,
-      "maxStamina": 100,
+      "maxStamina": 110,
       "moveSpeed": 0.5,
       "maxTurns": 1,
       "critRate": 6.0,
       "critDmg": 150.0,
-      "accuracy": 85.0,
+      "accuracy": 15.0,
       "dodge": 8.0,
       "poisonPen": 10.0,
       "meleeAtk": 18.0,
-      "toxicAtk": 5.0,
+      "toxicAtk": 10.0,
       "physDef": 2.0,
-      "physRes": -10.0,
+      "physRes": 5.0,
+      "fireRes": -80.0,
       "toxicRes": 20.0,
-      "fireRes": -20.0
+      "statusResist": 10.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [217],
@@ -772,15 +847,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "16": 10,
-        "23": 5,
-        "15": 5
+        "16": 15,
+        "23": 10,
+        "10": -8
       },
       "combatStats": {
-        "accuracy": 5.0,
-        "critRate": 2.5
+        "accuracy": 4.0,
+        "critRate": 1.0,
+        "meleeAtk": -20.0
       },
-      "description": "9등급 정수(합계 20). 동체 시력과 공간 지각(ID 16, 23)을 보정하여 명중률을 높입니다."
+      "description": "9등급 정수. 시각적 정밀도(ID 16, 23)를 높여 명중률을 얻지만, 근섬유(ID 10)의 위축으로 근접 공격력이 감소합니다."
     }
   },
   {
@@ -796,14 +872,14 @@
       "maxTurns": 1,
       "critRate": 2.0,
       "critDmg": 150.0,
-      "accuracy": 80.0,
+      "accuracy": 10.0,
       "dodge": 2.0,
-      "statusResist": 10.0,
+      "statusResist": 15.0,
       "meleeAtk": 15.0,
       "physDef": 5.0,
       "physRes": 5.0,
-      "earthRes": 10.0,
-      "fireRes": -20.0
+      "fireRes": -80.0,
+      "earthRes": 10.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [218],
@@ -811,14 +887,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "2": 12,
-        "1": 8
+        "2": 18,
+        "1": 7,
+        "20": -10
       },
       "combatStats": {
-        "physDef": 4.0,
-        "maxHp": 30
+        "physRes": 2.0,
+        "maxHp": 45.0,
+        "dodge": -3.0
       },
-      "description": "9등급 정수(합계 20). 골밀도(ID 2) 몰빵 투자로 초반 물리 방어의 핵심이 됩니다."
+      "description": "9등급 정수. 골밀도와 생명력(ID 2, 1)을 강화해 맷집을 챙기는 대신, 유연성(ID 20)이 떨어져 회피율이 하락합니다."
     }
   },
   {
@@ -835,17 +913,18 @@
       "maxTurns": 1,
       "critRate": 8.0,
       "critDmg": 150.0,
-      "accuracy": 85.0,
+      "accuracy": 12.0,
       "dodge": 5.0,
-      "darkPen": 5.0,
       "meleeAtk": 5.0,
-      "magicAtk": 15.0,
-      "darkAtk": 5.0,
+      "magicAtk": 20.0,
+      "darkAtk": 10.0,
       "physDef": 1.0,
-      "magRes": 5.0,
-      "darkRes": 10.0,
-      "holyRes": -20.0,
-      "fireRes": 5.0
+      "magRes": 10.0,
+      "darkRes": 15.0,
+      "fireRes": 5.0,
+      "holyRes": -100.0,
+      "darkPen": 10.0,
+      "statusResist": 10.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [219],
@@ -853,14 +932,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "13": 10,
-        "9": 10
+        "13": 15,
+        "4": 10,
+        "2": -10
       },
       "combatStats": {
-        "magicAtk": 5.0,
-        "mpRegen": 2.0
+        "magicAtk": 35.0,
+        "maxMp": 40.0,
+        "physDef": -3.0
       },
-      "description": "9등급 정수(합계 20). 에너지 응집과 계율 준수(ID 13, 9)를 통해 마법 화력과 유지를 챙깁니다."
+      "description": "9등급 정수. 마력 응집력(ID 13, 4)을 강화해 화력을 높이지만, 뼈가 약해져(ID 2) 물리 방어력이 크게 하락합니다."
     }
   },
   {
@@ -872,23 +953,24 @@
     "stats": {
       "maxHp": 350,
       "maxStamina": 300,
-      "moveSpeed": 0.6,
+      "hpRegen": 1.5,
+      "moveSpeed": 0.5,
       "maxTurns": 2,
       "critRate": 5.0,
-      "critDmg": 150.0,
-      "accuracy": 70.0,
-      "statusResist": 20.0,
-      "stunRes": 50.0,
+      "critDmg": 160.0,
+      "accuracy": 10.0,
+      "statusResist": 15.0,
       "bleedRes": 100.0,
+      "stunRes": 50.0,
       "poisonRes": 100.0,
       "meleeAtk": 35.0,
-      "earthAtk": 5.0,
       "physDef": 10.0,
       "physRes": 10.0,
-      "earthRes": 15.0,
       "magRes": 5.0,
-      "fireRes": 5.0,
-      "iceRes": -15.0
+      "fireRes": 10.0,
+      "iceRes": -80.0,
+      "earthRes": 20.0,
+      "earthAtk": 10.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [220],
@@ -896,14 +978,16 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "2": 25,
-        "12": 20
+        "2": 40,
+        "12": 35,
+        "21": -16
       },
       "combatStats": {
-        "physDef": 10.0,
-        "physRes": 5.0
+        "maxHp": 80.0,
+        "physRes": 2.0,
+        "moveSpeed": -0.08
       },
-      "description": "8등급 정수(합계 45). 골밀도(ID 2) +25 보정. 움직이는 성벽이 될 수 있습니다."
+      "description": "8등급 정수. 신체를 암석화(ID 2, 12)하여 체력과 물리 저항을 높이지만, 이동 속도(ID 21)가 크게 감소합니다."
     }
   },
   {
@@ -915,22 +999,24 @@
     "stats": {
       "maxHp": 320,
       "maxStamina": 250,
-      "moveSpeed": 0.7,
+      "hpRegen": 1.0,
+      "moveSpeed": 0.6,
       "maxTurns": 2,
-      "critRate": 10.0,
-      "critDmg": 160.0,
-      "accuracy": 75.0,
-      "dodge": 2.0,
-      "statusResist": 15.0,
+      "critRate": 8.0,
+      "critDmg": 170.0,
+      "accuracy": 12.0,
+      "dodge": 5.0,
+      "statusResist": 10.0,
       "bleedRes": 100.0,
-      "poisonRes": 100.0,
       "stunRes": 30.0,
+      "poisonRes": 100.0,
       "meleeAtk": 40.0,
       "physDef": 10.0,
-      "physRes": 10.0,
+      "physRes": 8.0,
       "magRes": 5.0,
-      "earthRes": 10.0,
-      "iceRes": -15.0
+      "iceRes": -85.0,
+      "earthRes": 15.0,
+      "physPen": 5.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [220],
@@ -938,15 +1024,16 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "10": 20,
-        "11": 15,
-        "1": 10
+        "10": 40,
+        "11": 30,
+        "16": -15
       },
       "combatStats": {
-        "meleeAtk": 12.0,
-        "physDef": 5.0
+        "meleeAtk": 75.0,
+        "physPen": 2.0,
+        "accuracy": -3.0
       },
-      "description": "8등급 정수(합계 45). 상완과 대흉근 보정으로 강력한 완력을 선사합니다."
+      "description": "8등급 정수. 상체 출력(ID 10, 11)을 강화하여 파괴력을 얻는 대신, 시각 지각(ID 16) 저하로 명중률이 감소합니다."
     }
   },
   {
@@ -956,27 +1043,27 @@
     "type": 3,
     "description": "모래 폭풍에서 태어난 정령입니다. 물리 공격을 흘려보내는 능력이 있습니다.",
     "stats": {
-      "maxHp": 240,
-      "maxMp": 200,
+      "maxHp": 220,
+      "maxMp": 300,
       "maxStamina": 150,
-      "moveSpeed": 0.8,
+      "mpRegen": 2.0,
+      "moveSpeed": 0.9,
       "maxTurns": 2,
       "critRate": 5.0,
       "critDmg": 150.0,
-      "accuracy": 80.0,
-      "dodge": 25.0,
+      "accuracy": 15.0,
+      "dodge": 20.0,
       "statusResist": 10.0,
       "bleedRes": 100.0,
-      "poisonRes": 50.0,
-      "meleeAtk": 10.0,
-      "magicAtk": 25.0,
-      "earthAtk": 5.0,
-      "physDef": 5.0,
-      "physRes": 30.0,
-      "magRes": 5.0,
-      "earthRes": 20.0,
+      "poisonRes": 100.0,
+      "magicAtk": 30.0,
+      "earthAtk": 15.0,
+      "physRes": 15.0,
+      "magRes": 10.0,
       "fireRes": 10.0,
-      "iceRes": -15.0
+      "iceRes": -100.0,
+      "earthRes": 25.0,
+      "magPen": 5.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [222, 223],
@@ -984,14 +1071,16 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "20": 25,
-        "24": 20
+        "20": 40,
+        "24": 30,
+        "1": -16
       },
       "combatStats": {
-        "dodge": 10.0,
-        "accuracy": 5.0
+        "dodge": 3.0,
+        "moveSpeed": 0.08,
+        "maxHp": -80.0
       },
-      "description": "8등급 정수(합계 45). 신경 반응(ID 20) 몰빵. 적의 공격을 회피하는 데 특화됩니다."
+      "description": "8등급 정수. 신체를 입자화(ID 20, 24)하여 회피를 극대화하지만, 코어 밀도(ID 1) 저하로 생명력이 급감합니다."
     }
   },
   {
@@ -1001,23 +1090,26 @@
     "type": 1,
     "description": "모래 속을 헤엄치는 거대 벌레입니다. 갑작스러운 기습 공격이 특징입니다.",
     "stats": {
-      "maxHp": 300,
-      "maxStamina": 200,
+      "maxHp": 280,
+      "maxStamina": 220,
+      "hpRegen": 2.0,
       "moveSpeed": 0.8,
       "maxTurns": 1,
       "critRate": 12.0,
-      "critDmg": 170.0,
-      "accuracy": 85.0,
+      "critDmg": 180.0,
+      "accuracy": 18.0,
       "dodge": 10.0,
       "statusResist": 5.0,
-      "bleedRes": 20.0,
-      "poisonRes": 10.0,
+      "bleedRes": 30.0,
+      "poisonRes": 50.0,
       "meleeAtk": 35.0,
-      "physDef": 8.0,
+      "physDef": 5.0,
       "physRes": 5.0,
-      "earthRes": 10.0,
-      "iceRes": -15.0,
-      "fireRes": -10.0
+      "fireRes": -20.0,
+      "iceRes": -90.0,
+      "earthRes": 15.0,
+      "physPen": 10.0,
+      "toxicAtk": 10.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [224],
@@ -1025,15 +1117,16 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "16": 20,
-        "23": 20,
-        "10": 5
+        "17": 40,
+        "23": 35,
+        "18": -16
       },
       "combatStats": {
-        "accuracy": 8.0,
-        "critRate": 4.0
+        "critDmg": 8.0,
+        "physPen": 2.0,
+        "physRes": -2.0
       },
-      "description": "8등급 정수(합계 45). 정밀도 관련 스탯 보정으로 필중 공격을 지향합니다."
+      "description": "8등급 정수. 공격 시 미세 조작과 지각(ID 17, 23)을 강화하나, 외피의 저항 능력(ID 18)이 약화됩니다."
     }
   },
   {
@@ -1043,50 +1136,57 @@
     "type": 1,
     "description": "사막의 재앙이라 불리는 거대 괴수입니다. 맹독을 내뿜으며 모든 것을 삼킵니다.",
     "stats": {
-      "maxHp": 5500,
+      "maxHp": 6500,
       "maxMp": 500,
-      "maxStamina": 1000,
-      "moveSpeed": 1.3,
+      "maxStamina": 1200,
+      "moveSpeed": 1.4,
       "maxTurns": 2,
-      "critRate": 15.0,
-      "critDmg": 200.0,
-      "accuracy": 90.0,
-      "dodge": 15.0,
-      "statusResist": 25.0,
-      "bleedRes": 40.0,
-      "stunRes": 30.0,
+      "critRate": 18.0,
+      "critDmg": 220.0,
+      "accuracy": 18.0,
+      "dodge": 18.0,
+      "statusResist": 10.0,
+      "bleedRes": 50.0,
+      "stunRes": 40.0,
       "poisonRes": 100.0,
-      "poisonPen": 20.0,
-      "meleeAtk": 200.0,
+      "poisonPen": 30.0,
+      "meleeAtk": 250.0,
       "magicAtk": 100.0,
-      "toxicAtk": 50.0,
-      "earthAtk": 30.0,
-      "physDef": 75.0,
-      "physRes": 20.0,
-      "magRes": 15.0,
+      "physDef": 50.0,
+      "physRes": 25.0,
+      "magRes": 25.0,
+      "fireRes": 25.0,
+      "iceRes": -80.0,
+      "earthAtk": 50.0,
+      "toxicAtk": 80.0,
       "earthRes": 25.0,
-      "toxicRes": 50.0,
-      "fireRes": 10.0,
-      "iceRes": -5.0,
-      "physPen": 10.0
+      "toxicRes": 70.0,
+      "physPen": 25.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [225, 226],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [
+      225,
+      226
+    ],
+    "essenceSkillIds": [
+      101,
+      102
+    ],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
-        "10": 170,
-        "1": 60,
-        "15": 50
+        "1": 80,
+        "10": 80,
+        "15": 80,
+        "6": -80
       },
       "combatStats": {
-        "meleeAtk": 120.0,
-        "maxHp": 500,
-        "toxicAtk": 50.0,
-        "physPen": 15.0
+        "maxHp": 160.0,
+        "meleeAtk": 150.0,
+        "critRate": 4.0,
+        "maxStamina": -160.0
       },
-      "description": "5등급 정수(합계 280). 단일 최대 투자 상완(ID 10) +170. 중반부 물리 파괴력의 정점입니다."
+      "description": "5등급 정수. 괴수급 근력과 생명력, 인과율 간섭(ID 1, 10, 15)을 얻어 파괴적인 성능을 발휘하지만, 거대해진 몸집으로 인해 심폐기능(ID 6)이 저하되어 스태미나가 급감합니다."
     }
   },
   {
@@ -1096,19 +1196,20 @@
     "type": 0,
     "description": "조잡한 검을 든 고블린입니다.",
     "stats": {
-      "maxHp": 110,
+      "maxHp": 120,
       "maxStamina": 100,
       "moveSpeed": 0.5,
       "maxTurns": 1,
       "critRate": 5.0,
       "critDmg": 150.0,
-      "accuracy": 70.0,
-      "dodge": 6.0,
-      "meleeAtk": 18.0,
-      "physDef": 3.0,
+      "accuracy": 75.0,
+      "dodge": 8.0,
+      "meleeAtk": 20.0,
+      "physDef": 5.0,
       "physRes": 5.0,
-      "fireRes": -20.0,
-      "darkRes": 5.0
+      "fireRes": -80.0,
+      "darkRes": 5.0,
+      "statusResist": 10.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [101, 102],
@@ -1116,14 +1217,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "10": 10,
-        "12": 10
+        "10": 15,
+        "12": 10,
+        "4": -5
       },
       "combatStats": {
-        "meleeAtk": 4.5,
-        "physDef": 1.0
+        "meleeAtk": 40.0,
+        "physRes": 1.0,
+        "maxMp": -25.0
       },
-      "description": "9등급 정수(합계 20). 상완과 전완(ID 10, 12)에 균등 투자하여 기본 공격력을 보강합니다."
+      "description": "9등급 정수. 근력(ID 10, 12)을 강화하여 공격력을 얻는 대신, 마력 혈관(ID 4)이 위축되어 최대 MP가 감소합니다."
     }
   },
   {
@@ -1133,21 +1236,22 @@
     "type": 0,
     "description": "풀숲에 숨어 독화살을 쏘는 고블린입니다. 기동성이 좋고 시야가 넓습니다.",
     "stats": {
-      "maxHp": 90,
-      "maxStamina": 120,
-      "moveSpeed": 0.6,
+      "maxHp": 95,
+      "maxStamina": 130,
+      "moveSpeed": 0.65,
       "maxTurns": 1,
-      "critRate": 8.0,
+      "critRate": 10.0,
       "critDmg": 160.0,
       "accuracy": 85.0,
-      "dodge": 10.0,
-      "poisonPen": 5.0,
+      "dodge": 12.0,
+      "poisonPen": 10.0,
       "meleeAtk": 15.0,
-      "toxicAtk": 5.0,
+      "toxicAtk": 10.0,
       "physDef": 2.0,
       "physRes": 2.0,
-      "fireRes": -20.0,
-      "toxicRes": 10.0
+      "fireRes": -90.0,
+      "toxicRes": 15.0,
+      "statusResist": 5.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [106, 107],
@@ -1155,14 +1259,16 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "16": 12,
-        "20": 8
+        "16": 20,
+        "21": 5,
+        "1": -10
       },
       "combatStats": {
-        "accuracy": 6.0,
-        "critRate": 3.0
+        "accuracy": 2.0,
+        "moveSpeed": 0.05,
+        "maxHp": -50.0
       },
-      "description": "9등급 정수(합계 20). 동체시력(ID 16)에 몰빵하여 원거리 명중률에 기여합니다."
+      "description": "9등급 정수. 시각과 반응 속도(ID 16, 21)를 극대화하는 대신, 신체 내구도(ID 1)를 소모하여 생명력이 크게 감소합니다."
     }
   },
   {
@@ -1172,21 +1278,22 @@
     "type": 0,
     "description": "고블린 중에서도 비정상적으로 거대해진 개체입니다.",
     "stats": {
-      "maxHp": 850,
-      "maxMp": 50,
-      "maxStamina": 200,
-      "moveSpeed": 0.8,
-      "maxTurns": 2,
-      "critRate": 12.0,
-      "critDmg": 180.0,
-      "accuracy": 75.0,
-      "dodge": 8.0,
-      "meleeAtk": 70.0,
+      "maxHp": 900,
+      "maxMp": 100,
+      "maxStamina": 150,
+      "moveSpeed": 0.7,
+      "maxTurns": 1,
+      "critRate": 10.0,
+      "critDmg": 160.0,
+      "accuracy": 13.0,
+      "dodge": 13.0,
+      "statusResist": 10.0,
+      "stunPen": 20.0,
+      "meleeAtk": 80.0,
       "physDef": 25.0,
-      "physRes": 10.0,
-      "fireRes": -10.0,
-      "earthRes": 10.0,
-      "stunPen": 10.0
+      "physRes": 15.0,
+      "fireRes": -80.0,
+      "earthRes": 15.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -1195,16 +1302,18 @@
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "10": 60,
-        "1": 25,
-        "11": 15
+        "1": 45,
+        "10": 50,
+        "11": 40,
+        "20": -18
       },
       "combatStats": {
-        "meleeAtk": 40.0,
-        "maxHp": 150,
-        "physPen": 8.0
+        "maxHp": 90.0,
+        "meleeAtk": 75.0,
+        "physRes": 3.0,
+        "dodge": -3.0
       },
-      "description": "7등급 정수(합계 100). 상완(ID 10)에 +60을 투자하여 폭발적인 근력을 선사합니다."
+      "description": "7등급 정수. 거대한 골격과 상체 출력(ID 1, 10, 11)을 강화하여 압도적인 파괴력을 얻지만, 비대해진 몸으로 인해 반응 속도(ID 20)가 크게 저하됩니다."
     }
   },
   {
@@ -1218,17 +1327,19 @@
       "maxStamina": 150,
       "moveSpeed": 0.6,
       "maxTurns": 2,
-      "critRate": 8.0,
-      "critDmg": 160.0,
-      "accuracy": 70.0,
+      "critRate": 5.0,
+      "critDmg": 150.0,
+      "accuracy": 75.0,
       "dodge": 5.0,
       "meleeAtk": 35.0,
       "earthAtk": 5.0,
       "physDef": 10.0,
       "physRes": 10.0,
       "earthRes": 15.0,
-      "iceRes": -15.0,
-      "bleedRes": 20.0
+      "iceRes": -80.0,
+      "bleedRes": 20.0,
+      "statusResist": 10.0,
+      "earthPen": 15.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -1237,15 +1348,17 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "2": 25,
-        "1": 12,
-        "12": 8
+        "2": 30,
+        "1": 15,
+        "12": 5,
+        "20": -15
       },
       "combatStats": {
-        "physDef": 8.0,
-        "maxHp": 60
+        "maxHp": 70.0,
+        "physRes": 1.5,
+        "dodge": -2.0
       },
-      "description": "8등급 정수(합계 45). 골밀도(ID 2)에 25를 투자하여 뼈의 강도를 비약적으로 높입니다."
+      "description": "8등급 정수. 골밀도(ID 2)를 강화하여 생존력을 높이지만, 반사 신경(ID 20)이 둔화되어 회피율이 감소합니다."
     }
   },
   {
@@ -1257,17 +1370,18 @@
     "stats": {
       "maxHp": 220,
       "maxStamina": 120,
-      "moveSpeed": 0.8,
+      "moveSpeed": 0.85,
       "maxTurns": 2,
-      "critRate": 15.0,
-      "critDmg": 170.0,
+      "critRate": 10.0,
+      "critDmg": 165.0,
       "accuracy": 85.0,
-      "dodge": 18.0,
+      "dodge": 15.0,
       "meleeAtk": 30.0,
-      "physDef": 8.0,
+      "physDef": 5.0,
       "physRes": 5.0,
-      "lightningRes": -15.0,
-      "bleedPen": 10.0
+      "lightningRes": -90.0,
+      "bleedPen": 15.0,
+      "statusResist": 10.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -1276,15 +1390,17 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "20": 25,
+        "20": 30,
+        "21": 15,
         "16": 10,
-        "21": 10
+        "1": -16
       },
       "combatStats": {
-        "moveSpeed": 0.15,
-        "accuracy": 7.0
+        "moveSpeed": 0.08,
+        "dodge": 2.5,
+        "maxHp": -70.0
       },
-      "description": "8등급 정수(합계 45). 신경 반응(ID 20) 특화. 폭발적인 기동력과 반응 속도를 선사합니다."
+      "description": "8등급 정수. 신경 반응(ID 20)을 극대화하여 기동성을 얻는 대신, 근육 밀도(ID 1)가 낮아져 최대 체력이 크게 감소합니다."
     }
   },
   {
@@ -1294,23 +1410,24 @@
     "type": 0,
     "description": "순례자의 길을 지키는 기계 인형입니다. 감정 없이 침입자를 제거합니다.",
     "stats": {
-      "maxHp": 350,
-      "maxMp": 50,
+      "maxHp": 320,
+      "maxMp": 80,
       "maxStamina": 100,
-      "moveSpeed": 0.6,
+      "moveSpeed": 0.55,
       "maxTurns": 2,
       "critRate": 5.0,
       "critDmg": 150.0,
       "accuracy": 80.0,
-      "dodge": 2.0,
-      "meleeAtk": 15.0,
+      "dodge": 5.0,
+      "meleeAtk": 20.0,
       "magicAtk": 20.0,
       "physDef": 10.0,
       "physRes": 10.0,
-      "magRes": 5.0,
-      "fireRes": -15.0,
-      "stunRes": 30.0,
-      "poisonRes": 50.0
+      "magRes": 10.0,
+      "fireRes": -100.0,
+      "stunRes": 50.0,
+      "poisonRes": 100.0,
+      "statusResist": 15.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -1319,15 +1436,17 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "10": 20,
-        "12": 15,
-        "11": 10
+        "10": 25,
+        "13": 20,
+        "11": 10,
+        "4": -16
       },
       "combatStats": {
-        "meleeAtk": 10.0,
-        "physPen": 5.0
+        "meleeAtk": 35.0,
+        "magicAtk": 25.0,
+        "maxMp": -35.0
       },
-      "description": "8등급 정수(합계 45). 물리 화력 위주의 스탯 배분으로 타격력을 강화합니다."
+      "description": "8등급 정수. 공격 장치(ID 10, 13)를 과부하 시켜 화력을 높이지만, 에너지 저장고(ID 4) 용량이 줄어듭니다."
     }
   },
   {
@@ -1341,18 +1460,20 @@
       "maxStamina": 200,
       "moveSpeed": 0.7,
       "maxTurns": 2,
-      "critRate": 10.0,
+      "critRate": 8.0,
       "critDmg": 150.0,
       "accuracy": 80.0,
-      "meleeAtk": 60.0,
+      "dodge": 8.0,
+      "meleeAtk": 70.0,
       "physDef": 25.0,
       "physRes": 15.0,
-      "magRes": 5.0,
-      "fireRes": 10.0,
-      "iceRes": -10.0,
-      "stunRes": 20.0,
-      "bleedRes": 40.0,
-      "stunPen": 15.0
+      "magRes": 10.0,
+      "fireRes": 15.0,
+      "iceRes": -85.0,
+      "stunRes": 25.0,
+      "bleedRes": 50.0,
+      "statusResist": 15.0,
+      "stunPen": 20.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -1362,16 +1483,17 @@
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "2": 60,
-        "1": 25,
-        "11": 15
+        "2": 50,
+        "1": 35,
+        "11": 20,
+        "6": -20
       },
       "combatStats": {
-        "physDef": 25.0,
-        "physRes": 8.0,
-        "knockbackRes": 20.0
+        "maxHp": 100.0,
+        "physRes": 3.0,
+        "maxStamina": -60.0
       },
-      "description": "7등급 정수(합계 100). 골밀도(ID 2) +60의 위엄. 3층 구간 최고의 탱킹 정수입니다."
+      "description": "7등급 정수. 압도적인 골밀도(ID 2)로 최강의 맷집을 자랑하지만, 무거운 외피로 인해 지구력(ID 6)이 소모됩니다."
     }
   },
   {
@@ -1382,40 +1504,40 @@
     "description": "피의 마력을 사용하여 아군을 광폭화시키는 보조 마법사입니다.",
     "stats": {
       "maxHp": 220,
-      "maxMp": 300,
-      "maxStamina": 100,
+      "maxMp": 350,
+      "maxStamina": 120,
+      "hpRegen": 1.5,
+      "mpRegen": 2.0,
       "moveSpeed": 0.8,
       "maxTurns": 2,
       "critRate": 5.0,
       "critDmg": 150.0,
       "accuracy": 85.0,
       "dodge": 10.0,
-      "meleeAtk": 5.0,
-      "magicAtk": 30.0,
-      "physDef": 5.0,
+      "statusResist": 10.0,
+      "holyRes": -80.0,
+      "magicAtk": 35.0,
       "magRes": 10.0,
+      "magPen": 15.0,
       "fireAtk": 5.0,
-      "darkAtk": 5.0,
-      "holyRes": -15.0,
-      "statusResist": 10.0
+      "darkAtk": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      306,
-      307
-    ],
+    "activeSkillIds": [306, 307],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
         "13": 25,
-        "4": 10,
-        "8": 10
+        "4": 15,
+        "10": -10
       },
       "combatStats": {
-        "magicAtk": 12.0,
-        "mpRegen": 3.0
+        "magicAtk": 25.0,
+        "magPen": 2.0,
+        "maxMp": 40,
+        "meleeAtk": -40.0
       },
-      "description": "8등급 정수(합계 45). 에너지 응집(ID 13)에 25 투자. 마법 화력을 비약적으로 상승시킵니다."
+      "description": "8등급 정수. 마력 혈관과 응집력을 높여 마법 화력을 극대화하지만, 근력을 희생시킵니다."
     }
   },
   {
@@ -1425,40 +1547,40 @@
     "type": 0,
     "description": "묵직한 도끼를 휘두르는 오크 군단의 주력 보병입니다.",
     "stats": {
-      "maxHp": 320,
+      "maxHp": 350,
       "maxStamina": 150,
+      "hpRegen": 1.0,
       "moveSpeed": 0.7,
       "maxTurns": 2,
       "critRate": 8.0,
       "critDmg": 160.0,
       "accuracy": 75.0,
       "dodge": 5.0,
-      "meleeAtk": 35.0,
+      "statusResist": 10.0,
+      "bleedPen": 15.0,
+      "stunPen": 10.0,
+      "meleeAtk": 40.0,
       "physDef": 10.0,
-      "physRes": 5.0,
-      "magRes": -10.0,
+      "physRes": 10.0,
+      "magRes": -80.0,
       "fireRes": 5.0,
-      "iceRes": -5.0,
-      "bleedPen": 10.0,
-      "stunPen": 5.0
+      "iceRes": -5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      208,
-      306
-    ],
+    "activeSkillIds": [208, 306],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "10": 25,
-        "11": 10,
-        "1": 10
+        "10": 30,
+        "1": 15,
+        "16": -10
       },
       "combatStats": {
-        "meleeAtk": 15.0,
-        "maxHp": 80
+        "meleeAtk": 60.0,
+        "maxHp": 70,
+        "accuracy": -3.0
       },
-      "description": "8등급 정수(합계 45). 상완(ID 10) 몰빵 투자로 순수 물리 공격력을 보정합니다."
+      "description": "8등급 정수. 신체 출력에 집중하여 파괴력을 얻는 대신 시야와 정밀함이 떨어집니다."
     }
   },
   {
@@ -1469,38 +1591,37 @@
     "description": "강궁을 사용하여 원거리에서 적의 급소를 노립니다.",
     "stats": {
       "maxHp": 210,
-      "maxStamina": 120,
-      "moveSpeed": 0.8,
+      "maxStamina": 140,
+      "moveSpeed": 0.9,
       "maxTurns": 2,
       "critRate": 12.0,
       "critDmg": 180.0,
       "accuracy": 95.0,
       "dodge": 15.0,
+      "statusResist": 10.0,
+      "physPen": 15.0,
+      "poisonPen": 10.0,
       "meleeAtk": 30.0,
       "physDef": 5.0,
-      "physRes": -5.0,
-      "magRes": -10.0,
-      "earthRes": 5.0,
-      "physPen": 10.0,
-      "poisonPen": 5.0
+      "magRes": -85.0,
+      "earthRes": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      306,
-      308
-    ],
+    "activeSkillIds": [306, 308],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
         "16": 25,
-        "15": 10,
-        "23": 10
+        "15": 15,
+        "1": -10
       },
       "combatStats": {
-        "accuracy": 10.0,
-        "critRate": 5.0
+        "accuracy": 3.0,
+        "critRate": 2.0,
+        "critDmg": 8.0,
+        "maxHp": -70
       },
-      "description": "8등급 정수(합계 45). 동체시력(ID 16) 보정으로 명중률과 치명타를 동시에 챙깁니다."
+      "description": "8등급 정수. 인과율 간섭과 지각력을 높여 치명타를 노리지만 생존력이 크게 감소합니다."
     }
   },
   {
@@ -1510,45 +1631,43 @@
     "type": 0,
     "description": "수많은 전장을 누빈 오크 지휘관입니다. 외침만으로 적을 위축시킵니다.",
     "stats": {
-      "maxHp": 850,
+      "maxHp": 900,
       "maxMp": 50,
-      "maxStamina": 300,
-      "moveSpeed": 0.9,
+      "maxStamina": 350,
+      "hpRegen": 2.0,
+      "moveSpeed": 1.0,
       "maxTurns": 2,
       "critRate": 15.0,
       "critDmg": 185.0,
       "accuracy": 85.0,
-      "dodge": 8.0,
+      "dodge": 13.0,
       "statusResist": 10.0,
       "bleedRes": 15.0,
       "stunRes": 20.0,
-      "stunPen": 15.0,
-      "meleeAtk": 75.0,
+      "stunPen": 20.0,
+      "meleeAtk": 80.0,
       "physDef": 25.0,
       "physRes": 15.0,
-      "physPen": 10.0,
-      "magRes": -5.0,
+      "physPen": 15.0,
+      "magRes": -80.0,
       "fireRes": 10.0,
       "darkRes": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      208,
-      306
-    ],
+    "activeSkillIds": [208, 306],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "10": 60,
-        "11": 20,
-        "1": 20
+        "10": 50,
+        "11": 30,
+        "4": -15
       },
       "combatStats": {
-        "meleeAtk": 45.0,
-        "physPen": 12.0,
-        "stunRes": 15.0
+        "meleeAtk": 100.0,
+        "physRes": 3.0,
+        "maxMp": -45
       },
-      "description": "7등급 정수(합계 100). 상완 +60 투자. 전사 계열의 중반부 필수 정수입니다."
+      "description": "7등급 정수. 중반부 핵심 물리 정수로, 전사로서의 완성도를 높이나 정신력을 고갈시킵니다."
     }
   },
   {
@@ -1558,48 +1677,45 @@
     "type": 0,
     "description": "군락지의 영웅으로 추앙받는 존재입니다. 전설적인 무구를 다룹니다.",
     "stats": {
-      "maxHp": 5500,
+      "maxHp": 6500,
       "maxMp": 200,
       "maxStamina": 800,
-      "hpRegen": 15.0,
+      "hpRegen": 5.0,
       "moveSpeed": 1.3,
       "maxTurns": 3,
       "critRate": 20.0,
       "critDmg": 220.0,
       "accuracy": 90.0,
-      "dodge": 20.0,
-      "statusResist": 25.0,
+      "dodge": 18.0,
+      "statusResist": 10.0,
       "bleedRes": 30.0,
       "stunRes": 30.0,
       "burnRes": 15.0,
-      "bleedPen": 15.0,
-      "stunPen": 20.0,
-      "meleeAtk": 320.0,
-      "physDef": 80.0,
+      "bleedPen": 30.0,
+      "stunPen": 30.0,
+      "meleeAtk": 350.0,
+      "physDef": 50.0,
       "physRes": 25.0,
-      "physPen": 20.0,
-      "magRes": 15.0,
+      "physPen": 25.0,
+      "magRes": -80.0,
       "fireRes": 10.0,
       "earthRes": 15.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [
-      310,
-      311
-    ],
+    "activeSkillIds": [310, 311],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
-        "10": 170,
-        "11": 60,
-        "1": 50
+        "10": 80,
+        "1": 70,
+        "13": -30
       },
       "combatStats": {
         "meleeAtk": 150.0,
-        "physPen": 25.0,
-        "physRes": 15.0
+        "maxHp": 150,
+        "magicAtk": -120.0
       },
-      "description": "5등급 정수(합계 280). 상완(ID 10)에 무려 170을 투자하여 파괴의 화신이 됩니다."
+      "description": "5등급 정수. 파괴의 화신이 되는 정수이나, 영혼의 에너지가 소멸하여 마법을 포기해야 합니다."
     }
   },
   {
@@ -1609,32 +1725,32 @@
     "type": 0,
     "description": "모든 오크의 왕입니다. 그의 권위 앞에서는 생존력과 방어력조차 무의미해집니다.",
     "stats": {
-      "maxHp": 65000,
+      "maxHp": 70000,
       "maxMp": 1000,
       "maxStamina": 2500,
-      "hpRegen": 150.0,
+      "hpRegen": 100.0,
       "mpRegen": 20.0,
       "moveSpeed": 3.2,
       "maxTurns": 5,
       "critRate": 25.0,
       "critDmg": 250.0,
       "accuracy": 95.0,
-      "dodge": 30.0,
-      "statusResist": 60.0,
+      "dodge": 25.0,
+      "statusResist": 10.0,
       "bleedRes": 50.0,
       "stunRes": 80.0,
       "burnRes": 40.0,
       "frozenRes": 40.0,
       "poisonRes": 40.0,
-      "bleedPen": 30.0,
-      "stunPen": 50.0,
-      "meleeAtk": 1300.0,
+      "bleedPen": 40.0,
+      "stunPen": 40.0,
+      "meleeAtk": 1600.0,
       "magicAtk": 250.0,
-      "physDef": 420.0,
-      "physRes": 55.0,
-      "physPen": 45.0,
-      "magRes": 40.0,
-      "magPen": 20.0,
+      "physDef": 100.0,
+      "physRes": 50.0,
+      "physPen": 35.0,
+      "magRes": 50.0,
+      "magPen": 35.0,
       "fireRes": 30.0,
       "earthRes": 50.0,
       "darkRes": 40.0,
@@ -1642,50 +1758,46 @@
       "firePen": 15.0
     },
     "baseActionPoints": 5,
-    "activeSkillIds": [
-      312,
-      313
-    ],
+    "activeSkillIds": [312, 313],
     "expReward": 8,
     "essenceBonus": {
       "baseStats": {
-        "10": 450,
-        "1": 150,
-        "2": 150
+        "10": 130,
+        "1": 120,
+        "20": -60
       },
       "combatStats": {
-        "meleeAtk": 600.0,
-        "physRes": 40.0,
-        "statusResist": 50.0
+        "meleeAtk": 230.0,
+        "maxHp": 380,
+        "dodge": -10.0
       },
-      "description": "2등급 정수(합계 750). 상완(ID 10) +450 보정. 존재 자체가 신성한 파괴 병기입니다."
+      "description": "2등급 정수. 군주의 위엄을 부여하지만 거대한 몸집으로 인해 회피 능력이 상실됩니다."
     }
   },
   {
     "id": 311,
-    "name": "프로그맨",
+    "name": "프로그맨 전사",
     "tier": 8,
     "type": 1,
-    "description": "칠흑 같은 강물 속에 몸을 숨긴 수인형 괴물입니다. 강력한 뒷다리로 순식간에 거리를 좁혀옵니다.",
+    "description": "강력한 뒷다리 근육을 가진 프로그맨입니다. 순식간에 도약하여 뼈를 부수는 일격을 날립니다.",
     "stats": {
-      "maxHp": 320,
-      "maxMp": 120,
-      "maxStamina": 150,
-      "moveSpeed": 0.8,
+      "maxHp": 350,
+      "maxMp": 80,
+      "maxStamina": 180,
+      "hpRegen": 1.5,
+      "moveSpeed": 1.1,
       "maxTurns": 1,
-      "critRate": 12.0,
-      "critDmg": 170.0,
-      "accuracy": 75.0,
-      "dodge": 18.0,
-      "statusResist": 5.0,
-      "frozenRes": 10.0,
-      "toxicRes": 10.0,
-      "meleeAtk": 30.0,
-      "toxicAtk": 10.0,
-      "physDef": 8.0,
+      "critRate": 15.0,
+      "critDmg": 165.0,
+      "accuracy": 85.0,
+      "dodge": 12.0,
+      "statusResist": 10.0,
+      "bleedRes": 10.0,
+      "meleeAtk": 40.0,
+      "physDef": 10.0,
       "physRes": 5.0,
-      "fireRes": -15.0,
-      "iceRes": 10.0
+      "iceRes": 10.0,
+      "fireRes": -80.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [
@@ -1694,43 +1806,43 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "20": 25,
-        "21": 10,
-        "22": 10
+        "10": 30,
+        "1": 15,
+        "4": -12
       },
       "combatStats": {
-        "moveSpeed": 0.12,
-        "dodge": 6.0,
-        "toxicAtk": 15.0
+        "meleeAtk": 45.0,
+        "maxHp": 70.0,
+        "maxMp": -35.0
       },
-      "description": "8등급 정수(합계 45). 신경 반응(ID 20)에 25를 투자하여 기동성과 반사 신경을 극대화합니다."
+      "description": "8등급 전사 정수. 근력과 생명력을 크게 강화하지만, 마나 통로가 좁아져 최대 MP가 감소합니다."
     }
   },
   {
     "id": 312,
-    "name": "리자드맨",
+    "name": "프로그맨 주술사",
     "tier": 8,
     "type": 1,
-    "description": "습지의 진흙과 조화를 이루는 단단한 비늘을 가진 수인입니다.",
+    "description": "강물의 독기를 다루는 주술사입니다. 피부에서 내뿜는 점액에는 치명적인 독이 섞여 있습니다.",
     "stats": {
-      "maxHp": 350,
-      "maxMp": 50,
-      "maxStamina": 200,
-      "moveSpeed": 0.7,
+      "maxHp": 220,
+      "maxMp": 200,
+      "maxStamina": 100,
+      "mpRegen": 2.0,
+      "moveSpeed": 0.9,
       "maxTurns": 1,
-      "critRate": 10.0,
-      "critDmg": 160.0,
-      "accuracy": 70.0,
-      "dodge": 12.0,
-      "statusResist": 10.0,
-      "bleedRes": 15.0,
-      "meleeAtk": 35.0,
-      "physDef": 10.0,
-      "physRes": 8.0,
-      "fireRes": -10.0,
-      "iceRes": -5.0,
-      "earthRes": 10.0,
-      "toxicRes": 15.0
+      "critRate": 5.0,
+      "critDmg": 155.0,
+      "accuracy": 80.0,
+      "dodge": 10.0,
+      "statusResist": 15.0,
+      "poisonRes": 20.0,
+      "magicAtk": 35.0,
+      "toxicAtk": 15.0,
+      "toxicPen": 15.0,
+      "magRes": 10.0,
+      "fireRes": -100.0,
+      "toxicRes": 25.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [
@@ -1739,44 +1851,139 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "2": 25,
-        "10": 10,
-        "1": 10
+        "13": 35,
+        "22": 10,
+        "10": -15
       },
       "combatStats": {
-        "physDef": 6.0,
-        "meleeAtk": 8.0
+        "toxicAtk": 25.0,
+        "statusPen": 5.0,
+        "meleeAtk": -40.0
       },
-      "description": "8등급 정수(합계 45). 골밀도(ID 2)에 집중 투자하여 방어 능력과 타격력을 동시에 보강합니다."
+      "description": "8등급 주술 정수. 독성 마력을 극대화하는 대신, 신체 근육이 위축되어 물리 공격력이 감소합니다."
     }
   },
   {
     "id": 313,
+    "name": "리자드맨 전사",
+    "tier": 8,
+    "type": 1,
+    "description": "습지의 진흙과 조화를 이루는 단단한 비늘을 가진 수인입니다. 압도적인 힘으로 상대를 짓누릅니다.",
+    "stats": {
+      "maxHp": 350,
+      "maxMp": 40,
+      "maxStamina": 200,
+      "hpRegen": 1.5,
+      "moveSpeed": 0.7,
+      "maxTurns": 1,
+      "critRate": 10.0,
+      "critDmg": 160.0,
+      "accuracy": 80.0,
+      "dodge": 5.0,
+      "statusResist": 10.0,
+      "bleedRes": 15.0,
+      "poisonRes": 10.0,
+      "meleeAtk": 40.0,
+      "physDef": 10.0,
+      "physRes": 10.0,
+      "fireRes": -90.0,
+      "earthRes": 15.0,
+      "toxicRes": 10.0
+    },
+    "baseActionPoints": 1,
+    "activeSkillIds": [
+      318
+    ],
+    "expReward": 2,
+    "essenceBonus": {
+      "baseStats": {
+        "10": 35,
+        "2": 15,
+        "13": -10
+      },
+      "combatStats": {
+        "meleeAtk": 60.0,
+        "physRes": 2.0,
+        "magicAtk": -40.0
+      },
+      "description": "8등급 전사 정수. 상체 출력과 골밀도를 극대화하여 물리 파괴력을 높이지만, 마력 응집력이 심각하게 저하됩니다."
+    }
+  },
+  {
+    "id": 314,
+    "name": "리자드맨 맹독주술사",
+    "tier": 8,
+    "type": 1,
+    "description": "비늘 사이로 독기를 내뿜는 주술사입니다. 고대 습지의 저주를 사용하여 적을 부패시킵니다.",
+    "stats": {
+      "maxHp": 220,
+      "maxMp": 220,
+      "maxStamina": 120,
+      "mpRegen": 2.0,
+      "moveSpeed": 0.8,
+      "maxTurns": 1,
+      "critRate": 5.0,
+      "critDmg": 150.0,
+      "accuracy": 75.0,
+      "dodge": 10.0,
+      "statusResist": 15.0,
+      "poisonRes": 30.0,
+      "poisonPen": 15.0,
+      "magicAtk": 30.0,
+      "toxicAtk": 15.0,
+      "magRes": 10.0,
+      "fireRes": -100.0,
+      "earthRes": 10.0,
+      "toxicRes": 20.0
+    },
+    "baseActionPoints": 1,
+    "activeSkillIds": [
+      319
+    ],
+    "expReward": 2,
+    "essenceBonus": {
+      "baseStats": {
+        "14": 30,
+        "22": 15,
+        "1": -10
+      },
+      "combatStats": {
+        "toxicAtk": 20.0,
+        "poisonPen": 5.0,
+        "maxHp": -70.0
+      },
+      "description": "8등급 주술 정수. 독성 마력과 관절 유연성을 강화하여 저주 효율을 높이나, 코어 생명력이 약화됩니다."
+    }
+  },
+  {
+    "id": 315,
     "name": "무명 조각상",
     "tier": 7,
     "type": 4,
     "description": "이름 모를 고대 전사를 기리는 석상입니다. 침입자가 다가오면 눈에서 빛을 내며 움직이기 시작합니다.",
     "stats": {
       "maxHp": 900,
-      "maxMp": 300,
-      "maxStamina": 500,
-      "moveSpeed": 0.7,
+      "maxMp": 100,
+      "maxStamina": 400,
+      "moveSpeed": 0.4,
       "maxTurns": 2,
       "critRate": 5.0,
-      "critDmg": 150.0,
-      "accuracy": 80.0,
-      "dodge": 2.0,
-      "statusResist": 20.0,
+      "critDmg": 160.0,
+      "accuracy": 85.0,
+      "dodge": 5.0,
+      "statusResist": 25.0,
       "bleedRes": 100.0,
       "poisonRes": 100.0,
-      "meleeAtk": 40.0,
-      "magicAtk": 40.0,
-      "holyAtk": 10.0,
+      "stunRes": 50.0,
+      "meleeAtk": 60.0,
+      "magicAtk": 20.0,
+      "holyAtk": 15.0,
       "physDef": 25.0,
       "physRes": 15.0,
       "magRes": 10.0,
-      "darkRes": -10.0,
-      "holyRes": 15.0
+      "fireRes": 15.0,
+      "darkRes": -80.0,
+      "holyRes": 30.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -1786,42 +1993,44 @@
     "essenceBonus": {
       "baseStats": {
         "1": 60,
-        "2": 25,
-        "13": 15
+        "2": 40,
+        "20": -20
       },
       "combatStats": {
-        "physRes": 10.0,
-        "magRes": 10.0,
-        "statusResist": 10.0
+        "maxHp": 100.0,
+        "physRes": 3.0,
+        "dodge": -4.0
       },
-      "description": "7등급 정수(합계 100). 코어(ID 1)에 60을 투자하여 변하지 않는 굳건한 생존력을 부여합니다."
+      "description": "7등급 정수(합계 100). 코어와 골밀도에 집중하여 생존력을 극대화하지만, 신경 반응(ID 20)이 저하되어 회피율이 감소합니다."
     }
   },
   {
-    "id": 314,
+    "id": 316,
     "name": "페어리",
     "tier": 9,
     "type": 3,
     "description": "반짝이는 가루를 뿌리며 날아다니는 작은 요정입니다. 장난기가 심해 시야를 방해합니다.",
     "stats": {
-      "maxHp": 130,
-      "maxMp": 200,
-      "maxStamina": 100,
-      "moveSpeed": 0.6,
+      "maxHp": 110,
+      "maxMp": 250,
+      "maxStamina": 120,
+      "hpRegen": 1.0,
+      "moveSpeed": 0.85,
       "maxTurns": 2,
-      "critRate": 5.0,
+      "critRate": 8.0,
       "critDmg": 150.0,
-      "accuracy": 60.0,
-      "dodge": 15.0,
-      "statusResist": 5.0,
-      "magicAtk": 20.0,
+      "accuracy": 75.0,
+      "dodge": 18.0,
+      "statusResist": 10.0,
+      "magicAtk": 15.0,
+      "holyAtk": 5.0,
       "physDef": 2.0,
-      "physRes": -20.0,
-      "magRes": 5.0,
-      "fireRes": 5.0,
-      "iceRes": 5.0,
-      "darkRes": -10.0,
-      "holyRes": 10.0
+      "physRes": -90.0,
+      "magRes": 15.0,
+      "fireRes": 10.0,
+      "iceRes": 10.0,
+      "darkRes": -20.0,
+      "holyRes": 20.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -1830,42 +2039,45 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "20": 12,
-        "13": 8
+        "20": 15,
+        "13": 5,
+        "10": -10
       },
       "combatStats": {
-        "dodge": 4.0,
-        "magRes": 5.0
+        "dodge": 2.0,
+        "magicAtk": 5.0,
+        "meleeAtk": -30.0
       },
-      "description": "9등급 정수(합계 20). 신경 반응(ID 20)을 보정하여 회피 능력을 높입니다."
+      "description": "9등급 정수(합계 20). 신경 반응과 에너지를 강화하여 회피와 마법력을 얻지만, 근력을 포기합니다."
     }
   },
   {
-    "id": 315,
+    "id": 317,
     "name": "레이스",
     "tier": 9,
     "type": 2,
     "description": "형체가 불분명한 유령입니다. 물리적인 공격이 잘 통하지 않습니다.",
     "stats": {
-      "maxHp": 85,
-      "maxMp": 100,
+      "maxHp": 80,
+      "maxMp": 150,
       "maxStamina": 50,
-      "moveSpeed": 0.5,
+      "moveSpeed": 0.6,
       "maxTurns": 1,
-      "critRate": 3.0,
+      "critRate": 5.0,
       "critDmg": 150.0,
       "accuracy": 70.0,
-      "dodge": 12.0,
-      "statusResist": 15.0,
+      "dodge": 15.0,
+      "statusResist": 20.0,
       "bleedRes": 100.0,
       "poisonRes": 100.0,
       "magicAtk": 20.0,
-      "physDef": 5.0,
-      "physRes": 80.0,
+      "darkAtk": 5.0,
+      "physDef": 1.0,
+      "physRes": 85.0,
       "magRes": -10.0,
-      "fireRes": -20.0,
-      "darkRes": 20.0,
-      "holyRes": -20.0
+      "fireRes": -80.0,
+      "darkRes": 40.0,
+      "holyRes": -100.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [
@@ -1874,42 +2086,45 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "18": 12,
-        "13": 8
+        "18": 15,
+        "13": 5,
+        "1": -5
       },
       "combatStats": {
+        "statusResist": 3.0,
         "magicAtk": 4.0,
-        "statusResist": 5.0
+        "maxHp": -40.0
       },
-      "description": "9등급 정수(합계 20). 침식 저항(ID 18)에 투자하여 정신적 내성을 강화합니다."
+      "description": "9등급 정수(합계 20). 저항과 에너지 응집을 얻는 대신, 육체적 생명력(ID 1)이 크게 약화됩니다."
     }
   },
   {
-    "id": 316,
+    "id": 318,
     "name": "위치스램프",
     "tier": 9,
     "type": 3,
     "description": "마녀가 길을 밝히기 위해 만든 마법 등불입니다.",
     "stats": {
-      "maxHp": 110,
-      "maxMp": 150,
-      "maxStamina": 50,
-      "moveSpeed": 0.4,
+      "maxHp": 120,
+      "maxMp": 200,
+      "maxStamina": 60,
+      "moveSpeed": 0.5,
       "maxTurns": 1,
-      "critRate": 10.0,
-      "critDmg": 200.0,
-      "accuracy": 80.0,
+      "critRate": 12.0,
+      "critDmg": 180.0,
+      "accuracy": 85.0,
       "dodge": 5.0,
       "statusResist": 10.0,
-      "burnRes": 50.0,
-      "magicAtk": 20.0,
-      "fireAtk": 5.0,
-      "physDef": 3.0,
-      "physRes": -15.0,
-      "magRes": 5.0,
-      "fireRes": 10.0,
-      "iceRes": -20.0,
-      "darkRes": 5.0
+      "burnRes": 80.0,
+      "frozenRes": -50.0,
+      "magicAtk": 15.0,
+      "fireAtk": 10.0,
+      "physDef": 5.0,
+      "physRes": -20.0,
+      "magRes": 10.0,
+      "fireRes": 30.0,
+      "iceRes": -90.0,
+      "darkRes": 10.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [
@@ -1918,43 +2133,47 @@
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
-        "13": 12,
-        "15": 8
+        "13": 15,
+        "15": 5,
+        "6": -10
       },
       "combatStats": {
         "magicAtk": 6.0,
-        "critRate": 3.0
+        "critRate": 1.0,
+        "maxStamina": -20.0
       },
-      "description": "9등급 정수(합계 20). 에너지 응집(ID 13)과 인과율 간섭을 보정합니다."
+      "description": "9등급 정수(합계 20). 마력 응집력과 인과율 간섭을 높이지만, 활동을 위한 심폐지구력(ID 6)이 감소합니다."
     }
   },
   {
-    "id": 318,
+    "id": 319,
     "name": "스네트리",
     "tier": 8,
     "type": 1,
     "description": "뱀처럼 휘어지는 줄기를 가진 식물 괴물입니다. 적을 옭아맵니다.",
     "stats": {
-      "maxHp": 280,
-      "maxStamina": 100,
+      "maxHp": 320,
+      "maxMp": 50,
+      "maxStamina": 150,
+      "hpRegen": 2.0,
       "moveSpeed": 0.7,
       "maxTurns": 1,
       "critRate": 8.0,
-      "critDmg": 150.0,
-      "accuracy": 75.0,
-      "dodge": 14.0,
-      "statusResist": 5.0,
-      "poisonRes": 30.0,
-      "bleedPen": 10.0,
+      "critDmg": 160.0,
+      "accuracy": 80.0,
+      "dodge": 10.0,
+      "statusResist": 15.0,
+      "poisonRes": 50.0,
+      "bleedPen": 15.0,
       "meleeAtk": 35.0,
-      "physDef": 8.0,
-      "physRes": 5.0,
-      "earthAtk": 5.0,
-      "fireRes": -15.0,
-      "iceRes": 10.0,
-      "lightningRes": -10.0,
-      "earthRes": 10.0,
-      "toxicRes": 20.0
+      "earthAtk": 10.0,
+      "physDef": 10.0,
+      "physRes": 10.0,
+      "fireRes": -100.0,
+      "iceRes": 15.0,
+      "lightningRes": -20.0,
+      "earthRes": 30.0,
+      "toxicRes": 40.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [
@@ -1963,42 +2182,44 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "12": 25,
-        "21": 10,
-        "22": 10
+        "12": 30,
+        "22": 15,
+        "13": -15
       },
       "combatStats": {
-        "meleeAtk": 8.0,
-        "accuracy": 5.0
+        "meleeAtk": 30.0,
+        "statusPen": 5.0,
+        "magicAtk": -40.0
       },
-      "description": "8등급 정수(합계 45). 전완(ID 12)에 집중하여 적을 포박하는 완력을 강화합니다."
+      "description": "8등급 정수(합계 45). 물리적 완력과 관절 부위가 강화되지만, 영적인 마력 계통은 위축됩니다."
     }
   },
   {
-    "id": 319,
+    "id": 320,
     "name": "다이로우터",
     "tier": 8,
     "type": 1,
     "description": "죽은 뿌리에서 태어난 거대 쥐입니다. 전염병을 옮깁니다.",
     "stats": {
-      "maxHp": 260,
-      "maxStamina": 120,
-      "moveSpeed": 0.8,
+      "maxHp": 280,
+      "maxMp": 80,
+      "maxStamina": 180,
+      "moveSpeed": 0.9,
       "maxTurns": 1,
       "critRate": 15.0,
       "critDmg": 170.0,
-      "accuracy": 85.0,
-      "dodge": 16.0,
-      "statusResist": 5.0,
-      "poisonRes": 50.0,
+      "accuracy": 90.0,
+      "dodge": 15.0,
+      "statusResist": 10.0,
+      "poisonRes": 80.0,
       "poisonPen": 15.0,
-      "meleeAtk": 35.0,
-      "toxicAtk": 5.0,
-      "physDef": 6.0,
+      "meleeAtk": 30.0,
+      "toxicAtk": 15.0,
+      "physDef": 8.0,
       "physRes": 5.0,
-      "fireRes": -15.0,
-      "holyRes": -10.0,
-      "toxicRes": 20.0
+      "fireRes": -30.0,
+      "holyRes": -80.0,
+      "toxicRes": 50.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [
@@ -2007,43 +2228,46 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "20": 25,
-        "16": 20
+        "20": 30,
+        "16": 15,
+        "18": -15
       },
       "combatStats": {
-        "moveSpeed": 0.15,
-        "critRate": 4.0
+        "moveSpeed": 0.1,
+        "accuracy": 3.0,
+        "statusResist": -4.0
       },
-      "description": "8등급 정수(합계 45). 신경 반응(ID 20) 특화로 선공권 확보에 용이합니다."
+      "description": "8등급 정수(합계 45). 반응 속도와 시력을 크게 높여 선공에 유리해지나, 외부 오염에 대한 저항력(ID 18)이 낮아집니다."
     }
   },
   {
-    "id": 320,
+    "id": 321,
     "name": "돌연변이 하급 정령",
     "tier": 8,
     "type": 3,
     "description": "마녀의 마력에 오염된 정령입니다. 불안정한 원소 공격을 가합니다.",
     "stats": {
       "maxHp": 240,
-      "maxMp": 300,
-      "maxStamina": 80,
+      "maxMp": 350,
+      "maxStamina": 100,
       "moveSpeed": 0.7,
       "maxTurns": 1,
-      "critRate": 12.0,
-      "critDmg": 180.0,
-      "accuracy": 85.0,
+      "critRate": 10.0,
+      "critDmg": 160.0,
+      "accuracy": 90.0,
       "dodge": 10.0,
       "statusResist": 10.0,
-      "magicAtk": 30.0,
+      "magicAtk": 40.0,
       "chaosAtk": 10.0,
-      "magRes": 10.0,
       "physDef": 5.0,
-      "physRes": -10.0,
-      "fireRes": 5.0,
-      "iceRes": 5.0,
-      "lightningRes": 5.0,
-      "earthRes": 5.0,
-      "chaosRes": 10.0
+      "magRes": 10.0,
+      "physRes": -80.0,
+      "fireRes": 10.0,
+      "iceRes": 10.0,
+      "lightningRes": 10.0,
+      "earthRes": 10.0,
+      "chaosRes": 15.0,
+      "magPen": 15.0
     },
     "baseActionPoints": 1,
     "activeSkillIds": [
@@ -2052,18 +2276,19 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "13": 25,
-        "18": 20
+        "13": 30,
+        "10": -12
       },
       "combatStats": {
-        "magicAtk": 12.0,
-        "magRes": 8.0
+        "magicAtk": 25.0,
+        "magPen": 2.0,
+        "meleeAtk": -35.0
       },
-      "description": "8등급 정수(합계 45). 에너지 응집(ID 13)에 투자하여 마력을 정제합니다."
+      "description": "8등급 정수(합계 18). 에너지 응집(ID 13)을 극대화하여 마력을 정제하지만, 근력을 희생합니다."
     }
   },
   {
-    "id": 321,
+    "id": 322,
     "name": "호문쿨루스",
     "tier": 8,
     "type": 0,
@@ -2075,20 +2300,20 @@
       "moveSpeed": 0.7,
       "maxTurns": 2,
       "critRate": 10.0,
-      "critDmg": 160.0,
+      "critDmg": 165.0,
       "accuracy": 85.0,
-      "dodge": 8.0,
-      "statusResist": 5.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
       "bleedRes": 20.0,
       "poisonRes": 10.0,
-      "meleeAtk": 20.0,
-      "magicAtk": 20.0,
-      "physDef": 8.0,
-      "physRes": 5.0,
-      "magRes": 5.0,
-      "fireRes": -10.0,
+      "meleeAtk": 25.0,
+      "magicAtk": 15.0,
+      "physDef": 10.0,
+      "physRes": 10.0,
+      "magRes": 10.0,
+      "fireRes": -90.0,
       "darkRes": 10.0,
-      "toxicRes": -15.0
+      "toxicRes": -85.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -2097,18 +2322,19 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "1": 25,
-        "13": 20
+        "1": 35,
+        "18": -15
       },
       "combatStats": {
-        "maxHp": 80,
-        "magicAtk": 10.0
+        "maxHp": 75.0,
+        "fireRes": -2.0,
+        "toxicRes": -2.0
       },
-      "description": "8등급 정수(합계 45). 물리와 마법의 조화를 이루는 코어(ID 1) 정수입니다."
+      "description": "8등급 정수(합계 20). 코어(ID 1)를 강화하여 생존력을 높이나 속성 저항이 감소합니다."
     }
   },
   {
-    "id": 322,
+    "id": 323,
     "name": "아울베어",
     "tier": 8,
     "type": 1,
@@ -2119,18 +2345,18 @@
       "moveSpeed": 0.8,
       "maxTurns": 2,
       "critRate": 12.0,
-      "critDmg": 180.0,
-      "accuracy": 85.0,
-      "dodge": 6.0,
-      "statusResist": 5.0,
+      "critDmg": 170.0,
+      "accuracy": 90.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
       "bleedRes": 15.0,
-      "stunPen": 10.0,
-      "meleeAtk": 35.0,
+      "stunPen": 15.0,
+      "meleeAtk": 40.0,
       "physDef": 10.0,
       "physRes": 10.0,
-      "magRes": -15.0,
-      "fireRes": -10.0,
-      "earthRes": 10.0
+      "magRes": -85.0,
+      "fireRes": -80.0,
+      "earthRes": 15.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -2139,18 +2365,18 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "10": 25,
-        "11": 20
+        "10": 40,
+        "4": -16
       },
       "combatStats": {
-        "meleeAtk": 15.0,
-        "physRes": 5.0
+        "meleeAtk": 60.0,
+        "maxMp": -35.0
       },
-      "description": "8등급 정수(합계 45). 상완(ID 10) 몰빵 투자로 순수 물리 파괴력을 강화합니다."
+      "description": "8등급 정수(합계 24). 상체 출력(ID 10)에 몰입하여 물리 파괴력을 얻는 대신 마나 혈관이 위축됩니다."
     }
   },
   {
-    "id": 323,
+    "id": 324,
     "name": "드라이어드",
     "tier": 8,
     "type": 3,
@@ -2162,22 +2388,21 @@
       "mpRegen": 5.0,
       "moveSpeed": 0.7,
       "maxTurns": 2,
-      "critRate": 5.0,
+      "critRate": 8.0,
       "critDmg": 150.0,
-      "accuracy": 90.0,
-      "dodge": 10.0,
+      "accuracy": 95.0,
+      "dodge": 12.0,
       "statusResist": 15.0,
       "poisonRes": 30.0,
-      "poisonPen": 10.0,
-      "meleeAtk": 5.0,
-      "magicAtk": 30.0,
+      "poisonPen": 15.0,
+      "magicAtk": 35.0,
+      "toxicAtk": 10.0,
       "physDef": 5.0,
-      "magRes": 10.0,
-      "fireRes": -20.0,
-      "iceRes": 5.0,
+      "magRes": 15.0,
+      "fireRes": -100.0,
+      "iceRes": 10.0,
       "earthRes": 20.0,
-      "holyRes": 10.0,
-      "toxicRes": 15.0
+      "toxicRes": 20.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -2187,38 +2412,39 @@
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "3": 25,
-        "4": 20
+        "3": 30,
+        "20": -12
       },
       "combatStats": {
-        "hpRegen": 5.0,
-        "mpRegen": 5.0
+        "hpRegen": 1.2,
+        "dodge": -2.5
       },
-      "description": "8등급 정수(합계 45). 대사 효율(ID 3) 보정으로 유지력을 상승시킵니다."
+      "description": "8등급 정수(합계 18). 대사 효율(ID 3)을 높여 재생력을 강화하지만 반응 속도가 둔화됩니다."
     }
   },
   {
-    "id": 324,
+    "id": 325,
     "name": "하프트롤",
     "tier": 7,
     "type": 1,
     "description": "트롤의 피가 섞인 거구입니다. 잘려나간 부위가 순식간에 재생됩니다.",
     "stats": {
-      "maxHp": 850,
-      "hpRegen": 12.5,
+      "maxHp": 900,
+      "hpRegen": 15.0,
       "moveSpeed": 0.8,
       "maxTurns": 2,
       "critRate": 10.0,
       "critDmg": 160.0,
       "accuracy": 85.0,
-      "dodge": 5.0,
-      "statusResist": 10.0,
+      "dodge": 10.0,
+      "statusResist": 15.0,
       "bleedRes": 20.0,
-      "meleeAtk": 65.0,
-      "physDef": 20.0,
+      "meleeAtk": 80.0,
+      "physDef": 25.0,
       "physRes": 15.0,
-      "fireRes": -10.0,
-      "toxicRes": 5.0
+      "fireRes": -90.0,
+      "earthRes": 15.0,
+      "toxicRes": 10.0
     },
     "baseActionPoints": 2,
     "activeSkillIds": [
@@ -2227,41 +2453,42 @@
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "1": 60,
-        "3": 40
+        "1": 50,
+        "3": 45,
+        "21": -20
       },
       "combatStats": {
-        "maxHp": 200,
-        "hpRegen": 15.0
+        "maxHp": 100.0,
+        "hpRegen": 2.0,
+        "moveSpeed": -0.1
       },
-      "description": "7등급 정수(합계 100). 코어(ID 1) 60 투자. 압도적인 생명력과 재생을 제공합니다."
+      "description": "7등급 정수(합계 75). 압도적인 생명력과 재생을 얻으나, 신체가 비대해져 이동 속도가 감소합니다."
     }
   },
   {
-    "id": 325,
+    "id": 326,
     "name": "카나바로",
     "tier": 7,
     "type": 2,
     "description": "온몸에 붕대를 감은 채 석궁을 들고 숲을 배회하는 언데드 사냥꾼입니다. 피할 수 없는 화살을 쏩니다.",
     "stats": {
       "maxHp": 750,
-      "maxMp": 100,
+      "maxMp": 200,
       "moveSpeed": 1.0,
       "maxTurns": 3,
-      "critRate": 25.0,
-      "critDmg": 220.0,
+      "critRate": 20.0,
+      "critDmg": 210.0,
       "accuracy": 100.0,
       "dodge": 18.0,
-      "statusResist": 10.0,
-      "bleedPen": 15.0,
-      "meleeAtk": 60.0,
-      "magicAtk": 15.0,
-      "physDef": 15.0,
-      "physRes": 5.0,
-      "darkRes": 15.0,
-      "holyRes": -10.0,
-      "fireRes": -10.0,
-      "physPen": 10.0
+      "statusResist": 15.0,
+      "bleedPen": 20.0,
+      "meleeAtk": 70.0,
+      "physDef": 20.0,
+      "physRes": 10.0,
+      "physPen": 15.0,
+      "darkRes": 20.0,
+      "holyRes": -90.0,
+      "fireRes": -85.0
     },
     "baseActionPoints": 3,
     "activeSkillIds": [
@@ -2271,16 +2498,16 @@
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "16": 60,
-        "15": 20,
-        "20": 20
+        "16": 50,
+        "15": 40,
+        "12": -20
       },
       "combatStats": {
-        "accuracy": 20.0,
-        "critRate": 10.0,
-        "physPen": 15.0
+        "accuracy": 4.0,
+        "critRate": 3.0,
+        "physRes": -3.0
       },
-      "description": "7등급 정수(합계 100). 동체시력(ID 16)에 60 투자. 원거리 딜러의 최종 파츠입니다."
+      "description": "7등급 정수(합계 70). 시력과 인과율(ID 15, 16)을 강화하여 필중의 일격을 날리나 방어력이 약화됩니다."
     }
   },
   {
@@ -2291,39 +2518,39 @@
     "description": "꺼지지 않는 불꽃에 잠식된 스켈레톤입니다. 공격 시 화염 피해를 입힙니다.",
     "stats": {
       "maxHp": 320,
-      "maxMp": 50,
-      "moveSpeed": 0.7,
+      "maxMp": 40,
+      "maxStamina": 120,
+      "moveSpeed": 0.8,
       "maxTurns": 1,
-      "critRate": 10.0,
+      "critRate": 5.0,
       "critDmg": 160.0,
       "accuracy": 85.0,
-      "dodge": 8.0,
-      "statusResist": 5.0,
-      "burnPen": 10.0,
-      "meleeAtk": 25.0,
-      "fireAtk": 15.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
+      "burnPen": 15.0,
+      "meleeAtk": 30.0,
+      "fireAtk": 10.0,
       "physDef": 8.0,
-      "physRes": 5.0,
-      "fireRes": 30.0,
-      "iceRes": -15.0,
-      "holyRes": -10.0
+      "physRes": 2.0,
+      "fireRes": 10.0,
+      "iceRes": -80.0,
+      "holyRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      501
-    ],
+    "activeSkillIds": [501],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
-        "10": 20,
+        "10": 30,
         "18": 15,
-        "19": 10
+        "4": -12
       },
       "combatStats": {
-        "fireAtk": 10.0,
-        "meleeAtk": 5.0
+        "meleeAtk": 35.0,
+        "fireRes": 1.5,
+        "maxMp": -25.0
       },
-      "description": "8등급 정수(합계 45). 물리 공격력과 화염 속성 보정(ID 18, 19)을 동시에 제공합니다."
+      "description": "8등급 정수(합계 45). 물리 공격력과 화염 내성을 얻지만 마나 통이 줄어드는 전사 전용 정수입니다."
     }
   },
   {
@@ -2333,41 +2560,41 @@
     "type": 4,
     "description": "끓어오르는 용암이 섞인 진흙 괴물입니다. 타격 시 공격자의 무기를 부식시킵니다.",
     "stats": {
-      "maxHp": 900,
+      "maxHp": 850,
+      "maxMp": 50,
+      "maxStamina": 100,
+      "hpRegen": 2.0,
       "moveSpeed": 0.7,
       "maxTurns": 1,
-      "critRate": 5.0,
+      "critRate": 2.0,
       "critDmg": 150.0,
-      "accuracy": 70.0,
+      "accuracy": 75.0,
       "dodge": 2.0,
       "statusResist": 15.0,
-      "burnPen": 10.0,
-      "meleeAtk": 40.0,
-      "fireAtk": 20.0,
-      "toxicAtk": 10.0,
+      "burnPen": 15.0,
+      "meleeAtk": 55.0,
+      "toxicAtk": 20.0,
       "physDef": 25.0,
-      "physRes": 10.0,
-      "fireRes": 25.0,
-      "toxicRes": 15.0,
-      "iceRes": -10.0
+      "physRes": 15.0,
+      "fireRes": 15.0,
+      "toxicRes": 30.0,
+      "iceRes": -90.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [
-      502
-    ],
+    "activeSkillIds": [502],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "1": 50,
-        "2": 30,
-        "11": 20
+        "1": 45,
+        "11": 35,
+        "20": -18
       },
       "combatStats": {
-        "physRes": 15.0,
-        "fireRes": 20.0,
-        "maxHp": 200
+        "maxHp": 90.0,
+        "physRes": 3.0,
+        "dodge": -3.5
       },
-      "description": "7등급 정수(합계 100). 코어(ID 1)와 골밀도에 투자하여 화염 지대의 생존력을 극대화합니다."
+      "description": "7등급 정수(합계 100). 압도적인 생존력을 제공하나, 몸이 무거워져 회피율이 크게 감소합니다."
     }
   },
   {
@@ -2377,40 +2604,38 @@
     "type": 1,
     "description": "화염의 땅에만 서식하는 희귀한 도마뱀입니다.",
     "stats": {
-      "maxHp": 750,
-      "maxMp": 100,
-      "moveSpeed": 1.0,
+      "maxHp": 650,
+      "maxMp": 150,
+      "maxStamina": 300,
+      "moveSpeed": 1.2,
       "maxTurns": 2,
-      "critRate": 25.0,
-      "critDmg": 190.0,
-      "accuracy": 80.0,
-      "dodge": 22.0,
+      "critRate": 12.0,
+      "critDmg": 180.0,
+      "accuracy": 90.0,
+      "dodge": 15.0,
       "statusResist": 10.0,
-      "magicAtk": 20.0,
-      "fireAtk": 45.0,
+      "magicAtk": 30.0,
+      "fireAtk": 40.0,
       "physDef": 15.0,
-      "physRes": 5.0,
-      "fireRes": 35.0,
-      "iceRes": -15.0,
+      "fireRes": 15.0,
+      "iceRes": -100.0,
       "firePen": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      504
-    ],
+    "activeSkillIds": [504],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "20": 50,
-        "15": 30,
-        "16": 20
+        "20": 40,
+        "15": 35,
+        "10": -16
       },
       "combatStats": {
-        "moveSpeed": 0.25,
-        "critRate": 8.0,
-        "dodge": 10.0
+        "moveSpeed": 0.1,
+        "critRate": 2.5,
+        "meleeAtk": -60.0
       },
-      "description": "7등급 정수(합계 100). 신경 반응(ID 20)에 50을 투자한 희귀종 정수입니다."
+      "description": "7등급 정수(합계 100). 속도와 치명타를 극대화하는 대신, 근접 공격력이 매우 약화됩니다."
     }
   },
   {
@@ -2420,41 +2645,41 @@
     "type": 4,
     "description": "살아있는 용암 바위 거인입니다. 주변에 지속적인 화염 피해를 주는 오라를 내뿜습니다.",
     "stats": {
-      "maxHp": 2500,
+      "maxHp": 2400,
       "maxMp": 200,
-      "moveSpeed": 0.9,
-      "maxTurns": 3,
-      "critRate": 10.0,
+      "maxStamina": 150,
+      "hpRegen": 5.0,
+      "moveSpeed": 0.8,
+      "maxTurns": 2,
+      "critRate": 5.0,
       "critDmg": 170.0,
       "accuracy": 85.0,
+      "dodge": 5.0,
       "statusResist": 20.0,
       "burnRes": 50.0,
-      "burnPen": 15.0,
-      "meleeAtk": 100.0,
-      "fireAtk": 60.0,
-      "physDef": 50.0,
+      "burnPen": 20.0,
+      "meleeAtk": 130.0,
+      "fireAtk": 30.0,
+      "physDef": 40.0,
       "physRes": 20.0,
-      "fireRes": 40.0,
-      "iceRes": -5.0
+      "fireRes": 20.0,
+      "iceRes": -100.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [
-      505,
-      506
-    ],
+    "activeSkillIds": [505, 506],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
-        "2": 80,
-        "10": 60,
-        "1": 40
+        "2": 100,
+        "10": 55,
+        "16": -25
       },
       "combatStats": {
-        "physDef": 40.0,
-        "fireRes": 30.0,
-        "fireAtk": 25.0
+        "physDef": 100.0,
+        "meleeAtk": 100.0,
+        "accuracy": -4.0
       },
-      "description": "6등급 정수(합계 180). 골밀도(ID 2) +80 보정으로 압도적인 물리 방어력을 제공합니다."
+      "description": "6등급 정수(합계 180). 뼈를 강화하여 방어와 공격을 챙기지만 시야(ID 16)가 좁아져 명중률이 떨어집니다."
     }
   },
   {
@@ -2464,42 +2689,43 @@
     "type": 3,
     "description": "화염의 상급 정령입니다. 거대한 화염 폭풍으로 침입자를 잿더미로 만듭니다.",
     "stats": {
-      "maxHp": 5500,
-      "maxMp": 1200,
-      "moveSpeed": 1.3,
+      "maxHp": 5200,
+      "maxMp": 1500,
+      "maxStamina": 400,
+      "hpRegen": 10.0,
+      "mpRegen": 20.0,
+      "moveSpeed": 1.1,
       "maxTurns": 3,
       "critRate": 15.0,
-      "critDmg": 220.0,
-      "accuracy": 90.0,
-      "dodge": 20.0,
+      "critDmg": 210.0,
+      "accuracy": 92.0,
+      "dodge": 18.0,
       "statusResist": 25.0,
       "burnRes": 80.0,
       "burnPen": 25.0,
-      "magicAtk": 100.0,
-      "fireAtk": 220.0,
-      "physDef": 60.0,
+      "magicAtk": 150.0,
+      "fireAtk": 180.0,
+      "physDef": 45.0,
       "magRes": 25.0,
-      "fireRes": 50.0,
-      "iceRes": -10.0,
-      "firePen": 20.0
+      "fireRes": 25.0,
+      "iceRes": -85.0,
+      "firePen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [
-      507
-    ],
+    "activeSkillIds": [507],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
         "13": 150,
-        "4": 80,
-        "15": 50
+        "8": 80,
+        "1": -35
       },
       "combatStats": {
-        "magicAtk": 100.0,
-        "fireAtk": 40.0,
-        "mpRegen": 15.0
+        "magicAtk": 120.0,
+        "mpRegen": 5.0,
+        "maxHp": -140.0
       },
-      "description": "5등급 정수(합계 280). 에너지 응집(ID 13) +150 투자. 화염 마법사 빌드의 핵심 정수입니다."
+      "description": "5등급 정수(합계 280). 마법 위력을 극한으로 올리지만 생명력의 근원(ID 1)이 깎여 몸이 매우 약해집니다."
     }
   },
   {
@@ -2509,8 +2735,10 @@
     "type": 3,
     "description": "지옥의 불꽃 그 자체입니다. 물리적인 형체가 거의 없어 타격이 어렵습니다.",
     "stats": {
-      "maxHp": 4800,
-      "maxMp": 1000,
+      "maxHp": 4500,
+      "maxMp": 1200,
+      "maxStamina": 500,
+      "mpRegen": 15.0,
       "moveSpeed": 1.5,
       "maxTurns": 3,
       "critRate": 20.0,
@@ -2519,1038 +2747,477 @@
       "dodge": 30.0,
       "statusResist": 30.0,
       "burnRes": 100.0,
-      "frozenRes": -20.0,
+      "frozenRes": -30.0,
       "burnPen": 30.0,
-      "meleeAtk": 100.0,
-      "magicAtk": 220.0,
-      "fireAtk": 80.0,
-      "physDef": 20.0,
+      "magicAtk": 100.0,
+      "fireAtk": 200.0,
+      "physDef": 30.0,
       "physRes": 50.0,
       "magRes": 25.0,
-      "fireRes": 60.0,
-      "iceRes": -15.0,
-      "firePen": 25.0
+      "fireRes": 25.0,
+      "iceRes": -95.0,
+      "firePen": 30.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [
-      508
-    ],
+    "activeSkillIds": [508],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
-        "18": 120,
+        "18": 140,
         "19": 100,
-        "13": 60
+        "11": -38
       },
       "combatStats": {
-        "fireRes": 50.0,
-        "magRes": 30.0,
-        "statusResist": 25.0
+        "fireRes": 6.0,
+        "statusResist": 6.5,
+        "meleeAtk": -120.0
       },
-      "description": "5등급 정수(합계 280). 저항력(ID 18, 19)에 집중 투자하여 모든 속성 공격에 대항합니다."
+      "description": "5등급 정수(합계 280). 고도의 저항력을 얻어 마법 대결에 유리하나 완력(ID 11)을 잃어 물리 공격이 불가능해집니다."
+    }
+  },
+  {
+    "id": 510,
+    "name": "울부짖는 영혼",
+    "tier": 8,
+    "type": 3,
+    "description": "과거의 비명이 형상화된 영체입니다. 마나를 직접적으로 오염시키는 저주를 사용합니다.",
+    "stats": {
+      "maxHp": 320,
+      "maxMp": 150,
+      "mpRegen": 3.0,
+      "moveSpeed": 1.1,
+      "maxTurns": 1,
+      "accuracy": 10.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
+      "magicAtk": 35.0,
+      "darkAtk": 10.0,
+      "magRes": 10.0,
+      "darkRes": 10.0,
+      "holyRes": -90.0,
+      "statusPen": 15.0
+    },
+    "baseActionPoints": 2,
+    "activeSkillIds": [601],
+    "expReward": 2,
+    "essenceBonus": {
+      "baseStats": {
+        "4": 35,
+        "13": 35,
+        "1": -14
+      },
+      "combatStats": {
+        "maxMp": 40.0,
+        "magicAtk": 40.0,
+        "maxHp": -70.0
+      },
+      "description": "8등급 정수(합계 84). 정신적 잠재력을 깨우지만 생명력(ID 1)이 크게 줄어듭니다."
     }
   },
   {
     "id": 511,
-    "name": "구름 가오리",
-    "tier": 8,
+    "name": "망령 기사",
+    "tier": 7,
     "type": 1,
-    "description": "구름 사이를 유영하며 전기를 내뿜는 가오리입니다. 몸이 투명해 잘 보이지 않습니다.",
+    "description": "부패한 갑주를 걸친 기사입니다. 생전의 검술을 본능적으로 기억하여 묵직한 타격을 가합니다.",
     "stats": {
-      "maxHp": 320,
-      "maxMp": 100,
-      "moveSpeed": 0.8,
-      "maxTurns": 2,
-      "critRate": 12.0,
-      "critDmg": 160.0,
-      "accuracy": 85.0,
-      "dodge": 22.0,
-      "statusResist": 5.0,
-      "stunPen": 10.0,
-      "magicAtk": 20.0,
-      "lightningAtk": 15.0,
-      "physDef": 5.0,
-      "magRes": 5.0,
-      "lightningRes": 10.0,
-      "earthRes": -15.0,
-      "lightningPen": 5.0
+      "maxHp": 850,
+      "maxStamina": 120,
+      "moveSpeed": 0.9,
+      "maxTurns": 1,
+      "accuracy": 13.0,
+      "dodge": 13.0,
+      "statusResist": 10.0,
+      "stunRes": 10.0,
+      "meleeAtk": 75.0,
+      "physDef": 25.0,
+      "physRes": 15.0,
+      "magRes": 15.0,
+      "darkRes": 15.0,
+      "holyRes": -100.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [
-      512
-    ],
-    "expReward": 2,
+    "activeSkillIds": [602],
+    "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "20": 25,
-        "16": 10,
-        "15": 10
+        "10": 45,
+        "12": 40,
+        "4": -18
       },
       "combatStats": {
-        "dodge": 8.0,
-        "moveSpeed": 0.15
+        "meleeAtk": 90.0,
+        "physRes": 3.0,
+        "maxMp": -45.0
       },
-      "description": "8등급 정수(합계 45). 신경 반응(ID 20)에 집중하여 높은 회피율과 기동성을 제공합니다."
+      "description": "7등급 정수(합계 103). 육체적 위력을 증강시키지만 마나 혈관(ID 4)이 좁아집니다."
     }
   },
   {
     "id": 512,
-    "name": "폭풍 정찰병",
-    "tier": 8,
+    "name": "냉기 서린 그림자",
+    "tier": 7,
     "type": 2,
-    "description": "바람의 기운으로 만들어진 인형입니다. 침입자의 위치를 실시간으로 알립니다.",
+    "description": "형체 없이 바닥을 기어 다니는 냉기의 화신입니다. 적의 발목을 얼려 움직임을 봉쇄합니다.",
     "stats": {
-      "maxHp": 300,
-      "maxMp": 150,
-      "moveSpeed": 0.7,
-      "maxTurns": 2,
-      "critRate": 8.0,
-      "critDmg": 150.0,
-      "accuracy": 90.0,
-      "dodge": 15.0,
-      "statusResist": 5.0,
-      "magicAtk": 25.0,
-      "lightningAtk": 10.0,
-      "physDef": 8.0,
-      "magRes": 5.0,
-      "lightningRes": 5.0,
-      "iceRes": -10.0,
-      "lightningPen": 5.0
+      "maxHp": 600,
+      "maxStamina": 180,
+      "moveSpeed": 1.4,
+      "maxTurns": 1,
+      "accuracy": 15.0,
+      "dodge": 25.0,
+      "statusResist": 10.0,
+      "frozenRes": 50.0,
+      "frozenPen": 20.0,
+      "meleeAtk": 55.0,
+      "iceAtk": 25.0,
+      "iceRes": 30.0,
+      "fireRes": -100.0,
+      "icePen": 15.0
     },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      513
-    ],
-    "expReward": 2,
+    "baseActionPoints": 3,
+    "activeSkillIds": [603],
+    "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "16": 25,
-        "23": 10,
-        "13": 10
+        "20": 45,
+        "14": 40,
+        "2": -18
       },
       "combatStats": {
-        "accuracy": 12.0,
-        "critRate": 4.0
+        "dodge": 4.0,
+        "iceAtk": 75.0,
+        "hpRegen": -1.5
       },
-      "description": "8등급 정수(합계 45). 동체 시력(ID 16)과 공간 지각 보정으로 명중률에 특화됩니다."
+      "description": "7등급 정수(합계 103). 회피와 속성 공격력이 증가하나 골밀도(ID 2)가 약해져 회복력이 떨어집니다."
     }
   },
   {
     "id": 513,
-    "name": "뇌전 정령",
-    "tier": 7,
+    "name": "밴시 리더",
+    "tier": 6,
     "type": 3,
-    "description": "푸른 불꽃과 번개로 이루어진 정령입니다.",
+    "description": "죽음을 알리는 비명 소리의 주인입니다. 고주파 비명으로 주변 적들을 무력화합니다.",
     "stats": {
-      "maxHp": 750,
-      "maxMp": 400,
-      "moveSpeed": 0.9,
-      "maxTurns": 3,
-      "critRate": 15.0,
-      "critDmg": 180.0,
-      "accuracy": 22.0,
-      "dodge": 20.0,
+      "maxHp": 1900,
+      "maxMp": 800,
+      "mpRegen": 5.0,
+      "moveSpeed": 1.2,
+      "maxTurns": 2,
+      "accuracy": 15.0,
+      "dodge": 15.0,
       "statusResist": 10.0,
-      "stunPen": 15.0,
-      "magicAtk": 25.0,
-      "lightningAtk": 45.0,
-      "fireAtk": 10.0,
-      "physDef": 20.0,
-      "magRes": 10.0,
-      "lightningRes": 15.0,
-      "fireRes": 10.0,
-      "earthRes": -10.0,
-      "lightningPen": 10.0
+      "stunPen": 25.0,
+      "magicAtk": 140.0,
+      "magRes": 20.0,
+      "darkAtk": 30.0,
+      "magPen": 20.0,
+      "holyRes": -100.0,
+      "statusPen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [
-      513,
-      514
-    ],
-    "expReward": 3,
+    "activeSkillIds": [604],
+    "expReward": 4,
     "essenceBonus": {
       "baseStats": {
-        "13": 60,
-        "4": 20,
-        "15": 20
+        "13": 55,
+        "22": 55,
+        "10": -28
       },
       "combatStats": {
-        "magicAtk": 35.0,
-        "lightningAtk": 15.0,
-        "mpRegen": 5.0
+        "magicAtk": 110.0,
+        "statusPen": 10.0,
+        "meleeAtk": -100.0
       },
-      "description": "7등급 정수(합계 100). 에너지 응집(ID 13)에 60 투자. 뇌전 속성 마법 화력을 보조합니다."
+      "description": "6등급 정수(합계 138). 마법 관통력이 비약적으로 상승하지만 근육 출력(ID 10)이 퇴화합니다."
     }
   },
   {
     "id": 514,
-    "name": "하피 여왕",
-    "tier": 6,
+    "name": "데스 나이트",
+    "tier": 5,
     "type": 1,
-    "description": "봉우리의 지배권을 가진 수인입니다. 날카로운 비명과 바람 칼날로 적을 찢어버립니다.",
+    "description": "지옥에서 귀환한 기사단장입니다. 암흑의 기운이 깃든 대검으로 모든 것을 베어 넘깁니다.",
     "stats": {
-      "maxHp": 2200,
-      "maxMp": 300,
-      "moveSpeed": 1.1,
-      "maxTurns": 4,
-      "critRate": 25.0,
-      "critDmg": 210.0,
-      "accuracy": 28.0,
-      "dodge": 35.0,
-      "statusResist": 15.0,
-      "bleedPen": 20.0,
-      "meleeAtk": 110.0,
-      "magicAtk": 40.0,
+      "maxHp": 5800,
+      "maxStamina": 400,
+      "moveSpeed": 1.0,
+      "maxTurns": 2,
+      "critRate": 12.0,
+      "critDmg": 180.0,
+      "accuracy": 18.0,
+      "dodge": 18.0,
+      "statusResist": 10.0,
+      "stunRes": 20.0,
+      "meleeAtk": 340.0,
       "physDef": 45.0,
-      "physRes": 10.0,
-      "magRes": 5.0,
-      "iceRes": -5.0,
-      "physPen": 15.0
+      "physRes": 25.0,
+      "darkAtk": 50.0,
+      "physPen": 25.0,
+      "darkRes": 20.0,
+      "holyRes": -120.0
     },
-    "baseActionPoints": 4,
-    "activeSkillIds": [
-      515
-    ],
-    "expReward": 4,
+    "baseActionPoints": 3,
+    "activeSkillIds": [605],
+    "expReward": 5,
     "essenceBonus": {
       "baseStats": {
-        "20": 100,
-        "16": 40,
-        "10": 40
+        "10": 130,
+        "15": 110,
+        "5": -35
       },
       "combatStats": {
-        "dodge": 15.0,
-        "moveSpeed": 0.3,
-        "meleeAtk": 30.0
+        "meleeAtk": 145.0,
+        "critRate": 4.0,
+        "maxMp": -120.0
       },
-      "description": "6등급 정수(합계 180). 신경 반응(ID 20) +100 보정. 근접 기동 빌드의 중반 종결 정수입니다."
+      "description": "5등급 정수(합계 275). 압도적인 물리 파괴력을 부여하지만 마나 혈관(ID 5)이 메말라버립니다."
     }
   },
   {
     "id": 515,
-    "name": "뇌폭의 대정령",
-    "tier": 6,
+    "name": "리치 로드",
+    "tier": 5,
     "type": 3,
-    "description": "하늘 전체를 뒤덮는 거대한 뇌운의 형상입니다. 존재만으로 대기를 진동시킵니다.",
+    "description": "금단의 마법에 손을 댄 망자들의 왕입니다. 죽음 그 자체를 다스리며 끊임없이 몰아칩니다.",
     "stats": {
-      "maxHp": 2400,
-      "maxMp": 1500,
+      "maxHp": 4500,
+      "maxMp": 2000,
+      "mpRegen": 12.0,
       "moveSpeed": 1.0,
       "maxTurns": 3,
-      "critRate": 20.0,
-      "critDmg": 180.0,
-      "accuracy": 20.0,
-      "dodge": 15.0,
-      "statusResist": 20.0,
-      "stunPen": 20.0,
-      "magicAtk": 90.0,
-      "lightningAtk": 60.0,
-      "physDef": 40.0,
-      "magRes": 15.0,
-      "lightningRes": 20.0,
-      "earthRes": -5.0,
-      "magPen": 10.0,
-      "lightningPen": 15.0
+      "accuracy": 18.0,
+      "dodge": 18.0,
+      "statusResist": 25.0,
+      "magicAtk": 320.0,
+      "magRes": 25.0,
+      "darkAtk": 80.0,
+      "darkPen": 25.0,
+      "magPen": 25.0,
+      "darkRes": 30.0,
+      "holyRes": -120.0
     },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      513,
-      514
-    ],
-    "expReward": 4,
+    "baseActionPoints": 4,
+    "activeSkillIds": [606],
+    "expReward": 6,
     "essenceBonus": {
       "baseStats": {
-        "13": 80,
-        "18": 60,
-        "19": 40
+        "13": 140,
+        "15": 100,
+        "1": -38
       },
       "combatStats": {
-        "lightningRes": 40.0,
-        "magicAtk": 40.0,
-        "statusResist": 20.0
+        "magicAtk": 150.0,
+        "maxTurns": 1.0,
+        "maxHp": -160.0
       },
-      "description": "6등급 정수(합계 180). 마법 화력과 번개 저항 및 정신 내성을 고루 갖춥니다."
+      "description": "5등급 정수(합계 278). 행동 횟수를 늘려주는 신비한 힘을 가졌으나 생명 근원(ID 1)이 심각하게 훼손됩니다."
     }
   },
   {
-    "id": 516,
-    "name": "폭풍의 지배자",
-    "tier": 5,
-    "type": 3,
-    "description": "폭풍 그 자체가 의지를 가진 고대 존재입니다. 모든 원거리 투사체를 튕겨냅니다.",
+    "id": 520,
+    "name": "얼어붙은 파수병",
+    "tier": 7,
+    "type": 1,
+    "description": "협곡의 입구를 지키는 거대한 얼음 갑주입니다. 물리 충격을 얼음 파편으로 반사합니다.",
     "stats": {
-      "maxHp": 5500,
-      "maxMp": 2000,
-      "moveSpeed": 1.4,
-      "maxTurns": 4,
-      "critRate": 30.0,
-      "critDmg": 240.0,
-      "accuracy": 35.0,
-      "dodge": 40.0,
-      "statusResist": 25.0,
-      "stunPen": 25.0,
-      "magicAtk": 180.0,
-      "lightningAtk": 120.0,
-      "physDef": 75.0,
-      "magRes": 20.0,
-      "lightningRes": 30.0,
-      "iceRes": 10.0,
-      "earthRes": 5.0,
-      "magPen": 20.0,
-      "lightningPen": 25.0
+      "maxHp": 900,
+      "maxStamina": 150,
+      "moveSpeed": 0.8,
+      "maxTurns": 1,
+      "accuracy": 13.0,
+      "dodge": 5.0,
+      "statusResist": 10.0,
+      "frozenRes": 80.0,
+      "meleeAtk": 80.0,
+      "physDef": 25.0,
+      "physRes": 15.0,
+      "iceAtk": 15.0,
+      "iceRes": 15.0,
+      "fireRes": -100.0
     },
-    "baseActionPoints": 4,
-    "activeSkillIds": [
-      514,
-      517
-    ],
-    "expReward": 5,
+    "baseActionPoints": 2,
+    "activeSkillIds": [610],
+    "expReward": 3,
     "essenceBonus": {
       "baseStats": {
-        "20": 150,
-        "13": 80,
-        "15": 50
+        "12": 50,
+        "2": 45,
+        "21": -20
       },
       "combatStats": {
-        "dodge": 20.0,
-        "accuracy": 15.0,
-        "lightningAtk": 60.0,
-        "moveSpeed": 0.4
+        "physRes": 3.0,
+        "maxHp": 100.0,
+        "moveSpeed": -0.1
       },
-      "description": "5등급 정수(합계 280). 신경 반응 +150 투자를 통해 압도적인 회피와 선공권을 확보합니다."
+      "description": "7등급 정수(합계 75). 신체를 단단하게 고정하여 방어력을 얻지만, 가속력(ID 21)을 잃어 발이 느려집니다."
     }
   },
   {
     "id": 521,
-    "name": "타락한 피조물",
-    "tier": 8,
-    "type": 2,
-    "description": "버려진 육체들이 어둠의 마력으로 기괴하게 뒤섞인 존재입니다. 만지는 것만으로 부패를 유발합니다.",
+    "name": "서리꽃 유령",
+    "tier": 6,
+    "type": 3,
+    "description": "아름답지만 치명적인 냉기를 뿜어내는 영체입니다. 마법 회로를 얼려 마나 재생을 방해합니다.",
     "stats": {
-      "maxHp": 350,
-      "moveSpeed": 0.7,
+      "maxHp": 1200,
+      "maxMp": 1200,
+      "mpRegen": 10.0,
+      "moveSpeed": 1.2,
       "maxTurns": 2,
-      "critRate": 10.0,
-      "critDmg": 160.0,
       "accuracy": 15.0,
-      "dodge": 5.0,
-      "statusResist": 5.0,
-      "poisonPen": 10.0,
-      "meleeAtk": 25.0,
-      "toxicAtk": 10.0,
-      "physDef": 8.0,
-      "physRes": 5.0,
-      "darkRes": 10.0,
-      "toxicRes": 10.0,
-      "fireRes": -15.0,
-      "holyRes": -15.0
+      "dodge": 15.0,
+      "statusResist": 10.0,
+      "frozenPen": 25.0,
+      "magicAtk": 140.0,
+      "magRes": 20.0,
+      "iceAtk": 40.0,
+      "iceRes": 20.0,
+      "fireRes": -90.0
     },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      521
-    ],
-    "expReward": 2,
+    "baseActionPoints": 3,
+    "activeSkillIds": [611],
+    "expReward": 4,
     "essenceBonus": {
       "baseStats": {
-        "1": 20,
-        "2": 15,
-        "18": 10
+        "13": 55,
+        "8": 50,
+        "10": -30
       },
       "combatStats": {
-        "darkRes": 10.0,
-        "maxHp": 80
+        "magicAtk": 80.0,
+        "mpRegen": 4.0,
+        "meleeAtk": -100.0
       },
-      "description": "8등급 정수(합계 45). 코어와 침식 저항(ID 18)을 보정하여 저주 내성을 높입니다."
+      "description": "6등급 정수(합계 75). 마나 회로를 정밀화하여 마법 효율을 높이나, 근육 출력(ID 10)이 크게 감소합니다."
     }
   },
   {
     "id": 522,
-    "name": "커스스톤",
+    "name": "설원 도살자",
     "tier": 6,
-    "type": 3,
-    "description": "수천 년간 원한을 머금은 검은 보석 거인입니다.",
+    "type": 1,
+    "description": "눈보라 속에서 튀어나오는 거구의 좀비입니다. 녹슬고 얼어붙은 낫으로 출혈과 빙결을 동시에 일으킵니다.",
     "stats": {
-      "maxHp": 2500,
-      "maxMp": 400,
-      "moveSpeed": 0.9,
-      "maxTurns": 3,
-      "critRate": 15.0,
-      "critDmg": 180.0,
-      "accuracy": 20.0,
-      "statusResist": 20.0,
-      "stunRes": 50.0,
-      "meleeAtk": 80.0,
-      "magicAtk": 40.0,
-      "darkAtk": 40.0,
-      "physDef": 50.0,
-      "physRes": 15.0,
-      "magRes": 15.0,
-      "darkRes": 20.0,
-      "iceRes": 10.0,
-      "holyRes": -5.0,
-      "physPen": 10.0,
-      "darkPen": 15.0
+      "maxHp": 2200,
+      "maxStamina": 250,
+      "moveSpeed": 1.1,
+      "maxTurns": 2,
+      "accuracy": 15.0,
+      "dodge": 10.0,
+      "statusResist": 10.0,
+      "bleedPen": 25.0,
+      "frozenPen": 15.0,
+      "meleeAtk": 150.0,
+      "physDef": 30.0,
+      "physRes": 20.0,
+      "iceAtk": 20.0,
+      "iceRes": 20.0,
+      "fireRes": -85.0
     },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      522
-    ],
+    "baseActionPoints": 2,
+    "activeSkillIds": [612],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
-        "2": 80,
-        "1": 50,
-        "18": 50
+        "10": 60,
+        "22": 55,
+        "4": -30
       },
       "combatStats": {
-        "iceRes": 35.0,
-        "darkRes": 35.0,
-        "physDef": 30.0
+        "meleeAtk": 110.0,
+        "statusPen": 8.0,
+        "maxMp": -100.0
       },
-      "description": "6등급 정수(합계 180). 골밀도와 침식 저항에 130을 투자해 속성 방어의 정점을 찍습니다."
+      "description": "6등급 정수(합계 85). 상태이상 부여 능력이 탁월해지지만, 마나 혈관(ID 4)이 얼어붙어 마나통이 줄어듭니다."
     }
   },
   {
     "id": 523,
-    "name": "혈원귀",
+    "name": "영겁의 켈베로스 (서리)",
     "tier": 5,
-    "type": 2,
-    "description": "피의 굶주림에 미쳐버린 고대의 원귀입니다.",
+    "type": 1,
+    "description": "지옥의 문을 지키던 개가 얼어붙은 채 부활했습니다. 세 개의 머리가 각각 다른 냉기 저주를 내뱉습니다.",
     "stats": {
-      "maxHp": 6500,
-      "maxMp": 800,
-      "hpRegen": 25.0,
+      "maxHp": 4800,
+      "maxStamina": 500,
+      "hpRegen": 10.0,
       "moveSpeed": 1.5,
-      "maxTurns": 4,
-      "critRate": 25.0,
-      "critDmg": 210.0,
-      "accuracy": 30.0,
-      "dodge": 25.0,
-      "statusResist": 15.0,
-      "bleedPen": 30.0,
-      "meleeAtk": 200.0,
-      "magicAtk": 100.0,
-      "darkAtk": 50.0,
-      "physDef": 70.0,
-      "physRes": 15.0,
-      "darkRes": 25.0,
-      "holyRes": 5.0,
-      "fireRes": 10.0,
-      "physPen": 15.0,
-      "darkPen": 20.0
+      "maxTurns": 3,
+      "critRate": 15.0,
+      "critDmg": 180.0,
+      "accuracy": 18.0,
+      "dodge": 18.0,
+      "statusResist": 25.0,
+      "frozenPen": 30.0,
+      "meleeAtk": 280.0,
+      "physDef": 40.0,
+      "physRes": 25.0,
+      "iceAtk": 80.0,
+      "iceRes": 25.0,
+      "fireRes": -110.0,
+      "icePen": 25.0
     },
-    "baseActionPoints": 4,
-    "activeSkillIds": [
-      524,
-      525
-    ],
+    "baseActionPoints": 3,
+    "activeSkillIds": [613],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
-        "10": 140,
-        "3": 80,
-        "20": 60
+        "21": 75,
+        "20": 70,
+        "12": -40
       },
       "combatStats": {
-        "lifeSteal": 15.0,
-        "meleeAtk": 80.0,
-        "hpRegen": 25.0
+        "moveSpeed": 0.15,
+        "dodge": 6.0,
+        "physRes": -4.0
       },
-      "description": "5등급 정수(합계 280). 상완(ID 10)과 대사효율(ID 3) 보정으로 공격 시 체력 흡수 효율을 높입니다."
+      "description": "5등급 정수(합계 105). 극적인 가속력과 반응성을 얻지만, 방어 본능(ID 12)이 결여되어 피격 시 치명적입니다."
     }
   },
   {
     "id": 524,
-    "name": "다키리온",
-    "tier": 5,
-    "type": 1,
-    "description": "그림자 속에 숨어 사는 얼음 비늘 용입니다. 숨결 한 번으로 대상을 영구히 얼려버립니다.",
-    "stats": {
-      "maxHp": 6500,
-      "maxMp": 1200,
-      "moveSpeed": 1.4,
-      "maxTurns": 3,
-      "critRate": 15.0,
-      "critDmg": 200.0,
-      "accuracy": 35.0,
-      "dodge": 15.0,
-      "statusResist": 25.0,
-      "frozenRes": 80.0,
-      "frozenPen": 20.0,
-      "magicAtk": 200.0,
-      "iceAtk": 100.0,
-      "darkAtk": 50.0,
-      "physDef": 80.0,
-      "magRes": 25.0,
-      "physRes": 10.0,
-      "iceRes": 40.0,
-      "darkRes": 20.0,
-      "fireRes": -10.0,
-      "magPen": 15.0,
-      "icePen": 15.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      526,
-      527
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 120,
-        "18": 80,
-        "2": 80
-      },
-      "combatStats": {
-        "iceAtk": 60.0,
-        "magRes": 40.0,
-        "freezeRate": 12.0
-      },
-      "description": "5등급 정수(합계 280). 빙결 공격과 마법 저항에 특화되어 대 마법사 전에서 유리합니다."
-    }
-  },
-  {
-    "id": 525,
-    "name": "소울이터",
+    "name": "글라시아 로드",
     "tier": 5,
     "type": 3,
-    "description": "영혼의 포식자입니다. 희생자의 정신을 침식시킵니다.",
+    "description": "협곡의 주인입니다. 주변의 열기를 모두 흡수하여 절대 영도의 공간을 만듭니다.",
     "stats": {
-      "maxHp": 4800,
-      "maxMp": 3000,
-      "mpRegen": 50.0,
-      "moveSpeed": 1.5,
-      "maxTurns": 3,
-      "critRate": 20.0,
-      "critDmg": 250.0,
-      "accuracy": 40.0,
-      "dodge": 35.0,
-      "statusResist": 20.0,
-      "magicAtk": 200.0,
-      "darkAtk": 100.0,
-      "chaosAtk": 50.0,
-      "physDef": 60.0,
-      "magRes": 25.0,
-      "darkRes": 20.0,
-      "chaosRes": 20.0,
-      "holyRes": -10.0,
-      "magPen": 20.0,
-      "darkPen": 15.0,
-      "chaosPen": 15.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      528,
-      529
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 170,
-        "15": 60,
-        "4": 50
-      },
-      "combatStats": {
-        "magicAtk": 120.0,
-        "manaSteal": 10.0,
-        "mpRegen": 30.0
-      },
-      "description": "5등급 정수(합계 280). 에너지 응집(ID 13)에 170을 몰빵하여 극강의 마법 화력을 선사합니다."
-    }
-  },
-  {
-    "id": 531,
-    "name": "하급 얼음 정령",
-    "tier": 8,
-    "type": 3,
-    "description": "한기 그 자체인 정령입니다. 전기에 취약합니다.",
-    "stats": {
-      "maxHp": 300,
-      "maxMp": 250,
-      "moveSpeed": 0.7,
-      "maxTurns": 1,
-      "critRate": 5.0,
-      "critDmg": 150.0,
-      "accuracy": 15.0,
-      "dodge": 12.0,
-      "magicAtk": 30.0,
-      "iceAtk": 10.0,
-      "physDef": 5.0,
-      "magRes": 10.0,
-      "iceRes": 30.0,
-      "lightningRes": -15.0,
-      "fireRes": -10.0,
-      "icePen": 5.0
-    },
-    "baseActionPoints": 1,
-    "activeSkillIds": [
-      532
-    ],
-    "expReward": 2,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 25,
-        "4": 10,
-        "8": 10
-      },
-      "combatStats": {
-        "magicAtk": 10.0,
-        "iceAtk": 5.0
-      },
-      "description": "8등급 정수(합계 45). 마법 화력 기초 보정."
-    }
-  },
-  {
-    "id": 532,
-    "name": "설인 정찰꾼",
-    "tier": 8,
-    "type": 1,
-    "description": "눈보라 속의 사냥꾼입니다.",
-    "stats": {
-      "maxHp": 320,
-      "moveSpeed": 0.8,
-      "maxTurns": 2,
-      "critRate": 10.0,
-      "critDmg": 160.0,
-      "accuracy": 22.0,
-      "dodge": 14.0,
-      "meleeAtk": 35.0,
-      "iceAtk": 5.0,
-      "physDef": 10.0,
-      "physRes": 5.0,
-      "iceRes": 10.0,
-      "lightningRes": -15.0,
-      "fireRes": -5.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      533
-    ],
-    "expReward": 2,
-    "essenceBonus": {
-      "baseStats": {
-        "16": 25,
-        "20": 10,
-        "10": 10
-      },
-      "combatStats": {
-        "accuracy": 8.0,
-        "moveSpeed": 0.1
-      },
-      "description": "8등급 정수(합계 45). 명중과 기동성 보정."
-    }
-  },
-  {
-    "id": 533,
-    "name": "아이스 워커",
-    "tier": 7,
-    "type": 2,
-    "description": "얼어붙은 불사자입니다. 전격에 닿으면 얼음 몸체가 파손됩니다.",
-    "stats": {
-      "maxHp": 750,
-      "maxMp": 100,
-      "moveSpeed": 0.9,
-      "maxTurns": 2,
-      "critRate": 10.0,
-      "critDmg": 160.0,
-      "accuracy": 18.0,
-      "dodge": 13.0,
-      "meleeAtk": 50.0,
-      "iceAtk": 20.0,
-      "physDef": 20.0,
-      "physRes": 10.0,
-      "iceRes": 15.0,
-      "lightningRes": -10.0,
-      "fireRes": -5.0,
-      "frozenRes": 50.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      534
-    ],
-    "expReward": 3,
-    "essenceBonus": {
-      "baseStats": {
-        "1": 50,
-        "2": 30,
-        "18": 20
-      },
-      "combatStats": {
-        "maxHp": 120,
-        "physRes": 5.0
-      },
-      "description": "7등급 정수(합계 100). 생존력 특화."
-    }
-  },
-  {
-    "id": 534,
-    "name": "만년설 설인",
-    "tier": 7,
-    "type": 1,
-    "description": "설산의 거구입니다. 몸집이 커 전격 공격을 피하기 어렵습니다.",
-    "stats": {
-      "maxHp": 850,
-      "moveSpeed": 0.8,
-      "maxTurns": 2,
-      "critRate": 15.0,
-      "critDmg": 180.0,
-      "accuracy": 15.0,
-      "dodge": 5.0,
-      "meleeAtk": 65.0,
-      "iceAtk": 10.0,
-      "physDef": 25.0,
-      "physRes": 15.0,
-      "iceRes": 20.0,
-      "lightningRes": -10.0,
-      "fireRes": -5.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      533
-    ],
-    "expReward": 3,
-    "essenceBonus": {
-      "baseStats": {
-        "10": 60,
-        "11": 25,
-        "12": 15
-      },
-      "combatStats": {
-        "meleeAtk": 40.0,
-        "physPen": 10.0
-      },
-      "description": "7등급 정수(합계 100). 물리 공격력 특화."
-    }
-  },
-  {
-    "id": 535,
-    "name": "얼음 골렘",
-    "tier": 6,
-    "type": 4,
-    "description": "만년설의 핵입니다. 전격에 닿으면 결속력이 약해집니다.",
-    "stats": {
-      "maxHp": 2200,
-      "moveSpeed": 0.9,
-      "maxTurns": 2,
-      "critRate": 5.0,
-      "critDmg": 150.0,
-      "accuracy": 20.0,
-      "dodge": 5.0,
-      "meleeAtk": 110.0,
-      "iceAtk": 30.0,
-      "physDef": 45.0,
-      "physRes": 20.0,
-      "iceRes": 30.0,
-      "lightningRes": -5.0,
-      "fireRes": -5.0,
-      "frozenRes": 80.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      536
-    ],
-    "expReward": 4,
-    "essenceBonus": {
-      "baseStats": {
-        "1": 40,
-        "2": 100,
-        "11": 40
-      },
-      "combatStats": {
-        "physDef": 45.0,
-        "physRes": 10.0
-      },
-      "description": "6등급 정수(합계 180). 방어력 종결급 보정."
-    }
-  },
-  {
-    "id": 602,
-    "name": "맹독 해파리",
-    "tier": 7,
-    "type": 3,
-    "description": "심해의 발발광 해파리입니다. 촉수에 스치면 마비되며, 전기가 몸 전체로 번집니다.",
-    "stats": {
-      "maxHp": 650,
-      "maxMp": 800,
-      "moveSpeed": 1.0,
-      "maxTurns": 2,
-      "critRate": 10.0,
-      "critDmg": 170.0,
-      "accuracy": 20.0,
-      "dodge": 18.0,
-      "magicAtk": 65.0,
-      "toxicAtk": 15.0,
-      "physDef": 15.0,
-      "magRes": 10.0,
-      "toxicRes": 20.0,
-      "lightningRes": -10.0,
-      "poisonPen": 15.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      602
-    ],
-    "expReward": 3,
-    "essenceBonus": {
-      "baseStats": {
-        "13": 60,
-        "15": 20,
-        "16": 20
-      },
-      "combatStats": {
-        "magicAtk": 25.0,
-        "poisonAtk": 15.0
-      },
-      "description": "7등급 정수(합계 100). 에너지 응집에 집중한 마법형 정수입니다."
-    }
-  },
-  {
-    "id": 603,
-    "name": "저주받은 선원",
-    "tier": 7,
-    "type": 2,
-    "description": "침몰선과 함께 영혼이 묶인 망자입니다.",
-    "stats": {
-      "maxHp": 850,
-      "maxMp": 200,
-      "moveSpeed": 0.9,
-      "maxTurns": 2,
-      "critRate": 12.0,
-      "critDmg": 160.0,
-      "accuracy": 18.0,
-      "dodge": 12.0,
-      "meleeAtk": 60.0,
-      "darkAtk": 15.0,
-      "physDef": 25.0,
-      "physRes": 10.0,
-      "darkRes": 15.0,
-      "lightningRes": -10.0,
-      "bleedPen": 10.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      603
-    ],
-    "expReward": 3,
-    "essenceBonus": {
-      "baseStats": {
-        "10": 50,
-        "20": 30,
-        "1": 20
-      },
-      "combatStats": {
-        "meleeAtk": 15.0,
-        "darkRes": 10.0
-      },
-      "description": "7등급 정수(합계 100). 상완과 신경 반응을 골고루 보정합니다."
-    }
-  },
-  {
-    "id": 612,
-    "name": "심해의 수호자",
-    "tier": 6,
-    "type": 4,
-    "description": "단단한 산호 갑옷을 입은 갑각류 전사입니다. 산호가 몸에 자라있습니다.",
-    "stats": {
-      "maxHp": 2400,
-      "moveSpeed": 1.0,
-      "maxTurns": 2,
-      "critRate": 8.0,
-      "critDmg": 150.0,
-      "accuracy": 20.0,
-      "dodge": 5.0,
-      "meleeAtk": 130.0,
-      "physDef": 50.0,
-      "physRes": 20.0,
-      "magRes": 10.0,
-      "lightningRes": -5.0,
-      "stunPen": 15.0
-    },
-    "baseActionPoints": 2,
-    "activeSkillIds": [
-      612,
-      613
-    ],
-    "expReward": 4,
-    "essenceBonus": {
-      "baseStats": {
-        "2": 100,
-        "18": 50,
-        "1": 30
-      },
-      "combatStats": {
-        "physDef": 40.0,
-        "iceRes": 20.0
-      },
-      "description": "6등급 정수(합계 180). 골밀도(ID 2) +100의 철벽 방어 정수입니다."
-    }
-  },
-  {
-    "id": 613,
-    "name": "어인 전사",
-    "tier": 6,
-    "type": 0,
-    "description": "작살을 든 호전적인 어인입니다.",
-    "stats": {
-      "maxHp": 1800,
-      "maxMp": 100,
+      "maxHp": 5500,
+      "maxMp": 1800,
+      "mpRegen": 20.0,
       "moveSpeed": 1.1,
       "maxTurns": 3,
-      "critRate": 20.0,
-      "critDmg": 190.0,
-      "accuracy": 25.0,
-      "dodge": 18.0,
-      "meleeAtk": 140.0,
-      "physDef": 35.0,
-      "physRes": 10.0,
-      "magRes": 5.0,
-      "lightningRes": -5.0,
-      "bleedPen": 15.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      614
-    ],
-    "expReward": 4,
-    "essenceBonus": {
-      "baseStats": {
-        "10": 100,
-        "20": 50,
-        "11": 30
-      },
-      "combatStats": {
-        "meleeAtk": 50.0,
-        "moveSpeed": 0.2
-      },
-      "description": "6등급 정수(합계 180). 상완과 신경 반응을 높여주는 공격형 정수입니다."
-    }
-  },
-  {
-    "id": 621,
-    "name": "심해 거인",
-    "tier": 5,
-    "type": 2,
-    "description": "심해의 압력을 견디는 거인입니다. 전도율이 높은 해초를 온몸에 두르고 있습니다.",
-    "stats": {
-      "maxHp": 6500,
-      "maxMp": 200,
-      "moveSpeed": 1.2,
-      "maxTurns": 3,
-      "critRate": 15.0,
+      "critRate": 10.0,
       "critDmg": 200.0,
-      "accuracy": 24.0,
-      "dodge": 10.0,
-      "meleeAtk": 280.0,
-      "magicAtk": 70.0,
-      "physDef": 90.0,
-      "physRes": 25.0,
-      "magRes": 15.0,
-      "lightningRes": -5.0,
-      "stunPen": 20.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      615
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "10": 180,
-        "11": 50,
-        "1": 50
-      },
-      "combatStats": {
-        "meleeAtk": 110.0,
-        "maxHp": 500
-      },
-      "description": "5등급 정수(합계 280). 극강의 상완 보정치를 자랑하는 물리형 정수입니다."
-    }
-  },
-  {
-    "id": 622,
-    "name": "히드라",
-    "tier": 5,
-    "type": 2,
-    "description": "아홉 개의 머리를 가진 괴수입니다.",
-    "stats": {
-      "maxHp": 6000,
-      "maxMp": 1200,
-      "hpRegen": 50.0,
-      "moveSpeed": 1.4,
-      "maxTurns": 3,
-      "critRate": 25.0,
-      "critDmg": 220.0,
-      "accuracy": 26.0,
-      "dodge": 15.0,
-      "meleeAtk": 200.0,
-      "magicAtk": 150.0,
-      "physDef": 70.0,
-      "physRes": 15.0,
-      "magRes": 20.0,
-      "lightningRes": -5.0,
-      "toxicPen": 15.0
-    },
-    "baseActionPoints": 3,
-    "activeSkillIds": [
-      616,
-      617
-    ],
-    "expReward": 5,
-    "essenceBonus": {
-      "baseStats": {
-        "3": 150,
-        "13": 80,
-        "15": 50
-      },
-      "combatStats": {
-        "hpRegen": 40.0,
-        "magicAtk": 60.0
-      },
-      "description": "5등급 정수(합계 280). 대사 효율(ID 3) +150으로 재생력에 특화됩니다."
-    }
-  },
-  {
-    "id": 632,
-    "name": "레비아탄",
-    "tier": 3,
-    "type": 1,
-    "description": "바다의 재앙이라 불리는 거대 괴수입니다.매우 거대합니다.",
-    "stats": {
-      "maxHp": 26000,
-      "maxMp": 2000,
-      "moveSpeed": 2.2,
-      "maxTurns": 4,
-      "critRate": 25.0,
-      "critDmg": 280.0,
-      "accuracy": 35.0,
-      "dodge": 20.0,
+      "accuracy": 18.0,
+      "dodge": 18.0,
       "statusResist": 30.0,
-      "meleeAtk": 850.0,
-      "lightningAtk": 100.0,
-      "physDef": 260.0,
-      "physRes": 45.0,
-      "magRes": 35.0,
-      "iceRes": 50.0,
-      "lightningRes": 10.0,
-      "physPen": 15.0
+      "frozenPen": 35.0,
+      "magicAtk": 300.0,
+      "magRes": 25.0,
+      "iceAtk": 150.0,
+      "iceRes": 40.0,
+      "fireRes": -150.0,
+      "icePen": 30.0
     },
     "baseActionPoints": 4,
-    "activeSkillIds": [631, 632, 633],
-    "expReward": 7,
+    "activeSkillIds": [614],
+    "expReward": 6,
     "essenceBonus": {
       "baseStats": {
-        "10": 350,
-        "1": 200,
-        "2": 150
+        "13": 80,
+        "14": 75,
+        "11": -40
       },
       "combatStats": {
-        "meleeAtk": 200.0,
-        "physRes": 20.0,
-        "stunRes": 50.0
+        "magicAtk": 140.0,
+        "iceAtk": 55.0,
+        "meleeAtk": -140.0
       },
-      "description": "3등급 정수(합계 700). 상완(ID 10) +350을 제공하는 전사 종결 정수입니다."
+      "description": "5등급 정수(합계 115). 냉기 마법의 정점에 도달하나, 육체적 완력(ID 11)을 제물로 바쳐야 합니다."
     }
   },
+
   {
     "id": 711,
     "name": "트롤",
@@ -3558,25 +3225,26 @@
     "type": 2,
     "description": "경이로운 재생력을 가진 거구입니다. 불과 산성에 약합니다.",
     "stats": {
-      "maxHp": 6000,
+      "maxHp": 6500,
       "maxMp": 200,
       "hpRegen": 150.0,
       "moveSpeed": 1.2,
       "maxTurns": 3,
-      "critRate": 10.0,
-      "critDmg": 180.0,
-      "accuracy": 24.0,
-      "dodge": 10.0,
-      "statusResist": 20.0,
+      "critRate": 5.0,
+      "critDmg": 160.0,
+      "accuracy": 18.0,
+      "dodge": 5.0,
+      "statusResist": 10.0,
       "bleedRes": 30.0,
-      "meleeAtk": 300.0,
-      "physDef": 70.0,
-      "physRes": 20.0,
+      "poisonRes": 20.0,
+      "meleeAtk": 320.0,
+      "physDef": 50.0,
+      "physRes": 25.0,
       "magRes": 10.0,
-      "fireRes": -30.0,
-      "toxicRes": -15.0,
+      "fireRes": -80.0,
+      "toxicRes": -40.0,
       "earthRes": 25.0,
-      "physPen": 15.0
+      "physPen": 25.0
     },
     "baseActionPoints": 3,
     "activeSkillIds": [
@@ -3588,13 +3256,17 @@
       "baseStats": {
         "3": 150,
         "1": 80,
-        "11": 50
+        "11": 50,
+        "4": -40
       },
       "combatStats": {
-        "hpRegen": 100.0,
-        "maxHp": 600
+        "hpRegen": 150.0,
+        "maxHp": 160.0,
+        "meleeAtk": 120.0,
+        "maxMp": -120.0,
+        "fireRes": -15.0
       },
-      "description": "5등급 정수(합계 280). 대사 효율(ID 3) +150으로 압도적 재생력을 부여합니다."
+      "description": "5등급 정수(합계 240). 압도적인 재생력과 체력을 얻지만, 마력 회로가 위축되어 최대 MP와 화염 저항이 크게 감소합니다."
     }
   },
   {
@@ -3604,25 +3276,28 @@
     "type": 0,
     "description": "숲의 파괴자입니다. 단순하지만 압도적인 질량으로 모든 것을 으깨버립니다.",
     "stats": {
-      "maxHp": 24000,
-      "moveSpeed": 2.0,
+      "maxHp": 28000,
+      "maxMp": 300,
+      "hpRegen": 10.0,
+      "moveSpeed": 1.1,
       "maxTurns": 4,
-      "critRate": 20.0,
-      "critDmg": 280.0,
-      "accuracy": 28.0,
-      "dodge": 15.0,
-      "statusResist": 20.0,
+      "critRate": 15.0,
+      "critDmg": 220.0,
+      "accuracy": 23.0,
+      "dodge": 10.0,
+      "statusResist": 15.0,
       "bleedRes": 30.0,
       "stunRes": 50.0,
-      "stunPen": 40.0,
+      "burnRes": 15.0,
+      "stunPen": 25.0,
       "meleeAtk": 850.0,
-      "earthAtk": 50.0,
-      "physDef": 240.0,
-      "physRes": 40.0,
-      "magRes": 10.0,
+      "earthAtk": 120.0,
+      "physDef": 80.0,
+      "physRes": 45.0,
+      "magRes": 15.0,
       "fireRes": 15.0,
-      "earthRes": 30.0,
-      "lightningRes": -10.0,
+      "earthRes": 45.0,
+      "lightningRes": -80.0,
       "physPen": 35.0,
       "earthPen": 20.0
     },
@@ -3636,14 +3311,17 @@
       "baseStats": {
         "10": 400,
         "11": 150,
-        "1": 150
+        "1": 150,
+        "20": -70
       },
       "combatStats": {
-        "meleeAtk": 250.0,
-        "physPen": 40.0,
-        "stunRes": 60.0
+        "meleeAtk": 380.0,
+        "physPen": 10.0,
+        "stunRes": 15.0,
+        "dodge": -8.0,
+        "moveSpeed": -0.3
       },
-      "description": "3등급 정수(합계 700). 상완(ID 10) +400의 전사 종결급 정수입니다."
+      "description": "3등급 정수(합계 630). 상체 출력에 모든 것을 쏟아부은 전사형 정수입니다. 파괴적인 근력을 얻는 대신 반사 신경과 기동성이 최악으로 떨어집니다."
     }
   }
 ]

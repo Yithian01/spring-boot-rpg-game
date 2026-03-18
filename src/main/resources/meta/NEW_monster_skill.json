@@ -254,5 +254,39 @@
       "BOW",
       "CROSSBOW"
     ]
+  },
+  {
+    "id": 103,
+    "name": "동화",
+    "description": "주변 환경과 신체를 동화시켜 적의 공격을 더 쉽게 회피합니다.",
+    "icon": "/images/skills/assimilation.png",
+    "grade": "UNCOMMON",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 0,
+      "mp": 20,
+      "stamina": 10
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": null,
+      "duration": 3,
+      "chance": 100,
+      "penetration": 0,
+      "critDamage": 0,
+      "critRate": 0,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {
+        "dodge": 10.0
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
   }
 ]

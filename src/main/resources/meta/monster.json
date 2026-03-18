@@ -100,8 +100,8 @@
       "iceRes": -20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8, 103],
+    "essenceSkillIds": [103],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "13": 20, "14": 20, "11": -10 },

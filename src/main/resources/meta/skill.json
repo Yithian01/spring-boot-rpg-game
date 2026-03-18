@@ -44,10 +44,10 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 5, "mp": 0 },
+    "hitChance": 75,
+    "cost": { "stamina": 15, "mp": 0 },
     "damageScaling": { "meleeAtk": 1.0 },
-    "statScaling": { "10": 1.0, "12": 1.2 },
+    "statScaling": { "10": 1.0, "12": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -65,10 +65,10 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 6, "mp": 0 },
+    "hitChance": 72,
+    "cost": { "stamina": 16, "mp": 0 },
     "damageScaling": { "meleeAtk": 1.0 },
-    "statScaling": { "10": 1.2, "20": 0.8 },
+    "statScaling": { "10": 0.9, "20": 0.6 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -84,10 +84,10 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 80,
-    "cost": { "stamina": 7, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.1 },
-    "statScaling": { "10": 1.4 },
+    "hitChance": 70,
+    "cost": { "stamina": 17, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.0 },
+    "statScaling": { "10": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL"
@@ -102,14 +102,14 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "stamina": 10, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.2 },
-    "statScaling": { "23": 2.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 15, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.0 },
+    "statScaling": { "23": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "critRate": 15
+      "critRate": 5
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -121,9 +121,9 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 8, "mp": 0 },
-    "damageScaling": { "meleeAtk": 0.6 },
+    "hitChance": 70,
+    "cost": { "stamina": 10, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.0 },
     "statScaling": { "21": 1.5 },
     "effect": {
       "type": "DAMAGE",
@@ -140,10 +140,10 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 7, "mp": 0 },
-    "damageScaling": { "meleeAtk": 0.5 },
-    "statScaling": { "11": 2.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 10, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.0 },
+    "statScaling": { "11": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -161,10 +161,10 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 10, "mp": 0 },
+    "hitChance": 72,
+    "cost": { "stamina": 15, "mp": 0 },
     "damageScaling": { "meleeAtk": 1.0 },
-    "statScaling": { "21": 1.2, "10": 0.8 },
+    "statScaling": { "21": 1.0, "10": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL"
@@ -179,10 +179,10 @@
     "type": "PHYSICAL",
     "grade": "BASE",
     "turnCost": 1,
-    "hitChance": 75,
-    "cost": { "stamina": 12, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.3 },
-    "statScaling": { "10": 1.8 },
+    "hitChance": 70,
+    "cost": { "stamina": 15, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.0 },
+    "statScaling": { "10": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -200,10 +200,10 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 78,
     "cost": { "stamina": 12, "mp": 0 },
     "damageScaling": { "meleeAtk": 1.2 },
-    "statScaling": { "10": 1.5, "21": 0.5 },
+    "statScaling": { "10": 1.0, "21": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -221,14 +221,14 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
+    "hitChance": 75,
     "cost": { "stamina": 15, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.3 },
-    "statScaling": { "10": 2.0 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "10": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 10
+      "penetration": 15
     },
     "requiredWeapons": ["SWORD", "DAGGER", "AXE"]
   },
@@ -240,10 +240,10 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 80,
+    "hitChance": 75,
     "cost": { "stamina": 14, "mp": 0 },
-    "damageScaling": { "meleeAtk": 0.8 },
-    "statScaling": { "21": 2.5 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "21": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -262,14 +262,14 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 18, "mp": 5 },
-    "damageScaling": { "meleeAtk": 1.6 },
-    "statScaling": { "21": 3.0, "23": 1.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 28, "mp": 5 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "21": 1.5, "23": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 25,
+      "penetration": 20,
       "critRate": 10
     },
     "requiredWeapons": ["SWORD", "DAGGER", "SPEAR"]
@@ -282,10 +282,10 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 95,
-    "cost": { "stamina": 22, "mp": 0 },
-    "damageScaling": { "meleeAtk": 2.2 },
-    "statScaling": { "10": 1.5, "21": 2.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 32, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "10": 1.0, "21": 1.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -303,14 +303,14 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 80,
-    "cost": { "stamina": 20, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.8 },
-    "statScaling": { "10": 3.5 },
+    "hitChance": 65,
+    "cost": { "stamina": 30, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "10": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 15,
+      "penetration": 20,
       "status": "BLEED",
       "duration": 2,
       "chance": 30
@@ -325,15 +325,15 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "stamina": 25, "mp": 30 },
-    "damageScaling": { "meleeAtk": 3.2 },
-    "statScaling": { "10": 4.0, "21": 2.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 45, "mp": 30 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "10": 2.0, "21": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 45,
-      "critRate": 20
+      "penetration": 25,
+      "critRate": 13
     },
     "requiredWeapons": ["SWORD", "DAGGER", "AXE", "SPEAR"]
   },
@@ -345,17 +345,17 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 88,
-    "cost": { "stamina": 30, "mp": 15 },
-    "damageScaling": { "meleeAtk": 2.8 },
-    "statScaling": { "21": 5.0 },
+    "hitChance": 72,
+    "cost": { "stamina": 50, "mp": 15 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "21": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "BLEED",
       "duration": 4,
       "chance": 80,
-      "penetration": 20
+      "penetration": 25
     },
     "requiredWeapons": ["SWORD", "DAGGER", "AXE"]
   },
@@ -367,14 +367,14 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 75,
-    "cost": { "stamina": 40, "mp": 20 },
-    "damageScaling": { "meleeAtk": 4.5 },
-    "statScaling": { "10": 6.0 },
+    "hitChance": 60,
+    "cost": { "stamina": 55, "mp": 20 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "10": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 60,
+      "penetration": 25,
       "status": "BLEED",
       "duration": 5,
       "chance": 40
@@ -389,18 +389,18 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 1,
-    "hitChance": 100,
-    "cost": { "stamina": 35, "mp": 40 },
-    "damageScaling": { "meleeAtk": 3.8 },
-    "statScaling": { "21": 7.5, "23": 3.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 85, "mp": 40 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "21": 3.0, "23": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 50,
+      "penetration": 30,
       "status": "BLEED",
       "duration": 4,
       "chance": 90,
-      "critRate": 25
+      "critRate": 15
     },
     "requiredWeapons": ["SWORD", "DAGGER", "AXE", "SPEAR"]
   },
@@ -412,14 +412,14 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "stamina": 50, "mp": 20 },
-    "damageScaling": { "meleeAtk": 5.5 },
-    "statScaling": { "10": 8.0, "11": 2.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 75, "mp": 20 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "10": 3.0, "11": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 80,
+      "penetration": 30,
       "status": "STUN",
       "duration": 1,
       "chance": 40
@@ -434,14 +434,14 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 95,
-    "cost": { "stamina": 60, "mp": 100 },
-    "damageScaling": { "meleeAtk": 8.0 },
-    "statScaling": { "10": 10.0, "21": 5.0, "13": 3.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 120, "mp": 100 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "10": 3.0, "21": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 100,
+      "penetration": 35,
       "status": "BLEED",
       "duration": 6,
       "chance": 100,
@@ -457,14 +457,14 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 1,
-    "hitChance": 200,
-    "cost": { "stamina": 80, "mp": 150 },
-    "damageScaling": { "meleeAtk": 12.0 },
-    "statScaling": { "10": 12.0, "21": 12.0, "23": 12.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 150, "mp": 150 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "10": 2.0, "21": 2.0, "23": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 150,
+      "penetration": 35,
       "status": "BLEED",
       "duration": 9,
       "chance": 100,
@@ -480,10 +480,10 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
+    "hitChance": 78,
     "cost": { "stamina": 12, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.1 },
-    "statScaling": { "10": 1.2, "21": 0.5 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "10": 1.0, "21": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -501,14 +501,14 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 80,
-    "cost": { "stamina": 14, "mp": 0 },
+    "hitChance": 75,
+    "cost": { "stamina": 16, "mp": 0 },
     "damageScaling": { "meleeAtk": 1.2 },
-    "statScaling": { "10": 1.8 },
+    "statScaling": { "10": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 10
+      "penetration": 15
     },
     "requiredWeapons": ["BLUNT", "KNUCKLE"]
   },
@@ -520,10 +520,10 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 15, "mp": 0 },
-    "damageScaling": { "meleeAtk": 0.9 },
-    "statScaling": { "21": 2.2 },
+    "hitChance": 75,
+    "cost": { "stamina": 18, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "21": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -541,14 +541,14 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 75,
-    "cost": { "stamina": 20, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.6 },
-    "statScaling": { "10": 3.0 },
+    "hitChance": 60,
+    "cost": { "stamina": 30, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "10": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 25,
+      "penetration": 20,
       "status": "STUN",
       "duration": 1,
       "chance": 20
@@ -563,10 +563,10 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 18, "mp": 5 },
-    "damageScaling": { "meleeAtk": 1.4 },
-    "statScaling": { "21": 2.5, "10": 1.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 28, "mp": 5 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "21": 1.5, "10": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -584,14 +584,14 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 80,
-    "cost": { "stamina": 22, "mp": 0 },
-    "damageScaling": { "meleeAtk": 2.0 },
-    "statScaling": { "10": 4.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 30, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "10": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 40
+      "penetration": 20
     },
     "requiredWeapons": ["BLUNT", "KNUCKLE"]
   },
@@ -603,17 +603,17 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 70,
-    "cost": { "stamina": 28, "mp": 10 },
-    "damageScaling": { "meleeAtk": 2.8 },
-    "statScaling": { "10": 5.5 },
+    "hitChance": 65,
+    "cost": { "stamina": 45, "mp": 10 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "10": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "STUN",
       "duration": 1,
       "chance": 60,
-      "penetration": 30
+      "penetration": 25
     },
     "requiredWeapons": ["BLUNT", "KNUCKLE"]
   },
@@ -625,17 +625,17 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 30, "mp": 20 },
-    "damageScaling": { "meleeAtk": 2.2 },
-    "statScaling": { "21": 4.5, "23": 1.5 },
+    "hitChance": 75,
+    "cost": { "stamina": 48, "mp": 20 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "21": 2.0, "23": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "STUN",
       "duration": 1,
       "chance": 45,
-      "penetration": 50
+      "penetration": 25
     },
     "requiredWeapons": ["BLUNT", "KNUCKLE"]
   },
@@ -647,14 +647,14 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "stamina": 35, "mp": 15 },
-    "damageScaling": { "meleeAtk": 3.5 },
-    "statScaling": { "10": 7.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 55, "mp": 15 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "10": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 75,
+      "penetration": 25,
       "status": "STUN",
       "duration": 1,
       "chance": 30
@@ -669,17 +669,17 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "stamina": 40, "mp": 30 },
-    "damageScaling": { "meleeAtk": 4.0 },
-    "statScaling": { "21": 8.0, "23": 2.5 },
+    "hitChance": 68,
+    "cost": { "stamina": 65, "mp": 30 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "21": 3.0, "23": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "STUN",
       "duration": 1,
       "chance": 80,
-      "penetration": 40
+      "penetration": 30
     },
     "requiredWeapons": ["BLUNT", "KNUCKLE"]
   },
@@ -691,14 +691,14 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 80,
-    "cost": { "stamina": 55, "mp": 20 },
-    "damageScaling": { "meleeAtk": 6.2 },
-    "statScaling": { "10": 9.5, "11": 3.0 },
+    "hitChance": 62,
+    "cost": { "stamina": 90, "mp": 20 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "10": 3.0, "11": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 90,
+      "penetration": 30,
       "status": "STUN",
       "duration": 1,
       "chance": 50
@@ -713,14 +713,14 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "stamina": 70, "mp": 120 },
-    "damageScaling": { "meleeAtk": 9.5 },
-    "statScaling": { "10": 13.0, "11": 5.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 140, "mp": 120 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "10": 3.5, "11": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 120,
+      "penetration": 35,
       "status": "STUN",
       "duration": 1,
       "chance": 100,
@@ -736,14 +736,14 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 1,
-    "hitChance": 250,
-    "cost": { "stamina": 90, "mp": 160 },
-    "damageScaling": { "meleeAtk": 14.0 },
-    "statScaling": { "10": 15.0, "21": 10.0, "23": 10.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 180, "mp": 160 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "10": 2.0, "21": 2.0, "23": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 200,
+      "penetration": 35,
       "status": "STUN",
       "duration": 1,
       "chance": 100,
@@ -759,14 +759,14 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 8, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.1 },
-    "statScaling": { "16": 1.2, "12": 0.5 },
+    "hitChance": 78,
+    "cost": { "stamina": 12, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "16": 1.0, "12": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 10
+      "penetration": 15
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -778,10 +778,10 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 10, "mp": 0 },
-    "damageScaling": { "meleeAtk": 0.9 },
-    "statScaling": { "17": 1.5, "23": 0.5 },
+    "hitChance": 75,
+    "cost": { "stamina": 15, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "17": 1.0, "23": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -799,14 +799,14 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 80,
-    "cost": { "stamina": 12, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.0 },
-    "statScaling": { "11": 1.0, "23": 1.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 18, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "11": 0.7, "23": 0.8 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 20
+      "penetration": 15
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -818,14 +818,14 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 15, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.4 },
-    "statScaling": { "10": 1.5, "11": 1.0 },
+    "hitChance": 72,
+    "cost": { "stamina": 28, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "10": 1.2, "11": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 25
+      "penetration": 20
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -837,17 +837,17 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 80,
-    "cost": { "stamina": 18, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.2 },
-    "statScaling": { "17": 2.5, "24": 0.5 },
+    "hitChance": 70,
+    "cost": { "stamina": 32, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "17": 1.7, "24": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "BLEED",
       "duration": 1,
       "chance": 40,
-      "penetration": 10
+      "penetration": 15
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -859,14 +859,14 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 75,
-    "cost": { "stamina": 25, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.8 },
-    "statScaling": { "2": 1.5, "10": 2.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 35, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "2": 1.0, "10": 1.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 40
+      "penetration": 25
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -878,17 +878,17 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 70,
-    "cost": { "stamina": 22, "mp": 0 },
-    "damageScaling": { "meleeAtk": 2.0 },
-    "statScaling": { "17": 3.5, "15": 1.0 },
+    "hitChance": 68,
+    "cost": { "stamina": 42, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "17": 2.0, "15": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "BLEED",
       "duration": 1,
       "chance": 65,
-      "penetration": 20
+      "penetration": 25
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -900,14 +900,14 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 28, "mp": 0 },
-    "damageScaling": { "meleeAtk": 1.6 },
-    "statScaling": { "12": 2.0, "13": 1.5 },
+    "hitChance": 75,
+    "cost": { "stamina": 50, "mp": 0 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "12": 1.5, "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 60
+      "penetration": 25
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -919,10 +919,10 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 20, "mp": 5 },
+    "hitChance": 70,
+    "cost": { "stamina": 45, "mp": 5 },
     "damageScaling": { "meleeAtk": 1.5 },
-    "statScaling": { "11": 1.8, "17": 2.2 },
+    "statScaling": { "11": 1.0, "17": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -940,14 +940,14 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "stamina": 35, "mp": 20 },
-    "damageScaling": { "meleeAtk": 2.5 },
-    "statScaling": { "13": 4.0, "17": 2.0 },
+    "hitChance": 68,
+    "cost": { "stamina": 85, "mp": 20 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "13": 2.5, "17": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 85
+      "penetration": 30
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -959,10 +959,10 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 80,
-    "cost": { "stamina": 40, "mp": 10 },
-    "damageScaling": { "meleeAtk": 3.2 },
-    "statScaling": { "10": 3.0, "17": 3.5 },
+    "hitChance": 70,
+    "cost": { "stamina": 75, "mp": 10 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "10": 1.5, "17": 2.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
@@ -981,14 +981,14 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "stamina": 50, "mp": 15 },
-    "damageScaling": { "meleeAtk": 4.5 },
-    "statScaling": { "11": 5.0, "13": 2.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 90, "mp": 15 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "11": 2.5, "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 120
+      "penetration": 30
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -1000,36 +1000,36 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "stamina": 80, "mp": 50 },
-    "damageScaling": { "meleeAtk": 8.0 },
-    "statScaling": { "15": 10.0, "13": 10.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 140, "mp": 50 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "15": 2.5, "13": 2.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
-      "penetration": 250
+      "penetration": 35
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
   {
     "id": 163,
-    "name": "만천화우: 혈",
+    "name": "만천화우",
     "icon": "/images/skills/blood_rain.png",
     "description": "보이지 않는 속도로 무수한 화살을 뿌려 적을 피칠갑으로 만듭니다.",
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 1,
-    "hitChance": 120,
-    "cost": { "stamina": 100, "mp": 30 },
-    "damageScaling": { "meleeAtk": 6.5 },
-    "statScaling": { "20": 15.0, "17": 8.0 },
+    "hitChance": 60,
+    "cost": { "stamina": 160, "mp": 30 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "20": 3.0, "17": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "BLEED",
       "duration": 1,
       "chance": 200,
-      "penetration": 50
+      "penetration": 35
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -1041,17 +1041,17 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 1,
-    "hitChance": 500,
-    "cost": { "stamina": 120, "mp": 100 },
-    "damageScaling": { "meleeAtk": 12.0 },
-    "statScaling": { "24": 20.0, "15": 15.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 200, "mp": 100 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "24": 3.0, "15": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "PHYSICAL",
       "status": "BLEED",
       "duration": 1,
       "chance": 100,
-      "penetration": 500
+      "penetration": 35
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -1063,16 +1063,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 78,
     "cost": { "stamina": 0, "mp": 15 },
-    "damageScaling": { "magicAtk": 1.1 },
-    "statScaling": { "14": 1.5, "8": 0.5 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 1.0, "8": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
       "status": "BURN",
       "duration": 2,
-      "chance": 20
+      "chance": 20,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1084,14 +1087,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
+    "hitChance": 75,
     "cost": { "stamina": 0, "mp": 18 },
     "damageScaling": { "magicAtk": 1.2 },
-    "statScaling": { "13": 1.8 },
+    "statScaling": { "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1103,16 +1108,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 95,
+    "hitChance": 80,
     "cost": { "stamina": 0, "mp": 20 },
-    "damageScaling": { "magicAtk": 0.9 },
-    "statScaling": { "8": 2.0 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "8": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
       "status": "BURN",
       "duration": 3,
-      "chance": 40
+      "chance": 40,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1124,17 +1132,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 80,
-    "cost": { "stamina": 0, "mp": 35 },
-    "damageScaling": { "magicAtk": 1.8 },
-    "statScaling": { "13": 3.0, "14": 1.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 0, "mp": 32 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.5, "14": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
-      "penetration": 25,
       "status": "BURN",
       "duration": 3,
-      "chance": 30
+      "chance": 30,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1146,17 +1156,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "stamina": 0, "mp": 40 },
-    "damageScaling": { "magicAtk": 1.6 },
-    "statScaling": { "8": 2.5, "13": 2.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 0, "mp": 35 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "8": 1.2, "13": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
-      "penetration": 15,
       "status": "BURN",
       "duration": 4,
-      "chance": 50
+      "chance": 50,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1168,14 +1180,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 0, "mp": 30 },
-    "damageScaling": { "magicAtk": 1.5 },
-    "statScaling": { "14": 4.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 0, "mp": 28 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "14": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
-      "penetration": 35
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1187,17 +1201,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 75,
-    "cost": { "stamina": 0, "mp": 65 },
-    "damageScaling": { "magicAtk": 2.8 },
-    "statScaling": { "13": 5.5, "14": 2.0 },
+    "hitChance": 60,
+    "cost": { "stamina": 0, "mp": 55 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
-      "penetration": 40,
       "status": "BURN",
       "duration": 5,
-      "chance": 40
+      "chance": 40,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1209,17 +1225,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "stamina": 0, "mp": 70 },
-    "damageScaling": { "magicAtk": 2.4 },
-    "statScaling": { "8": 4.5, "13": 3.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 0, "mp": 52 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "8": 2.0, "13": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
       "status": "BURN",
       "duration": 7,
       "chance": 80,
-      "penetration": 20
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1231,157 +1249,22 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 0, "mp": 60 },
-    "damageScaling": { "magicAtk": 2.2 },
-    "statScaling": { "13": 6.5, "14": 1.5 },
+    "hitChance": 65,
+    "cost": { "stamina": 0, "mp": 45 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "FIRE",
-      "penetration": 70,
       "status": "BURN",
       "duration": 4,
-      "chance": 35
+      "chance": 35,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
-  {
-    "id": 210,
-    "name": "연옥의 불꽃",
-    "icon": "/images/skills/purgatory_flame.png",
-    "description": "죄를 태우는 연옥의 불길을 소환합니다. 적의 방어력을 무시하고 심장까지 타오릅니다.",
-    "type": "MAGIC",
-    "grade": "EPIC",
-    "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "stamina": 0, "mp": 85 },
-    "damageScaling": { "magicAtk": 3.5 },
-    "statScaling": { "13": 7.0, "8": 3.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "FIRE",
-      "penetration": 55,
-      "status": "BURN",
-      "duration": 6,
-      "chance": 90
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 211,
-    "name": "홍련의 화살",
-    "icon": "/images/skills/crimson_lotus_arrow.png",
-    "description": "아름답게 피어나는 홍련 형상의 고농축 화염을 쏘아 보냅니다.",
-    "type": "MAGIC",
-    "grade": "EPIC",
-    "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "stamina": 0, "mp": 75 },
-    "damageScaling": { "magicAtk": 2.8 },
-    "statScaling": { "14": 8.5, "13": 2.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "FIRE",
-      "penetration": 35,
-      "status": "BURN",
-      "duration": 5,
-      "chance": 100,
-      "critRate": 20
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 212,
-    "name": "유성 낙하",
-    "icon": "/images/skills/meteor_fall.png",
-    "description": "대기권 밖의 화염석을 소환하여 지면을 강타합니다. 물리적인 파괴력과 화염이 공존합니다.",
-    "type": "MAGIC",
-    "grade": "EPIC",
-    "turnCost": 2,
-    "hitChance": 75,
-    "cost": { "stamina": 0, "mp": 100 },
-    "damageScaling": { "magicAtk": 4.5 },
-    "statScaling": { "13": 9.0, "14": 4.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "FIRE",
-      "penetration": 80,
-      "status": "BURN",
-      "duration": 4,
-      "chance": 60
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 213,
-    "name": "종말의 불꽃 (Apocalypse)",
-    "icon": "/images/skills/apocalypse.png",
-    "description": "세상의 끝을 알리는 근원의 화염입니다. 적의 모든 저항과 방어 수단을 증발시킵니다.",
-    "type": "MAGIC",
-    "grade": "LEGENDARY",
-    "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "stamina": 0, "mp": 200 },
-    "damageScaling": { "magicAtk": 8.5 },
-    "statScaling": { "13": 15.0, "14": 10.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "FIRE",
-      "penetration": 120,
-      "status": "BURN",
-      "duration": 10,
-      "chance": 100,
-      "critDamage": 100
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 214,
-    "name": "항성 붕괴 (Supernova)",
-    "icon": "/images/skills/supernova.png",
-    "description": "별이 수명을 다해 폭발하는 순간의 에너지를 재현합니다. 회피조차 불가능한 열기입니다.",
-    "type": "MAGIC",
-    "grade": "LEGENDARY",
-    "turnCost": 2,
-    "hitChance": 300,
-    "cost": { "stamina": 0, "mp": 250 },
-    "damageScaling": { "magicAtk": 12.0 },
-    "statScaling": { "13": 20.0, "8": 15.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "FIRE",
-      "penetration": 150,
-      "status": "BURN",
-      "duration": 8,
-      "chance": 100,
-      "ignoreEvasion": true
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 215,
-    "name": "불사조의 강림",
-    "icon": "/images/skills/phoenix_ascent.png",
-    "description": "영원히 타오르는 불사조의 형상을 소환하여 적을 휩씁니다. 죽음마저 거부하는 화염입니다.",
-    "type": "MAGIC",
-    "grade": "LEGENDARY",
-    "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "stamina": 0, "mp": 180 },
-    "damageScaling": { "magicAtk": 7.0 },
-    "statScaling": { "8": 18.0, "14": 12.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "FIRE",
-      "penetration": 100,
-      "status": "BURN",
-      "duration": 15,
-      "chance": 100,
-      "vampiric": 20
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-
   {
     "id": 301,
     "name": "얼음 화살",
@@ -1390,16 +1273,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 78,
     "cost": { "mp": 15 },
-    "damageScaling": { "magicAtk": 1.1 },
-    "statScaling": { "14": 1.2, "8": 0.8 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 0.8, "8": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
       "status": "FROZEN",
       "duration": 1,
-      "chance": 15
+      "chance": 15,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1411,14 +1297,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
+    "hitChance": 75,
     "cost": { "mp": 18 },
-    "damageScaling": { "magicAtk": 1.0 },
-    "statScaling": { "13": 1.5, "14": 0.5 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "13": 1.0, "14": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1430,16 +1318,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 95,
+    "hitChance": 80,
     "cost": { "mp": 20 },
-    "damageScaling": { "magicAtk": 0.8 },
-    "statScaling": { "8": 2.2 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "8": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
       "status": "FROZEN",
       "duration": 1,
-      "chance": 30
+      "chance": 30,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1451,17 +1342,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 80,
-    "cost": { "mp": 35 },
-    "damageScaling": { "magicAtk": 1.7 },
-    "statScaling": { "13": 2.5, "14": 1.5 },
+    "hitChance": 65,
+    "cost": { "mp": 32 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.2, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
-      "penetration": 25,
       "status": "FROZEN",
       "duration": 2,
-      "chance": 25
+      "chance": 25,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1473,17 +1366,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 42 },
-    "damageScaling": { "magicAtk": 1.5 },
-    "statScaling": { "8": 3.0, "13": 1.0 },
+    "hitChance": 70,
+    "cost": { "mp": 35 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "8": 1.5, "13": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
-      "penetration": 15,
       "status": "FROZEN",
       "duration": 2,
-      "chance": 45
+      "chance": 45,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1495,14 +1390,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "mp": 38 },
-    "damageScaling": { "magicAtk": 1.4 },
-    "statScaling": { "13": 4.5 },
+    "hitChance": 75,
+    "cost": { "mp": 30 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
-      "penetration": 35
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1514,17 +1411,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 75,
-    "cost": { "mp": 60 },
-    "damageScaling": { "magicAtk": 2.6 },
-    "statScaling": { "13": 5.0, "14": 2.5 },
+    "hitChance": 60,
+    "cost": { "mp": 55 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 1.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
-      "penetration": 45,
       "status": "FROZEN",
       "duration": 3,
-      "chance": 35
+      "chance": 35,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1536,17 +1435,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "mp": 65 },
-    "damageScaling": { "magicAtk": 2.2 },
-    "statScaling": { "8": 5.5, "13": 2.0 },
+    "hitChance": 70,
+    "cost": { "mp": 52 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "8": 2.0, "13": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
       "status": "FROZEN",
       "duration": 4,
       "chance": 65,
-      "penetration": 20
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1558,17 +1459,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "mp": 55 },
-    "damageScaling": { "magicAtk": 2.0 },
-    "statScaling": { "13": 7.0, "14": 1.5 },
+    "hitChance": 65,
+    "cost": { "mp": 45 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "ICE",
-      "penetration": 60,
       "status": "FROZEN",
       "duration": 2,
-      "chance": 30
+      "chance": 30,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1707,7 +1610,151 @@
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
-
+  {
+    "id": 310,
+    "name": "심연의 동토",
+    "icon": "/images/skills/abyssal_tundra.png",
+    "description": "주변의 모든 열기를 빨아들여 절대영도의 공간을 만듭니다.",
+    "type": "MAGIC",
+    "grade": "EPIC",
+    "turnCost": 2,
+    "hitChance": 70,
+    "cost": { "mp": 90 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.5, "8": 1.5 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 5,
+      "chance": 85,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
+    },
+    "requiredWeapons": ["WAND", "STAFF"]
+  },
+  {
+    "id": 311,
+    "name": "빙룡의 숨결",
+    "icon": "/images/skills/ice_dragon_breath.png",
+    "description": "빙룡의 냉기를 형상화하여 전방을 초토화합니다.",
+    "type": "MAGIC",
+    "grade": "EPIC",
+    "turnCost": 2,
+    "hitChance": 65,
+    "cost": { "mp": 90 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.5, "14": 1.5 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 4,
+      "chance": 60,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
+    },
+    "requiredWeapons": ["WAND", "STAFF"]
+  },
+  {
+    "id": 312,
+    "name": "서리꽃의 감옥",
+    "icon": "/images/skills/frost_flower_prison.png",
+    "description": "적의 몸 안에서부터 얼음 꽃을 피워 내부를 파괴합니다.",
+    "type": "MAGIC",
+    "grade": "EPIC",
+    "turnCost": 1,
+    "hitChance": 70,
+    "cost": { "mp": 80 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "14": 3.0, "8": 1.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 6,
+      "chance": 100,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
+    },
+    "requiredWeapons": ["WAND", "STAFF"]
+  },
+  {
+    "id": 313,
+    "name": "빙하시대 (Ice Age)",
+    "icon": "/images/skills/ice_age.png",
+    "description": "대륙 전체를 얼렸던 태고의 추위를 소환합니다. 모든 방어는 무의미해집니다.",
+    "type": "MAGIC",
+    "grade": "LEGENDARY",
+    "turnCost": 2,
+    "hitChance": 65,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.0, "14": 2.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 8,
+      "chance": 100,
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
+    },
+    "requiredWeapons": ["WAND", "STAFF"]
+  },
+  {
+    "id": 314,
+    "name": "절대 영도 (Zero Absolute)",
+    "icon": "/images/skills/absolute_zero.png",
+    "description": "분자 운동조차 정지시키는 극한의 냉기입니다. 피할 수 없는 소멸을 선사합니다.",
+    "type": "MAGIC",
+    "grade": "LEGENDARY",
+    "turnCost": 2,
+    "hitChance": 70,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.5, "8": 1.5 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 10,
+      "chance": 100,
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20,
+      "ignoreEvasion": true
+    },
+    "requiredWeapons": ["WAND", "STAFF"]
+  },
+  {
+    "id": 315,
+    "name": "영겁의 감옥: 코키토스",
+    "icon": "/images/skills/cocytus.png",
+    "description": "배신자들을 얼리는 지옥의 가장 깊은 곳, 코키토스의 냉기를 소환합니다.",
+    "type": "MAGIC",
+    "grade": "LEGENDARY",
+    "turnCost": 1,
+    "hitChance": 65,
+    "cost": { "mp": 180 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "8": 3.0, "14": 2.0 },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 15,
+      "chance": 100,
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
+    },
+    "requiredWeapons": ["WAND", "STAFF"]
+  },
   {
     "id": 401,
     "name": "번개 화살",
@@ -1716,17 +1763,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 95,
+    "hitChance": 78,
     "cost": { "mp": 15 },
-    "damageScaling": { "magicAtk": 1.0 },
-    "statScaling": { "14": 1.2, "8": 0.5 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 1.0, "8": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 1,
       "chance": 10,
-      "penetration": 5
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1738,14 +1787,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 75,
     "cost": { "mp": 12 },
-    "damageScaling": { "magicAtk": 0.8 },
+    "damageScaling": { "magicAtk": 1.2 },
     "statScaling": { "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1757,17 +1808,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
+    "hitChance": 80,
     "cost": { "mp": 18 },
-    "damageScaling": { "magicAtk": 0.9 },
-    "statScaling": { "8": 1.8, "14": 0.4 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "8": 1.0, "14": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 1,
       "chance": 15,
-      "penetration": 5
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1779,17 +1832,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 85,
+    "hitChance": 65,
     "cost": { "mp": 35 },
-    "damageScaling": { "magicAtk": 1.8 },
-    "statScaling": { "13": 2.5, "14": 1.0 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.5, "14": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 1,
       "chance": 25,
-      "penetration": 15
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1801,14 +1856,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 92,
+    "hitChance": 75,
     "cost": { "mp": 30 },
-    "damageScaling": { "magicAtk": 1.4 },
-    "statScaling": { "13": 3.0 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
-      "penetration": 25
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1820,17 +1877,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "mp": 40 },
-    "damageScaling": { "magicAtk": 1.1 },
-    "statScaling": { "14": 3.5, "8": 1.2 },
+    "hitChance": 70,
+    "cost": { "mp": 35 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "14": 1.2, "8": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 2,
       "chance": 30,
-      "penetration": 10
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1842,17 +1901,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 88,
-    "cost": { "mp": 65 },
-    "damageScaling": { "magicAtk": 2.5 },
-    "statScaling": { "13": 4.5, "14": 2.0 },
+    "hitChance": 60,
+    "cost": { "mp": 55 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 2,
       "chance": 40,
-      "penetration": 30
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1864,17 +1925,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 98,
-    "cost": { "mp": 55 },
-    "damageScaling": { "magicAtk": 2.1 },
-    "statScaling": { "13": 6.0 },
+    "hitChance": 65,
+    "cost": { "mp": 45 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
-      "penetration": 50,
       "status": "STUN",
       "duration": 1,
-      "chance": 20
+      "chance": 20,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1886,17 +1949,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "mp": 70 },
-    "damageScaling": { "magicAtk": 2.3 },
-    "statScaling": { "8": 7.0, "14": 1.5 },
+    "hitChance": 70,
+    "cost": { "mp": 52 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "8": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 2,
       "chance": 50,
-      "penetration": 20
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1908,17 +1973,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 95,
-    "cost": { "mp": 110 },
-    "damageScaling": { "magicAtk": 3.8 },
-    "statScaling": { "13": 8.0, "14": 4.5 },
+    "hitChance": 65,
+    "cost": { "mp": 90 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 3,
       "chance": 75,
-      "penetration": 45
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1930,17 +1997,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 1,
-    "hitChance": 92,
-    "cost": { "mp": 95 },
-    "damageScaling": { "magicAtk": 3.2 },
-    "statScaling": { "13": 11.0 },
+    "hitChance": 70,
+    "cost": { "mp": 85 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 4.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
-      "penetration": 80,
       "status": "STUN",
       "duration": 1,
-      "chance": 40
+      "chance": 40,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1952,17 +2021,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 130 },
-    "damageScaling": { "magicAtk": 4.2 },
-    "statScaling": { "8": 10.0, "14": 3.0 },
+    "hitChance": 65,
+    "cost": { "mp": 90 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "8": 3.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 2,
       "chance": 90,
-      "penetration": 35
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1974,17 +2045,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "mp": 250 },
-    "damageScaling": { "magicAtk": 8.5 },
-    "statScaling": { "13": 15.0, "14": 10.0 },
+    "hitChance": 65,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.0, "14": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 5,
       "chance": 100,
-      "penetration": 100
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -1996,17 +2069,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 300,
-    "cost": { "mp": 320 },
-    "damageScaling": { "magicAtk": 12.0 },
-    "statScaling": { "13": 20.0, "8": 12.0 },
+    "hitChance": 70,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.5, "8": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
-      "penetration": 150,
       "status": "STUN",
       "duration": 4,
-      "chance": 100
+      "chance": 100,
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2018,17 +2093,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 1,
-    "hitChance": 98,
-    "cost": { "mp": 210 },
-    "damageScaling": { "magicAtk": 7.5 },
-    "statScaling": { "8": 18.0, "14": 14.0 },
+    "hitChance": 60,
+    "cost": { "mp": 180 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "8": 3.0, "14": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "LIGHTNING",
       "status": "STUN",
       "duration": 10,
       "chance": 100,
-      "penetration": 120
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2040,14 +2117,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "mp": 12 },
-    "damageScaling": { "magicAtk": 1.1 },
-    "statScaling": { "14": 1.0, "13": 0.5 },
+    "hitChance": 78,
+    "cost": { "mp": 15 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 0.8, "13": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 5
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2059,16 +2138,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 80,
-    "cost": { "mp": 15 },
-    "damageScaling": { "magicAtk": 0.7 },
+    "hitChance": 75,
+    "cost": { "mp": 18 },
+    "damageScaling": { "magicAtk": 1.2 },
     "statScaling": { "8": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
       "status": "STUN",
       "duration": 1,
-      "chance": 20
+      "chance": 20,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2080,14 +2162,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 75,
+    "hitChance": 76,
     "cost": { "mp": 14 },
-    "damageScaling": { "magicAtk": 0.9 },
-    "statScaling": { "13": 1.2, "14": 0.6 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "13": 1.0, "14": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2099,14 +2183,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 82,
-    "cost": { "mp": 25 },
-    "damageScaling": { "magicAtk": 1.4 },
-    "statScaling": { "13": 2.5, "14": 1.0 },
+    "hitChance": 70,
+    "cost": { "mp": 30 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.5, "14": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 25
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2118,16 +2204,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 70,
-    "cost": { "mp": 30 },
-    "damageScaling": { "magicAtk": 1.8 },
-    "statScaling": { "13": 3.0 },
+    "hitChance": 65,
+    "cost": { "mp": 35 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
       "status": "STUN",
       "duration": 1,
-      "chance": 35
+      "chance": 35,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2139,17 +2228,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "mp": 22 },
-    "damageScaling": { "magicAtk": 1.2 },
-    "statScaling": { "14": 2.8, "8": 1.2 },
+    "hitChance": 75,
+    "cost": { "mp": 28 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "14": 1.2, "8": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 15,
+      "penetration": 20,
       "status": "STUN",
       "duration": 1,
-      "chance": 15
+      "chance": 15,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2161,17 +2252,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 95,
+    "hitChance": 72,
     "cost": { "mp": 55 },
-    "damageScaling": { "magicAtk": 2.2 },
-    "statScaling": { "13": 5.0, "8": 3.0 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "8": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
       "status": "STUN",
       "duration": 2,
       "chance": 45,
-      "penetration": 20
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2183,14 +2276,16 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 85,
+    "hitChance": 68,
     "cost": { "mp": 48 },
-    "damageScaling": { "magicAtk": 2.5 },
-    "statScaling": { "13": 6.5 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 50
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2202,17 +2297,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 80,
+    "hitChance": 65,
     "cost": { "mp": 50 },
-    "damageScaling": { "magicAtk": 1.9 },
-    "statScaling": { "14": 4.5, "13": 3.5 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "14": 1.8, "13": 1.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
       "status": "STUN",
       "duration": 2,
       "chance": 55,
-      "penetration": 30
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2224,17 +2321,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "mp": 100 },
-    "damageScaling": { "magicAtk": 4.5 },
-    "statScaling": { "13": 9.0, "14": 5.0 },
+    "hitChance": 65,
+    "cost": { "mp": 85 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 75,
+      "penetration": 30,
       "status": "STUN",
       "duration": 2,
-      "chance": 40
+      "chance": 40,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2246,17 +2345,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 120 },
-    "damageScaling": { "magicAtk": 3.8 },
-    "statScaling": { "8": 11.0, "13": 6.0 },
+    "hitChance": 65,
+    "cost": { "mp": 90 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "8": 2.5, "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
       "status": "STUN",
       "duration": 3,
       "chance": 70,
-      "penetration": 40
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2268,14 +2369,16 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "mp": 90 },
-    "damageScaling": { "magicAtk": 3.5 },
-    "statScaling": { "13": 12.0 },
+    "hitChance": 70,
+    "cost": { "mp": 85 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 4.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 100
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2287,17 +2390,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "mp": 280 },
-    "damageScaling": { "magicAtk": 9.5 },
-    "statScaling": { "13": 18.0, "8": 12.0 },
+    "hitChance": 65,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.0, "8": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
       "status": "STUN",
       "duration": 5,
       "chance": 100,
-      "penetration": 60
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2309,17 +2414,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 80,
-    "cost": { "mp": 350 },
-    "damageScaling": { "magicAtk": 15.0 },
-    "statScaling": { "13": 25.0, "14": 15.0 },
+    "hitChance": 60,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.0, "14": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
       "status": "STUN",
       "duration": 3,
       "chance": 100,
-      "penetration": 150
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2331,21 +2438,22 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 120,
-    "cost": { "mp": 300 },
-    "damageScaling": { "magicAtk": 11.0 },
-    "statScaling": { "14": 20.0, "13": 20.0 },
+    "hitChance": 70,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "14": 2.5, "13": 2.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "EARTH",
-      "penetration": 300,
+      "penetration": 35,
       "status": "STUN",
       "duration": 4,
-      "chance": 100
+      "chance": 100,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
-
   {
     "id": 500,
     "name": "성광탄",
@@ -2354,14 +2462,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "mp": 12 },
-    "damageScaling": { "magicAtk": 1.1 },
-    "statScaling": { "13": 1.2, "14": 0.5 },
+    "hitChance": 80,
+    "cost": { "mp": 15 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "13": 1.0, "14": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 5
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2373,16 +2483,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "mp": 15 },
-    "damageScaling": { "magicAtk": 0.0 },
+    "hitChance": 75,
+    "cost": { "mp": 18 },
+    "damageScaling": { "magicAtk": 1.2 },
     "statScaling": { "9": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
       "status": "STUN",
       "duration": 1,
-      "chance": 25
+      "chance": 25,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2394,14 +2507,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 100,
-    "cost": { "mp": 10 },
-    "damageScaling": { "magicAtk": 0.9 },
-    "statScaling": { "14": 1.8 },
+    "hitChance": 80,
+    "cost": { "mp": 12 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2413,14 +2528,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 92,
-    "cost": { "mp": 25 },
-    "damageScaling": { "magicAtk": 1.4 },
-    "statScaling": { "13": 2.2, "9": 1.0 },
+    "hitChance": 75,
+    "cost": { "mp": 30 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.5, "9": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 15
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2432,16 +2549,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "mp": 28 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "14": 2.5, "9": 1.0 },
+    "hitChance": 70,
+    "cost": { "mp": 35 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "14": 1.5, "9": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
       "status": "STUN",
       "duration": 1,
-      "chance": 45
+      "chance": 45,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2453,14 +2573,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 88,
-    "cost": { "mp": 30 },
-    "damageScaling": { "magicAtk": 1.7 },
-    "statScaling": { "13": 3.0 },
+    "hitChance": 65,
+    "cost": { "mp": 32 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 25
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2472,17 +2594,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 55 },
-    "damageScaling": { "magicAtk": 2.2 },
-    "statScaling": { "13": 4.5, "14": 2.0 },
+    "hitChance": 65,
+    "cost": { "mp": 50 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 20,
+      "penetration": 25,
       "status": "STUN",
       "duration": 2,
-      "chance": 30
+      "chance": 30,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2494,16 +2618,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 95,
-    "cost": { "mp": 60 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "9": 6.0, "13": 2.0 },
+    "hitChance": 70,
+    "cost": { "mp": 55 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "9": 2.0, "13": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
       "status": "STUN",
       "duration": 2,
-      "chance": 60
+      "chance": 60,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2515,14 +2642,16 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 75,
     "cost": { "mp": 45 },
-    "damageScaling": { "magicAtk": 2.0 },
-    "statScaling": { "13": 5.5 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 40
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2534,14 +2663,16 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 1,
-    "hitChance": 110,
-    "cost": { "mp": 90 },
-    "damageScaling": { "magicAtk": 3.5 },
-    "statScaling": { "14": 8.0, "13": 4.0 },
+    "hitChance": 70,
+    "cost": { "mp": 80 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "14": 2.5, "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 60
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2553,17 +2684,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 88,
-    "cost": { "mp": 120 },
-    "damageScaling": { "magicAtk": 4.2 },
-    "statScaling": { "13": 10.0, "9": 5.0 },
+    "hitChance": 68,
+    "cost": { "mp": 85 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.5, "9": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
       "status": "STUN",
       "duration": 2,
       "chance": 50,
-      "penetration": 35
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2575,16 +2708,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "mp": 150 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "9": 15.0, "14": 5.0 },
+    "hitChance": 70,
+    "cost": { "mp": 90 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "9": 3.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
       "status": "STUN",
       "duration": 3,
-      "chance": 80
+      "chance": 80,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2596,17 +2732,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 120,
-    "cost": { "mp": 300 },
-    "damageScaling": { "magicAtk": 10.5 },
-    "statScaling": { "13": 20.0, "9": 15.0 },
+    "hitChance": 65,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.0, "9": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 100,
+      "penetration": 35,
       "status": "STUN",
       "duration": 3,
-      "chance": 100
+      "chance": 100,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2618,14 +2756,16 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 200,
-    "cost": { "mp": 280 },
-    "damageScaling": { "magicAtk": 15.0 },
-    "statScaling": { "13": 30.0, "14": 10.0 },
+    "hitChance": 70,
+    "cost": { "mp": 180 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
-      "penetration": 500
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2637,16 +2777,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 150,
-    "cost": { "mp": 350 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "9": 40.0, "13": 10.0 },
+    "hitChance": 65,
+    "cost": { "mp": 200 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "9": 4.0, "13": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "HOLY",
       "status": "STUN",
       "duration": 5,
-      "chance": 100
+      "chance": 100,
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["WAND", "STAFF"]
   },
@@ -2658,14 +2801,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 78,
     "cost": { "mp": 15, "hp": 2 },
     "damageScaling": { "magicAtk": 1.2 },
     "statScaling": { "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2677,16 +2822,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
+    "hitChance": 75,
     "cost": { "mp": 18 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "14": 2.0 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "BURN",
       "duration": 2,
-      "chance": 30
+      "chance": 30,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2698,16 +2846,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 80,
+    "hitChance": 75,
     "cost": { "mp": 20, "hp": 5 },
-    "damageScaling": { "magicAtk": 0.0 },
+    "damageScaling": { "magicAtk": 1.2 },
     "statScaling": { "18": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "STUN",
       "duration": 1,
-      "chance": 25
+      "chance": 25,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2719,14 +2870,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 88,
-    "cost": { "mp": 25, "hp": 8 },
-    "damageScaling": { "magicAtk": 1.5 },
-    "statScaling": { "13": 2.5, "14": 1.0 },
+    "hitChance": 72,
+    "cost": { "mp": 28, "hp": 8 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.5, "14": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
-      "penetration": 25
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2738,16 +2891,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 82,
+    "hitChance": 68,
     "cost": { "mp": 35, "hp": 5 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "13": 3.0, "14": 2.0 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.2, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "BURN",
       "duration": 3,
-      "chance": 45
+      "chance": 45,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2759,16 +2915,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 75,
-    "cost": { "mp": 40, "hp": 10 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "18": 4.5 },
+    "hitChance": 65,
+    "cost": { "mp": 32, "hp": 10 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "18": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "STUN",
       "duration": 1,
-      "chance": 40
+      "chance": 40,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2780,14 +2939,16 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 60, "hp": 20 },
-    "damageScaling": { "magicAtk": 2.8 },
-    "statScaling": { "13": 6.5, "14": 2.5 },
+    "hitChance": 68,
+    "cost": { "mp": 55, "hp": 15 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
-      "penetration": 45
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2799,16 +2960,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 80,
-    "cost": { "mp": 75, "hp": 15 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "13": 5.0, "14": 5.0 },
+    "hitChance": 65,
+    "cost": { "mp": 50, "hp": 12 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 1.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "BURN",
       "duration": 4,
-      "chance": 60
+      "chance": 60,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2820,16 +2984,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 70,
-    "cost": { "mp": 90, "hp": 25 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "18": 10.0 },
+    "hitChance": 62,
+    "cost": { "mp": 45, "hp": 20 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "18": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "STUN",
       "duration": 2,
-      "chance": 50
+      "chance": 50,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2841,14 +3008,16 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 92,
-    "cost": { "mp": 150, "hp": 60 },
-    "damageScaling": { "magicAtk": 5.5 },
-    "statScaling": { "13": 18.0, "14": 10.0 },
+    "hitChance": 65,
+    "cost": { "mp": 90, "hp": 40 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
-      "penetration": 85
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2860,16 +3029,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 88,
-    "cost": { "mp": 180, "hp": 50 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "13": 15.0, "18": 15.0 },
+    "hitChance": 65,
+    "cost": { "mp": 80, "hp": 30 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.0, "18": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "BURN",
       "duration": 5,
-      "chance": 80
+      "chance": 80,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2881,16 +3053,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 220, "hp": 80 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "14": 25.0, "18": 10.0 },
+    "hitChance": 62,
+    "cost": { "mp": 90, "hp": 45 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "14": 2.5, "18": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "STUN",
       "duration": 2,
-      "chance": 85
+      "chance": 85,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2902,14 +3077,16 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 95,
-    "cost": { "mp": 500, "hp": 200 },
-    "damageScaling": { "magicAtk": 15.0 },
-    "statScaling": { "13": 60.0, "14": 30.0 },
+    "hitChance": 65,
+    "cost": { "mp": 180, "hp": 80 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
-      "penetration": 200
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2921,16 +3098,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 90,
-    "cost": { "mp": 600, "hp": 150 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "13": 50.0, "18": 50.0 },
+    "hitChance": 60,
+    "cost": { "mp": 200, "hp": 100 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 2.5, "18": 2.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "BURN",
       "duration": 10,
-      "chance": 100
+      "chance": 100,
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2942,21 +3122,22 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 100,
-    "cost": { "mp": 800, "hp": 300 },
-    "damageScaling": { "magicAtk": 20.0 },
-    "statScaling": { "13": 100.0, "18": 50.0 },
+    "hitChance": 65,
+    "cost": { "mp": 200, "hp": 150 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.0, "18": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "DARK",
       "status": "STUN",
       "duration": 3,
       "chance": 100,
-      "penetration": 300
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["NONE"]
   },
-
   {
     "id": 600,
     "name": "공허의 파편",
@@ -2965,16 +3146,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
+    "hitChance": 78,
     "cost": { "mp": 15, "stamina": 5 },
-    "damageScaling": { "magicAtk": 1.1 },
-    "statScaling": { "13": 1.2 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "13": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "BLEED",
       "duration": 2,
-      "chance": 20
+      "chance": 20,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -2986,16 +3170,19 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "mp": 20 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "14": 1.8 },
+    "hitChance": 75,
+    "cost": { "mp": 18 },
+    "damageScaling": { "magicAtk": 1.2 },
+    "statScaling": { "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "STUN",
       "duration": 1,
-      "chance": 25
+      "chance": 25,
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3007,14 +3194,16 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 88,
+    "hitChance": 80,
     "cost": { "mp": 12, "hp": 5 },
-    "damageScaling": { "magicAtk": 1.3 },
+    "damageScaling": { "magicAtk": 1.2 },
     "statScaling": { "13": 1.0, "14": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3026,17 +3215,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "mp": 25, "stamina": 10 },
-    "damageScaling": { "magicAtk": 1.6 },
-    "statScaling": { "13": 2.5 },
+    "hitChance": 70,
+    "cost": { "mp": 30, "stamina": 10 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "BLEED",
       "duration": 3,
       "chance": 35,
-      "penetration": 15
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3048,16 +3239,19 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 80,
-    "cost": { "mp": 45, "hp": 10 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "14": 4.0, "18": 1.5 },
+    "hitChance": 65,
+    "cost": { "mp": 35, "hp": 10 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "14": 1.5, "18": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "STUN",
       "duration": 1,
-      "chance": 50
+      "chance": 50,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3069,14 +3263,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 2,
-    "hitChance": 82,
-    "cost": { "mp": 35, "hp": 15 },
-    "damageScaling": { "magicAtk": 2.2 },
-    "statScaling": { "13": 3.0, "14": 2.0 },
+    "hitChance": 72,
+    "cost": { "mp": 28, "hp": 15 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "13": 1.2, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
-      "penetration": 30
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3088,17 +3284,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 84,
-    "cost": { "mp": 65, "stamina": 25 },
-    "damageScaling": { "magicAtk": 2.8 },
-    "statScaling": { "13": 5.5, "14": 2.5 },
+    "hitChance": 68,
+    "cost": { "mp": 55, "stamina": 15 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 2.0, "14": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "BLEED",
       "duration": 4,
       "chance": 50,
-      "penetration": 40
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3110,16 +3308,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 78,
-    "cost": { "mp": 80, "hp": 20 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "18": 7.0, "14": 5.0 },
+    "hitChance": 62,
+    "cost": { "mp": 50, "hp": 20 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "18": 1.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "STUN",
       "duration": 2,
-      "chance": 60
+      "chance": 60,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3131,14 +3332,16 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 90, "hp": 30, "stamina": 20 },
-    "damageScaling": { "magicAtk": 3.5 },
-    "statScaling": { "13": 9.0 },
+    "hitChance": 70,
+    "cost": { "mp": 45, "hp": 15, "stamina": 10 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "13": 3.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
-      "penetration": 60
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3150,17 +3353,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 82,
-    "cost": { "mp": 140, "hp": 50, "stamina": 30 },
-    "damageScaling": { "magicAtk": 4.8 },
-    "statScaling": { "13": 14.0, "14": 8.0 },
+    "hitChance": 65,
+    "cost": { "mp": 90, "hp": 40, "stamina": 20 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 2.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "BLEED",
       "duration": 5,
       "chance": 75,
-      "penetration": 80
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3172,16 +3377,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 90,
-    "cost": { "mp": 180, "stamina": 50 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "18": 15.0, "14": 12.0 },
+    "hitChance": 65,
+    "cost": { "mp": 80, "stamina": 30 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "18": 2.5, "14": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "STUN",
       "duration": 2,
-      "chance": 80
+      "chance": 80,
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3193,14 +3401,16 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 92,
-    "cost": { "mp": 200, "hp": 70 },
-    "damageScaling": { "magicAtk": 6.2 },
-    "statScaling": { "13": 22.0 },
+    "hitChance": 68,
+    "cost": { "mp": 90, "hp": 40 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "13": 4.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
-      "penetration": 120
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3212,17 +3422,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 95,
-    "cost": { "mp": 450, "hp": 150, "stamina": 80 },
-    "damageScaling": { "magicAtk": 14.0 },
-    "statScaling": { "13": 45.0, "14": 25.0 },
+    "hitChance": 65,
+    "cost": { "mp": 150, "hp": 50, "stamina": 40 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.0, "14": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "BLEED",
       "duration": 10,
       "chance": 100,
-      "penetration": 250
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3234,16 +3446,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "mp": 550, "hp": 120 },
-    "damageScaling": { "magicAtk": 0.0 },
-    "statScaling": { "18": 40.0, "14": 30.0 },
+    "hitChance": 70,
+    "cost": { "mp": 180, "hp": 60 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "18": 3.0, "14": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
       "status": "STUN",
       "duration": 4,
-      "chance": 100
+      "chance": 100,
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3255,17 +3470,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 90,
-    "cost": { "mp": 700, "hp": 300, "stamina": 120 },
-    "damageScaling": { "magicAtk": 28.0 },
-    "statScaling": { "13": 80.0, "18": 50.0 },
+    "hitChance": 60,
+    "cost": { "mp": 200, "hp": 100, "stamina": 60 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "13": 3.5, "18": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "VOID",
-      "penetration": 600,
+      "penetration": 35,
       "status": "STUN",
       "duration": 2,
-      "chance": 100
+      "chance": 100,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3277,17 +3494,19 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 10 },
-    "damageScaling": { "meleeAtk": 1.1 },
-    "statScaling": { "17": 1.2, "20": 0.8 },
+    "hitChance": 78,
+    "cost": { "stamina": 12 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "17": 0.8, "20": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 30,
-      "penetration": 5
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3299,14 +3518,16 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 12 },
+    "hitChance": 75,
+    "cost": { "stamina": 15 },
     "damageScaling": { "meleeAtk": 1.2 },
-    "statScaling": { "23": 2.0 },
+    "statScaling": { "23": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
-      "penetration": 10
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -3318,17 +3539,19 @@
     "type": "PHYSICAL",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 15 },
-    "damageScaling": { "meleeAtk": 1.0 },
-    "statScaling": { "20": 1.5, "21": 0.5 },
+    "hitChance": 80,
+    "cost": { "stamina": 14 },
+    "damageScaling": { "meleeAtk": 1.2 },
+    "statScaling": { "20": 1.0, "21": 0.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 25,
-      "penetration": 5
+      "penetration": 15,
+      "critDamage": 50,
+      "critRate": 8
     },
     "requiredWeapons": ["DAGGER"]
   },
@@ -3340,17 +3563,19 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 88,
-    "cost": { "stamina": 25 },
-    "damageScaling": { "meleeAtk": 1.4 },
-    "statScaling": { "20": 2.2, "21": 1.0 },
+    "hitChance": 72,
+    "cost": { "stamina": 28 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "20": 1.5, "21": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 40,
-      "penetration": 15
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["DAGGER"]
   },
@@ -3362,17 +3587,19 @@
     "type": "PHYSICAL",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "stamina": 20, "mp": 5 },
-    "damageScaling": { "meleeAtk": 1.5 },
-    "statScaling": { "23": 3.0, "17": 1.0 },
+    "hitChance": 75,
+    "cost": { "stamina": 25, "mp": 5 },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": { "23": 1.5, "17": 0.7 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 35,
-      "penetration": 20
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -3384,14 +3611,16 @@
     "type": "MAGIC",
     "grade": "UNCOMMON",
     "turnCost": 1,
-    "hitChance": 80,
-    "cost": { "mp": 35 },
-    "damageScaling": { "magicAtk": 1.6 },
-    "statScaling": { "18": 3.5 },
+    "hitChance": 68,
+    "cost": { "mp": 30 },
+    "damageScaling": { "magicAtk": 1.3 },
+    "statScaling": { "18": 2.2 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
-      "penetration": 25
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3403,17 +3632,19 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 40, "mp": 10 },
-    "damageScaling": { "meleeAtk": 2.5 },
-    "statScaling": { "17": 5.0, "15": 2.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 45, "mp": 10 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "17": 2.0, "15": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 60,
-      "penetration": 35
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["DAGGER"]
   },
@@ -3425,17 +3656,19 @@
     "type": "PHYSICAL",
     "grade": "RARE",
     "turnCost": 2,
-    "hitChance": 80,
+    "hitChance": 65,
     "cost": { "stamina": 50, "mp": 15 },
-    "damageScaling": { "meleeAtk": 3.2 },
-    "statScaling": { "23": 4.5, "16": 2.5 },
+    "damageScaling": { "meleeAtk": 1.5 },
+    "statScaling": { "23": 2.0, "16": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 50,
-      "penetration": 30
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -3447,17 +3680,19 @@
     "type": "MAGIC",
     "grade": "RARE",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "mp": 75 },
-    "damageScaling": { "magicAtk": 3.0 },
-    "statScaling": { "18": 6.0, "24": 3.0 },
+    "hitChance": 72,
+    "cost": { "mp": 45 },
+    "damageScaling": { "magicAtk": 1.5 },
+    "statScaling": { "18": 2.0, "24": 1.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 70,
-      "penetration": 40
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3469,17 +3704,19 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 95,
-    "cost": { "stamina": 80, "mp": 40 },
-    "damageScaling": { "meleeAtk": 5.5 },
-    "statScaling": { "20": 12.0, "15": 8.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 75, "mp": 20 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "20": 2.5, "15": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 90,
-      "penetration": 65
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["DAGGER"]
   },
@@ -3491,17 +3728,19 @@
     "type": "PHYSICAL",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "stamina": 70, "mp": 50 },
-    "damageScaling": { "meleeAtk": 6.2 },
-    "statScaling": { "23": 15.0, "15": 5.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 70, "mp": 25 },
+    "damageScaling": { "meleeAtk": 2.0 },
+    "statScaling": { "23": 2.5, "15": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 85,
-      "penetration": 75
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["BOW", "CROSSBOW"]
   },
@@ -3513,17 +3752,19 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 88,
-    "cost": { "mp": 200 },
-    "damageScaling": { "magicAtk": 7.5 },
-    "statScaling": { "18": 18.0, "19": 10.0 },
+    "hitChance": 68,
+    "cost": { "mp": 85 },
+    "damageScaling": { "magicAtk": 2.0 },
+    "statScaling": { "18": 2.5, "19": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 100,
-      "penetration": 50
+      "penetration": 30,
+      "critDamage": 70,
+      "critRate": 15
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3535,17 +3776,19 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 2,
-    "hitChance": 98,
-    "cost": { "stamina": 150, "mp": 100 },
-    "damageScaling": { "meleeAtk": 12.0 },
-    "statScaling": { "20": 45.0, "17": 35.0 },
+    "hitChance": 65,
+    "cost": { "stamina": 120, "mp": 40 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "20": 3.0, "17": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 100,
-      "penetration": 120
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["DAGGER"]
   },
@@ -3557,17 +3800,19 @@
     "type": "MAGIC",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 95,
-    "cost": { "mp": 500 },
-    "damageScaling": { "magicAtk": 15.0 },
-    "statScaling": { "18": 60.0, "15": 40.0 },
+    "hitChance": 62,
+    "cost": { "mp": 180 },
+    "damageScaling": { "magicAtk": 2.5 },
+    "statScaling": { "18": 3.5, "15": 1.5 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 100,
-      "penetration": 100
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["NONE"]
   },
@@ -3579,21 +3824,22 @@
     "type": "PHYSICAL",
     "grade": "LEGENDARY",
     "turnCost": 3,
-    "hitChance": 100,
-    "cost": { "stamina": 200, "mp": 150 },
-    "damageScaling": { "meleeAtk": 22.0 },
-    "statScaling": { "23": 80.0, "20": 50.0 },
+    "hitChance": 70,
+    "cost": { "stamina": 150, "mp": 50 },
+    "damageScaling": { "meleeAtk": 2.5 },
+    "statScaling": { "23": 3.0, "20": 2.0 },
     "effect": {
       "type": "DAMAGE",
       "element": "TOXIC",
       "status": "POISON",
       "duration": 1,
       "chance": 100,
-      "penetration": 200
+      "penetration": 35,
+      "critDamage": 100,
+      "critRate": 20
     },
     "requiredWeapons": ["BOW", "CROSSBOW", "DAGGER"]
   },
-
   {
     "id": 21,
     "name": "독병 투척",

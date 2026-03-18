@@ -1483,141 +1483,6 @@
     "type": "MAGIC",
     "grade": "EPIC",
     "turnCost": 2,
-    "hitChance": 95,
-    "cost": { "mp": 90 },
-    "damageScaling": { "magicAtk": 3.8 },
-    "statScaling": { "13": 8.5, "8": 4.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "ICE",
-      "penetration": 50,
-      "status": "FROZEN",
-      "duration": 5,
-      "chance": 85
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 311,
-    "name": "빙룡의 숨결",
-    "icon": "/images/skills/ice_dragon_breath.png",
-    "description": "빙룡의 냉기를 형상화하여 전방을 초토화합니다.",
-    "type": "MAGIC",
-    "grade": "EPIC",
-    "turnCost": 2,
-    "hitChance": 85,
-    "cost": { "mp": 110 },
-    "damageScaling": { "magicAtk": 4.5 },
-    "statScaling": { "13": 10.0, "14": 5.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "ICE",
-      "penetration": 75,
-      "status": "FROZEN",
-      "duration": 4,
-      "chance": 60
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 312,
-    "name": "서리꽃의 감옥",
-    "icon": "/images/skills/frost_flower_prison.png",
-    "description": "적의 몸 안에서부터 얼음 꽃을 피워 내부를 파괴합니다.",
-    "type": "MAGIC",
-    "grade": "EPIC",
-    "turnCost": 1,
-    "hitChance": 100,
-    "cost": { "mp": 80 },
-    "damageScaling": { "magicAtk": 3.0 },
-    "statScaling": { "14": 11.0, "8": 3.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "ICE",
-      "penetration": 40,
-      "status": "FROZEN",
-      "duration": 6,
-      "chance": 100
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 313,
-    "name": "빙하시대 (Ice Age)",
-    "icon": "/images/skills/ice_age.png",
-    "description": "대륙 전체를 얼렸던 태고의 추위를 소환합니다. 모든 방어는 무의미해집니다.",
-    "type": "MAGIC",
-    "grade": "LEGENDARY",
-    "turnCost": 2,
-    "hitChance": 100,
-    "cost": { "mp": 220 },
-    "damageScaling": { "magicAtk": 9.0 },
-    "statScaling": { "13": 16.0, "14": 12.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "ICE",
-      "penetration": 130,
-      "status": "FROZEN",
-      "duration": 8,
-      "chance": 100,
-      "critDamage": 80
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 314,
-    "name": "절대 영도 (Zero Absolute)",
-    "icon": "/images/skills/absolute_zero.png",
-    "description": "분자 운동조차 정지시키는 극한의 냉기입니다. 피할 수 없는 소멸을 선사합니다.",
-    "type": "MAGIC",
-    "grade": "LEGENDARY",
-    "turnCost": 2,
-    "hitChance": 350,
-    "cost": { "mp": 280 },
-    "damageScaling": { "magicAtk": 13.0 },
-    "statScaling": { "13": 22.0, "8": 14.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "ICE",
-      "penetration": 180,
-      "status": "FROZEN",
-      "duration": 10,
-      "chance": 100,
-      "ignoreEvasion": true
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 315,
-    "name": "영겁의 감옥: 코키토스",
-    "icon": "/images/skills/cocytus.png",
-    "description": "배신자들을 얼리는 지옥의 가장 깊은 곳, 코키토스의 냉기를 소환합니다.",
-    "type": "MAGIC",
-    "grade": "LEGENDARY",
-    "turnCost": 1,
-    "hitChance": 95,
-    "cost": { "mp": 200 },
-    "damageScaling": { "magicAtk": 7.5 },
-    "statScaling": { "8": 20.0, "14": 15.0 },
-    "effect": {
-      "type": "DAMAGE",
-      "element": "ICE",
-      "penetration": 110,
-      "status": "FROZEN",
-      "duration": 15,
-      "chance": 100,
-      "ignoreEvasion": false
-    },
-    "requiredWeapons": ["WAND", "STAFF"]
-  },
-  {
-    "id": 310,
-    "name": "심연의 동토",
-    "icon": "/images/skills/abyssal_tundra.png",
-    "description": "주변의 모든 열기를 빨아들여 절대영도의 공간을 만듭니다.",
-    "type": "MAGIC",
-    "grade": "EPIC",
-    "turnCost": 2,
     "hitChance": 70,
     "cost": { "mp": 90 },
     "damageScaling": { "magicAtk": 2.0 },
@@ -3990,20 +3855,20 @@
     "type": "DEBUFF",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 90,
-    "cost": { "stamina": 5, "mp": 20 },
+    "hitChance": 70,
+    "cost": { "hp": 20, "mp": 10 },
     "damageScaling": {},
     "statScaling": {},
     "effect": {
       "type": "DEBUFF",
       "element": "DARK",
       "status": "WEAKNESS",
-      "duration": 4,
+      "duration": 2,
       "chance": 100,
-      "combatStatModifiers": {},
-      "combatStatOffsets": {
-        "meleeAtk": -30
-      }
+      "combatStatModifiers": {
+        "meleeAtk": 0.9
+      },
+      "combatStatOffsets": { }
     },
     "requiredWeapons": ["NONE"]
   },
@@ -4015,16 +3880,18 @@
     "type": "MAGIC",
     "grade": "COMMON",
     "turnCost": 1,
-    "hitChance": 85,
-    "cost": { "stamina": 5, "mp": 25 },
-    "damageScaling": { "magicAtk":  1.0},
+    "hitChance": 75,
+    "cost": { "hp": 20, "mp": 10 },
+    "damageScaling": { "magicAtk":  0.5},
     "statScaling": {"13": 1.5},
     "effect": {
       "type": "DOT",
       "element": "DARK",
       "status": "PAIN",
-      "duration": 4,
-      "chance": 100
+      "duration": 2,
+      "chance": 100,
+      "penetration": 15,
+      "critRate": 8
     },
     "requiredWeapons": ["NONE"]
   },
@@ -4043,7 +3910,8 @@
       "chance": 100,
       "combatStatOffsets": { "accuracy": 35, "critRate": 20 }
     },
-    "description": "정밀한 집중력을 발휘하여 명중률과 치명타 확률을 대폭 보정합니다."
+    "description": "정밀한 집중력을 발휘하여 명중률과 치명타 확률을 대폭 보정합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1000,
@@ -4061,7 +3929,8 @@
       "combatStatModifiers": { "meleeAtk": 1.10 },
       "combatStatOffsets": { "physRes": 5 }
     },
-    "description": "근육 밀도를 높여 물리 공격력과 방어력을 기초적인 수준으로 강화합니다."
+    "description": "근육 밀도를 높여 물리 공격력과 방어력을 기초적인 수준으로 강화합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1001,
@@ -4079,7 +3948,8 @@
       "combatStatModifiers": { "magicAtk": 1.10 },
       "combatStatOffsets": { "magicRes": 5 }
     },
-    "description": "체내 마나 흐름을 가속하여 마법 위력과 저항력을 미량 높입니다."
+    "description": "체내 마나 흐름을 가속하여 마법 위력과 저항력을 미량 높입니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1002,
@@ -4096,7 +3966,8 @@
       "chance": 100,
       "combatStatOffsets": { "accuracy": 5, "dodge": 5 }
     },
-    "description": "오감을 곤두세워 공격의 명중률과 회피율을 보정합니다."
+    "description": "오감을 곤두세워 공격의 명중률과 회피율을 보정합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1003,
@@ -4113,7 +3984,8 @@
       "chance": 100,
       "combatStatOffsets": { "physRes": 10, "magicRes": 10 }
     },
-    "description": "정신을 집중하여 물리 및 마법 저항력을 균형 있게 상승시킵니다."
+    "description": "정신을 집중하여 물리 및 마법 저항력을 균형 있게 상승시킵니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1004,
@@ -4131,7 +4003,8 @@
       "combatStatModifiers": { "meleeAtk": 1.20 },
       "combatStatOffsets": { "physPen": 10 }
     },
-    "description": "신체 기능을 강제로 끌어올려 공격력과 관통력을 강화합니다."
+    "description": "신체 기능을 강제로 끌어올려 공격력과 관통력을 강화합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1005,
@@ -4148,7 +4021,8 @@
       "chance": 100,
       "combatStatOffsets": { "firePen": 10, "icePen": 10, "lightningPen": 10 }
     },
-    "description": "원소와의 동조를 통해 모든 마법 속성 관통력을 보강합니다."
+    "description": "원소와의 동조를 통해 모든 마법 속성 관통력을 보강합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1006,
@@ -4166,7 +4040,8 @@
       "combatStatModifiers": { "meleeAtk": 1.30 },
       "combatStatOffsets": { "physPen": 20, "dodge": -10 }
     },
-    "description": "강력한 위력을 얻는 대신 민첩함이 다소 감소합니다."
+    "description": "강력한 위력을 얻는 대신 민첩함이 다소 감소합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1007,
@@ -4184,7 +4059,8 @@
       "combatStatModifiers": { "magicAtk": 1.30 },
       "combatStatOffsets": { "critDamage": 20, "magicRes": -10 }
     },
-    "description": "마력 회로를 과부하시켜 마법의 위력을 극대화합니다."
+    "description": "마력 회로를 과부하시켜 마법의 위력을 극대화합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1008,
@@ -4201,7 +4077,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 20, "accuracy": 20, "physRes": -5 }
     },
-    "description": "신체를 유연하게 하여 명중과 회피 능력을 동시에 확보합니다."
+    "description": "신체를 유연하게 하여 명중과 회피 능력을 동시에 확보합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1009,
@@ -4219,7 +4096,8 @@
       "combatStatModifiers": { "meleeAtk": 1.40 },
       "combatStatOffsets": { "critRate": 35, "physRes": -20, "magicRes": -20 }
     },
-    "description": "방어를 도외시하고 오직 파괴에만 집중하여 화력을 폭증시킵니다."
+    "description": "방어를 도외시하고 오직 파괴에만 집중하여 화력을 폭증시킵니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1010,
@@ -4237,7 +4115,8 @@
       "combatStatModifiers": { "magicAtk": 1.40 },
       "combatStatOffsets": { "fireAtk": 20, "fireRes": 35, "iceRes": -20 }
     },
-    "description": "심장을 화염 원소와 공명시켜 마법 공격력과 화염 속성을 강화하지만 냉기에 취약해집니다."
+    "description": "심장을 화염 원소와 공명시켜 마법 공격력과 화염 속성을 강화하지만 냉기에 취약해집니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1011,
@@ -4254,7 +4133,8 @@
       "chance": 100,
       "combatStatOffsets": { "accuracy": 35, "critRate": 25, "critDamage": 20 }
     },
-    "description": "초월적인 집중력으로 적의 움직임을 예측하여 명중률과 치명타 능력을 대폭 강화합니다."
+    "description": "초월적인 집중력으로 적의 움직임을 예측하여 명중률과 치명타 능력을 대폭 강화합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1012,
@@ -4272,7 +4152,8 @@
       "combatStatModifiers": { "magicAtk": 1.50 },
       "combatStatOffsets": { "magicRes": 50, "fireRes": 50, "magicPen": 30 }
     },
-    "description": "용의 마력을 구현하여 극대화된 마법 출력과 강력한 저항력을 갖춥니다."
+    "description": "용의 마력을 구현하여 극대화된 마법 출력과 강력한 저항력을 갖춥니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1013,
@@ -4290,7 +4171,8 @@
       "combatStatModifiers": { "meleeAtk": 1.50 },
       "combatStatOffsets": { "physRes": 50, "physPen": 30, "accuracy": 20 }
     },
-    "description": "전신의 힘을 빌려 물리 공격력과 방어력, 관통력을 한계까지 끌어올립니다."
+    "description": "전신의 힘을 빌려 물리 공격력과 방어력, 관통력을 한계까지 끌어올립니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1014,
@@ -4307,7 +4189,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 50, "accuracy": 50, "critRate": 30, "critDamage": 30 }
     },
-    "description": "시간의 흐름을 왜곡하여 절대적인 회피와 정밀한 타격 기회를 확보합니다."
+    "description": "시간의 흐름을 왜곡하여 절대적인 회피와 정밀한 타격 기회를 확보합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1015,
@@ -4324,7 +4207,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 10, "accuracy": 5 }
     },
-    "description": "신체를 가볍게 유지하여 회피율과 명중률을 소폭 보정합니다."
+    "description": "신체를 가볍게 유지하여 회피율과 명중률을 소폭 보정합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1016,
@@ -4341,7 +4225,8 @@
       "chance": 100,
       "combatStatOffsets": { "accuracy": 10, "physRes": 5 }
     },
-    "description": "일정한 호흡으로 정신을 가다듬어 공격의 정확도와 방어력을 높입니다."
+    "description": "일정한 호흡으로 정신을 가다듬어 공격의 정확도와 방어력을 높입니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1017,
@@ -4358,7 +4243,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 10 }
     },
-    "description": "적의 공격 궤적을 읽어 회피 능력을 강화합니다."
+    "description": "적의 공격 궤적을 읽어 회피 능력을 강화합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1018,
@@ -4375,7 +4261,8 @@
       "chance": 100,
       "combatStatOffsets": { "accuracy": 10, "critRate": 5, "dodge": -5 }
     },
-    "description": "시야를 좁혀 대상에게 집중합니다. 명중률은 오르나 회피가 어려워집니다."
+    "description": "시야를 좁혀 대상에게 집중합니다. 명중률은 오르나 회피가 어려워집니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1019,
@@ -4392,7 +4279,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 5, "accuracy": 5, "physRes": 5 }
     },
-    "description": "신경 자극을 조절하여 전반적인 신체 반응 속도를 보정합니다."
+    "description": "신경 자극을 조절하여 전반적인 신체 반응 속도를 보정합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1020,
@@ -4409,7 +4297,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 20, "accuracy": -5 }
     },
-    "description": "빠른 움직임으로 잔상을 남겨 회피 능력을 크게 높입니다."
+    "description": "빠른 움직임으로 잔상을 남겨 회피 능력을 크게 높입니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1021,
@@ -4426,7 +4315,8 @@
       "chance": 100,
       "combatStatOffsets": { "accuracy": 15, "critRate": 15, "physPen": 10 }
     },
-    "description": "대상의 허점을 파악하여 정밀도와 관통력을 보강합니다."
+    "description": "대상의 허점을 파악하여 정밀도와 관통력을 보강합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1022,
@@ -4443,7 +4333,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 15, "accuracy": 15, "critRate": 10 }
     },
-    "description": "신경계를 과부하시켜 전반적인 전투 반응 속도를 한계까지 끌어올립니다."
+    "description": "신경계를 과부하시켜 전반적인 전투 반응 속도를 한계까지 끌어올립니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1023,
@@ -4460,7 +4351,8 @@
       "chance": 100,
       "combatStatOffsets": { "accuracy": 20, "critDamage": 15 }
     },
-    "description": "공격 자세를 고정하여 명중률과 치명타 위력을 강화합니다."
+    "description": "공격 자세를 고정하여 명중률과 치명타 위력을 강화합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1024,
@@ -4477,7 +4369,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 15, "magicRes": 15, "accuracy": 5 }
     },
-    "description": "공기의 흐름을 읽어 마법 공격에 대한 저항과 회피율을 동시에 높입니다."
+    "description": "공기의 흐름을 읽어 마법 공격에 대한 저항과 회피율을 동시에 높입니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1050,
@@ -4495,7 +4388,8 @@
       "combatStatModifiers": { "fireAtk": 1.30 },
       "combatStatOffsets": { "firePen": 20 }
     },
-    "description": "화염의 흐름에 몸을 맡겨 투사 효율을 높입니다. 화염 공격력과 관통력이 상승합니다."
+    "description": "화염의 흐름에 몸을 맡겨 투사 효율을 높입니다. 화염 공격력과 관통력이 상승합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1051,
@@ -4513,7 +4407,8 @@
       "combatStatModifiers": { "fireAtk": 1.40 },
       "combatStatOffsets": { "firePen": 35, "iceRes": -20 }
     },
-    "description": "생명력을 연소시켜 폭발적인 화력을 얻습니다. 강력한 화염 능력을 얻지만 냉기에 취약해집니다."
+    "description": "생명력을 연소시켜 폭발적인 화력을 얻습니다. 강력한 화염 능력을 얻지만 냉기에 취약해집니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1052,
@@ -4531,7 +4426,8 @@
       "combatStatModifiers": { "fireAtk": 1.50 },
       "combatStatOffsets": { "firePen": 50, "magicRes": -15, "physRes": -15 }
     },
-    "description": "신의 화염을 몸에 가둡니다. 극대화된 화염 위력을 발휘하지만 방어 능력이 감소합니다."
+    "description": "신의 화염을 몸에 가둡니다. 극대화된 화염 위력을 발휘하지만 방어 능력이 감소합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1053,
@@ -4549,7 +4445,8 @@
       "combatStatModifiers": { "iceAtk": 1.30 },
       "combatStatOffsets": { "icePen": 20, "iceRes": 10 }
     },
-    "description": "마력을 차갑게 식혀 냉기 마법의 투과력과 저항력을 높입니다."
+    "description": "마력을 차갑게 식혀 냉기 마법의 투과력과 저항력을 높입니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1054,
@@ -4567,7 +4464,8 @@
       "combatStatModifiers": { "iceAtk": 1.40 },
       "combatStatOffsets": { "icePen": 35, "fireRes": -25 }
     },
-    "description": "주변 열을 흡수하여 극저온 상태를 유지합니다. 냉기 화력이 대폭 상승하나 화염에 취약해집니다."
+    "description": "주변 열을 흡수하여 극저온 상태를 유지합니다. 냉기 화력이 대폭 상승하나 화염에 취약해집니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1055,
@@ -4585,7 +4483,8 @@
       "combatStatModifiers": { "iceAtk": 1.50 },
       "combatStatOffsets": { "icePen": 50, "magicRes": 20, "dodge": -20 }
     },
-    "description": "태고의 냉기를 깃들게 합니다. 압도적인 마법 관통력과 저항력을 갖추지만 몸이 무거워집니다."
+    "description": "태고의 냉기를 깃들게 합니다. 압도적인 마법 관통력과 저항력을 갖추지만 몸이 무거워집니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1056,
@@ -4603,7 +4502,8 @@
       "combatStatModifiers": { "earthAtk": 1.30 },
       "combatStatOffsets": { "earthPen": 20, "physRes": 10 }
     },
-    "description": "지맥의 흐름을 받아들여 대지 공격력과 물리 방어력을 강화합니다."
+    "description": "지맥의 흐름을 받아들여 대지 공격력과 물리 방어력을 강화합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1057,
@@ -4621,7 +4521,8 @@
       "combatStatModifiers": { "earthAtk": 1.40 },
       "combatStatOffsets": { "earthPen": 35, "physRes": 35, "dodge": -50 }
     },
-    "description": "신체를 바위처럼 고정합니다. 공격력과 방어력이 크게 오르나 회피가 매우 어려워집니다."
+    "description": "신체를 바위처럼 고정합니다. 공격력과 방어력이 크게 오르나 회피가 매우 어려워집니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1058,
@@ -4639,7 +4540,8 @@
       "combatStatModifiers": { "earthAtk": 1.50 },
       "combatStatOffsets": { "earthPen": 50, "physRes": 50, "magicRes": 20 }
     },
-    "description": "대지 그 자체가 되어 모든 것을 짓누릅니다. 압도적인 방어력과 관통력을 얻습니다."
+    "description": "대지 그 자체가 되어 모든 것을 짓누릅니다. 압도적인 방어력과 관통력을 얻습니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1059,
@@ -4657,7 +4559,8 @@
       "combatStatModifiers": { "lightningAtk": 1.30 },
       "combatStatOffsets": { "dodge": 15, "lightningPen": 15 }
     },
-    "description": "신경계에 전류를 흘려 반응 속도를 높입니다. 회피와 번개 공격력이 상승합니다."
+    "description": "신경계에 전류를 흘려 반응 속도를 높입니다. 회피와 번개 공격력이 상승합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1060,
@@ -4675,7 +4578,8 @@
       "combatStatModifiers": { "lightningAtk": 1.40 },
       "combatStatOffsets": { "dodge": 30, "lightningPen": 30, "accuracy": 15 }
     },
-    "description": "뇌 연산을 가속합니다. 적의 움직임을 더 잘 읽으며 번개 공격의 파괴력이 강화됩니다."
+    "description": "뇌 연산을 가속합니다. 적의 움직임을 더 잘 읽으며 번개 공격의 파괴력이 강화됩니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1061,
@@ -4693,11 +4597,13 @@
       "combatStatModifiers": { "lightningAtk": 1.50 },
       "combatStatOffsets": { "dodge": 50, "lightningPen": 50, "accuracy": 30, "physRes": -20 }
     },
-    "description": "살아있는 번개로 변환합니다. 절대적인 속도를 얻지만 육체에 상당한 과부하가 걸립니다."
+    "description": "살아있는 번개로 변환합니다. 절대적인 속도를 얻지만 육체에 상당한 과부하가 걸립니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1062,
     "name": "성령의 가호",
+    "description": "신성한 기운으로 몸을 감싸 신성 공격력과 마법 저항력을 보강합니다.",
     "grade": "RARE",
     "type": "BUFF",
     "turnCost": 1,
@@ -4711,7 +4617,7 @@
       "combatStatModifiers": { "holyAtk": 1.30 },
       "combatStatOffsets": { "holyPen": 10, "magicRes": 10 }
     },
-    "description": "신성한 기운으로 몸을 감싸 신성 공격력과 마법 저항력을 보강합니다."
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1063,
@@ -4729,7 +4635,8 @@
       "combatStatModifiers": { "holyAtk": 1.40 },
       "combatStatOffsets": { "holyPen": 20, "magicRes": 15 }
     },
-    "description": "하늘의 빛을 불러내어 신성 공격력을 강화하고 모든 어둠을 꿰뚫는 힘을 부여합니다."
+    "description": "하늘의 빛을 불러내어 신성 공격력을 강화하고 모든 어둠을 꿰뚫는 힘을 부여합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1064,
@@ -4747,7 +4654,8 @@
       "combatStatModifiers": { "holyAtk": 1.50 },
       "combatStatOffsets": { "holyPen": 30, "magicRes": 50, "physRes": 20 }
     },
-    "description": "자신을 성역 그 자체로 변모시켜 파괴적인 신성 위력과 불멸의 방어 체계를 갖춥니다."
+    "description": "자신을 성역 그 자체로 변모시켜 파괴적인 신성 위력과 불멸의 방어 체계를 갖춥니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1065,
@@ -4765,7 +4673,8 @@
       "combatStatModifiers": { "toxicAtk": 1.30 },
       "combatStatOffsets": { "dodge": 20, "physRes": -10 }
     },
-    "description": "약물을 주입하여 반응 속도를 높입니다. 독 공격력은 오르나 방어력이 감소합니다."
+    "description": "약물을 주입하여 반응 속도를 높입니다. 독 공격력은 오르나 방어력이 감소합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1066,
@@ -4783,7 +4692,8 @@
       "combatStatModifiers": { "toxicAtk": 1.20 },
       "combatStatOffsets": { "toxicPen": 20 }
     },
-    "description": "무기에 부식성 독액을 바릅니다. 독 공격력과 관통력이 상승하지만 체력을 지속적으로 소모합니다."
+    "description": "무기에 부식성 독액을 바릅니다. 독 공격력과 관통력이 상승하지만 체력을 지속적으로 소모합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1067,
@@ -4801,7 +4711,8 @@
       "combatStatModifiers": { "toxicAtk": 1.40 },
       "combatStatOffsets": { "toxicPen": 35, "accuracy": 20 }
     },
-    "description": "세포 대사를 가속하여 공격 위력을 증폭시키지만 시전자에게 큰 부담을 줍니다."
+    "description": "세포 대사를 가속하여 공격 위력을 증폭시키지만 시전자에게 큰 부담을 줍니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1068,
@@ -4818,7 +4729,8 @@
       "chance": 100,
       "combatStatOffsets": { "critRate": 25, "critDamage": 20, "dodge": 15, "magicRes": -15 }
     },
-    "description": "주변에 독안개를 방출하여 치명타 성능과 회피를 높이지만 마법 저항이 감소합니다."
+    "description": "주변에 독안개를 방출하여 치명타 성능과 회피를 높이지만 마법 저항이 감소합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1069,
@@ -4836,7 +4748,8 @@
       "combatStatModifiers": { "toxicAtk": 1.50, "meleeAtk": 1.20 },
       "combatStatOffsets": { "toxicPen": 50, "physRes": -25, "magicRes": -25 }
     },
-    "description": "한계를 초월한 약물로 독성 공격력을 극대화하지만 모든 방어 능력이 급격히 저하됩니다."
+    "description": "한계를 초월한 약물로 독성 공격력을 극대화하지만 모든 방어 능력이 급격히 저하됩니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1070,
@@ -4853,7 +4766,8 @@
       "chance": 100,
       "combatStatOffsets": { "toxicRes": 50, "toxicAtk": 20, "accuracy": 30 }
     },
-    "description": "모든 독의 정수를 흡수하여 신체를 재구성합니다. 독 속성 위력과 명중률이 상승합니다."
+    "description": "모든 독의 정수를 흡수하여 신체를 재구성합니다. 독 속성 위력과 명중률이 상승합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1071,
@@ -4871,7 +4785,8 @@
       "combatStatModifiers": { "voidAtk": 1.30 },
       "combatStatOffsets": { "voidPen": 20, "statusResist": -10 }
     },
-    "description": "심연의 목소리를 경청하여 마법 관통력을 높입니다. 대가로 정신이 오염되어 상태 이상 저항이 감소합니다."
+    "description": "심연의 목소리를 경청하여 마법 관통력을 높입니다. 대가로 정신이 오염되어 상태 이상 저항이 감소합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1072,
@@ -4889,7 +4804,8 @@
       "combatStatModifiers": { "meleeAtk": 1.20, "voidAtk": 1.20 },
       "combatStatOffsets": { "accuracy": 15, "hpRegen": -10 }
     },
-    "description": "생명력을 제물로 바쳐 신체 능력을 가속합니다. 공격력이 오르지만 지속적인 생명력 손실이 발생합니다."
+    "description": "생명력을 제물로 바쳐 신체 능력을 가속합니다. 공격력이 오르지만 지속적인 생명력 손실이 발생합니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1073,
@@ -4907,7 +4823,8 @@
       "combatStatModifiers": { "voidAtk": 1.40 },
       "combatStatOffsets": { "voidPen": 35, "critRate": 15, "physRes": -20, "magicRes": -20 }
     },
-    "description": "차원을 뒤틀어 공격에 공허의 힘을 싣습니다. 강력한 화력을 얻는 대신 모든 방어 능력이 약화됩니다."
+    "description": "차원을 뒤틀어 공격에 공허의 힘을 싣습니다. 강력한 화력을 얻는 대신 모든 방어 능력이 약화됩니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1074,
@@ -4924,7 +4841,8 @@
       "chance": 100,
       "combatStatOffsets": { "dodge": 30, "magicRes": 35, "holyRes": -35, "voidAtk": 15 }
     },
-    "description": "그림자 속에 몸을 숨겨 회피율과 마법 저항을 높이지만 신성 속성 공격에 매우 취약해집니다."
+    "description": "그림자 속에 몸을 숨겨 회피율과 마법 저항을 높이지만 신성 속성 공격에 매우 취약해집니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1075,
@@ -4942,7 +4860,8 @@
       "combatStatModifiers": { "voidAtk": 1.50, "meleeAtk": 1.30 },
       "combatStatOffsets": { "voidPen": 50, "statusResist": 50, "hpRegen": -50 }
     },
-    "description": "육신을 초월적인 존재로 재구성합니다. 압도적인 공격력을 얻지만 생명력이 빠르게 고갈됩니다."
+    "description": "육신을 초월적인 존재로 재구성합니다. 압도적인 공격력을 얻지만 생명력이 빠르게 고갈됩니다.",
+    "requiredWeapons": ["NONE"]
   },
   {
     "id": 1076,
@@ -4960,6 +4879,7 @@
       "combatStatModifiers": { "voidAtk": 1.50 },
       "combatStatOffsets": { "critDamage": 50, "accuracy": 50, "physRes": -50, "magicRes": -50 }
     },
-    "description": "금단의 지식에 눈을 떠 인과를 무시하는 정밀 타격 능력을 얻으나 방어 기능을 완전히 상실합니다."
+    "description": "금단의 지식에 눈을 떠 인과를 무시하는 정밀 타격 능력을 얻으나 방어 기능을 완전히 상실합니다.",
+    "requiredWeapons": ["NONE"]
   }
 ]

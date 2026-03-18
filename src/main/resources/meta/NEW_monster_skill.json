@@ -181,5 +181,78 @@
       "critRate": 8
     },
     "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 100,
+    "name": "독성공격",
+    "description": "무기에 맹독을 발라 정교하게 타격합니다. 적에게 물리 피해를 입히고 일정 확률로 중독 상태에 빠뜨립니다.",
+    "icon": "/images/skills/toxic_strike.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "hp": 0,
+      "mp": 15,
+      "stamina": 20
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "10": 1.2,
+      "11": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 2,
+      "chance": 30,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": ["SWORD","AXE", "SPEAR", "BLUNT", "SHIELD", "KNUCKLE", "DAGGER"]
+  },
+  {
+    "id": 101,
+    "name": "독성사격",
+    "description": "화살촉에 치명적인 독을 발라 발사합니다. 적에게 물리 피해를 입히고 일정 확률로 중독 상태로 만듭니다.",
+    "icon": "/images/skills/toxic_shot.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "hp": 0,
+      "mp": 10,
+      "stamina": 25
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "16": 1.2,
+      "23": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 2,
+      "chance": 35,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "BOW",
+      "CROSSBOW"
+    ]
   }
 ]

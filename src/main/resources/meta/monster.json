@@ -22,8 +22,8 @@
       "poisonPen": 5.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [101, 102],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6, 7, 101],
+    "essenceSkillIds": [101],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "10": 15, "11": 15, "12": 15, "4": -10 },
@@ -60,8 +60,8 @@
       "fireRes": -90.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [101, 102],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [3],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "1": 20, "2": 15, "3": 10, "21": -10 },
@@ -100,8 +100,8 @@
       "iceRes": -20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [109, 110],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "13": 20, "14": 20, "11": -10 },
@@ -137,8 +137,8 @@
       "earthRes": 5.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [111],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,2,3],
+    "essenceSkillIds": [ ],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": { "20": 20, "21": 20, "2": -15 },
@@ -178,8 +178,8 @@
       "toxicRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [111],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,2,3],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -221,8 +221,8 @@
       "toxicRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [111],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,2,3],
+    "essenceSkillIds": [ ],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -265,8 +265,8 @@
       "toxicRes": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [112],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1, 2],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -309,8 +309,8 @@
       "toxicRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [112, 113],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,2,3],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -353,8 +353,8 @@
       "toxicRes": -10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [114],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,3,4],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -398,8 +398,8 @@
       "toxicRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [115],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,3],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -440,8 +440,8 @@
       "holyRes": -100.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [116],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,2,3],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -491,8 +491,8 @@
       "holyRes": -100.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [208],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,2,3],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -534,8 +534,8 @@
       "darkRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [108, 209],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [3, 8],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -577,8 +577,8 @@
       "darkRes": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [210],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [7],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -620,8 +620,8 @@
       "darkRes": 15.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [211, 212],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -662,8 +662,8 @@
       "darkRes": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [213],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4,7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -698,8 +698,8 @@
       "dodge": 5.0,
       "statusResist": 15.0,
       "poisonPen": 15.0,
-      "meleeAtk": 25.0,
-      "magicAtk": 15.0,
+      "meleeAtk": 15.0,
+      "magicAtk": 25.0,
       "physDef": 10.0,
       "physRes": 10.0,
       "magRes": 10.0,
@@ -709,8 +709,8 @@
       "toxicRes": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [214],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -753,8 +753,8 @@
       "darkRes": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [215, 216],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6, 7],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -800,8 +800,8 @@
       "darkPen": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [215, 216],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6, 7],
+    "essenceSkillIds": [],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -842,8 +842,8 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [217],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4,7],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -882,8 +882,8 @@
       "earthRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [218],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4,7],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -927,8 +927,8 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [219],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -973,8 +973,8 @@
       "earthAtk": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [220],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4,7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1019,8 +1019,8 @@
       "physPen": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [220],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4, 7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1066,8 +1066,8 @@
       "magPen": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [222, 223],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4,7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1112,8 +1112,8 @@
       "toxicAtk": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [3,5],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1164,8 +1164,8 @@
       "physPen": 25.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [3,5],
+    "essenceSkillIds": [],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -1206,8 +1206,8 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [101, 102],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6, 7, 101],
+    "essenceSkillIds": [101],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -1248,8 +1248,8 @@
       "statusResist": 5.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [106, 107],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [9, 102],
+    "essenceSkillIds": [102],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -1290,8 +1290,8 @@
       "earthRes": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4, 7],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -1335,8 +1335,8 @@
       "earthPen": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [3, 4],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1376,8 +1376,8 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [2, 4],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1421,8 +1421,8 @@
       "statusResist": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1466,8 +1466,8 @@
       "stunPen": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -1511,8 +1511,8 @@
       "darkAtk": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1556,8 +1556,8 @@
       "iceRes": -5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1597,8 +1597,8 @@
       "earthRes": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [9],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1645,8 +1645,8 @@
       "darkRes": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -1694,8 +1694,8 @@
       "earthRes": 15.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -1751,8 +1751,8 @@
       "firePen": 15.0
     },
     "baseActionPoints": 5,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 8,
     "essenceBonus": {
       "baseStats": {
@@ -1794,8 +1794,8 @@
       "fireRes": -80.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1838,8 +1838,8 @@
       "toxicRes": 25.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1883,8 +1883,8 @@
       "toxicRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1928,8 +1928,8 @@
       "toxicRes": 20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1976,8 +1976,8 @@
       "holyRes": 30.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2022,8 +2022,8 @@
       "holyRes": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -2068,8 +2068,8 @@
       "holyRes": -100.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -2114,8 +2114,8 @@
       "darkRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -2162,8 +2162,8 @@
       "toxicRes": 40.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [3],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2207,8 +2207,8 @@
       "toxicRes": 50.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1,3],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2254,8 +2254,8 @@
       "magPen": 15.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2299,8 +2299,8 @@
       "toxicRes": -85.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1, 3],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2341,8 +2341,8 @@
       "earthRes": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [2, 3],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2386,8 +2386,8 @@
       "toxicRes": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2426,8 +2426,8 @@
       "toxicRes": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4,7],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2469,8 +2469,8 @@
       "fireRes": -85.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [9],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2513,8 +2513,8 @@
       "holyRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1, 3],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2558,8 +2558,8 @@
       "iceRes": -90.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1, 4],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2600,8 +2600,8 @@
       "firePen": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1, 3],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2645,8 +2645,8 @@
       "iceRes": -100.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4, 7],
+    "essenceSkillIds": [],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -2692,8 +2692,8 @@
       "firePen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -2740,8 +2740,8 @@
       "firePen": 30.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -2780,8 +2780,8 @@
       "statusPen": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2820,8 +2820,8 @@
       "holyRes": -100.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6,7],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2860,8 +2860,8 @@
       "icePen": 15.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2879,7 +2879,7 @@
   },
   {
     "id": 513,
-    "name": "밴시 리더",
+    "name": "엘더 밴시",
     "tier": 6,
     "type": 3,
     "description": "죽음을 알리는 비명 소리의 주인입니다. 고주파 비명으로 주변 적들을 무력화합니다.",
@@ -2901,8 +2901,8 @@
       "statusPen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -2944,8 +2944,8 @@
       "holyRes": -120.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6, 7],
+    "essenceSkillIds": [],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -2985,8 +2985,8 @@
       "holyRes": -120.0
     },
     "baseActionPoints": 4,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 6,
     "essenceBonus": {
       "baseStats": {
@@ -3025,8 +3025,8 @@
       "fireRes": -100.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [7],
+    "essenceSkillIds": [],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -3065,8 +3065,8 @@
       "fireRes": -90.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -3106,8 +3106,8 @@
       "fireRes": -85.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [6, 7],
+    "essenceSkillIds": [],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -3150,8 +3150,8 @@
       "icePen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [1, 3],
+    "essenceSkillIds": [],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -3193,8 +3193,8 @@
       "icePen": 30.0
     },
     "baseActionPoints": 4,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [8],
+    "essenceSkillIds": [],
     "expReward": 6,
     "essenceBonus": {
       "baseStats": {
@@ -3240,8 +3240,8 @@
       "physPen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4, 7],
+    "essenceSkillIds": [],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -3293,8 +3293,8 @@
       "earthPen": 20.0
     },
     "baseActionPoints": 4,
-    "activeSkillIds": [224],
-    "essenceSkillIds": [101, 102],
+    "activeSkillIds": [4, 7],
+    "essenceSkillIds": [],
     "expReward": 7,
     "essenceBonus": {
       "baseStats": {

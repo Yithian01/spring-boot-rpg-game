@@ -8,7 +8,7 @@
     "subType": "ACCESSORY",
     "description": "희미한 온기가 느껴지는 구리 반지입니다. 화염 마법의 입문자들이 애용합니다.",
     "price": 320000,
-    "icon": "/images/items/770.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 25.0,
@@ -27,7 +27,7 @@
     "subType": "ACCESSORY",
     "description": "표면이 살짝 그을린 옥 반지입니다. 화기를 다루는 데 도움을 줍니다.",
     "price": 345000,
-    "icon": "/images/items/771.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 30.0,
@@ -46,7 +46,7 @@
     "subType": "ACCESSORY",
     "description": "불순물이 섞인 루비가 박힌 반지입니다. 화염의 파괴력을 증폭시킵니다.",
     "price": 720000,
-    "icon": "/images/items/772.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 50.0,
@@ -65,7 +65,7 @@
     "subType": "ACCESSORY",
     "description": "굳은 용암을 깎아 만든 투박한 반지입니다. 치명적인 열기를 품고 있습니다.",
     "price": 750000,
-    "icon": "/images/items/773.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 55.0,
@@ -84,7 +84,7 @@
     "subType": "ACCESSORY",
     "description": "서늘한 기운이 감도는 은 반지입니다. 정신을 맑게 하여 마나를 유지해줍니다.",
     "price": 310000,
-    "icon": "/images/items/774.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 25.0,
@@ -103,7 +103,7 @@
     "subType": "ACCESSORY",
     "description": "만년설의 조각을 가공해 만든 반지입니다. 냉기 마법의 효율을 높여줍니다.",
     "price": 330000,
-    "icon": "/images/items/775.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 20.0,
@@ -122,7 +122,7 @@
     "subType": "ACCESSORY",
     "description": "청명한 빛의 사파이어가 박힌 반지입니다. 방대한 마력을 담기에 적합합니다.",
     "price": 690000,
-    "icon": "/images/items/776.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 50.0,
@@ -141,7 +141,7 @@
     "subType": "ACCESSORY",
     "description": "표면에 항상 서리가 맺혀 있는 백금 반지입니다. 한기를 극대화합니다.",
     "price": 780000,
-    "icon": "/images/items/777.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 60.0,
@@ -160,7 +160,7 @@
     "subType": "ACCESSORY",
     "description": "가끔 정전기를 일으키는 황동 반지입니다. 적의 방어를 꿰뚫는 전격이 깃들어 있습니다.",
     "price": 350000,
-    "icon": "/images/items/778.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 25.0,
@@ -179,7 +179,7 @@
     "subType": "ACCESSORY",
     "description": "낙뢰를 맞고 살아남은 고목으로 만든 반지입니다. 빠른 마력 흐름을 돕습니다.",
     "price": 315000,
-    "icon": "/images/items/779.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 20.0,
@@ -198,7 +198,7 @@
     "subType": "ACCESSORY",
     "description": "보랏빛 스파크가 튀는 자수정 반지입니다. 강력한 전격 관통력을 제공합니다.",
     "price": 740000,
-    "icon": "/images/items/780.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 50.0,
@@ -217,7 +217,7 @@
     "subType": "ACCESSORY",
     "description": "폭풍의 기운이 응축된 희귀 원석 반지입니다. 적의 저항을 무력화합니다.",
     "price": 790000,
-    "icon": "/images/items/781.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 65.0,
@@ -236,7 +236,7 @@
     "subType": "ACCESSORY",
     "description": "대지의 단단함을 담은 반지입니다. 착용자의 생명력을 보존해줍니다.",
     "price": 290000,
-    "icon": "/images/items/782.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 20.0,
@@ -255,7 +255,7 @@
     "subType": "ACCESSORY",
     "description": "자연의 생명력이 깃든 이끼 낀 반지입니다. 드루이드들이 숲을 지킬 때 착용합니다.",
     "price": 310000,
-    "icon": "/images/items/783.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 25.0,
@@ -274,7 +274,7 @@
     "subType": "ACCESSORY",
     "description": "땅의 기운이 서린 토파즈 반지입니다. 끈질긴 생명력을 부여합니다.",
     "price": 680000,
-    "icon": "/images/items/784.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 50.0,
@@ -293,7 +293,7 @@
     "subType": "ACCESSORY",
     "description": "고대 유적의 석재를 깎아 만든 반지입니다. 대지의 파괴력과 회복력을 동시에 갖췄습니다.",
     "price": 720000,
-    "icon": "/images/items/785.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 60.0,
@@ -312,7 +312,7 @@
     "subType": "ACCESSORY",
     "description": "성수가 닿아 깨끗하게 정화된 반지입니다. 신성 마법을 보조합니다.",
     "price": 360000,
-    "icon": "/images/items/786.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 25.0,
@@ -331,7 +331,7 @@
     "subType": "ACCESSORY",
     "description": "사제들의 기도가 깃든 상아 반지입니다. 평온한 마나의 흐름을 돕습니다.",
     "price": 380000,
-    "icon": "/images/items/787.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 20.0,
@@ -350,7 +350,7 @@
     "subType": "ACCESSORY",
     "description": "황금빛으로 빛나는 호박 반지입니다. 사악한 기운을 물리치는 빛의 힘이 담겨 있습니다.",
     "price": 820000,
-    "icon": "/images/items/788.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 55.0,
@@ -369,7 +369,7 @@
     "subType": "ACCESSORY",
     "description": "천사의 형상이 정교하게 조각된 반지입니다. 신성한 일격을 강화합니다.",
     "price": 850000,
-    "icon": "/images/items/789.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 70.0,
@@ -388,7 +388,7 @@
     "subType": "ACCESSORY",
     "description": "탁한 검은빛을 띠는 철 반지입니다. 어둠 속에서 더 날카로운 빛을 냅니다.",
     "price": 370000,
-    "icon": "/images/items/790.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 30.0,
@@ -407,7 +407,7 @@
     "subType": "ACCESSORY",
     "description": "그림자 괴물의 가죽을 덧댄 반지입니다. 착용자의 존재감을 희미하게 만듭니다.",
     "price": 340000,
-    "icon": "/images/items/791.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 25.0,
@@ -426,7 +426,7 @@
     "subType": "ACCESSORY",
     "description": "불길한 문양이 새겨진 오닉스 반지입니다. 치명적인 어둠의 마력을 뿜어냅니다.",
     "price": 810000,
-    "icon": "/images/items/792.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 55.0,
@@ -445,7 +445,7 @@
     "subType": "ACCESSORY",
     "description": "정체모를 유골을 깎아 만든 반지입니다. 적의 급소를 꿰뚫는 저주가 깃들어 있습니다.",
     "price": 840000,
-    "icon": "/images/items/793.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 65.0,
@@ -464,7 +464,7 @@
     "subType": "ACCESSORY",
     "description": "여러 금속이 기괴하게 섞인 반지입니다. 무질서한 마력을 방출합니다.",
     "price": 390000,
-    "icon": "/images/items/794.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 30.0,
@@ -483,7 +483,7 @@
     "subType": "ACCESSORY",
     "description": "차원의 균열 부근에서 발견된 파편으로 만든 반지입니다. 방어를 무시하는 힘이 있습니다.",
     "price": 410000,
-    "icon": "/images/items/795.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 25.0,
@@ -502,7 +502,7 @@
     "subType": "ACCESSORY",
     "description": "외신의 문양이 새겨진 금지된 반지입니다. 적의 저항을 종이처럼 찢어버립니다.",
     "price": 880000,
-    "icon": "/images/items/796.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 60.0,
@@ -521,7 +521,7 @@
     "subType": "ACCESSORY",
     "description": "빛을 흡수하는 검은 흑요석 반지입니다. 압도적인 관통력으로 무장하고 있습니다.",
     "price": 920000,
-    "icon": "/images/items/797.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 75.0,
@@ -540,7 +540,7 @@
     "subType": "ACCESSORY",
     "description": "독사의 송곳니를 가공해 만든 반지입니다. 해로운 기운에 저항력을 줍니다.",
     "price": 330000,
-    "icon": "/images/items/798.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 25.0,
@@ -559,7 +559,7 @@
     "subType": "ACCESSORY",
     "description": "독소에 절어 푸르스름하게 변한 납 반지입니다. 역병의사들이 주로 착용합니다.",
     "price": 310000,
-    "icon": "/images/items/799.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 30.0,
@@ -578,7 +578,7 @@
     "subType": "ACCESSORY",
     "description": "독액을 머금은 듯한 진녹색 에메랄드 반지입니다. 독성 공격을 크게 강화합니다.",
     "price": 710000,
-    "icon": "/images/items/800.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 55.0,
@@ -597,7 +597,7 @@
     "subType": "ACCESSORY",
     "description": "오랜 시간 독기에 노출된 기괴한 반지입니다. 상태이상에 내성을 줍니다.",
     "price": 760000,
-    "icon": "/images/items/801.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 65.0,
@@ -616,7 +616,7 @@
     "subType": "ACCESSORY",
     "description": "꺼지지 않는 화염의 정수가 담긴 반지입니다. 마력을 폭발적인 열기로 변환합니다.",
     "price": 1200000,
-    "icon": "/images/items/890.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "4": 15 },
     "combatStatsBonus": {
       "fireAtk": 100.0,
@@ -635,7 +635,7 @@
     "subType": "ACCESSORY",
     "description": "전장을 잿더미로 만드는 화염술사의 애용품입니다. 파괴적인 열기가 흐릅니다.",
     "price": 1250000,
-    "icon": "/images/items/891.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "4": 12, "8": 8 },
     "combatStatsBonus": {
       "fireAtk": 110.0,
@@ -654,7 +654,7 @@
     "subType": "ACCESSORY",
     "description": "태양의 핵을 정제하여 만든 전설적인 반지입니다. 착용자의 마나를 태양풍으로 승화시킵니다.",
     "price": 8500000,
-    "icon": "/images/items/892.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "4": 30, "8": 20 },
     "combatStatsBonus": {
       "fireAtk": 160.0,
@@ -673,7 +673,7 @@
     "subType": "ACCESSORY",
     "description": "영원히 타오르는 불꽃의 굴레입니다. 모든 것을 태워버릴 듯한 열기를 발산합니다.",
     "price": 8800000,
-    "icon": "/images/items/893.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "4": 40 },
     "combatStatsBonus": {
       "fireAtk": 180.0,
@@ -691,7 +691,7 @@
     "subType": "ACCESSORY",
     "description": "절대 영도의 냉기를 품은 보석 반지입니다. 착용자의 정신을 차갑게 가라앉힙니다.",
     "price": 1150000,
-    "icon": "/images/items/894.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "13": 25 },
     "combatStatsBonus": {
       "iceAtk": 100.0,
@@ -710,7 +710,7 @@
     "subType": "ACCESSORY",
     "description": "북부 대마법사가 사용하던 반지입니다. 방대한 마나를 유지할 수 있게 돕습니다.",
     "price": 1180000,
-    "icon": "/images/items/895.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "13": 30 },
     "combatStatsBonus": {
       "iceAtk": 90.0,
@@ -728,7 +728,7 @@
     "subType": "ACCESSORY",
     "description": "세상의 모든 흐름을 멈출 듯한 혹한의 반지입니다. 마력의 바다를 얼려 보존합니다.",
     "price": 7900000,
-    "icon": "/images/items/896.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "13": 50, "14": 20 },
     "combatStatsBonus": {
       "iceAtk": 150.0,
@@ -747,7 +747,7 @@
     "subType": "ACCESSORY",
     "description": "영원한 겨울을 다스리는 자의 상징입니다. 끝없는 마력의 샘을 선사합니다.",
     "price": 8200000,
-    "icon": "/images/items/897.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "13": 60 },
     "combatStatsBonus": {
       "iceAtk": 170.0,
@@ -766,7 +766,7 @@
     "subType": "ACCESSORY",
     "description": "뇌운의 에너지가 압축된 반지입니다. 적의 방어막을 무색하게 만듭니다.",
     "price": 1300000,
-    "icon": "/images/items/898.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "20": 15 },
     "combatStatsBonus": {
       "lightningAtk": 100.0,
@@ -785,7 +785,7 @@
     "subType": "ACCESSORY",
     "description": "벼락이 내리친 자리에 남은 금속으로 제작되었습니다. 날카로운 침투력을 가집니다.",
     "price": 1280000,
-    "icon": "/images/items/899.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "20": 20 },
     "combatStatsBonus": {
       "lightningAtk": 110.0,
@@ -803,7 +803,7 @@
     "subType": "ACCESSORY",
     "description": "하늘의 분노를 다스리는 전설적인 반지입니다. 그 어떤 장갑도 이 전기를 막을 수 없습니다.",
     "price": 9500000,
-    "icon": "/images/items/900.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "20": 40, "21": 15 },
     "combatStatsBonus": {
       "lightningAtk": 160.0,
@@ -822,7 +822,7 @@
     "subType": "ACCESSORY",
     "description": "고대의 기술과 마법이 결합된 결정체입니다. 공기마저 이온화시키는 강력한 전격을 내뿜습니다.",
     "price": 9700000,
-    "icon": "/images/items/901.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "20": 50 },
     "combatStatsBonus": {
       "lightningAtk": 180.0,
@@ -841,7 +841,7 @@
     "subType": "ACCESSORY",
     "description": "대지의 생명력이 농축된 나무 반지입니다. 착용자의 상처를 대지의 마력으로 치유합니다.",
     "price": 1050000,
-    "icon": "/images/items/902.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "1": 25, "2": 20 },
     "combatStatsBonus": {
       "earthAtk": 80.0,
@@ -860,7 +860,7 @@
     "subType": "ACCESSORY",
     "description": "숲의 수호자가 차던 투박한 반지입니다. 자연과의 공명을 통해 생기를 부여합니다.",
     "price": 1080000,
-    "icon": "/images/items/903.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "1": 40 },
     "combatStatsBonus": {
       "earthAtk": 70.0,
@@ -879,7 +879,7 @@
     "subType": "ACCESSORY",
     "description": "대지 어머니의 축복이 깃든 전설적인 유물입니다. 죽어가는 생명도 다시 일으킬 힘을 가집니다.",
     "price": 7500000,
-    "icon": "/images/items/904.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "1": 60, "2": 50 },
     "combatStatsBonus": {
       "earthAtk": 120.0,
@@ -899,7 +899,7 @@
     "subType": "ACCESSORY",
     "description": "무너지지 않는 산맥의 기운을 담았습니다. 착용자는 대지와 하나가 되어 결코 쓰러지지 않습니다.",
     "price": 7800000,
-    "icon": "/images/items/905.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "1": 100 },
     "combatStatsBonus": {
       "earthAtk": 140.0,
@@ -918,7 +918,7 @@
     "subType": "ACCESSORY",
     "description": "정화된 성수로 축복받은 은반지입니다. 신성한 마력이 은은하게 흐릅니다.",
     "price": 1100000,
-    "icon": "/images/items/906.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "18": 15, "13": 10 },
     "combatStatsBonus": {
       "holyAtk": 100.0,
@@ -938,7 +938,7 @@
     "subType": "ACCESSORY",
     "description": "새벽의 첫 빛을 담아 제작된 반지입니다. 사악한 기운을 물리치는 힘이 있습니다.",
     "price": 1120000,
-    "icon": "/images/items/907.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "18": 20 },
     "combatStatsBonus": {
       "holyAtk": 110.0,
@@ -957,7 +957,7 @@
     "subType": "ACCESSORY",
     "description": "천상계의 금속으로 벼려낸 전설적인 성물입니다. 착용자는 그 자체로 거룩한 빛의 통로가 됩니다.",
     "price": 9000000,
-    "icon": "/images/items/908.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "18": 40, "13": 30 },
     "combatStatsBonus": {
       "holyAtk": 160.0,
@@ -977,7 +977,7 @@
     "subType": "ACCESSORY",
     "description": "빛의 근원으로부터 흘러나온 기적이 깃든 반지입니다. 모든 어둠을 정화할 권능을 부여합니다.",
     "price": 9200000,
-    "icon": "/images/items/909.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "18": 50, "1": 30 },
     "combatStatsBonus": {
       "holyAtk": 180.0,
@@ -997,7 +997,7 @@
     "subType": "ACCESSORY",
     "description": "심연의 어둠 속에서 빛나는 불길한 붉은 보석입니다. 적의 약점을 꿰뚫어 보게 합니다.",
     "price": 1400000,
-    "icon": "/images/items/910.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "15": 15, "17": 10 },
     "combatStatsBonus": {
       "darkAtk": 100.0,
@@ -1016,7 +1016,7 @@
     "subType": "ACCESSORY",
     "description": "악마와의 금지된 계약을 통해 힘을 얻은 반지입니다. 어둠의 화력을 극대화합니다.",
     "price": 1450000,
-    "icon": "/images/items/911.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "15": 20 },
     "combatStatsBonus": {
       "darkAtk": 120.0,
@@ -1035,7 +1035,7 @@
     "subType": "ACCESSORY",
     "description": "어둠 그 자체가 형상화된 전설의 반지입니다. 착용자의 모든 마법에 치명적인 그림자를 덧씌웁니다.",
     "price": 9800000,
-    "icon": "/images/items/912.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "15": 40, "17": 25 },
     "combatStatsBonus": {
       "darkAtk": 160.0,
@@ -1055,7 +1055,7 @@
     "subType": "ACCESSORY",
     "description": "세상의 종말을 노래하는 어둠의 정수입니다. 빛마저 삼켜버리는 파괴적인 치명타를 선사합니다.",
     "price": 10000000,
-    "icon": "/images/items/913.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "15": 55 },
     "combatStatsBonus": {
       "darkAtk": 180.0,
@@ -1075,7 +1075,7 @@
     "subType": "ACCESSORY",
     "description": "차원의 틈새에서 떨어진 정체불명의 물질입니다. 현실의 물리 법칙을 비틉니다.",
     "price": 1500000,
-    "icon": "/images/items/914.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "9": 12, "23": 10 },
     "combatStatsBonus": {
       "chaosAtk": 100.0,
@@ -1094,7 +1094,7 @@
     "subType": "ACCESSORY",
     "description": "이름 없는 신을 숭배하는 자들의 증표입니다. 무질서한 마력으로 적의 방어를 무너뜨립니다.",
     "price": 1550000,
-    "icon": "/images/items/915.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "9": 20 },
     "combatStatsBonus": {
       "chaosAtk": 110.0,
@@ -1113,7 +1113,7 @@
     "subType": "ACCESSORY",
     "description": "우주의 중심에서 요동치는 혼돈의 결정입니다. 모든 질서와 논리를 파괴하는 전설적인 힘입니다.",
     "price": 12000000,
-    "icon": "/images/items/916.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "9": 45, "23": 20 },
     "combatStatsBonus": {
       "chaosAtk": 160.0,
@@ -1133,7 +1133,7 @@
     "subType": "ACCESSORY",
     "description": "이해가 불가능한 이계의 금속으로 만들어졌습니다. 그 어떤 방어 수단도 이 혼돈을 막을 수 없습니다.",
     "price": 12500000,
-    "icon": "/images/items/917.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "9": 60 },
     "combatStatsBonus": {
       "chaosAtk": 180.0,
@@ -1153,7 +1153,7 @@
     "subType": "ACCESSORY",
     "description": "강력한 부패의 마법이 담긴 반지입니다. 동시에 착용자를 전염병으로부터 보호합니다.",
     "price": 1150000,
-    "icon": "/images/items/918.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "3": 15, "17": 10 },
     "combatStatsBonus": {
       "toxicAtk": 100.0,
@@ -1172,7 +1172,7 @@
     "subType": "ACCESSORY",
     "description": "치명적인 독초와 괴수의 독액을 섞어 주조했습니다. 상처 부위를 빠르게 썩게 만듭니다.",
     "price": 1180000,
-    "icon": "/images/items/919.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "3": 20 },
     "combatStatsBonus": {
       "toxicAtk": 110.0,
@@ -1191,7 +1191,7 @@
     "subType": "ACCESSORY",
     "description": "대재앙을 일으켰던 역병의 핵입니다. 착용자의 마력은 닿는 모든 것을 녹여버리는 독강이 됩니다.",
     "price": 8800000,
-    "icon": "/images/items/920.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "3": 45, "17": 20 },
     "combatStatsBonus": {
       "toxicAtk": 160.0,
@@ -1211,7 +1211,7 @@
     "subType": "ACCESSORY",
     "description": "아홉 머리 히드라의 정수를 담은 전설의 고리입니다. 그 어떤 해독제로도 이 독을 막을 수 없습니다.",
     "price": 9100000,
-    "icon": "/images/items/921.png",
+    "icon": "/images/items/RING-MAGIC-UNCOMMON.png",
     "baseStatsBonus": { "3": 60 },
     "combatStatsBonus": {
       "toxicAtk": 180.0,

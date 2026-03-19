@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "딱딱하게 굳었지만 허기를 달래기엔 충분합니다. 체력과 스태미나를 약간 회복합니다.",
     "price": 30,
-    "icon": "/images/items/10000.png",
+    "icon": "/images/items/BREAD.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {

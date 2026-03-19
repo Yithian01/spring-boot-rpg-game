@@ -8,7 +8,7 @@
     "subType": "ACCESSORY",
     "description": "열기를 품은 흔한 부싯돌입니다. 화염 마법의 불꽃을 조금 더 날카롭게 만듭니다.",
     "price": 120000,
-    "icon": "/images/items/810.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 25.0,
@@ -25,7 +25,7 @@
     "subType": "ACCESSORY",
     "description": "불에 잘 타지 않는 가죽으로 만든 주머니입니다. 화력을 집중하는 데 도움을 줍니다.",
     "price": 135000,
-    "icon": "/images/items/811.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 20.0,
@@ -42,7 +42,7 @@
     "subType": "ACCESSORY",
     "description": "매끄러운 돌에 화염의 문양을 새겼습니다. 폭발적인 마력 운용을 가능케 합니다.",
     "price": 450000,
-    "icon": "/images/items/812.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 65.0,
@@ -60,7 +60,7 @@
     "subType": "ACCESSORY",
     "description": "꺼지지 않는 온기를 가진 석탄입니다. 화염 마법사들이 호신용으로 즐겨 찾습니다.",
     "price": 480000,
-    "icon": "/images/items/813.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 60.0,
@@ -78,7 +78,7 @@
     "subType": "ACCESSORY",
     "description": "만지면 손끝이 아릿할 정도로 차가운 돌입니다. 마나를 머금는 성질이 있습니다.",
     "price": 140000,
-    "icon": "/images/items/814.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 30.0,
@@ -95,7 +95,7 @@
     "subType": "ACCESSORY",
     "description": "냉기를 보존하기 위해 특수 제작된 병입니다. 마나 소모를 안정시킵니다.",
     "price": 125000,
-    "icon": "/images/items/815.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 20.0,
@@ -112,7 +112,7 @@
     "subType": "ACCESSORY",
     "description": "쉽게 녹지 않는 얼음의 결정입니다. 방대한 마나를 운용하는 냉기 법사에게 유용합니다.",
     "price": 520000,
-    "icon": "/images/items/816.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 70.0,
@@ -130,7 +130,7 @@
     "subType": "ACCESSORY",
     "description": "북쪽 해안에서 흘러들어온 빙하의 파편입니다. 정신을 맑게 하여 마나통을 키워줍니다.",
     "price": 500000,
-    "icon": "/images/items/817.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 60.0,
@@ -148,7 +148,7 @@
     "subType": "ACCESSORY",
     "description": "전기가 잘 통하는 구리를 꼬아 만든 팔찌입니다. 적의 방어막을 뚫는 데 도움을 줍니다.",
     "price": 130000,
-    "icon": "/images/items/818.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 35.0,
@@ -165,7 +165,7 @@
     "subType": "ACCESSORY",
     "description": "철가루를 끌어당기는 성질이 있는 돌입니다. 번개 줄기를 더 예리하게 다듬습니다.",
     "price": 145000,
-    "icon": "/images/items/819.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 25.0,
@@ -182,7 +182,7 @@
     "subType": "ACCESSORY",
     "description": "강한 번개를 견뎌낸 나무 조각입니다. 전격 마법의 관통력을 극대화합니다.",
     "price": 550000,
-    "icon": "/images/items/820.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 75.0,
@@ -200,7 +200,7 @@
     "subType": "ACCESSORY",
     "description": "수명을 다한 골렘의 부품입니다. 남아있는 전류가 마법의 투과력을 높여줍니다.",
     "price": 530000,
-    "icon": "/images/items/821.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 85.0,
@@ -217,7 +217,7 @@
     "subType": "ACCESSORY",
     "description": "생명력이 느껴지는 축축한 흙입니다. 몸에 지니면 상처가 조금 더 빨리 낫습니다.",
     "price": 110000,
-    "icon": "/images/items/822.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 20.0,
@@ -235,7 +235,7 @@
     "subType": "ACCESSORY",
     "description": "땅의 기운을 흡수한 나무 뿌리입니다. 대지의 힘을 빌려 생존력을 높여줍니다.",
     "price": 115000,
-    "icon": "/images/items/823.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 15.0,
@@ -253,7 +253,7 @@
     "subType": "ACCESSORY",
     "description": "깊은 숲의 생명력을 응축한 액체입니다. 드루이드들이 즐겨 사용하는 보조 도구입니다.",
     "price": 460000,
-    "icon": "/images/items/824.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 60.0,
@@ -271,7 +271,7 @@
     "subType": "ACCESSORY",
     "description": "지각 깊숙한 곳에서 채굴된 단단한 원석입니다. 착용자의 생명력을 크게 증폭시킵니다.",
     "price": 490000,
-    "icon": "/images/items/825.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 50.0,
@@ -289,7 +289,7 @@
     "subType": "ACCESSORY",
     "description": "은으로 얇게 코팅된 평범한 묵주입니다. 신성 마법의 효율을 소폭 상승시킵니다.",
     "price": 150000,
-    "icon": "/images/items/826.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 30.0,
@@ -306,7 +306,7 @@
     "subType": "ACCESSORY",
     "description": "성소 주변에서 주운 하얀 새의 깃털입니다. 마음을 평온하게 만듭니다.",
     "price": 140000,
-    "icon": "/images/items/827.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 25.0,
@@ -323,7 +323,7 @@
     "subType": "ACCESSORY",
     "description": "사제가 기도를 올린 맑은 물이 든 병입니다. 신성한 빛의 힘을 강화합니다.",
     "price": 540000,
-    "icon": "/images/items/828.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 80.0,
@@ -341,7 +341,7 @@
     "subType": "ACCESSORY",
     "description": "오래된 예배당에서 사용되던 촛대의 일부입니다. 신성한 마력의 흐름을 돕습니다.",
     "price": 510000,
-    "icon": "/images/items/829.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 70.0,
@@ -359,7 +359,7 @@
     "subType": "ACCESSORY",
     "description": "말린 까마귀의 발톱입니다. 어두운 마법의 치명적인 위력을 높여줍니다.",
     "price": 160000,
-    "icon": "/images/items/830.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 30.0,
@@ -376,7 +376,7 @@
     "subType": "ACCESSORY",
     "description": "그림자 속에 오래 방치되어 색이 변한 헝겊입니다. 흑마법의 기운을 보존합니다.",
     "price": 155000,
-    "icon": "/images/items/831.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 25.0,
@@ -393,7 +393,7 @@
     "subType": "ACCESSORY",
     "description": "어둠이 비치는 기괴한 유리 파편입니다. 적의 약점을 찌르는 힘을 부여합니다.",
     "price": 580000,
-    "icon": "/images/items/832.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 85.0,
@@ -411,7 +411,7 @@
     "subType": "ACCESSORY",
     "description": "그림자를 엮어 만든 것 같은 기묘한 반지입니다. 흑마법사들의 필수품입니다.",
     "price": 560000,
-    "icon": "/images/items/833.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 70.0,
@@ -429,7 +429,7 @@
     "subType": "ACCESSORY",
     "description": "보는 방향에 따라 상이 뒤틀리는 거울입니다. 혼돈의 마력을 왜곡하여 관통력을 높입니다.",
     "price": 170000,
-    "icon": "/images/items/834.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 35.0,
@@ -446,7 +446,7 @@
     "subType": "ACCESSORY",
     "description": "알 수 없는 기하학적 무늬가 새겨진 인장입니다. 상식 밖의 파괴력을 제공합니다.",
     "price": 180000,
-    "icon": "/images/items/835.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 30.0,
@@ -463,7 +463,7 @@
     "subType": "ACCESSORY",
     "description": "불쾌한 시선이 느껴지는 작은 석상입니다. 적의 모든 저항을 무력화하려 합니다.",
     "price": 620000,
-    "icon": "/images/items/836.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 90.0,
@@ -481,7 +481,7 @@
     "subType": "ACCESSORY",
     "description": "작은 병 안에 갇힌 소용돌이치는 마력입니다. 광신도들이 힘을 얻기 위해 사용합니다.",
     "price": 650000,
-    "icon": "/images/items/837.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 100.0,
@@ -499,7 +499,7 @@
     "subType": "ACCESSORY",
     "description": "독사의 껍질을 말려 만든 밴드입니다. 중독 효과를 강화하고 독 저항을 높입니다.",
     "price": 130000,
-    "icon": "/images/items/838.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 30.0,
@@ -517,7 +517,7 @@
     "subType": "ACCESSORY",
     "description": "독초를 우려낸 찌꺼기가 남은 병입니다. 해로운 효과를 버티는 데 도움을 줍니다.",
     "price": 125000,
-    "icon": "/images/items/839.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 25.0,
@@ -535,7 +535,7 @@
     "subType": "ACCESSORY",
     "description": "거대 거미의 독니를 가공한 목걸이입니다. 적의 숨통을 조이는 독기를 뿜습니다.",
     "price": 470000,
-    "icon": "/images/items/840.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 80.0,
@@ -553,7 +553,7 @@
     "subType": "ACCESSORY",
     "description": "모든 것을 녹여버리는 강력한 부식 보조제입니다. 실험실의 광기가 깃들어 있습니다.",
     "price": 485000,
-    "icon": "/images/items/841.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 70.0,
@@ -571,7 +571,7 @@
     "subType": "ACCESSORY",
     "description": "꺼지지 않는 화염 마법사의 열망이 깃든 핵입니다. 폭발적인 파괴력을 선사합니다.",
     "price": 1500000,
-    "icon": "/images/items/930.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 100.0,
@@ -590,7 +590,7 @@
     "subType": "ACCESSORY",
     "description": "불사조의 기운이 남아있는 깃털입니다. 마력의 흐름을 가속화합니다.",
     "price": 1450000,
-    "icon": "/images/items/931.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 85.0,
@@ -609,7 +609,7 @@
     "subType": "ACCESSORY",
     "description": "태양의 중심부에서 추출한 불의 정수입니다. 모든 것을 재로 만드는 마법사의 증표입니다.",
     "price": 8500000,
-    "icon": "/images/items/932.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 250.0,
@@ -629,7 +629,7 @@
     "subType": "ACCESSORY",
     "description": "세상의 끝을 태워버릴 화염 마법의 극의가 담겨 있습니다.",
     "price": 8800000,
-    "icon": "/images/items/933.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 280.0,
@@ -649,7 +649,7 @@
     "subType": "ACCESSORY",
     "description": "녹지 않는 얼음 속에 갇힌 순수한 마나의 결정체입니다.",
     "price": 1400000,
-    "icon": "/images/items/934.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 90.0,
@@ -668,7 +668,7 @@
     "subType": "ACCESSORY",
     "description": "북해의 지배자였던 용의 비늘입니다. 주변의 공기를 차갑게 얼립니다.",
     "price": 1550000,
-    "icon": "/images/items/935.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 110.0,
@@ -687,7 +687,7 @@
     "subType": "ACCESSORY",
     "description": "시간조차 얼어붙는 영점 하의 마나가 소용돌이치는 유물입니다.",
     "price": 9200000,
-    "icon": "/images/items/936.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 260.0,
@@ -707,7 +707,7 @@
     "subType": "ACCESSORY",
     "description": "이 유물을 소유한 자는 대륙 전체를 빙하기로 몰아넣을 마력을 얻게 됩니다.",
     "price": 9500000,
-    "icon": "/images/items/937.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 300.0,
@@ -727,7 +727,7 @@
     "subType": "ACCESSORY",
     "description": "몰아치는 뇌우의 중심에서 떼어낸 번개의 파편입니다.",
     "price": 1600000,
-    "icon": "/images/items/938.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 100.0,
@@ -746,7 +746,7 @@
     "subType": "ACCESSORY",
     "description": "전격 마법사의 마나를 증폭시키기 위해 고안된 고대 마도공학의 산물입니다.",
     "price": 1400000,
-    "icon": "/images/items/939.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 90.0,
@@ -765,7 +765,7 @@
     "subType": "ACCESSORY",
     "description": "하늘의 분노를 다스리는 뇌신의 권능이 깃들어 있습니다. 모든 저항을 뚫고 대상을 강타합니다.",
     "price": 9000000,
-    "icon": "/images/items/940.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 270.0,
@@ -785,7 +785,7 @@
     "subType": "ACCESSORY",
     "description": "안정화된 초고압 전력이 응축된 구체입니다. 만지는 것만으로도 대기 중의 전하가 요동칩니다.",
     "price": 8900000,
-    "icon": "/images/items/941.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 300.0,
@@ -805,7 +805,7 @@
     "subType": "ACCESSORY",
     "description": "대지의 심장 박동과 공명하는 돌입니다. 착용자의 생명력을 끝없이 보충합니다.",
     "price": 1350000,
-    "icon": "/images/items/942.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 80.0,
@@ -824,7 +824,7 @@
     "subType": "ACCESSORY",
     "description": "천 년 넘게 숲을 지켜온 고목에서 꺾어온 가지입니다. 생명의 기운이 가득합니다.",
     "price": 1300000,
-    "icon": "/images/items/943.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 75.0,
@@ -843,7 +843,7 @@
     "subType": "ACCESSORY",
     "description": "대지 모신의 자비와 분노가 공존하는 궤입니다. 절대 죽지 않는 불멸의 생명력을 부여합니다.",
     "price": 8700000,
-    "icon": "/images/items/944.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 240.0,
@@ -863,7 +863,7 @@
     "subType": "ACCESSORY",
     "description": "모든 생명의 근원인 세계수의 뿌리에서 추출한 결정체입니다.",
     "price": 9100000,
-    "icon": "/images/items/945.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 260.0,
@@ -883,7 +883,7 @@
     "subType": "ACCESSORY",
     "description": "수많은 신자들의 기도가 쌓인 묵주입니다. 정화의 빛을 뿜어냅니다.",
     "price": 1200000,
-    "icon": "/images/items/946.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 110.0,
@@ -902,7 +902,7 @@
     "subType": "ACCESSORY",
     "description": "천상계의 전령인 대천사의 깃털로 장식된 펜던트입니다.",
     "price": 1250000,
-    "icon": "/images/items/947.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 120.0,
@@ -921,7 +921,7 @@
     "subType": "ACCESSORY",
     "description": "정의의 여신의 권능이 깃든 천칭입니다. 악한 자들에게는 두려움을, 선한 자들에게는 가호를 내립니다.",
     "price": 8200000,
-    "icon": "/images/items/948.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 280.0,
@@ -941,7 +941,7 @@
     "subType": "ACCESSORY",
     "description": "태초에 빛이 있으라 하였을 때의 그 빛의 일부가 응축된 코어입니다.",
     "price": 8500000,
-    "icon": "/images/items/949.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 320.0,
@@ -961,7 +961,7 @@
     "subType": "ACCESSORY",
     "description": "어둠 속에 숨어든 흑마법사의 정수가 담긴 반지입니다. 치명적인 마력을 선사합니다.",
     "price": 1450000,
-    "icon": "/images/items/950.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 110.0,
@@ -980,7 +980,7 @@
     "subType": "ACCESSORY",
     "description": "모든 빛을 빨아들이는 심연의 조각입니다.",
     "price": 1400000,
-    "icon": "/images/items/951.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 100.0,
@@ -999,7 +999,7 @@
     "subType": "ACCESSORY",
     "description": "지옥의 가장 깊은 곳, 그림자 왕좌에서 떨어져 나온 조각입니다. 파괴적인 치명타를 보장합니다.",
     "price": 9300000,
-    "icon": "/images/items/952.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 290.0,
@@ -1019,7 +1019,7 @@
     "subType": "ACCESSORY",
     "description": "죽은 자들의 왕, 벨리알의 눈동자입니다. 바라보는 것만으로도 영혼을 얼어붙게 합니다.",
     "price": 9600000,
-    "icon": "/images/items/953.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 320.0,
@@ -1039,7 +1039,7 @@
     "subType": "ACCESSORY",
     "description": "알 수 없는 차원에서 건너온 기괴한 생명체의 일부입니다. 현실의 법칙을 왜곡합니다.",
     "price": 1650000,
-    "icon": "/images/items/954.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 120.0,
@@ -1058,7 +1058,7 @@
     "subType": "ACCESSORY",
     "description": "금지된 존재를 숭배하는 광신도들이 사용하던 휘장입니다.",
     "price": 1550000,
-    "icon": "/images/items/955.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 100.0,
@@ -1077,7 +1077,7 @@
     "subType": "ACCESSORY",
     "description": "수만 가지의 형태를 가진 혼돈의 화신, 그 정수가 담겨 있습니다. 어떤 방어도 무의미하게 만듭니다.",
     "price": 9800000,
-    "icon": "/images/items/956.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 350.0,
@@ -1097,7 +1097,7 @@
     "subType": "ACCESSORY",
     "description": "우주적 공포를 마주한 자의 눈에 맺힌 절망의 결정체입니다.",
     "price": 9900000,
-    "icon": "/images/items/957.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 330.0,
@@ -1117,7 +1117,7 @@
     "subType": "ACCESSORY",
     "description": "치명적인 독소와 정체불명의 액체가 섞인 병입니다. 만지는 것만으로도 피부가 부식됩니다.",
     "price": 1350000,
-    "icon": "/images/items/958.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 110.0,
@@ -1136,7 +1136,7 @@
     "subType": "ACCESSORY",
     "description": "한 번 물리면 숲의 거인도 쓰러뜨린다는 전설적인 독사의 송곳니입니다.",
     "price": 1250000,
-    "icon": "/images/items/959.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 130.0,
@@ -1155,7 +1155,7 @@
     "subType": "ACCESSORY",
     "description": "인류가 겪어온 모든 전염병의 원천이 봉인된 궤입니다. 당신의 마법은 곧 죽음입니다.",
     "price": 8900000,
-    "icon": "/images/items/960.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 320.0,
@@ -1175,7 +1175,7 @@
     "subType": "ACCESSORY",
     "description": "아홉 머리 히드라의 심장에서 추출한 순수 독성 혈액입니다. 공기조차 오염시킵니다.",
     "price": 9100000,
-    "icon": "/images/items/961.png",
+    "icon": "/images/items/ARTIFACT-MAGIC-UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 350.0,

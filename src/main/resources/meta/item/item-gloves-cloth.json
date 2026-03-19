@@ -9,7 +9,7 @@
     "subType": "CLOTH",
     "description": "불꽃의 마력이 깃든 실로 짠 무명 장갑입니다. 열기가 느껴집니다.",
     "price": 280000,
-    "icon": "/images/items/510.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 25.0,
@@ -31,7 +31,7 @@
     "subType": "CLOTH",
     "description": "화염 술사들이 즐겨 사용하는 붉은 천 장갑입니다.",
     "price": 295000,
-    "icon": "/images/items/511.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 25.0,
@@ -53,7 +53,7 @@
     "subType": "CLOTH",
     "description": "상급 화염 마법을 보조하기 위해 특수 제작된 명주 장갑입니다.",
     "price": 620000,
-    "icon": "/images/items/512.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 60.0,
@@ -75,7 +75,7 @@
     "subType": "CLOTH",
     "description": "매우 뜨거운 열기를 견딜 수 있도록 마감 처리된 비단 장갑입니다.",
     "price": 640000,
-    "icon": "/images/items/513.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 60.0,
@@ -97,7 +97,7 @@
     "subType": "CLOTH",
     "description": "차가운 기운이 머물러 있는 면 장갑입니다.",
     "price": 275000,
-    "icon": "/images/items/514.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 25.0,
@@ -118,7 +118,7 @@
     "subType": "CLOTH",
     "description": "두꺼운 털실에 냉기 마법을 불어넣어 제작되었습니다.",
     "price": 285000,
-    "icon": "/images/items/515.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 25.0,
@@ -139,7 +139,7 @@
     "subType": "CLOTH",
     "description": "마나를 가두는 힘이 강한 삼베로 짜인 냉기 장갑입니다.",
     "price": 610000,
-    "icon": "/images/items/516.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 60.0,
@@ -160,7 +160,7 @@
     "subType": "CLOTH",
     "description": "얼어붙지 않는 특수 천으로 제작되어 마법사의 마나 순환을 돕습니다.",
     "price": 635000,
-    "icon": "/images/items/517.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 60.0,
@@ -181,7 +181,7 @@
     "subType": "CLOTH",
     "description": "미세한 정전기가 흐르는 장갑입니다. 전격 관통력이 우수합니다.",
     "price": 310000,
-    "icon": "/images/items/518.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 25.0,
@@ -202,7 +202,7 @@
     "subType": "CLOTH",
     "description": "폭풍우 속에서 마력을 보충받은 천 장갑입니다.",
     "price": 320000,
-    "icon": "/images/items/519.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 25.0,
@@ -223,7 +223,7 @@
     "subType": "CLOTH",
     "description": "번개의 힘을 증폭시켜 적의 저항을 뚫어내는 장갑입니다.",
     "price": 680000,
-    "icon": "/images/items/520.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 60.0,
@@ -244,7 +244,7 @@
     "subType": "CLOTH",
     "description": "번개 신의 가호가 깃들었다고 알려진 상점용 비단 장갑입니다.",
     "price": 690000,
-    "icon": "/images/items/521.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 60.0,
@@ -265,7 +265,7 @@
     "subType": "CLOTH",
     "description": "흙 내음이 나는 단단한 면 장갑입니다. 생명력을 보조합니다.",
     "price": 260000,
-    "icon": "/images/items/522.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 25.0,
@@ -287,7 +287,7 @@
     "subType": "CLOTH",
     "description": "대지술사들이 명상을 할 때 주로 착용하는 모직 장갑입니다.",
     "price": 270000,
-    "icon": "/images/items/523.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 25.0,
@@ -309,7 +309,7 @@
     "subType": "CLOTH",
     "description": "땅의 기운을 담아 매우 튼튼하게 짜인 삼베 장갑입니다.",
     "price": 580000,
-    "icon": "/images/items/524.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 60.0,
@@ -331,7 +331,7 @@
     "subType": "CLOTH",
     "description": "자연의 섭리를 따르는 마법사들이 선호하는 장갑입니다.",
     "price": 595000,
-    "icon": "/images/items/525.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 60.0,
@@ -353,7 +353,7 @@
     "subType": "CLOTH",
     "description": "성수(聖水)에 빨아 말린 무명 장갑입니다.",
     "price": 330000,
-    "icon": "/images/items/526.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 25.0,
@@ -374,7 +374,7 @@
     "subType": "CLOTH",
     "description": "기도의 마음을 담아 제작된 하얀 천 장갑입니다.",
     "price": 340000,
-    "icon": "/images/items/527.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 25.0,
@@ -395,7 +395,7 @@
     "subType": "CLOTH",
     "description": "사제들이 의식을 치를 때 착용하는 고급 명주 장갑입니다.",
     "price": 720000,
-    "icon": "/images/items/528.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 60.0,
@@ -416,7 +416,7 @@
     "subType": "CLOTH",
     "description": "신성한 마력을 안정적으로 갈무리하는 비단 장갑입니다.",
     "price": 750000,
-    "icon": "/images/items/529.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 60.0,
@@ -437,7 +437,7 @@
     "subType": "CLOTH",
     "description": "그림자 마력이 깃든 검은 면 장갑입니다.",
     "price": 350000,
-    "icon": "/images/items/530.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 25.0,
@@ -459,7 +459,7 @@
     "subType": "CLOTH",
     "description": "심야의 기운을 담아 직조된 모직 장갑입니다.",
     "price": 360000,
-    "icon": "/images/items/531.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 25.0,
@@ -481,7 +481,7 @@
     "subType": "CLOTH",
     "description": "어둠의 마력을 증폭시키는 거친 삼베 장갑입니다.",
     "price": 780000,
-    "icon": "/images/items/532.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 60.0,
@@ -503,7 +503,7 @@
     "subType": "CLOTH",
     "description": "빛을 흡수하는 성질을 가진 특수한 비단 장갑입니다.",
     "price": 810000,
-    "icon": "/images/items/533.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 60.0,
@@ -525,7 +525,7 @@
     "subType": "CLOTH",
     "description": "불안정한 마력이 소용돌이치는 장갑입니다.",
     "price": 400000,
-    "icon": "/images/items/534.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 25.0,
@@ -546,7 +546,7 @@
     "subType": "CLOTH",
     "description": "차원의 틈새에서 흘러나온 기운이 묻어있는 천 장갑입니다.",
     "price": 420000,
-    "icon": "/images/items/535.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 25.0,
@@ -567,7 +567,7 @@
     "subType": "CLOTH",
     "description": "이계의 존재를 추종하는 자들이 즐겨 쓰는 장갑입니다.",
     "price": 850000,
-    "icon": "/images/items/536.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 60.0,
@@ -588,7 +588,7 @@
     "subType": "CLOTH",
     "description": "이해할 수 없는 문양이 수놓아진 상급 장갑입니다.",
     "price": 890000,
-    "icon": "/images/items/537.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 60.0,
@@ -609,7 +609,7 @@
     "subType": "CLOTH",
     "description": "독초의 즙으로 염색된 면 장갑입니다.",
     "price": 290000,
-    "icon": "/images/items/538.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 25.0,
@@ -631,7 +631,7 @@
     "subType": "CLOTH",
     "description": "연구 중 실수를 방지하기 위해 저항력을 높인 장갑입니다.",
     "price": 300000,
-    "icon": "/images/items/539.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 25.0,
@@ -653,7 +653,7 @@
     "subType": "CLOTH",
     "description": "강력한 독소를 매개로 마법을 펼치기에 적합한 장갑입니다.",
     "price": 650000,
-    "icon": "/images/items/540.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 60.0,
@@ -676,7 +676,7 @@
     "subType": "CLOTH",
     "description": "각종 약품에 절어 기괴한 색을 띠는 실험용 장갑입니다.",
     "price": 670000,
-    "icon": "/images/items/541.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 60.0,
@@ -699,7 +699,7 @@
     "subType": "CLOTH",
     "description": "끊임없이 타오르는 불꽃의 마력이 깃든 장갑입니다. 파괴적인 화염 마법을 보조합니다.",
     "price": 850000,
-    "icon": "/images/items/630.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 150.0,
@@ -720,7 +720,7 @@
     "subType": "CLOTH",
     "description": "공기 중의 마나를 발화시켜 폭발적인 위력을 만들어내는 화염 술사용 장갑입니다.",
     "price": 820000,
-    "icon": "/images/items/631.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 150.0,
@@ -741,7 +741,7 @@
     "subType": "CLOTH",
     "description": "태양의 정수를 담은 실로 짜인 전설적인 장갑입니다. 모든 것을 태워버릴 화력을 선사합니다.",
     "price": 2500000,
-    "icon": "/images/items/632.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 300.0,
@@ -763,7 +763,7 @@
     "subType": "CLOTH",
     "description": "세상의 종말을 가져오는 지옥의 불꽃을 다루기 위한 장갑입니다. 치명적인 열기를 내뿜습니다.",
     "price": 2650000,
-    "icon": "/images/items/633.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 300.0,
@@ -784,7 +784,7 @@
     "subType": "CLOTH",
     "description": "절대 영도의 마력을 담아 차갑게 빛나는 장갑입니다. 착용자의 마나 소모를 안정시킵니다.",
     "price": 840000,
-    "icon": "/images/items/634.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 150.0,
@@ -805,7 +805,7 @@
     "subType": "CLOTH",
     "description": "냉기를 다루는 정예 마법사들이 즐겨 사용하는 장갑으로, 막대한 마력을 저장할 수 있습니다.",
     "price": 810000,
-    "icon": "/images/items/635.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 150.0,
@@ -826,7 +826,7 @@
     "subType": "CLOTH",
     "description": "모든 만물을 얼려버리는 얼음의 정점이 깃들어 있습니다. 끝없는 마력의 바다를 느낄 수 있습니다.",
     "price": 2700000,
-    "icon": "/images/items/636.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 300.0,
@@ -847,7 +847,7 @@
     "subType": "CLOTH",
     "description": "태초의 눈보라를 형상화한 전설의 장갑입니다. 마법의 원천을 비약적으로 증폭시킵니다.",
     "price": 2550000,
-    "icon": "/images/items/637.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 300.0,
@@ -868,7 +868,7 @@
     "subType": "CLOTH",
     "description": "번개의 속도를 제어하기 위해 특별히 제작되었습니다. 적의 저항을 무력화하는 데 특화되어 있습니다.",
     "price": 880000,
-    "icon": "/images/items/638.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 150.0,
@@ -889,7 +889,7 @@
     "subType": "CLOTH",
     "description": "찌릿한 전류가 흐르는 장갑입니다. 전격 마법의 관통력을 극대화합니다.",
     "price": 860000,
-    "icon": "/images/items/639.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 150.0,
@@ -910,7 +910,7 @@
     "subType": "CLOTH",
     "description": "하늘의 분노를 손 안으로 가져왔습니다. 그 어떤 저항도 이 번개를 막아낼 수 없습니다.",
     "price": 2800000,
-    "icon": "/images/items/640.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 300.0,
@@ -931,7 +931,7 @@
     "subType": "CLOTH",
     "description": "뇌룡의 비늘을 가공하여 만든 장갑으로, 공기 자체를 전도체로 만들어버립니다.",
     "price": 2750000,
-    "icon": "/images/items/641.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 300.0,
@@ -952,7 +952,7 @@
     "subType": "CLOTH",
     "description": "대지의 기운을 빌려 착용자의 생명력을 보호하고 회복을 돕는 장갑입니다.",
     "price": 790000,
-    "icon": "/images/items/642.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 150.0,
@@ -973,7 +973,7 @@
     "subType": "CLOTH",
     "description": "살아있는 덩굴로 엮어 만든 장갑입니다. 자연의 치유력이 깃들어 있습니다.",
     "price": 810000,
-    "icon": "/images/items/643.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 150.0,
@@ -995,7 +995,7 @@
     "subType": "CLOTH",
     "description": "대지 그 자체의 의지가 담긴 장갑입니다. 불사의 생명력과 압도적인 토양의 힘을 선사합니다.",
     "price": 2400000,
-    "icon": "/images/items/644.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 300.0,
@@ -1017,7 +1017,7 @@
     "subType": "CLOTH",
     "description": "세계수의 뿌리로 만들어진 성물입니다. 자연의 모든 권능을 착용자에게 집중시킵니다.",
     "price": 2450000,
-    "icon": "/images/items/645.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 300.0,
@@ -1039,7 +1039,7 @@
     "subType": "CLOTH",
     "description": "신성한 마력이 깃든 실로 짜인 정갈한 장갑입니다. 빛의 힘을 투사하기에 적합합니다.",
     "price": 800000,
-    "icon": "/images/items/646.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 150.0,
@@ -1060,7 +1060,7 @@
     "subType": "CLOTH",
     "description": "성무 집행을 위해 제작된 화려한 장갑으로, 착용자의 기도를 빛으로 바꿉니다.",
     "price": 830000,
-    "icon": "/images/items/647.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 150.0,
@@ -1081,7 +1081,7 @@
     "subType": "CLOTH",
     "description": "천사들의 축복이 직접적으로 닿아있는 성물입니다. 어둠을 몰아내는 찬란한 빛이 흘러나옵니다.",
     "price": 2500000,
-    "icon": "/images/items/648.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 300.0,
@@ -1103,7 +1103,7 @@
     "subType": "CLOTH",
     "description": "신의 권능을 지상에 실현하기 위해 존재하는 고결한 장갑입니다.",
     "price": 2600000,
-    "icon": "/images/items/649.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 300.0,
@@ -1125,7 +1125,7 @@
     "subType": "CLOTH",
     "description": "어둠의 마력을 응축하여 치명적인 일격을 가할 수 있도록 돕는 장갑입니다.",
     "price": 870000,
-    "icon": "/images/items/650.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 150.0,
@@ -1146,7 +1146,7 @@
     "subType": "CLOTH",
     "description": "빛을 흡수하는 검은 실로 제작되었습니다. 어둠 속에서 더 날카로운 위력을 발휘합니다.",
     "price": 890000,
-    "icon": "/images/items/651.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 150.0,
@@ -1167,7 +1167,7 @@
     "subType": "CLOTH",
     "description": "죽음을 초월한 존재의 힘이 담겨 있습니다. 보는 것만으로도 영혼이 얼어붙는 어둠의 정수입니다.",
     "price": 2800000,
-    "icon": "/images/items/652.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 300.0,
@@ -1189,7 +1189,7 @@
     "subType": "CLOTH",
     "description": "공허의 힘을 다루는 자들만이 사용할 수 있는 전설의 도구입니다. 모든 치명적인 순간을 조율합니다.",
     "price": 2700000,
-    "icon": "/images/items/653.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 300.0,
@@ -1211,7 +1211,7 @@
     "subType": "CLOTH",
     "description": "차마 말로 형용할 수 없는 기괴한 기운이 감도는 장갑입니다. 현실의 경계를 허뭅니다.",
     "price": 920000,
-    "icon": "/images/items/654.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 150.0,
@@ -1232,7 +1232,7 @@
     "subType": "CLOTH",
     "description": "혼돈을 숭상하는 자들이 의식을 통해 축복(혹은 저주)을 받은 장갑입니다.",
     "price": 900000,
-    "icon": "/images/items/655.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 150.0,
@@ -1253,7 +1253,7 @@
     "subType": "CLOTH",
     "description": "형체 없는 혼돈이 장갑의 형태를 빌려 현현했습니다. 적의 정신과 육체의 방벽을 동시에 파괴합니다.",
     "price": 3000000,
-    "icon": "/images/items/656.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 300.0,
@@ -1274,7 +1274,7 @@
     "subType": "CLOTH",
     "description": "우주 너머의 지식을 접한 자들이 만든 성물입니다. 그 무엇도 이 파괴적인 혼돈을 견딜 수 없습니다.",
     "price": 2900000,
-    "icon": "/images/items/657.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 300.0,
@@ -1295,7 +1295,7 @@
     "subType": "CLOTH",
     "description": "독극물과 오물을 다루기 위해 특수 처리된 장갑입니다. 착용자를 오염으로부터 보호합니다.",
     "price": 820000,
-    "icon": "/images/items/658.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 150.0,
@@ -1316,7 +1316,7 @@
     "subType": "CLOTH",
     "description": "치명적인 맹독을 추출하고 주입하는 데 최적화된 장갑입니다.",
     "price": 840000,
-    "icon": "/images/items/659.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 150.0,
@@ -1337,7 +1337,7 @@
     "subType": "CLOTH",
     "description": "세상의 모든 독을 다루고 제어할 수 있는 전설의 장갑입니다. 독 자체가 착용자의 일부가 됩니다.",
     "price": 2500000,
-    "icon": "/images/items/660.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 300.0,
@@ -1359,7 +1359,7 @@
     "subType": "CLOTH",
     "description": "히드라의 사액을 정제하여 적신 실로 짰습니다. 단 한 번의 마법으로도 치명적인 역병을 퍼뜨립니다.",
     "price": 2600000,
-    "icon": "/images/items/661.png",
+    "icon": "/images/items/GLOVES_CLOTH_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 300.0,

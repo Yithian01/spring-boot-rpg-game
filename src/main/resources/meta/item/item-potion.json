@@ -28,7 +28,7 @@
     "twoHanded": false,
     "description": "가벼운 찰과상을 치료하는 데 적합합니다.",
     "price": 8500,
-    "icon": "/images/items/10001.png",
+    "icon": "/images/items/POTION_HP_COMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -47,7 +47,7 @@
     "twoHanded": false,
     "description": "깊게 베인 상처를 아물게 하고 활력을 되찾아줍니다.",
     "price": 42000,
-    "icon": "/images/items/10002.png",
+    "icon": "/images/items/POTION_HP_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -66,7 +66,7 @@
     "twoHanded": false,
     "description": "치명적인 상처도 즉각적으로 회복시킵니다.",
     "price": 185000,
-    "icon": "/images/items/10003.png",
+    "icon": "/images/items/POTION_HP_RARE.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -85,7 +85,7 @@
     "twoHanded": false,
     "description": "육체의 모든 손상을 복구합니다.",
     "price": 950000,
-    "icon": "/images/items/10004.png",
+    "icon": "/images/items/POTION_HP_EPIC.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -104,7 +104,7 @@
     "twoHanded": false,
     "description": "희미한 푸른빛을 띠는 액체입니다. 마력의 흐름을 미세하게 자극합니다.",
     "price": 5000,
-    "icon": "/images/items/10005.png",
+    "icon": "/images/items/POTION_MP_COMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -123,7 +123,7 @@
     "twoHanded": false,
     "description": "소모된 마력을 안정적으로 보충해줍니다.",
     "price": 26000,
-    "icon": "/images/items/10006.png",
+    "icon": "/images/items/POTION_MP_UNCOMMON.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -142,7 +142,7 @@
     "twoHanded": false,
     "description": "강력한 주문을 연달아 사용할 수 있게 돕습니다.",
     "price": 110000,
-    "icon": "/images/items/10007.png",
+    "icon": "/images/items/POTION_MP_RARE.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {
@@ -161,7 +161,7 @@
     "twoHanded": false,
     "description": "대마법사들이 비전 마법을 연구할 때 마시던 물약입니다. 정신력을 최고조로 끌어올립니다.",
     "price": 580000,
-    "icon": "/images/items/10008.png",
+    "icon": "/images/items/POTION_MP_EPIC.png",
     "baseStatsBonus": {},
     "combatStatsBonus": {},
     "recoveryBonus": {

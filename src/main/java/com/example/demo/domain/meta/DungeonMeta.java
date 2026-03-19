@@ -30,11 +30,13 @@ public class DungeonMeta {
      * [NEXT FLOOR] 다음 던전 ID와 가중치(확률) 맵
      * 예: { "201": 50, "202": 30, "203": 20 } -> 총합 100
      */
+    @Builder.Default
     private Map<Integer, Integer> nextFloorWeights = new HashMap<>();
 
     /**
      * [OTHER AREAS] 다른 지역
      */
+    @Builder.Default
     private Map<Integer, Integer> otherAreas = new HashMap<>(); // List에서 Map으로 변경!
 
     /**

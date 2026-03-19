@@ -61,6 +61,7 @@ public class UserStatus {
     private Map<Integer, Integer> equipmentBonusStats;
 
     // 3. 현재 적용 중인 버프/디버프 목록 (동적 계산용)
+    @Builder.Default
     private List<ActiveStatus> activeStatuses = new ArrayList<>();
 
     // 4. 최종 결과물 (Base + Equip) * Buff 가 적용된 결과
@@ -76,11 +77,13 @@ public class UserStatus {
      * 6. 기록: 사용 아이템/잡은 몬스터 메타 ID
      * ========================= */
     private List<Integer> usedItemIds;
+    @Builder.Default
     private Set<Integer> defeatedMonsterIds = new HashSet<>();
 
     /* =========================
      * 7. 장착 장비 (SlotType : ItemId)
      * ========================= */
+    @Builder.Default
     private Map<String, String> equippedItems = new HashMap<>() {{
         put("HEAD", "0");
         put("BODY", "0");
@@ -96,6 +99,7 @@ public class UserStatus {
     /* =========================
      * 8. 스킬 정보
      * ========================= */
+    @Builder.Default
     private List<Integer> learnedSkillIds = new ArrayList<>(); // 배운 마법/스킬 ID 리스트
 
     /* =========================
@@ -103,6 +107,7 @@ public class UserStatus {
      * ========================= */
     // 획득한 순간부터 바로 효과가 적용되는 정수 ID 리스트
     // 이 리스트에 들어있는 ID들은 모두 '장착' 상태로 간주합니다.
+    @Builder.Default
     private List<String> activeEssenceIds = new ArrayList<>();
 
     public Set<Integer> getDefeatedMonsterIds() {

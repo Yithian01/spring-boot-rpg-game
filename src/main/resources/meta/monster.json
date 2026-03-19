@@ -389,7 +389,7 @@
       "statusResist": 10.0,
       "burnRes": 50.0,
       "burnPen": 10.0,
-      "magicAtk": 15.0,
+      "meleeAtk": 15.0,
       "fireAtk": 10.0,
       "physDef": 3.0,
       "magRes": 10.0,
@@ -398,8 +398,8 @@
       "toxicRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [1,3],
-    "essenceSkillIds": [],
+    "activeSkillIds": [1,3, 104],
+    "essenceSkillIds": [104],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -534,8 +534,8 @@
       "darkRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [3, 8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [3, 8, 105],
+    "essenceSkillIds": [105],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -599,7 +599,7 @@
     "name": "벤시",
     "tier": 9,
     "type": 2,
-    "description": "죽음을 알리는 비명소리를 내는 영혼입니다. 마법 방어력이 높습니다.",
+    "description": "죽음을 알리는 비명소리를 내는 영혼입니다. 물리 공격에 거의 면역입니다.",
     "stats": {
       "maxHp": 90,
       "maxMp": 180,
@@ -613,15 +613,14 @@
       "statusResist": 20.0,
       "frozenRes": 20.0,
       "magicAtk": 20.0,
-      "magRes": 20.0,
       "physRes": 50.0,
       "fireRes": -20.0,
       "holyRes": -100.0,
       "darkRes": 15.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8, 106],
+    "essenceSkillIds": [106],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -753,8 +752,8 @@
       "darkRes": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [6, 7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6, 7, 107],
+    "essenceSkillIds": [107],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -800,8 +799,8 @@
       "darkPen": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [6, 7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6, 7, 107],
+    "essenceSkillIds": [107],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -842,8 +841,8 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [4,7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [4,7,108],
+    "essenceSkillIds": [108],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -882,8 +881,8 @@
       "earthRes": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [4,7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [4,7,109],
+    "essenceSkillIds": [109],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -927,8 +926,8 @@
       "statusResist": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8, 103],
+    "essenceSkillIds": [103],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -998,6 +997,7 @@
     "description": "거석병보다 정교하게 제작된 인조 생명체입니다. 물리 공격에 매우 강합니다.",
     "stats": {
       "maxHp": 320,
+      "maxMp": 90,
       "maxStamina": 250,
       "hpRegen": 1.0,
       "moveSpeed": 0.6,
@@ -1019,8 +1019,8 @@
       "physPen": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [4, 7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [4,7,110],
+    "essenceSkillIds": [110],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1112,8 +1112,8 @@
       "toxicAtk": 10.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [3,5],
-    "essenceSkillIds": [],
+    "activeSkillIds": [3,5,111],
+    "essenceSkillIds": [111],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1164,8 +1164,8 @@
       "physPen": 25.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [3,5],
-    "essenceSkillIds": [],
+    "activeSkillIds": [3,5,111, 112],
+    "essenceSkillIds": [111, 112],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -1335,8 +1335,8 @@
       "earthPen": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [3, 4],
-    "essenceSkillIds": [],
+    "activeSkillIds": [3, 4, 111],
+    "essenceSkillIds": [111],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1511,8 +1511,8 @@
       "darkAtk": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,113],
+    "essenceSkillIds": [113],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1556,8 +1556,8 @@
       "iceRes": -5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [6,7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6,7,113],
+    "essenceSkillIds": [113],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1597,8 +1597,8 @@
       "earthRes": 5.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [9],
-    "essenceSkillIds": [],
+    "activeSkillIds": [9,113],
+    "essenceSkillIds": [113],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -1645,8 +1645,8 @@
       "darkRes": 10.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [6,7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6,7,114],
+    "essenceSkillIds": [114],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -1694,8 +1694,8 @@
       "earthRes": 15.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [6,7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6,7,115],
+    "essenceSkillIds": [115],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -1751,8 +1751,8 @@
       "firePen": 15.0
     },
     "baseActionPoints": 5,
-    "activeSkillIds": [6,7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6,7, 115,116],
+    "essenceSkillIds": [115,116],
     "expReward": 8,
     "essenceBonus": {
       "baseStats": {
@@ -2022,8 +2022,8 @@
       "holyRes": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,117],
+    "essenceSkillIds": [117],
     "expReward": 1,
     "essenceBonus": {
       "baseStats": {
@@ -2207,8 +2207,8 @@
       "toxicRes": 50.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [1,3],
-    "essenceSkillIds": [],
+    "activeSkillIds": [1,3,119],
+    "essenceSkillIds": [119],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2386,8 +2386,8 @@
       "toxicRes": 20.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,117],
+    "essenceSkillIds": [117],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2469,8 +2469,8 @@
       "fireRes": -85.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [9],
-    "essenceSkillIds": [],
+    "activeSkillIds": [9,120,121],
+    "essenceSkillIds": [120121],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2513,8 +2513,8 @@
       "holyRes": -20.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [1, 3],
-    "essenceSkillIds": [],
+    "activeSkillIds": [1, 3,104],
+    "essenceSkillIds": [104],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2558,8 +2558,8 @@
       "iceRes": -90.0
     },
     "baseActionPoints": 1,
-    "activeSkillIds": [1, 4],
-    "essenceSkillIds": [],
+    "activeSkillIds": [1, 4,122],
+    "essenceSkillIds": [122],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2600,8 +2600,8 @@
       "firePen": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [1, 3],
-    "essenceSkillIds": [],
+    "activeSkillIds": [1, 3,123],
+    "essenceSkillIds": [123],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2645,8 +2645,8 @@
       "iceRes": -100.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [4, 7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [4, 7,104],
+    "essenceSkillIds": [104],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -2692,8 +2692,8 @@
       "firePen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,124],
+    "essenceSkillIds": [124],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -2740,8 +2740,8 @@
       "firePen": 30.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,124],
+    "essenceSkillIds": [124],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -2762,7 +2762,7 @@
     "name": "울부짖는 영혼",
     "tier": 8,
     "type": 3,
-    "description": "과거의 비명이 형상화된 영체입니다. 마나를 직접적으로 오염시키는 저주를 사용합니다.",
+    "description": "과거의 비명이 형상화된 영체입니다. 저주를 사용합니다.",
     "stats": {
       "maxHp": 320,
       "maxMp": 150,
@@ -2780,8 +2780,8 @@
       "statusPen": 15.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,125],
+    "essenceSkillIds": [125],
     "expReward": 2,
     "essenceBonus": {
       "baseStats": {
@@ -2820,8 +2820,8 @@
       "holyRes": -100.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [6,7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6,7,107],
+    "essenceSkillIds": [107],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2860,8 +2860,8 @@
       "icePen": 15.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,126],
+    "essenceSkillIds": [126],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -2901,8 +2901,8 @@
       "statusPen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,125],
+    "essenceSkillIds": [125],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -2944,8 +2944,8 @@
       "holyRes": -120.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [6, 7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6, 7, 127],
+    "essenceSkillIds": [127],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -2985,8 +2985,8 @@
       "holyRes": -120.0
     },
     "baseActionPoints": 4,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,128],
+    "essenceSkillIds": [128],
     "expReward": 6,
     "essenceBonus": {
       "baseStats": {
@@ -3025,8 +3025,8 @@
       "fireRes": -100.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [7, 126],
+    "essenceSkillIds": [126],
     "expReward": 3,
     "essenceBonus": {
       "baseStats": {
@@ -3065,8 +3065,8 @@
       "fireRes": -90.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,129],
+    "essenceSkillIds": [129],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -3106,8 +3106,8 @@
       "fireRes": -85.0
     },
     "baseActionPoints": 2,
-    "activeSkillIds": [6, 7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [6, 7, 126],
+    "essenceSkillIds": [126],
     "expReward": 4,
     "essenceBonus": {
       "baseStats": {
@@ -3150,8 +3150,8 @@
       "icePen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [1, 3],
-    "essenceSkillIds": [],
+    "activeSkillIds": [1, 3, 130],
+    "essenceSkillIds": [130],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {
@@ -3193,8 +3193,8 @@
       "icePen": 30.0
     },
     "baseActionPoints": 4,
-    "activeSkillIds": [8],
-    "essenceSkillIds": [],
+    "activeSkillIds": [8,131],
+    "essenceSkillIds": [131],
     "expReward": 6,
     "essenceBonus": {
       "baseStats": {
@@ -3219,7 +3219,7 @@
     "description": "경이로운 재생력을 가진 거구입니다. 불과 산성에 약합니다.",
     "stats": {
       "maxHp": 6500,
-      "maxMp": 200,
+      "maxMp": 130,
       "hpRegen": 150.0,
       "moveSpeed": 1.2,
       "maxTurns": 3,
@@ -3240,8 +3240,8 @@
       "physPen": 25.0
     },
     "baseActionPoints": 3,
-    "activeSkillIds": [4, 7],
-    "essenceSkillIds": [],
+    "activeSkillIds": [4, 7, 132],
+    "essenceSkillIds": [132],
     "expReward": 5,
     "essenceBonus": {
       "baseStats": {

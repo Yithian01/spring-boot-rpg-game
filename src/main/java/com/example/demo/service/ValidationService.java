@@ -78,19 +78,19 @@ public class ValidationService {
     }
 
     /**
-     * 게임 클리어 monsterId = 1000 죽일 시
+     * 게임 클리어 조건 설정
+     * TO-BE: 10층 도달 시
+     * AS-IS: 6층 도달 시
+     * 판단 위치: dungeon 정보 back --> (판단) --> UI
      */
     public boolean checkGameClear(){
         GameStatus gs = gameFileRepository.findGameStatus();
 
         System.out.println("gs" + gs);
 
-        UserStatus us = userFileRepository.findGameUser();
         DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
 
-        if (us.getCurrentHp() <= 0 || ds.getCurrentFloor() < 10 || ds.getActiveMonster() == null) return false;
-
-        if (ds.getActiveMonster().getMonsterId() == 1000 && ds.getActiveMonster().getCurrentHp() <= 0){
+        if (ds.getCurrentFloor() == 6){
             gs.setClear(true);
             gs.setLocation(LocationType.TOWN);
             gs.setDungeonId(0);

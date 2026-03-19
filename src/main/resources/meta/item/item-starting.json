@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "이곳저곳 덧댄 흔적이 가득한 가죽 코트입니다. 활동성이 좋습니다.",
     "price": 65000,
-    "icon": "/images/items/BODY_LEATHER_COMMON.png",
+    "icon": "/images/items/BODY_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 30.0,
@@ -28,7 +28,7 @@
     "twoHanded": false,
     "description": "훈련용으로 쓰던 평범한 철검입니다.",
     "price": 110000,
-    "icon": "/images/items/WEAPON-SWARD-ONEHAND_COMMON.png",
+    "icon": "/images/items/WEAPON-SWARD-ONEHAND_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 10.0
@@ -45,7 +45,7 @@
     "twoHanded": false,
     "description": "그런대로 신을 수 있는 장화입니다.",
     "price": 55000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 20.0,
@@ -64,7 +64,7 @@
     "twoHanded": true,
     "description": "광석을 캘 때 쓰던 망치입니다.",
     "price": 87000,
-    "icon": "/images/items/WEAPON_BLUNT_TWOHAND_COMMON.png",
+    "icon": "/images/items/WEAPON_BLUNT_TWOHAND_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 15.0,
@@ -84,7 +84,7 @@
     "twoHanded": false,
     "description": "대장간이나 광산에서 쓰던 두꺼운 앞치마입니다.",
     "price": 56000,
-    "icon": "/images/items/BODY_PLATE_COMMON.png",
+    "icon": "/images/items/BODY_PLATE_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp" : 50,
@@ -106,7 +106,7 @@
     "twoHanded": false,
     "description": "은은한 마력이 감도는 것이 느껴집니다.",
     "price": 87000,
-    "icon": "/images/items/WEAPON_WAND_COMMON.png",
+    "icon": "/images/items/WEAPON_WAND_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 10.0,
@@ -124,7 +124,7 @@
     "twoHanded": false,
     "description": "마나 흐름을 돕는 얇은 천 옷입니다.",
     "price": 180000,
-    "icon": "/images/items/BODY_CLOTH_COMMON.png",
+    "icon": "/images/items/BODY_CLOTH_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp" : 20.0,
@@ -144,7 +144,7 @@
     "twoHanded": false,
     "description": "가죽을 벗기거나 간단한 사냥에 쓰이던 단검입니다. 날이 많이 무뎌졌지만 여전히 날카롭습니다.",
     "price": 115000,
-    "icon": "/images/items/WEAPON_DAGGER_COMMON.png",
+    "icon": "/images/items/WEAPON_DAGGER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 7.0,
@@ -163,7 +163,7 @@
     "twoHanded": false,
     "description": "어둠 속에서 몸을 숨기기 위해 검게 물들인 가죽 옷입니다.",
     "price": 76000,
-    "icon": "/images/items/BODY_LEATHER_COMMON.png",
+    "icon": "/images/items/BODY_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp" : 30.0,

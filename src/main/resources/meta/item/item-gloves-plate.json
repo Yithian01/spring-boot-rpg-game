@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "표면을 매끄럽게 연마한 철제 장갑입니다. 기본기에 충실한 구조입니다.",
     "price": 280000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -31,7 +31,7 @@
     "twoHanded": false,
     "description": "무거운 무쇠를 두껍게 벼려내어 타격 시 무게감을 더해줍니다.",
     "price": 295000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -53,7 +53,7 @@
     "twoHanded": false,
     "description": "정규군 병사들에게 보급되는 표준 강철 장갑입니다.",
     "price": 310000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -75,7 +75,7 @@
     "twoHanded": false,
     "description": "가죽 장갑 위에 얇은 철판을 여러 겹 덧대어 방어력을 보강했습니다.",
     "price": 275000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -97,7 +97,7 @@
     "twoHanded": false,
     "description": "질 좋은 강철을 통째로 두드려 만든 건틀릿입니다. 묵직한 파괴력이 일품입니다.",
     "price": 620000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -119,7 +119,7 @@
     "twoHanded": false,
     "description": "정식 기사 서임 시 하사받는 정교한 솜씨의 중갑 장갑입니다.",
     "price": 650000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -141,7 +141,7 @@
     "twoHanded": false,
     "description": "특수 공정을 통해 밀도를 높인 강철로 제작되어 내구성과 타격감이 우수합니다.",
     "price": 680000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -163,7 +163,7 @@
     "twoHanded": false,
     "description": "최전방 중전사들을 위해 손등 부위를 더욱 보강한 판금 장갑입니다.",
     "price": 645000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -185,7 +185,7 @@
     "twoHanded": false,
     "description": "거인의 손아귀 힘을 재현하기 위해 제작된 육중한 강철 장갑입니다. 적의 방패를 통째로 으스러뜨릴 수 있습니다.",
     "price": 1450000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 15.0, "10": 10.0 },
     "combatStatsBonus": {
       "meleeAtk": 150.0,
@@ -207,7 +207,7 @@
     "twoHanded": false,
     "description": "심연의 마력이 깃든 검은 강철로 제작되었습니다. 타격 시 상대의 방어구를 부식시키는 충격을 줍니다.",
     "price": 1520000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 12.0, "10": 13.0 },
     "combatStatsBonus": {
       "meleeAtk": 150.0,
@@ -229,7 +229,7 @@
     "twoHanded": false,
     "description": "수많은 전장을 누빈 기사단장의 유품입니다. 투박하지만 효율적인 무게 중심 설계가 돋보입니다.",
     "price": 1380000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 20.0, "10": 5.0 },
     "combatStatsBonus": {
       "meleeAtk": 150.0,
@@ -251,7 +251,7 @@
     "twoHanded": false,
     "description": "화산 지대의 용암철을 두드려 만들었습니다. 장갑에서 뿜어져 나오는 열기가 적의 의지를 꺾어버립니다.",
     "price": 1600000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 10.0, "10": 15.0 },
     "combatStatsBonus": {
       "meleeAtk": 150.0,
@@ -274,7 +274,7 @@
     "twoHanded": false,
     "description": "물리적인 방어의 개념을 무시하는 신화적 무구입니다. 휘두르는 것만으로도 대기를 찢는 파괴력을 지닙니다.",
     "price": 8500000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 30.0, "10": 25.0 },
     "combatStatsBonus": {
       "meleeAtk": 300.0,
@@ -296,7 +296,7 @@
     "twoHanded": false,
     "description": "무너지지 않는 요새의 파편으로 제련되었습니다. 이 장갑을 낀 전사는 전장의 그 어떤 압력도 견뎌냅니다.",
     "price": 9200000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 40.0, "10": 15.0 },
     "combatStatsBonus": {
       "meleeAtk": 300.0,
@@ -317,7 +317,7 @@
     "twoHanded": false,
     "description": "추락한 유성의 중심부에서 추출한 금속으로 제작되었습니다. 중력을 비트는 듯한 압도적인 타격감을 선사합니다.",
     "price": 11000000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 25.0, "10": 30.0 },
     "combatStatsBonus": {
       "meleeAtk": 300.0,
@@ -339,7 +339,7 @@
     "twoHanded": false,
     "description": "세계를 떠받치는 힘이 깃들어 있다고 전해지는 전설적인 장갑입니다. 모든 물리적 저항을 종이처럼 찢어발깁니다.",
     "price": 15000000,
-    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.png",
+    "icon": "/images/items/GLOVES_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 35.0, "10": 20.0 },
     "combatStatsBonus": {
       "meleeAtk": 300.0,

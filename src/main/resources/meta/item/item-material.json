@@ -8,7 +8,7 @@
     "subType": "MAGIC_STONE",
     "description": "던전의 정점이 가진 힘입니다. 부와 명예를 동시에 거머쥘 수 있습니다.",
     "price": 100000000,
-    "icon": "/images/items/MAGIC_STONE_1.png",
+    "icon": "/images/items/MAGIC_STONE_1.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -20,7 +20,7 @@
     "subType": "MAGIC_STONE",
     "description": "심층부의 보물입니다. 일반인들은 평생 구경도 못 할 가치입니다.",
     "price": 10000000,
-    "icon": "/images/items/MAGIC_STONE_2.png",
+    "icon": "/images/items/MAGIC_STONE_2.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -32,7 +32,7 @@
     "subType": "MAGIC_STONE",
     "description": "던전 심층부에서나 볼 수 있는 고가치 마석입니다.",
     "price": 5000000,
-    "icon": "/images/items/MAGIC_STONE_3.png",
+    "icon": "/images/items/MAGIC_STONE_3.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -44,7 +44,7 @@
     "subType": "MAGIC_STONE",
     "description": "희귀한 빛을 내뿜습니다. 고성능 장비의 핵심 재료입니다.",
     "price": 1000000,
-    "icon": "/images/items/MAGIC_STONE_4.png",
+    "icon": "/images/items/MAGIC_STONE_4.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -56,7 +56,7 @@
     "subType": "MAGIC_STONE",
     "description": "정예 몬스터의 정수입니다.",
     "price": 500000,
-    "icon": "/images/items/MAGIC_STONE_5.png",
+    "icon": "/images/items/MAGIC_STONE_5.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -68,7 +68,7 @@
     "subType": "MAGIC_STONE",
     "description": "안정적인 마력을 품고 있습니다.",
     "price": 100000,
-    "icon": "/images/items/MAGIC_STONE_6.png",
+    "icon": "/images/items/MAGIC_STONE_6.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -80,7 +80,7 @@
     "subType": "MAGIC_STONE",
     "description": "8등급보다 조금 더 순도가 높은 마석입니다. ",
     "price": 10000,
-    "icon": "/images/items/MAGIC_STONE_7.png",
+    "icon": "/images/items/MAGIC_STONE_7.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -92,7 +92,7 @@
     "subType": "MAGIC_STONE",
     "description": "흔하게 발견되는 마석입니다. 약간의 빛을 냅니다.",
     "price": 100,
-    "icon": "/images/items/MAGIC_STONE_8.png",
+    "icon": "/images/items/MAGIC_STONE_8.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   },
   {
@@ -104,7 +104,7 @@
     "subType": "MAGIC_STONE",
     "description": "하급 몬스터에게서 보이는 마석입니다.",
     "price": 20,
-    "icon": "/images/items/MAGIC_STONE_9.png",
+    "icon": "/images/items/MAGIC_STONE_9.webp",
     "baseStatsBonus": {}, "combatStatsBonus": {}
   }
 ]

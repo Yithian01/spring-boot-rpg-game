@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "구리를 두껍게 제련한 반지입니다. 투박하지만 힘이 느껴집니다.",
     "price": 320000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 15.0,
@@ -28,7 +28,7 @@
     "twoHanded": false,
     "description": "질긴 마수의 가죽을 덧댄 반지입니다. 손가락의 움직임이 민첩해집니다.",
     "price": 345000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "critRate": 3.0,
@@ -47,7 +47,7 @@
     "twoHanded": false,
     "description": "단단한 화강암을 깎아 만든 반지입니다. 타격 시의 묵직함을 더해줍니다.",
     "price": 310000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 20.0,
@@ -65,7 +65,7 @@
     "twoHanded": false,
     "description": "짐승의 뼈를 깎아 만든 투박한 반지입니다. 공격적인 기운이 감돕니다.",
     "price": 330000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 10.0,
@@ -85,7 +85,7 @@
     "twoHanded": false,
     "description": "불순물을 제거한 백철로 제작되었습니다. 전사들의 기본 소양과 같은 장비입니다.",
     "price": 750000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 40.0,
@@ -104,7 +104,7 @@
     "twoHanded": false,
     "description": "강도가 높은 푸른 강철을 꼬아 만들었습니다. 활을 쏘거나 단검을 휘두를 때 안정감을 줍니다.",
     "price": 780000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 15.0,
@@ -124,7 +124,7 @@
     "twoHanded": false,
     "description": "빛을 흡수하는 검은 암석으로 제작되었습니다. 은밀한 움직임을 선호하는 이들에게 적합합니다.",
     "price": 820000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "critRate": 8.0,
@@ -143,7 +143,7 @@
     "twoHanded": false,
     "description": "중앙에 작은 문양이 새겨진 황동 반지입니다. 용병들 사이에서 행운의 징표로 통합니다.",
     "price": 720000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -162,7 +162,7 @@
     "subType": "ACCESSORY",
     "description": "전장에서 수많은 적을 베어 넘긴 용병의 기운이 깃든 반지입니다. 피의 갈증을 불러일으킵니다.",
     "price": 850000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 100.0,
@@ -181,7 +181,7 @@
     "subType": "ACCESSORY",
     "description": "암살자들이 즐겨 사용하는 어두운 금속의 반지입니다. 착용자의 움직임을 소리 없이 만듭니다.",
     "price": 820000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "critRate": 12.0,
@@ -200,7 +200,7 @@
     "subType": "ACCESSORY",
     "description": "바람의 흐름을 읽게 해주는 정교한 각인이 새겨져 있습니다. 궁수들에게 보물과 같습니다.",
     "price": 800000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 15.0,
@@ -219,7 +219,7 @@
     "subType": "ACCESSORY",
     "description": "압도적인 힘으로 무장한 전사들을 위한 무거운 반지입니다. 방어구를 짓이기는 힘을 줍니다.",
     "price": 880000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 120.0,
@@ -238,7 +238,7 @@
     "subType": "ACCESSORY",
     "description": "전설적인 정복자가 착용했던 반지입니다. 존재만으로도 적들을 압도하는 기운이 뿜어져 나옵니다.",
     "price": 5000000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 150.0,
@@ -259,7 +259,7 @@
     "subType": "ACCESSORY",
     "description": "암살자의 정점에 선 자만이 소유할 수 있는 독기의 반지입니다. 스치는 것만으로도 치명적입니다.",
     "price": 5200000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "critRate": 15.0,
@@ -280,7 +280,7 @@
     "subType": "ACCESSORY",
     "description": "전설적인 궁사가 사용하던 반지로, 화살 끝에 폭풍의 힘을 싣습니다.",
     "price": 4900000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 25.0,
@@ -301,7 +301,7 @@
     "subType": "ACCESSORY",
     "description": "대륙 전체를 호령하던 용병왕의 유물입니다. 부와 파괴력을 동시에 상징합니다.",
     "price": 6000000,
-    "icon": "/images/items/RING-MELEE-UNCOMMON.png",
+    "icon": "/images/items/RING-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 200.0,

@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "일반 가죽보다 조금 더 질긴 소재로 제작되어 손을 잘 보호해줍니다.",
     "price": 185000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 4.0,
@@ -31,7 +31,7 @@
     "twoHanded": false,
     "description": "관절 부위에 작은 금속 징을 박아 내구도를 높인 용병용 장갑입니다.",
     "price": 192000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 4.0,
@@ -53,7 +53,7 @@
     "twoHanded": false,
     "description": "활시위를 당길 때 손가락이 쓸리지 않도록 얇은 가죽을 덧대었습니다.",
     "price": 188000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 4.0,
@@ -75,7 +75,7 @@
     "twoHanded": false,
     "description": "빛이 반사되지 않게 검게 물들인 가죽 토시입니다. 소음이 거의 나지 않습니다.",
     "price": 205000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 4.0,
@@ -97,7 +97,7 @@
     "twoHanded": false,
     "description": "가죽 사이에 얇은 강철판을 심어 넣어 방어력과 공격 효율을 동시에 잡았습니다.",
     "price": 420000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 6.0,
@@ -119,7 +119,7 @@
     "twoHanded": false,
     "description": "최상급 가죽을 무두질하여 손가락의 움직임이 매우 자유롭고 정교합니다.",
     "price": 435000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 6.0,
@@ -141,7 +141,7 @@
     "twoHanded": false,
     "description": "두꺼운 가죽으로 제작되어 둔탁해 보이지만, 충격 흡수력이 매우 뛰어납니다.",
     "price": 410000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 6.0,
@@ -163,7 +163,7 @@
     "twoHanded": false,
     "description": "수많은 전장을 거친 듯 손때가 묻었으나, 여전히 훌륭한 성능을 자랑하는 장갑입니다.",
     "price": 450000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "accuracy": 6.0,
@@ -184,7 +184,7 @@
     "subType": "LEATHER",
     "description": "소음이 거의 발생하지 않는 특수 가공 가죽으로 제작되었습니다. 암살자들 사이에서 인기가 높습니다.",
     "price": 1250000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "20": 10.0 },
     "combatStatsBonus": {
       "accuracy": 10.0,
@@ -206,7 +206,7 @@
     "subType": "LEATHER",
     "description": "활시위를 당길 때 손가락을 보호하며, 화살의 궤적을 더욱 정밀하게 조정해줍니다.",
     "price": 1180000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "21": 12.0 },
     "combatStatsBonus": {
       "accuracy": 12.0,
@@ -228,7 +228,7 @@
     "subType": "LEATHER",
     "description": "수많은 전장을 누빈 용병의 손때가 묻어 있습니다. 실전에서 단련된 감각을 제공합니다.",
     "price": 1320000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "1": 15.0 },
     "combatStatsBonus": {
       "accuracy": 8.0,
@@ -250,7 +250,7 @@
     "subType": "LEATHER",
     "description": "독사의 비늘을 덧대어 만든 장갑입니다. 적의 급소를 찌르는 감각이 날카로워집니다.",
     "price": 1450000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "9": 15.0 },
     "combatStatsBonus": {
       "accuracy": 10.0,
@@ -272,7 +272,7 @@
     "subType": "LEATHER",
     "description": "어둠 그 자체로 만들어진 듯한 전설적인 장갑입니다. 착용자의 존재감을 지우고 치명적인 일격을 돕습니다.",
     "price": 8500000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "20": 25.0, "15": 20.0 },
     "combatStatsBonus": {
       "accuracy": 15.0,
@@ -294,7 +294,7 @@
     "subType": "LEATHER",
     "description": "전설적인 궁수 '이카루스'가 사용했다고 전해집니다. 바람의 저항을 무시하고 목표를 꿰뚫습니다.",
     "price": 7900000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "21": 30.0, "23": 15.0 },
     "combatStatsBonus": {
       "accuracy": 20.0,
@@ -316,7 +316,7 @@
     "subType": "LEATHER",
     "description": "수천 번의 결투에서 승리한 용병왕의 유산입니다. 가죽임에도 판금에 맞먹는 방어력과 공격 보조를 제공합니다.",
     "price": 9200000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "1": 30.0, "10": 15.0 },
     "combatStatsBonus": {
       "accuracy": 15.0,
@@ -338,7 +338,7 @@
     "subType": "LEATHER",
     "description": "현실과 환영의 경계를 넘나드는 암살자의 장갑입니다. 공격 시 잔상이 남아 적을 교란합니다.",
     "price": 9800000,
-    "icon": "/images/items/GLOVES_LEATHER_COMMON.png",
+    "icon": "/images/items/GLOVES_LEATHER_COMMON.webp",
     "baseStatsBonus": { "20": 20.0, "13": 20.0 },
     "combatStatsBonus": {
       "accuracy": 18.0,

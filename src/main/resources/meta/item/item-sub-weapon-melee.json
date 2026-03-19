@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "중갑 전사들이 주로 사용하는 묵직한 철제 방패입니다. 두께감이 있어 투박하지만 믿음직합니다.",
     "price": 280000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "1": 15.0, "2": 15.0 },
     "combatStatsBonus": {
       "physDef": 15.0,
@@ -28,7 +28,7 @@
     "twoHanded": false,
     "description": "민첩한 움직임을 중시하는 용병들이 선호하는 소형 철제 방패입니다. 적의 공격을 쳐내기에 적합합니다.",
     "price": 265000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "20": 15.0, "21": 15.0 },
     "combatStatsBonus": {
       "physDef": 15.0,
@@ -48,7 +48,7 @@
     "twoHanded": false,
     "description": "힘과 민첩을 고루 사용하는 전사들을 위한 반원형 철제 방패입니다. 균형 잡힌 방어력을 제공합니다.",
     "price": 270000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "10": 15.0, "20": 15.0 },
     "combatStatsBonus": {
       "physDef": 15.0,
@@ -68,7 +68,7 @@
     "twoHanded": false,
     "description": "암살자나 숙련된 권법가들이 팔뚝에 장착하는 철제 방패입니다. 방어보다는 최소한의 생존을 돕습니다.",
     "price": 255000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "15": 15.0, "17": 15.0 },
     "combatStatsBonus": {
       "physDef": 15.0,
@@ -88,7 +88,7 @@
     "twoHanded": false,
     "description": "강철을 제련하여 만든 거대한 방패입니다. 중갑 전사가 전선에서 버티는 데 최적의 성능을 보여줍니다.",
     "price": 850000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "1": 30.0, "2": 30.0 },
     "combatStatsBonus": {
       "physDef": 45.0,
@@ -108,7 +108,7 @@
     "twoHanded": false,
     "description": "세련되게 가공된 강철제 방패입니다. 민첩한 용병들이 방어와 반격을 동시에 꾀할 수 있게 설계되었습니다.",
     "price": 820000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "20": 30.0, "21": 30.0 },
     "combatStatsBonus": {
       "physDef": 45.0,
@@ -128,7 +128,7 @@
     "twoHanded": false,
     "description": "하단부까지 보호되는 강철 방패입니다. 힘과 기술을 겸비한 전사들에게 훌륭한 방호력을 선사합니다.",
     "price": 840000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "10": 30.0, "20": 30.0 },
     "combatStatsBonus": {
       "physDef": 45.0,
@@ -148,7 +148,7 @@
     "twoHanded": false,
     "description": "공격적인 성향을 가진 전사나 암살자를 위한 강철 방패입니다. 가장자리가 날카롭게 연마되어 있습니다.",
     "price": 810000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": { "15": 30.0, "17": 30.0 },
     "combatStatsBonus": {
       "physDef": 45.0,
@@ -168,7 +168,7 @@
     "twoHanded": false,
     "description": "전투 중 주 무기의 날을 관리하거나 급박한 상황에서 투척하기 위해 고안된 철제 단검입니다.",
     "price": 280000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "10": 4.0, "20": 2.0 },
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -187,7 +187,7 @@
     "twoHanded": false,
     "description": "상대의 공격을 흘려내기 위해 가드 부분이 넓게 설계된 철제 단검입니다. 용병들이 즐겨 사용합니다.",
     "price": 275000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "20": 5.0, "21": 1.0 },
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -206,7 +206,7 @@
     "twoHanded": false,
     "description": "중갑 전사들이 적의 투구를 찌그러뜨리기 위해 보조용으로 휴대하는 묵직한 철제 추입니다.",
     "price": 290000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "1": 3.0, "10": 3.0 },
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -225,7 +225,7 @@
     "twoHanded": false,
     "description": "빛 반사를 줄이기 위해 검게 그을린 철제 단검입니다. 암살자들이 주로 보조 무기로 챙깁니다.",
     "price": 310000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "15": 4.0, "17": 2.0 },
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -244,7 +244,7 @@
     "twoHanded": false,
     "description": "고순도 강철로 제련되어 무게 중심이 완벽하게 잡힌 보조 단검입니다. 정교한 연격에 적합합니다.",
     "price": 720000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "10": 8.0, "20": 10.0, "21": 2.0 },
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -263,7 +263,7 @@
     "twoHanded": false,
     "description": "단검의 형태를 하고 있지만 칼등이 두꺼운 강철로 되어 있어, 타격과 자르기를 동시에 수행합니다.",
     "price": 750000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "1": 10.0, "10": 10.0 },
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -282,7 +282,7 @@
     "twoHanded": false,
     "description": "강철 날 한쪽에 톱날을 세워 적의 갑옷 틈새를 공략하거나 가죽을 찢기에 용이한 무서운 무기입니다.",
     "price": 780000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "11": 5.0, "15": 10.0, "20": 5.0 },
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -301,7 +301,7 @@
     "twoHanded": false,
     "description": "매우 날카롭고 단단한 강철 끝단을 가진 단검입니다. 사슬 갑옷의 고리 사이를 정확히 뚫어버립니다.",
     "price": 810000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "10": 5.0, "16": 10.0, "20": 5.0 },
     "combatStatsBonus": {
       "meleeAtk": 60.0,
@@ -320,7 +320,7 @@
     "twoHanded": false,
     "description": "무너진 유적의 왕좌 근처에서 발견되었습니다. 세월에 부식되었지만, 왕가를 수호하던 마력은 여전히 날카로운 물리 공격을 흘려보냅니다.",
     "price": 1450000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 15.0,
       "13": 10.0
@@ -345,7 +345,7 @@
     "twoHanded": false,
     "description": "심층부 거미 괴물의 등껍질을 깎아 만들었습니다. 가볍고 질기며, 표면의 미세한 잔가시가 적의 무기를 붙잡습니다.",
     "price": 1380000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "20": 20.0,
       "11": 5.0
@@ -371,7 +371,7 @@
     "twoHanded": false,
     "description": "용의 숨결을 정면으로 받아내어 녹아내린 흔적이 역력한 거대 방패입니다. 파손되었음에도 불구하고 그 어떤 방벽보다 견고한 저항력을 보여줍니다.",
     "price": 8900000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 40.0,
       "2": 20.0
@@ -397,7 +397,7 @@
     "twoHanded": false,
     "description": "방패 중앙에 박힌 거대한 마물의 눈이 실시간으로 움직이며 적을 주시합니다. 적의 살기를 감지하여 타격이 들어오기 전 반응하게 돕습니다.",
     "price": 9500000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "15": 30.0,
       "16": 30.0
@@ -423,7 +423,7 @@
     "twoHanded": false,
     "description": "죄수들을 심문할 때 사용하던 잔혹한 방패입니다. 방패 전면의 녹슨 못들은 적의 방어구를 찢고 상처에 파상풍을 유발합니다.",
     "price": 1250000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "10": 15.0,
       "20": 10.0
@@ -448,7 +448,7 @@
     "twoHanded": false,
     "description": "수많은 덫을 막아내며 단련된 방패입니다. 겉보기엔 초라하지만 힘과 민첩함의 완벽한 균형을 제공하여 용병들이 선호합니다.",
     "price": 1100000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "11": 15.0,
       "21": 10.0
@@ -473,7 +473,7 @@
     "twoHanded": false,
     "description": "고대 전사들의 뼈를 마력으로 응집시켜 만들었습니다. 타격하는 적의 무기를 얼려버릴 듯한 극저온의 냉기를 뿜어냅니다.",
     "price": 8700000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "10": 30.0,
       "13": 30.0
@@ -499,7 +499,7 @@
     "twoHanded": false,
     "description": "심연의 금속인 흑철로 제련되었습니다. 물리적인 무게는 압도적이지만, 착용자의 분노에 반응하여 파괴적인 위력을 끌어냅니다.",
     "price": 9800000,
-    "icon": "/images/items/SHIELD-UNCOMMON.png",
+    "icon": "/images/items/SHIELD-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 50.0,
       "10": 10.0
@@ -525,7 +525,7 @@
     "twoHanded": false,
     "description": "지하 감옥 깊은 곳에서 발견된 묵직한 보조 칼입니다. 주무기의 파괴력을 보조하며, 적의 상처를 깊게 파고듭니다.",
     "price": 1850000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "10": 15.0,
       "1": 10.0
@@ -549,7 +549,7 @@
     "twoHanded": false,
     "description": "암살자들이 주무기와 함께 사용하는 방어형 단검입니다. 적의 공격을 흘려보내고 즉각적인 반격 기회를 포착하게 돕습니다.",
     "price": 1780000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "20": 20.0,
       "21": 5.0
@@ -574,7 +574,7 @@
     "twoHanded": false,
     "description": "콜로세움 유적에서 발굴된 보조 무기입니다. 날은 무뎌졌으나 특유의 묵직함으로 적의 자세를 무너뜨리는 데 탁월합니다.",
     "price": 1650000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 15.0,
       "11": 10.0
@@ -599,7 +599,7 @@
     "twoHanded": false,
     "description": "늪지 던전의 괴물 이빨을 가공해 만든 보조 무기입니다. 스치기만 해도 치명적인 신경독이 적의 혈관을 타고 흐릅니다.",
     "price": 1920000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "20": 15.0,
       "17": 10.0
@@ -624,7 +624,7 @@
     "twoHanded": false,
     "description": "왕실 기사단장이 최후의 순간 사용했다는 전설적인 보조 검입니다. 주무기 못지않은 날카로움으로 전장의 판도를 바꿉니다.",
     "price": 12500000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "10": 40.0,
       "1": 20.0
@@ -649,7 +649,7 @@
     "twoHanded": false,
     "description": "심연의 금속을 제련하여 만든 낫 형태의 보조 단검입니다. 적의 영혼마저 긁어내는 듯한 감각을 선사합니다.",
     "price": 13800000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "20": 40.0,
       "15": 20.0
@@ -675,7 +675,7 @@
     "twoHanded": false,
     "description": "고대 용의 뼈를 깎아 만든 보조 무기입니다. 용의 위압감이 깃들어 있어 적의 방어구를 종잇장처럼 찢어버립니다.",
     "price": 11900000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "10": 30.0,
       "11": 30.0
@@ -700,7 +700,7 @@
     "twoHanded": false,
     "description": "소리 없이 적을 암살하기 위해 고안된 금지된 보조 무기입니다. 마력을 억제하고 생명력을 직접적으로 갈취합니다.",
     "price": 14500000,
-    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "21": 35.0,
       "13": 25.0

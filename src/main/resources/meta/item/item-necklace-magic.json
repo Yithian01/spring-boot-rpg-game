@@ -8,7 +8,7 @@
     "subType": "ACCESSORY",
     "description": "열기를 머금은 붉은 보석이 박힌 펜던트입니다. 화염 마법의 위력을 미세하게 높여줍니다.",
     "price": 320000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 25.0,
@@ -26,7 +26,7 @@
     "subType": "ACCESSORY",
     "description": "뜨거운 불길에서 달궈진 구리 목걸이입니다. 착용하면 몸이 훈훈해지는 기분이 듭니다.",
     "price": 310000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 20.0,
@@ -44,7 +44,7 @@
     "subType": "ACCESSORY",
     "description": "화산 근처에서 발견되는 원석을 깎아 만들었습니다. 강렬한 화염의 힘이 깃들어 있습니다.",
     "price": 680000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 50.0,
@@ -63,7 +63,7 @@
     "subType": "ACCESSORY",
     "description": "불의 기운을 담은 마노석입니다. 마법사의 파괴적인 주문을 보조합니다.",
     "price": 650000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 45.0,
@@ -82,7 +82,7 @@
     "subType": "ACCESSORY",
     "description": "녹지 않는 얼음으로 장식된 목걸이입니다. 정신을 맑게 하고 마나의 효율을 높입니다.",
     "price": 340000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 25.0,
@@ -100,7 +100,7 @@
     "subType": "ACCESSORY",
     "description": "차가운 은으로 제작된 펜던트입니다. 마력의 한기를 품는 데 도움을 줍니다.",
     "price": 330000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 20.0,
@@ -118,7 +118,7 @@
     "subType": "ACCESSORY",
     "description": "높은 산맥의 만년설 사이에서 추출한 보석입니다. 방대한 냉기의 마력을 보조합니다.",
     "price": 720000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 50.0,
@@ -137,7 +137,7 @@
     "subType": "ACCESSORY",
     "description": "푸른 빛이 감도는 얼음 결정으로 만든 초커입니다. 빙결 주문의 깊이를 더해줍니다.",
     "price": 700000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 40.0,
@@ -156,7 +156,7 @@
     "subType": "ACCESSORY",
     "description": "가느다란 황동 실을 꼬아 만든 목걸이입니다. 만지면 약한 정전기가 느껴집니다.",
     "price": 315000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 25.0,
@@ -174,7 +174,7 @@
     "subType": "ACCESSORY",
     "description": "번개에 맞은 나무 근처에서 발견된 자수정입니다. 전격의 흐름을 날카롭게 합니다.",
     "price": 325000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 30.0,
@@ -192,7 +192,7 @@
     "subType": "ACCESSORY",
     "description": "폭풍이 지나간 자리에 남은 파편을 가공했습니다. 적의 저항을 뚫는 번개의 힘이 담겨 있습니다.",
     "price": 690000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 55.0,
@@ -210,7 +210,7 @@
     "subType": "ACCESSORY",
     "description": "마력 전도율이 매우 높은 백금으로 제작되었습니다. 전격 마법의 관통력을 극대화합니다.",
     "price": 710000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 50.0,
@@ -229,7 +229,7 @@
     "subType": "ACCESSORY",
     "description": "투박한 돌을 가죽 끈에 꿴 목걸이입니다. 생명력을 보존하는 대지의 기운이 서려 있습니다.",
     "price": 300000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 25.0,
@@ -247,7 +247,7 @@
     "subType": "ACCESSORY",
     "description": "신비로운 숲의 덩굴로 만든 펜던트입니다. 드루이드들이 즐겨 사용합니다.",
     "price": 310000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 20.0,
@@ -265,7 +265,7 @@
     "subType": "ACCESSORY",
     "description": "깊은 지하에서 채굴된 대지의 정수입니다. 강력한 회복력과 바위 같은 힘을 줍니다.",
     "price": 640000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 50.0,
@@ -284,7 +284,7 @@
     "subType": "ACCESSORY",
     "description": "화석이 된 고대 나무의 씨앗입니다. 끊임없는 생명력을 착용자에게 부여합니다.",
     "price": 660000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 45.0,
@@ -303,7 +303,7 @@
     "subType": "ACCESSORY",
     "description": "사제들이 기도할 때 사용하는 평범한 묵주입니다. 성스러운 기운이 깃들어 있습니다.",
     "price": 350000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 25.0,
@@ -321,7 +321,7 @@
     "subType": "ACCESSORY",
     "description": "투명한 석영에 신성 마력을 주입했습니다. 정화의 빛을 돕습니다.",
     "price": 340000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 30.0,
@@ -339,7 +339,7 @@
     "subType": "ACCESSORY",
     "description": "성당에서 축성된 정교한 은 목걸이입니다. 사악한 기운을 물리치는 빛을 냅니다.",
     "price": 750000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 55.0,
@@ -358,7 +358,7 @@
     "subType": "ACCESSORY",
     "description": "눈물 모양으로 깎인 성스러운 보석입니다. 신성 마법사의 영창을 안정시킵니다.",
     "price": 730000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 60.0,
@@ -377,7 +377,7 @@
     "subType": "ACCESSORY",
     "description": "어두운 빛을 흡수하는 유리 목걸이입니다. 흑마법의 효율을 높입니다.",
     "price": 320000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 30.0,
@@ -395,7 +395,7 @@
     "subType": "ACCESSORY",
     "description": "어두운 곳에서만 보이는 신비로운 실로 만들었습니다. 착용자의 기척을 흐릿하게 합니다.",
     "price": 310000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 25.0,
@@ -413,7 +413,7 @@
     "subType": "ACCESSORY",
     "description": "빛조차 삼켜버리는 심연의 결정입니다. 치명적인 어둠의 마력을 뿜어냅니다.",
     "price": 690000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 60.0,
@@ -432,7 +432,7 @@
     "subType": "ACCESSORY",
     "description": "누군가의 유골을 깎아 만든 펜던트입니다. 원한 섞인 어둠이 서려 있습니다.",
     "price": 670000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 55.0,
@@ -451,7 +451,7 @@
     "subType": "ACCESSORY",
     "description": "알 수 없는 힘에 의해 멋대로 휘어진 초커입니다. 불규칙한 마력 흐름이 느껴집니다.",
     "price": 380000,
-    "icon": "/images/items/-NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/-NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 30.0,
@@ -469,7 +469,7 @@
     "subType": "ACCESSORY",
     "description": "수상한 의식에 사용되는 문양이 새겨진 목걸이입니다. 혼돈의 힘을 일깨웁니다.",
     "price": 370000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 25.0,
@@ -487,7 +487,7 @@
     "subType": "ACCESSORY",
     "description": "공허의 틈새에서 흘러나온 결정입니다. 현실의 경계를 허무는 관통력을 제공합니다.",
     "price": 780000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 60.0,
@@ -506,7 +506,7 @@
     "subType": "ACCESSORY",
     "description": "외신의 시선이 닿은 듯한 기괴한 보석입니다. 착용자의 마력을 뒤틀어 방어선을 뚫습니다.",
     "price": 760000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 55.0,
@@ -525,7 +525,7 @@
     "subType": "ACCESSORY",
     "description": "거대 독사의 송곳니로 만든 목걸이입니다. 독에 대한 내성을 기르는 데 도움을 줍니다.",
     "price": 310000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 25.0,
@@ -543,7 +543,7 @@
     "subType": "ACCESSORY",
     "description": "독한 약 냄새가 배어 있는 작은 약병 펜던트입니다. 부정한 기운으로부터 몸을 보호합니다.",
     "price": 320000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 20.0,
@@ -561,7 +561,7 @@
     "subType": "ACCESSORY",
     "description": "치명적인 전갈의 꼬리 바늘을 가공했습니다. 적을 중독시키는 힘과 독 저항을 동시에 제공합니다.",
     "price": 630000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 55.0,
@@ -580,7 +580,7 @@
     "subType": "ACCESSORY",
     "description": "독기에 의해 표면이 녹아내린 비취입니다. 기괴한 독성 마력을 발산합니다.",
     "price": 650000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 65.0,
@@ -599,7 +599,7 @@
     "subType": "ACCESSORY",
     "description": "끊임없이 타오르는 마력이 깃든 보석입니다. 마법사의 파괴적인 본능을 일깨웁니다.",
     "price": 850000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 100.0,
@@ -619,7 +619,7 @@
     "subType": "ACCESSORY",
     "description": "과거 대마도사가 화염 마법의 극의를 깨닫기 위해 사용했다고 전해집니다.",
     "price": 880000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 110.0,
@@ -639,7 +639,7 @@
     "subType": "ACCESSORY",
     "description": "태양의 파편을 깎아 만든 듯한 광채를 내뿜습니다. 모든 것을 태워버릴 화력을 선사합니다.",
     "price": 12000000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 150.0,
@@ -660,7 +660,7 @@
     "subType": "ACCESSORY",
     "description": "착용하는 것만으로 주변의 공기를 발화시킵니다. 화염 마법의 정점에 선 자를 위한 증표입니다.",
     "price": 13500000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 180.0,
@@ -681,7 +681,7 @@
     "subType": "ACCESSORY",
     "description": "절대 영도의 냉기를 품고 있는 보석입니다. 마나의 그릇을 거대하게 확장시킵니다.",
     "price": 820000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 100.0,
@@ -701,7 +701,7 @@
     "subType": "ACCESSORY",
     "description": "심장을 차갑게 식혀 냉철한 마력 운용을 가능케 합니다.",
     "price": 840000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 95.0,
@@ -721,7 +721,7 @@
     "subType": "ACCESSORY",
     "description": "세상을 뒤덮을 빙하기를 초래할 수 있는 마력을 담고 있습니다.",
     "price": 11500000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 150.0,
@@ -742,7 +742,7 @@
     "subType": "ACCESSORY",
     "description": "시간조차 얼려버릴 듯한 극저온의 마력이 소용돌이칩니다.",
     "price": 12800000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 160.0,
@@ -763,7 +763,7 @@
     "subType": "ACCESSORY",
     "description": "공기를 찢는 전격의 기운이 서려 있습니다. 적의 방어선을 가차 없이 뚫어냅니다.",
     "price": 900000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 100.0,
@@ -783,7 +783,7 @@
     "subType": "ACCESSORY",
     "description": "번개가 치는 하늘 아래에서 단련된 마력석입니다.",
     "price": 870000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 110.0,
@@ -803,7 +803,7 @@
     "subType": "ACCESSORY",
     "description": "하늘의 분노 그 자체를 형상화했습니다. 어떠한 저항도 의미 없게 만듭니다.",
     "price": 14000000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 150.0,
@@ -824,7 +824,7 @@
     "subType": "ACCESSORY",
     "description": "빛보다 빠른 공격으로 적을 마비시키고 방어구를 무용지물로 만듭니다.",
     "price": 13800000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 170.0,
@@ -845,7 +845,7 @@
     "subType": "ACCESSORY",
     "description": "흔들리지 않는 대지의 생명력을 담고 있습니다. 신체를 끊임없이 정화합니다.",
     "price": 830000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 100.0,
@@ -865,7 +865,7 @@
     "subType": "ACCESSORY",
     "description": "숲의 수호자가 남긴 유물입니다. 자연의 치유력이 깃들어 있습니다.",
     "price": 810000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 90.0,
@@ -885,7 +885,7 @@
     "subType": "ACCESSORY",
     "description": "모든 생명의 근원인 대지의 힘을 상징합니다. 죽음을 거부하는 생명력을 부여합니다.",
     "price": 11000000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 150.0,
@@ -906,7 +906,7 @@
     "subType": "ACCESSORY",
     "description": "대지 그 자체가 당신을 지탱합니다. 그 어떠한 고통도 빠르게 씻겨 내려갑니다.",
     "price": 12500000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 140.0,
@@ -927,7 +927,7 @@
     "subType": "ACCESSORY",
     "description": "사악한 기운을 쫓는 신성한 목걸이입니다. 사제들의 경건한 기도문이 새겨져 있습니다.",
     "price": 820000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 100.0,
@@ -947,7 +947,7 @@
     "subType": "ACCESSORY",
     "description": "착용자를 수호하는 따뜻한 빛이 감돕니다. 매우 균형 잡힌 신성력을 지녔습니다.",
     "price": 800000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 105.0,
@@ -967,7 +967,7 @@
     "subType": "ACCESSORY",
     "description": "천상의 광채를 간직한 눈물 모양의 보석입니다. 모든 부정한 존재를 정화합니다.",
     "price": 11000000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 150.0,
@@ -988,7 +988,7 @@
     "subType": "ACCESSORY",
     "description": "찬란한 빛의 세례가 착용자를 감쌉니다. 어둠을 멸하는 가장 강력한 성물입니다.",
     "price": 12200000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 165.0,
@@ -1009,7 +1009,7 @@
     "subType": "ACCESSORY",
     "description": "흑마법의 정수가 담긴 어두운 사슬입니다. 치명적인 약점을 포착하는 능력이 탁월합니다.",
     "price": 860000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 100.0,
@@ -1029,7 +1029,7 @@
     "subType": "ACCESSORY",
     "description": "어둠 속에서도 길을 잃지 않게 해주는 사악한 보석입니다.",
     "price": 840000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 110.0,
@@ -1049,7 +1049,7 @@
     "subType": "ACCESSORY",
     "description": "그림자 세계의 지배자가 사용하던 유물입니다. 치명적인 어둠의 일격을 선사합니다.",
     "price": 13000000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 150.0,
@@ -1070,7 +1070,7 @@
     "subType": "ACCESSORY",
     "description": "빛을 집어삼키는 절대적인 어둠의 보석입니다. 적의 영혼을 갉아먹는 마력을 부여합니다.",
     "price": 14500000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 180.0,
@@ -1091,7 +1091,7 @@
     "subType": "ACCESSORY",
     "description": "이계의 변칙적인 마력이 소용돌이칩니다. 적의 방어 체계를 교란하여 무너뜨립니다.",
     "price": 890000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 100.0,
@@ -1111,7 +1111,7 @@
     "subType": "ACCESSORY",
     "description": "차원의 틈새에서 흘러나온 기괴한 물질입니다. 이해할 수 없는 힘이 깃들어 있습니다.",
     "price": 910000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 115.0,
@@ -1131,7 +1131,7 @@
     "subType": "ACCESSORY",
     "description": "광기와 공포를 형상화한 유물입니다. 존재만으로 현실의 법칙을 왜곡시킵니다.",
     "price": 15000000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 150.0,
@@ -1152,7 +1152,7 @@
     "subType": "ACCESSORY",
     "description": "지옥과 혼돈의 문을 여는 열쇠입니다. 적의 모든 저항을 무의미하게 만듭니다.",
     "price": 16500000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 175.0,
@@ -1173,7 +1173,7 @@
     "subType": "ACCESSORY",
     "description": "치명적인 독소와 중화제가 섞여 있는 기괴한 용기입니다. 질병에 대한 면역력을 높여줍니다.",
     "price": 820000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 100.0,
@@ -1193,7 +1193,7 @@
     "subType": "ACCESSORY",
     "description": "강력한 산성 독을 내뿜는 괴수의 내장으로 만들었습니다.",
     "price": 800000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 110.0,
@@ -1213,7 +1213,7 @@
     "subType": "ACCESSORY",
     "description": "세상의 모든 독을 다스릴 수 있는 전설적인 보석입니다. 어떠한 오염도 착용자를 건드릴 수 없습니다.",
     "price": 11500000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 150.0,
@@ -1234,7 +1234,7 @@
     "subType": "ACCESSORY",
     "description": "모든 질병의 근원이 담긴 위험한 유물입니다. 숨결 한 번에 대지를 황폐화시킵니다.",
     "price": 12500000,
-    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/NECKLACE-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "toxicAtk": 170.0,

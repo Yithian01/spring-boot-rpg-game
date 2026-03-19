@@ -1,13 +1,14 @@
 package com.example.demo.domain.save;
 
-import com.example.demo.domain.meta.MonsterStatsDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 던전의 '현재 상태'만 기록하는 데이터 모델
@@ -19,37 +20,31 @@ import java.util.List;
 @AllArgsConstructor
 public class DungeonStatus {
 
-    private int currentFloor;      // 현재 층
-    private String dungeonId;      // 던전 식별자
+    private int dungeonId;      // 층수랑 다름
+    private int parentDungeonId; // 이전층수 ID 층수가 X
+    private String parentDungeonName; // 이전층수 ID 층수가 X
+    private String dungeonName; // 지역 명칭
+    private int currentFloor;   // 현재 층
     private int progress;      // 던전 진행도
+    private int actionCount;   // 행동 횟수
+    private int maxActionCount;   // 행동 횟수
 
     // 전투 관련 상태
     private ActiveMonster activeMonster;
     private int playerRemainingTurns; // 이번 라운드에 유저가 사용할 수 있는 남은 턴(AP)
     private int playerMaxTurns;       // 스탯 기반으로 계산된 라운드당 최대 턴
 
-    private List<String> battleLogs = new ArrayList<>();
-
     private int pendingExp;       // 승리 시 획득할 예정인 경험치
-    private int pendingGold;      // 승리 시 획득할 예정인 골드
+    private EssenceInstance pendingEssence; // 승리 시 나왔다면 추가하는 정수
+
+    @Builder.Default
+    private Map<Integer, Integer> floorProgressMap = new HashMap<>(); // 각 맵의 진척도를 저장
 
     /**
-     * 전투 중인 실시간 몬스터 스냅샷
+     * 전투 중인지 판별
+     * @return true/false
      */
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class ActiveMonster {
-        private int monsterId;
-        private String name;
-        private int tier;
-
-        private int currentHp;
-        private int maxHp;
-        private int currentMp;
-        private int maxMp;
-
-        private MonsterStatsDto stats; // 메타데이터에서 복사해온 스탯
+    public boolean isInBattle() {
+        return (this.activeMonster != null && this.activeMonster.getCurrentHp() > 0);
     }
 }

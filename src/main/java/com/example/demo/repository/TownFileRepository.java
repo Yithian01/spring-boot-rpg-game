@@ -23,11 +23,8 @@ import java.nio.file.Paths;
 public class TownFileRepository {
 
     private final ObjectMapper objectMapper;
-
-    // 데이터 저장 경로
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
-    // 파일명 통일 (town-status.json 과 짝꿍)
-    private final String TOWN_FILE = "town-status.json";
+    private final String TOWN_FILE = "town_status.json";
 
     /**
      * [저장] 마을 상태(TownStatus) 저장

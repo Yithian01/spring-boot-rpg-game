@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="workSelectModal(options)" id="workSelectModal"
+     style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center;">
+
+    <div class="modal-dialog modal-dialog-centered" style="margin: 0;">
+        <div class="modal-content" style="background: #1e1e1e; color: #fff; border: 1px solid #444; border-radius: 15px; width: 550px; position: relative;">
+
+            <button type="button" onclick="closeWorkModal()"
+                    style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #888; font-size: 1.5rem; cursor: pointer; z-index: 10;">&times;</button>
+
+            <div class="modal-header" style="border-bottom: 1px solid #333; padding: 15px 20px;">
+                <h5 class="modal-title">⚒️ 노동 게시판 </h5>
+            </div>
+
+            <div class="modal-body p-4">
+                <div class="work-options-grid" style="display: grid; gap: 12px;">
+
+                    <div th:each="option : ${options}">
+                        <form action="/town/work" method="post">
+                            <input type="hidden" name="workType" th:value="${option.workType}">
+                            <button type="submit" class="work-select-item">
+                                <span class="work-icon" th:text="${option.workType == 'PHYSIQUE' ? '🏗️' : (option.workType == 'SPIRIT' ? '📜' : (option.workType == 'AGILITY' ? '🏃' : '🔍'))}"></span>
+
+                                <div class="work-info">
+                                    <div class="work-name" th:text="${option.workName}">업무명</div>
+                                    <div class="work-stat-detail">
+                                        <span class="stat-unit">
+                                            💰 <span th:text="${#numbers.formatDecimal(option.baseExpectedGold * (1 + (option.bonusGold / 100.0)), 1, 0)}"
+                                                    th:classappend="${option.bonusGold > 0} ? 'text-bonus' : ''">0</span>G
+                                        </span>
+                                        <span class="bonus-tag" th:if="${option.bonusGold > 0}"
+                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusGold , 1, 0) + '%)'}"></span>
+
+                                        <span style="color: #444; margin: 0 8px;">|</span>
+
+                                        <span class="stat-unit">
+                                            ⚡ <span th:text="${#numbers.formatDecimal(option.staminaCost * (1 - (option.bonusStaminaCost / 100.0)), 1, 0)}"
+                                                    th:classappend="${option.bonusStaminaCost != 0} ? 'text-stamina-bonus' : ''">0</span>
+                                        </span>
+                                        <span class="bonus-low-tag" th:if="${option.bonusStaminaCost != 0}"
+                                              th:text="${(option.bonusStaminaCost > 0 ? '-' : '') + #numbers.formatDecimal(option.bonusStaminaCost, 1, 0) + '%'}"></span>
+                                    </div>
+                                    <div class="work-desc" th:text="${option.description}">설명</div>
+                                </div>
+
+                                <div class="work-rate-box" th:if="${option.workType == 'PERCEPTION'}">
+                                    <div class="rate-label">희귀유물 발견 확률</div>
+                                    <div class="rate-values">
+                                        <span class="main-rate"
+                                              th:classappend="${option.bonusSuccessRate > 0} ? 'text-bonus' : ''"
+                                              th:text="${#numbers.formatDecimal((option.successRate + option.bonusSuccessRate), 1, 0)} + '%'">10%</span>
+                                        <span class="bonus-tag" th:if="${option.bonusSuccessRate > 0}"
+                                              th:text="${'(+' + #numbers.formatDecimal(option.bonusSuccessRate, 1, 0) + '%)'}"></span>
+                                    </div>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div style="margin-top: 30px; text-align: center;">
+                    <button type="button" onclick="closeWorkModal()"
+                            style="background: #333; color: #ccc; border: 1px solid #444; padding: 10px 35px; border-radius: 5px; cursor: pointer; transition: 0.2s;">
+                        그만두기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .work-select-item {
+            width: 100%; display: flex; align-items: center; padding: 15px;
+            background: #2d2d2d; border: 1px solid #444; border-radius: 12px;
+            color: #fff; transition: 0.2s; cursor: pointer; text-align: left;
+        }
+        .work-select-item:hover { background: #353535; border-color: #e67e22; transform: scale(1.01); }
+
+        .work-icon { font-size: 1.8rem; margin-right: 15px; width: 35px; text-align: center; }
+        .work-info { flex-grow: 1; overflow: hidden; }
+        .work-name { font-weight: bold; font-size: 1rem; color: #eee; }
+        .work-stat-detail { font-size: 0.85rem; color: #bbb; margin: 4px 0; display: flex; align-items: center; }
+        .work-desc { font-size: 0.75rem; color: #777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* 수치 강조 색상 */
+        .text-bonus { color: #1eff00 !important; font-weight: bold; }       /* 골드 증가, 확률 증가 (이득) */
+        .text-stamina-bonus { color: #00d2ff !important; font-weight: bold; } /* 스테미나 변동 */
+
+        /* 보너스 태그 (옆의 % 표시) */
+        .bonus-tag { color: #1eff00; font-weight: bold; margin-left: 4px; font-size: 0.8rem; opacity: 0.9; }
+        .bonus-low-tag { color: #00d2ff; font-weight: bold; margin-left: 4px; font-size: 0.8rem; opacity: 0.9; }
+
+        .work-rate-box {
+            text-align: right;
+            border-left: 1px solid #444;
+            padding-left: 15px;
+            margin-left: 10px;
+            min-width: 120px;
+        }
+        .rate-label { font-size: 0.7rem; color: #888; margin-bottom: 2px; }
+        .rate-values { display: flex; align-items: center; justify-content: flex-end; }
+        .main-rate { font-weight: bold; font-size: 1.1rem; color: #ffd700; }
+    </style>
+</div>
+</html>

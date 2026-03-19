@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -21,35 +22,15 @@ public class ItemMeta {
     private int price;
     private String icon;
 
+    // [-- 단일 --]
     private Map<Integer, Integer> baseStatsBonus;
-    private CombatStatsBonus combatStatsBonus;
+    private Map<String, Double> combatStatsBonus;
+    private Map<String, Integer> recoveryBonus;
+    private Map<String, Double> lifeStatsBonus;
 
-    // [소모품용] 회복 수치 추가
-    private RecoveryBonus recoveryBonus;
+    // [-- 배수 --]
+    private Map<Integer, Double> baseStatsBonusModifiers;
+    private Map<String, Double> combatStatsBonusModifiers;
 
-    @Data
-    public static class RecoveryBonus {
-        private int hp;      // 즉시 회복 HP
-        private int mp;      // 즉시 회복 MP
-        private int stamina; // 즉시 회복 스테미나
-    }
-
-    @Data
-    public static class CombatStatsBonus {
-        private int maxHp;
-        private int maxMp;
-        private int maxStamina;
-        private double hpRegen;
-        private double mpRegen;
-        private double meleeAtk;
-        private double magicAtk;
-        private double critRate;
-        private double critDmg;
-        private double penetration;
-        private double physDef;
-        private double magRes;
-        private double dodge;
-        private double accuracy;
-        private double moveSpeed;
-    }
+    private List<Integer> grantedSkillIds;
 }

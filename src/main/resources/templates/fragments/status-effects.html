@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="statusEffectsStyle">
+        <style>
+            .status-effects-box { display: flex; flex-direction: column; height: 100%; background: rgba(20, 20, 20, 0.8); border: 1px solid #444; border-radius: 8px; padding: 12px; }
+            .effects-header { font-size: 0.9rem; color: #ff9f43; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #333; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+            .effects-list { flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; }
+            .effects-list::-webkit-scrollbar { width: 4px; }
+            .effects-list::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
+            .effect-card { background: #252525; border: 1px solid #3a3a3a; border-radius: 6px; padding: 10px; flex-shrink: 0; }
+            .effect-card.BUFF { border-left: 4px solid #4dabf7; }
+            .effect-card.DEBUFF { border-left: 4px solid #ff4d4d; }
+        </style>
+    </th:block>
+
+    <div th:fragment="statusEffectsPanel(statuses)" class="status-effects-box">
+        <div class="effects-header"><span>✨ 플레이어 상태</span></div>
+        <div class="effects-list">
+            <div th:if="${#lists.isEmpty(statuses)}" style="color:#555; font-size:0.8rem; text-align:center; margin-top:20px;">효과 없음</div>
+
+            <div th:each="status : ${statuses}"
+                 th:class="'effect-card ' + ${status.category}"
+                 th:data-name="${status.name}"
+                 th:data-category="${status.category}"
+                 th:data-code="${status.effectCode}"
+                 th:data-turns="${status.remainingTurns}"
+                 th:data-stat-offsets="${status.statOffsets != null ? status.statOffsets : '{}'}"
+                 th:data-stat-mods="${status.statModifiers != null ? status.statModifiers : '{}'}"
+                 th:data-combat-offsets="${status.combatStatOffsets != null ? status.combatStatOffsets : '{}'}"
+                 th:data-combat-mods="${status.combatStatModifiers != null ? status.combatStatModifiers : '{}'}"
+                 onmouseover="handleStatusEffectHover(event, this)"
+                 onmouseout="hideStatTooltip()">
+
+                <div style="display:flex; justify-content:space-between;">
+                    <span style="font-weight:bold; font-size:0.85rem; color:#eee;" th:text="${status.name}"></span>
+                    <span style="color:#ffd700; font-weight:bold; font-size:0.8rem;" th:text="${status.remainingTurns} + 'T'"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

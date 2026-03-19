@@ -25,7 +25,7 @@ public class UserFileRepository {
     private final ObjectMapper objectMapper;
 
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
-    private final String USER_FILE = "user-status.json";
+    private final String USER_FILE = "user_status.json";
 
 
     /**

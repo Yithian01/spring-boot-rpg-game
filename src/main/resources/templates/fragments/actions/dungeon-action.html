@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="dungeonActionStyle">
+    <style>
+        /* [1] 던전 패널 기본 베이스 */
+        .skill-hand-container {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 14px !important;
+            width: 100%;
+            max-height: 210px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .skill-hand-container::-webkit-scrollbar { width: 6px; }
+        .skill-hand-container::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+
+        .battle-mode {
+            background: rgba(40, 0, 0, 0.4) !important;
+            border-top: 2px solid #800 !important;
+            box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+
+        /* [2] 통합 액션 버튼 스타일 */
+        .action-btn {
+            width: 100%; height: 75px; border: none; border-radius: 8px; font-weight: bold; color: #fff;
+            cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 2px; position: relative;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+        }
+        .action-btn span:first-child { font-size: 1.5rem; }
+        .action-btn:hover:not(.btn-empty) { transform: translateY(-2px); filter: brightness(1.2); box-shadow: 0 6px 0 rgba(0,0,0,0.3); }
+        .action-btn:active:not(.btn-empty) { transform: translateY(2px); box-shadow: 0 0 0 rgba(0,0,0,0.3); }
+        .dungeon-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+        .btn-explore { background: #2f3640; border: 1px solid #353b48; border-bottom: 4px solid #1e272e; }
+        .btn-rest { background: #2d3436; border: 1px solid #444; border-bottom: 4px solid #000; }
+        .btn-rest span:first-child { color: #55efc4; }
+        .btn-next-floor { background: #c0392b; border: 1px solid #a93226; border-bottom: 4px solid #7b241c; animation: pulse-red 2s infinite; }
+        .btn-tax { background: #3d3d3d; border: 1px solid #444; border-bottom: 4px solid #222; }
+        .btn-empty { background: rgba(0, 0, 0, 0.4) !important; border: 1px dashed #444 !important; color: #666 !important; cursor: not-allowed !important; box-shadow: none !important; transform: none !important; }
+
+        /* [3] 스킬 카드 레이아웃 */
+        .skill-card-unit { min-height: 90px; }
+        .skill-card-body {
+            display: flex; align-items: center;
+            background: linear-gradient(135deg, #232526, #414345); /* 기본 배경 */
+            border: 2px solid #555; border-left: 5px solid #666;
+            border-radius: 10px; padding: 10px; position: relative;
+            transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        /* --- [수정/추가] 속성(Element)별 배경색 --- */
+        .elem-physical .skill-card-body  { background: linear-gradient(135deg, #3d3d3d, #2d3436) !important; }
+        .elem-fire .skill-card-body      { background: linear-gradient(135deg, #4b1212, #2d3436) !important; }
+        .elem-ice .skill-card-body       { background: linear-gradient(135deg, #12334b, #2d3436) !important; }
+        .elem-lightning .skill-card-body { background: linear-gradient(135deg, #4b4812, #2d3436) !important; } /* 추가: lightning */
+        .elem-earth .skill-card-body     { background: linear-gradient(135deg, #3e2723, #2d3436) !important; } /* 추가: earth */
+        .elem-holy .skill-card-body      { background: linear-gradient(135deg, #4d4d2d, #2d3436) !important; } /* 수정: light -> holy */
+        .elem-toxic .skill-card-body     { background: linear-gradient(135deg, #1a4b12, #2d3436) !important; }
+        .elem-dark .skill-card-body      { background: linear-gradient(135deg, #2d124b, #2d3436) !important; }
+        .elem-chaos .skill-card-body     { background: linear-gradient(135deg, #4b1243, #2d3436) !important; }
+
+        /* --- [수정/추가] 속성별 아이콘 라벨 색상 --- */
+        .elem-label {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            font-size: 0.65rem; /* 살짝 키움 */
+            text-align: center;
+            font-weight: 800; /* 좀 더 굵게 */
+            padding: 2px 0; /* 상하 여백 살짝 추가 */
+            letter-spacing: -0.5px; /* 글자 간격 조절로 가독성 확보 */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* 글자 그림자로 선명하게 */
+        }
+        .elem-physical .elem-label  { background: rgba(100, 100, 100, 0.8); }
+        .elem-fire .elem-label      { background: rgba(231, 76, 60, 0.8); }
+        .elem-ice .elem-label       { background: rgba(52, 152, 219, 0.8); }
+        .elem-lightning .elem-label { background: rgba(241, 196, 15, 0.9); color: #000; } /* 추가: lightning */
+        .elem-earth .elem-label     { background: rgba(121, 85, 72, 0.8); }             /* 추가: earth */
+        .elem-holy .elem-label      { background: rgba(255, 235, 59, 0.8); color: #000; } /* 수정: light -> holy */
+        .elem-toxic .elem-label     { background: rgba(46, 204, 113, 0.8); }
+        .elem-dark .elem-label      { background: rgba(155, 89, 182, 0.8); }
+        .elem-chaos .elem-label     { background: rgba(232, 67, 147, 0.8); }
+
+        /* 등급별 테두리(기존 유지) */
+        .type-base .skill-card-body { border-left-color: #95a5a6 !important; }
+        .type-common .skill-card-body { border-left-color: #cd7f32 !important; }
+        .type-uncommon .skill-card-body { border-left-color: #2ecc71 !important; }
+        .type-rare .skill-card-body { border-left-color: #3498db !important; }
+        .type-epic .skill-card-body { border-left-color: #9b59b6 !important; }
+        .type-legendary .skill-card-body { border-left-color: #f1c40f !important; box-shadow: 0 0 10px rgba(241, 196, 15, 0.2); }
+        .type-monster .skill-card-body { border-left-color: #a29bfe !important; }
+
+        .grade-badge { font-size: 0.65rem; padding: 1px 4px; border-radius: 4px; font-weight: bold; margin-left: 5px; color: white; text-transform: uppercase; }
+        .badge-base { background: #7f8c8d; }
+        .badge-common { background: #cd7f32; }
+        .badge-uncommon { background: #27ae60; }
+        .badge-rare { background: #2980b9; }
+        .badge-epic { background: #8e44ad; }
+        .badge-legendary { background: #f39c12; color: #000; }
+        .badge-monster { background: #6c5ce7; }
+
+        .can-act .skill-card-body { border-color: #777; cursor: pointer; }
+        .can-act:hover .skill-card-body { transform: translateY(-3px); filter: brightness(1.2); box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1); }
+
+        .skill-icon-wrapper { width: 70px; height: 70px; flex-shrink: 0; position: relative; border-radius: 8px; overflow: hidden; border: 1px solid #555; background: #000; }
+        .skill-costs { width: 110px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 5px; padding-left: 12px; border-left: 1px solid rgba(255,255,255,0.1); }
+
+        .btn-text-row { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; }
+        .stat-badge-small { font-size: 0.7rem; background: rgba(0, 0, 0, 0.3); padding: 1px 5px; border-radius: 4px; font-family: monospace; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(192, 57, 43, 0); } 100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0); } }
+    </style>
+
+    <script th:inline="javascript">
+        function handleSkillCast(element) {
+            const canAct = element.getAttribute('data-can-act') === 'true';
+            const sId = element.getAttribute('data-skill-id');
+            const sType = element.getAttribute('data-card-type');
+
+            if (!canAct || !sId) return;
+
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/battle/skill/' + sId;
+
+            const typeInput = document.createElement('input');
+            typeInput.type = 'hidden';
+            typeInput.name = 'skillCardType';
+            typeInput.value = sType;
+
+            form.appendChild(typeInput);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</th:block>
+
+<div th:fragment="dungeonActionPanel(gameData, dungeon)"
+     class="dungeon-action-container"
+     th:classappend="${dungeon.isInBattle} ? 'battle-mode' : ''">
+
+    <th:block th:if="${dungeon.isInBattle}">
+        <div class="skill-hand-container">
+            <div th:each="skill : ${dungeon.skillCards}"
+                 class="skill-card-unit"
+                 th:classappend="${skill.canAct ? 'can-act ' : ''} + 'type-' + ${#strings.toLowerCase(skill.skillType)} + ' elem-' + ${#strings.toLowerCase(skill.element)}"
+                 onmouseover="showSkillTooltip(this)"
+                 onmouseout="hideSkillTooltip()"
+                 th:onclick="handleSkillCast(this)"
+                 th:data-can-act="${skill.canAct}"
+                 th:data-skill-id="${skill.id}"
+                 th:data-card-type="${skill.skillType}"
+                 th:data-name="${skill.name}"
+                 th:data-desc="'예상 위력: ' + ${ (skill.type != 'PASS' && skill.type != 'ESCAPE') ? skill.expectedPower : ''}"
+                 th:data-scaling="${skill.scalingInfo != null ? #strings.listJoin(skill.scalingInfo, '|') : ''}"
+                 th:data-mods="${skill.modifierDetails != null ? #strings.listJoin(skill.modifierDetails, '|') : ''}"
+                 th:data-weapons="${skill.requiredWeapons != null ? #strings.listJoin(skill.requiredWeapons, '|') : ''}"
+                 th:data-chance="${skill.effectChance}"
+                 th:data-status="${skill.statusName}"
+                 th:data-duration="${skill.duration}">
+
+                <div class="skill-card-body">
+                    <div class="skill-icon-wrapper">
+                        <img th:src="@{{iconName}(iconName=${skill.icon})}"
+                             style="width: 100%; height: 100%; object-fit: cover;"
+                             onerror="this.onerror=null; this.src='/images/skills/default.png';">
+                        <div th:if="${skill.element != 'NONE'}" class="elem-label">
+                            <th:block th:switch="${skill.element}">
+                                <span th:case="'PHYSICAL'">물리</span>
+                                <span th:case="'FIRE'">화염</span>
+                                <span th:case="'ICE'">냉기</span>
+                                <span th:case="'LIGHTNING'">번개</span>
+                                <span th:case="'EARTH'">대지</span>
+                                <span th:case="'HOLY'">신성</span>
+                                <span th:case="'DARK'">암흑</span>
+                                <span th:case="'CHAOS'">혼돈</span>
+                                <span th:case="'TOXIC'">독</span>
+                                <span th:case="*" th:text="${skill.element}"></span>
+                            </th:block>
+                        </div>
+                    </div>
+
+                    <div class="skill-info-main" style="flex-grow: 1; margin-left: 12px; overflow: hidden;">
+                        <div style="display: flex; align-items: center; gap: 4px;">
+                            <span style="color: #fff; font-size: 1.05rem; font-weight: 800; text-shadow: 1px 1px 2px #000;">[[${skill.name}]]</span>
+
+                            <span class="grade-badge"
+                                  th:classappend="'badge-' + ${#strings.toLowerCase(skill.skillType)}"
+                                  th:text="${skill.skillType == 'MONSTER' ? '정수' : skill.skillType}">등급</span>
+
+                            <span th:if="${skill.type != 'BUFF' && skill.type != 'HEAL' && skill.type != 'PASS'}" style="color: #00ff00; font-size: 0.75rem; font-weight: bold;">
+                                🎯 [[${skill.realHitChance}]]%
+                            </span>
+                        </div>
+                        <div style="color: #bbb; font-size: 0.8rem; margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                            [[${skill.description}]]
+                        </div>
+                    </div>
+
+                    <div class="skill-costs">
+                        <div style="background: #ff9f43; color: #000; width: 100%; text-align: center; border-radius: 4px; font-weight: 900;">[[${skill.turnCost}]] AP</div>
+                        <div th:if="${skill.staminaCost > 0}" style="color: #70db70; font-size: 0.8rem;">ST [[${skill.staminaCost}]]</div>
+                        <div th:if="${skill.mpCost > 0}" style="color: #4dabf7; font-size: 0.8rem;">MP [[${skill.mpCost}]]</div>
+                        <div th:if="${skill.hpCost > 0}" style="color: #ff4d4d; font-size: 0.8rem;">HP [[${skill.hpCost}]]</div>
+                    </div>
+
+                    <div th:if="${!skill.canAct}" style="position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <span style="background: #ff4d4d; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">[[${skill.message}]]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
+    <th:block th:unless="${dungeon.isInBattle}">
+        <div class="dungeon-grid">
+            <form action="/dungeon/explore" method="post" style="display:contents;">
+                <button type="submit" class="action-btn btn-explore">
+                    <span>🔍</span>
+                    <div class="btn-text-row">
+                        탐색하기 <span class="stat-badge-small" style="color: #00ff00;" th:text="${(dungeon.explorationEfficiency > 0 ? '+' : '') + dungeon.explorationEfficiency + '%'}"></span>
+                    </div>
+                </button>
+            </form>
+            <form action="/dungeon/rest" method="post" style="display:contents;">
+                <button type="submit" class="action-btn btn-rest">
+                    <span>🛌</span>
+                    <div class="btn-text-row">
+                        쉬기 <span class="stat-badge-small" style="color: #ffd700;" th:text="${dungeon.restSafetyRate + '%'}"></span>
+                    </div>
+                </button>
+            </form>
+            <button type="button"
+                    class="action-btn btn-learned-skills"
+                    onclick="openLearnedSkillModal()"
+                    style="background: #2c3e50 !important; border-bottom: 4px solid #1a252f !important;">
+                <span>📔</span>
+                보유 기술
+            </button>
+            <form th:if="${dungeon?.progress >= 100}" action="/dungeon/next-floor" method="post" style="display:contents;">
+                <button type="submit" class="action-btn btn-next-floor"><span>🐲</span> 다음 층</button>
+            </form>
+            <button th:unless="${dungeon?.progress >= 100}" class="action-btn btn-empty"><span>🔒</span> 잠김</button>
+            <form th:if="${dungeon?.currentFloor > 1}" action="/dungeon/prev-floor" method="post" style="display:contents;">
+                <button type="submit" class="action-btn btn-tax">
+                    <span>🔙 이전 층</span>
+                    <small style="color: #ffd700; font-size: 0.65rem;">[[${dungeon.parentDungeonName}]]</small>
+                </button>
+            </form>
+            <button th:unless="${dungeon?.currentFloor > 1}" class="action-btn btn-empty"></button>
+
+            <th:block th:if="${dungeon.otherAreas}">
+                <th:block th:if="${dungeon.progress >= 50}">
+                    <form action="/dungeon/other-area" method="post" style="display:contents;">
+                        <button type="submit" class="action-btn" style="background: #8e44ad; border: 1px solid #732d91; border-bottom: 4px solid #5e2075;">
+                            <span>🗺️</span>
+                            다른 지역
+                        </button>
+                    </form>
+                </th:block>
+                <th:block th:unless="${dungeon.progress >= 50}">
+                    <button class="action-btn btn-empty" title="탐사 진척도 50% 필요">
+                        <span>🔒</span>
+                        <small style="font-size: 0.6rem;">진척도 50% 미만</small>
+                    </button>
+                </th:block>
+            </th:block>
+            <th:block th:unless="${dungeon.otherAreas}">
+                <button class="action-btn btn-empty"></button>
+            </th:block>
+        </div>
+    </th:block>
+</div>
+</html>

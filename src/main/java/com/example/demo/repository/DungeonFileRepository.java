@@ -26,7 +26,7 @@ public class DungeonFileRepository {
     // 데이터 저장 경로 (Town과 동일한 data 폴더 사용)
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
     // 던전 상태 파일명
-    private final String DUNGEON_FILE = "dungeon-status.json";
+    private final String DUNGEON_FILE = "dungeon_status.json";
 
     /**
      * [저장] 던전 상태(DungeonStatus) 저장
@@ -132,7 +132,6 @@ public class DungeonFileRepository {
 
                 // 2. 보상 정보 초기화 (이미 지급 완료되었다고 가정)
                 status.setPendingExp(0);
-                status.setPendingGold(0);
 
                 // 3. 변경된 상태 덮어쓰기
                 saveDungeonStatus(status);

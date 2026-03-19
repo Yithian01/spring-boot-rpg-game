@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -22,18 +23,27 @@ public class GameService {
     private final TownFileRepository townFileRepository;
     private final InventoryFileRepository inventoryFileRepository;
     private final DungeonFileRepository dungeonFileRepository;
-    private final GameRepository gameRepository;
+    private final GameFileRepository gameFileRepository;
+    private final EssenceRepository essenceRepository;
+    private final ItemInstanceRepository itemInstanceRepository;
+    private final ShopInstanceRepository shopInstanceRepository;
+    private final GambleFileRepository gambleFileRepository;
     private final StatCalculationService statCalculationService;
+    private final BattleService battleService;
+    private final InventoryService inventoryService;
+    private final ShopService shopService;
+    private final GambleService gambleService;
 
     /**
      * 이어하던 게임 존재하는 지 확인
      * @return 아직까지는 단순히 파일 존재하는 지 확인
      */
     public boolean canContinueGame() {
-        return (gameRepository.existsFile()
+        return (gameFileRepository.existsFile()
                 && userFileRepository.existsFile()
                 && townFileRepository.existsFile()
-                && inventoryFileRepository.existsFile());
+                && inventoryFileRepository.existsFile()
+                && itemInstanceRepository.existsFile());
     }
 
     /**
@@ -42,7 +52,7 @@ public class GameService {
      */
     public List<CharacterSelectPageDto> getPlayableCharacterList() {
         Map<Integer, TribeInitialMeta> initialMetaMap = gameDataManager.getTribeInitialMetaMap();
-        Map<Integer, TribeMeta> tribeMetaMap = gameDataManager.getTribeMap();
+        Map<Integer, TribeMeta> tribeMetaMap = gameDataManager.getTribeMetaMap();
 
         return initialMetaMap.values().stream()
                 .map(meta -> {
@@ -63,155 +73,239 @@ public class GameService {
      * [새 게임 생성]
      * - 스탯(Stats): 종족별 고정값 사용 (바바리안은 힘이 세다)
      * - 잠재력(Potentials): 완전 랜덤 생성 (바바리안도 마법 S급 가능)
+     * 1) 세이브 파일 초기화
+     * 2) 메타 데이터 메모리 로드
+     * 3) 인벤토리 초기화
+     * 4) 장비 설정
+     * 5) 플레이어 스탯 초기화
+     * 6) 플레이어 자원 수치 보정
+     * 7) 마을 데이터 생성
+     * 8) 마을 상점 생성
+     * 9) 마을 도착 로그
      */
     public void createNewGame(int tribeId) {
-
         log.info(">>> 새 게임 시작: 기존 데이터 초기화 중...");
-        gameRepository.deleteFile();
+        gameFileRepository.deleteFile();
         userFileRepository.deleteFile();
         townFileRepository.deleteFile();
         inventoryFileRepository.deleteFile();
+        dungeonFileRepository.deleteFile();
+        itemInstanceRepository.deleteFile();
+        essenceRepository.deleteFile();
+        shopInstanceRepository.deleteFile();
+        gambleFileRepository.deleteFile();
 
-        // 1. 초기 아이템 1~10번 설정
-        List<InventoryItem> initialItems = new ArrayList<>();
-        for (int i = 1; i <= 11; i++) {
-            initialItems.add(InventoryItem.builder()
-                    .id(i)                             // 메타 데이터 ID (1~10)
-                    .instanceId(UUID.randomUUID().toString()) // 고유 식별자 생성
-                    .quantity(1)                       // 수량 1개
-                    .enhancementLevel(0)               // 강화 수치 0
-                    .build());
-        }
-        InventoryStatus initialInventory = InventoryStatus.builder()
-                .items(initialItems)
-                .build();
-        inventoryFileRepository.saveInventoryStatus(initialInventory);
-
-
-        // 2. 메모리에서 종족 초기 정보 조회 (Stats, Gold)
+        // 1. [종족 정보 조회] - 로직 상단으로 이동하여 데이터를 미리 확보
         TribeInitialMeta initialMeta = gameDataManager.getTribeInitialMetaMap().get(tribeId);
-        TribeMeta tribeMeta = gameDataManager.getTribeMap().get(tribeId);
+        TribeMeta tribeMeta = gameDataManager.getTribeMetaMap().get(tribeId);
 
         if (initialMeta == null || tribeMeta == null) {
             throw new RuntimeException("잘못된 종족 ID입니다: " + tribeId);
         }
 
+        // 2. [인벤토리 초기화]
+        // 종족 데이터에 정의된 initialItem(회복 아이템 등)을 인벤토리에 추가
+        InventoryStatus initialInventory = InventoryStatus.builder()
+                .instanceIds(new ArrayList<>())
+                .build();
+
+        if (initialMeta.getInitialItem() != null) {
+            for (Integer metaId : initialMeta.getInitialItem()) {
+                ItemMeta meta = gameDataManager.getItemMetaMap().get(metaId);
+                if (meta != null) {
+                    ItemInstance newItem = ItemInstance.createConsumable(meta, 5);
+                    inventoryService.processAddItem(initialInventory, newItem, true);
+                }
+            }
+        }
+        inventoryFileRepository.saveInventoryStatus(initialInventory);
+
         // 3. [랜덤 잠재력 생성]
-        // 모든 스탯 ID(1~24)에 대해 S~F 등급을 랜덤으로 뽑습니다.
         Map<Integer, Integer> randomPotentials = new HashMap<>();
-
-        for (Integer statId : gameDataManager.getStatMap().keySet()) {
-            // A. 잠재력(등급) 뽑기 (GameDataManager의 확률 로직 사용)
+        for (Integer statId : gameDataManager.getStatMetaMap().keySet()) {
             int growthId = gameDataManager.getRandomGrowthId();
-
-            // B. 잠재력 맵에 저장 (예: 1번스탯 -> 1(S급))
             randomPotentials.put(statId, growthId);
         }
 
-        Map<Integer, Integer> baseStats = initialMeta.getInitialStats();
+        // 4. [장비 설정]
+        Map<String, String> equippedUUIDs = new HashMap<>();
+        initializeEquippedSlots(equippedUUIDs); // 모든 슬롯 "0"으로 초기화 헬퍼
 
-        Map<String, Integer> initialEquippedItems = new HashMap<>();
-        initialEquippedItems.put("HEAD", 0);
-        initialEquippedItems.put("BODY", 0);
-        initialEquippedItems.put("BOOTS", 0);
-        initialEquippedItems.put("WEAPON", 0);
-        initialEquippedItems.put("SUB_WEAPON", 0);
-        initialEquippedItems.put("NECKLACE", 0);
-        initialEquippedItems.put("RING", 0);
+        if (initialMeta.getInitialEquipment() != null) {
+            for (Map.Entry<String, Integer> entry : initialMeta.getInitialEquipment().entrySet()) {
+                String slotName = entry.getKey();
+                Integer metaId = entry.getValue();
 
-        // 4. UserStatus 생성
+                if (metaId != null && metaId != 0) {
+                    ItemMeta meta = gameDataManager.getItemMetaMap().get(metaId);
+                    if (meta != null) {
+                        // [기존 메서드 활용] 장비로 생성
+                        ItemInstance equipment = ItemInstance.createEquipment(meta);
+                        itemInstanceRepository.save(equipment);
+                        equippedUUIDs.put(slotName, equipment.getInstanceId());
+                    }
+                }
+            }
+        }
+
+        // 4-2. 스킬 설정
+        List<Integer> learnedSkillIds = new ArrayList<>(initialMeta.getInitialSkill());
+
+        // 5. UserStatus 생성
         UserStatus newUser = UserStatus.builder()
                 .id(1)
                 .name(tribeMeta.getName())
+                .img(initialMeta.getImage())
                 .tribeId(tribeId)
                 .religionId(0)
+                .level(1)                // 1레벨부터 시작
+                .currentExp(0)          // 현재 경험치 0
+                .requiredExp(15)         //
                 .currentGold(initialMeta.getGold())
-                .baseStats(baseStats) // DNA 주입
+                .baseStats(new HashMap<>(initialMeta.getInitialStats()))
                 .potentials(randomPotentials)
-                .equippedItems(initialEquippedItems)
+                .equipmentBonusStats(new HashMap<>())
+                .activeStatuses(new ArrayList<>())
+                .finalStats(new HashMap<>(initialMeta.getInitialStats()))
+                .combatStats(new CombatStats())
+                .equippedItems(equippedUUIDs)
                 .usedItemIds(new ArrayList<>())
+                .learnedSkillIds(learnedSkillIds)
+                .activeEssenceIds(new ArrayList<>())
+                .saveVersion(1)
                 .build();
 
-        // 5. 스탯 계산기 가동 (아이템Map과 함께 호출)
-        // 이 한 줄로 maxHp부터 moveSpeed까지 모든 수식이 "디플로이" 됩니다.
-        statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMap());
+        // 6. 스탯 계산기 가동 및 장비 레이어 갱신
+        // 장착된 초기 장비의 스탯 보너스를 먼저 계산 레이어에 반영합니다.
+        statCalculationService.refreshUserCombatStats(newUser, gameDataManager.getItemMetaMap());
 
-        // 6. 현재 체력 등을 최대치로 보정
-        newUser.setCurrentHp(newUser.getMaxHp());
-        newUser.setCurrentMp(newUser.getMaxMp());
-        newUser.setCurrentStamina(newUser.getMaxStamina());
-
-        // 7. 저장
+        // 플레이어 자원 수치 보정
+        newUser.setCurrentHp(newUser.getCombatStats().getMaxHp());
+        newUser.setCurrentMp(newUser.getCombatStats().getMaxMp());
+        newUser.setCurrentStamina(newUser.getCombatStats().getMaxStamina());
         userFileRepository.saveUserStatus(newUser);
 
+        // 마을 데이터 생성
+        List<MagicStoneDto> magicStoneList = inventoryService.getMagicStoneList();
         TownStatus newTown = TownStatus.builder()
                 .currentTurn(30)
                 .maxTurn(30)
-                .day(1).
-                currentTax(100)
-                .isTaxPaid(false).build();
+                .day(1)
+                .currentTax(900000)
+                .isTaxPaid(false)
+                .magicStoneList(magicStoneList)
+                .skillOptions(new ArrayList<>())
+                .build();
         townFileRepository.saveTownStatus(newTown);
 
-        GameStatus gameStatus = GameStatus.builder()
+
+        // 마을 상점 생성
+        shopService.townStoreRestock();
+
+        // 마을 도착 로그
+        List<String> gameLog = new ArrayList<>();
+        GameStatus gs = GameStatus.builder()
                 .location(LocationType.valueOf("TOWN"))
                 .dungeonId(null)
+                .activeShopNpcId(null)
+                .activeGamble(false)
+                .gameLogs(gameLog)
+                .isClear(false)
                 .build();
-        gameRepository.saveGameStatus(gameStatus);
 
-        // TO-DO 초기 아이템도 설정??
+        gs.addLog("🏰 마을에 도착했습니다.");
+        gameFileRepository.saveGameStatus(gs);
 
-        log.info(">>> 새 게임 생성 완료! (종족: {}, 잠재력 랜덤 생성됨)", tribeMeta.getName());
+        log.info(">>> 새 게임 생성 완료! (종족: {}, 초기 장비 및 스킬 장착됨)", tribeMeta.getName());
+    }
+
+    /**
+     * 슬롯 초기화 헬퍼
+     */
+    private void initializeEquippedSlots(Map<String, String> map) {
+        String[] slots = {"WEAPON", "SUB_WEAPON", "BODY", "HEAD", "NECKLACE", "BOOTS", "RING"};
+        for (String s : slots) map.put(s, "0");
     }
 
     /**
      * 메인 화면에 뿌려줄 모든 게임 데이터를 조립해서 반환
      */
     public GamePageDto getGamePageData() {
-        UserStatus user = userFileRepository.findGameUser();
-        if (user == null) return null;
+        GameStatus gs = gameFileRepository.findGameStatus();
+        UserStatus us = userFileRepository.findGameUser();
+        if (us == null) return null;
 
-        // 랜덤박스 할인률
-        Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
+        // 1. 인벤토리 로드 및 방어적 처리 (비어있을 수 있음)
+        InventoryStatus inv = inventoryFileRepository.findInventoryStatus();
+        List<ItemPageDto> inventory = new ArrayList<>();
+        if (inv != null && inv.getInstanceIds() != null && !inv.getInstanceIds().isEmpty()) {
+            inventory = inv.getInstanceIds().stream()
+                    .map(uuid -> itemInstanceRepository.findById(uuid).orElse(null))
+                    .filter(Objects::nonNull)
+                    .map(this::convertToItemPageDto)
+                    .collect(Collectors.toList());
+        }
+
+        // 2. 할인율 계산
+        Map<Integer, Integer> stats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
         int finalPrice = statCalculationService.calculateGambleItemCost(stats, InventoryService.BOX_BASE_PRICE);
         int discountPercent = statCalculationService.calculateGambleItemDiscountPercent(stats);
 
-        // 인벤토리 아이템 리스트 (장착된 것 제외)
-        List<ItemPageDto> inventory = getInventoryPageData();
-
-        // 장착 중인 아이템 맵 생성
+        // 3. 장착 중인 아이템 맵 조립 (UUID 기반으로 변경!)
         Map<String, ItemPageDto> equippedMap = new HashMap<>();
-        user.getEquippedItems().forEach((slot, itemId) -> {
-            if (itemId != 0) {
-                ItemMeta meta = gameDataManager.getItemMap().get(itemId);
-                if (meta != null) {
-                    equippedMap.put(slot, convertToItemPageDto(meta, 1));
+        if (us.getEquippedItems() != null) {
+            us.getEquippedItems().forEach((slot, instanceId) -> {
+                // "0"이나 null이 아닐 때만 실제 인스턴스를 찾음
+                if (instanceId != null && !instanceId.equals("0") && !instanceId.equals("")) {
+                    itemInstanceRepository.findById(instanceId).ifPresent(ii -> {
+                        equippedMap.put(slot, convertToItemPageDto(ii));
+                    });
                 }
-            }
-        });
+            });
+        }
+
+        // 4. [추가] 장착 중인 정수(Essence) 상세 정보 조립
+        // UserStatus의 activeEssenceIds(UUID)를 실제 EssencePageDto로 변환합니다.
+        List<EssencePageDto> activeEssences = new ArrayList<>();
+        if (us.getActiveEssenceIds() != null) {
+            activeEssences = us.getActiveEssenceIds().stream()
+                    .map(uuid -> essenceRepository.findById(uuid).orElse(null))
+                    .filter(Objects::nonNull)
+                    .map(this::convertToEssencePageDto)
+                    .collect(Collectors.toList());
+        }
+
+        List<StatCategoryGroupDto> statGroups = buildStatGroups(us);
+        List<SkillCardDto> learnedSkills = battleService.getSkillHand(us, null);
+
+        if (inventory != null && !inventory.isEmpty()) {
+            inventory = gameDataManager.sortInventoryItems(inventory);
+        }
 
         return GamePageDto.builder()
-                .img(String.valueOf(user.getTribeId()))
-                .userName(user.getName())
-                .tribe(mapUserTribe(user))
-                .religion(mapUserReligion(user))
-
-                // 생존 자원 및 골드 (HTML에서 바로 접근 가능)
-                .currentHp(user.getCurrentHp())
-                .maxHp(user.getMaxHp())
-                .currentMp(user.getCurrentMp())
-                .maxMp(user.getMaxMp())
-                .currentStamina(user.getCurrentStamina())
-                .maxStamina(user.getMaxStamina())
-                .currentGold(user.getCurrentGold())
-
-                // 데이터 리스트
-                .stats(mapUserStats(user))
-                .items(inventory)
-                .equippedItems(equippedMap) // 장착창 데이터
-
-                // 랜덤 박스 결제 정보
-                .boxPrice(finalPrice)
-                .boxDiscount(discountPercent)
+                .img(us.getImg())
+                .userName(us.getName())
+                .tribe(mapUserTribe(us))
+                .religion(mapUserReligion(us))
+                .level(us.getLevel())
+                .currentExp(us.getCurrentExp())
+                .requiredExp(us.getRequiredExp())
+                .clear(gs.isClear())
+                .currentHp(us.getCurrentHp())
+                .maxHp(us.getCombatStats().getMaxHp())
+                .currentMp(us.getCurrentMp())
+                .maxMp(us.getCombatStats().getMaxMp())
+                .currentStamina(us.getCurrentStamina())
+                .maxStamina(us.getCombatStats().getMaxStamina())
+                .currentGold(us.getCurrentGold())
+                .statGroups(statGroups)
+                .combatStats(us.getCombatStats())
+                .items(inventory) // 비어있으면 빈 리스트 전달
+                .equippedItems(equippedMap)
+                .activeStatuses(us.getActiveStatuses())
+                .activeEssences(activeEssences)
+                .gameLogs(gs != null ? gs.getGameLogs() : new ArrayList<>())
+                .learnedSkills(learnedSkills)
                 .build();
     }
 
@@ -221,7 +315,7 @@ public class GameService {
      * @return 결과 반환
      */
     private UserTribeDto mapUserTribe(UserStatus user) {
-        TribeMeta meta = gameDataManager.getTribeMap().get(user.getTribeId());
+        TribeMeta meta = gameDataManager.getTribeMetaMap().get(user.getTribeId());
 
         if (meta != null) {
             return UserTribeDto.builder()
@@ -249,7 +343,7 @@ public class GameService {
                     .build();
         }
 
-        ReligionMeta meta = gameDataManager.getReligionMap().get(userReligionId);
+        ReligionMeta meta = gameDataManager.getReligionMetaMap().get(userReligionId);
 
         if (meta != null) {
             return UserReligionDto.builder()
@@ -266,213 +360,497 @@ public class GameService {
                 .build();
     }
 
-    /**
-     * 초기 스탯을 처리
-     * @param user 유저 스탯
-     * @return 결과 반환
-     */
-    private List<UserStatDto> mapUserStats(UserStatus user) {
-        List<UserStatDto> statList = new ArrayList<>();
-        Map<Integer, StatMeta> metaMap = gameDataManager.getStatMap();
-
-        Map<Integer, Integer> statsToDisplay = (user.getFinalStats() != null)
-                ? user.getFinalStats()
-                : user.getBaseStats();
-
-        for (StatMeta meta : metaMap.values()) {
-            int key = meta.getId();
-            int value = statsToDisplay.getOrDefault(key, 0);
-            int potential = user.getPotentials().getOrDefault(key, 0);
-
-            UserStatDto dto = UserStatDto.builder()
-                    .id(meta.getId())
-                    .name(meta.getName())
-                    .description(meta.getDescription())
-                    .value(value)
-                    .growthGrade(calculateGrade(potential))
-                    .build();
-
-            statList.add(dto);
-        }
-
-        statList.sort(Comparator.comparingInt(UserStatDto::getId));
-        return statList;
-    }
-
-    private String calculateGrade(int potential) {
-        switch (potential) {
-            case 1: return "S";
-            case 2: return "A";
-            case 3: return "B";
-            case 4: return "C";
-            case 5: return "D";
-            case 6: return "E";
-            default: return "F";
-        }
-    }
-
-    /**
-     * 화면에 보여질 인벤토리 정보
-     * @return 인벤토리 정보 반환
-     */
-    private List<ItemPageDto> getInventoryPageData() {
-        List<InventoryItem> inventoryItems = inventoryFileRepository.findInventoryStatus().getItems();
-        List<ItemPageDto> inventoryDtoList = new ArrayList<>();
-
-        for (InventoryItem invItem : inventoryItems) {
-            ItemMeta meta = gameDataManager.getItemMap().get(invItem.getId());
-            if (meta == null) continue;
-
-            // 장비 아이템(장착 슬롯이 NONE이 아닌 것)은 개별적으로 리스트에 추가
-            if (!meta.getSlot().equals("NONE")) {
-                for (int i = 0; i < invItem.getQuantity(); i++) {
-                    // 수량을 1로 고정하여 각각의 객체로 추가
-                    inventoryDtoList.add(convertToItemPageDto(meta, 1));
-                }
-            } else {
-                // 소모품(포션 등)은 기존처럼 겹쳐서 보여주고 싶다면 그대로 유지
-                inventoryDtoList.add(convertToItemPageDto(meta, invItem.getQuantity()));
-            }
-        }
-        return inventoryDtoList;
-    }
-
     public TownPageDto getTownData() {
         TownStatus town = townFileRepository.findTownStatus();
+        UserStatus us = userFileRepository.findGameUser();
+        LifeStats ls = us.getLifeStats();
+        boolean isFirstDayOfMonth = ((town.getDay() - 1) % 30 + 1) == 1;
+        List<MagicStoneDto> magicStoneList = inventoryService.getMagicStoneList();
+
+        List<WorkDetailDto> workOptions = List.of(
+                WorkDetailDto.builder()
+                        .workType("PHYSIQUE").workName("성벽 보수 작업")
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(25,
+                                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "PHYSIQUE"), 0.8))
+                        .bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(10).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(100)
+                        .description("신체를 이용한 안정적인 노동").build(),
+                WorkDetailDto.builder()
+                        .workType("SPIRIT").workName("마법 도서관 서기")
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(10,
+                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "SPIRIT"), 1.1))
+                        .bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(15).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(100)
+                        .description("정신을 소모하는 고수익 노동").build(),
+                WorkDetailDto.builder()
+                        .workType("AGILITY")
+                        .workName("긴급 서신 배달")
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(15,
+                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "AGILITY"), 0.7))
+                        .bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(5).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(100)
+                        .description("빠른 발을 이용한 저소모 노동").build(),
+                WorkDetailDto.builder()
+                        .workType("PERCEPTION").workName("유물 파편 분류")
+                        .baseExpectedGold(statCalculationService.calculateWorkGold(5,
+                                (int) gameDataManager.getCategoryAverage(us.getFinalStats(), "PERCEPTION"), 0.9))
+                        .bonusGold(ls.getWorkGoldBonus())
+                        .staminaCost(10).bonusStaminaCost(ls.getWorkStaminaBonus())
+                        .successRate(10).bonusSuccessRate(ls.getWorkSuccessBonus())
+                        .description("희귀 유물 발견 시 골드 2배").build()
+        );
+
+        double bonusGambleWinRate = us.getLifeStats().getGambleWinRateBonus();
+        double bonusGambleMultiplier = us.getLifeStats().getGambleMultiplierBonus();
+
+        // Gamble 정보 Detail
+        GambleDetailDto gambleOption = GambleDetailDto.builder()
+                .winRate(5.0 + bonusGambleWinRate)
+                .bonusWinRate(bonusGambleWinRate)
+                .dividendRate(2.0 + (bonusGambleMultiplier / 100))
+                .bonusDividendRate(bonusGambleMultiplier)
+                .build();
+
         return TownPageDto.builder()
                 .day(town.getDay())
                 .currentTurn(town.getCurrentTurn())
                 .maxTurn(town.getMaxTurn())
                 .currentTax(town.getCurrentTax())
                 .isTaxPaid(town.isTaxPaid())
+                .portalOpen(isFirstDayOfMonth)
+                .magicStoneList(magicStoneList)
+                .totalMagicStoneCount(magicStoneList.stream().mapToInt(MagicStoneDto::getQuantity).sum())
+                .skillOptions(town.getSkillOptions())
+                .workOptions(workOptions)
+                .gambleOption(gambleOption)
                 .build();
     }
 
     public GameStatus getGameStatus() {
-        return gameRepository.findGameStatus();
-    }
-
-    /**
-     * COST TYPE을 반환함
-     */
-    public List<String> convertCostType(List<Integer> costType){
-        List<String> result = new ArrayList<>();
-        for (Integer i : costType) {
-            switch (i){
-                case 1:
-                    result.add("LIFE");
-                    break;
-                case 2:
-                    result.add("MANA");
-                    break;
-                case 3:
-                    result.add("STAMINA");
-                    break;
-                default:
-                    result.add("UNKNOWN");
-            }
-        }
-        return result;
-    }
-
-    /**
-     * StatId -> String 변환
-     */
-    public List<String> convertStatId(List<Integer> StatIds){
-        List<String> result = new ArrayList<>();
-        for (Integer i : StatIds) {
-            // 메모리에서 스탯 정보 조회
-            result.add(gameDataManager.getStatMap().get(i).getName());
-        }
-        return result;
+        return gameFileRepository.findGameStatus();
     }
 
     /**
      * ItemMeta 데이터를 UI용 ItemPageDto로 변환하는 공통 메서드
      */
-    private ItemPageDto convertToItemPageDto(ItemMeta meta, int quantity) {
+    private ItemPageDto convertToItemPageDto(ItemInstance ii) {
+        // 0. 기본 메타 데이터 참조 (설명, 아이콘 등 불변 데이터용)
+        ItemMeta meta = gameDataManager.getItemMetaMap().get(ii.getItemMetaId());
+        List<String> statBonuses = new ArrayList<>();
+
+        if (ii.isTwoHanded()) {
+            statBonuses.add("● 양손 무기 (보조장비 착용 불가)");
+        }
+
+        // 1. 기초 스탯 보너스 (고정치: +5)
+        if (ii.getBaseStatsBonus() != null) {
+            ii.getBaseStatsBonus().forEach((statId, value) -> {
+                if (value != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    statBonuses.add(statName + " +" + value);
+                }
+            });
+        }
+
+        // 2. 기초 스탯 배율 (퍼센트: +10%) -> 유저님이 원하신 합연산 배율 표시
+        if (ii.getBaseStatsBonusModifiers() != null) {
+            ii.getBaseStatsBonusModifiers().forEach((statId, modifier) -> {
+                if (modifier != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    // 0.1 -> 10% 로 변환
+                    statBonuses.add(statName + " +" + (int)(modifier * 100) + "%");
+                }
+            });
+        }
+
+        // 3. 전투 능력치 보너스 (깡스탯 및 배율합)
+        if (ii.getCombatStatsBonus() != null) {
+            ii.getCombatStatsBonus().forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    // 기존 수식 유지하되 % 판단 로직 적용
+                    String suffix = (key.toLowerCase().contains("rate") ||
+                            key.toLowerCase().contains("dmg") ||
+                            key.toLowerCase().contains("dodge") ||
+                            key.toLowerCase().contains("accuracy")) ? "%" : "";
+                    statBonuses.add(displayName + " +" + value + suffix);
+                }
+            });
+        }
+
+        // 전투 능력치 배율(Modifiers)이 있다면 여기서 추가로 처리 가능
+        if (ii.getCombatStatsBonusModifiers() != null) {
+            ii.getCombatStatsBonusModifiers().forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    statBonuses.add(displayName + " 최종 보정 +" + (int)(value * 100) + "%");
+                }
+            });
+        }
+
+        // 생활 스탯 보너스 (고정치: +5%)
+        if (ii.getLifeStatsBonus() != null) {
+            ii.getLifeStatsBonus().forEach((statId, value) -> {
+                if (value != 0) {
+                    String statName = gameDataManager.STAT_NAME_MAP.getOrDefault(statId, statId);
+                    statBonuses.add(statName + " +" + value + "%");
+                }
+            });
+        }
+
+        // 4. 소모품 효과 (메타 데이터 참조)
+        String recoveryEffect = "";
+        if (meta != null && meta.getRecoveryBonus() != null) {
+            List<String> recoveries = new ArrayList<>();
+            meta.getRecoveryBonus().forEach((key, value) -> {
+                if (value > 0) recoveries.add(key.toUpperCase() + " " + value + " 회복");
+            });
+            recoveryEffect = String.join(", ", recoveries);
+        }
+
+        // 5. DTO 조립 (id 대신 instanceId를 넣어 프론트가 UUID를 쓰게 함)
+        return ItemPageDto.builder()
+                .id(ii.getInstanceId()) // 이제 이게 식별자가 됨
+                .name(ii.getEnhancementLevel() > 0 ?
+                        ii.getCustomName() + " (+" + ii.getEnhancementLevel() + ")" :
+                        ii.getCustomName())
+                .grade(ii.getGrade())
+                .icon(meta != null ? meta.getIcon() : "default_icon")
+                .description(ii.getDescription())
+                .gold(ii.getPrice() != null ? ii.getPrice() : (meta != null ? meta.getPrice() : 0))
+                .type(ii.getType())
+                .slot(ii.getSlot())
+                .subType(ii.getSubType())
+                .quantity(ii.getQuantity())
+                .statBonuses(statBonuses)
+                .recoveryEffect(recoveryEffect)
+                .twoHanded(ii.isTwoHanded())
+                .build();
+    }
+
+    /**
+     * ShopPageDto 에서 사용하는 헬퍼 메서드
+     * 아이템 설명을 UI 표시 용으로 조립해 반환
+     */
+    private List<String> convertToItemStatBonus(ItemMeta meta) {
         List<String> statBonuses = new ArrayList<>();
 
         if (meta.isTwoHanded()) {
             statBonuses.add("● 양손 무기 (보조장비 착용 불가)");
         }
 
-        // 1. 기초 스탯 보너스 가공
+        // 1. 기초 스탯 보너스 (고정치: +5)
         if (meta.getBaseStatsBonus() != null) {
             meta.getBaseStatsBonus().forEach((statId, value) -> {
-                String statName = gameDataManager.getStatMap().get(statId).getName();
-                statBonuses.add(statName + " +" + value);
+                if (value != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    statBonuses.add(statName + " +" + value);
+                }
             });
         }
 
-        // 2. 전투 능력치 보너스 가공
-        ItemMeta.CombatStatsBonus cb = meta.getCombatStatsBonus();
-        if (cb != null) {
-            if (cb.getMaxHp() != 0) statBonuses.add("최대 체력 +" + cb.getMaxHp());
-            if (cb.getMaxMp() != 0) statBonuses.add("최대 마나 +" + cb.getMaxMp());
-            if (cb.getMaxStamina() != 0) statBonuses.add("최대 스태미나 +" + cb.getMaxStamina());
-            if (cb.getHpRegen() != 0) statBonuses.add("체력 재생 +" + cb.getHpRegen());
-            if (cb.getMpRegen() != 0) statBonuses.add("마나 재생 +" + cb.getMpRegen());
-            if (cb.getMeleeAtk() != 0) statBonuses.add("물리 공격력 +" + cb.getMeleeAtk());
-            if (cb.getMagicAtk() != 0) statBonuses.add("마법 공격력 +" + cb.getMagicAtk());
-            if (cb.getCritRate() != 0) statBonuses.add("치명타 확률 +" + cb.getCritRate() + "%");
-            if (cb.getCritDmg() != 0) statBonuses.add("치명타 피해 +" + cb.getCritDmg() + "%");
-            if (cb.getPenetration() != 0) statBonuses.add("관통력 +" + cb.getPenetration());
-            if (cb.getPhysDef() != 0) statBonuses.add("물리 방어 +" + cb.getPhysDef());
-            if (cb.getMagRes() != 0) statBonuses.add("마법 저항 +" + cb.getMagRes());
-            if (cb.getDodge() != 0) statBonuses.add("회피율 +" + cb.getDodge() + "%");
-            if (cb.getAccuracy() != 0) statBonuses.add("명중률 +" + cb.getAccuracy() + "%");
-            if (cb.getMoveSpeed() != 0) statBonuses.add("이동 속도 +" + cb.getMoveSpeed());
+        // 2. 기초 스탯 배율 (퍼센트: +10%) -> 유저님이 원하신 합연산 배율 표시
+        if (meta.getBaseStatsBonusModifiers() != null) {
+            meta.getBaseStatsBonusModifiers().forEach((statId, modifier) -> {
+                if (modifier != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(statId).getName();
+                    // 0.1 -> 10% 로 변환
+                    statBonuses.add(statName + " +" + (int)(modifier * 100) + "%");
+                }
+            });
         }
 
-        // 3. 소모품 회복 효과 가공
+        // 3. 전투 능력치 보너스 (깡스탯 및 배율합)
+        if (meta.getCombatStatsBonus() != null) {
+            meta.getCombatStatsBonus().forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    // 기존 수식 유지하되 % 판단 로직 적용
+                    String suffix = (key.toLowerCase().contains("rate") ||
+                            key.toLowerCase().contains("dmg") ||
+                            key.toLowerCase().contains("dodge") ||
+                            key.toLowerCase().contains("accuracy")) ? "%" : "";
+                    statBonuses.add(displayName + " +" + value + suffix);
+                }
+            });
+        }
+
+        // 전투 능력치 배율(Modifiers)이 있다면 여기서 추가로 처리 가능
+        if (meta.getCombatStatsBonusModifiers() != null) {
+            meta.getCombatStatsBonusModifiers().forEach((key, value) -> {
+                if (value != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(key, key);
+                    statBonuses.add(displayName + " 최종 보정 +" + (int)(value * 100) + "%");
+                }
+            });
+        }
+
+        // 생활 스탯 보너스 (고정치: +5%)
+        if (meta.getLifeStatsBonus() != null) {
+            meta.getLifeStatsBonus().forEach((statId, value) -> {
+                if (value != 0) {
+                    String statName = gameDataManager.STAT_NAME_MAP.getOrDefault(statId, statId);
+                    statBonuses.add(statName + " +" + value + "%");
+                }
+            });
+        }
+
+        return statBonuses;
+    }
+
+    /**
+     * ShopPageDto 에서 사용하는 헬퍼 메서드
+     * 아이템 설명(회복정보)을 UI 표시 용으로 조립해 반환
+     */
+    private String convertToItemRecoverEffect(ItemMeta meta) {
         String recoveryEffect = "";
-        if (meta.getRecoveryBonus() != null) {
+
+        if (meta != null && meta.getRecoveryBonus() != null) {
             List<String> recoveries = new ArrayList<>();
-            ItemMeta.RecoveryBonus rb = meta.getRecoveryBonus();
-            if (rb.getHp() > 0) recoveries.add("HP " + rb.getHp() + " 회복");
-            if (rb.getMp() > 0) recoveries.add("MP " + rb.getMp() + " 회복");
-            if (rb.getStamina() > 0) recoveries.add("ST " + rb.getStamina() + " 회복");
+            meta.getRecoveryBonus().forEach((key, value) -> {
+                if (value > 0) recoveries.add(key.toUpperCase() + " " + value + " 회복");
+            });
             recoveryEffect = String.join(", ", recoveries);
         }
 
-        return ItemPageDto.builder()
-                .id(meta.getId())
-                .name(meta.getName())
-                .grade(meta.getGrade())
-                .icon(meta.getIcon())
-                .description(meta.getDescription())
-                .gold(meta.getPrice())
-                .type(meta.getType())
-                .slot(meta.getSlot())
-                .subType(meta.getSubType())
-                .quantity(quantity)
-                .statBonuses(statBonuses)
-                .recoveryEffect(recoveryEffect != null ? recoveryEffect : "")
-                .twoHanded(meta.isTwoHanded())
+        return recoveryEffect;
+    }
+
+
+        /**
+         * [조립] 던전 화면 전용 데이터 생성
+         */
+    public DungeonPageDto getDungeonData() {
+        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+        UserStatus user = userFileRepository.findGameUser();
+        if (ds == null || user == null) return null;
+
+        DungeonMeta dungeonMeta = gameDataManager.getDungeonMetaMap().get(ds.getDungeonId());
+        Map<Integer, Integer> stats = (user.getFinalStats() != null) ? user.getFinalStats() : user.getBaseStats();
+        List<SkillCardDto> skillCards = battleService.getSkillHand(user, ds);
+
+        int calculatedMaxTurns = statCalculationService.calculateCombatTurns(user);
+        ds.setActiveMonster(statCalculationService.statCalculationMonster(ds.getActiveMonster()));
+        dungeonFileRepository.saveDungeonStatus(ds);
+
+        EssencePageDto pendingEssenceDto = null;
+        if (ds.getPendingEssence() != null) {
+            pendingEssenceDto = convertToEssencePageDto(ds.getPendingEssence());
+        }
+
+        int explorationRate = (int) dungeonMeta.getExplorationRate() + statCalculationService.calculateExplorationEfficiency(stats);
+        boolean isOtherAreas = !dungeonMeta.getOtherAreas().isEmpty();
+
+        return DungeonPageDto.builder()
+                .dungeonId(ds.getDungeonId())
+                .dungeonName(ds.getDungeonName())
+                .currentFloor(ds.getCurrentFloor())
+                .parentDungeonId(ds.getParentDungeonId())
+                .parentDungeonName(ds.getParentDungeonName())
+                .progress(ds.getProgress())
+                .actionCount(ds.getActionCount())
+                .maxActionCount(ds.getMaxActionCount())
+                .explorationEfficiency(explorationRate)
+                .restSafetyRate(statCalculationService.calculateRestSafetyRate(stats))
+                .otherAreas(isOtherAreas)
+                .isInBattle(ds.isInBattle())
+                .activeMonster(ds.getActiveMonster())
+                .skillCards(skillCards)
+                .playerRemainingTurns(ds.getPlayerRemainingTurns())
+                .playerMaxTurns(ds.getPlayerMaxTurns() > 0 ? ds.getPlayerMaxTurns() : calculatedMaxTurns)
+                .pendingExp(ds.getPendingExp())
+                .pendingEssence(pendingEssenceDto)
                 .build();
     }
 
     /**
-     * [조립] 던전 화면 전용 데이터 생성
+     * 기본 스탯을 4가지의 것으로 분리
+     * @param us 플레이어 정보
+     * @return UI로 전달할 스탯 분류 데이터
      */
-    public DungeonPageDto getDungeonData() {
-        DungeonStatus ds = dungeonFileRepository.findDungeonStatus();
+    private List<StatCategoryGroupDto> buildStatGroups(UserStatus us) {
+        Map<Integer, StatMeta> metaMap = gameDataManager.getStatMetaMap();
+        Map<Integer, Integer> finalStats = (us.getFinalStats() != null) ? us.getFinalStats() : us.getBaseStats();
+        Map<Integer, Integer> potentials = us.getPotentials();
 
-        if (ds == null) return null;
+        Map<String, StatCategoryGroupDto> groups = new LinkedHashMap<>();
+        // StatCategoryGroupDto 생성자 파라미터에 맞춰 4개(Name, Key, TotalValue, Details) 전달
+        groups.put("PHYSIQUE", new StatCategoryGroupDto("육신", "PHYSIQUE", 0, new ArrayList<>()));
+        groups.put("AGILITY", new StatCategoryGroupDto("기민", "AGILITY", 0, new ArrayList<>()));
+        groups.put("SPIRIT", new StatCategoryGroupDto("정신", "SPIRIT", 0, new ArrayList<>()));
+        groups.put("PERCEPTION", new StatCategoryGroupDto("감각", "PERCEPTION", 0, new ArrayList<>()));
 
-        return DungeonPageDto.builder()
-                .currentFloor(ds.getCurrentFloor())
-                .dungeonId(ds.getDungeonId())
-                .progress(ds.getProgress())
-                .isInBattle(ds.getActiveMonster() != null)
-                .activeMonster(ds.getActiveMonster())
-                .playerRemainingTurns(ds.getPlayerRemainingTurns())
-                .playerMaxTurns(ds.getPlayerMaxTurns())
-                .battleLogs(ds.getBattleLogs())
-                .pendingExp(ds.getPendingExp())
-                .pendingGold(ds.getPendingGold())
+        finalStats.forEach((id, value) -> {
+            StatMeta meta = metaMap.get(id);
+            if (meta != null && groups.containsKey(meta.getCategory())) {
+                StatCategoryGroupDto group = groups.get(meta.getCategory());
+
+                // 1. 그룹 총합 수치 갱신
+                group.setTotalValue(group.getTotalValue() + value);
+
+                // 2. 잠재력 ID를 등급(S, A, F...)으로 변환
+                int potId = potentials.getOrDefault(id, 7); // 기본값 F(7)
+                String grade = gameDataManager.getPotentialGrade(potId);
+
+                // 3. 개별 스탯 상세 정보 구성 (UserStatDto 필드에 맞춤)
+                group.getDetails().add(UserStatDto.builder()
+                        .id(id)
+                        .category(meta.getCategory())
+                        .name(meta.getName())
+                        .description(meta.getDescription())
+                        .value(value)
+                        .growthGrade(grade) // 변환된 등급 문자열 저장
+                        .build());
+            }
+        });
+
+        return new ArrayList<>(groups.values());
+    }
+
+    /**
+     * UI 표시용 정수 헬퍼 메소드
+     * @param ei 정수 인스턴스
+     * @return UI 표시용 정수 정보
+     */
+    private EssencePageDto convertToEssencePageDto(EssenceInstance ei) {
+        List<String> statTexts = new ArrayList<>();
+
+        // 1. 기초 스탯 보너스 변환 (Map<Integer, Integer>)
+        if (ei.getBaseStatsBonus() != null) {
+            ei.getBaseStatsBonus().forEach((id, val) -> {
+                if (val != 0) {
+                    String statName = gameDataManager.getStatMetaMap().get(id).getName();
+                    statTexts.add(statName + " +" + val);
+                }
+            });
+        }
+
+        // 2. 전투 스탯 보너스 변환 (Map<String, Integer>)
+        if (ei.getCombatStatsBonus() != null) {
+            ei.getCombatStatsBonus().forEach((name, val) -> {
+                if (val != 0) {
+                    String displayName = gameDataManager.STAT_NAME_MAP.getOrDefault(name, name);
+                    // 퍼센트 단위인 경우 처리 (필요 시)
+                    String suffix = (name.toLowerCase().contains("rate") || name.toLowerCase().contains("dodge")) ? "%" : "";
+                    String sign = (val > 0) ? "+" : "";
+                    statTexts.add(displayName + " " + sign + val + suffix);
+                }
+            });
+        }
+
+        // 3. 스킬 이름 추출 (메타 데이터 참조)
+        List<String> skillNames = new ArrayList<>();
+        // 액티브 스킬
+        ei.getActiveSkillIds().forEach(id -> {
+            var meta = gameDataManager.getMonsterSkillMetaMap().get(id);
+            if (meta != null) skillNames.add("[A] " + meta.getName());
+        });
+        // 패시브 스킬
+        ei.getPassiveSkillIds().forEach(id -> {
+            var meta = gameDataManager.getMonsterSkillMetaMap().get(id);
+            if (meta != null) skillNames.add("[P] " + meta.getName());
+        });
+
+        return EssencePageDto.builder()
+                .instanceId(ei.getInstanceId())
+                .monsterName(ei.getMonsterName())
+                .monsterType(ei.getMonsterType())
+                .monsterTier(ei.getMonsterTier())
+                .statBonuses(statTexts)
+                .skillNames(skillNames)
+                .icon(String.valueOf(ei.getMonsterId()))
                 .build();
     }
 
+    /**
+     * 상점이 열렸을 경우에만 호출
+     * @param shopId 어떤 상점인지
+     * @return 상점 정보DTO를 반환
+     */
+    public ShopPageDto getShopPageDto(String shopId){
+        ShopInstance shopInstance = shopInstanceRepository.findByNpcId(shopId).orElse(null);
+        if (shopInstance == null) return null;
+
+        ShopMeta shopMeta = gameDataManager.getShopMetaMap().get(shopId);
+        List<ShopItemDetailDto> itemList = new ArrayList<>();
+
+        shopInstance.getItemQty().forEach((key, qty) -> {
+            var itemMeta = gameDataManager.getItemMetaMap().get(key);
+
+            if (itemMeta == null) {
+                // 로그를 남겨서 나중에 어떤 ID가 문제인지 확인할 수 있게 합니다.
+                log.error("ShopInstance: {}", shopInstance);
+                log.error("Item meta not found for item key: {}", key);
+
+                return; // 현재 루프(람다)만 건너뜁니다.
+            }
+
+            itemList.add( ShopItemDetailDto.builder()
+                    .id(itemMeta.getId())
+                    .name(itemMeta.getName())
+                    .grade(itemMeta.getGrade())
+                    .icon(itemMeta.getIcon())
+                    .description(itemMeta.getDescription())
+                    .gold((int)(itemMeta.getPrice()))
+                    .type(itemMeta.getType())
+                    .slot(itemMeta.getSlot())
+                    .subType(itemMeta.getSubType())
+                    .statBonuses(convertToItemStatBonus(itemMeta))
+                    .recoveryEffect(convertToItemRecoverEffect(itemMeta))
+                    .twoHanded(itemMeta.isTwoHanded())
+                    .stock(qty)
+                    .isSoldOut(qty <= 0)
+                    .build());
+        });
+
+        gameDataManager.sortShopItemsByGrade(itemList);
+
+        return ShopPageDto.builder()
+                .npcId(shopId)
+                .npcDescription(shopMeta.getNpcDescription())
+                .priceModifier(shopMeta.getPriceModifier())
+                .saleItems(itemList)
+                .build();
+    }
+
+    public GamblePageDto getGamblePageDto(){
+        UserStatus us = userFileRepository.findGameUser();
+        GambleStatus gambleStatus = gambleFileRepository.findGambleStatus();
+
+        List<String> displayedDealerHand = gambleStatus.getDealerHand();
+        int displayedDealerTotal = gambleStatus.getDealerTotal();
+        if (!gambleStatus.getStep().equals("RESULT") && displayedDealerHand != null && displayedDealerHand.size() >= 2 && !gambleStatus.isPlayerStood()) {
+            displayedDealerHand = List.of(displayedDealerHand.get(0), "hidden");
+            displayedDealerTotal = gambleStatus.calculateSingleCardValue(gambleStatus.getDealerHand().get(0));
+        }
+
+        return GamblePageDto.builder()
+                .currentMode(gambleStatus.getCurrentMode())
+                .step(gambleStatus.getStep())
+                .currentGold(us.getCurrentGold())
+
+                .betAmount(gambleStatus.getBetAmount())
+                .betMultiplier(us.getLifeStats().getGambleMultiplierBonus())
+
+                .userChoice(gambleStatus.getUserChoice())
+                .diceResults(gambleStatus.getDiceResults())
+                .diceSum(gambleStatus.getDiceSum())
+
+                .playerHand(gambleStatus.getPlayerHand())
+                .dealerHand(displayedDealerHand)
+                .playerTotal(gambleStatus.getPlayerTotal())
+                .dealerTotal(displayedDealerTotal)
+                .playerStood(gambleStatus.isPlayerStood())
+                .playerBlackJack(gambleStatus.isPlayerBlackJack())
+                .dealerBlackJack(gambleStatus.isDealerBlackJack())
+
+                .isWin(gambleStatus.isWin())
+                .earnedGold(gambleStatus.getEarnedGold())
+                .resultMessage(gambleStatus.getResultMessage())
+
+                .build();
+    }
 }

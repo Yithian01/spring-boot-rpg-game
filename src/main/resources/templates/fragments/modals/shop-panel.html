@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="shopStyle">
+    <style>
+        .shop-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        .shop-container {
+            width: 1100px; height: 90vh; background: #0f0f0f;
+            border: 2px solid #5e412f; border-radius: 15px;
+            display: flex; flex-direction: column; padding: 30px; gap: 25px;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+        }
+
+        /* [1] 상단: NPC 영역 */
+        .shop-header {
+            display: flex; gap: 20px; align-items: center;
+            background: linear-gradient(90deg, #1a1a1a 0%, #111 100%);
+            padding: 20px; border-radius: 12px; border: 1px solid #333;
+        }
+        .npc-portrait {
+            width: 80px; height: 80px; background: #000; border: 2px solid #ffd700;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        .npc-info { flex: 1; }
+        .npc-name { font-size: 1.4rem; color: #ffd700; font-weight: bold; margin-bottom: 5px; }
+        .npc-talk { color: #bbb; font-size: 0.95rem; font-style: italic; }
+
+        /* [2] 중앙: 판매대 (3열 그리드) */
+        .shop-shelf { flex: 1.5; overflow-y: auto; padding-right: 10px; }
+        .shelf-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+        }
+        .shop-item-card {
+            background: #1a1a1a; border: 1px solid #333; border-radius: 8px;
+            padding: 12px; display: flex; flex-direction: column; justify-content: space-between;
+            transition: 0.2s;
+        }
+        .shop-item-card:hover { background: #222; border-color: #555; }
+
+        /* [3] 하단: 내 인벤토리 (판매 가능 영역) */
+        .shop-my-inventory {
+            flex: 1; background: #151515; border: 1px solid #333;
+            border-radius: 12px; display: flex; flex-direction: column; overflow: hidden;
+        }
+        .inv-header {
+            padding: 12px 20px; background: #222; border-bottom: 1px solid #333;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .gold-status { color: #fff200; font-weight: bold; font-size: 1.1rem; }
+
+        /* 버튼 스타일 커스텀 */
+        .btn-buy {
+            width: 100%; padding: 8px; background: linear-gradient(180deg, #4466cc 0%, #2244aa 100%);
+            border: 1px solid rgba(255,255,255,0.1); color: white; border-radius: 4px;
+            font-weight: bold; cursor: pointer; margin-top: 10px;
+        }
+        .btn-buy:disabled { background: #333; color: #666; cursor: not-allowed; }
+        .btn-buy:hover:not(:disabled) { filter: brightness(1.2); }
+
+        /* 상점 나가기 버튼 스타일 */
+        .btn-exit-shop {
+            background: #1a1a1a;
+            border: 1px solid #5e412f;
+            color: #a88b7e;
+            padding: 10px 40px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 호버 시 효과: 테두리가 밝아지고 글자색이 화이트로 */
+        .btn-exit-shop:hover {
+            background: #5e412f;
+            color: #ffffff;
+            border-color: #d35400;
+            box-shadow: 0 0 20px rgba(211, 84, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* 클릭 시 눌리는 효과 */
+        .btn-exit-shop:active {
+            transform: translateY(1px);
+        }
+
+        /* 버튼 양 옆에 장식 추가 (선택 사항) */
+        .btn-exit-shop::before, .btn-exit-shop::after {
+            content: '◈';
+            margin: 0 10px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+    </style>
+</th:block>
+
+<th:block th:fragment="shopModal(shopData, gameData)">
+    <div class="shop-overlay">
+        <div class="shop-container">
+
+            <div class="shop-header">
+                <div class="npc-portrait">
+                    <span th:if="${shopData.npcId == 'WEAPON_MASTER_IRON'}">⚒️</span>
+                    <span th:if="${shopData.npcId == 'ARMORER_SILVA'}">🛡️️</span>
+                    <span th:if="${shopData.npcId == 'MAGE_ELARA'}">🔮</span>
+                    <span th:if="${shopData.npcId == 'HIPPIE_LUNA'}">🌙️</span>
+                    <span th:if="${shopData.npcId == 'BLACK_MARKET_JACK'}">💀</span>
+                    <span th:unless="${shopData.npcId == 'WEAPON_MASTER_IRON' or
+                                       shopData.npcId == 'ARMORER_SILVA' or
+                                       shopData.npcId == 'MAGE_ELARA' or
+                                       shopData.npcId == 'HIPPIE_LUNA' or
+                                       shopData.npcId == 'BLACK_MARKET_JACK'}">👤</span>
+                </div>
+                <div class="npc-info">
+                    <div class="npc-name" th:text="${shopData.npcName != null ? shopData.npcName : shopData.npcId}">NPC 이름</div>
+                    <div class="npc-talk" th:text="${shopData.npcDescription}">무엇이 필요하신가요?</div>
+                </div>
+            </div>
+
+            <div class="shop-shelf custom-scroll">
+                <div class="shelf-grid">
+                    <div th:each="item : ${shopData.saleItems}"
+                         class="shop-item-card"
+                         th:classappend="${item.isSoldOut} ? 'sold-out' : ''">
+
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <div class="shop-item-icon"
+                                 th:classappend="${'border-' + item.grade}"
+                                 style="width:50px; height:50px; border:2px solid #444; border-radius:4px; flex-shrink:0; position: relative;">
+
+                                <div th:if="${item.isSoldOut}"
+                                     style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #ff4444; font-weight: bold; z-index: 1;">
+                                    SOLD OUT
+                                </div>
+
+                                <img th:src="${item.icon}"
+                                     style="width:100%; height:100%; object-fit:cover; cursor:help;"
+                                     th:styleappend="${item.isSoldOut} ? 'filter: grayscale(1);' : ''"
+                                     onmouseover="showTooltip(this)"
+                                     onmousemove="moveTooltip(event)"
+                                     onmouseout="hideTooltip()"
+                                     th:data-name="${item.name}"
+                                     th:data-grade="${item.grade}"
+                                     th:data-type="${item.subType}"
+                                     th:data-desc="${item.description}"
+                                     th:data-bonuses="${#strings.listJoin(item.statBonuses, '|')}"
+                                     th:data-recovery="${item.recoveryEffect}"
+                                     th:data-gold="${item.gold}">
+                            </div>
+
+                            <div style="flex:1; min-width:0;">
+                                <div th:classappend="${'text-' + item.grade}"
+                                     th:text="${item.name}"
+                                     style="font-weight:bold; font-size:0.9rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">아이템명</div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="color:#ffd700; font-size:0.85rem; font-weight:bold;">
+                                        💰 <span th:text="${#numbers.formatInteger(item.gold, 0, 'COMMA')}"></span> G
+                                    </div>
+                                    <div style="font-size: 0.7rem; color: #777;">
+                                        재고: <span th:text="${item.stock}">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form action="/shop/buy" method="post">
+                            <input type="hidden" name="npcId" th:value="${shopData.npcId}">
+                            <input type="hidden" name="itemId" th:value="${item.id}">
+
+                            <button type="submit" class="btn-buy"
+                                    th:disabled="${item.isSoldOut or gameData.currentGold < item.gold}"
+                                    th:styleappend="${item.isSoldOut} ? 'background: #222; border-color: #444;' : ''">
+                                <th:block th:if="${item.isSoldOut}">
+                                    <span style="color: #666;">품절 (SOLD OUT)</span>
+                                </th:block>
+                                <th:block th:unless="${item.isSoldOut}">
+                                    <span th:if="${gameData.currentGold < item.gold}" style="color: #ff6666;">골드 부족</span>
+                                    <span th:unless="${gameData.currentGold < item.gold}">구매하기</span>
+                                </th:block>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="shop-my-inventory">
+                <div class="inv-header">
+                    <span style="font-weight:bold; color:#ccc;">🎒 내 소지품 (아이템을 판매할 수 있습니다)</span>
+                    <span class="gold-status">
+                        보유 금액: <span th:text="${#numbers.formatInteger(gameData.currentGold, 0, 'COMMA')}"></span> Gold
+                    </span>
+                </div>
+                <div style="flex:1; overflow-y:auto;">
+                    <div th:replace="~{fragments/inventory :: inventoryList(${gameData.items}, 0)}"></div>
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top: 10px;">
+                <button class="btn-exit-shop" onclick="location.href='/shop/close'">
+                    상점 나가기
+                </button>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+</html>

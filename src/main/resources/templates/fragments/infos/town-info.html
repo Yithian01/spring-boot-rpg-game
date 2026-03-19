@@ -1,0 +1,136 @@
+<div th:fragment="townInfo(town)" class="box col-info">
+    <style>
+        /* ===== 레이아웃 최적화 ===== */
+        .town-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* 섹션 간 간격 확대 */
+            margin-top: 15px;
+        }
+
+        /* 개별 정보 행 스타일 */
+        .info-row {
+            margin: 0;
+            color: #ccc;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 프로그레스 바 카드 스타일 */
+        .status-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .label-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2px;
+        }
+
+        .label-text {
+            color: #888;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .val-text {
+            color: #fff;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* 프로그레스 바 베이스 */
+        .bar-container {
+            width: 100%;
+            height: 8px;
+            background: #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid #222;
+        }
+
+        .bar-fill {
+            height: 100%;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* 바 색상 테마 */
+        .bg-dungeon { background: linear-gradient(90deg, #3498db, #2980b9); box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); }
+        .bg-tax { background: linear-gradient(90deg, #f1c40f, #e67e22); box-shadow: 0 0 10px rgba(241, 196, 15, 0.2); }
+
+        /* 상태 강조 */
+        .tax-paid { color: #2ecc71 !important; font-weight: bold; }
+        .tax-unpaid { color: #e74c3c !important; font-weight: bold; animation: town-blink 1.5s infinite; }
+        .urgent { color: #ff7675 !important; font-weight: bold; }
+
+        @keyframes town-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    </style>
+
+    <h2>🏘️ 마을 현황</h2>
+
+    <div class="town-section" th:with="
+        totalDays=${town.day},
+        y=${(totalDays - 1) / 360},
+        m=${((totalDays - 1) % 360) / 30 + 1},
+        d=${((totalDays - 1) % 30) + 1},
+        isDungeonOpen=${d == 1},
+        daysLeft=${isDungeonOpen ? 0 : 31 - d},
+        dungeonProgress=${isDungeonOpen ? 100 : (d * 100.0 / 30)},
+        taxProgress=${((totalDays - 1) % 360 * 100.0) / 360}
+    ">
+        <div class="info-row">
+            <span class="label-text" style="font-size: 0.85rem;">📅 현재 날짜</span>
+            <span class="val-text">
+                <small style="color: #636e72; margin-right: 5px;">[[${y}]]년차</small>
+                [[${m}]]월 [[${d}]]일
+            </span>
+        </div>
+
+        <div class="status-card" style="border-left: 3px solid #3498db;">
+            <div class="label-group">
+                <span class="label-text">⏳ 던전 개방 주기</span>
+                <span class="val-text" th:classappend="${isDungeonOpen} ? 'tax-paid' : (${daysLeft <= 3} ? 'urgent' : '')">
+                    [[${isDungeonOpen ? '🔓 오늘 개방' : daysLeft + '일 남음'}]]
+                </span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-fill bg-dungeon" th:style="'width: ' + ${dungeonProgress} + '%'"></div>
+            </div>
+        </div>
+
+        <div class="status-card" style="border-left: 3px solid #f1c40f;">
+            <div class="label-group">
+                <span class="label-text">💰 연간 세금 징수도 ([[${(totalDays - 1) % 360 + 1}]]/360일)</span>
+                <span class="val-text" style="color:#ffd700;">[[${#numbers.formatInteger(town.currentTax, 3, 'COMMA')}]] G</span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-fill bg-tax" th:style="'width: ' + ${taxProgress} + '%'"></div>
+            </div>
+            <div class="label-group" style="margin-top: 4px;">
+                <span class="label-text">📜 납부 상태</span>
+                <span th:if="${town.isTaxPaid}" class="tax-paid">✅ 납부 완료</span>
+                <span th:unless="${town.isTaxPaid}" class="tax-unpaid">🚨 미납 (집행 대기)</span>
+            </div>
+        </div>
+
+        <div class="info-row" style="background: rgba(255, 255, 255, 0.02); border-color: #444;">
+            <span class="label-text">⏳ 남은 행동 기회</span>
+            <span class="val-text" th:classappend="${(town.maxTurn - town.currentTurn) <= 5} ? 'urgent' : ''">
+                [[${town.maxTurn - town.currentTurn}]] / [[${town.maxTurn}]] Turn
+            </span>
+        </div>
+    </div>
+</div>

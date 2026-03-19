@@ -1,0 +1,10 @@
+[
+  {
+    "id": "DROP_TABLE_TEST_META",
+    "description": "5등급 드랍 테이블",
+    "drops": [
+      { "itemId": 117, "dropRate": 100, "minQty": 1, "maxQty": 1 },
+      { "itemId": 621, "dropRate": 100, "minQty": 1, "maxQty": 1 }
+    ]
+  }
+]

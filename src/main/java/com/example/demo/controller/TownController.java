@@ -1,13 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.service.GambleService;
 import com.example.demo.service.TownService;
 import com.example.demo.service.ValidationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
@@ -17,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class TownController {
 
     private final TownService townService;
+    private final GambleService gambleService;
     private final ValidationService validationService;
 
     /**
@@ -25,7 +25,7 @@ public class TownController {
      * @return 결과 반환
      */
     @PostMapping("/work")
-    public String work(RedirectAttributes redirectAttributes) {
+    public String work(@RequestParam String workType,RedirectAttributes redirectAttributes) {
         String checkMessage = validationService.checkHp();
         if (checkMessage != null && checkMessage.startsWith("GameOver")) {
             redirectAttributes.addFlashAttribute("gameOver", true);
@@ -33,7 +33,7 @@ public class TownController {
             return "redirect:/game/play";
         }
 
-        String resultMessage = townService.performWork();
+        String resultMessage = townService.performWork(workType);
         redirectAttributes.addFlashAttribute("message", resultMessage);
         return "redirect:/game/play";
     }
@@ -77,30 +77,10 @@ public class TownController {
     }
 
     /**
-     * 판돈 --> 도박
-     * @param amount 판돈
-     * @param redirectAttributes town.html 상태
-     * @return 결과 반환
-     */
-    @PostMapping("/gamble")
-    public String gamble(@RequestParam(defaultValue = "100") int amount, RedirectAttributes redirectAttributes) {
-        String checkMessage = validationService.checkHp();
-        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
-            redirectAttributes.addFlashAttribute("gameOver", true);
-            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
-            return "redirect:/game/play";
-        }
-
-        String resultMessage = townService.performGamble(amount);
-        redirectAttributes.addFlashAttribute("message", resultMessage);
-        return "redirect:/game/play";
-    }
-
-    /**
-     * 3중1택 --> 수련
-     * @param type 힘/민/지
-     * @param redirectAttributes town.html 상태
-     * @return 결과 반환
+     * 4대 계통(육신, 기민, 정신, 감각) 중 하나를 선택하여 영혼 단련 수행
+     * * @param type 수련 종류 (전달되는 값: "육신", "기민", "정신", "감각")
+     * @param redirectAttributes 결과 메시지 및 게임 오버 상태 전달
+     * @return 마을 화면으로 리다이렉트
      */
     @PostMapping("/train")
     public String train(@RequestParam String type, RedirectAttributes redirectAttributes) {
@@ -110,10 +90,104 @@ public class TownController {
             redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
             return "redirect:/game/play";
         }
-        // type: STRENGTH, AGILITY, INTELLIGENCE 중 하나가 넘어옴
+
+
         String resultMessage = townService.performTrain(type);
         redirectAttributes.addFlashAttribute("message", resultMessage);
         return "redirect:/game/play";
     }
 
+    /**
+     * 특정 마석 인스턴스를 사용하여 연성 가능한 스킬 카드 리스트를 생성 (Step 1)
+     * @param instanceId 유저가 클릭한 마석의 고유 ID (UUID)
+     */
+    @PostMapping("/extract-prepare")
+    public String prepareExtraction(@RequestParam String instanceId, RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        townService.skillExtractionOptions(instanceId);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * 유저가 선택한 스킬을 최종적으로 각인 (Step 2-A)
+     * JS에서 location.href = '/town/learn-skill/' + selectedSkillId; 로 호출함
+     * @param skillId 선택한 스킬의 고유 ID
+     */
+    @GetMapping("/learn-skill/{skillId}")
+    public String learnSkill(@PathVariable String skillId, RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        log.info("스킬 각인 요청 수신 - 스킬 ID: {}", skillId);
+
+        townService.confirmSkillExtraction(skillId, false);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * 유저가 선택한 스킬을 최종적으로 각인 (Step 2-B)
+     * [흡수] 스킬을 배우지 않고 즉시 능력치로 변환함
+     * @param skillId 선택한 스킬의 고유 ID
+     */
+    @GetMapping("/absorb-skill/{skillId}")
+    public String absorbSkill(@PathVariable String skillId, RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        log.info("스킬 스탯 흡수 요청: {}", skillId);
+
+        townService.confirmSkillExtraction(skillId, true);
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [도박장 입장]
+     * 단순히 도박장 메인 선택창(모달)을 활성화합니다.
+     */
+    @GetMapping("/gamble/open")
+    public String openGambleModal(RedirectAttributes redirectAttributes) {
+        // HP 체크 공통 로직 (생략 가능하면 서비스로 밀어도 됨)
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        gambleService.openGamble();
+
+        return "redirect:/game/play";
+    }
+
+    /**
+     * [도박장 나가기]
+     * 단순히 도박장 메인 선택창(모달)을 활성화합니다.
+     */
+    @GetMapping("/gamble/close")
+    public String closeGambleModal(RedirectAttributes redirectAttributes) {
+        String checkMessage = validationService.checkHp();
+        if (checkMessage != null && checkMessage.startsWith("GameOver")) {
+            redirectAttributes.addFlashAttribute("gameOver", true);
+            redirectAttributes.addFlashAttribute("message", checkMessage.split(":")[1]);
+            return "redirect:/game/play";
+        }
+
+        gambleService.closeGamble();
+
+        return "redirect:/game/play";
+    }
 }

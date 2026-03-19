@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="townActionStyle">
+    <style>
+        /* [기본 레이아웃 및 버튼 스타일은 유지] */
+        .town-action-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 80px);
+            gap: 10px; padding: 15px;
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 12px; border: 1px solid #444;
+            flex-shrink: 0;
+        }
+
+        .action-btn {
+            width: 100%; height: 80px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 4px; background: #2a2a2a; color: #fff;
+            border: 1px solid #444; border-radius: 8px;
+            font-size: 0.95rem; font-weight: bold;
+            cursor: pointer; transition: all 0.2s;
+            position: relative; overflow: hidden;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .action-btn:hover { transform: translateY(-2px); filter: brightness(1.1); box-shadow: 0 6px 0 rgba(0,0,0,0.3); }
+        .action-btn:active { transform: translateY(2px); box-shadow: 0 0 0 rgba(0,0,0,0.3); }
+        .action-btn span:first-child { font-size: 1.5rem; }
+
+        /* 색상 테마 */
+        .btn-tax { background: #57606f; border-bottom: 4px solid #2f3542; }
+        .btn-work { background: #e67e22; border-bottom: 4px solid #a35200; }
+        .btn-gamble { background: #9b59b6; border-bottom: 4px solid #6c3483; }
+        .btn-train { background: #3498db; border-bottom: 4px solid #2471a3; }
+        .btn-rest { background: #2ecc71; border-bottom: 4px solid #1e8449; }
+        .btn-dungeon { background: linear-gradient(135deg, #c0392b, #8e44ad); border: 1px solid #e74c3c; border-bottom: 4px solid #7b241c; }
+
+        /* --- 비밀 상자 가로 배치 수정 스타일 --- */
+        .btn-shop {
+            background: #d35400 !important;
+            border-bottom: 4px solid #873600 !important;
+        }
+
+        /* 가로로 나열될 컨테이너 */
+        .shop-content-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px; /* 비밀상자 글자와 가격 사이 간격 */
+            width: 100%;
+        }
+
+        /* 가격표 배경을 더 어둡게 해서 노란색 숫자가 돋보이게 함 */
+        .price-tag {
+            background: rgba(0, 0, 0, 0.7) !important; /* 투명도를 낮춰 더 검게 변경 */
+            padding: 2px 8px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* 미세한 테두리로 구분감 추가 */
+        }
+
+        /* 숫자를 쨍한 노란색으로 변경하고 외곽선 추가 */
+        .gold-text {
+            font-size: 0.85rem !important; /* 크기 살짝 키움 */
+            color: #fff200 !important;    /* 더 밝고 선명한 노란색 */
+            font-weight: 900 !important;   /* 가장 두꺼운 두께 */
+            /* 검은색 외곽선을 사방으로 둘러서 글자를 띄움 */
+            text-shadow:
+                -1px -1px 0 #000,
+                 1px -1px 0 #000,
+                -1px  1px 0 #000,
+                 1px  1px 0 #000 !important;
+            letter-spacing: 0.5px; /* 글자 간격 살짝 넓혀서 가독성 확보 */
+        }
+
+        /* 할인율 텍스트 보강 */
+        .discount-text {
+            font-size: 0.7rem !important;
+            color: #ff4d4d !important; /* 조금 더 쨍한 레드 */
+            font-weight: 800 !important;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8) !important;
+        }
+
+        .btn-empty { background: #1e1e1e; border: 1px dashed #444; opacity: 0.5; pointer-events: none; }
+
+        /* [추가] 던전 버튼 활성화/비활성화 상태 */
+        .btn-dungeon:disabled {
+            background: #2a2a2a !important;
+            border: 1px solid #444 !important;
+            border-bottom: 4px solid #1a1a1a !important;
+            filter: grayscale(1);
+            opacity: 0.6;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none !important;
+        }
+
+        /* [추가] 던전 개방 시 번쩍이는 강조 효과 */
+        .btn-dungeon-open {
+            animation: portal-glow 1.5s infinite alternate;
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+            z-index: 1;
+        }
+
+        @keyframes portal-glow {
+            from { filter: brightness(1); box-shadow: 0 0 5px rgba(231, 76, 60, 0.5); }
+            to { filter: brightness(1.3); box-shadow: 0 0 20px rgba(142, 68, 173, 0.8); }
+        }
+
+        .dungeon-remain {
+            font-size: 0.7rem;
+            color: #ff7675;
+            font-weight: normal;
+        }
+
+        /* 마석 연성 전용 스타일 추가 */
+        .btn-extract {
+            background: #006266 !important; /* 심해의 마석 느낌 청록색 */
+            border-bottom: 4px solid #003d3f !important;
+            position: relative;
+        }
+
+        /* 마석 보유 수량 배지 */
+        .stone-badge {
+            position: absolute;
+            top: 5px; right: 5px;
+            background: #ff4757; color: white;
+            font-size: 0.7rem; padding: 2px 6px;
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        /* 마석 없을 때 비활성화 스타일 */
+        .btn-extract:disabled {
+            background: #2a2a2a !important;
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(1);
+        }
+    </style>
+</th:block>
+
+<div th:fragment="actionPanel(gameData, town)" class="town-action-grid">
+    <th:block th:with="isDungeonOpen=${town.portalOpen}">
+
+        <form action="/town/tax" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-tax"><span>📜</span>세금 납부</button>
+        </form>
+        <button type="button" class="action-btn btn-work" onclick="openWorkModal()">
+            <span>⛏️</span>노동 하기
+        </button>
+
+        <form action="/town/gamble/open" method="get" style="display:contents;">
+            <button type="submit" class="action-btn btn-gamble">
+                <span>🎲</span>도박장 입장
+            </button>
+        </form>
+
+        <button type="button" class="action-btn btn-train" onclick="openTrain()"><span>🌌</span>영혼 단련</button>
+        <form action="/town/rest" method="post" style="display:contents;">
+            <button type="submit" class="action-btn btn-rest"><span>🛌</span>휴식 하기</button>
+        </form>
+
+        <form action="/dungeon/enter" method="post" style="display:contents;">
+            <button type="submit"
+                    class="action-btn btn-dungeon"
+                    th:classappend="${isDungeonOpen} ? 'btn-dungeon-open' : ''"
+                    th:disabled="${!isDungeonOpen}">
+                <span>⚔️</span>
+                <th:block th:if="${isDungeonOpen}">
+                    던전 입장
+                </th:block>
+                <th:block th:unless="${isDungeonOpen}">
+                    <span class="dungeon-remain">[[${30 - (town.day % 30)}]]일 후 개방</span>
+                </th:block>
+            </button>
+        </form>
+
+        <button type="button" class="action-btn btn-shop" onclick="openShopSelector()">
+            <span>🏪</span>
+            <div class="shop-content-row">
+                <span style="font-size: 0.9rem;">상점 방문</span>
+            </div>
+        </button>
+
+        <button type="button"
+                class="action-btn btn-extract"
+                onclick="openExtractModal()"
+                th:disabled="${town.totalMagicStoneCount == 0}">
+            <span>💎</span>
+            마석 연성
+            <span class="stone-badge"
+                  th:if="${town.totalMagicStoneCount > 0}"
+                  th:text="${town.totalMagicStoneCount}">0</span>
+        </button>
+
+
+        <button type="button"
+                class="action-btn btn-learned-skills"
+                onclick="openLearnedSkillModal()"
+                style="background: #2c3e50 !important; border-bottom: 4px solid #1a252f !important;">
+            <span>📔</span>
+            보유 기술
+        </button>
+    </th:block>
+</div>
+
+</html>

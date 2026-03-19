@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="skillSelectionStyle">
+    <style>
+        .skill-choice-card {
+            width: 320px; min-height: 620px; background: #121212; border: 1px solid #333; border-radius: 16px;
+            padding: 22px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; display: flex; flex-direction: column; gap: 12px;
+        }
+
+        .skill-choice-card.already-learned { border-color: #553a25; }
+
+        .skill-choice-card:hover {
+            transform: translateY(-12px); border-color: #ffd700;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 25px rgba(255,215,0,0.25);
+        }
+
+        .weapon-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3px 10px; border-radius: 6px; font-size: 0.8rem; color: #ddd;
+        }
+
+        .modifier-tag {
+            display: inline-block; background: rgba(255, 215, 0, 0.15); color: #ffd700;
+            padding: 5px 10px; border-radius: 6px; font-size: 0.85rem; margin: 3px;
+            border: 1px solid rgba(255, 215, 0, 0.3); font-weight: 600;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .type-badge { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; color: #fff; display: flex; align-items: center; gap: 4px; }
+        .element-FIRE { background: #c92a2a; border: 1px solid #ff6b6b; box-shadow: 0 0 8px rgba(255,107,107,0.3); }
+        .element-ICE { background: #1864ab; border: 1px solid #4dabf7; }
+        .element-PHYSICAL { background: #5c5c5c; border: 1px solid #ced4da; }
+        .element-LIGHTNING { background: #e67e22; border: 1px solid #fcc419; color: #000; }
+        .element-EARTH { background: #5f3e24; border: 1px solid #a67c52; }
+        .element-HOLY { background: #f1f3f5; border: 1px solid #ffd43b; color: #000; box-shadow: 0 0 10px #fff; }
+        .element-DARK { background: #1a1b1e; border: 1px solid #7048e8; color: #e599f7; }
+        .element-CHAOS { background: #3b003b; border: 1px solid #f03e3e; color: #ff8787; }
+        .element-TOXIC { background: #2b8a3e; border: 1px solid #69db7c; }
+
+        .skill-icon-img { width: 110px; height: 110px; border-radius: 18px; border: 2px solid #444; object-fit: cover; margin-bottom: 10px; }
+        .scaling-box { background: rgba(148, 216, 45, 0.08); padding: 12px; border-radius: 10px; border: 1px solid rgba(148, 216, 45, 0.2); margin-top: 5px; }
+        .cost-item { font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; gap: 3px; }
+
+        /* 새로운 하단 버튼 액션 디자인 */
+        .skill-action-container {
+            display: flex; flex-direction: column; gap: 6px; margin-top: auto; padding-top: 10px;
+        }
+        .action-row { display: flex; gap: 6px; width: 100%; }
+        .btn-action {
+            flex: 1; padding: 10px 5px; border-radius: 8px; border: none; font-weight: bold;
+            font-size: 0.85rem; cursor: pointer; transition: 0.2s;
+        }
+        .btn-main-learn { background: #20c997; color: #fff; }
+        .btn-main-upgrade { background: #fd7e14; color: #fff; }
+        .btn-main-absorb { background: #7950f2; color: #fff; }
+
+        #confirmOverlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+            display: none; justify-content: center; align-items: center; z-index: 11000;
+            backdrop-filter: blur(8px);
+        }
+        .confirm-box {
+            background: #1a1a1a; border: 2px solid #ffd700; border-radius: 20px;
+            padding: 40px; width: 450px; text-align: center;
+        }
+        .confirm-btn-group { display: flex; gap: 15px; justify-content: center; margin-top: 30px; }
+        .btn-confirm { padding: 12px 30px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-yes { background: #ffd700; color: #000; }
+        .btn-no { background: #333; color: #fff; border: 1px solid #444; }
+
+        .grade-text { padding: 2px 8px; border-radius: 4px; letter-spacing: 1px; font-weight: 800; font-size: 0.8rem; }
+        .grade-text.LEGENDARY { color: #ff8000; animation: legendaryGlow 2s infinite alternate; }
+        @keyframes legendaryGlow { from { text-shadow: 0 0 5px #ff8000; } to { text-shadow: 0 0 20px #fffbb0, 0 0 30px #ff8000; } }
+    </style>
+</th:block>
+
+<div th:fragment="skillSelectionModal(skillOptions)" id="skillSelectionModal"
+     style="position: fixed; inset: 0; background: rgba(0,0,0,0.97); z-index: 10000; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(15px);">
+
+    <div class="selection-outer" style="width: 100%; max-width: 1450px; text-align: center; padding: 20px;">
+        <h2 style="color: #ffd700; font-size: 2.8rem; margin-bottom: 5px;">✨ 영혼의 정수 연성</h2>
+        <p style="color: #aaa; margin-bottom: 35px; font-size: 1.1rem;">추출된 마법 공식 중 하나를 선택하여 배울 수 있습니다.</p>
+
+        <div class="skill-card-container" style="display: flex; gap: 20px; justify-content: center; align-items: stretch;">
+            <th:block th:if="${skillOptions != null}">
+                <div th:each="skill : ${skillOptions}" class="skill-choice-card" th:classappend="${skill.alreadyLearned ? 'already-learned' : ''}">
+
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span th:class="'type-badge element-' + ${skill.element}">
+                            <th:block th:switch="${skill.element}">
+                                <span th:case="'PHYSICAL'">⚔️</span><span th:case="'FIRE'">🔥</span>
+                                <span th:case="'ICE'">❄️</span><span th:case="'LIGHTNING'">⚡</span>
+                                <span th:case="'EARTH'">⛰️</span><span th:case="'HOLY'">✨</span>
+                                <span th:case="'DARK'">🌑</span><span th:case="'CHAOS'">🌀</span>
+                                <span th:case="'TOXIC'">🧪</span><span th:case="*">🔮</span>
+                            </th:block>
+                            [[${skill.element}]]
+                        </span>
+                        <span th:text="${skill.grade}" th:class="'grade-text ' + ${skill.grade}">GRADE</span>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <img th:src="${skill.icon}" class="skill-icon-img">
+                        <h3 style="color: #fff; font-size: 1.6rem; margin: 0;" th:text="${skill.name}">이름</h3>
+                        <p style="color: #ccc; font-size: 0.9rem; margin: 8px 0; min-height: 3em;" th:text="${skill.description}">설명</p>
+                    </div>
+
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 6px;">
+                        <span th:if="${skill.requiredWeapons == null || skill.requiredWeapons.contains('NONE')}" class="weapon-badge" style="color: #888;">✋ 전 무기 가능</span>
+                        <th:block th:unless="${skill.requiredWeapons == null || skill.requiredWeapons.contains('NONE')}">
+                            <span th:each="w : ${skill.requiredWeapons}" class="weapon-badge">⚔️ [[${w}]]</span>
+                        </th:block>
+                    </div>
+
+                    <div style="display: flex; justify-content: center; gap: 12px; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 12px; border: 1px solid #333;">
+                        <span th:if="${skill.turnCost > 0}" class="cost-item" style="color: #ffd43b;">⏳ [[${skill.turnCost}]]T</span>
+                        <span th:if="${skill.mpCost > 0}" class="cost-item" style="color: #4dabf7;">💧 [[${skill.mpCost}]]</span>
+                        <span th:if="${skill.staminaCost > 0}" class="cost-item" style="color: #63e6be;">⚡ [[${skill.staminaCost}]]</span>
+                    </div>
+
+                    <div th:if="${skill.modifierDetails != null and !skill.modifierDetails.isEmpty()}" style="text-align: left;">
+                        <div style="font-size: 0.75rem; color: #ffec99; margin-bottom: 3px; font-weight: bold;">◈ 적용 효과 상세</div>
+                        <div style="display: flex; flex-wrap: wrap;"><span th:each="m : ${skill.modifierDetails}" class="modifier-tag" th:text="${m}"></span></div>
+                    </div>
+
+                    <div th:if="${skill.scalingInfo != null and !skill.scalingInfo.isEmpty()}" class="scaling-box">
+                        <div style="text-align: left; font-size: 0.8rem; color: #94d82d;"><div th:each="s : ${skill.scalingInfo}">• [[${s}]]</div></div>
+                    </div>
+
+                    <div th:if="${skill.statusName != null and skill.statusName != 'null'}" style="color: #ff9f43; font-size: 0.8rem; font-weight: bold; border-top: 1px solid #222; padding-top: 5px;">
+                        ⚠ [[${skill.statusName}]] [[${skill.type == 'BUFF' ? '지속' : '부여'}]] ([[${skill.effectChance}]]% / [[${skill.duration}]]T)
+                    </div>
+
+                    <div class="skill-action-container">
+                        <div th:if="${skill.alreadyLearned}" style="font-size: 0.75rem; color: #ff922b; background: rgba(230,126,34,0.1); padding: 5px; border-radius: 6px; text-align: center;">
+                            공명 보너스: [[${skill.bonusStatType}]] +[[${skill.bonusStatValue}]]
+                        </div>
+
+                        <div class="action-row">
+                            <button class="btn-action"
+                                    th:classappend="${skill.alreadyLearned ? 'btn-main-upgrade' : 'btn-main-learn'}"
+                                    th:data-id="${skill.id}" th:data-name="${skill.name}" th:data-learned="${skill.alreadyLearned}"
+                                    onclick="handleConfirm(this, 'LEARN')">
+                                <span th:text="${skill.alreadyLearned ? '🔥 영혼 강화' : '📜 기술 각인'}"></span>
+                            </button>
+                            <button class="btn-action btn-main-absorb"
+                                    th:data-id="${skill.id}" th:data-name="${skill.name}"
+                                    onclick="handleConfirm(this, 'ABSORB')">✨ 흡수</button>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+
+        <div id="confirmOverlay">
+            <div class="confirm-box">
+                <h3 id="confirmTitle" style="font-size: 1.8rem; margin-top: 0;"></h3>
+                <p id="confirmMessage" style="color: #ccc; font-size: 1.1rem; line-height: 1.6; margin: 20px 0;"></p>
+                <div class="confirm-btn-group">
+                    <button id="execBtn" class="btn-confirm btn-yes" onclick="executeSelection()">확인</button>
+                    <button class="btn-confirm btn-no" onclick="closeConfirm()">돌아가기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        let selectedSkillId = null;
+        let currentMode = 'LEARN';
+
+        function handleConfirm(el, mode) {
+            selectedSkillId = el.getAttribute('data-id');
+            const name = el.getAttribute('data-name');
+            const isLearned = el.getAttribute('data-learned') === 'true';
+            currentMode = mode;
+
+            const title = document.getElementById('confirmTitle');
+            const msg = document.getElementById('confirmMessage');
+            const btn = document.getElementById('execBtn');
+            const overlay = document.getElementById('confirmOverlay');
+
+            if (mode === 'LEARN') {
+                if (isLearned) {
+                    title.innerText = "영혼 공명";
+                    title.style.color = "#fd7e14";
+                    msg.innerHTML = `이미 익힌 <strong>[${name}]</strong>입니다.<br>중복 강화를 진행하시겠습니까?`;
+                } else {
+                    title.innerText = "기술 각인";
+                    title.style.color = "#ffd700";
+                    msg.innerHTML = `<strong>[${name}]</strong> 기술을 영혼에 새기시겠습니까?`;
+                }
+            } else {
+                title.innerText = "영혼 흡수";
+                title.style.color = "#7950f2";
+                msg.innerHTML = `<strong>[${name}]</strong>의 지식을 흡수하여<br>신체 능력을 영구히 강화하시겠습니까?`;
+            }
+            overlay.style.display = 'flex';
+        }
+
+        function closeConfirm() { document.getElementById('confirmOverlay').style.display = 'none'; }
+
+        function executeSelection() {
+            if (selectedSkillId) {
+                const path = (currentMode === 'LEARN') ? '/town/learn-skill/' : '/town/absorb-skill/';
+                location.href = path + selectedSkillId;
+            }
+        }
+    </script>
+</div>
+</html>

@@ -1,0 +1,325 @@
+[
+  {
+    "id": 670,
+    "name": "구리 메달",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "용병들이 자신의 신분을 증명하기 위해 흔히 착용하는 구리 목걸이입니다. 기초적인 체력을 보강해줍니다.",
+    "price": 350000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "1": 5.0
+    },
+    "combatStatsBonus": {
+      "maxHp": 30.0,
+      "physPen": 3.0,
+      "physDef": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 671,
+    "name": "늑대 이빨 펜던트",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "야생 늑대의 송곳니를 엮어 만든 목걸이입니다. 착용자에게 사냥꾼의 감각을 부여합니다.",
+    "price": 380000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "20": 4.0
+    },
+    "combatStatsBonus": {
+      "physPen": 3.0,
+      "critDmg": 10.0,
+      "accuracy": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 672,
+    "name": "검은 가죽 끈",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "눈에 띄지 않도록 검게 무두질된 가죽 끈입니다. 암살자들이 은밀하게 착용하곤 합니다.",
+    "price": 420000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "17": 5.0
+    },
+    "combatStatsBonus": {
+      "maxMp": 30.0,
+      "statusPen": 10.0,
+      "dodge": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 673,
+    "name": "단단한 숫돌 목걸이",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "작은 조각 숫돌을 목걸이 형태로 만든 것입니다. 무기를 상시 관리하는 숙련된 전사들이 선호합니다.",
+    "price": 320000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "10": 4.0
+    },
+    "combatStatsBonus": {
+      "physPen": 5.0,
+      "meleeAtk": 10.0,
+      "accuracy": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 674,
+    "name": "황동 엠블럼",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "정식 용병단에서 수여하는 황동 훈장입니다. 전장의 거친 환경에서 살아남는 데 도움을 줍니다.",
+    "price": 850000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "1": 10.0,
+      "11": 5.0
+    },
+    "combatStatsBonus": {
+      "maxHp": 60.0,
+      "physPen": 5.0,
+      "statusResist": 15.0,
+      "physDef": 25.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 675,
+    "name": "정교한 비취 나비",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "비취를 깎아 나비 모양으로 만든 장신구입니다. 궁수들의 집중력과 정확도를 높여줍니다.",
+    "price": 920000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "15": 12.0,
+      "23": 8.0
+    },
+    "combatStatsBonus": {
+      "maxMp": 60.0,
+      "critDmg": 15.0,
+      "accuracy": 10.0,
+      "physPen": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 676,
+    "name": "연마된 칼날 조각",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "부러진 검날을 가공하여 만든 기괴한 장신구입니다. 적의 방어구를 뚫는 데 특화되어 있습니다.",
+    "price": 880000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "10": 15.0
+    },
+    "combatStatsBonus": {
+      "physPen": 10.0,
+      "meleeAtk": 25.0,
+      "critRate": 5.0,
+      "accuracy": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 677,
+    "name": "붉은 매듭 초커",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "특별한 방식으로 꼬아 만든 붉은 실 목걸이입니다. 암살자의 치명적인 공격 능력을 증폭시킵니다.",
+    "price": 950000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": {
+      "20": 15.0
+    },
+    "combatStatsBonus": {
+      "bleedPen": 15.0,
+      "critDmg": 20.0,
+      "critRate": 8.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 700,
+    "name": "학살자의 징표",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "수많은 전장을 누빈 용병왕이 착용하던 목걸이입니다. 적의 피를 볼수록 감각이 날카로워집니다.",
+    "price": 1250000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": { "1": 15.0, "10": 10.0 },
+    "combatStatsBonus": {
+      "maxHp": 120.0,
+      "physPen": 8.0,
+      "critDmg": 15.0,
+      "bleedPen": 7.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 701,
+    "name": "그림자 추적자의 심장",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "어둠 속에서 숨죽이는 암살자들을 위한 유물입니다. 차가운 살기를 품고 있습니다.",
+    "price": 1380000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": { "15": 12.0, "20": 13.0 },
+    "combatStatsBonus": {
+      "maxMp": 120.0,
+      "critDmg": 20.0,
+      "darkAtk": 10.0,
+      "poisonPen": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 702,
+    "name": "바람의 숨결 아뮬렛",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "궁수들이 선망하는 보물로, 착용자의 시야를 넓히고 화살에 바람의 힘을 실어줍니다.",
+    "price": 1100000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": { "16": 15.0, "21": 10.0 },
+    "combatStatsBonus": {
+      "accuracy": 10.0,
+      "critDmg": 15.0,
+      "lightningPen": 5.0,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 703,
+    "name": "검투사의 긍지",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "콜로세움의 승자만이 가질 수 있는 훈장입니다. 육체적인 한계를 돌파하게 돕습니다.",
+    "price": 1450000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": { "1": 20.0, "2": 5.0 },
+    "combatStatsBonus": {
+      "maxHp": 120.0,
+      "physPen": 10.0,
+      "physRes": 5.0,
+      "statusResist": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 704,
+    "name": "용의 심장 펜던트",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "고대 화룡의 정수가 깃든 전설적인 목걸이입니다. 폭발적인 물리 파괴력을 선사합니다.",
+    "price": 8500000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": { "1": 50.0, "10": 40.0 },
+    "combatStatsBonus": {
+      "maxHp": 250.0,
+      "physPen": 12.0,
+      "fireAtk": 150.0,
+      "firePen": 15.0,
+      "critDmg": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 705,
+    "name": "심연의 유령 사슬",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "형체 없는 암살자가 사용했다는 전설의 사슬입니다. 존재 자체를 지우고 급소를 꿰뚫습니다.",
+    "price": 9200000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": { "15": 45.0, "20": 45.0 },
+    "combatStatsBonus": {
+      "maxMp": 250.0,
+      "critDmg": 50.0,
+      "darkAtk": 150.0,
+      "darkPen": 15.0,
+      "statusPen": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 706,
+    "name": "태양의 신궁 아뮬렛",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "태양의 빛을 화살로 바꾼 신화 속 궁수의 유물입니다. 빛의 속도로 적을 관통합니다.",
+    "price": 8800000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMONpng",
+    "baseStatsBonus": { "16": 50.0, "21": 40.0 },
+    "combatStatsBonus": {
+      "accuracy": 25.0,
+      "holyAtk": 150.0,
+      "holyPen": 15.0,
+      "critDmg": 25.0,
+      "statusResist": 30.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 707,
+    "name": "티탄의 불멸 훈장",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "NECKLACE",
+    "subType": "ACCESSORY",
+    "description": "거인족의 왕이 전장을 휩쓸 때 착용했던 훈장입니다. 어떤 방패도 이 앞에서는 무의미합니다.",
+    "price": 9900000,
+    "icon": "/images/items/NECKLACE-MELEE-UNCOMMON.png",
+    "baseStatsBonus": { "1": 60.0, "11": 30.0 },
+    "combatStatsBonus": {
+      "maxHp": 250.0,
+      "physPen": 15.0,
+      "earthAtk": 100.0,
+      "physRes": 10.0,
+      "statusResist": 30.0,
+      "hpRegen": 15.0
+    },
+    "grantedSkillIds": []
+  }
+]

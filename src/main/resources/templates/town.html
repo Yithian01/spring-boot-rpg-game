@@ -3,34 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <title>Dark Town</title>
+    <th:block th:replace="~{fragments/layout :: commonStyle}"></th:block>
     <th:block th:replace="~{fragments/layout :: townStyle}"></th:block>
+    <th:block th:replace="~{fragments/inventory :: inventoryStyle}"></th:block>
+    <th:block th:replace="~{fragments/status :: statusPanelStyle}"></th:block>
+    <th:block th:replace="~{fragments/equipment :: equipmentStyle}"></th:block>
+    <th:block th:replace="~{fragments/actions/town-action :: townActionStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/gamble-modal :: gambleStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/train-modal :: trainStyle}"></th:block>
+    <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/skill-selection :: skillSelectionStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/shop-select-modal :: shopSelectStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/shop-panel :: shopStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/underover-gamble-modal :: underOverStyle}"></th:block>
+    <th:block th:replace="~{fragments/modals/blackjack-gamble-modal :: blackJackStyle}"></th:block>
 </head>
 <body>
 
 <div th:if="${message}" class="system-message" th:text="${message}"></div>
 
 <div class="container">
-    <div th:replace="~{fragments/layout :: gameHeader}"></div>
+    <div th:replace="~{fragments/header :: gameHeader}"></div>
 
     <div class="top-panel">
         <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
 
-        <div th:replace="~{fragments/info :: townInventory(${town}, ${game.items})}"></div>
+        <div class="box col-info">
+            <div th:replace="~{fragments/infos/town-info :: townInfo(${town})}"></div>
+        </div>
+
+        <div class="box col-inv">
+            <h2>🎒 소지품 가방</h2>
+            <div style="flex: 1; min-height: 0;">
+                <div th:replace="~{fragments/inventory :: inventoryList(${game.items}, 1)}"></div>
+            </div>
+        </div>
 
         <div class="box equipment-box">
-            <h2>장착 장비</h2>
-            <div th:replace="~{fragments/modals :: equipmentGrid(${game.equippedItems})}"></div>
+            <h2>⚔️ 장착 장비</h2>
+            <div th:replace="~{fragments/equipment :: equipmentGrid(${game.equippedItems})}"></div>
+
+            <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 15px;">
+                <div th:replace="~{fragments/gameLog :: gameLogPanel(logs=${game.gameLogs})}"></div>
+            </div>
         </div>
     </div>
 
-    <div th:replace="~{fragments/actions :: actionPanel(gameData=${game})}"></div>
+    <div th:replace="~{fragments/actions/town-action :: actionPanel(gameData=${game}, town=${town})}"></div>
 </div>
 
-<div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>
-<div th:replace="~{fragments/modals :: gambleModal(${game})}"></div>
+<div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
+<div th:replace="~{fragments/modals/gameclear-modal :: gameClearModal(${game.clear})}"></div>
 
-<div th:replace="~{fragments/modals :: trainModal}"></div>
+<th:block th:if="${gamble != null and gamble.currentMode == 'MAIN'}">
+    <div th:replace="~{fragments/modals/gamble-modal :: gambleModal(gamble=${gamble}, town=${town})}"></div>
+</th:block>
 
+<th:block th:if="${gamble != null and gamble.currentMode == 'UNDER_OVER'}">
+    <div th:replace="~{fragments/modals/underover-gamble-modal :: underOverModal(gamble=${gamble}, town=${town})}"></div>
+</th:block>
+
+<th:block th:if="${gamble != null and gamble.currentMode == 'BLACKJACK'}">
+    <div th:replace="~{fragments/modals/blackjack-gamble-modal :: blackJackModal(gamble=${gamble}, town=${town})}"></div>
+</th:block>
+
+<div th:replace="~{fragments/modals/train-modal :: trainModal}"></div>
+<div th:replace="~{fragments/modals/extract-prepare-modal :: extractPrepareModal(town=${town})}"></div>
+
+<th:block th:with="targetData=${townData != null ? townData : town}">
+    <div th:if="${targetData != null and targetData.skillOptions != null and !targetData.skillOptions.isEmpty()}">
+        <div th:replace="~{fragments/modals/skill-selection :: skillSelectionModal(${targetData.skillOptions})}"></div>
+    </div>
+</th:block>
+
+<th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillModal(${game.learnedSkills})}"></th:block>
+<th:block th:replace="~{fragments/modals/shop-select-modal :: shopSelectModal}"></th:block>
+<th:block th:if="${shop != null}">
+    <div th:replace="~{fragments/modals/shop-panel :: shopModal(${shop}, ${game})}"></div>
+</th:block>
+
+<th:block th:with="targetData=${townData != null ? townData : town}">
+    <div th:if="${targetData != null and targetData.workOptions != null}">
+        <div th:replace="~{fragments/modals/work-select-modal :: workSelectModal(options=${targetData.workOptions})}"></div>
+    </div>
+</th:block>
 <script th:inline="javascript">
     /*<![CDATA[*/
 
@@ -63,7 +121,8 @@
 
     window.onload = function() {
         const isGameOver = [[${gameOver ?: false}]];
-        if (isGameOver) {
+        const isClear = [[${game.clear ?: false}]];
+        if (isGameOver || isClear) {
             document.querySelector('.container').style.pointerEvents = 'none';
         }
 
@@ -117,11 +176,159 @@
         const map = {
             'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
             'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
-            'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
+            'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약',
+            'GLOVES': '장갑', 'BELT': '벨트', 'ARTIFACT': '아티펙트'
+
         };
         return map[type] || type; // 매핑 없으면 영어 그대로 노출
     }
 
+
+    let selectedStoneId = null;
+
+    function openExtractModal() {
+        document.getElementById('extractModal').style.display = 'flex';
+    }
+    function closeExtractModal() {
+        document.getElementById('extractModal').style.display = 'none';
+    }
+
+    function openConfirmModal(element) {
+        selectedStoneId = element.getAttribute('data-instance-id');
+        const stoneName = element.getAttribute('data-name');
+
+        const msgBox = document.getElementById('confirmMessage');
+        if (msgBox) {
+            msgBox.innerHTML = `<span class="highlight">[${stoneName}]</span><br>정말로 연성하시겠습니까?`;
+        }
+
+        document.getElementById('confirmModal').style.display = 'flex';
+    }
+
+    function closeConfirmModal() {
+        document.getElementById('confirmModal').style.display = 'none';
+    }
+
+    function prepareExtract(instanceId) {
+        if (!instanceId) return;
+
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/town/extract-prepare';
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'instanceId';
+        input.value = instanceId;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const finalBtn = document.getElementById('finalConfirmBtn');
+        if (finalBtn) {
+            finalBtn.onclick = function() {
+                if (selectedStoneId) {
+                    prepareExtract(selectedStoneId);
+                }
+            };
+        }
+    });
+
+    // 스킬 툴팁 생성 및 표시
+    function showSkillTooltip(el) {
+      let tooltip = document.getElementById('skill-tooltip');
+      if (!tooltip) {
+          tooltip = document.createElement('div');
+          tooltip.id = 'skill-tooltip';
+          // white-space: pre-wrap을 추가하면 줄바꿈이 더 잘 먹습니다.
+          tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:12px; border-radius:8px; z-index:20000; width:240px; font-size:0.85rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.7); line-height:1.4;";
+          document.body.appendChild(tooltip);
+      }
+
+      const name = el.dataset.name;
+      const desc = el.dataset.desc;
+
+      // [수정] '|' 구분자로 쪼개서 배열로 만듦
+      const scaling = el.dataset.scaling ? el.dataset.scaling.split('|') : [];
+      const mods = el.dataset.mods ? el.dataset.mods.split('|') : [];
+      const weapons = el.dataset.weapons ? el.dataset.weapons.split('|') : [];
+
+      const status = el.dataset.status;
+      const chance = el.dataset.chance;
+      const duration = el.dataset.duration;
+
+      let html = `<strong style="color:#ff4d4d; font-size:1.1rem; display:block; margin-bottom:5px;">${name}</strong>`;
+      html += `<span style="color:#bbb;">${desc}</span><hr style="border:0; border-top:1px solid #444; margin:8px 0;">`;
+
+      // [수정] 위력(Scaling) 정보를 세로 리스트로 나열
+      if (scaling.length > 0) {
+          html += `<div style="color:#ffd700; margin-bottom:8px;"><b>■ 보정 수치</b>`;
+          scaling.forEach(item => {
+              if(item.trim()) html += `<div style="padding-left:5px;">• ${item.trim()}</div>`;
+          });
+          html += `</div>`;
+      }
+
+       // 2. 필요 무기 정보 추가
+      if (weapons.length > 0 && weapons[0] !== "") {
+          html += `<div style="color:#63e6be; margin-bottom:8px;"><b>■ 필요 무기</b>`;
+
+          if (weapons.includes('NONE')) {
+              html += `<div style="padding-left:5px; color:#888;">• 제한 없음</div>`;
+          } else {
+              const weaponMap = {
+                  'SWORD': '🗡️ 검', 'AXE': '🪓 도끼', 'SPEAR': '🔱 창', 'SHIELD': '🛡️ 방패',
+                  'DAGGER': '🔪 단검', 'BLUNT': '🔨 둔기', 'BOW': '🏹 활', 'CROSSBOW': '💘 석궁',
+                  'KNUCKLE': '🥊 너클', 'WAND': '🪄 완드', 'STAFF': '🔮 스태프'
+              };
+              html += `<div style="padding-left:5px; display:flex; flex-wrap:wrap; gap:4px;">`;
+              weapons.forEach(w => {
+                  const label = weaponMap[w.trim()] || w.trim();
+                  html += `<span style="background:rgba(99, 230, 190, 0.1); border:1px solid rgba(99, 230, 190, 0.3); padding:1px 5px; border-radius:4px; font-size:0.75rem;">${label}</span>`;
+              });
+              html += `</div>`;
+          }
+          html += `</div>`;
+      }
+
+      // 상태 이상 효과
+      if (status && status !== 'null') {
+          html += `<div style="color:#ff9f43; margin-bottom:8px;"><b>■ 효과:</b> ${status} (${chance}%)<br/>└ ${duration}턴 지속</div>`;
+      }
+
+      // [수정] 추가 상세(Mods) 정보를 세로 리스트로 나열
+      if (mods.length > 0 && mods[0] !== "") {
+          html += `<div style="color:#4dabf7;"><b>■ 상세 정보</b>`;
+          mods.forEach(item => {
+              if(item.trim()) html += `<div style="padding-left:5px;">• ${item.trim()}</div>`;
+          });
+          html += `</div>`;
+      }
+
+      tooltip.innerHTML = html;
+      tooltip.style.display = 'block';
+
+      // 위치 조절 (화면 밖으로 나가지 않게 살짝 보정)
+      const rect = el.getBoundingClientRect();
+      tooltip.style.left = (rect.left) + 'px';
+      tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
+    }
+
+    function hideSkillTooltip() {
+        const tooltip = document.getElementById('skill-tooltip');
+        if (tooltip) tooltip.style.display = 'none';
+    }
+
+    function openWorkModal() {
+        document.getElementById('workSelectModal').style.display = 'flex';
+    }
+
+    function closeWorkModal() {
+        document.getElementById('workSelectModal').style.display = 'none';
+    }
     /*]]>*/
 </script>
 </body>

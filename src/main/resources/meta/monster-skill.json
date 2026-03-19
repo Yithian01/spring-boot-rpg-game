@@ -1,0 +1,1261 @@
+[
+  {
+    "id":1,
+    "name":"할퀴기",
+    "description":"야수가 앞발을 휘둘러 대상을 할큅니다. 가장 기본적인 공격입니다.",
+    "icon":"/images/skills/claw_common.png",
+    "grade":"COMMON",
+    "type":"PHYSICAL",
+    "turnCost":1,
+    "hitChance":80,
+    "cost":{ },
+    "damageScaling":{"meleeAtk":1.2},
+    "statScaling":{ },
+    "effect":{
+      "type":"DAMAGE",
+      "element":"PHYSICAL",
+      "status":"BLEED",
+      "duration": 2,
+      "chance": 30
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id":2,
+    "name":"날카로운 발톱",
+    "description":"더욱 날카로운 발톱으로 대상을 깊게 긁어냅니다.",
+    "icon":"/images/skills/claw_uncommon.png",
+    "grade":"UNCOMMON",
+    "type":"PHYSICAL",
+    "turnCost":1,
+    "hitChance":75,
+    "cost":{ },
+    "damageScaling":{"meleeAtk":1.3},
+    "statScaling":{ },
+    "effect":{
+      "type":"DAMAGE",
+      "element":"PHYSICAL",
+      "status":"BLEED",
+      "duration": 2,
+      "chance": 30
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id":3,
+    "name":"물기",
+    "description":"강한 턱 힘을 이용해 대상을 이빨로 누릅니다.",
+    "icon":"/images/skills/bite_common.png",
+    "grade":"COMMON",
+    "type":"PHYSICAL",
+    "turnCost":1,
+    "hitChance":75,
+    "cost":{ },
+    "damageScaling":{"meleeAtk":1.2},
+    "statScaling":{ },
+    "effect":{
+      "type":"DAMAGE",
+      "element":"PHYSICAL",
+      "status":"BLEED",
+      "duration": 2,
+      "chance": 30
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id":4,
+    "name":"박치기",
+    "description":"단단한 머리 부위를 이용해 대상을 강하게 들이받습니다.",
+    "icon":"/images/skills/tackle_common.png",
+    "grade":"COMMON",
+    "type":"PHYSICAL",
+    "turnCost":1,
+    "hitChance":75,
+    "cost":{ },
+    "damageScaling":{"meleeAtk":1.2},
+    "statScaling":{ },
+    "effect":{
+      "type":"DAMAGE",
+      "element":"PHYSICAL",
+      "status":"STUN",
+      "duration":1,
+      "chance":10
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id":5,
+    "name":"꼬리 치기",
+    "description":"길고 단단한 꼬리를 휘둘러 대상을 타격합니다.",
+    "icon":"/images/skills/tail_uncommon.png",
+    "grade":"UNCOMMON",
+    "type":"PHYSICAL",
+    "turnCost":1,
+    "hitChance":70,
+    "cost":{ },
+    "damageScaling":{ "meleeAtk":1.3 },
+    "statScaling":{ },
+    "effect":{
+      "type":"DAMAGE",
+      "element":"PHYSICAL"
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id":6,
+    "name":"찌르기",
+    "description":"날카로운 무기로 적의 급소를 정확히 찌릅니다.",
+    "icon":"/images/skills/pierce_common.png",
+    "grade":"COMMON",
+    "type":"PHYSICAL",
+    "turnCost":1,
+    "hitChance":80,
+    "cost":{ },
+    "damageScaling":{"meleeAtk":1.2},
+    "statScaling":{ },
+    "effect":{
+      "type":"DAMAGE",
+      "element":"PHYSICAL",
+      "status":"BLEED",
+      "duration": 2,
+      "chance": 30
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id":7,
+    "name":"휘두르기",
+    "description":"무기를 크게 휘둘러 정면의 적을 공격합니다.",
+    "icon":"/images/skills/swing_common.png",
+    "grade":"COMMON",
+    "type":"PHYSICAL",
+    "turnCost":1,
+    "hitChance":78,
+    "cost":{},
+    "damageScaling":{"meleeAtk":1.2},
+    "statScaling":{},
+    "effect":{
+      "type":"DAMAGE",
+      "element":"PHYSICAL",
+      "critDamage":50
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id":8,
+    "name":"마력 방출",
+    "description":"신체 주변의 마력을 갈무리 없이 방출하여 타격을 줍니다.",
+    "icon":"/images/skills/mana_burst_common.png",
+    "grade":"COMMON",
+    "type":"MAGICAL",
+    "turnCost":1,
+    "hitChance":80,
+    "cost":{ },
+    "damageScaling":{ "magicAtk":1.2 },
+    "statScaling":{},
+    "effect":{
+      "type":"DAMAGE",
+      "element":"CHAOS"
+    },
+    "requiredWeapons":["NONE"]
+  },
+  {
+    "id": 9,
+    "name": "일제 사격",
+    "description": "원거리 무기를 사용하여 대상을 향해 화살이나 투사체를 발사합니다.",
+    "icon": "/images/skills/volley_common.png",
+    "grade": "COMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 80,
+    "cost": { },
+    "damageScaling": {
+      "meleeAtk": 1.2
+    },
+    "statScaling": {},
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "penetration": 10,
+      "critDamage": 50,
+      "critRate": 8
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 101,
+    "name": "독성공격",
+    "description": "무기에 맹독을 발라 정교하게 타격합니다. 적에게 물리 피해를 입히고 일정 확률로 중독 상태에 빠뜨립니다.",
+    "icon": "/images/skills/toxic_strike.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "hp": 0,
+      "mp": 15,
+      "stamina": 20
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "10": 1.2,
+      "11": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 2,
+      "chance": 30,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": ["SWORD","AXE", "SPEAR", "BLUNT", "SHIELD", "KNUCKLE", "DAGGER"]
+  },
+  {
+    "id": 102,
+    "name": "독성사격",
+    "description": "화살촉에 치명적인 독을 발라 발사합니다. 적에게 물리 피해를 입히고 일정 확률로 중독 상태로 만듭니다.",
+    "icon": "/images/skills/toxic_shot.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "hp": 0,
+      "mp": 10,
+      "stamina": 25
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "16": 1.2,
+      "23": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 2,
+      "chance": 35,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "BOW",
+      "CROSSBOW"
+    ]
+  },
+  {
+    "id": 103,
+    "name": "동화",
+    "description": "주변 환경과 신체를 동화시켜 적의 공격을 더 쉽게 회피합니다.",
+    "icon": "/images/skills/assimilation.png",
+    "grade": "UNCOMMON",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 20,
+      "stamina": 10
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": null,
+      "duration": 3,
+      "chance": 100,
+      "penetration": 0,
+      "critDamage": 0,
+      "critRate": 0,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {
+        "dodge": 10.0
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 104,
+    "name": "화염분출",
+    "description": "체내의 열기를 화살에 실어 뿜어냅니다. 적중 시 대상에게 물리 피해와 함께 화상을 입힙니다.",
+    "icon": "/images/skills/fire_ejection.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 70,
+    "cost": {
+      "mp": 20,
+      "stamina": 20
+    },
+    "damageScaling": { "meleeAtk": 1.3 },
+    "statScaling": {
+      "10": 1.1,
+      "14": 1.1
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "FIRE",
+      "status": "BURN",
+      "duration": 2,
+      "chance": 25,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [ "NONE"]
+  },
+  {
+    "id": 105,
+    "name": "다크 볼트",
+    "description": "응축된 어둠의 마력을 투사하여 적에게 피해를 입히는 기초적인 흑마법입니다.",
+    "icon": "/images/skills/dark_bolt.png",
+    "grade": "UNCOMMON",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 20
+    },
+    "damageScaling": {
+      "magicAtk": 1.3
+    },
+    "statScaling": {
+      "13": 1.2,
+      "14": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "status": null,
+      "duration": 0,
+      "chance": 0,
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "WAND",
+      "STAFF"
+    ]
+  },
+  {
+    "id": 106,
+    "name": "벤시의 비명",
+    "description": "귀를 찢는 듯한 불길한 비명을 질러 적의 정신을 흐트러뜨리고 명중률을 떨어뜨립니다.",
+    "icon": "/images/skills/banshee_shriek.png",
+    "grade": "UNCOMMON",
+    "type": "DEBUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 25
+    },
+    "damageScaling": {},
+    "statScaling": {
+      "13": 1.2,
+      "19": 1.0
+    },
+    "effect": {
+      "type": "DEBUFF",
+      "element": "DARK",
+      "status": "WEAKNESS",
+      "duration": 2,
+      "chance": 100,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {
+        "accuracy": -10.0
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 107,
+    "name": "영혼의 일격",
+    "description": "무기에 불길한 영혼의 마력을 실어 적의 생명력을 직접 타격합니다.",
+    "icon": "/images/skills/soul_strike.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 30,
+      "stamina": 20
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "10": 1.2,
+      "17": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "penetration": 20,
+      "critDamage": 60,
+      "critRate": 10,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "SWORD",
+      "SPEAR",
+      "AXE",
+      "DAGGER",
+      "BLUNT"
+    ]
+  },
+  {
+    "id": 108,
+    "name": "독병 던지기",
+    "description": "급조된 독병을 던져 파편 피해를 입히고 중독을 유발합니다.",
+    "icon": "/images/skills/poison_bottle.png",
+    "grade": "COMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 78,
+    "cost": {
+      "stamina": 35
+    },
+    "damageScaling": {
+      "meleeAtk": 1.2
+    },
+    "statScaling": {
+      "10": 0.8,
+      "23": 0.7
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 2,
+      "chance": 20,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 109,
+    "name": "방패 돌진",
+    "description": "방패를 앞세워 적에게 돌격하여 물리 피해를 입히고 충격을 줍니다.",
+    "icon": "/images/skills/shield_bash.png",
+    "grade": "COMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "stamina": 35
+    },
+    "damageScaling": {
+      "meleeAtk": 1.2
+    },
+    "statScaling": {
+      "10": 0.8,
+      "12": 0.7
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 15,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "SHIELD"
+    ]
+  },
+  {
+    "id": 110,
+    "name": "위압",
+    "description": "강력한 기세로 적을 압도하여 순간적으로 몸을 굳게 만듭니다.",
+    "icon": "/images/skills/overpower.png",
+    "grade": "UNCOMMON",
+    "type": "DEBUFF",
+    "turnCost": 1,
+    "hitChance": 70,
+    "cost": {
+      "mp": 30,
+      "stamina": 30
+    },
+    "damageScaling": {},
+    "statScaling": {
+      "10": 1.2,
+      "12": 1.0
+    },
+    "effect": {
+      "type": "DEBUFF",
+      "element": "PHYSICAL",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 40,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": ["NONE"]
+  },
+  {
+    "id": 111,
+    "name": "대지충격",
+    "description": "지면을 강하게 내리쳐 솟구치는 바위로 적을 타격합니다. 충격으로 인해 적이 잠시 무력화될 수 있습니다.",
+    "icon": "/images/skills/earth_shock.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 70,
+    "cost": {
+      "stamina": 35
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "10": 1.2,
+      "12": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "EARTH",
+      "status": "STUN",
+      "duration": 1,
+      "chance": 20,
+      "penetration": 20,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 112,
+    "name": "독액분출",
+    "description": "강력한 부식성 독액을 전방으로 뿜어냅니다. 적중된 적은 마법 피해를 입으며 높은 확률로 중독 상태가 됩니다.",
+    "icon": "/images/skills/toxic_spray.png",
+    "grade": "RARE",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 45
+    },
+    "damageScaling": {
+      "magicAtk": 1.5
+    },
+    "statScaling": {
+      "13": 1.5,
+      "14": 1.5
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 2,
+      "chance": 45,
+      "penetration": 25,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 113,
+    "name": "피의 욕망",
+    "description": "어둠의 마력으로 잠재된 살육 본능을 깨웁니다. 물리 공격력이 크게 증가하지만, 방어 본능을 상실하여 받는 피해가 증가합니다.",
+    "icon": "/images/skills/blood_lust.png",
+    "grade": "UNCOMMON",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "hp": 30,
+      "mp": 10
+    },
+    "damageScaling": {},
+    "statScaling": {
+      "10": 1.1,
+      "17": 1.1
+    },
+    "effect": {
+      "type": "BUFF",
+      "element": "DARK",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": {
+        "meleeAtk": 1.2,
+        "physRes" : 0.8,
+        "magRes": 0.8
+      },
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 114,
+    "name": "지휘의 외침",
+    "description": "우렁찬 함성으로 아군의 전의를 고취시키고 방어 태세를 강화합니다.",
+    "icon": "/images/skills/commanding_shout.png",
+    "grade": "UNCOMMON",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 10,
+      "stamina": 25
+    },
+    "damageScaling": {},
+    "statScaling": {
+      "10": 1.1,
+      "12": 1.1
+    },
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": {
+        "meleeAtk": 1.2,
+        "physRes" : 1.2
+      },
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 115,
+    "name": "거대화",
+    "description": "신체를 거대하게 팽창시켜 파괴력과 방어력을 동시에 강화합니다.",
+    "icon": "/images/skills/gigantification.png",
+    "grade": "RARE",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 30,
+      "stamina": 40
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": {
+        "meleeAtk": 1.3,
+        "physRes" : 1.3,
+        "magRes" : 1.3
+      },
+      "combatStatOffsets": {
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 116,
+    "name": "필사의 일격",
+    "description": "자신의 모든 힘을 쥐어짜내어 적의 급소를 타격합니다. 치명적인 물리 피해를 입히지만 시전자에게도 큰 부담을 줍니다.",
+    "icon": "/images/skills/desperate_strike.png",
+    "grade": "EPIC",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 65,
+    "cost": {
+      "hp": 50,
+      "stamina": 60
+    },
+    "damageScaling": {
+      "meleeAtk": 2.0
+    },
+    "statScaling": {
+      "10": 2.5,
+      "11": 1.5
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "PHYSICAL",
+      "penetration": 30,
+      "critRate": 15,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "SWARD", "SPEAR", "AXE", "DAGGER", "BLUNT"
+    ]
+  },
+  {
+    "id": 117,
+    "name": "요정가루",
+    "description": "어두운 기운이 서린 가루를 뿌려 적의 전의를 상실시키고 물리 공격력을 감소시킵니다.",
+    "icon": "/images/skills/fairy_dust.png",
+    "grade": "COMMON",
+    "type": "DEBUFF",
+    "turnCost": 1,
+    "hitChance": 80,
+    "cost": {
+      "mp": 10
+    },
+    "damageScaling": {},
+    "statScaling": {},
+    "effect": {
+      "type": "DEBUFF",
+      "element": "DARK",
+      "status": "WEAKNESS",
+      "duration": 2,
+      "chance": 75,
+      "combatStatModifiers": {
+        "meleeAtk": 0.9
+      },
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 118,
+    "name": "유령불꽃",
+    "description": "차가운 기운이 서린 푸른 불꽃을 발사합니다. 적중 시 마법 피해를 입히고 낮은 확률로 화상을 입힙니다.",
+    "icon": "/images/skills/ghost_fire.png",
+    "grade": "COMMON",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 78,
+    "cost": {
+      "mp": 15
+    },
+    "damageScaling": {
+      "magicAtk": 1.2
+    },
+    "statScaling": {
+      "13": 0.8,
+      "14": 0.7
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "FIRE",
+      "status": "BURN",
+      "duration": 2,
+      "chance": 15,
+      "penetration": 15,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 119,
+    "name": "독성이빨",
+    "description": "독을 머금은 이빨로 적을 강하게 물어뜯습니다. 물리 피해와 함께 중독을 유발할 수 있습니다.",
+    "icon": "/images/skills/toxic_bite.png",
+    "grade": "COMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 20,
+      "stamina": 15
+    },
+    "damageScaling": {
+      "meleeAtk": 1.2
+    },
+    "statScaling": {
+      "10": 1.0,
+      "11": 0.5
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "TOXIC",
+      "status": "POISON",
+      "duration": 2,
+      "chance": 20,
+      "penetration": 15,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 120,
+    "name": "마력지뢰",
+    "description": "지면에 어둠의 마력을 주입한 물리적인 함정을 설치합니다. 밟은 적은 폭발과 함께 물리적인 충격을 받습니다.",
+    "icon": "/images/skills/mana_mine.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 80,
+    "cost": {
+      "mp": 15,
+      "stamina": 15
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "10": 1.1,
+      "17": 1.1
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "penetration": 20,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 121,
+    "name": "파열화살",
+    "description": "어둠의 마력이 깃든 화살을 발사하여 적의 상처를 파열시킵니다. 적중 시 물리 피해를 입히고 출혈을 유발합니다.",
+    "icon": "/images/skills/rupture_arrow.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 10,
+      "stamina": 20
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "11": 1.2,
+      "17": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "status": "BLEED",
+      "duration": 2,
+      "chance": 25,
+      "penetration": 20,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 122,
+    "name": "용암주먹",
+    "description": "주먹에 흐르는 뜨거운 용암의 힘을 실어 적을 강타합니다. 타격 시 화염 피해를 입히며 일정 확률로 화상을 유발합니다.",
+    "icon": "/images/skills/lava_fist.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 15,
+      "stamina": 30
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "10": 1.2,
+      "12": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "FIRE",
+      "status": "BURN",
+      "duration": 2,
+      "chance": 20,
+      "penetration": 20,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 123,
+    "name": "화염방사",
+    "description": "전방을 향해 거센 불길을 뿜어냅니다. 마법 피해를 입히며 일정 확률로 화상을 유발합니다.",
+    "icon": "/images/skills/flame_thrower.png",
+    "grade": "UNCOMMON",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 25
+    },
+    "damageScaling": {
+      "magicAtk": 1.3
+    },
+    "statScaling": {
+      "13": 1.2,
+      "14": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "FIRE",
+      "status": "BURN",
+      "duration": 2,
+      "chance": 20,
+      "penetration": 20,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 124,
+    "name": "화염폭풍",
+    "description": "거대한 화염의 소용돌이를 일으켜 적을 휩씁니다. 강력한 마법 피해와 함께 화상을 입힐 수 있습니다.",
+    "icon": "/images/skills/fire_storm.png",
+    "grade": "RARE",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 70,
+    "cost": {
+      "mp": 55
+    },
+    "damageScaling": {
+      "magicAtk": 1.5
+    },
+    "statScaling": {
+      "13": 1.5,
+      "14": 1.5
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "FIRE",
+      "status": "BURN",
+      "duration": 2,
+      "chance": 30,
+      "penetration": 25,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 125,
+    "name": "끔찍한 비명",
+    "description": "심연의 공포가 서린 비명을 질러 적의 정신을 오염시킵니다. 암흑 피해를 입히고 시야를 흐려 명중률을 떨어뜨립니다.",
+    "icon": "/images/skills/horrific_scream.png",
+    "grade": "UNCOMMON",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "hp": 0,
+      "mp": 30,
+      "stamina": 0
+    },
+    "damageScaling": {
+      "magicAtk": 1.3
+    },
+    "statScaling": {
+      "13": 1.1,
+      "17": 1.1
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "status": "WEAKNESS",
+      "duration": 2,
+      "chance": 20,
+      "penetration": 10,
+      "combatStatModifiers": {
+        "hitChance": 0.9
+      },
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 126,
+    "name": "냉기일격",
+    "description": "차가운 어둠의 기운을 무기에 실어 적을 강타합니다. 물리 피해와 함께 적의 감각을 마비시킵니다.",
+    "icon": "/images/skills/chilling_strike.png",
+    "grade": "UNCOMMON",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 10,
+      "stamina": 25
+    },
+    "damageScaling": {
+      "meleeAtk": 1.3
+    },
+    "statScaling": {
+      "10": 1.2,
+      "17": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "status": "FROZEN",
+      "duration": 1,
+      "chance": 10,
+      "penetration": 20,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "SWARD", "SPEAR", "AXE", "DAGGER", "BLUNT", "BOW", "CROSSBOW"
+    ]
+  },
+  {
+    "id": 127,
+    "name": "어둠의 일격",
+    "description": "무기에 깃든 심연의 마력을 한 번에 터뜨려 적의 생명력을 갉아먹는 치명적인 일격을 가합니다.",
+    "icon": "/images/skills/dark_strike.png",
+    "grade": "RARE",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "hp": 0,
+      "mp": 20,
+      "stamina": 35
+    },
+    "damageScaling": {
+      "meleeAtk": 1.5
+    },
+    "statScaling": {
+      "10": 1.5,
+      "17": 1.5
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "penetration": 25,
+      "critRate": 13,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "SWORD",
+      "SPEAR",
+      "AXE",
+      "DAGGER",
+      "BLUNT"
+    ]
+  },
+  {
+    "id": 128,
+    "name": "영혼 착취",
+    "description": "리치로드가 지팡이를 휘둘러 대상의 영혼을 오염시키고 강력한 암흑 피해를 입힙니다.",
+    "icon": "/images/skills/soul_drain.png",
+    "grade": "RARE",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "mp": 60
+    },
+    "damageScaling": {
+      "magicAtk": 1.5
+    },
+    "statScaling": {
+      "13": 2.0,
+      "17": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "DARK",
+      "status": "PAIN",
+      "duration": 2,
+      "chance": 30,
+      "penetration": 25,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "STAFF",
+      "WAND"
+    ]
+  },
+  {
+    "id": 129,
+    "name": "영겁의 서리꽃",
+    "description": "서리꽃 유령이 아름답지만 치명적인 냉기를 흩뿌립니다. 적중한 적은 살을 파고드는 한기에 얼어붙습니다.",
+    "icon": "/images/skills/eternal_frostbloom.png",
+    "grade": "RARE",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 70,
+    "cost": {
+      "mp": 45
+    },
+    "damageScaling": {
+      "magicAtk": 1.5
+    },
+    "statScaling": {
+      "13": 1.8,
+      "14": 1.2
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 1,
+      "chance": 25,
+      "penetration": 25,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 130,
+    "name": "얼음 이빨",
+    "description": "차가운 냉기가 깃든 송곳니로 적을 깊숙이 물어뜯습니다. 적중 시 물리 피해를 입히고 일정 확률로 적을 얼립니다.",
+    "icon": "/images/skills/ice_fang.png",
+    "grade": "RARE",
+    "type": "PHYSICAL",
+    "turnCost": 1,
+    "hitChance": 75,
+    "cost": {
+      "hp": 0,
+      "mp": 15,
+      "stamina": 35
+    },
+    "damageScaling": {
+      "meleeAtk": 1.5
+    },
+    "statScaling": {
+      "10": 2.0,
+      "11": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 1,
+      "chance": 20,
+      "penetration": 25,
+      "critDamage": 70,
+      "critRate": 13,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 131,
+    "name": "눈보라",
+    "description": "광범위한 지역에 휘몰아치는 얼음 폭풍을 소환하여 적들에게 냉기 피해를 입히고 신체를 얼려버립니다.",
+    "icon": "/images/skills/blizzard.png",
+    "grade": "RARE",
+    "type": "MAGICAL",
+    "turnCost": 1,
+    "hitChance": 70,
+    "cost": {
+      "mp": 50
+    },
+    "damageScaling": {
+      "magicAtk": 1.5
+    },
+    "statScaling": {
+      "13": 2.0,
+      "14": 1.0
+    },
+    "effect": {
+      "type": "DAMAGE",
+      "element": "ICE",
+      "status": "FROZEN",
+      "duration": 1,
+      "chance": 25,
+      "penetration": 25,
+      "critRate": 13,
+      "combatStatModifiers": {},
+      "combatStatOffsets": {}
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  },
+  {
+    "id": 132,
+    "name": "초재생",
+    "description": "신체의 회복 능력을 한계까지 끌어올려 상처를 즉각적으로 치유합니다. 3턴 동안 생명력 재생량이 대폭 상승합니다.",
+    "icon": "/images/skills/hyper_regeneration.png",
+    "grade": "RARE",
+    "type": "BUFF",
+    "turnCost": 1,
+    "hitChance": 100,
+    "cost": {
+      "mp": 40,
+      "stamina": 20
+    },
+    "damageScaling": {},
+    "statScaling": {
+    },
+    "effect": {
+      "type": "BUFF",
+      "element": "PHYSICAL",
+      "status": "STRENGTHEN",
+      "duration": 3,
+      "chance": 100,
+      "combatStatModifiers": {
+        "hpRegen": 1.3
+      },
+      "combatStatOffsets": {
+        "hpRegen": 20
+      }
+    },
+    "requiredWeapons": [
+      "NONE"
+    ]
+  }
+]

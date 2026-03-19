@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.save.DungeonStatus;
+import com.example.demo.domain.save.ActiveMonster;
+import com.example.demo.domain.save.EssenceInstance;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,17 +14,27 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DungeonPageDto {
+    private int dungeonId;
+    private String dungeonName;
     private int currentFloor;
-    private String dungeonId;
+    private int parentDungeonId;
+    private String parentDungeonName;
     private int progress;
+    private int actionCount;
+    private int maxActionCount;
+
+    private int explorationEfficiency; // "탐사 시 진척도 +5%" 식의 표시용
+    private double restSafetyRate;      // "휴식 안전도 85%" 표시용
+    private boolean otherAreas; // 같은 층에 다른 지역이 존재하는지 여부
 
     private boolean isInBattle;
-    private DungeonStatus.ActiveMonster activeMonster;
+    private ActiveMonster activeMonster;
+
+    private List<SkillCardDto> skillCards;
 
     private int playerRemainingTurns;
     private int playerMaxTurns;
 
-    private List<String> battleLogs;
     private int pendingExp;
-    private int pendingGold;
+    private EssencePageDto pendingEssence;
 }

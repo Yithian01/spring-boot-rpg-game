@@ -2,11 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.save.DungeonStatus;
 import com.example.demo.domain.save.GameStatus;
-import com.example.demo.dto.CharacterSelectPageDto;
-import com.example.demo.dto.DungeonPageDto;
-import com.example.demo.dto.GamePageDto;
-import com.example.demo.dto.TownPageDto;
+import com.example.demo.dto.*;
+import com.example.demo.service.BattleService;
 import com.example.demo.service.GameService;
+import com.example.demo.service.ValidationService;
+import jdk.javadoc.doclet.Taglet;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -24,6 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MainController {
     private final GameService gameService;
+    private final ValidationService validationService;
 
     /**
      * 메인 페이지 반환
@@ -75,35 +76,55 @@ public class MainController {
         }
 
         GameStatus status = gameService.getGameStatus();
+        ShopPageDto shopData = status.getActiveShopNpcId() != null ? gameService.getShopPageDto(status.getActiveShopNpcId()) : null;
+        GamblePageDto gambleData = status.isActiveGamble() ? gameService.getGamblePageDto() : null;
 
         switch (status.getLocation()) {
             case TOWN:
                 GamePageDto gameData = gameService.getGamePageData();
-                // 인벤토리 정보도 가져오고 싶음
-
                 TownPageDto townData = gameService.getTownData();
 
                 // 3. 모델에 데이터 담기 (HTML로 전달)
                 // HTML에서 ${game.xxx}, ${town.xxx} 로 쓰려면 이름("game", "town")을 맞춰야 함
                 model.addAttribute("game", gameData);
                 model.addAttribute("town", townData);
+                model.addAttribute("shop", shopData);
+                model.addAttribute("gamble", gambleData);
 
                 log.info(">>> 게임 데이터 로딩 완료: {}", gameData.getUserName());
 
+                System.out.println("game = " + gameData );
+                System.out.println("town = " + townData );
+                System.out.println("shop = " + shopData );
+                System.out.println("gamble = " + gambleData );
+
                 return "town"; // town.html 템플릿 반환
             case DUNGEON:
+                if (validationService.checkGameClear()){
+                    return "redirect:/game/play";
+                }
+
                 // 1. 공통 유저 데이터 (HP, MP, 스탯, 인벤토리, 장착템 등)
                 GamePageDto gameDataForDungeon = gameService.getGamePageData();
 
                 // 2. 던전 전용 데이터 (현재 층, 몬스터 정보, 로그 등)
                 DungeonPageDto dungeonData = gameService.getDungeonData();
 
+
+                if (validationService.checkForceReturn()) {
+                    return "redirect:/game/play";
+                }
+
                 // 3. 모델에 각각 담기
                 model.addAttribute("game", gameDataForDungeon); // 상단바, 사이드바용
                 model.addAttribute("dungeon", dungeonData);   // 중앙 전투창/탐사창용
+                model.addAttribute("shop", shopData);
 
                 // 4. (선택) 현재 무기에 따른 사용 가능 스킬
                 //model.addAttribute("skills", gameService.getAvailableSkills());
+                System.out.println("game = " + gameDataForDungeon );
+                System.out.println("dungeon = " + dungeonData );
+                System.out.println("shop = " + shopData );
 
                 log.info(">>> 던전 화면 진입: {}층", dungeonData.getCurrentFloor());
                 return "dungeon";

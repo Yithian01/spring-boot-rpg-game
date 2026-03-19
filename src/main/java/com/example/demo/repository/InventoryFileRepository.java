@@ -22,11 +22,8 @@ import java.nio.file.Paths;
 @RequiredArgsConstructor
 public class InventoryFileRepository {
     private final ObjectMapper objectMapper;
-
-    // 데이터 저장 경로
     private final String DATA_DIR = System.getProperty("user.dir") + File.separator + "data";
-    // 파일명 통일 (inventory-status.json 과 짝꿍)
-    private final String INVENTORY_FILE = "inventory-status.json";
+    private final String INVENTORY_FILE = "inventory_status.json";
 
     /**
      * [저장] 인벤토리 상태(InventoryStatus) 저장

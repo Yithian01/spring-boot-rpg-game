@@ -3,121 +3,293 @@
 <head>
   <meta charset="UTF-8">
   <title>Dark Town - Dungeon</title>
-  <th:block th:replace="~{fragments/layout :: townStyle}"></th:block>
+  <th:block th:replace="~{fragments/layout :: commonStyle}"></th:block>
   <th:block th:replace="~{fragments/layout :: dungeonStyle}"></th:block>
+  <th:block th:replace="~{fragments/equipment :: equipmentStyle}"></th:block>
+  <th:block th:replace="~{fragments/status :: statusPanelStyle}"></th:block>
+  <th:block th:replace="~{fragments/inventory :: inventoryStyle}"></th:block>
+  <th:block th:replace="~{fragments/actions/dungeon-action :: dungeonActionStyle}"></th:block>
+  <th:block th:replace="~{fragments/gameLog :: gameLogStyle}"></th:block>
+  <th:block th:replace="~{fragments/status-effects :: statusEffectsStyle}"></th:block>
+  <th:block th:replace="~{fragments/monster-effects :: monsterEffectsStyle}"></th:block>
+  <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillStyle}"></th:block>
+  <th:block th:replace="~{fragments/modals/shop-panel :: shopStyle}"></th:block>
 </head>
 <body>
 
-<div th:if="${message}" class="system-message" th:text="${message}"></div>
+  <div th:if="${message}" class="system-message" th:text="${message}"></div>
 
-<div class="container">
-  <div th:replace="~{fragments/layout :: gameHeader}"></div>
+  <div class="container" style="width: 1800px !important;"> <div th:replace="~{fragments/header :: gameHeader}"></div>
 
-  <div class="top-panel">
-    <div class="dungeon-col-stats">
-      <div class="box">
-        <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
+    <div class="top-panel" style="display: flex; gap: 15px; flex: 1; min-height: 0;">
+
+      <div class="dungeon-col-stats" style="flex: 0 0 280px;">
+        <div class="box" style="height: 100%;">
+          <div th:replace="~{fragments/status :: statusPanel(${game})}"></div>
+        </div>
       </div>
-    </div>
 
-    <div class="dungeon-col-inv">
-      <div class="box" style="display: flex; flex-direction: row; gap: 20px; background: #222; padding: 20px; height: 100%;">
+      <div class="dungeon-col-status-effects" style="flex: 0 0 240px; display: flex; flex-direction: column; gap: 10px;">
+        <div style="flex: 1; min-height: 0;">
+          <div th:replace="~{fragments/status-effects :: statusEffectsPanel(${game.activeStatuses})}"></div>
+        </div>
 
-        <div style="flex: 1; display: flex; flex-direction: column; gap: 15px; min-width: 0;">
+        <div style="flex: 1; min-height: 0;">
+          <div th:if="${dungeon.isInBattle and dungeon.activeMonster != null}" style="height: 100%;">
+            <div th:replace="~{fragments/monster-effects :: monsterEffectsPanel(${dungeon.activeMonster.activeStatuses})}"></div>
+          </div>
+          <div th:unless="${dungeon.isInBattle and dungeon.activeMonster != null}"
+               style="height: 100%; display: flex; justify-content: center; align-items: center; background: rgba(0,0,0,0.2); border: 1px dashed #444; border-radius: 8px; opacity: 0.5;">
+            <span style="font-size: 0.8rem; color: #888;">적 탐색 중...</span>
+          </div>
+        </div>
+      </div>
 
-          <div style="flex-shrink: 0;">
-            <div th:replace="~{fragments/info :: dungeonInventory(${dungeon})}"></div>
+      <div class="dungeon-col-inv" style="flex: 1; min-width: 500px;">
+        <div class="box" style="display: flex; flex-direction: row; gap: 20px; background: #222; padding: 20px; height: 100%;">
+
+          <div style="flex: 0 0 330px; display: flex; flex-direction: column; gap: 15px;">
+            <div th:replace="~{fragments/infos/dungeon-info :: dungeonInfo(${dungeon})}"></div>
           </div>
 
-          <div style="flex: 1; min-height: 0; display: flex; flex-direction: column;">
-            <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #ff4d4d; padding-left: 10px;">⚔️ 전투 기록</h3>
-            <div id="battleLogs" class="custom-scroll" style="flex: 1; overflow-y: auto; background: #000; border-radius: 4px; border: 1px solid #333; padding: 10px; font-size: 0.85rem; line-height: 1.6;">
-              <div th:each="log : ${dungeon.battleLogs}" th:utext="${log}" style="border-bottom: 1px solid #222; padding: 3px 0;"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
+            <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #555; padding-left: 10px;">🎒 소지품 가방</h3>
+            <div style="flex: 1; min-height: 0; border: 1px solid #333; border-radius: 4px; overflow: hidden;">
+              <div th:replace="~{fragments/inventory :: inventoryList(${game.items}, 1)}"></div>
             </div>
           </div>
-        </div>
 
-        <div style="flex: 1; display: flex; flex-direction: column; min-width: 0;">
-          <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-left: 4px solid #555; padding-left: 10px;">🎒 소지품 가방</h3>
-          <div class="custom-scroll" style="flex: 1; background: #1a1a1a; border-radius: 4px; border: 1px solid #333; overflow: hidden;">
-            <div th:replace="~{fragments/modals :: inventoryList(${game.items})}" style="height: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="dungeon-col-equip" style="flex: 0 0 350px;">
+        <div class="box equipment-box" style="display: flex; flex-direction: column; height: 100%;">
+          <h2 style="margin-bottom: 10px;">장착 장비</h2>
+          <div th:replace="~{fragments/equipment :: equipmentGrid(${game.equippedItems})}"></div>
+          <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; margin-top: 15px;">
+            <div th:replace="~{fragments/gameLog :: gameLogPanel(${game.gameLogs})}"></div>
           </div>
         </div>
-
       </div>
+
     </div>
 
-    <div class="dungeon-col-equip">
-      <div class="box equipment-box">
-        <h2>장착 장비</h2>
-        <div th:replace="~{fragments/modals :: equipmentGrid(${game.equippedItems})}"></div>
-      </div>
-    </div>
+    <div th:replace="~{fragments/actions/dungeon-action :: dungeonActionPanel(gameData=${game}, dungeon=${dungeon})}"></div>
   </div>
 
-  <div th:replace="~{fragments/actions :: dungeonActionPanel(gameData=${game})}"></div>
-</div>
-<div th:replace="~{fragments/modals :: gameOverModal(${gameOver}, ${message})}"></div>
+  <th:block th:replace="~{fragments/modals/learnedSkillList :: learnedSkillModal(${game.learnedSkills})}"></th:block>
+  <div th:replace="~{fragments/modals/gameover-modal :: gameOverModal(${gameOver}, ${message})}"></div>
 
-<script th:inline="javascript">
-  /*<![CDATA[*/
-  // [기존 스크립트 로직 유지]
-  function showDescription(element) {
+  <th:block th:if="${shop != null}">
+    <div th:replace="~{fragments/modals/shop-panel :: shopModal(${shop}, ${game})}"></div>
+  </th:block>
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+
+    function translateSubType(type) {
+        const map = {
+            'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
+            'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
+            'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
+        };
+        return map[type] || type;
+    }
+
+    function castSkill(skillId) {
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = '/battle/skill/' + skillId;
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    window.onload = function() {
+        if ([[${gameOver ?: false}]]) {
+            document.querySelector('.container').style.pointerEvents = 'none';
+        }
+    };
+
+    // 스킬 툴팁 생성 및 표시
+    function showSkillTooltip(el) {
+      let tooltip = document.getElementById('skill-tooltip');
+      if (!tooltip) {
+          tooltip = document.createElement('div');
+          tooltip.id = 'skill-tooltip';
+          // white-space: pre-wrap을 추가하면 줄바꿈이 더 잘 먹습니다.
+          // z-index를 20000 정도로 대폭 높여서 모달(13000) 위로 올립니다.
+          tooltip.style = "position:fixed; background:rgba(0,0,0,0.95); border:1px solid #ff4d4d; color:white; padding:12px; border-radius:8px; z-index:20000; width:240px; font-size:0.85rem; pointer-events:none; box-shadow: 0 0 15px rgba(0,0,0,0.7); line-height:1.4;";
+          document.body.appendChild(tooltip);
+      }
+
+      const name = el.dataset.name;
+      const desc = el.dataset.desc;
+
+      // [수정] '|' 구분자로 쪼개서 배열로 만듦
+      const scaling = el.dataset.scaling ? el.dataset.scaling.split('|') : [];
+      const mods = el.dataset.mods ? el.dataset.mods.split('|') : [];
+      const weapons = el.dataset.weapons ? el.dataset.weapons.split('|') : [];
+
+      const status = el.dataset.status;
+      const chance = el.dataset.chance;
+      const duration = el.dataset.duration;
+
+      let html = `<strong style="color:#ff4d4d; font-size:1.1rem; display:block; margin-bottom:5px;">${name}</strong>`;
+      html += `<span style="color:#bbb;">${desc}</span><hr style="border:0; border-top:1px solid #444; margin:8px 0;">`;
+
+      // [수정] 위력(Scaling) 정보를 세로 리스트로 나열
+      if (scaling.length > 0) {
+          html += `<div style="color:#ffd700; margin-bottom:8px;"><b>■ 보정 수치</b>`;
+          scaling.forEach(item => {
+              if(item.trim()) html += `<div style="padding-left:5px;">• ${item.trim()}</div>`;
+          });
+          html += `</div>`;
+      }
+
+      // 2. 필요 무기 정보 추가
+      if (weapons.length > 0 && weapons[0] !== "") {
+          html += `<div style="color:#63e6be; margin-bottom:8px;"><b>■ 필요 무기</b>`;
+
+          if (weapons.includes('NONE')) {
+              html += `<div style="padding-left:5px; color:#888;">• 제한 없음</div>`;
+          } else {
+              const weaponMap = {
+                  'SWORD': '🗡️ 검', 'AXE': '🪓 도끼', 'SPEAR': '🔱 창', 'SHIELD': '🛡️ 방패',
+                  'DAGGER': '🔪 단검', 'BLUNT': '🔨 둔기', 'BOW': '🏹 활', 'CROSSBOW': '💘 석궁',
+                  'KNUCKLE': '🥊 너클', 'WAND': '🪄 완드', 'STAFF': '🔮 스탭'
+              };
+              html += `<div style="padding-left:5px; display:flex; flex-wrap:wrap; gap:4px;">`;
+              weapons.forEach(w => {
+                  const label = weaponMap[w.trim()] || w.trim();
+                  html += `<span style="background:rgba(99, 230, 190, 0.1); border:1px solid rgba(99, 230, 190, 0.3); padding:1px 5px; border-radius:4px; font-size:0.75rem;">${label}</span>`;
+              });
+              html += `</div>`;
+          }
+          html += `</div>`;
+      }
+
+      // 상태 이상 효과
+      if (status && status !== 'null') {
+          html += `<div style="color:#ff9f43; margin-bottom:8px;"><b>■ 효과:</b> ${status} (${chance}%)<br/>└ ${duration}턴 지속</div>`;
+      }
+
+      // [수정] 추가 상세(Mods) 정보를 세로 리스트로 나열
+      if (mods.length > 0 && mods[0] !== "") {
+          html += `<div style="color:#4dabf7;"><b>■ 상세 정보</b>`;
+          mods.forEach(item => {
+              if(item.trim()) html += `<div style="padding-left:5px;">• ${item.trim()}</div>`;
+          });
+          html += `</div>`;
+      }
+
+      tooltip.innerHTML = html;
+      tooltip.style.display = 'block';
+
+      // 위치 조절 (화면 밖으로 나가지 않게 살짝 보정)
+      const rect = el.getBoundingClientRect();
+      tooltip.style.left = (rect.left) + 'px';
+      tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
+  }
+
+    function hideSkillTooltip() {
+        const tooltip = document.getElementById('skill-tooltip');
+        if (tooltip) tooltip.style.display = 'none';
+    }
+
+    function handleStatusEffectHover(event, element) {
       const name = element.getAttribute('data-name');
-      const desc = element.getAttribute('data-desc');
-      const descDisplay = document.getElementById('desc-display');
-      if (descDisplay) {
-          descDisplay.innerHTML = `<strong>${name}</strong>: ${desc}`;
-          descDisplay.style.color = '#fff';
+      const category = element.getAttribute('data-category');
+      const code = element.getAttribute('data-code');
+      const turns = element.getAttribute('data-turns');
+
+      const statOffsets = element.getAttribute('data-stat-offsets');
+      const statMods = element.getAttribute('data-stat-mods');
+      const combatOffsets = element.getAttribute('data-combat-offsets');
+      const combatMods = element.getAttribute('data-combat-mods');
+      // 추가: 틱 데미지 데이터 가져오기
+      const tickDamage = element.getAttribute('data-tick-damage');
+
+      showStatusEffectTooltip(event, name, category, code, turns, statOffsets, statMods, combatOffsets, combatMods, tickDamage);
+    }
+
+    function showStatusEffectTooltip(e, name, category, code, turns, statOffsets, statMods, combatOffsets, combatMods, tickDamage) {
+      const tooltip = document.getElementById('statTooltip');
+      const tooltipTitle = document.getElementById('tooltipTitle');
+      const tooltipBody = document.getElementById('tooltipBody');
+
+      if(!tooltip) return;
+
+      tooltipTitle.innerHTML = `<span style="color:${category === 'BUFF' ? '#4dabf7' : '#ff4d4d'}">${name}</span>`;
+
+      let html = `<div style="font-size:0.85em; margin-top:5px;">`;
+      html += `<div style="color:#ffd700; margin-bottom:4px;"><b>남은 지속 시간:</b> ${turns}턴</div>`;
+      html += `<div style="background:rgba(255,255,255,0.05); padding:8px; border-radius:4px; margin-top:8px; border:1px solid #333;">`;
+      html += `<b style="color:#bbb; display:block; margin-bottom:5px; font-size:0.8rem;">[상세 효과]</b>`;
+
+      let hasEffect = false;
+      let effectHtml = "";
+
+      if (tickDamage && tickDamage !== '0' && tickDamage !== 'null') {
+          hasEffect = true;
+          effectHtml += `<div style="color:#ff4d4d; margin-bottom:2px;">매 턴 피해: ${tickDamage}</div>`;
       }
-  }
 
-  function clearDescription() {
-      const descDisplay = document.getElementById('desc-display');
-      if (descDisplay) {
-          descDisplay.innerHTML = '스탯이나 아이템에 마우스를 올리세요.';
-          descDisplay.style.color = '#888';
+      // 핵심 수정: 배율과 가산치를 구분해서 파싱하는 내부 함수
+      function parseAndFormat(modStr, isOffset) {
+          if(!modStr || modStr === '{}' || modStr === 'null' || modStr === 'undefined') return "";
+          let clean = modStr.replace(/[{}]/g, "");
+          return clean.split(",").map(item => {
+              let parts = item.split("=");
+              if(parts.length < 2) return "";
+              let key = parts[0].trim();
+              let val = parseFloat(parts[1].trim());
+              if (isNaN(val)) return "";
+
+              hasEffect = true;
+              let displayVal, sign, color;
+
+              if (isOffset) {
+                  // 가산치 (Offsets): 예) +5, -10% (저항 등)
+                  // 저항 수치(0.1)를 10%로 보여줄지, 고정수치 5를 보여줄지 판단
+                  let isPercentStat = key.toLowerCase().includes('res') || key.toLowerCase().includes('accuracy') || key.toLowerCase().includes('dodge');
+                  displayVal = isPercentStat ? Math.round(val * 1) + "%" : Math.round(val);
+                  sign = val >= 0 ? "+" : "";
+                  color = val >= 0 ? "#4dabf7" : "#ff4d4d";
+              } else {
+                  // 배율 (Modifiers): 예) 0.7 -> -30%
+                  let percentage = Math.round((val - 1) * 100);
+                  displayVal = Math.abs(percentage) + "%";
+                  sign = percentage >= 0 ? "+" : "-";
+                  color = percentage >= 0 ? "#4dabf7" : "#ff4d4d";
+              }
+
+              const keyMap = {
+                  'accuracy': '명중률', 'meleeAtk': '근접공격력', 'physDef': '물리방어',
+                  'physRes': '물리경감', 'fireRes': '화염저항', 'dodge': '회피율'
+              };
+              let displayName = keyMap[key] || key;
+
+              return `<div style="color:${color};">${displayName}: ${sign}${displayVal}</div>`;
+          }).join("");
       }
-  }
 
-  function showItemDescription(element) {
-      const name = element.getAttribute('data-name');
-      const grade = element.getAttribute('data-grade');
-      const subType = element.getAttribute('data-subtype');
-      const bonuses = element.getAttribute('data-bonuses');
-      const descDisplay = document.getElementById('desc-display');
+      // 4가지 맵을 모두 순회하며 추가
+      effectHtml += parseAndFormat(statOffsets, true);    // 베이스 스탯 가산
+      effectHtml += parseAndFormat(statMods, false);      // 베이스 스탯 배율
+      effectHtml += parseAndFormat(combatOffsets, true);  // 전투 스탯 가산
+      effectHtml += parseAndFormat(combatMods, false);    // 전투 스탯 배율
 
-      if (descDisplay) {
-          const gradeColors = {
-              'COMMON': '#aaaaaa', 'UNCOMMON': '#1eff00', 'RARE': '#0070dd',
-              'EPIC': '#a335ee', 'LEGENDARY': '#ff8000'
-          };
-          const color = gradeColors[grade] || '#fff';
-          const subTypeKr = translateSubType(subType);
+      if(!hasEffect) effectHtml = `<div style="color:#888;">특수 효과 정보 없음</div>`;
 
-          descDisplay.innerHTML = `
-              <strong style="color:${color};">[${name}]</strong>
-              <span style="color:#ffd700; font-weight:bold; margin: 0 5px;">${subTypeKr}</span>
-              <span style="font-size:0.9em; color:#bbb;">${bonuses}</span>
-          `;
-      }
-  }
+      html += effectHtml + `</div>`;
+      html += `<hr style="border:0; border-top:1px solid #333; margin:8px 0;">`;
+      html += `<div style="color:#888; font-size:0.75rem;">현재 적용 중인 특수 효과입니다.</div></div>`;
 
-  function translateSubType(type) {
-      const map = {
-          'BLUNT': '둔기', 'BOW': '활', 'DAGGER': '단검', 'STAFF': '지팡이',
-          'CLOTH': '천', 'LEATHER': '가죽', 'HEAVY': '중갑', 'SHIELD': '방패',
-          'ACCESSORY': '장신구', 'FOOD': '음식', 'POTION': '물약'
-      };
-      return map[type] || type;
-  }
-
-  window.onload = function() {
-      if ([[${gameOver ?: false}]]) {
-          document.querySelector('.container').style.pointerEvents = 'none';
-      }
-  };
-  /*]]>*/
-</script>
+      tooltipBody.innerHTML = html;
+      tooltip.style.display = 'block';
+      tooltip.style.left = (e.clientX + 15) + 'px';
+      tooltip.style.top = (e.clientY + 15) + 'px';
+    }
+    /*]]>*/
+  </script>
 </body>
 </html>

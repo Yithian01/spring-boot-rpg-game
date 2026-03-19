@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="gambleStyle">
+    <style>
+        .gamble-modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9000;
+            backdrop-filter: blur(8px);
+        }
+
+        .gamble-content {
+            background: #1a1a1c;
+            border: 2px solid #8e44ad;
+            border-radius: 20px;
+            padding: 25px;
+            width: 440px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(142, 68, 173, 0.4);
+        }
+
+        .gamble-header h2 {
+            color: #a29bfe;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(162, 155, 254, 0.5);
+        }
+
+        .gold-display {
+            background: #252527;
+            padding: 6px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+        }
+
+        .bet-input-wrapper {
+            display: flex;
+            align-items: center;
+            background: #000;
+            border: 2px solid #444;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .bet-input-wrapper input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 12px;
+            font-size: 1.4rem;
+            text-align: center;
+            width: 100%;
+            outline: none;
+        }
+
+        .step-btn {
+            background: #222;
+            color: #fff;
+            border: none;
+            width: 45px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .game-selection-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .btn-game-select {
+            display: flex;
+            align-items: center;
+            background: #252527;
+            border: 1px solid #444;
+            border-radius: 12px;
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            color: inherit;
+        }
+
+        .btn-game-select:hover {
+            border-color: #8e44ad;
+            background: #2d2d30;
+            transform: scale(1.02);
+        }
+
+        .game-icon { font-size: 1.8rem; margin-right: 15px; }
+        .game-details { display: flex; flex-direction: column; text-align: left; }
+        .game-name { font-weight: bold; color: #fff; }
+        .game-desc { font-size: 0.8rem; color: #999; }
+
+        /* 보너스 강조용 스팬 */
+        .bonus-text {
+            color: #2ecc71;
+            font-size: 0.75rem;
+            margin-left: 3px;
+            font-weight: normal;
+        }
+
+        .gamble-footer {
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .btn-close-gamble {
+            background: #333;
+            color: #aaa;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        .btn-close-gamble:hover { background: #444; color: #fff; }
+
+        .btn-luck-test { border-color: #ffd700; }
+        .btn-luck-test .game-name { color: #ffd700; }
+
+        /* Chrome, Safari, Edge, Opera에서 스피너 제거 */
+        .bet-input-wrapper input::-webkit-outer-spin-button,
+        .bet-input-wrapper input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox에서 스피너 제거 */
+        .bet-input-wrapper input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</th:block>
+
+<div th:fragment="gambleModal(gamble, town)"
+     id="gambleModal"
+     class="gamble-modal-overlay"
+     style="display: flex;">
+
+    <div class="gamble-content">
+        <div class="gamble-header">
+            <h2>🎲 암시장 도박장</h2>
+            <div class="gold-display">
+                <span style="color: #999; font-size: 0.8rem;">보유 자산: </span>
+                <span th:text="${#numbers.formatInteger(gamble.currentGold, 0, 'COMMA')}" style="color: #ffd700; font-weight: 800;"></span>
+                <span style="color: #ffd700; font-size: 0.8rem;"> G</span>
+            </div>
+        </div>
+
+        <div class="bet-input-section">
+            <div class="bet-input-wrapper" style="margin-bottom: 10px;">
+                <input type="number" id="bettingAmount" name="amount"
+                       th:min="10" th:max="${gamble.currentGold}" value="100"
+                       oninput="updateFormattedDisplay()"
+                       style="font-size: 1.6rem; padding: 15px;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
+                <button type="button" class="step-btn" style="width: 100%; height: 45px; border-radius: 8px;"
+                        onclick="stepAmount(-100)">- 100</button>
+                <button type="button" class="step-btn" style="width: 100%; height: 45px; border-radius: 8px;"
+                        onclick="stepAmount(100)">+ 100</button>
+
+                <button type="button" class="step-btn" style="width: 100%; height: 45px; border-radius: 8px; background: #34495e;"
+                        onclick="setHalf()">1/2 (HALF)</button>
+                <button type="button" class="step-btn" style="width: 100%; height: 45px; border-radius: 8px; color: #ff7675; border: 1px solid #ff7675; background: #2c2c2e;"
+                        onclick="setAllIn()">MAX (ALL-IN)</button>
+            </div>
+
+            <div id="formattedAmount" style="color: #ffd700; font-size: 0.9rem; font-weight: bold; margin-bottom: 5px;">
+                BET: 100 G
+            </div>
+        </div>
+
+        <div class="game-selection-list">
+            <form action="/gamble/luck-test" method="post" style="display: contents;">
+                <input type="hidden" name="gameType" value="LUCK_TEST">
+                <input type="hidden" name="amount" class="hidden-sync-amount">
+                <button type="submit" class="btn-game-select btn-luck-test" onclick="syncAmount(this)">
+                    <span class="game-icon">✨</span>
+                    <span class="game-details">
+                        <span class="game-name">운명에 맡기기</span>
+                        <span class="game-desc" th:if="${town.gambleOption != null}">
+                            승률: [[${town.gambleOption.winRate}]]%
+                            <span class="bonus-text" th:if="${town.gambleOption.bonusWinRate > 0}">(+[[${town.gambleOption.bonusWinRate}]]%)</span>
+                            | 배당: [[${town.gambleOption.dividendRate}]]배
+                            <span class="bonus-text" th:if="${town.gambleOption.bonusDividendRate > 0}">(+[[${town.gambleOption.bonusDividendRate}]]%)</span>
+                        </span>
+                    </span>
+                </button>
+            </form>
+
+            <hr style="border: 0; border-top: 1px solid #333; margin: 5px 0;">
+
+            <form action="/gamble/start" method="post" style="display: contents;">
+                <input type="hidden" name="gameType" value="UNDER_OVER">
+                <input type="hidden" name="amount" class="hidden-sync-amount">
+                <button type="submit" class="btn-game-select" onclick="syncAmount(this)">
+                    <span class="game-icon">🎲</span>
+                    <span class="game-details">
+                        <span class="game-name">언더 / 오버</span>
+                        <span class="game-desc">주사위 2개의 합이 7 기준 어디일지 맞힙니다.</span>
+                    </span>
+                </button>
+            </form>
+
+            <form action="/gamble/start" method="post" style="display: contents;">
+                <input type="hidden" name="gameType" value="BLACKJACK">
+                <input type="hidden" name="amount" class="hidden-sync-amount">
+                <button type="submit" class="btn-game-select" onclick="syncAmount(this)">
+                    <span class="game-icon">🃏</span>
+                    <span class="game-details">
+                        <span class="game-name">다크 블랙잭</span>
+                        <span class="game-desc">딜러와 대결하여 21에 가까운 수를 만듭니다.</span>
+                    </span>
+                </button>
+            </form>
+        </div>
+
+        <div class="gamble-footer">
+            <a href="/town/gamble/close" class="btn-close-gamble">돌아가기</a>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        const maxGold = [[${gamble.currentGold}]];
+
+        function syncAmount(btn) {
+            const inputEl = document.getElementById('bettingAmount');
+            let amount = parseInt(inputEl.value || 0);
+
+            if (amount < 10) {
+                alert("최소 10G 이상은 베팅해야 합니다.");
+                amount = 10;
+                inputEl.value = 10;
+            }
+
+            if (amount > maxGold) {
+                amount = maxGold;
+                inputEl.value = maxGold;
+            }
+
+            // hidden input에 값 복사
+            btn.closest('form').querySelector('.hidden-sync-amount').value = amount;
+        }
+
+        function setBet(amount) {
+            const input = document.getElementById('bettingAmount');
+            let target = Math.floor(amount);
+
+            if (target > maxGold) target = maxGold;
+            if (target < 0) target = 0; // 최소값 제어
+
+            input.value = target;
+            updateFormattedDisplay();
+        }
+
+        function stepAmount(step) {
+            const input = document.getElementById('bettingAmount');
+            setBet(parseInt(input.value || 0) + step);
+        }
+
+        /* [수정] 현재 입력된 배팅 금액의 절반으로 설정 */
+        function setHalf() {
+            const input = document.getElementById('bettingAmount');
+            const currentVal = parseInt(input.value || 0);
+            setBet(currentVal / 2);
+        }
+
+        /* 보유 중인 전체 금액으로 설정 */
+        function setAllIn() {
+            setBet(maxGold);
+        }
+
+        function updateFormattedDisplay() {
+            const val = document.getElementById('bettingAmount').value;
+            const display = document.getElementById('formattedAmount');
+            if (display) {
+                display.innerText = "BET: " + Number(val || 0).toLocaleString() + " G";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updateFormattedDisplay);
+    </script>
+</div>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="inventoryStyle">
+    <style>
+        /* [기존 스타일 유지] */
+        .inv-list-container { height: 100%; display: flex; flex-direction: column; min-height: 0; background: #1a1a1a; position: relative; }
+        .inv-scroll-area { flex: 1; overflow-y: auto; min-height: 0; padding-right: 8px; }
+        .inv-ul { list-style: none; padding: 0; margin: 0; }
+        .inv-item-row { display: flex; align-items: center; padding: 12px 10px; border-bottom: 1px solid #333; gap: 12px; transition: background 0.2s; }
+        .inv-item-row:hover { background: rgba(255, 255, 255, 0.05); }
+        .inv-icon-box { width: 52px; height: 52px; background: #000; border: 2px solid #444; border-radius: 4px; overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center; position: relative; }
+        .inv-icon-box img { width: 100%; height: 100%; object-fit: cover; cursor: help; }
+        .inv-qty-badge { position: absolute; bottom: 2px; right: 2px; background: rgba(0, 0, 0, 0.75); color: #00ff00; font-size: 0.7rem; font-weight: bold; padding: 1px 4px; border-radius: 3px; border: 1px solid rgba(0, 255, 0, 0.3); pointer-events: none; z-index: 5; }
+        .inv-item-info { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+        .inv-item-name { font-weight: bold; font-size: 0.95rem; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; padding-right: 5px; }
+        .inv-btn-group { display: flex; flex-direction: column; gap: 4px; margin-left: auto; min-width: 65px; }
+        .btn-quick { width: 100%; padding: 6px 0; font-size: 0.75rem; font-weight: bold; border-radius: 4px; cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; }
+        form[action*="equip"] .btn-quick { background: linear-gradient(180deg, #3d6a3d 0%, #2a4a2a 100%); }
+        form[action*="consume"] .btn-quick { background: linear-gradient(180deg, #3a5a8a 0%, #2a3a5a 100%); }
+        form[action*="sell"] .btn-quick { background: linear-gradient(180deg, #8a3a3a 0%, #5a2a2a 100%); }
+
+        /* 등급 색상 */
+        .text-COMMON { color: #eee; } .text-UNCOMMON { color: #1eff00; } .text-RARE { color: #0070dd; } .text-EPIC { color: #a335ee; } .text-LEGENDARY { color: #ff8000; text-shadow: 0 0 8px rgba(255,128,0,0.5); }
+        .border-COMMON { border-color: #555 !important; } .border-UNCOMMON { border-color: #1eff00 !important; } .border-RARE { border-color: #0070dd !important; } .border-EPIC { border-color: #a335ee !important; } .border-LEGENDARY { border-color: #ff8000 !important; box-shadow: 0 0 10px rgba(255,128,0,0.3); }
+
+        /* 툴팁 */
+        #item-tooltip { position: fixed; display: none; z-index: 16000; width: 320px; background: rgba(10, 10, 10, 0.98); border: 2px solid #555; border-radius: 8px; padding: 18px; pointer-events: none; box-shadow: 0 10px 30px rgba(0,0,0,0.9); font-family: 'Pretendard', sans-serif; }
+        .tt-header { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid #444; padding-bottom: 10px; margin-bottom: 12px; }
+        .tt-name { font-size: 1.25rem; font-weight: bold; line-height: 1.3; word-break: keep-all; overflow-wrap: break-word; }
+        .tt-type { font-size: 0.85rem; color: #aaa; font-weight: normal; }
+        .tt-desc { color: #bbb; font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; white-space: pre-wrap; font-style: italic; }
+        .tt-stats { color: #ffd700; font-size: 0.9rem; padding-top: 8px; border-top: 1px dashed #333; }
+        .tt-stat-row { margin-bottom: 3px; }
+
+        /* 판매 모달 스타일 */
+        .sell-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 20000;
+            display: none; align-items: center; justify-content: center;
+        }
+        .sell-modal-content {
+            background: #1a1a1a; border: 2px solid #8a3a3a; border-radius: 12px;
+            width: 340px; padding: 25px; text-align: center; color: #fff;
+            box-shadow: 0 0 30px rgba(138, 58, 58, 0.3);
+        }
+        .sell-modal-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; color: #ffd700; }
+        .sell-qty-control { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 15px 0; }
+        .btn-qty-adj {
+            width: 36px; height: 36px; background: #333; border: 1px solid #555;
+            color: #fff; font-size: 1.2rem; font-weight: bold; border-radius: 4px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s;
+        }
+        .btn-qty-adj:hover { background: #444; border-color: #ffd700; color: #ffd700; }
+        .btn-max {
+            padding: 0 10px; height: 36px; background: #4a3a1a; border: 1px solid #ffd700;
+            color: #ffd700; font-size: 0.75rem; font-weight: bold; border-radius: 4px; cursor: pointer;
+        }
+        .btn-max:hover { background: #ffd700; color: #000; }
+        .sell-input {
+            width: 60px; height: 36px; background: #000; border: 1px solid #555;
+            color: #00ff00; text-align: center; font-size: 1.1rem; font-weight: bold; border-radius: 4px;
+        }
+        .total-price-box {
+            background: rgba(0,0,0,0.3); padding: 12px; border-radius: 6px;
+            margin: 15px 0; border: 1px dashed #444;
+        }
+        .btn-modal { flex: 1; padding: 12px; border-radius: 6px; font-weight: bold; cursor: pointer; border: none; transition: 0.2s; }
+        .btn-modal-confirm { background: #8a3a3a; color: white; }
+        .btn-modal-confirm:hover { background: #a84848; }
+        .btn-modal-cancel { background: #444; color: white; }
+    </style>
+</th:block>
+
+<div th:fragment="inventoryList(items, mode)" class="inv-list-container">
+
+    <div id="sell-modal" class="sell-modal-overlay">
+        <div class="sell-modal-content">
+            <div id="modal-item-name" class="sell-modal-title">아이템 이름</div>
+
+            <div class="sell-qty-control">
+                <button type="button" class="btn-qty-adj" onclick="changeQty(-1)">-</button>
+                <input type="number" id="modal-qty-input" class="sell-input" min="1" value="1" oninput="updateTotalPrice()">
+                <button type="button" class="btn-qty-adj" onclick="changeQty(1)">+</button>
+                <button type="button" class="btn-max" onclick="setMaxQty()">MAX</button>
+            </div>
+            <div id="modal-max-label" style="font-size: 0.8rem; color: #777;">보유 수량: 1</div>
+
+            <div class="total-price-box">
+                <div style="font-size: 0.75rem; color: #aaa; margin-bottom: 4px;">예상 획득 금액</div>
+                <div style="font-size: 1.1rem; color: #ffd700; font-weight: bold;">
+                    💰 <span id="modal-total-price">0</span> Gold
+                </div>
+            </div>
+
+            <div class="sell-modal-btns">
+                <button type="button" class="btn-modal btn-modal-confirm" onclick="confirmSell()">판매 확정</button>
+                <button type="button" class="btn-modal btn-modal-cancel" onclick="closeSellModal()">취소</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="item-tooltip">
+        <div class="tt-header">
+            <div id="tt-name" class="tt-name">아이템 이름</div>
+            <div id="tt-type" class="tt-type">부위</div>
+            <div id="tt-slot" class="tt-type">장착슬릇</div>
+        </div>
+        <div id="tt-desc" class="tt-desc">설명이 여기에 표시됩니다.</div>
+        <div id="tt-stats" class="tt-stats"></div>
+    </div>
+
+    <div class="inv-scroll-area custom-scroll">
+        <ul class="inv-ul">
+            <li th:if="${#lists.isEmpty(items)}" style="padding:40px; text-align:center; color:#555;">가방이 비어있습니다.</li>
+            <li th:each="item : ${items}" class="inv-item-row">
+                <div class="inv-icon-box" th:classappend="${'border-' + item.grade}">
+                    <img th:src="${item.icon}"
+                         onmouseover="showTooltip(this)"
+                         onmousemove="moveTooltip(event)"
+                         onmouseout="hideTooltip()"
+                         th:data-name="${item.name}"
+                         th:data-grade="${item.grade}"
+                         th:data-type="${item.subType != null ? item.subType : item.type}"
+                         th:data-slot="${item.slot != 'NONE' ? item.slot : null}"
+                         th:data-desc="${item.description}"
+                         th:data-bonuses="${#strings.listJoin(item.statBonuses, '|')}"
+                         th:data-recovery="${item.recoveryEffect}"
+                         th:data-quantity="${item.quantity}"
+                         th:data-gold="${item.gold}">
+                    <span th:if="${item.quantity > 1}" class="inv-qty-badge" th:text="${item.quantity}"></span>
+                </div>
+
+                <div class="inv-item-info">
+                    <span class="inv-item-name" th:classappend="${'text-' + item.grade}">
+                        <span th:text="${item.name}"></span>
+                    </span>
+                    <small class="inv-item-type"
+                           th:data-type="${item.subType != null ? item.subType : item.type}"
+                           th:data-slot="${item.slot}">
+                    </small>
+                </div>
+
+                <div class="inv-btn-group">
+                    <form th:if="${item.slot != null and item.slot != 'NONE'}" action="/inventory/equip" method="post">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <input type="hidden" name="slot" th:value="${item.slot}">
+                        <button type="submit" class="btn-quick">장착</button>
+                    </form>
+                    <form th:if="${item.type == 'CONSUMABLE'}" action="/inventory/consume" method="post">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <button type="submit" class="btn-quick">사용</button>
+                    </form>
+                    <form th:if="${mode != 1}" th:id="'form-sell-' + ${item.id}" action="/inventory/sell" method="post">
+                        <input type="hidden" name="itemId" th:value="${item.id}">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="button" class="btn-quick"
+                                th:onclick="openSellModal([[${item.id}]], [[${item.name}]], [[${item.quantity}]], [[${item.gold}]])">판매</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script th:inline="javascript">
+        // 함수를 선언식이 아니라 전역 객체(window)에 직접 할당합니다.
+        window.showTooltip = function(el) {
+            const tooltip = document.getElementById('item-tooltip');
+            if(!tooltip) return;
+
+            const data = {
+                name: el.getAttribute('data-name'),
+                grade: el.getAttribute('data-grade'),
+                type: el.getAttribute('data-type'),
+                slot: el.getAttribute('data-slot') || null,
+                desc: el.getAttribute('data-desc'),
+                bonuses: el.getAttribute('data-bonuses'),
+                recovery: el.getAttribute('data-recovery'),
+                quantity: parseInt(el.getAttribute('data-quantity') || "1"),
+                gold: el.getAttribute('data-gold')
+            };
+
+            const nameEl = document.getElementById('tt-name');
+            nameEl.innerHTML = data.quantity > 1 ? `<span style="color:#00ff00;">[${data.quantity}개]</span> ${data.name}` : data.name;
+            nameEl.className = 'tt-name text-' + data.grade;
+
+            const slotEl = document.getElementById('tt-slot');
+            if (data.slot && data.slot !== 'NONE') {
+                const slotKr = SLOT_KR[data.slot] || data.slot;
+                slotEl.innerText = "장착 슬롯: " + slotKr;
+                slotEl.style.display = "block";
+            } else {
+                slotEl.style.display = "none";
+            }
+
+            const typeKr = TYPE_KR[data.type] || data.type;
+            document.getElementById('tt-type').innerText = "분류: " + typeKr;
+            document.getElementById('tt-desc').innerText = data.desc || "특별한 설명이 없는 아이템입니다.";
+
+            let statsHtml = "";
+            if (data.bonuses) data.bonuses.split('|').forEach(s => { if(s.trim()) statsHtml += `<div class="tt-stat-row">• ${s.trim()}</div>`; });
+            if (data.recovery && data.recovery !== 'null') statsHtml += `<div class="tt-stat-row" style="color:#00ff00;">• ${data.recovery}</div>`;
+            if (data.gold && data.gold !== "null") statsHtml += `<div class="tt-stat-row" style="color:#ffd700; margin-top:10px; border-top:1px solid #444; padding-top:8px;">💰 판매가: ${Number(data.gold).toLocaleString()} Gold</div>`;
+
+            document.getElementById('tt-stats').innerHTML = statsHtml;
+            tooltip.style.display = 'block';
+            tooltip.style.borderColor = getGradeColor(data.grade);
+        };
+
+        window.moveTooltip = function(e) {
+            const tooltip = document.getElementById('item-tooltip');
+            if(!tooltip) return;
+            let x = e.clientX + 20, y = e.clientY + 20;
+            if (x + 320 > window.innerWidth) x = e.clientX - 340;
+            if (y + tooltip.offsetHeight > window.innerHeight) y = window.innerHeight - tooltip.offsetHeight - 10;
+            tooltip.style.left = x + 'px';
+            tooltip.style.top = y + 'px';
+        };
+
+        window.hideTooltip = function() {
+            const tooltip = document.getElementById('item-tooltip');
+            if(tooltip) tooltip.style.display = 'none';
+        };
+
+        window.getGradeColor = function(grade) {
+            const colors = { 'COMMON': '#555', 'UNCOMMON': '#1eff00', 'RARE': '#0070dd', 'EPIC': '#a335ee', 'LEGENDARY': '#ff8000' };
+            return colors[grade] || '#444';
+        };
+
+        // --- 판매 모달 관련 변수 및 함수 ---
+        let currentSellItemId = null;
+        let currentItemGold = 0;
+        let currentMaxQty = 1;
+
+        window.openSellModal = function(id, name, maxQty, gold) {
+            currentSellItemId = id;
+            currentItemGold = gold;
+            currentMaxQty = maxQty;
+
+            document.getElementById('modal-item-name').innerText = name;
+            document.getElementById('modal-max-label').innerText = "보유 수량: " + maxQty;
+
+            const qtyInput = document.getElementById('modal-qty-input');
+            qtyInput.value = 1;
+            qtyInput.max = maxQty;
+
+            document.getElementById('sell-modal').style.display = 'flex';
+            updateTotalPrice();
+        };
+
+        window.closeSellModal = function() {
+            document.getElementById('sell-modal').style.display = 'none';
+        };
+
+        window.changeQty = function(delta) {
+            const input = document.getElementById('modal-qty-input');
+            let val = parseInt(input.value) + delta;
+            if (val < 1) val = 1;
+            if (val > currentMaxQty) val = currentMaxQty;
+            input.value = val;
+            updateTotalPrice();
+        };
+
+        window.setMaxQty = function() {
+            document.getElementById('modal-qty-input').value = currentMaxQty;
+            updateTotalPrice();
+        };
+
+        window.updateTotalPrice = function() {
+            const qty = parseInt(document.getElementById('modal-qty-input').value) || 0;
+            const total = qty * (currentItemGold * 0.8);
+            document.getElementById('modal-total-price').innerText = total.toLocaleString();
+        };
+
+        window.confirmSell = function() {
+            const qty = document.getElementById('modal-qty-input').value;
+            const form = document.getElementById('form-sell-' + currentSellItemId);
+
+            if (form) {
+                // form 내부의 quantity hidden input 값을 업데이트 후 제출
+                form.querySelector('input[name="quantity"]').value = qty;
+                form.submit();
+            }
+        };
+
+        // 모달 바깥 클릭 시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('sell-modal');
+            if (event.target == modal) {
+                closeSellModal();
+            }
+        };
+
+        const TYPE_KR = {
+            CONSUMABLE: "소모품", MATERIAL: "재료", MAGIC_STONE: "마석", QUEST: "퀘스트 아이템", POTION: "포션",
+            SWORD: "검", AXE: "도끼", SPEAR: "창", SHIELD: "방패", DAGGER: "단검", BLUNT: "둔기",
+            BOW: "활", CROSSBOW: "석궁", KNUCKLE: "너클", WAND: "완드", STAFF: "지팡이",
+            PLATE: "중갑", LEATHER: "가죽", CLOTH: "천옷"
+        };
+
+        const SLOT_KR = {
+            NONE: "",
+            WEAPON: "주무기",
+            SUB_WEAPON: "보조무기",
+            HEAD: "머리",
+            BODY: "갑옷",
+            GLOVES: "장갑",
+            BOOTS: "신발",
+            NECKLACE: "목걸이",
+            RING: "반지",
+            ARTIFACT: "아티팩트"
+        };
+
+        document.querySelectorAll(".inv-item-type").forEach(el => {
+            const type = TYPE_KR[el.dataset.type] || el.dataset.type;
+            const slot = SLOT_KR[el.dataset.slot] || "";
+
+            el.innerText = slot ? `${type} • ${slot}` : type;
+        });
+    </script>
+</div>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="underOverStyle">
+    <style>
+        .uo-modal-content {
+            background: #1a1a1c;
+            border: 2px solid #f39c12;
+            border-radius: 24px;
+            padding: 30px;
+            width: 600px;
+            text-align: center;
+            box-shadow: 0 0 60px rgba(243, 156, 18, 0.3);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 상단 상태바 */
+        .uo-status-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+        .status-box { background: #000; padding: 15px; border-radius: 14px; border: 1px solid #333; }
+        .status-label { display: block; font-size: 0.8rem; color: #aaa; margin-bottom: 4px; }
+        .status-value { font-size: 1.25rem; font-weight: 800; color: #fff; }
+
+        /* 베팅 입력 섹션 */
+        .bet-input-wrapper { background: #252527; border: 2px solid #444; border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+        .bet-input-wrapper input { width: 100%; background: transparent; border: none; color: #ffd700; padding: 18px; font-size: 1.8rem; text-align: center; outline: none; font-weight: 900; }
+        .bet-ctrl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 25px; }
+        .ctrl-btn { background: #333; color: #eee; border: 1px solid #444; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+        .ctrl-btn:hover { background: #444; border-color: #666; }
+        .ctrl-btn.special { background: #34495e; color: #fff; }
+        .ctrl-btn.danger { color: #ff7675; border-color: #ff7675; }
+
+        /* 주사위 영역 */
+        .dice-area-wrapper { position: relative; margin-bottom: 20px; }
+        .dice-area { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 18px; display: flex; justify-content: center; gap: 30px; }
+        .dice-box { width: 85px; height: 85px; background: #fdfdfd; border-radius: 14px; display: flex; justify-content: center; align-items: center; font-size: 3.5rem; color: #111; box-shadow: 0 8px 0 #bbb, 0 10px 20px rgba(0,0,0,0.5); }
+
+        /* 결과 메시지 컨테이너 */
+        .result-msg-container { background: rgba(0,0,0,0.5); padding: 18px 25px; border-radius: 15px; border: 1px solid #444; border-left: 5px solid #f39c12; margin-bottom: 25px; min-height: 110px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 12px; text-align: left; }
+        .msg-text { color: #ffd700; font-weight: 800; font-size: 1.2rem; }
+        .detail-info-row { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; width: 100%; justify-content: flex-start; }
+        .info-pill { background: #222; padding: 5px 12px; border-radius: 8px; border: 1px solid #333; display: flex; align-items: center; gap: 8px; }
+        .pill-label { color: #888; font-size: 0.8rem; }
+        .pill-value { font-weight: 700; color: #fff; }
+        .calc-formula { color: #f39c12; font-family: 'Courier New', monospace; font-weight: bold; }
+
+        /* 선택 버튼 및 보너스 강조 */
+        .choice-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .choice-btn { background: #2a2a2d; border: 2px solid #444; border-radius: 14px; padding: 18px 5px; cursor: pointer; transition: all 0.2s; color: #fff; display: flex; flex-direction: column; gap: 8px; }
+        .choice-btn:hover { border-color: #f39c12; background: #333; transform: translateY(-3px); }
+        .c-label { font-weight: 800; font-size: 1.2rem; }
+
+        /* [추가] 보너스 배당률 활성화 시 스타일 */
+        .mult-bonus-active {
+            color: #ffd700 !important;
+            font-weight: 900;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+        }
+
+        /* 하단 푸터 */
+        .uo-footer-row { margin-top: 5px; display: flex; justify-content: center; gap: 15px; }
+        .btn-footer { background: rgba(255, 255, 255, 0.05); border: 1px solid #444; color: #aaa; padding: 10px 25px; border-radius: 50px; font-size: 0.9rem; cursor: pointer; font-weight: bold; transition: all 0.3s; text-decoration: none; }
+        .btn-footer:hover { border-color: #f39c12; color: white; background: rgba(243, 156, 18, 0.1); }
+        .btn-footer-exit:hover { border-color: #ff7675; background: #e74c3c; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); }
+
+        /* 도움말 오버레이 (상단 정렬) */
+        .uo-overlay-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 12, 0.96); display: none; flex-direction: column; align-items: center; justify-content: flex-start; border-radius: 24px; z-index: 100; backdrop-filter: blur(15px); padding: 40px 30px 20px 30px; }
+        .overlay-title { font-size: 1.8rem; font-weight: 900; margin-bottom: 25px; color: #f39c12; }
+        .help-scroll { text-align: left; width: 100%; flex: 1; overflow-y: auto; padding-right: 15px; margin-bottom: 20px; }
+        .help-scroll::-webkit-scrollbar { width: 6px; }
+        .help-scroll::-webkit-scrollbar-thumb { background: #f39c12; border-radius: 10px; }
+        .help-section { margin-bottom: 25px; border-left: 3px solid #f39c12; padding-left: 15px; }
+        .help-section b { color: #fff; font-size: 1.1rem; display: block; margin-bottom: 6px; }
+        .help-section p { color: #bbb; line-height: 1.6; margin: 0; font-size: 0.95rem; }
+        .help-section span { color: #f39c12; font-weight: bold; }
+        .btn-overlay-close { background: #333; color: white; border: 1px solid #555; padding: 12px 40px; border-radius: 12px; cursor: pointer; font-weight: bold; margin-bottom: 10px; }
+
+        @keyframes stampIn {
+            0% { transform: translate(-50%, -50%) rotate(-15deg) scale(3); opacity: 0; }
+            100% { transform: translate(-50%, -50%) rotate(-15deg) scale(1); opacity: 1; }
+        }
+    </style>
+</th:block>
+
+<div th:fragment="underOverModal(gamble, town)" id="underOverModal" class="gamble-modal-overlay" style="display: flex;">
+    <div class="uo-modal-content">
+
+        <div class="uo-status-row">
+            <div class="status-box">
+                <span class="status-label">보유 자산</span>
+                <span class="status-value" th:text="${#numbers.formatInteger(gamble.currentGold, 0, 'COMMA')} + ' G'"></span>
+            </div>
+            <div class="status-box">
+                <span class="status-label" th:text="${gamble.step == 'RESULT' ? '이전 판 결과' : '대기 상태'}"></span>
+                <span class="status-value"
+                      th:style="${gamble.step == 'RESULT' ? (gamble.earnedGold >= 0 ? 'color:#2ecc71;' : 'color:#e74c3c;') : 'color:#fff;'}"
+                      th:text="${(gamble.earnedGold > 0 ? '+' : '') + #numbers.formatInteger(gamble.step == 'RESULT' ? gamble.earnedGold : 0, 0, 'COMMA')} + ' G'">
+                </span>
+            </div>
+        </div>
+
+        <div class="bet-input-wrapper">
+            <input type="number" id="bettingAmount" th:min="10" th:max="${gamble.currentGold}" th:value="${gamble.betAmount != 0 ? #numbers.formatInteger(gamble.betAmount, 0) : 100}">
+        </div>
+        <div class="bet-ctrl-grid">
+            <button type="button" class="ctrl-btn" onclick="stepAmount(-100)">- 100</button>
+            <button type="button" class="ctrl-btn" onclick="stepAmount(100)">+ 100</button>
+            <button type="button" class="ctrl-btn special" onclick="setHalf()">HALF</button>
+            <button type="button" class="ctrl-btn danger" onclick="setAllIn()">ALL-IN</button>
+        </div>
+
+        <div class="dice-area-wrapper" th:with="dices=${ { '?', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅' } }">
+            <div th:if="${gamble.step == 'RESULT'}" class="result-overlay-mini">
+                <div th:classappend="${gamble.isWin} ? 's-win' : 's-lose'" class="stamp-mini">
+                    <span th:text="${gamble.isWin ? 'WINNER' : 'LOSE'}"></span>
+                </div>
+            </div>
+            <div class="dice-area">
+                <div class="dice-box" th:text="${gamble.step == 'RESULT' ? dices[gamble.diceResults[0]] : '⚅'}"></div>
+                <div class="dice-box" th:text="${gamble.step == 'RESULT' ? dices[gamble.diceResults[1]] : '⚅'}"></div>
+            </div>
+        </div>
+
+        <div class="result-msg-container" th:with="dices=${ { '?', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅' } }">
+            <div class="msg-text" th:text="${gamble.step == 'RESULT' ? gamble.resultMessage : '주사위를 굴릴 준비가 되셨나요?'}"></div>
+            <div class="detail-info-row" th:if="${gamble.step == 'RESULT'}">
+                <div class="info-pill">
+                    <span class="pill-label">USER CHOICE</span>
+                    <span class="pill-value" th:style="${gamble.userChoice == 'UNDER' ? 'color:#3498db' : (gamble.userChoice == 'OVER' ? 'color:#2ecc71' : 'color:#e74c3c')}" th:text="${gamble.userChoice}"></span>
+                </div>
+                <div class="info-pill">
+                    <span class="pill-label">RESULT</span>
+                    <span class="calc-formula">
+                        <th:block th:text="${dices[gamble.diceResults[0]]} + ' ' + ${gamble.diceResults[0]}"></th:block>
+                        +
+                        <th:block th:text="${dices[gamble.diceResults[1]]} + ' ' + ${gamble.diceResults[1]}"></th:block>
+                        = <span style="color:#fff;" th:text="${gamble.diceSum}"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <form action="/gamble/under-over/play" method="post" class="choice-row"
+              th:with="rawBonus=${town.gambleOption.bonusDividendRate}, bonusAdd=${rawBonus / 100.0}, isBonus=${rawBonus > 0}">
+            <input type="hidden" name="batAmount" id="finalAmount">
+
+            <button type="submit" name="userChoice" value="UNDER" class="choice-btn" onclick="syncAmt()">
+                <span class="c-label" style="color:#3498db;">UNDER</span>
+                <span style="font-size:0.75rem; color:#999;" th:classappend="${isBonus} ? 'mult-bonus-active' : ''">
+                    2 ~ 6 (x<th:block th:text="${#numbers.formatDecimal(2.0 + bonusAdd, 1, 1)}"></th:block>)
+                </span>
+            </button>
+            <button type="submit" name="userChoice" value="SEVEN" class="choice-btn" onclick="syncAmt()">
+                <span class="c-label" style="color:#e74c3c;">SEVEN</span>
+                <span style="font-size:0.75rem; color:#999;" th:classappend="${isBonus} ? 'mult-bonus-active' : ''">
+                    LUCKY 7 (x<th:block th:text="${#numbers.formatDecimal(5.0 + bonusAdd, 1, 1)}"></th:block>)
+                </span>
+            </button>
+            <button type="submit" name="userChoice" value="OVER" class="choice-btn" onclick="syncAmt()">
+                <span class="c-label" style="color:#2ecc71;">OVER</span>
+                <span style="font-size:0.75rem; color:#999;" th:classappend="${isBonus} ? 'mult-bonus-active' : ''">
+                    8 ~ 12 (x<th:block th:text="${#numbers.formatDecimal(2.0 + bonusAdd, 1, 1)}"></th:block>)
+                </span>
+            </button>
+        </form>
+
+        <div class="uo-footer-row">
+            <button type="button" class="btn-footer" onclick="toggleUOHelp(true)">📜 상세 도움말</button>
+            <a href="/town/gamble/close" class="btn-footer btn-footer-exit">🚪 그만하고 나가기</a>
+        </div>
+
+        <div id="uoHelpOverlay" class="uo-overlay-layer">
+            <div class="overlay-title">UNDER OVER GUIDE</div>
+            <div class="help-scroll">
+                <div class="help-section">
+                    <b>🎲 게임 개요</b>
+                    <p>두 개의 주사위를 던져 나온 <span>숫자의 합</span>이 어느 구간에 속할지 예측하는 게임입니다.</p>
+                </div>
+                <div class="help-section">
+                    <b>🎯 베팅 옵션 및 배당</b>
+                    <p>
+                        - <span>UNDER</span> (2~6): 주사위 합이 7 미만일 때 승리 (2.0x)<br>
+                        - <span>OVER</span> (8~12): 주사위 합이 7 초과일 때 승리 (2.0x)<br>
+                        - <span>SEVEN</span> (정확히 7): 주사위 합이 7일 때 승리 <span>(5.0x)</span>
+                    </p>
+                </div>
+                <div class="help-section">
+                    <b>💡 승리 팁</b>
+                    <p>합계가 7 이 나올 확률은 약 16.6%로 단일 조합 중에는 가장 높지만, 언더/오버 구간 전체 확률보다는 낮습니다. <span>고배당</span>을 원하신다면 7에 도전해보세요!</p>
+                </div>
+                <div class="help-section">
+                    <b>💰 보너스 배당</b>
+                    <p>장착 중인 장비 효과에 따라 표시된 배당률에 <span>추가 보너스</span>가 합산되어 지급됩니다.</p>
+                </div>
+            </div>
+            <button type="button" class="btn-overlay-close" onclick="toggleUOHelp(false)">확인했습니다</button>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        const maxGold = [[${gamble.currentGold}]];
+        function setBet(amount) {
+            const input = document.getElementById('bettingAmount');
+            let target = Math.floor(amount);
+            if (target > maxGold) target = maxGold;
+            if (target < 10) target = 10;
+            input.value = target;
+        }
+        function stepAmount(step) { setBet(parseInt(document.getElementById('bettingAmount').value || 0) + step); }
+        function setHalf() { setBet(parseInt(document.getElementById('bettingAmount').value || 0) / 2); }
+        function setAllIn() { setBet(maxGold); }
+        function syncAmt() { document.getElementById('finalAmount').value = document.getElementById('bettingAmount').value; }
+        function toggleUOHelp(show) { document.getElementById('uoHelpOverlay').style.display = show ? 'flex' : 'none'; }
+    </script>
+</div>
+</html>

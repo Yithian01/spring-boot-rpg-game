@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "description": "TIER_1_DROP_TABEL",
+    "pools": [
+      { "grade": "EPIC", "weight": 700 },
+      { "grade": "LEGENDARY", "weight": 300 }
+    ]
+  },
+  {
+    "id": 2,
+    "description": "TIER_2_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 600 },
+      { "grade": "EPIC", "weight": 300 },
+      { "grade": "LEGENDARY", "weight": 100 }
+    ]
+  },
+  {
+    "id": 3,
+    "description": "TIER_3_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 700 },
+      { "grade": "EPIC", "weight": 200 },
+      { "grade": "LEGENDARY", "weight": 100 }
+    ]
+  },
+  {
+    "id": 4,
+    "description": "TIER_4_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 600 },
+      { "grade": "RARE", "weight": 350 },
+      { "grade": "EPIC", "weight": 50 }
+    ]
+  },
+  {
+    "id": 5,
+    "description": "TIER_5_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 700 },
+      { "grade": "UNCOMMON", "weight": 200 },
+      { "grade": "RARE", "weight": 100 }
+    ]
+  },
+  {
+    "id": 6,
+    "description": "TIER_6_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 800 },
+      { "grade": "UNCOMMON", "weight": 150 },
+      { "grade": "RARE", "weight": 50 }
+    ]
+  },
+  {
+    "id": 7,
+    "description": "TIER_7_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 900 },
+      { "grade": "UNCOMMON", "weight": 100 }
+    ]
+  },
+  {
+    "id": 8,
+    "description": "TIER_8_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 950 },
+      { "grade": "UNCOMMON", "weight": 50 }
+    ]
+  },
+  {
+    "id": 9,
+    "description": "TIER_9_DROP_TABEL",
+    "pools": [
+      { "grade": "NONE", "weight": 990 },
+      { "grade": "UNCOMMON", "weight": 10 }
+    ]
+  }
+]

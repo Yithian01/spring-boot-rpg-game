@@ -1,0 +1,339 @@
+[
+  {
+    "id": 360,
+    "name": "질긴 가죽 후드",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "여러 겹의 가죽을 덧대어 만든 후드입니다. 일반적인 가죽 옷보다 방어력이 높습니다.",
+    "price": 120000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 40.0,
+      "physRes": 2.0,
+      "accuracy": 3.0,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 361,
+    "name": "용병의 가죽 반투구",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "이마와 정수리 부분을 단단한 가죽으로 보강한 투구입니다. 용병들이 즐겨 찾습니다.",
+    "price": 135000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 50.0,
+      "physRes": 3.0,
+      "accuracy": 2.0,
+      "dodge": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 362,
+    "name": "추적자의 가죽 복면",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "얼굴 하단을 가려 신분을 숨기고 먼지를 막아주는 복면입니다. 시야 확보가 용이합니다.",
+    "price": 118000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 30.0,
+      "accuracy": 5.0,
+      "dodge": 3.0,
+      "statusResist": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 363,
+    "name": "강화 가죽 모자",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "금속 징을 박아 내구도를 높인 가죽 모자입니다. 저렴하지만 튼튼합니다.",
+    "price": 125000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 60.0,
+      "physRes": 4.0,
+      "accuracy": 1.0,
+      "statusResist": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 364,
+    "name": "숙련병의 가죽 투구",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "품질 좋은 가죽을 가공해 만든 투구입니다. 가벼우면서도 머리를 잘 보호합니다.",
+    "price": 280000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 80.0,
+      "physRes": 5.0,
+      "accuracy": 5.0,
+      "statusResist": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 365,
+    "name": "강철 보강 가죽 후드",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "가죽 후드 안쪽에 얇은 강철판을 덧대었습니다. 암살자들이 기습에 대비해 주로 착용합니다.",
+    "price": 310000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 100.0,
+      "physRes": 7.0,
+      "dodge": 5.0,
+      "statusResist": 8.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 366,
+    "name": "정찰병의 정밀 마스크",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "궁수들이 조준 시 방해받지 않도록 인체공학적으로 설계된 가죽 마스크입니다.",
+    "price": 295000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 70.0,
+      "accuracy": 12.0,
+      "dodge": 6.0,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 367,
+    "name": "두꺼운 들소 가죽 투구",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "야생 들소의 가죽을 무두질하여 만든 투구입니다. 충격 흡수력이 매우 뛰어납니다.",
+    "price": 320000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxHp": 120.0,
+      "physRes": 8.0,
+      "accuracy": 3.0,
+      "statusResist": 12.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 390,
+    "name": "그림자 추적자의 복면",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "밤의 용병들이 즐겨 사용하는 복면입니다. 소리 없이 적의 숨통을 노리는 자들에게 적합합니다.",
+    "price": 450000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "15": 10.0, "20": 10.0 },
+    "combatStatsBonus": {
+      "maxHp": 250.0,
+      "maxMp": 100.0,
+      "physRes": 8.0,
+      "darkRes": 8.0,
+      "accuracy": 5.0,
+      "critRate": 8.0,
+      "dodge": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 391,
+    "name": "백전노장 용병의 철가죽 후드",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "수많은 전장을 누빈 용병의 흔적이 고스란히 남은 후드입니다. 실전적인 방어 효율을 자랑합니다.",
+    "price": 430000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "1": 15.0, "10": 10.0 },
+    "combatStatsBonus": {
+      "maxHp": 250.0,
+      "maxMp": 50.0,
+      "physRes": 8.0,
+      "fireRes": 8.0,
+      "accuracy": 5.0,
+      "statusResist": 10.0,
+      "meleeAtk": 15.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 392,
+    "name": "폭풍눈 사냥꾼의 가죽 모자",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "먼 거리의 표적을 절대 놓치지 않는 명궁들을 위해 제작된 모자입니다.",
+    "price": 445000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "16": 12.0, "21": 12.0 },
+    "combatStatsBonus": {
+      "maxHp": 200.0,
+      "maxMp": 100.0,
+      "accuracy": 10.0,
+      "critRate": 8.0,
+      "lightningRes": 8.0,
+      "moveSpeed": 0.05
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 393,
+    "name": "침묵의 집행자 서클릿",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "암살 대상이 비명조차 지르지 못하게 만드는 정교한 보조 장비가 부착되어 있습니다.",
+    "price": 460000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "17": 15.0, "23": 10.0 },
+    "combatStatsBonus": {
+      "maxHp": 150.0,
+      "maxMp": 150.0,
+      "physRes": 5.0,
+      "toxicRes": 10.0,
+      "critDmg": 10.0,
+      "accuracy": 5.0,
+      "statusResist": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 394,
+    "name": "신화적 포식자의 용가죽 투구",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "드래곤의 비늘과 가죽을 엮어 만든 전설적인 투구입니다. 착용자에게 포식자의 위압감을 부여합니다.",
+    "price": 2500000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "1": 30.0, "10": 30.0, "11": 20.0 },
+    "combatStatsBonus": {
+      "maxHp": 350.0,
+      "maxMp": 100.0,
+      "physRes": 10.0,
+      "fireRes": 10.0,
+      "statusResist": 15.0,
+      "meleeAtk": 30.0,
+      "accuracy": 5.0,
+      "dodge": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 395,
+    "name": "공허 걸음의 유령 마스크",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "현세와 심연의 경계에 걸쳐 있는 마스크입니다. 암살자의 존재 자체를 지워버립니다.",
+    "price": 2800000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "15": 40.0, "20": 40.0 },
+    "combatStatsBonus": {
+      "maxHp": 300.0,
+      "maxMp": 220.0,
+      "physRes": 10.0,
+      "darkRes": 10.0,
+      "dodge": 8.0,
+      "critRate": 10.0,
+      "critDmg": 20.0,
+      "moveSpeed": 0.1
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 396,
+    "name": "천공의 지배자 전술 고글",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "수 킬로미터 밖의 바람 흐름까지 읽어내는 신궁의 보구입니다.",
+    "price": 2650000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "16": 50.0, "21": 30.0 },
+    "combatStatsBonus": {
+      "maxHp": 350.0,
+      "maxMp": 150.0,
+      "accuracy": 10.0,
+      "critRate": 10.0,
+      "physPen": 5.0,
+      "statusResist": 10.0,
+      "dodge": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 397,
+    "name": "불멸 용병단의 황금 가죽 투구",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "HEAD",
+    "subType": "LEATHER",
+    "description": "죽음을 초월한 용병 대장만이 쓸 수 있는 투구입니다. 어떤 치명상에서도 살아남게 돕습니다.",
+    "price": 2700000,
+    "icon": "/images/items/HEAD_LEATHER_UNCOMMON.png",
+    "baseStatsBonus": { "1": 40.0, "2": 40.0, "18": 20.0 },
+    "combatStatsBonus": {
+      "maxHp": 350.0,
+      "hpRegen": 5.0,
+      "physRes": 10.0,
+      "holyRes": 10.0,
+      "statusResist": 20.0,
+      "bleedRes": 20.0,
+      "meleeAtk": 20.0
+    },
+    "grantedSkillIds": []
+  }
+]

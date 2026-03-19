@@ -1,0 +1,382 @@
+[
+  {
+    "id": 370,
+    "name": "질긴 가죽 장화",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "여러 겹의 가죽을 덧대어 만든 튼튼한 장화입니다. 용병들이 즐겨 신습니다.",
+    "price": 145000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 60.0,
+      "dodge": 4.0,
+      "accuracy": 2.0,
+      "moveSpeed": 0.2,
+      "critRate": 2.0,
+      "physRes": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 371,
+    "name": "검은 가죽 단화",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "발소리를 줄이기 위해 부드러운 가죽으로 제작되었습니다. 암살자들이 선호합니다.",
+    "price": 152000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 60.0,
+      "dodge": 4.0,
+      "accuracy": 2.0,
+      "moveSpeed": 0.2,
+      "critRate": 2.0,
+      "physRes": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 372,
+    "name": "철심 가죽 장화",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "가죽 속에 얇은 철심을 박아 넣어 뒤틀림을 방지했습니다.",
+    "price": 138000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 60.0,
+      "dodge": 4.0,
+      "accuracy": 2.0,
+      "moveSpeed": 0.2,
+      "critRate": 2.0,
+      "physRes": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 373,
+    "name": "궁수용 경량 신발",
+    "grade": "UNCOMMON",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "빠른 위치 선정이 중요한 사수들을 위해 매우 가볍게 무두질된 신발입니다.",
+    "price": 140000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 60.0,
+      "dodge": 4.0,
+      "accuracy": 2.0,
+      "moveSpeed": 0.2,
+      "critRate": 2.0,
+      "physRes": 1.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 374,
+    "name": "강화 가죽 전투화",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "특수 용액에 담가 경화시킨 가죽으로 만든 전투용 장화입니다.",
+    "price": 420000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 120.0,
+      "dodge": 6.0,
+      "accuracy": 3.0,
+      "moveSpeed": 0.3,
+      "critRate": 3.0,
+      "physRes": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 375,
+    "name": "강철 덧댐 가죽 장화",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "급소인 발목과 발등 부분에 강철판을 덧대어 방어력을 높였습니다.",
+    "price": 435000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 120.0,
+      "dodge": 6.0,
+      "accuracy": 3.0,
+      "moveSpeed": 0.3,
+      "critRate": 3.0,
+      "physRes": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 376,
+    "name": "추적자의 가죽 신발",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "장거리 이동과 은밀한 접근에 최적화된 숙련된 장인의 가죽 신발입니다.",
+    "price": 450000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 120.0,
+      "dodge": 6.0,
+      "accuracy": 3.0,
+      "moveSpeed": 0.3,
+      "critRate": 3.0,
+      "physRes": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 377,
+    "name": "정교한 가죽 장화",
+    "grade": "RARE",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "최상급 가죽을 사용하여 활동성과 보호 성능을 동시에 잡은 고급 장화입니다.",
+    "price": 410000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {},
+    "combatStatsBonus": {
+      "maxStamina": 120.0,
+      "dodge": 6.0,
+      "accuracy": 3.0,
+      "moveSpeed": 0.3,
+      "critRate": 3.0,
+      "physRes": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 400,
+    "name": "그림자 추적자의 장화",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "암살자들이 은밀한 기동을 위해 즐겨 신는 장화입니다. 소리 없이 적의 등 뒤로 다가갈 수 있게 해줍니다.",
+    "price": 850000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "20": 15.0,
+      "21": 10.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 200.0,
+      "dodge": 10.0,
+      "accuracy": 5.0,
+      "moveSpeed": 0.4,
+      "critRate": 5.0,
+      "physRes": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 401,
+    "name": "베테랑 용병의 강철심 가죽신",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "수많은 전장을 누빈 용병의 신발입니다. 가죽 안에 얇은 철판을 덧대어 기동성과 방어력을 동시에 챙겼습니다.",
+    "price": 820000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "1": 15.0,
+      "2": 10.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 200.0,
+      "dodge": 8.0,
+      "accuracy": 5.0,
+      "moveSpeed": 0.35,
+      "critRate": 4.0,
+      "physRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 402,
+    "name": "바람길잡이 정찰화",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "궁수들이 험난한 지형에서 자리를 잡기 위해 사용하는 장화입니다. 발끝에 닿는 지면의 감각을 선명하게 전달합니다.",
+    "price": 880000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "15": 12.0,
+      "23": 13.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 220.0,
+      "dodge": 9.0,
+      "accuracy": 7.0,
+      "moveSpeed": 0.45,
+      "critRate": 4.0,
+      "physRes": 2.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 403,
+    "name": "밤의 수호자 가죽 장화",
+    "grade": "EPIC",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "어둠 속에서 활동하는 이들을 위한 장화입니다. 특수 무두질을 거쳐 마찰음을 최소화했습니다.",
+    "price": 840000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "17": 15.0,
+      "20": 10.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 200.0,
+      "dodge": 12.0,
+      "accuracy": 4.0,
+      "moveSpeed": 0.4,
+      "critRate": 6.0,
+      "physRes": 3.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 404,
+    "name": "전설적인 암살자의 유산",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "역사상 가장 위대했던 암살자가 신었다고 전해지는 장화입니다. 착용자의 존재감 자체를 지워버립니다.",
+    "price": 5500000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "20": 30.0,
+      "21": 20.0,
+      "15": 10.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 350.0,
+      "dodge": 18.0,
+      "accuracy": 10.0,
+      "moveSpeed": 0.7,
+      "critRate": 10.0,
+      "physRes": 6.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 405,
+    "name": "전쟁 군주의 선봉 장화",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "전설적인 용병단의 단장이 신었던 장화입니다. 이 신발이 닿는 곳마다 승리의 함성이 울려 퍼졌습니다.",
+    "price": 5200000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "1": 25.0,
+      "2": 25.0,
+      "10": 10.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 300.0,
+      "dodge": 15.0,
+      "accuracy": 12.0,
+      "moveSpeed": 0.6,
+      "critRate": 8.0,
+      "physRes": 10.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 406,
+    "name": "천공의 명사수 장화",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "하늘 위에서 화살을 쏟아붓는 명사수들의 신발입니다. 지형지물을 무시하는 기동력을 부여합니다.",
+    "price": 5800000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "16": 30.0,
+      "23": 20.0,
+      "17": 10.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 400.0,
+      "dodge": 15.0,
+      "accuracy": 15.0,
+      "moveSpeed": 0.8,
+      "critRate": 10.0,
+      "physRes": 5.0
+    },
+    "grantedSkillIds": []
+  },
+  {
+    "id": 407,
+    "name": "심연의 추격자 가죽신",
+    "grade": "LEGENDARY",
+    "type": "EQUIPMENT",
+    "slot": "BOOTS",
+    "subType": "LEATHER",
+    "twoHanded": false,
+    "description": "차원을 넘나들며 목표를 쫓는 추격자의 장화입니다. 그림자 속에서도 신속한 움직임을 보장합니다.",
+    "price": 6000000,
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "baseStatsBonus": {
+      "9": 20.0,
+      "20": 25.0,
+      "13": 15.0
+    },
+    "combatStatsBonus": {
+      "maxStamina": 320.0,
+      "dodge": 20.0,
+      "accuracy": 8.0,
+      "moveSpeed": 0.75,
+      "critRate": 12.0,
+      "physRes": 7.0
+    },
+    "grantedSkillIds": []
+  }
+]

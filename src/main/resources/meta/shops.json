@@ -1,0 +1,127 @@
+[
+  {
+    "npcId": "WANDERING_MERCHANT_MYST",
+    "npcName": "방랑자 미스트",
+    "npcDescription": "던전 깊은 곳까지 오시다니 대단하시군요. 특별한 물건들이 좀 있습니다.",
+    "priceModifier": 1.2,
+    "fixedItems": [],
+    "randomConfigs": [
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "LEGENDARY", "count": 1 }
+    ]
+  },
+  {
+    "npcId": "WEAPON_MASTER_IRON",
+    "npcName": "대장장이 아이언",
+    "npcDescription": "묵직한 철의 맛을 아는 자에겐 그에 걸맞은 무기가 필요하지.",
+    "priceModifier": 0.8,
+    "fixedItems": [],
+    "randomConfigs": [
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "SWORD", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "AXE", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "SPEAR", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "DAGGER", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "BLUNT", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "BOW", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "CROSSBOW", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "SUB_WEAPON", "subType": "SHIELD", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "SWORD", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "AXE", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "SPEAR", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "DAGGER", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "BLUNT", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "BOW", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "CROSSBOW", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "SUB_WEAPON", "subType": "SHIELD", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "grade": "RARE", "count": 1 }
+    ]
+  },
+  {
+    "npcId": "ARMORER_SILVA",
+    "npcName": "방어구 전문가 실바",
+    "npcDescription": "가죽과 금속만이 네 목숨을 지켜줄 거야.",
+    "priceModifier": 0.8,
+    "fixedItems": [],
+    "randomConfigs": [
+      { "type": "EQUIPMENT", "slot": "HEAD", "subType": "PLATE", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "HEAD", "subType": "LEATHER", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BODY", "subType": "PLATE", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BODY", "subType": "LEATHER", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "GLOVES", "subType": "PLATE", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "GLOVES", "subType": "LEATHER", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BOOTS", "subType": "PLATE", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BOOTS", "subType": "LEATHER", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "HEAD", "subType": "PLATE", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "HEAD", "subType": "LEATHER", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BODY", "subType": "PLATE", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BODY", "subType": "LEATHER", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "GLOVES", "subType": "PLATE", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "GLOVES", "subType": "LEATHER", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BOOTS", "subType": "PLATE", "grade": "RARE", "count": 1 }
+    ]
+  },
+  {
+    "npcId": "MAGE_ELARA",
+    "npcName": "마법사 에라라",
+    "npcDescription": "마법의 정수가 깃든 장비들을 살펴보세요.",
+    "priceModifier": 0.8,
+    "fixedItems": [10001, 10002, 10003, 10004, 10005, 10006, 10007, 10008],
+    "randomConfigs": [
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "WAND", "grade": "UNCOMMON", "count": 3 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "STAFF", "grade": "UNCOMMON", "count": 2 },
+      { "type": "EQUIPMENT", "slot": "SUB_WEAPON", "subType": "BOOK", "grade": "UNCOMMON", "count": 2 },
+      { "type": "EQUIPMENT", "slot": "BODY", "subType": "CLOTH", "grade": "UNCOMMON", "count": 2 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "WAND", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "STAFF", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "SUB_WEAPON", "subType": "BOOK", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "BODY", "subType": "CLOTH", "grade": "RARE", "count": 1 }
+    ]
+  },
+  {
+    "npcId": "HIPPIE_LUNA",
+    "npcName": "장신구 상인 루나",
+    "npcDescription": "이 예쁜 장신구들이 뿜어내는 기운이 느껴져?",
+    "priceModifier": 0.8,
+    "fixedItems": [],
+    "randomConfigs": [
+      { "type": "EQUIPMENT", "slot": "RING",  "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "NECKLACE", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "RING", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "NECKLACE", "grade": "RARE", "count": 1 }
+    ]
+  },
+  {
+    "npcId": "BLACK_MARKET_JACK",
+    "npcName": "암시장 잭",
+    "npcDescription": "물건의 출처는 묻지 마.",
+    "priceModifier": 0.8,
+    "fixedItems": [],
+    "randomConfigs": [
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "grade": "LEGENDARY", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT","grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "EPIC", "count": 1 }
+    ]
+  }
+]

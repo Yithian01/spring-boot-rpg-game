@@ -1,0 +1,13 @@
+<div xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="gameOverModal(gameOver, message)" th:if="${gameOver}" class="modal-overlay">
+        <div class="modal-content">
+            <h2>☠️ GAME OVER</h2>
+            <p th:text="${message}"></p>
+            <div class="modal-actions">
+                <button class="btn-modal btn-retry" onclick="location.href='/game/character-select'">새로운 삶 시작</button>
+                <button class="btn-modal btn-menu" onclick="location.href='/game/'">타이틀로</button>
+            </div>
+        </div>
+    </div>
+
+</div>

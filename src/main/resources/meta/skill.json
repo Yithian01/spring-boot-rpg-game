@@ -3902,6 +3902,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 25, "mp": 25 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -3920,6 +3922,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 25 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -3939,6 +3943,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 10, "mp": 15 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -3958,6 +3964,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -3976,6 +3984,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 30 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -3994,6 +4004,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 10, "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4013,6 +4025,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 30 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4031,6 +4045,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 30, "mp": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4050,6 +4066,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 50 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4069,6 +4087,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 45 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4087,6 +4107,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 40, "stamina": 10 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4106,6 +4128,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 45 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "FIRE",
@@ -4125,6 +4149,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 50, "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4143,6 +4169,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 50, "mp": 70 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4162,6 +4190,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 60, "stamina": 50 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4181,6 +4211,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 60, "stamina": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4199,6 +4231,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4217,6 +4251,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4235,6 +4271,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 25 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4253,6 +4291,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 30 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4271,6 +4311,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 20, "mp": 10 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4289,6 +4331,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4307,6 +4351,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 45 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4325,6 +4371,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 15, "mp": 30 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4343,6 +4391,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4361,6 +4411,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "PHYSICAL",
@@ -4379,6 +4431,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 35, "stamina": 10 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "FIRE",
@@ -4398,6 +4452,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 30, "mp": 50 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "FIRE",
@@ -4417,6 +4473,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 60, "mp": 70 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "FIRE",
@@ -4436,6 +4494,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "ICE",
@@ -4455,6 +4515,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 50, "stamina": 15 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "ICE",
@@ -4474,6 +4536,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 40, "mp": 80 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "ICE",
@@ -4493,6 +4557,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 30, "stamina": 15 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "EARTH",
@@ -4512,6 +4578,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 40, "stamina": 30 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "EARTH",
@@ -4531,6 +4599,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 50, "mp": 50, "stamina": 50 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "EARTH",
@@ -4550,6 +4620,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 35, "stamina": 10 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "LIGHTNING",
@@ -4569,6 +4641,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 50, "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "LIGHTNING",
@@ -4588,6 +4662,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 60, "mp": 60 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "LIGHTNING",
@@ -4608,6 +4684,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 40, "stamina": 10 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "HOLY",
@@ -4626,6 +4704,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 50 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "HOLY",
@@ -4645,6 +4725,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 40, "mp": 70 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "HOLY",
@@ -4664,6 +4746,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 15, "stamina": 25 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "TOXIC",
@@ -4683,6 +4767,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 20, "mp": 30 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "TOXIC",
@@ -4702,6 +4788,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 40, "mp": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "TOXIC",
@@ -4721,6 +4809,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 50, "stamina": 20 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "TOXIC",
@@ -4739,6 +4829,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 60, "mp": 60 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "TOXIC",
@@ -4758,6 +4850,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 60, "mp": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "TOXIC",
@@ -4776,6 +4870,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 35 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "VOID",
@@ -4795,6 +4891,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "VOID",
@@ -4814,6 +4912,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 30, "mp": 50 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "VOID",
@@ -4833,6 +4933,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "mp": 60, "stamina": 15 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "VOID",
@@ -4851,6 +4953,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "hp": 70, "mp": 70 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "VOID",
@@ -4870,6 +4974,8 @@
     "type": "BUFF",
     "turnCost": 1,
     "cost": { "stamina": 60, "mp": 40 },
+    "damageScaling": {},
+    "statScaling": {},
     "effect": {
       "type": "BUFF",
       "element": "VOID",

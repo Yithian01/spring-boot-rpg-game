@@ -79,7 +79,7 @@
     "npcName": "마법사 에라라",
     "npcDescription": "마법의 정수가 깃든 장비들을 살펴보세요.",
     "priceModifier": 0.8,
-    "fixedItems": [301, 302, 303, 304, 305, 306, 307, 308],
+    "fixedItems": [10001, 10002, 10003, 10004, 10005, 10006, 10007, 10008],
     "randomConfigs": [
       { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "WAND", "grade": "UNCOMMON", "count": 3 },
       { "type": "EQUIPMENT", "slot": "WEAPON", "subType": "STAFF", "grade": "UNCOMMON", "count": 2 },
@@ -98,12 +98,12 @@
     "priceModifier": 0.8,
     "fixedItems": [],
     "randomConfigs": [
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "subType": "RING", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "RING",  "grade": "UNCOMMON", "count": 1 },
       { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "UNCOMMON", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "subType": "NECKLACE", "grade": "UNCOMMON", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "subType": "RING", "grade": "RARE", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "NECKLACE", "grade": "UNCOMMON", "count": 1 },
+      { "type": "EQUIPMENT", "slot": "RING", "grade": "RARE", "count": 1 },
       { "type": "EQUIPMENT", "slot": "ARTIFACT", "grade": "RARE", "count": 1 },
-      { "type": "EQUIPMENT", "slot": "ARTIFACT", "subType": "NECKLACE", "grade": "RARE", "count": 1 }
+      { "type": "EQUIPMENT", "slot": "NECKLACE", "grade": "RARE", "count": 1 }
     ]
   },
   {

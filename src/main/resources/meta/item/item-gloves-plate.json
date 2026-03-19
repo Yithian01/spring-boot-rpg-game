@@ -301,7 +301,6 @@
     "combatStatsBonus": {
       "meleeAtk": 300.0,
       "physPen": 15.0,
-      "statusPen": 15.0,
       "physRes": 8.0,
       "accuracy": 0.0,
       "maxStamina": 80.0

@@ -779,6 +779,15 @@ public class GameService {
 
         shopInstance.getItemQty().forEach((key, qty) -> {
             var itemMeta = gameDataManager.getItemMetaMap().get(key);
+
+            if (itemMeta == null) {
+                // 로그를 남겨서 나중에 어떤 ID가 문제인지 확인할 수 있게 합니다.
+                log.error("ShopInstance: {}", shopInstance);
+                log.error("Item meta not found for item key: {}", key);
+
+                return; // 현재 루프(람다)만 건너뜁니다.
+            }
+
             itemList.add( ShopItemDetailDto.builder()
                     .id(itemMeta.getId())
                     .name(itemMeta.getName())

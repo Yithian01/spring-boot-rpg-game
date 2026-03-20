@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "페이지를 넘길 때마다 뜨거운 열기가 손끝에 전해집니다.",
     "price": 420000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 30.0,
@@ -28,7 +28,7 @@
     "twoHanded": false,
     "description": "불규칙하게 일렁이는 핵이 붉은 빛을 내뿜습니다.",
     "price": 450000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 30.0,
@@ -47,7 +47,7 @@
     "twoHanded": false,
     "description": "재가 되지 않는 특수 양피지에 파괴적인 주문들이 적혀 있습니다.",
     "price": 850000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 60.0,
@@ -67,7 +67,7 @@
     "twoHanded": false,
     "description": "태양의 정수를 담은 듯 눈부신 열기를 간직한 보주입니다.",
     "price": 880000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 60.0,
@@ -87,7 +87,7 @@
     "twoHanded": false,
     "description": "표지가 차가운 얼음 결정으로 덮여 있어 냉기가 흐릅니다.",
     "price": 410000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 30.0,
@@ -106,7 +106,7 @@
     "twoHanded": false,
     "description": "내부에 끊임없이 눈보라가 치는 듯한 신비로운 구체입니다.",
     "price": 430000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 30.0,
@@ -125,7 +125,7 @@
     "twoHanded": false,
     "description": "모든 것을 얼려버릴 듯한 극저온의 마력이 깃든 서적입니다.",
     "price": 820000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 60.0,
@@ -145,7 +145,7 @@
     "twoHanded": false,
     "description": "심해 깊은 곳의 거대 빙하에서 추출한 정수입니다.",
     "price": 860000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 60.0,
@@ -165,7 +165,7 @@
     "twoHanded": false,
     "description": "책장을 넘길 때마다 미세한 전기 스파크가 튑니다.",
     "price": 430000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 30.0,
@@ -184,7 +184,7 @@
     "twoHanded": false,
     "description": "푸른 빛이 감도는 보석 안에서 번개가 소용돌이칩니다.",
     "price": 440000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 30.0,
@@ -203,7 +203,7 @@
     "twoHanded": false,
     "description": "뇌운의 힘을 억눌러 담은 강력한 마법서입니다.",
     "price": 870000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 60.0,
@@ -223,7 +223,7 @@
     "twoHanded": false,
     "description": "날카로운 전격의 힘이 응축되어 적의 방어를 꿰뚫습니다.",
     "price": 890000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 60.0,
@@ -243,7 +243,7 @@
     "twoHanded": false,
     "description": "오래된 나무의 껍질로 만든 표지에서 흙내음이 납니다.",
     "price": 400000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 30.0,
@@ -263,7 +263,7 @@
     "twoHanded": false,
     "description": "대지의 기운이 응집되어 묵직한 무게감을 자랑합니다.",
     "price": 410000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 30.0,
@@ -283,7 +283,7 @@
     "twoHanded": false,
     "description": "강인한 생명력이 깃든 잎사귀들에 자연의 섭리가 기록되어 있습니다.",
     "price": 830000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 60.0,
@@ -304,7 +304,7 @@
     "twoHanded": false,
     "description": "깊은 지층에서 발견된 이 보주는 착용자에게 대지의 활력을 줍니다.",
     "price": 850000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 60.0,
@@ -325,7 +325,7 @@
     "twoHanded": false,
     "description": "정갈하게 적힌 글귀들이 마음을 평온하게 만듭니다.",
     "price": 450000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 30.0,
@@ -343,7 +343,7 @@
     "twoHanded": false,
     "description": "은은한 빛을 발산하며 주변의 부정한 기운을 밀어냅니다.",
     "price": 460000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 30.0,
@@ -361,7 +361,7 @@
     "twoHanded": false,
     "description": "찬란한 금빛 문자들이 허공에 떠오르며 신성한 힘을 증폭시킵니다.",
     "price": 900000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 60.0,
@@ -380,7 +380,7 @@
     "twoHanded": false,
     "description": "한 점의 흐트러짐도 없는 빛의 정수가 응축된 보주입니다.",
     "price": 920000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 60.0,
@@ -399,7 +399,7 @@
     "twoHanded": false,
     "description": "빛이 닿지 않는 곳에서만 글자가 선명하게 드러납니다.",
     "price": 440000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 30.0,
@@ -418,7 +418,7 @@
     "twoHanded": false,
     "description": "주변의 빛을 빨아들이는 듯한 칠흑 같은 어둠의 구체입니다.",
     "price": 460000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 30.0,
@@ -437,7 +437,7 @@
     "twoHanded": false,
     "description": "보는 것만으로도 정신이 아득해지는 어두운 지식의 집합체입니다.",
     "price": 880000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 60.0,
@@ -456,7 +456,7 @@
     "twoHanded": false,
     "description": "어둠 속에서 무언가 나를 지켜보는 듯한 기괴한 보주입니다.",
     "price": 910000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 60.0,
@@ -475,7 +475,7 @@
     "twoHanded": false,
     "description": "이해할 수 없는 기호들이 꿈틀거리며 배치를 바꿉니다.",
     "price": 470000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 30.0,
@@ -494,7 +494,7 @@
     "twoHanded": false,
     "description": "차원의 틈새에서 흘러나온 불안정한 마력이 가득합니다.",
     "price": 480000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 30.0,
@@ -513,7 +513,7 @@
     "twoHanded": false,
     "description": "이 세상의 것이 아닌 언어로 기록된 불길한 마법서입니다.",
     "price": 950000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 60.0,
@@ -533,7 +533,7 @@
     "twoHanded": false,
     "description": "모든 질서를 거부하는 원초적인 힘이 소용돌이치는 보주입니다.",
     "price": 980000,
-    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon": "/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 60.0,
@@ -552,7 +552,7 @@
     "subType":"GRIMORE",
     "description":"고급 마력 잉크로 기록된 페이지에서 끊임없이 열기가 뿜어져 나옵니다.",
     "price":1250000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "4":15.0
     },
@@ -572,7 +572,7 @@
     "subType":"ORB",
     "description":"중심부에서 요동치는 핵이 주변의 온도를 급격히 높입니다.",
     "price":1180000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "4":12.0
     },
@@ -592,7 +592,7 @@
     "subType":"GRIMORE",
     "description":"태초의 불꽃 한 조각을 봉인하여 만든 책입니다. 만지는 것만으로도 화상을 입을 듯합니다.",
     "price":8500000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "4":30.0
     },
@@ -612,7 +612,7 @@
     "subType":"ORB",
     "description":"가장 깊은 화산의 정수만을 추출해 응축시킨 신비로운 구체입니다.",
     "price":8900000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "4":28.0
     },
@@ -632,7 +632,7 @@
     "subType":"GRIMORE",
     "description":"책장을 넘길 때마다 차가운 서리가 내려앉아 정신을 맑게 해줍니다.",
     "price":1220000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "13":20.0
     },
@@ -652,7 +652,7 @@
     "subType":"ORB",
     "description":"내부에 얼어붙은 냉기가 마력의 흐름을 차갑게 정돈합니다.",
     "price":1150000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "13":18.0
     },
@@ -672,7 +672,7 @@
     "subType":"GRIMORE",
     "description":"모든 것이 멈춘 극한의 세계에서 발견된 고대의 기록물입니다.",
     "price":8200000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "13":40.0
     },
@@ -692,7 +692,7 @@
     "subType":"ORB",
     "description":"가장 차갑게 빛나는 별의 파편을 깎아 만든 보주입니다.",
     "price":8600000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "13":35.0
     },
@@ -712,7 +712,7 @@
     "subType":"GRIMORE",
     "description":"마력을 주입하면 종이 사이로 푸른 불꽃이 튑니다.",
     "price":1280000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "14":15.0
     },
@@ -732,7 +732,7 @@
     "subType":"ORB",
     "description":"휘몰아치는 번개의 에너지를 안정화시켜 구체 안에 담아냈습니다.",
     "price":1200000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "14":12.0
     },
@@ -752,7 +752,7 @@
     "subType":"GRIMORE",
     "description":"하늘의 분노를 기록한 이 책은 펼치는 것만으로도 공기를 이온화시킵니다.",
     "price":9100000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "14":32.0
     },
@@ -772,7 +772,7 @@
     "subType":"ORB",
     "description":"낙뢰의 중심에서만 발견되는 극도로 희귀한 마법 광석을 가공했습니다.",
     "price":9500000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "14":30.0
     },
@@ -792,7 +792,7 @@
     "subType":"GRIMORE",
     "description":"오래된 나무 껍질로 만든 표지에서 짙은 흙내음이 납니다.",
     "price":1100000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "1":15.0
     },
@@ -813,7 +813,7 @@
     "subType":"ORB",
     "description":"초목의 생명력을 응축한 초록빛 보주입니다.",
     "price":1050000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "1":12.0
     },
@@ -834,7 +834,7 @@
     "subType":"GRIMORE",
     "description":"태고의 생명력을 간직한 나뭇잎에 신성한 문자가 각인되어 있습니다.",
     "price":7800000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "1":35.0
     },
@@ -855,7 +855,7 @@
     "subType":"ORB",
     "description":"대지의 심장부에서 추출한 액체 마나를 투명한 보석 안에 가두었습니다.",
     "price":8100000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "1":30.0
     },
@@ -876,7 +876,7 @@
     "subType":"GRIMORE",
     "description":"성스러운 빛의 기운이 깃든 찬송이 적힌 마도서입니다.",
     "price":1300000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "18":15.0
     },
@@ -896,7 +896,7 @@
     "subType":"ORB",
     "description":"사악한 기운을 멀리하고 주변을 정화하는 은은한 빛을 냅니다.",
     "price":1220000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "18":12.0
     },
@@ -916,7 +916,7 @@
     "subType":"GRIMORE",
     "description":"인간의 언어로는 이해할 수 없는 천상의 지혜가 담겨 있습니다.",
     "price":9800000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "18":30.0
     },
@@ -936,7 +936,7 @@
     "subType":"ORB",
     "description":"빛의 신이 남긴 정수라 불리는, 눈부시게 빛나는 결정체입니다.",
     "price":9990000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "18":28.0
     },
@@ -956,7 +956,7 @@
     "subType":"GRIMORE",
     "description":"어둠 속에서만 문자가 나타나는 기괴한 마도서입니다.",
     "price":1150000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "15":10.0
     },
@@ -976,7 +976,7 @@
     "subType":"ORB",
     "description":"모든 빛을 빨아들이는 듯한 칠흑 같은 색을 띠고 있습니다.",
     "price":1100000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "15":8.0
     },
@@ -996,7 +996,7 @@
     "subType":"GRIMORE",
     "description":"존재하지 않는 차원의 지식이 담긴, 존재 자체가 금기시되는 책입니다.",
     "price":8800000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "15":25.0
     },
@@ -1016,7 +1016,7 @@
     "subType":"ORB",
     "description":"불길한 마력을 내뿜으며 주변의 생명력을 미세하게 갈구합니다.",
     "price":9200000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "15":22.0
     },
@@ -1036,7 +1036,7 @@
     "subType":"GRIMORE",
     "description":"무질서한 마력의 흐름을 억지로 묶어둔 불안정한 마도서입니다.",
     "price":1400000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "16":15.0
     },
@@ -1056,7 +1056,7 @@
     "subType":"ORB",
     "description":"공간의 일그러짐을 이용해 마력의 관통력을 극대화합니다.",
     "price":1350000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "16":12.0
     },
@@ -1076,7 +1076,7 @@
     "subType":"GRIMORE",
     "description":"먼 별의 파편 위에 새겨진 고대 신들의 광기 서린 기록입니다.",
     "price":11000000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "16":35.0
     },
@@ -1096,7 +1096,7 @@
     "subType":"ORB",
     "description":"모든 마력이 하나로 수렴되는 특이점을 형상화한 보주입니다.",
     "price":12500000,
-    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.png",
+    "icon":"/images/items/SUBWEAPON-MAGIC-UNCOMMON.webp",
     "baseStatsBonus":{
       "16":30.0
     },

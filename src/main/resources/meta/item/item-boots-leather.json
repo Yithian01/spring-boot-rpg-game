@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "여러 겹의 가죽을 덧대어 만든 튼튼한 장화입니다. 용병들이 즐겨 신습니다.",
     "price": 145000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 60.0,
@@ -31,7 +31,7 @@
     "twoHanded": false,
     "description": "발소리를 줄이기 위해 부드러운 가죽으로 제작되었습니다. 암살자들이 선호합니다.",
     "price": 152000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 60.0,
@@ -53,7 +53,7 @@
     "twoHanded": false,
     "description": "가죽 속에 얇은 철심을 박아 넣어 뒤틀림을 방지했습니다.",
     "price": 138000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 60.0,
@@ -75,7 +75,7 @@
     "twoHanded": false,
     "description": "빠른 위치 선정이 중요한 사수들을 위해 매우 가볍게 무두질된 신발입니다.",
     "price": 140000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 60.0,
@@ -97,7 +97,7 @@
     "twoHanded": false,
     "description": "특수 용액에 담가 경화시킨 가죽으로 만든 전투용 장화입니다.",
     "price": 420000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 120.0,
@@ -119,7 +119,7 @@
     "twoHanded": false,
     "description": "급소인 발목과 발등 부분에 강철판을 덧대어 방어력을 높였습니다.",
     "price": 435000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 120.0,
@@ -141,7 +141,7 @@
     "twoHanded": false,
     "description": "장거리 이동과 은밀한 접근에 최적화된 숙련된 장인의 가죽 신발입니다.",
     "price": 450000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 120.0,
@@ -163,7 +163,7 @@
     "twoHanded": false,
     "description": "최상급 가죽을 사용하여 활동성과 보호 성능을 동시에 잡은 고급 장화입니다.",
     "price": 410000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxStamina": 120.0,
@@ -185,7 +185,7 @@
     "twoHanded": false,
     "description": "암살자들이 은밀한 기동을 위해 즐겨 신는 장화입니다. 소리 없이 적의 등 뒤로 다가갈 수 있게 해줍니다.",
     "price": 850000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "20": 15.0,
       "21": 10.0
@@ -210,7 +210,7 @@
     "twoHanded": false,
     "description": "수많은 전장을 누빈 용병의 신발입니다. 가죽 안에 얇은 철판을 덧대어 기동성과 방어력을 동시에 챙겼습니다.",
     "price": 820000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "1": 15.0,
       "2": 10.0
@@ -235,7 +235,7 @@
     "twoHanded": false,
     "description": "궁수들이 험난한 지형에서 자리를 잡기 위해 사용하는 장화입니다. 발끝에 닿는 지면의 감각을 선명하게 전달합니다.",
     "price": 880000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "15": 12.0,
       "23": 13.0
@@ -260,7 +260,7 @@
     "twoHanded": false,
     "description": "어둠 속에서 활동하는 이들을 위한 장화입니다. 특수 무두질을 거쳐 마찰음을 최소화했습니다.",
     "price": 840000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "17": 15.0,
       "20": 10.0
@@ -285,7 +285,7 @@
     "twoHanded": false,
     "description": "역사상 가장 위대했던 암살자가 신었다고 전해지는 장화입니다. 착용자의 존재감 자체를 지워버립니다.",
     "price": 5500000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "20": 30.0,
       "21": 20.0,
@@ -311,7 +311,7 @@
     "twoHanded": false,
     "description": "전설적인 용병단의 단장이 신었던 장화입니다. 이 신발이 닿는 곳마다 승리의 함성이 울려 퍼졌습니다.",
     "price": 5200000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "1": 25.0,
       "2": 25.0,
@@ -337,7 +337,7 @@
     "twoHanded": false,
     "description": "하늘 위에서 화살을 쏟아붓는 명사수들의 신발입니다. 지형지물을 무시하는 기동력을 부여합니다.",
     "price": 5800000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "16": 30.0,
       "23": 20.0,
@@ -363,7 +363,7 @@
     "twoHanded": false,
     "description": "차원을 넘나들며 목표를 쫓는 추격자의 장화입니다. 그림자 속에서도 신속한 움직임을 보장합니다.",
     "price": 6000000,
-    "icon": "/images/items/BOOTS_LEATHER_COMMON.png",
+    "icon": "/images/items/BOOTS_LEATHER_COMMON.webp",
     "baseStatsBonus": {
       "9": 20.0,
       "20": 25.0,

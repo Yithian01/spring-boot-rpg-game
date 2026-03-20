@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "열기를 머금은 붉은 산호를 깎아 만들었습니다. 끝부분에서 은은한 온기가 느껴집니다.",
     "price": 450000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 30.0,
@@ -28,7 +28,7 @@
     "twoHanded": false,
     "description": "식지 않는 용암 근처에서 채집한 화성암을 매단 완드입니다.",
     "price": 480000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 30.0,
@@ -47,7 +47,7 @@
     "twoHanded": false,
     "description": "응축된 화염 정수를 박아넣어 파괴적인 마력을 발산합니다.",
     "price": 950000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 80.0,
@@ -68,7 +68,7 @@
     "twoHanded": false,
     "description": "태양의 열기를 품고 있다는 태양석 조각이 장식되어 있습니다.",
     "price": 980000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "fireAtk": 80.0,
@@ -89,7 +89,7 @@
     "twoHanded": false,
     "description": "녹지 않는 얼음 결정이 끝에 달려있어 냉기를 보존해줍니다.",
     "price": 440000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 30.0,
@@ -108,7 +108,7 @@
     "twoHanded": false,
     "description": "북부 한대 지방에서 자라는 서리나무의 단단한 가지입니다.",
     "price": 460000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 30.0,
@@ -127,7 +127,7 @@
     "twoHanded": false,
     "description": "투명하게 빛나는 빙정석을 가공하여 마력 수용량을 극대화했습니다.",
     "price": 940000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 80.0,
@@ -148,7 +148,7 @@
     "twoHanded": false,
     "description": "주변의 공기를 얼려버릴 듯한 강력한 냉기 마력이 깃들어 있습니다.",
     "price": 960000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "iceAtk": 80.0,
@@ -169,7 +169,7 @@
     "twoHanded": false,
     "description": "전기 전도율이 높은 자수정 조각을 매단 완드입니다.",
     "price": 470000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 30.0,
@@ -188,7 +188,7 @@
     "twoHanded": false,
     "description": "낙뢰의 힘이 깃든 나무를 깎아 만들어 전격 마법에 효율적입니다.",
     "price": 490000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 30.0,
@@ -207,7 +207,7 @@
     "twoHanded": false,
     "description": "폭풍의 눈에서 발견되는 희귀한 광석을 가공하여 제작했습니다.",
     "price": 990000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 80.0,
@@ -227,7 +227,7 @@
     "twoHanded": false,
     "description": "마력을 띈 거대 전기뱀장어의 척추뼈로 만든 유연한 완드입니다.",
     "price": 920000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "lightningAtk": 80.0,
@@ -247,7 +247,7 @@
     "twoHanded": false,
     "description": "대지의 기운이 깃든 찰흙을 구워 만든 소박한 지팡이입니다.",
     "price": 430000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 30.0,
@@ -266,7 +266,7 @@
     "twoHanded": false,
     "description": "오랜 시간 숲의 마력을 흡수한 이끼 낀 돌로 만들어졌습니다.",
     "price": 450000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 30.0,
@@ -285,7 +285,7 @@
     "twoHanded": false,
     "description": "무너진 정령의 파편 중 생명력이 깃든 부분만을 골라 제작했습니다.",
     "price": 910000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 80.0,
@@ -307,7 +307,7 @@
     "twoHanded": false,
     "description": "풍부한 생명력과 대지의 마력을 동시에 품고 있는 귀한 나뭇가지입니다.",
     "price": 970000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "earthAtk": 80.0,
@@ -329,7 +329,7 @@
     "twoHanded": false,
     "description": "불순물이 없는 깨끗한 석영으로 제작되어 신성한 마력과 잘 공명합니다.",
     "price": 500000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 30.0,
@@ -348,7 +348,7 @@
     "twoHanded": false,
     "description": "매끄럽게 가공된 상아 재질의 완드입니다. 기도하기 편한 구조입니다.",
     "price": 520000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 30.0,
@@ -367,7 +367,7 @@
     "twoHanded": false,
     "description": "신성한 기운을 담은 은으로 덧칠된 지팡이입니다.",
     "price": 1100000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 80.0,
@@ -388,7 +388,7 @@
     "twoHanded": false,
     "description": "은은한 빛을 내는 월장석이 박혀있어 부드러운 치유와 신성력을 돕습니다.",
     "price": 1150000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "holyAtk": 80.0,
@@ -409,7 +409,7 @@
     "twoHanded": false,
     "description": "그림자 속에 자생하는 단단한 흑단나무로 제작되었습니다.",
     "price": 480000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 30.0,
@@ -428,7 +428,7 @@
     "twoHanded": false,
     "description": "검은 까마귀의 깃털과 뼈를 엮어 만든 기괴한 형태의 완드입니다.",
     "price": 500000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 30.0,
@@ -447,7 +447,7 @@
     "twoHanded": false,
     "description": "빛을 흡수하는 성질을 가진 심연의 수정을 가공하여 만들었습니다.",
     "price": 1050000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 80.0,
@@ -467,7 +467,7 @@
     "twoHanded": false,
     "description": "어둠의 농도가 짙은 정수를 추출하여 완드에 주입했습니다.",
     "price": 1080000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "darkAtk": 80.0,
@@ -487,7 +487,7 @@
     "twoHanded": false,
     "description": "출처를 알 수 없는 해골을 장식으로 쓴 불길한 완드입니다.",
     "price": 550000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 30.0,
@@ -506,7 +506,7 @@
     "twoHanded": false,
     "description": "정상적으로 자라지 않고 기묘하게 뒤틀린 덩굴을 굳혀 만들었습니다.",
     "price": 570000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 30.0,
@@ -525,7 +525,7 @@
     "twoHanded": false,
     "description": "알 수 없는 이계의 광석이 박혀있어 보는 것만으로도 정신이 혼미해집니다.",
     "price": 1200000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 80.0,
@@ -545,7 +545,7 @@
     "twoHanded": false,
     "description": "불규칙하게 진동하는 혼돈의 파편을 억지로 결합해 만든 지팡이입니다.",
     "price": 1250000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "chaosAtk": 80.0,
@@ -565,7 +565,7 @@
     "twoHanded": true,
     "description": "건조하게 말린 불꽃나무 가지로 제작되었습니다. 끝부분이 항상 붉게 달아올라 있습니다.",
     "price": 450000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -584,7 +584,7 @@
     "twoHanded": true,
     "description": "열기를 머금은 화강석을 깎아 만든 지팡이입니다. 묵직한 마력이 느껴집니다.",
     "price": 480000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -603,7 +603,7 @@
     "twoHanded": true,
     "description": "설산에서 자라난 단단한 나무로 만들어졌습니다. 주변 공기를 서늘하게 만듭니다.",
     "price": 440000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -622,7 +622,7 @@
     "twoHanded": true,
     "description": "녹지 않는 빙하 조각을 끝에 매단 스태프입니다. 마나의 순도를 높여줍니다.",
     "price": 470000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -641,7 +641,7 @@
     "twoHanded": true,
     "description": "마력 전도율이 높은 구리를 꼬아 만든 지팡이입니다. 가끔 스파크가 튑니다.",
     "price": 460000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -660,7 +660,7 @@
     "twoHanded": true,
     "description": "번개를 맞은 바위를 가공하여 만든 짧은 지팡이입니다. 날카로운 마력을 방출합니다.",
     "price": 490000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -679,7 +679,7 @@
     "twoHanded": true,
     "description": "지맥의 기운을 흡수한 거대한 나무 뿌리입니다. 생명력이 느껴집니다.",
     "price": 430000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -699,7 +699,7 @@
     "twoHanded": true,
     "description": "특수 마법 점토를 구워 만든 지팡이입니다. 대지의 견고함을 담고 있습니다.",
     "price": 445000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -719,7 +719,7 @@
     "twoHanded": true,
     "description": "맑은 빛을 내는 백수정을 가공해 만든 지팡이입니다. 마음을 정화합니다.",
     "price": 500000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -738,7 +738,7 @@
     "twoHanded": true,
     "description": "성스러운 은으로 얇게 코팅된 나무 지팡이입니다.",
     "price": 520000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -756,7 +756,7 @@
     "twoHanded": true,
     "description": "검은 광택이 나는 단단한 목재로 제작되었습니다. 그림자가 짙게 배어있습니다.",
     "price": 480000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -775,7 +775,7 @@
     "twoHanded": true,
     "description": "오래된 유골을 엮어 만든 기괴한 형태의 지팡이입니다.",
     "price": 470000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -794,7 +794,7 @@
     "twoHanded": true,
     "description": "이유를 알 수 없이 기괴하게 뒤틀린 고철 지팡이입니다. 불안정한 마력을 뿜습니다.",
     "price": 460000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -813,7 +813,7 @@
     "twoHanded": true,
     "description": "차원의 틈새에서 발견된 묘한 문양의 돌을 가공했습니다.",
     "price": 490000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 55.0,
@@ -832,7 +832,7 @@
     "twoHanded": true,
     "description": "화염 원소의 정수를 품은 보석이 박혀 있습니다. 파괴적인 열기를 내뿜습니다.",
     "price": 1250000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -851,7 +851,7 @@
     "twoHanded": true,
     "description": "붉은 연꽃 문양이 새겨진 정교한 지팡이입니다. 영창 시 폭발적인 힘을 돕습니다.",
     "price": 1300000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -870,7 +870,7 @@
     "twoHanded": true,
     "description": "절대 녹지 않는 신비한 얼음 결정을 가공해 만들었습니다. 사용자의 마력을 보존합니다.",
     "price": 1200000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -889,7 +889,7 @@
     "twoHanded": true,
     "description": "새벽녘의 서리만을 모아 응축시킨 정수로 장식된 아름다운 스태프입니다.",
     "price": 1280000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -908,7 +908,7 @@
     "twoHanded": true,
     "description": "폭풍우 속에서 떨어진 벼락의 잔재를 수집하여 제작했습니다. 관통력이 뛰어납니다.",
     "price": 1350000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -927,7 +927,7 @@
     "twoHanded": true,
     "description": "고대 청동 합금으로 제작되어 마력을 날카로운 전격으로 변환합니다.",
     "price": 1400000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -946,7 +946,7 @@
     "twoHanded": true,
     "description": "거대한 고대수의 아주 작은 가지를 정성껏 깎아 만들었습니다. 강인한 생명력을 공유합니다.",
     "price": 1220000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -966,7 +966,7 @@
     "twoHanded": true,
     "description": "깊은 지하에서 채굴된 단단한 광물을 가공했습니다. 착용자를 견고하게 만듭니다.",
     "price": 1260000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -986,7 +986,7 @@
     "twoHanded": true,
     "description": "이른 아침의 햇살을 머금은 듯 눈부신 빛을 발하는 스태프입니다.",
     "price": 1450000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -1006,7 +1006,7 @@
     "twoHanded": true,
     "description": "오랜 시간 축복을 받은 목재로 제작되어 온화한 마력을 띱니다.",
     "price": 1480000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -1025,7 +1025,7 @@
     "twoHanded": true,
     "description": "깊은 어둠 속에서도 형체를 잃지 않는 기묘한 소재로 만들어졌습니다.",
     "price": 1320000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -1044,7 +1044,7 @@
     "twoHanded": true,
     "description": "주변의 빛을 흡수하는 검은 보석이 박혀 있습니다. 치명적인 마력을 유도합니다.",
     "price": 1370000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -1063,7 +1063,7 @@
     "twoHanded": true,
     "description": "알 수 없는 차원의 마력이 깃든 지팡이입니다. 적의 마력 방어망을 무력화합니다.",
     "price": 1390000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -1082,7 +1082,7 @@
     "twoHanded": true,
     "description": "이 세상의 것이 아닌 듯한 금속으로 만들어진 지팡이입니다. 매우 날카로운 마력을 방출합니다.",
     "price": 1420000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "magicAtk": 135.0,
@@ -1101,7 +1101,7 @@
     "twoHanded": false,
     "description": "끊임없이 타오르는 붉은 나무의 잔가지를 다듬어 만든 완드입니다. 열기가 손끝까지 전해집니다.",
     "price": 1850000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "4": 15 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1123,7 +1123,7 @@
     "twoHanded": false,
     "description": "화산 지대에 서식하는 기이한 생물의 핵을 박아 넣은 완드입니다.",
     "price": 1920000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "4": 12, "13": 8 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1145,7 +1145,7 @@
     "twoHanded": false,
     "description": "하늘에서 떨어진 타오르는 돌을 정교하게 세공한 완드입니다. 그 빛은 어둠을 허락하지 않습니다.",
     "price": 8500000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "4": 35, "13": 20 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1167,7 +1167,7 @@
     "twoHanded": false,
     "description": "고대 화염 정령의 정수가 깃든 완드입니다. 쥐고 있는 것만으로도 마력이 증폭됩니다.",
     "price": 9200000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "4": 40, "8": 15 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1189,7 +1189,7 @@
     "twoHanded": false,
     "description": "녹지 않는 만년설의 결정을 마력으로 고정시킨 완드입니다.",
     "price": 1780000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "13": 25 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1211,7 +1211,7 @@
     "twoHanded": false,
     "description": "혹한의 땅에서 발견된 거대한 뼈를 깎아 만든 완드입니다. 주변의 공기를 차갑게 얼립니다.",
     "price": 1820000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "13": 20, "14": 10 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1233,7 +1233,7 @@
     "twoHanded": false,
     "description": "시간조차 얼어붙은 극지방의 심연에서 길러낸 푸른 수정 완드입니다.",
     "price": 8800000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "13": 50, "14": 20 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1255,7 +1255,7 @@
     "twoHanded": false,
     "description": "전설 속 빙룡의 둥지 아래 파묻혀 있던 신비로운 보석으로 만든 완드입니다.",
     "price": 9500000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "13": 60 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1277,7 +1277,7 @@
     "twoHanded": false,
     "description": "번개가 내리친 자리에 남은 검은 수정으로 제작된 완드입니다.",
     "price": 1900000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "17": 20 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1298,7 +1298,7 @@
     "twoHanded": false,
     "description": "전기 뱀장어의 껍질로 감싼 유연한 완드입니다. 휘두를 때마다 스파크가 튑니다.",
     "price": 1840000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "17": 15, "20": 10 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1319,7 +1319,7 @@
     "twoHanded": false,
     "description": "구름 위에서 채취한 순수한 뇌전의 결정을 담은 완드입니다. 하늘의 분노를 대변합니다.",
     "price": 9100000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "17": 35, "20": 20 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1341,7 +1341,7 @@
     "twoHanded": false,
     "description": "전설 속 환수 '기린'의 뿔 조각으로 만든 완드입니다. 미세한 마력도 번개로 변환합니다.",
     "price": 9800000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "17": 45 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1363,7 +1363,7 @@
     "twoHanded": false,
     "description": "천 년 동안 땅속 깊은 곳에서 기운을 흡수한 나무 뿌리 완드입니다.",
     "price": 1750000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "1": 15, "18": 10 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1384,7 +1384,7 @@
     "twoHanded": false,
     "description": "생명력이 넘치는 숲의 정수를 담은 비취 완드입니다.",
     "price": 1800000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "1": 20 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1405,7 +1405,7 @@
     "twoHanded": false,
     "description": "대지의 여신이 남겼다고 전해지는 성스러운 고목 완드입니다.",
     "price": 8600000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "1": 40, "18": 25 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1427,7 +1427,7 @@
     "twoHanded": false,
     "description": "모든 생명의 근원이라 불리는 나무에서 갓 돋아난 가지로 만든 완드입니다.",
     "price": 9900000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "1": 50, "19": 20 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1449,7 +1449,7 @@
     "twoHanded": false,
     "description": "순백의 깃털과 은을 섞어 만든 완드입니다. 부정한 기운을 밀어냅니다.",
     "price": 1880000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "8": 15, "13": 10 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1470,7 +1470,7 @@
     "twoHanded": false,
     "description": "해가 뜨는 순간에만 채취 가능한 귀한 광석을 정제한 완드입니다.",
     "price": 1920000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "8": 20 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1491,7 +1491,7 @@
     "twoHanded": false,
     "description": "천상의 빛이 응축된 투명한 보석이 박힌 완드입니다. 마음이 평온해집니다.",
     "price": 9300000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "8": 40, "13": 25 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1513,7 +1513,7 @@
     "twoHanded": false,
     "description": "태초의 빛이 굳어 만들어졌다는 전설의 완드입니다. 모든 어둠을 정화합니다.",
     "price": 9990000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "8": 50 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1535,7 +1535,7 @@
     "twoHanded": false,
     "description": "빛조차 흡수하는 차가운 흑요석을 날카롭게 갈아 장식한 완드입니다.",
     "price": 1820000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "15": 15 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1556,7 +1556,7 @@
     "twoHanded": false,
     "description": "그림자 속에서만 자라나는 검은 나무의 심재로 만든 완드입니다.",
     "price": 1860000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "15": 12, "20": 8 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1577,7 +1577,7 @@
     "twoHanded": false,
     "description": "죽음의 문턱에서 흘린 눈물이 굳어 만들어진 보석 완드입니다.",
     "price": 9400000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "15": 35, "20": 20 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1599,7 +1599,7 @@
     "twoHanded": false,
     "description": "사라진 고대 왕국의 지배자가 가졌던 완드의 파편입니다.",
     "price": 9850000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "15": 45 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1621,7 +1621,7 @@
     "twoHanded": false,
     "description": "보는 방향에 따라 형태가 변하는 기괴한 뿔 완드입니다.",
     "price": 1950000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "9": 10, "15": 10 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1642,7 +1642,7 @@
     "twoHanded": false,
     "description": "차원의 틈새에서 흘러나온 에너지가 깃든 보라색 완드입니다.",
     "price": 1980000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "9": 20 },
     "combatStatsBonus": {
       "magicAtk": 200.0,
@@ -1663,7 +1663,7 @@
     "twoHanded": false,
     "description": "인간의 이해를 벗어난 존재의 일부를 가공한 완드입니다.",
     "price": 9600000,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "9": 30, "15": 25 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1685,7 +1685,7 @@
     "twoHanded": false,
     "description": "질서와 무질서가 뒤섞여 요동치는 정수 완드입니다.",
     "price": 9999999,
-    "icon": "/images/items/WEAPON-WAND-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-WAND-UNCOMMON.webp",
     "baseStatsBonus": { "9": 45, "13": 20 },
     "combatStatsBonus": {
       "magicAtk": 350.0,
@@ -1707,7 +1707,7 @@
     "twoHanded": true,
     "description": "끊임없이 타오르는 화산 암반에서 추출한 원석을 가공해 만든 스태프입니다. 열기가 대기를 가릅니다.",
     "price": 1850000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "4": 15.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1727,7 +1727,7 @@
     "twoHanded": true,
     "description": "불꽃을 숭배하는 집단에서 고위 사제들에게 수여하던 스태프입니다. 화염의 순도가 높습니다.",
     "price": 1920000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "13": 12.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1747,7 +1747,7 @@
     "twoHanded": true,
     "description": "추락한 별의 잔해에서 얻은 태양석으로 제작되었습니다. 스태프 끝에서 태양의 고동소리가 들립니다.",
     "price": 8500000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "4": 30.0, "13": 20.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -1768,7 +1768,7 @@
     "twoHanded": true,
     "description": "태초의 불꽃이 깃든 고대 나무의 심장부로 만들어진 전설적인 스태프입니다. 휘두르는 것만으로 공간이 일렁입니다.",
     "price": 9200000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "8": 25.0, "4": 25.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -1788,7 +1788,7 @@
     "twoHanded": true,
     "description": "절대 영도의 환경에서만 자생하는 푸른 수정을 박아 넣은 스태프입니다. 차가운 한기가 주위를 감쌉니다.",
     "price": 1780000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "13": 15.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1808,7 +1808,7 @@
     "twoHanded": true,
     "description": "오랜 시간 빙결된 숲의 정수가 담긴 스태프입니다. 마나의 파동이 정적인 고요함을 유지합니다.",
     "price": 1820000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "14": 15.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1828,7 +1828,7 @@
     "twoHanded": true,
     "description": "한 번도 녹지 않은 태초의 얼음으로 빚어진 전설적인 스태프입니다. 모든 마력을 얼려 보관합니다.",
     "price": 8800000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "13": 30.0, "14": 30.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -1849,7 +1849,7 @@
     "twoHanded": true,
     "description": "극한의 바다 깊은 곳에서 발견된 청색 보석이 박혀있는 스태프입니다. 마력의 한계치가 크게 확장됩니다.",
     "price": 8950000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "9": 25.0, "13": 35.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -1869,7 +1869,7 @@
     "twoHanded": true,
     "description": "벼락을 맞고 살아남은 거대한 나무의 중심부로 제작되었습니다. 스태프에서 자릿한 전류가 흐릅니다.",
     "price": 1880000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "17": 10.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1889,7 +1889,7 @@
     "twoHanded": true,
     "description": "전기 파동이 응축된 호박석을 매단 스태프입니다. 적의 마력 방어막을 손쉽게 뚫어냅니다.",
     "price": 1910000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "20": 15.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1909,7 +1909,7 @@
     "twoHanded": true,
     "description": "신화 속 영수가 남긴 뿔로 만들어진 환상적인 스태프입니다. 쥔 손 끝에서 전율이 느껴집니다.",
     "price": 9500000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "17": 25.0, "20": 20.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -1930,7 +1930,7 @@
     "twoHanded": true,
     "description": "하늘에서 내려온 벼락을 형상화한 은색 금속 스태프입니다. 적의 저항을 무력화합니다.",
     "price": 9700000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "23": 15.0, "17": 30.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -1950,7 +1950,7 @@
     "twoHanded": true,
     "description": "땅의 기운을 빨아들여 자라는 고목의 뿌리로 만든 스태프입니다. 사용자의 생명력을 보호합니다.",
     "price": 1750000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "1": 20.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1970,7 +1970,7 @@
     "twoHanded": true,
     "description": "대지 정령이 깃든 에메랄드가 장식된 스태프입니다. 자연의 치유력이 흘러나옵니다.",
     "price": 1790000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "2": 20.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -1990,7 +1990,7 @@
     "twoHanded": true,
     "description": "대지의 어머니가 남긴 숨결이 서린 암석 스태프입니다. 쥔 것만으로 땅과 하나가 된 기분이 듭니다.",
     "price": 8200000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "1": 50.0, "2": 40.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -2011,7 +2011,7 @@
     "twoHanded": true,
     "description": "생명의 근원이라 불리는 수목의 가지로 제작된 전설적인 스태프입니다. 생명 에너지를 증폭시킵니다.",
     "price": 8400000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "18": 30.0, "1": 40.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -2032,7 +2032,7 @@
     "twoHanded": true,
     "description": "성스러운 축복이 깃든 백금 스태프입니다. 어둠을 몰아내는 찬란한 빛을 발합니다.",
     "price": 1950000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "13": 10.0, "14": 10.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -2052,7 +2052,7 @@
     "twoHanded": true,
     "description": "평생을 헌신한 고위 사제가 사용하던 은제 스태프입니다. 정갈한 마력의 흐름이 느껴집니다.",
     "price": 1890000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "11": 15.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -2072,7 +2072,7 @@
     "twoHanded": true,
     "description": "천상의 빛으로 벼려진 신비로운 스태프입니다. 부정한 기운은 근처에 오지도 못하게 합니다.",
     "price": 9900000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "13": 40.0, "14": 40.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -2093,7 +2093,7 @@
     "twoHanded": true,
     "description": "사자의 눈물이 굳어 만들어진 보석 스태프입니다. 고결한 마나의 파동을 방출합니다.",
     "price": 9800000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "11": 30.0, "13": 30.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -2114,7 +2114,7 @@
     "twoHanded": true,
     "description": "빛이 들지 않는 심연의 나무로 제작된 스태프입니다. 무기 주위로 검은 안개가 일렁입니다.",
     "price": 1870000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "15": 12.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -2134,7 +2134,7 @@
     "twoHanded": true,
     "description": "흑마법의 정수가 깃든 장식이 달린 스태프입니다. 사용자의 마력을 기괴하게 뒤틉니다.",
     "price": 1930000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "9": 15.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -2154,7 +2154,7 @@
     "twoHanded": true,
     "description": "심연의 보석을 박아 넣은 환상적인 스태프입니다. 적의 영혼을 꿰뚫어 치명적인 타격을 입힙니다.",
     "price": 9300000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "15": 25.0, "9": 25.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -2175,7 +2175,7 @@
     "twoHanded": true,
     "description": "고대 마신의 뼈로 전해지는 기괴한 형상의 스태프입니다. 파괴적인 어둠의 힘을 내뿜습니다.",
     "price": 9600000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "15": 35.0, "13": 25.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -2195,7 +2195,7 @@
     "twoHanded": true,
     "description": "차원의 틈새에서 흘러나온 이질적인 광석 스태프입니다. 마력이 불규칙하게 진동합니다.",
     "price": 1980000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "20": 10.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -2215,7 +2215,7 @@
     "twoHanded": true,
     "description": "형용할 수 없는 존재를 본뜬 뒤틀린 스태프입니다. 보는 것만으로도 정신이 아득해집니다.",
     "price": 2050000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "21": 15.0 },
     "combatStatsBonus": {
       "magicAtk": 380.0,
@@ -2235,7 +2235,7 @@
     "twoHanded": true,
     "description": "잊혀진 신의 파편으로 만들어진 공포의 스태프입니다. 현실의 법칙을 왜곡하며 적을 압도합니다.",
     "price": 11000000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "20": 25.0, "21": 25.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,
@@ -2256,7 +2256,7 @@
     "twoHanded": true,
     "description": "우주 너머의 지식이 응축된 궁극의 스태프입니다. 인과율을 무시하는 강력한 관통력을 발휘합니다.",
     "price": 12500000,
-    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.png",
+    "icon": "/images/items/WEAPON-STAFF-UNCOMMON.webp",
     "baseStatsBonus": { "13": 35.0, "20": 30.0 },
     "combatStatsBonus": {
       "magicAtk": 600.0,

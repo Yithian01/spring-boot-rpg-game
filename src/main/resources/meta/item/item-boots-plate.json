@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "표면을 매끄럽게 닦아낸 철제 장화입니다. 보병들에게 보급되는 전형적인 형태입니다.",
     "price": 420000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 40.0,
@@ -31,7 +31,7 @@
     "twoHanded": false,
     "description": "무게감이 상당하지만, 그만큼 발등과 발목을 든든하게 감싸줍니다.",
     "price": 385000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 40.0,
@@ -53,7 +53,7 @@
     "twoHanded": false,
     "description": "무쇠판을 덧대어 내구성을 높였습니다. 웬만한 충격에는 찌그러지지 않습니다.",
     "price": 450000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 40.0,
@@ -75,7 +75,7 @@
     "twoHanded": false,
     "description": "가죽 장화 위에 판금을 겹겹이 씌운 형태입니다. 안정적인 보행을 돕습니다.",
     "price": 410000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 40.0,
@@ -97,7 +97,7 @@
     "twoHanded": false,
     "description": "정련된 강철을 사용해 제작된 고성능 장화입니다. 충격 흡수력이 뛰어납니다.",
     "price": 1250000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 80.0,
@@ -119,7 +119,7 @@
     "twoHanded": false,
     "description": "숙련된 대장장이가 기사들을 위해 맞춤 제작한 판금 장화입니다.",
     "price": 1380000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 80.0,
@@ -141,7 +141,7 @@
     "twoHanded": false,
     "description": "정강이부터 발등까지 일체형으로 제작되어 빈틈없는 방어력을 제공합니다.",
     "price": 1420000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 80.0,
@@ -163,7 +163,7 @@
     "twoHanded": false,
     "description": "최전방의 중보병들을 위해 제작되었습니다. 무게를 활용한 버티기에 적합합니다.",
     "price": 1150000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 80.0,
@@ -185,7 +185,7 @@
     "twoHanded": false,
     "description": "죄인을 짓밟기 위해 제작된 무거운 군화입니다. 한 걸음마다 위압감이 서려 있습니다.",
     "price": 1450000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 15.0, "10": 10.0 },
     "combatStatsBonus": {
       "maxHp": 150.0,
@@ -207,7 +207,7 @@
     "twoHanded": false,
     "description": "어떤 충격에도 흔들리지 않는 견고한 지지력을 제공하는 장화입니다.",
     "price": 1380000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 20.0, "2": 5.0 },
     "combatStatsBonus": {
       "maxHp": 150.0,
@@ -229,7 +229,7 @@
     "twoHanded": false,
     "description": "검은 철광석을 녹여 만든 투박한 장화입니다. 대지를 파괴할 듯한 무게감을 자랑합니다.",
     "price": 1520000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "10": 25.0 },
     "combatStatsBonus": {
       "maxHp": 150.0,
@@ -251,7 +251,7 @@
     "twoHanded": false,
     "description": "최전방 보병 대장들이 사용하던 장화로, 착용자의 다리를 강철기둥처럼 만들어줍니다.",
     "price": 1480000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 10.0, "10": 15.0 },
     "combatStatsBonus": {
       "maxHp": 150.0,
@@ -273,7 +273,7 @@
     "twoHanded": false,
     "description": "전쟁의 신이 대지를 밟을 때 신었다고 전해지는 전설적인 방어구입니다. 무게감이 느껴지지 않는 기적을 선사합니다.",
     "price": 12000000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 50.0, "10": 50.0 },
     "combatStatsBonus": {
       "maxHp": 250.0,
@@ -295,7 +295,7 @@
     "twoHanded": false,
     "description": "심연의 금속으로 제련되어, 걷는 곳마다 대지를 진동시키고 적의 전의를 꺾어버립니다.",
     "price": 13500000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 70.0, "2": 30.0 },
     "combatStatsBonus": {
       "maxHp": 250.0,
@@ -317,7 +317,7 @@
     "twoHanded": false,
     "description": "용의 비늘과 고대 강철을 혼합하여 제작했습니다. 그 어떤 물리적 타격도 비웃듯 튕겨냅니다.",
     "price": 15000000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "10": 100.0 },
     "combatStatsBonus": {
       "maxHp": 250.0,
@@ -339,7 +339,7 @@
     "twoHanded": false,
     "description": "움직이는 요새라 불리는 장화입니다. 이 장화를 신은 자는 전장에서 결코 밀려나지 않습니다.",
     "price": 11800000,
-    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 40.0, "2": 40.0, "10": 20.0 },
     "combatStatsBonus": {
       "maxHp": 250.0,

@@ -8,7 +8,7 @@
     "subType": "ACCESSORY",
     "description": "투박한 철판을 덧댄 가죽 허리띠입니다. 전사들이 기본적으로 선호합니다.",
     "price": 125000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "1": 5.0 },
     "combatStatsBonus": {
       "meleeAtk": 25.0,
@@ -27,7 +27,7 @@
     "subType": "ACCESSORY",
     "description": "거친 늑대 가죽으로 만든 망토입니다. 바람을 잘 막아주며 민첩한 움직임을 돕습니다.",
     "price": 138000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "20": 4.0 },
     "combatStatsBonus": {
       "moveSpeed": 0.1,
@@ -46,7 +46,7 @@
     "subType": "ACCESSORY",
     "description": "날을 갈 때 쓰는 연마석 조각을 박아 넣은 장식입니다. 무기 관리에 대한 마음가짐을 나타냅니다.",
     "price": 110000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "meleeAtk": 15.0,
@@ -65,7 +65,7 @@
     "subType": "ACCESSORY",
     "description": "궁수들이 시위를 당길 때 손가락을 보호하기 위해 착용하는 가죽 장갑입니다.",
     "price": 142000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "21": 3.0 },
     "combatStatsBonus": {
       "accuracy": 8.0,
@@ -84,7 +84,7 @@
     "subType": "ACCESSORY",
     "description": "불순물을 제거한 구리로 제작되었습니다. 신체 능력을 전반적으로 끌어올려 줍니다.",
     "price": 450000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "1": 8.0, "10": 5.0 },
     "combatStatsBonus": {
       "maxTurn": 1.0,
@@ -104,7 +104,7 @@
     "subType": "ACCESSORY",
     "description": "어두운 곳에서 잘 보이지 않도록 특수하게 염색된 작은 가방입니다. 암살자들이 애용합니다.",
     "price": 485000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "20": 10.0 },
     "combatStatsBonus": {
       "maxTurn": 1.0,
@@ -124,7 +124,7 @@
     "subType": "ACCESSORY",
     "description": "거대 마수의 힘줄을 꼬아 만든 팔찌입니다. 착용자의 근력을 보조하는 마력이 깃들어 있습니다.",
     "price": 520000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "1": 12.0 },
     "combatStatsBonus": {
       "maxTurn": 1.0,
@@ -144,7 +144,7 @@
     "subType": "ACCESSORY",
     "description": "갑옷 안에 받쳐 입는 가벼운 가죽 조끼입니다. 활동성과 방어력을 동시에 챙겼습니다.",
     "price": 510000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": { "2": 8.0, "20": 5.0 },
     "combatStatsBonus": {
       "maxTurn": 1.0,
@@ -164,7 +164,7 @@
     "subType": "ACCESSORY",
     "description": "수많은 전장을 누빈 용병 대장의 휘장입니다. 주변의 살기를 흡수하여 착용자의 근력을 폭발시킵니다.",
     "price": 2800000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 10.0,
       "10": 15.0
@@ -187,7 +187,7 @@
     "subType": "ACCESSORY",
     "description": "암살자들이 급소를 정확히 꿰뚫기 위해 사용하는 보조 마석입니다.",
     "price": 2650000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "20": 20.0
     },
@@ -209,7 +209,7 @@
     "subType": "ACCESSORY",
     "description": "바람의 정령이 깃든 화살통입니다.",
     "price": 2700000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "21": 15.0,
       "23": 10.0
@@ -232,7 +232,7 @@
     "subType": "ACCESSORY",
     "description": "불굴의 기사가 지니고 있던 메달입니다.",
     "price": 2900000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 20.0,
       "2": 20.0
@@ -255,7 +255,7 @@
     "subType": "ACCESSORY",
     "description": "전쟁의 신이 사용했다고 전해지는 성유물입니다.",
     "price": 15000000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 40.0,
       "10": 50.0
@@ -279,7 +279,7 @@
     "subType": "ACCESSORY",
     "description": "전설적인 암살 집단의 수장이 사용하던 유물입니다.",
     "price": 14500000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "20": 60.0
     },
@@ -302,7 +302,7 @@
     "subType": "ACCESSORY",
     "description": "신수 시무르그의 깃털로 만든 장식입니다.",
     "price": 14000000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "17": 40.0,
       "21": 40.0
@@ -326,7 +326,7 @@
     "subType": "ACCESSORY",
     "description": "죽지 않는 괴수의 심장에서 추출한 핵입니다. 고동칠 때마다 마르지 않는 생명력을 주입합니다.",
     "price": 16000000,
-    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.png",
+    "icon": "/images/items/ARTIFACT-MELEE-UNCOMMON.webp",
     "baseStatsBonus": {
       "1": 50.0,
       "2": 50.0,

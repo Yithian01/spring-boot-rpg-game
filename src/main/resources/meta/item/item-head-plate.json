@@ -9,7 +9,7 @@
     "twoHanded": false,
     "description": "표면을 매끄럽게 연마하여 화살이 빗겨나가도록 설계된 철제 투구입니다.",
     "price": 420000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 100.0,
@@ -31,7 +31,7 @@
     "twoHanded": false,
     "description": "강도를 높이기 위해 철판 위에 굵은 징을 박아 넣었습니다.",
     "price": 380000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 100.0,
@@ -53,7 +53,7 @@
     "twoHanded": false,
     "description": "얼굴 전면을 보호하는 가드가 부착되어 있어 안정감을 줍니다.",
     "price": 450000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 100.0,
@@ -75,7 +75,7 @@
     "twoHanded": false,
     "description": "투박하지만 두께만큼은 확실하여 둔탁한 타격으로부터 머리를 보호합니다.",
     "price": 395000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 100.0,
@@ -97,7 +97,7 @@
     "twoHanded": false,
     "description": "숙련된 대장장이가 강철을 여러 번 접어 두드려 만든 튼튼한 투구입니다.",
     "price": 880000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 200.0,
@@ -119,7 +119,7 @@
     "twoHanded": false,
     "description": "머리 전체를 덮는 거대한 투구로, 내부에 가죽 안감을 덧대 충격을 완화합니다.",
     "price": 920000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 200.0,
@@ -141,7 +141,7 @@
     "twoHanded": false,
     "description": "불순물을 제거한 백강철을 사용하여 방어 성능과 마력 전도율을 높였습니다.",
     "price": 950000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 200.0,
@@ -163,7 +163,7 @@
     "twoHanded": false,
     "description": "여러 금속을 혼합하여 강도를 극대화한 합금 투구입니다. 상당히 무겁습니다.",
     "price": 910000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 200.0,
@@ -185,7 +185,7 @@
     "twoHanded": false,
     "description": "무너진 성벽의 파편을 녹여 만든 투구입니다. 착용자의 머리를 요새처럼 보호합니다.",
     "price": 450000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 350.0,
@@ -207,7 +207,7 @@
     "twoHanded": false,
     "description": "수천 번의 검격을 견뎌낸 흔적이 역력한 투구입니다. 투사의 투지를 증폭시킵니다.",
     "price": 480000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 350.0,
@@ -229,7 +229,7 @@
     "twoHanded": false,
     "description": "압도적인 무게로 적의 시선을 위압합니다. 정면에서 오는 충격을 효과적으로 분산합니다.",
     "price": 440000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 350.0,
@@ -251,7 +251,7 @@
     "twoHanded": false,
     "description": "사자의 형상을 본떠 만든 장식 투구입니다. 적군에게는 공포를, 아군에게는 신뢰를 줍니다.",
     "price": 510000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 350.0,
@@ -273,7 +273,7 @@
     "twoHanded": false,
     "description": "전설적인 파괴왕이 사용하던 투구입니다. 어떤 공격에도 굴하지 않는 불멸의 기운이 깃들어 있습니다.",
     "price": 1800000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 450.0,
@@ -295,7 +295,7 @@
     "twoHanded": false,
     "description": "고대 용의 비늘을 합금하여 제련했습니다. 마법과 물리 공격 모두에 완벽한 저항력을 보입니다.",
     "price": 2200000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 450.0,
@@ -317,7 +317,7 @@
     "twoHanded": false,
     "description": "지하 깊은 곳, 잊혀진 신전의 수호자가 쓰던 것입니다. 정신을 오염시키는 일체의 기운을 막아냅니다.",
     "price": 1950000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 450.0,
@@ -339,7 +339,7 @@
     "twoHanded": false,
     "description": "중갑의 둔탁함을 벗어던진 경지의 장비입니다. 시야를 방해하지 않으면서도 완벽한 방어를 제공합니다.",
     "price": 2500000,
-    "icon": "/images/items/HEAD_PLATE_UNCOMMON.png",
+    "icon": "/images/items/HEAD_PLATE_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxHp": 450.0,

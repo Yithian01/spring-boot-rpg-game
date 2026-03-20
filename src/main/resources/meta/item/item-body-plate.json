@@ -8,7 +8,7 @@
     "subType": "PLATE",
     "description": "표면을 매끄럽게 닦아낸 철제 갑옷입니다. 일반적인 병사들이 선호합니다.",
     "price": 450000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 5.0 },
     "combatStatsBonus": {
       "maxHp": 150.0,
@@ -30,7 +30,7 @@
     "subType": "PLATE",
     "description": "표준 규격으로 제작된 중갑입니다. 튼튼함 하나는 보장합니다.",
     "price": 480000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 6.0 },
     "combatStatsBonus": {
       "maxHp": 160.0,
@@ -52,7 +52,7 @@
     "subType": "PLATE",
     "description": "마무리는 투박하지만 두께감이 상당한 무쇠 갑옷입니다.",
     "price": 430000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 8.0 },
     "combatStatsBonus": {
       "maxHp": 180.0,
@@ -74,7 +74,7 @@
     "subType": "PLATE",
     "description": "적진을 돌파하는 중량 보병들을 위해 특별히 두껍게 제작되었습니다.",
     "price": 500000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 5.0, "2": 3.0 },
     "combatStatsBonus": {
       "maxHp": 150.0,
@@ -95,7 +95,7 @@
     "subType": "PLATE",
     "description": "강철을 섞어 강도를 높인 갑옷입니다. 기사들이 주로 착용합니다.",
     "price": 1250000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 12.0 },
     "combatStatsBonus": {
       "maxHp": 300.0,
@@ -118,7 +118,7 @@
     "subType": "PLATE",
     "description": "유명한 대장간에서 정교하게 두드려 만든 상급 판금 갑옷입니다.",
     "price": 1350000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 15.0, "2": 5.0 },
     "combatStatsBonus": {
       "maxHp": 350.0,
@@ -140,7 +140,7 @@
     "subType": "PLATE",
     "description": "정규 기사단원들에게 보급되는 검증된 성능의 갑옷입니다.",
     "price": 1400000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 10.0, "2": 10.0 },
     "combatStatsBonus": {
       "maxHp": 300.0,
@@ -162,7 +162,7 @@
     "subType": "PLATE",
     "description": "취약 부위에 철판을 덧대어 방어력을 극한으로 끌어올렸습니다.",
     "price": 1300000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 20.0 },
     "combatStatsBonus": {
       "maxHp": 400.0,
@@ -185,7 +185,7 @@
     "twoHanded": false,
     "description": "무너지지 않는 성벽이라 불리던 거인족 전사의 갑옷입니다. 압도적인 방어력을 자랑합니다.",
     "price": 1450000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 30.0, "2": 20.0 },
     "combatStatsBonus": {
       "maxHp": 450.0,
@@ -209,7 +209,7 @@
     "twoHanded": false,
     "description": "심연의 화염으로 제련되어 열기를 내뿜는 갑옷입니다. 화염 속성 공격에 매우 강합니다.",
     "price": 1380000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 25.0, "10": 15.0 },
     "combatStatsBonus": {
       "maxHp": 450.0,
@@ -233,7 +233,7 @@
     "twoHanded": false,
     "description": "수많은 전장에서 승리한 기사단장의 갑옷입니다. 착용자의 투지를 불태웁니다.",
     "price": 1520000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 40.0 },
     "combatStatsBonus": {
       "maxHp": 450.0,
@@ -257,7 +257,7 @@
     "twoHanded": false,
     "description": "날카로운 가시가 돋아난 중갑입니다. 방어뿐만 아니라 근접한 적에게 위협이 됩니다.",
     "price": 1350000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "10": 25.0 },
     "combatStatsBonus": {
       "maxHp": 450.0,
@@ -282,7 +282,7 @@
     "twoHanded": false,
     "description": "하늘을 떠받치는 신의 힘이 깃들어 있습니다. 무게의 제약에서 벗어난 궁극의 중갑입니다.",
     "price": 12000000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 100.0, "10": 50.0 },
     "combatStatsBonus": {
       "maxHp": 600.0,
@@ -307,7 +307,7 @@
     "twoHanded": false,
     "description": "고룡의 비늘을 겹쳐 만든 갑옷입니다. 어떤 강력한 속성 공격도 무의미하게 만듭니다.",
     "price": 15000000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 80.0, "2": 50.0 },
     "combatStatsBonus": {
       "maxHp": 750.0,
@@ -332,7 +332,7 @@
     "twoHanded": false,
     "description": "신성한 마력이 흐르는 황금 갑옷입니다. 착용자 주변의 어둠을 정화합니다.",
     "price": 13500000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "1": 60.0, "13": 40.0 },
     "combatStatsBonus": {
       "maxHp": 600.0,
@@ -358,7 +358,7 @@
     "twoHanded": false,
     "description": "방어의 개념을 파괴로 바꾼 갑옷입니다. 착용할수록 파괴적인 힘이 솟구칩니다.",
     "price": 14200000,
-    "icon": "/images/items/BODY_PLATE_UNCOMMON.png",
+    "icon": "/images/items/BODY_PLATE_UNCOMMON.webp",
     "baseStatsBonus": { "10": 100.0 },
     "combatStatsBonus": {
       "maxHp": 600.0,

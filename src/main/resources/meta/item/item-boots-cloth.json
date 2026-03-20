@@ -8,7 +8,7 @@
     "subType": "CLOTH",
     "description": "열기가 느껴지는 붉은 실로 수놓아진 신발입니다.",
     "price": 145000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -30,7 +30,7 @@
     "subType": "CLOTH",
     "description": "뜨거운 기운이 발등을 감싸 추운 곳에서도 발이 시리지 않습니다.",
     "price": 152000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -53,7 +53,7 @@
     "subType": "CLOTH",
     "description": "화염 마법의 촉매로 쓰이는 특수 비단으로 제작되었습니다.",
     "price": 380000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -75,7 +75,7 @@
     "subType": "CLOTH",
     "description": "안감이 마법적인 불꽃으로 처리되어 폭발적인 마력을 이끌어냅니다.",
     "price": 395000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -98,7 +98,7 @@
     "subType": "CLOTH",
     "description": "만지면 차가운 냉기가 느껴지는 얇은 천 덧신입니다.",
     "price": 148000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 90.0,
@@ -120,7 +120,7 @@
     "subType": "CLOTH",
     "description": "눈 위를 걸어도 젖지 않도록 얼음 마력이 깃들어 있습니다.",
     "price": 155000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 120.0,
@@ -142,7 +142,7 @@
     "subType": "CLOTH",
     "description": "북부의 차가운 마력을 머금은 실로 짠 고급 장화입니다.",
     "price": 410000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 160.0,
@@ -164,7 +164,7 @@
     "subType": "CLOTH",
     "description": "정제된 냉기 마력을 담아 마법사의 정신력을 고양시킵니다.",
     "price": 425000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 200.0,
@@ -186,7 +186,7 @@
     "subType": "CLOTH",
     "description": "걸을 때마다 미세한 불꽃이 튀는 마법 양말입니다.",
     "price": 138000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -209,7 +209,7 @@
     "subType": "CLOTH",
     "description": "벼락을 맞은 나무의 섬유를 섞어 만든 신발입니다.",
     "price": 142000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -232,7 +232,7 @@
     "subType": "CLOTH",
     "description": "마력의 전도율을 극대화하여 번개의 힘을 증폭시킵니다.",
     "price": 370000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -255,7 +255,7 @@
     "subType": "CLOTH",
     "description": "폭풍우 치는 날의 기운이 담긴 신비로운 실로 짰습니다.",
     "price": 385000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -278,7 +278,7 @@
     "subType": "CLOTH",
     "description": "대지의 기운이 서린 이끼를 엮어 만든 가벼운 샌들입니다.",
     "price": 140000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -301,7 +301,7 @@
     "subType": "CLOTH",
     "description": "숲의 수호자들이 신는 것으로 알려진 자연 친화적인 신발입니다.",
     "price": 150000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -324,7 +324,7 @@
     "subType": "CLOTH",
     "description": "땅의 진동을 느끼고 마력을 공명시킬 수 있는 장화입니다.",
     "price": 380000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -347,7 +347,7 @@
     "subType": "CLOTH",
     "description": "고목의 뿌리와 비단을 함께 엮어 생명력이 넘쳐납니다.",
     "price": 400000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -370,7 +370,7 @@
     "subType": "CLOTH",
     "description": "교단에서 수습생들에게 지급하는 깔끔한 흰색 단화입니다.",
     "price": 135000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -392,7 +392,7 @@
     "subType": "CLOTH",
     "description": "매일 기도를 올릴 때 신는 신발로, 마음을 차분하게 해줍니다.",
     "price": 140000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 80.0,
@@ -414,7 +414,7 @@
     "subType": "CLOTH",
     "description": "축복받은 은실로 장식된 성직자용 고급 장화입니다.",
     "price": 360000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -436,7 +436,7 @@
     "subType": "CLOTH",
     "description": "성소의 제단 위에 오래 놓여있어 신성한 기운이 스며들었습니다.",
     "price": 375000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 120.0,
@@ -458,7 +458,7 @@
     "subType": "CLOTH",
     "description": "어두운 색상의 천으로 만들어져 어둠 속에서 잘 보이지 않습니다.",
     "price": 145000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -481,7 +481,7 @@
     "subType": "CLOTH",
     "description": "불길한 보랏빛 기운이 감도는 튼튼한 천 장화입니다.",
     "price": 155000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -504,7 +504,7 @@
     "subType": "CLOTH",
     "description": "어둠의 마력을 극대화하여 치명적인 마법을 돕습니다.",
     "price": 390000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -527,7 +527,7 @@
     "subType": "CLOTH",
     "description": "밤의 마력을 머금어 착용자의 마법 치명률을 높여줍니다.",
     "price": 410000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -550,7 +550,7 @@
     "subType": "CLOTH",
     "description": "정해지지 않은 기이한 문양들이 뒤섞인 불길한 신발입니다.",
     "price": 160000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -573,7 +573,7 @@
     "subType": "CLOTH",
     "description": "암흑 사제들이 비밀리에 신고 다니는 조용한 신발입니다.",
     "price": 168000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -596,7 +596,7 @@
     "subType": "CLOTH",
     "description": "차원을 넘어온 존재의 기운이 깃든 기괴한 천 장화입니다.",
     "price": 420000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -619,7 +619,7 @@
     "subType": "CLOTH",
     "description": "금기된 의식의 마력이 서려있어 적의 방어를 무시하는 힘을 줍니다.",
     "price": 435000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -642,7 +642,7 @@
     "subType": "CLOTH",
     "description": "독초를 다루는 이들이 신는 방독 처리가 된 신발입니다.",
     "price": 142000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -664,7 +664,7 @@
     "subType": "CLOTH",
     "description": "연금술 실험실에서 액체가 튀어도 안전하도록 특수 코팅되었습니다.",
     "price": 148000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 60.0,
@@ -687,7 +687,7 @@
     "subType": "CLOTH",
     "description": "독기와 질병을 막아내기 위해 약품에 절인 고급 장화입니다.",
     "price": 380000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -709,7 +709,7 @@
     "subType": "CLOTH",
     "description": "강력한 독성을 띤 마력을 방출하는 매드 사이언티스트의 장화입니다.",
     "price": 400000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 100.0,
@@ -733,7 +733,7 @@
     "subType": "CLOTH",
     "description": "끊임없이 타오르는 불꽃의 온기를 품은 장화입니다. 걸음마다 지면에 그을음을 남깁니다.",
     "price": 1150000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -756,7 +756,7 @@
     "subType": "CLOTH",
     "description": "들끓는 마그마의 정수를 정제하여 실로 뽑아 직조했습니다. 폭발적인 마력을 전달합니다.",
     "price": 1220000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -779,7 +779,7 @@
     "subType": "CLOTH",
     "description": "태양의 중심부에서 가져온 불꽃으로 만들어졌습니다. 착용하는 것만으로 주변의 공기를 왜곡시킵니다.",
     "price": 8500000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -802,7 +802,7 @@
     "subType": "CLOTH",
     "description": "최초의 불꽃을 지키던 수호자의 장화입니다. 그 어떤 냉기조차 이 발걸음을 멈추게 할 수 없습니다.",
     "price": 9200000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -825,7 +825,7 @@
     "subType": "CLOTH",
     "description": "절대 영도의 마력을 주입한 천으로 제작되어, 밟는 곳마다 얇은 얼음막이 형성됩니다.",
     "price": 1300000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 500.0,
@@ -847,7 +847,7 @@
     "subType": "CLOTH",
     "description": "북부 설산을 평생 동안 오르내린 마법사의 유산입니다. 막대한 마나를 보존하는 능력이 탁월합니다.",
     "price": 1280000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 650.0,
@@ -869,7 +869,7 @@
     "subType": "CLOTH",
     "description": "세상의 끝에서 발견된 결코 녹지 않는 얼음으로 장식되었습니다. 착용자의 마나를 무한히 증폭합니다.",
     "price": 9500000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 1200.0,
@@ -891,7 +891,7 @@
     "subType": "CLOTH",
     "description": "고대 빙룡의 부드러운 안쪽 비늘과 비단을 엮었습니다. 심해와 같은 깊이의 마나를 제공합니다.",
     "price": 9800000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 1500.0,
@@ -913,7 +913,7 @@
     "subType": "CLOTH",
     "description": "번개가 치는 구름 위에서 짜인 신비로운 장화입니다. 모든 것을 꿰뚫는 전율이 흐릅니다.",
     "price": 1400000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -936,7 +936,7 @@
     "subType": "CLOTH",
     "description": "마력의 흐름을 극대화하여 적의 방어를 무색하게 만드는 전류를 방출합니다.",
     "price": 1350000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -959,7 +959,7 @@
     "subType": "CLOTH",
     "description": "하늘의 분노를 형상화한 유물입니다. 그 어떤 견고한 갑옷도 이 전격 앞에서는 종잇장과 같습니다.",
     "price": 11000000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -982,7 +982,7 @@
     "subType": "CLOTH",
     "description": "번개의 속도를 넘어서는 자를 위한 신발입니다. 공간을 가르는 파괴적인 관통력을 선사합니다.",
     "price": 11500000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1005,7 +1005,7 @@
     "subType": "CLOTH",
     "description": "땅의 기운을 직접 받아들여 상처를 치유합니다. 투박하지만 생명력이 가득합니다.",
     "price": 1100000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1029,7 +1029,7 @@
     "subType": "CLOTH",
     "description": "자연의 섭리에 순응하는 이들을 위한 장화입니다. 끊임없는 생명력이 발끝에서 솟구칩니다.",
     "price": 1120000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1053,7 +1053,7 @@
     "subType": "CLOTH",
     "description": "세상의 모든 생명이 태어난 대지의 심장부에서 추출한 활력이 깃들어 있습니다.",
     "price": 8800000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1077,7 +1077,7 @@
     "subType": "CLOTH",
     "description": "바위처럼 단단한 의지와 숲처럼 무한한 회복력을 동시에 제공하는 전설적인 유물입니다.",
     "price": 9100000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1101,7 +1101,7 @@
     "subType": "CLOTH",
     "description": "티 없이 깨끗한 성수료 세례를 받은 비단으로 제작되었습니다. 신성한 마력이 깃들어 있습니다.",
     "price": 1050000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1123,7 +1123,7 @@
     "subType": "CLOTH",
     "description": "오랜 시간 기도의 힘이 누적되어 착용자의 정신을 맑게 유지해 줍니다.",
     "price": 1080000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 220.0,
@@ -1145,7 +1145,7 @@
     "subType": "CLOTH",
     "description": "하늘의 사자가 지상에 남기고 간 흔적입니다. 숭고한 빛의 힘이 가득합니다.",
     "price": 8000000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1167,7 +1167,7 @@
     "subType": "CLOTH",
     "description": "신성한 빛의 축복이 영원히 마르지 않는 신발입니다. 악한 기운이 감히 접근하지 못합니다.",
     "price": 8300000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 400.0,
@@ -1189,7 +1189,7 @@
     "subType": "CLOTH",
     "description": "심연의 어둠 속에서 직조된 장화입니다. 적의 약점을 꿰뚫어 보는 힘을 줍니다.",
     "price": 1250000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1212,7 +1212,7 @@
     "subType": "CLOTH",
     "description": "금지된 지식을 탐구하는 이들을 위한 장화입니다. 어두운 마력이 치명적인 일격을 돕습니다.",
     "price": 1270000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1235,7 +1235,7 @@
     "subType": "CLOTH",
     "description": "공포와 절망을 먹고 자란 마력이 깃들어 있습니다. 모든 공격이 필멸의 일격으로 변합니다.",
     "price": 9500000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1258,7 +1258,7 @@
     "subType": "CLOTH",
     "description": "소리 없는 죽음을 선사하는 자의 유물입니다. 어둠의 힘이 극대화되어 적을 압도합니다.",
     "price": 9800000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1281,7 +1281,7 @@
     "subType": "CLOTH",
     "description": "이 세상의 법도를 따르지 않는 기괴한 문양의 장화입니다. 적의 모든 저항을 무시합니다.",
     "price": 1450000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1304,7 +1304,7 @@
     "subType": "CLOTH",
     "description": "혼돈의 소용돌이 속에서 추출한 마나로 만들어진 신발입니다. 공간을 가르는 파괴력을 지녔습니다.",
     "price": 1480000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1327,7 +1327,7 @@
     "subType": "CLOTH",
     "description": "존재하지 않는 차원의 힘을 끌어다 쓰는 장화입니다. 그 어떤 방어막도 이를 막지 못합니다.",
     "price": 12000000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1350,7 +1350,7 @@
     "subType": "CLOTH",
     "description": "질서의 종말을 선언하는 자의 장화입니다. 모든 존재의 저항을 무위로 돌립니다.",
     "price": 12500000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1373,7 +1373,7 @@
     "subType": "CLOTH",
     "description": "맹독이 묻은 천을 수십 겹 겹쳐 만들었습니다. 착용자는 온갖 질병으로부터 자유롭습니다.",
     "price": 1180000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1397,7 +1397,7 @@
     "subType": "CLOTH",
     "description": "수많은 약물에 절여진 신발입니다. 기괴한 회복력과 저항력을 동시에 선사합니다.",
     "price": 1200000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 180.0,
@@ -1420,7 +1420,7 @@
     "subType": "CLOTH",
     "description": "모든 독의 어머니라고 불리는 정수를 정제하여 만들었습니다. 어떤 오염도 정화해 버립니다.",
     "price": 9000000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,
@@ -1444,7 +1444,7 @@
     "subType": "CLOTH",
     "description": "재앙의 근원지에서 발견된 유물입니다. 스스로는 저항하며 타인에게는 죽음을 퍼뜨립니다.",
     "price": 9300000,
-    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.png",
+    "icon": "/images/items/BOOTS_CLOTH_UNCOMMON.webp",
     "baseStatsBonus": {},
     "combatStatsBonus": {
       "maxMp": 300.0,

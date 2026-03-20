@@ -1,7 +1,7 @@
 [
   {
     "tribeId": 1,
-    "image": "/images/tribes/tribe_1.png",
+    "image": "/images/tribes/tribe_1.webp",
     "gold": 100,
     "initialEquipment": {
       "WEAPON": 11,
@@ -25,7 +25,7 @@
   },
   {
     "tribeId": 2,
-    "image": "/images/tribes/tribe_2.png",
+    "image": "/images/tribes/tribe_2.webp",
     "gold": 100,
     "initialEquipment": {
       "WEAPON": 13,
@@ -49,7 +49,7 @@
   },
   {
     "tribeId": 3,
-    "image": "/images/tribes/tribe_3.png",
+    "image": "/images/tribes/tribe_3.webp",
     "gold": 100,
     "initialEquipment": {
       "WEAPON": 15,
@@ -73,7 +73,7 @@
   },
   {
     "tribeId": 4,
-    "image": "/images/tribes/tribe_4.png",
+    "image": "/images/tribes/tribe_4.webp",
     "gold": 100,
     "initialEquipment": {
       "WEAPON": 17,
